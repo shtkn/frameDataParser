@@ -1,0 +1,76 @@
+
+@State
+def NmlAtk5X():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingNormal()
+        AttackLevel_(3)
+        AirPushbackY(10000)
+        Unknown9016(1)
+        HitOrBlockCancel('NmlAtk2A')
+        HitOrBlockCancel('NmlAtk5B')
+        HitOrBlockCancel('NmlAtk2B')
+        HitOrBlockCancel('CmnActCrushAttack')
+        HitOrBlockCancel('NmlAtk2C')
+        HitOrBlockCancel('NmlAtk5A2nd')
+        HitOrBlockCancel('NmlAtkThrow')
+        HitOrBlockCancel('NmlAtkBackThrow')
+        HitJumpCancel(1)
+        Unknown1112('')
+    sprite('es201_00', 1)	# 1-1
+    sprite('es201_01', 2)	# 2-3
+    sprite('es201_02', 2)	# 4-5
+    SFX_0('006_swing_blade_0')
+    sprite('es201_03', 2)	# 6-7
+    Unknown7009(1)
+    sprite('es201_04', 5)	# 8-12	 **attackbox here**
+    GFX_0('esef_201', -1)
+    sprite('es201_05', 3)	# 13-15
+    Recovery()
+    Unknown2063()
+    sprite('es201_06', 3)	# 16-18
+    sprite('es201_07', 3)	# 19-21
+    sprite('es201_08', 3)	# 22-24
+    sprite('es201_09', 3)	# 25-27
+    sprite('es201_10', 3)	# 28-30
+
+@State
+def NmlAtk2X():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingNormal()
+        AttackLevel_(3)
+        AirPushbackY(10000)
+        Unknown9016(1)
+        HitOrBlockCancel('NmlAtk2A')
+        HitOrBlockCancel('NmlAtk5B')
+        HitOrBlockCancel('NmlAtk2B')
+        HitOrBlockCancel('CmnActCrushAttack')
+        HitOrBlockCancel('NmlAtk2C')
+        HitOrBlockCancel('NmlAtk5A2nd')
+        HitOrBlockCancel('NmlAtkThrow')
+        HitOrBlockCancel('NmlAtkBackThrow')
+        HitJumpCancel(1)
+        Unknown1112('')
+    sprite('es201_00', 1)	# 1-1
+    sprite('es201_01', 2)	# 2-3
+    sprite('es201_02', 2)	# 4-5
+    SFX_0('006_swing_blade_0')
+    sprite('es201_03', 2)	# 6-7
+    Unknown7009(1)
+    sprite('es201_04', 5)	# 8-12	 **attackbox here**
+    StartMultihit()
+    sprite('es201_04', 5)	# 13-17	 **attackbox here**
+    RefreshMultiHit()
+    sprite('es201_04', 1)	# 13-17	 **attackbox here**
+    RefreshMultiHit()
+    GFX_0('esef_201', -1)
+    sprite('es201_05', 3)	# 18-120
+    Recovery()
+    Unknown2063()
+    sprite('es201_04', 5)	# 13-17	 **attackbox here**
+    sprite('es201_06', 3)	# 20-22
+    sprite('es201_07', 3)	# 23-25
+    sprite('es201_08', 3)	# 26-28
+    sprite('es201_09', 3)	# 29-31
+    sprite('es201_10', 3)	# 32-33
