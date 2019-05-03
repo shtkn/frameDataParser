@@ -5898,4 +5898,4 @@ def Act2Event_Yure():
 
 @State
 def Act3Event_IZDummy():
-    sprite('iz063_11', 32767	# 1-32767
+    sprite('iz063_11', 32767)	# 1-32767

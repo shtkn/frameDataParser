@@ -3264,4 +3264,4 @@ def Win2():
     sprite('Action_088_04', 3)	# 13-15
     sprite('Action_088_05', 3)	# 16-18
     sprite('Action_088_06', 3)	# 19-21
-    sprite('Action_088_07', 3	# 22-24
+    sprite('Action_088_07', 3)	# 22-24

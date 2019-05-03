@@ -1611,4 +1611,4 @@ def HaAstBG_Finish():
         Unknown3004(4)
         Unknown1056(10000)
         Unknown1064(2200)
-    sprite('vr_white', 32767	# 1-32767
+    sprite('vr_white', 32767)	# 1-32767

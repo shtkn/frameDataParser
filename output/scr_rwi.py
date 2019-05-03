@@ -7405,4 +7405,4 @@ def CmnActLose():
     sprite('rwi620_02', 6)	# 13-18
     sprite('rwi620_03', 6)	# 19-24
     sprite('rwi620_04', 6)	# 25-30
-    sprite('rwi620_05', 32767	# 31-32797
+    sprite('rwi620_05', 32767)	# 31-32797

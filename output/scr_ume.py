@@ -7331,4 +7331,4 @@ def UltimateCapturePlus():
             teleportRelativeX(4800)
             sprite('Action_248_08', 6)	# 38-43
             Unknown23018(1)
-            sprite('Action_248_09', 32767	# 44-32810
+            sprite('Action_248_09', 32767)	# 44-32810

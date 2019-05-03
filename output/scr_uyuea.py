@@ -2281,4 +2281,4 @@ def TimeUp_Lose():
         Unknown4010(2)
     sprite('Action_249_00', 10)	# 1-10
     sprite('Action_249_01', 10)	# 11-20
-    sprite('Action_249_02', 32767	# 21-32787
+    sprite('Action_249_02', 32767)	# 21-32787

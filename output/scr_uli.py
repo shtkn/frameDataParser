@@ -6787,4 +6787,4 @@ def CmnActLose():
     SFX_FOOTSTEP_(100, 0, 1)
     sprite('Action_248_08', 3)	# 54-56
     sprite('Action_248_09', 3)	# 57-59
-    sprite('Action_248_10', 32767	# 60-32826
+    sprite('Action_248_10', 32767)	# 60-32826

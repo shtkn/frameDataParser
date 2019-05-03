@@ -8419,4 +8419,4 @@ def CmnActLose():
     sprite('la070_01', 6)	# 7-12
     sprite('la070_02', 2)	# 13-14
     Unknown23018(1)
-    sprite('la070_03', 32767	# 15-32781
+    sprite('la070_03', 32767)	# 15-32781

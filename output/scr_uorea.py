@@ -2769,4 +2769,4 @@ def Ori_CutIn():
     Unknown3001(200)
     Unknown3004(-20)
     Unknown1099(20)
-    sprite('Action_999_21', 3	# 72-74	 **attackbox here**
+    sprite('Action_999_21', 3)	# 72-74	 **attackbox here**

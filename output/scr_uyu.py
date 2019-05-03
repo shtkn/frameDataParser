@@ -10266,4 +10266,4 @@ def CmnActLose():
     sprite('Action_248_04', 4)	# 21-24
     GFX_0('TimeUp_Lose', -1)
     Unknown23018(1)
-    sprite('Action_248_05', 32767	# 25-32791
+    sprite('Action_248_05', 32767)	# 25-32791

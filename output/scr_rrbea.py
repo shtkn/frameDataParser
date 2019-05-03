@@ -5733,4 +5733,4 @@ def rrb610Eff():
         Unknown23130(39935, 10, 1)
         sprite('null', 10)	# 13-22
         Unknown23130(33023, 10, 1)
-        sprite('null', 10	# 23-32
+        sprite('null', 10)	# 23-32

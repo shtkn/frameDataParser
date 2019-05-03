@@ -1535,4 +1535,4 @@ def UGO_MatchWin_SummonIn():
     sprite('Action_080_00', 3)	# 1-3
     sprite('Action_080_01', 3)	# 4-6
     sprite('Action_080_02', 3)	# 7-9
-    sprite('Action_080_03', 3	# 10-12
+    sprite('Action_080_03', 3)	# 10-12

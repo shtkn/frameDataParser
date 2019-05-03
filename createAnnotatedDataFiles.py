@@ -60,7 +60,7 @@ for entry in fileList:
             duration = int(line[numberStart:numberEnd])
             # print duration
             newFrameCount = prevFrameCount+duration-1
-            line = line[0:line.__len__()-1] + "\t# " + str(prevFrameCount) + "-" + str(newFrameCount)
+            line = line.strip("\n") + "\t# " + str(prevFrameCount) + "-" + str(newFrameCount)
             prevFrameCount = newFrameCount + 1
             if currentSet.__contains__(sprite):
                 line = line[0:] + "\t **attackbox here**"

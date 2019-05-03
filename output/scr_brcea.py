@@ -6932,4 +6932,4 @@ def rc231_col_dmy():
     def upon_IMMEDIATE():
         callSubroutine('ShotDelete_dmy')
     sprite('rc231_04_col_damy', 3)	# 1-3
-    sprite('rc231_05_col_damy', 3	# 4-6
+    sprite('rc231_05_col_damy', 3)	# 4-6
