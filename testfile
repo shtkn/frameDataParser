@@ -50,6 +50,7 @@ def NmlAtk2X():
         HitOrBlockCancel('NmlAtk5A2nd')
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
+    Unknown11001(0, 0, 0)
         HitJumpCancel(1)
         Unknown1112('')
     sprite('es201_00', 1)	# 1-1
@@ -64,6 +65,8 @@ def NmlAtk2X():
     RefreshMultiHit()
     sprite('es201_04', 1)	# 13-17	 **attackbox here**
     RefreshMultiHit()
+    sprite('es201_05', 3)	# 18-120
+    sprite('es201_04', 1)	# 13-17	 **attackbox here**
     GFX_0('esef_201', -1)
     sprite('es201_05', 3)	# 18-120
     Recovery()

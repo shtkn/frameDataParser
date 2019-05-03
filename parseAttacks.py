@@ -12,6 +12,9 @@ class State:
         self.disableAttackboxesThisFrame = False
         self.isNewHit = True
         self.blockstun = 0
+        self.hitstop = 0
+        self.additionalHitstopMe = 0
+        self.additionalHitstopOpponent = 0
 
     def clear_values(self, is_new_move):
         self.spriteLine = ""
@@ -23,6 +26,9 @@ class State:
             self.disableAttackboxes = False
             self.isNewHit = True
         self.disableAttackboxesThisFrame = False
+        self.blockstun = 0
+        self.hitstop = 0
+        self.additionalHitstopOpponent = 0
 
     def is_attackbox(self):
         return self.isAttackBox and not (self.disableAttackboxes or self.disableAttackboxesThisFrame)
@@ -37,23 +43,30 @@ class AbstractChunk:
 
 
 class AttackFrameChunk(AbstractChunk):
-    def __init__(self, duration=0, blockstun=0, is_attack_box=False, is_new_hit=False):
+    def __init__(self, duration=0, blockstun=0, hitstop=0, additionalHitstopOpponent=0, is_new_hit=False):
         AbstractChunk.__init__(self, duration)
         self.blockstun = blockstun
-        self.isAttackBox = is_attack_box
         self.isNewHit = is_new_hit
+        self.hitstop = hitstop
+        self.additionalHitstopOpponent = 0
 
     def __str__(self):
         toReturn = str(self.duration)
-        if self.isAttackBox:
-            toReturn += " Active"
-            toReturn += " New Hit " + str(self.isNewHit)
+        toReturn += " Active"
+        toReturn += " New Hit " + str(self.isNewHit)
         return toReturn
 
 
 class FrameChunk(AbstractChunk):
     def __init__(self, duration=0):
         AbstractChunk.__init__(self, duration)
+
+
+class BlockstunChunk(AbstractChunk):
+    def __init__(self, duration=0, blockstun=0, hitstop=0):
+        AbstractChunk.__init__(self, duration)
+        self.blockstun = blockstun
+        self.hitstop = hitstop
 
 
 SPRITE_START = "sprite('"
@@ -135,23 +148,35 @@ for line in contents:
         elif "AttackLevel_(" in line:  # get hitstun/blockstun values according to it's level
             level = line[line.index("(")+1:line.index("(")+2]
             # print "LEVEL: " + level
+            # blockstun by level: 0: 9F, 1: 11F, 2: 13F, 3: 16F, 4: 18F, 5: 20F
+            # so blockstun = 0 * Level*2. If Level 3 or higher, blockstun + 1
             state.blockstun = 9 + int(level)*2
             if int(level) >= 3:
                 state.blockstun += 1
-            # blockstun by level: 0: 9F, 1: 11F, 2: 13F, 3: 16F, 4: 18F, 5: 20F
-            # so blockstun = 0 * Level*2. If Level 3 or higher, blockstun + 1
+            # hitstop by level 0: 8F, 1: 9F, 2: 10F, 3: 11F, 4: 12F, 5: 13F
+            state.hitstop = 8 + int(level)
         elif "Unknown11028(" in line:
             state.blockstun = line[line.index("(")+1:line.index(")")]
             # print "Hardcoded blockstun: " + state.blockstun
+        elif "Hitstop(" in line:
+            state.hitstop = int(line[line.index("(")+1:line.index(")")])
+            # print "Hardcoded hitstop: " + state.hitstop
         elif "def " in line and len(moveName) < 1:
             name_start = line.index("def ") + SPRITE_MID.__len__() +1
             name_end = line.index("()")
             moveName = line[name_start:name_end]
+        elif "Unknown11001(" in line:
+            name_start = line.index("(") +1
+            name_end = line.index(")")
+            numbers = [x.strip() for x in line[name_start:name_end].split(',')]
+            additionalHitstopOpponent = int(numbers[0])
+            pass
+
 
 
 if state.duration > 0:
-    chunk = AttackFrameChunk(state.duration, state.blockstun, state.is_attackbox(),
-                             state.isNewHit) if state.is_attackbox() else FrameChunk(state.duration)
+    chunk = AttackFrameChunk(state.duration, state.blockstun, state.isNewHit) \
+        if state.is_attackbox() else FrameChunk(state.duration)
     move.append(chunk)
     moveList[moveName] = consolidate_frame_chunks(move)
 
@@ -162,7 +187,9 @@ for moveName in moveList:
     recovery = ""
     print moveName
 
+    total_duration = 0
     for idx, chunk in enumerate(move):
+        total_duration += chunk.duration
         if idx == 0 and len(move) > 1:
             startup = chunk.duration +1
         else:
@@ -175,13 +202,12 @@ for moveName in moveList:
             else:
                 recovery += str(chunk.duration)
 
-    print str(startup) + " " + middle + " " + recovery
+    print str(startup) + " " + middle + " " + recovery + ". Total duration: " + str(total_duration)
+
     # determine frame adv
-    total_duration = 0
+    attackTiming = []
     for idx, chunk in enumerate(move):
-        total_duration += chunk.duration
-
-
+        pass
 
 
 print "DONE"
