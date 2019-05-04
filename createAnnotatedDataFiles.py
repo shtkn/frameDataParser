@@ -8,7 +8,7 @@ currentSet = None
 for line in contents:
     if line.endswith(" starts here\n"):
         char = line.split(" ")[0]
-        print char
+        # print char
         currentSet = set()
         charDictionarySet[char] = currentSet
     elif currentSet is None:

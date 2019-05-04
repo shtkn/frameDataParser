@@ -1,3 +1,5 @@
+import copy
+
 sourceDir = "./output/"
 entry = "scr_bes.py"
 
@@ -14,6 +16,8 @@ class State:
         self.blockstun = 0
         self.hitstop = 0
         self.additionalHitstopOpponent = 0
+        self.exitState = False
+        self.landingRecovery = 0
 
     def clear_values(self, is_new_move):
         self.spriteLine = ""
@@ -24,10 +28,12 @@ class State:
         if is_new_move:
             self.disableAttackboxes = False
             self.isNewHit = True
+            self.blockstun = 0
+            self.hitstop = 0
+            self.additionalHitstopOpponent = 0
+            self.exitState = False
+            self.landingRecovery = 0
         self.disableAttackboxesThisFrame = False
-        # self.blockstun = 0
-        # self.hitstop = 0
-        # self.additionalHitstopOpponent = 0
 
     def is_attackbox(self):
         return self.isAttackBox and not (self.disableAttackboxes or self.disableAttackboxesThisFrame)
@@ -58,9 +64,20 @@ class AttackFrameChunk(AbstractChunk):
         return to_return
 
 
-class FrameChunk(AbstractChunk):
+class StartupFrameChunk(AbstractChunk):
     def __init__(self, duration=0):
         AbstractChunk.__init__(self, duration)
+
+
+class LandingFrameChunk(AbstractChunk):
+    def __init__(self, duration=0):
+        AbstractChunk.__init__(self, duration)
+
+
+class Move:
+    def __init__(self):
+        self.frame_chunks = []
+        self.landing_recovery = 0
 
 
 SPRITE_START = "sprite('"
@@ -70,7 +87,7 @@ HAS_HITBOX = "**attackbox here**"
 
 
 def get_duration(sprite_str):
-    print sprite_str
+    # print sprite_str
     number_start = sprite_str.index(SPRITE_MID) + SPRITE_MID.__len__()
     number_end = sprite_str.index(SPRITE_END)
     return int(line[number_start:number_end])
@@ -78,24 +95,23 @@ def get_duration(sprite_str):
 
 def consolidate_frame_chunks(chunk_list):
     new_chunk_list = []
-
-    prev_chunk = move[0]
-    for i in range(1, len(chunk_list)-1):
-        chunk = move[i]
+    prev_chunk = frame_chunks[0]
+    for i in range(1, len(chunk_list)):
+        chunk = frame_chunks[i]
         if isinstance(prev_chunk, AttackFrameChunk) and isinstance(chunk, AttackFrameChunk):
             if chunk.isNewHit:
                 new_chunk_list.append(prev_chunk)
-                prev_chunk = chunk
+                prev_chunk = copy.copy(chunk)
             else:
                 prev_chunk.duration += chunk.duration
-        elif isinstance(prev_chunk, FrameChunk) and isinstance(chunk, FrameChunk):
-                prev_chunk.duration += chunk.duration
+        elif isinstance(prev_chunk, StartupFrameChunk) and isinstance(chunk, StartupFrameChunk):
+            prev_chunk.duration += chunk.duration
         else:
             new_chunk_list.append(prev_chunk)
-            prev_chunk = chunk
+            prev_chunk = copy.copy(chunk)
     new_chunk_list.append(prev_chunk)
     #
-    # for chunk in newChunkList:
+    # for chunk in new_chunk_list:
     #     print chunk
     return new_chunk_list
 
@@ -106,17 +122,21 @@ target = open(entry + ".txt", "w")
 contents = source.readlines()
 
 moveList = {}
-move = None
+frame_chunks = None
 moveName = ""
 for line in contents:
     if "@State" in line:     # new move, finish parsing existing move, then restart frame counters
-        if move is not None and len(move) > 0:
+        if frame_chunks is not None and len(frame_chunks) > 0:
             chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop, state.additionalHitstopOpponent,
                                      state.isNewHit) \
-                if state.is_attackbox() else FrameChunk(state.duration)
-            move.append(chunk)
-            moveList[moveName] = consolidate_frame_chunks(move)
-        move = []
+                if state.is_attackbox() else StartupFrameChunk(state.duration)
+            frame_chunks.append(chunk)
+
+            moveList[moveName] = Move()
+            moveList[moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
+            if state.landingRecovery > 0:
+                moveList[moveName].landing_recovery = state.landingRecovery
+        frame_chunks = []
         moveName = ""
         # print "*** NEW MOVE ***"
         # restart counters
@@ -126,8 +146,8 @@ for line in contents:
         if state.duration > 0:
             chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop, state.additionalHitstopOpponent,
                                      state.isNewHit) \
-                if state.is_attackbox() else FrameChunk(state.duration)
-            move.append(chunk)
+                if state.is_attackbox() else StartupFrameChunk(state.duration)
+            frame_chunks.append(chunk)
             state.clear_values(False)
         spriteLine = line
         state.duration = get_duration(spriteLine)
@@ -135,7 +155,7 @@ for line in contents:
         if HAS_HITBOX in spriteLine:
             state.isAttackBox = HAS_HITBOX in spriteLine
 
-    else:
+    elif not state.exitState:
         if "Recovery()" in line or "Unknown23027()" in line:  # disables active frames for rest of move
             state.disableAttackboxes = True
         elif "StartMultihit()" in line:  # turns off these active frames
@@ -167,18 +187,30 @@ for line in contents:
             name_end = line.index(")")
             numbers = [x.strip() for x in line[name_start:name_end].split(',')]
             state.additionalHitstopOpponent = int(numbers[0])
+        elif "Unknown22004(" in line:
+            number_start = line.index("Unknown22004(") + len("Unknown22004(")
+            number_end = line.index(",")
+            # print "Landing" + line[number_start: number_end]
+            state.landingRecovery = int(line[number_start: number_end]) - 1
+            pass    # landing recovery
+        elif "ExitState()" in line:
+            state.exitState = True
 
 if state.duration > 0:
     chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop, state.additionalHitstopOpponent,
                              state.isNewHit) \
-        if state.is_attackbox() else FrameChunk(state.duration)
-    move.append(chunk)
-    moveList[moveName] = consolidate_frame_chunks(move)
+        if state.is_attackbox() else StartupFrameChunk(state.duration)
+    frame_chunks.append(chunk)
+
+    moveList[moveName] = Move()
+    moveList[moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
+    if state.landingRecovery > 0:
+        moveList[moveName].landing_recovery = state.landingRecovery
 
 
 target = open("outfile", "w")
 for moveName in moveList:
-    move = moveList[moveName]
+    frame_chunks = moveList[moveName]
     startup = 0
     middle = ""
     recovery = ""
@@ -187,9 +219,9 @@ for moveName in moveList:
     total_duration = 0
     attack_timeline = 0
     block_timeline = 0
-    for idx, chunk in enumerate(move):
+    for idx, chunk in enumerate(frame_chunks.frame_chunks):
         total_duration += chunk.duration
-        if idx == 0 and len(move) > 1:
+        if idx == 0 and len(frame_chunks.frame_chunks) > 1:
             startup = chunk.duration +1
         else:
             if isinstance(chunk, AttackFrameChunk):
@@ -201,15 +233,22 @@ for moveName in moveList:
                 attack_timeline += chunk.hitstop + chunk.duration - 1
             else:
                 attack_timeline += chunk.duration
-                if idx < len(move) - 1:
+                if idx < len(frame_chunks.frame_chunks) - 1:
                     middle += "(" + str(chunk.duration) + ")"
                 else:
                     recovery += str(chunk.duration)
 
-    target.write(str(startup) + " " + middle + " " + recovery + ". Total duration: " + str(total_duration) + "\n")
+    target.write(str(startup) + " " + middle + " " + recovery)
+    if frame_chunks.landing_recovery > 0:
+        target.write("+" + str(frame_chunks.landing_recovery) + "L")
+    target.write(". Total duration: " + str(total_duration))
+    if frame_chunks.landing_recovery > 0:
+        target.write("+" + str(frame_chunks.landing_recovery) + "L")
+    target.write("\n")
     target.write("\tduration: " + str(attack_timeline))
-    target.write(" blockstun: " + str(block_timeline))
-    target.write(" diff: " + str(block_timeline - attack_timeline))
+    if block_timeline != 0:
+        target.write(" blockstun: " + str(block_timeline))
+        target.write(" diff: " + str(block_timeline - attack_timeline))
     target.write("\n")
 
 print "DONE"
