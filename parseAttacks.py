@@ -18,6 +18,7 @@ class State:
         self.additionalHitstopOpponent = 0
         self.exitState = False
         self.landingRecovery = 0
+        self.isSubroutine = False
 
     def clear_values(self, is_new_move):
         self.spriteLine = ""
@@ -35,6 +36,7 @@ class State:
             self.additionalHitstopOpponent = 0
             self.exitState = False
             self.landingRecovery = 0
+            self.isSubroutine = False
         self.disableAttackboxesThisFrame = False
 
     def is_attackbox(self):
@@ -92,6 +94,14 @@ class Move:
         self.additional_chunks = []
         self.landing_recovery = 0
 
+class Subroutine:
+    def __init__(self):
+        self.blockstun = 0
+        self.hitstop = 0
+        self.additionalHitstopOpponent = 0
+        self.landingRecovery = 0
+        pass
+    
 
 SPRITE_START = "    sprite('"
 SPRITE_MID = "', "
@@ -131,25 +141,35 @@ def consolidate_frame_chunks(chunk_list):
     return new_chunk_list
 
 
-def parse_move_file(source, move_list):
+def parse_move_file(source, move_list, effect_list):
     state = State()
     frame_chunks = None
     for line in source.readlines():
-        if "@State" in line or "@Subrouteine" in line:     # new move, finish parsing existing move, then restart frame counters
+        if "@State" in line or "@Subroutine" in line:     # new move, finish parsing existing move, then restart frame counters
             if frame_chunks is not None and len(frame_chunks) > 0:
                 chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop, state.additionalHitstopOpponent,
                                          state.isNewHit) \
                     if state.is_attackbox() else WaitFrameChunk(state.duration)
                 frame_chunks.append(chunk)
 
-                move_list[state.moveName] = Move()
-                move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
-                if state.landingRecovery > 0:
-                    move_list[state.moveName].landing_recovery = state.landingRecovery
+                if state.isSubroutine:
+                    subroutine = Subroutine()
+                    subroutine.blockstun = state.blockstun
+                    subroutine.hitstop = state.hitstop
+                    subroutine.additionalHitstopOpponent = state.additionalHitstopOpponent
+                    effect_list[state.moveName] = subroutine
+
+                else:
+                    move_list[state.moveName] = Move()
+                    move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
+                    if state.landingRecovery > 0:
+                        move_list[state.moveName].landing_recovery = state.landingRecovery
             frame_chunks = []
             # print "*** NEW MOVE ***"
             # restart counters
             state.clear_values(True)
+            if "@Subroutine" in line:
+                state.isSubroutine = True
         elif line.startswith(SPRITE_START):
             if state.duration > 0:
                 chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop, state.additionalHitstopOpponent,
@@ -223,29 +243,52 @@ def parse_move_file(source, move_list):
             if state.is_attackbox() else WaitFrameChunk(state.duration)
         frame_chunks.append(chunk)
 
-        move_list[state.moveName] = Move()
-        move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
-        if state.landingRecovery > 0:
-            move_list[state.moveName].landing_recovery = state.landingRecovery
+        if state.isSubroutine:
+            subroutine = Subroutine()
+            subroutine.blockstun = state.blockstun
+            subroutine.hitstop = state.hitstop
+            subroutine.additionalHitstopOpponent = state.additionalHitstopOpponent
+            effect_list[state.moveName] = subroutine
+
+        else:
+            move_list[state.moveName] = Move()
+            move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
+            if state.landingRecovery > 0:
+                move_list[state.moveName].landing_recovery = state.landingRecovery
 
     return move_list
 
 
-def parse_subroutine(name, move_list, startFrame=0):
+def parse_subroutine(name, move_list, effect_list, startFrame=0):
     if name not in move_list:
         return []
     subroutine_calls = [ ]
     subroutine_calls.append([])
     first_subroutine = subroutine_calls[0]
     duration = startFrame
+    override_blockstun = None
+    override_hitstop = None
+    override_additional_hitstop = None
     if duration > 0:
         first_subroutine.append(WaitFrameChunk(duration))
     for chunk in move_list[name].frame_chunks:
         if isinstance(chunk, SubroutineCall):
-            from_children = parse_subroutine(chunk.name, move_list, duration)
+            from_children = []
+            if chunk.name in effect_list and isinstance(effect_list[chunk.name], Subroutine):
+                # print "SUBROUTINE " + effect_list[chunk.name]
+                override_blockstun = effect_list[chunk.name].blockstun
+                override_hitstop = effect_list[chunk.name].hitstop
+                override_additional_hitstop = effect_list[chunk.name].additionalHitstopOpponent
+            else:
+                from_children = parse_subroutine(chunk.name, effect_list, effect_list, duration)
             for one_subroutine in from_children:
                 subroutine_calls.append(one_subroutine)
         else:
+            if isinstance(chunk, AttackFrameChunk) and override_blockstun is not None:
+                chunk.blockstun = override_blockstun
+                chunk.hitstop = override_hitstop
+                chunk.additionalHitstopOpponent = override_additional_hitstop
+
             first_subroutine.append(chunk)
             duration += chunk.duration
 
@@ -308,24 +351,25 @@ sourceDir = "./"
 entry = "testfileea"
 effect_source = open(sourceDir + entry, "r")
 effect_target = open(entry + "_out.txt", "w")
-move_list = OrderedDict()
-effect_list = parse_move_file(effect_source, move_list)
+effect_list = OrderedDict()
+effect_list = parse_move_file(effect_source, effect_list, effect_list)
 # Parse moves
 sourceDir = "./"
 entry = "testfile"
 char_source = open(sourceDir + entry, "r")
 char_target = open(entry + "_out.txt", "w")
-move_list = parse_move_file(char_source, move_list)
+move_list = OrderedDict()
+move_list = parse_move_file(char_source, move_list, effect_list)
 
 # Add in subroutines
 for name in move_list:
     print name
-    subroutine_calls = parse_subroutine(name, move_list)
+    subroutine_calls = parse_subroutine(name, move_list, effect_list)
     for subroutine in subroutine_calls:
         for chunk in subroutine:
             print chunk
         print "//"
 # write both files
 write_file(move_list, char_target)
-write_file(effect_list, effect_target)
+# write_file(effect_list, effect_target)
 print "DONE"

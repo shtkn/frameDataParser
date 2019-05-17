@@ -1,3 +1,13 @@
+@Subroutine
+def Monsho_AtkData():
+    AttackLevel_(1)
+    AttackP1(70)
+    AttackP2(90)
+    Hitstop(6)
+    Unknown9154(17)
+    AirUntechableTime(21)
+    Unknown11028(11)
+    Unknown9016(1)
 
 @State
 def es213_effAtk():

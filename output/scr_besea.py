@@ -1561,13 +1561,13 @@ def es400_A():
         callSubroutine('es400_Init')
         Unknown1007(128000)
         teleportRelativeX(100000)
-    sprite('es400eff_atk1', 3)	# 1-3
+    sprite('es400eff_atk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400eff_MatomeA', -1)
     Unknown38(4, 1)
     physicsXImpulse(45000)
     Unknown1028(-1300)
     SFX_3('esse_03')
-    sprite('es400eff_atk2', 27)	# 4-30
+    sprite('es400eff_atk2', 27)	# 4-30	 **attackbox here**
     Unknown21015('73686f74000000000000000000000000000000000000000000000000000000007800000000000000')
     sprite('null', 1)	# 31-31
     Unknown23029(4, 125, 0)
@@ -1588,9 +1588,9 @@ def es400_B():
     Unknown38(4, 1)
     physicsXImpulse(2500)
     SFX_3('esse_03')
-    sprite('es400eff_atk1', 22)	# 4-25
+    sprite('es400eff_atk1', 22)	# 4-25	 **attackbox here**
     clearUponHandler(43)
-    sprite('es400eff_atk2', 100)	# 26-125
+    sprite('es400eff_atk2', 100)	# 26-125	 **attackbox here**
     Unknown21015('73686f74000000000000000000000000000000000000000000000000000000007800000000000000')
     physicsXImpulse(70000)
 
@@ -1603,13 +1603,13 @@ def es400_ASS():
         teleportRelativeX(100000)
         AttackP1(70)
         Unknown11042(1)
-    sprite('es400eff_atk1', 3)	# 1-3
+    sprite('es400eff_atk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400eff_MatomeA', -1)
     Unknown38(4, 1)
     physicsXImpulse(45000)
     Unknown1028(-1300)
     SFX_3('esse_03')
-    sprite('es400eff_atk2', 27)	# 4-30
+    sprite('es400eff_atk2', 27)	# 4-30	 **attackbox here**
     Unknown21015('73686f74000000000000000000000000000000000000000000000000000000007800000000000000')
     sprite('null', 1)	# 31-31
     Unknown23029(4, 125, 0)
@@ -1622,12 +1622,12 @@ def es400_A_2nd():
         Unknown9215()
         Unknown1007(128000)
         teleportRelativeX(110000)
-    sprite('es400eff_atk1', 3)	# 1-3
+    sprite('es400eff_atk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400eff2nd_MatomeA', -1)
     Unknown38(4, 1)
     physicsXImpulse(45000)
     Unknown1028(-1300)
-    sprite('es400eff_atk2', 27)	# 4-30
+    sprite('es400eff_atk2', 27)	# 4-30	 **attackbox here**
     Unknown21015('73686f74320000000000000000000000000000000000000000000000000000007800000000000000')
     sprite('null', 1)	# 31-31
     Unknown23029(4, 125, 0)
@@ -1640,12 +1640,12 @@ def es400_A_2ndB():
         Unknown9215()
         Unknown1007(128000)
         teleportRelativeX(110000)
-    sprite('es400eff_atk1', 3)	# 1-3
+    sprite('es400eff_atk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400eff2nd_MatomeA', -1)
     Unknown38(4, 1)
     physicsXImpulse(45000)
     Unknown1028(-1300)
-    sprite('es400eff_atk2', 27)	# 4-30
+    sprite('es400eff_atk2', 27)	# 4-30	 **attackbox here**
     Unknown21015('73686f74320000000000000000000000000000000000000000000000000000007800000000000000')
     sprite('null', 1)	# 31-31
     Unknown23029(4, 125, 0)
@@ -1670,20 +1670,20 @@ def es400_B_2nd():
     Unknown48('190000000200000033000000030000000200000033000000')
     if SLOT_51:
         _gotolabel(10)
-    sprite('es400eff_atk1', 25)	# 1-25
+    sprite('es400eff_atk1', 25)	# 1-25	 **attackbox here**
     GFX_0('esef_400eff2nd_MatomeB', -1)
     Unknown38(4, 1)
     physicsXImpulse(2500)
-    sprite('es400eff_atk2', 100)	# 26-125
+    sprite('es400eff_atk2', 100)	# 26-125	 **attackbox here**
     Unknown21015('73686f74320000000000000000000000000000000000000000000000000000007800000000000000')
     physicsXImpulse(65000)
     ExitState()
     label(10)
-    sprite('es400eff_atk1', 3)	# 126-128
+    sprite('es400eff_atk1', 3)	# 126-128	 **attackbox here**
     GFX_0('esef_400eff2nd_MatomeB2', -1)
     Unknown38(4, 1)
     physicsXImpulse(65000)
-    sprite('es400eff_atk2', 100)	# 129-228
+    sprite('es400eff_atk2', 100)	# 129-228	 **attackbox here**
 
 @State
 def es400_B_2ndB():
@@ -1705,20 +1705,20 @@ def es400_B_2ndB():
     Unknown48('190000000200000033000000030000000200000033000000')
     if SLOT_51:
         _gotolabel(10)
-    sprite('es400eff_atk1', 25)	# 1-25
+    sprite('es400eff_atk1', 25)	# 1-25	 **attackbox here**
     GFX_0('esef_400eff2nd_MatomeB', -1)
     Unknown38(4, 1)
     physicsXImpulse(2500)
-    sprite('es400eff_atk2', 100)	# 26-125
+    sprite('es400eff_atk2', 100)	# 26-125	 **attackbox here**
     Unknown21015('73686f74320000000000000000000000000000000000000000000000000000007800000000000000')
     physicsXImpulse(65000)
     ExitState()
     label(10)
-    sprite('es400eff_atk1', 3)	# 126-128
+    sprite('es400eff_atk1', 3)	# 126-128	 **attackbox here**
     GFX_0('esef_400eff2nd_MatomeB2', -1)
     Unknown38(4, 1)
     physicsXImpulse(65000)
-    sprite('es400eff_atk2', 100)	# 129-228
+    sprite('es400eff_atk2', 100)	# 129-228	 **attackbox here**
 
 @State
 def es400_ASS_2ndASS():
@@ -1730,11 +1730,11 @@ def es400_ASS_2ndASS():
         teleportRelativeX(110000)
         AttackP1(70)
         Unknown11042(1)
-    sprite('es400eff_atk1', 3)	# 1-3
+    sprite('es400eff_atk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400eff2nd_MatomeB2', -1)
     Unknown38(4, 1)
     physicsXImpulse(65000)
-    sprite('es400eff_atk2', 100)	# 4-103
+    sprite('es400eff_atk2', 100)	# 4-103	 **attackbox here**
 
 @State
 def es400_A_2ndEX():
@@ -1866,10 +1866,10 @@ def es401_A():
             clearUponHandler(2)
             Unknown13(25)
             Unknown23029(4, 125, 0)
-    sprite('es400eff_airatk1', 3)	# 1-3
+    sprite('es400eff_airatk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400Aireff_MatomeA', -1)
     Unknown38(4, 1)
-    sprite('es400eff_airatk2', 100)	# 4-103
+    sprite('es400eff_airatk2', 100)	# 4-103	 **attackbox here**
     Unknown21015('73686f74000000000000000000000000000000000000000000000000000000007800000000000000')
 
 @State
@@ -1885,10 +1885,10 @@ def es401_B():
 
         def upon_LANDING():
             Unknown23090(25)
-    sprite('es400eff_airatk1', 3)	# 1-3
+    sprite('es400eff_airatk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400Aireff_MatomeB', -1)
     Unknown38(4, 1)
-    sprite('es400eff_airatk2', 100)	# 4-103
+    sprite('es400eff_airatk2', 100)	# 4-103	 **attackbox here**
     Unknown21015('73686f74000000000000000000000000000000000000000000000000000000007800000000000000')
 
 @State
@@ -1908,10 +1908,10 @@ def es401_EX():
             clearUponHandler(2)
             Unknown13(25)
             Unknown23029(4, 125, 0)
-    sprite('es400eff_airatk1', 3)	# 1-3
+    sprite('es400eff_airatk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400Aireff_MatomeA', -1)
     Unknown38(4, 1)
-    sprite('es400eff_airatk2', 100)	# 4-103
+    sprite('es400eff_airatk2', 100)	# 4-103	 **attackbox here**
 
 @State
 def es401_A_2nd():
@@ -1927,10 +1927,10 @@ def es401_A_2nd():
 
         def upon_LANDING():
             Unknown23090(25)
-    sprite('es400eff_airatk1', 3)	# 1-3
+    sprite('es400eff_airatk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400Aireff2nd_MatomeA', -1)
     Unknown38(4, 1)
-    sprite('es400eff_airatk2', 100)	# 4-103
+    sprite('es400eff_airatk2', 100)	# 4-103	 **attackbox here**
     Unknown21015('73686f74320000000000000000000000000000000000000000000000000000007800000000000000')
 
 @State
@@ -1947,10 +1947,10 @@ def es401_B_2nd():
 
         def upon_LANDING():
             Unknown23090(25)
-    sprite('es400eff_airatk1', 3)	# 1-3
+    sprite('es400eff_airatk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400Aireff2nd_MatomeB', -1)
     Unknown38(4, 1)
-    sprite('es400eff_airatk2', 100)	# 4-103
+    sprite('es400eff_airatk2', 100)	# 4-103	 **attackbox here**
     Unknown21015('73686f74320000000000000000000000000000000000000000000000000000007800000000000000')
 
 @State
@@ -1967,10 +1967,10 @@ def es401_A_2ndB():
 
         def upon_LANDING():
             Unknown23090(25)
-    sprite('es400eff_airatk1', 3)	# 1-3
+    sprite('es400eff_airatk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400Aireff2nd_MatomeA', -1)
     Unknown38(4, 1)
-    sprite('es400eff_airatk2', 100)	# 4-103
+    sprite('es400eff_airatk2', 100)	# 4-103	 **attackbox here**
     Unknown21015('73686f74320000000000000000000000000000000000000000000000000000007800000000000000')
 
 @State
@@ -1987,10 +1987,10 @@ def es401_B_2ndB():
 
         def upon_LANDING():
             Unknown23090(25)
-    sprite('es400eff_airatk1', 3)	# 1-3
+    sprite('es400eff_airatk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400Aireff2nd_MatomeB', -1)
     Unknown38(4, 1)
-    sprite('es400eff_airatk2', 100)	# 4-103
+    sprite('es400eff_airatk2', 100)	# 4-103	 **attackbox here**
     Unknown21015('73686f74320000000000000000000000000000000000000000000000000000007800000000000000')
 
 @State
@@ -2011,10 +2011,10 @@ def es401_EX_2nd():
             clearUponHandler(2)
             Unknown13(25)
             Unknown23029(4, 125, 0)
-    sprite('es400eff_airatk1', 3)	# 1-3
+    sprite('es400eff_airatk1', 3)	# 1-3	 **attackbox here**
     GFX_0('esef_400Aireff2nd_MatomeB', -1)
     Unknown38(4, 1)
-    sprite('es400eff_airatk2', 100)	# 4-103
+    sprite('es400eff_airatk2', 100)	# 4-103	 **attackbox here**
 
 @State
 def esef_400Aura():
