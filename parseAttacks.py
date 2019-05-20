@@ -96,16 +96,6 @@ class WaitFrameChunk(AbstractChunk):
         return self.duration == other.duration
 
 
-class LandingFrameChunk(AbstractChunk):
-    def __init__(self, duration=0):
-        AbstractChunk.__init__(self, duration)
-
-    def __eq__(self, other):
-        if not isinstance(other, LandingFrameChunk):
-            return False
-        return self.duration == other.duration
-
-
 class SubroutineCall(AbstractChunk):
     def __init__(self, name):
         AbstractChunk.__init__(self, 0)
@@ -376,6 +366,37 @@ def simulate_on_block(move_list, effect_list):
     return hit_simulations
 
 
+def calc_frame_adv_for_subroutine(frame_chunks):
+    startup = 0
+    middle = ""
+    recovery = ""
+    total_duration = 0
+    attack_timeline = 0
+    block_timeline = 0
+    for idx, chunk in enumerate(frame_chunks):
+        total_duration += chunk.duration
+        if idx == 0 and len(frame_chunks) > 1:
+            startup = chunk.duration + 1
+        else:
+            if isinstance(chunk, AttackFrameChunk):
+                if len(middle) > 0 and middle[len(middle) - 1] != ")":
+                    middle += ","
+                middle += str(chunk.duration)
+                attack_timeline += 1
+                block_timeline = attack_timeline + chunk.blockstun + chunk.hitstop + chunk.additionalHitstopOpponent
+                attack_timeline += chunk.hitstop + chunk.duration - 1
+            elif isinstance(chunk, SubroutineCall):
+                pass
+            else:
+                attack_timeline += chunk.duration
+                if idx < len(frame_chunks) - 1:
+                    middle += "(" + str(chunk.duration) + ")"
+                else:
+                    recovery += str(chunk.duration)
+
+    return startup, middle, recovery, total_duration, attack_timeline, block_timeline
+
+
 def combine_with_effects_on_block(move, effect_list):
     override_blockstun = None
     override_hitstop = None
@@ -418,36 +439,14 @@ def combine_with_effects_on_block(move, effect_list):
 def write_file(move_list, target):
     for moveName in move_list:
         move = move_list[moveName]
-        startup = 0
-        middle = ""
-        recovery = ""
 
         target.write(moveName + "\n")
-        total_duration = 0
-        attack_timeline = 0
-        block_timeline = 0
-        for idx, chunk in enumerate(move.frame_chunks):
-            total_duration += chunk.duration
-            if idx == 0 and len(move.frame_chunks) > 1:
-                startup = chunk.duration + 1
-            else:
-                if isinstance(chunk, AttackFrameChunk):
-                    if len(middle) > 0 and middle[len(middle) - 1] != ")":
-                        middle += ","
-                    middle += str(chunk.duration)
-                    attack_timeline += 1
-                    block_timeline = attack_timeline + chunk.blockstun + chunk.hitstop + chunk.additionalHitstopOpponent
-                    attack_timeline += chunk.hitstop + chunk.duration - 1
-                elif isinstance(chunk, SubroutineCall):
-                    pass
-                else:
-                    attack_timeline += chunk.duration
-                    if idx < len(move.frame_chunks) - 1:
-                        middle += "(" + str(chunk.duration) + ")"
-                    else:
-                        recovery += str(chunk.duration)
-
-        target.write(str(startup) + " " + middle + " " + recovery)
+        startup, middle, recovery, total_duration, attack_timeline, block_timeline = \
+            calc_frame_adv_for_subroutine(move.frame_chunks)
+        if startup > 0:
+            target.write(str(startup) + " " + middle + " " + recovery)
+        else:
+            target.write(recovery)
         if move.landing_recovery > 0:
             target.write("+" + str(move.landing_recovery) + "L")
         target.write(". Total duration: " + str(total_duration))
@@ -478,9 +477,8 @@ def main():
     move_list = parse_move_file(char_source, move_list, effect_list)
 
     hit_simulations = simulate_on_block(move_list, effect_list)
-    print hit_simulations
 
-    write_file(move_list, char_target)
+    write_file(hit_simulations, char_target)
     print "DONE"
 
 
