@@ -1,4 +1,5 @@
 import unittest
+import StringIO
 from parseAttacks import *
 
 
@@ -129,3 +130,122 @@ class TestParseAttackMethods(unittest.TestCase):
         chunks = [WaitFrameChunk(4), AttackFrameChunk(1, 3, 3, 10), WaitFrameChunk(12)]
         result = calc_frame_adv_for_subroutine(chunks)
         self.assertItemsEqual(result, (5, '1', '12', 17, 20, 21))
+
+    def test_parse_subroutine(self):
+        str = """@Subroutine
+def Monsho_AtkData():
+    AttackLevel_(1)
+    AttackP1(70)
+    AttackP2(90)
+    Hitstop(6)
+    Unknown9154(17)
+    AirUntechableTime(21)
+    Unknown11028(11)
+    Unknown9016(1)"""
+        buf = StringIO.StringIO(str)
+        move_list = parse_move_file(buf, {}, {})
+        subroutine = Subroutine()
+        self.assertEquals(move_list["Monsho_AtkData"], subroutine)
+
+    def test_parse_attack_with_subroutine(self):
+        str = """@State
+def NmlAtk5X():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingNormal()
+        AttackLevel_(3)
+        AirPushbackY(10000)
+        Unknown9016(1)
+        HitOrBlockCancel('NmlAtk2A')
+        HitOrBlockCancel('NmlAtk5B')
+        HitOrBlockCancel('NmlAtk2B')
+        HitJumpCancel(1)
+        Unknown1112('')
+    sprite('es201_00', 1)	# 1-1
+    sprite('es201_01', 2)	# 2-3
+    sprite('es201_02', 2)	# 4-5
+    SFX_0('006_swing_blade_0')
+    sprite('es201_03', 2)	# 6-7
+    Unknown7009(1)
+    sprite('es201_04', 5)	# 8-12	 **attackbox here**
+    GFX_0('esef_201', -1)
+    sprite('es201_05', 3)	# 13-15
+    Recovery()
+    Unknown2063()
+    sprite('es201_06', 3)	# 16-18
+    sprite('es201_07', 3)	# 19-21"""
+        buf = StringIO.StringIO(str)
+        move_list = parse_move_file(buf, {}, {})
+        self.assertEqual(len(move_list), 1)
+        self.assertTrue("NmlAtk5X" in move_list)
+        move = Move()
+        move.frame_chunks = [WaitFrameChunk(7),
+                             SubroutineCall("esef_201"),
+                             AttackFrameChunk(5, 16, 11),
+                             WaitFrameChunk(9)
+                             ]
+        self.assertEqual(move_list["NmlAtk5X"], move)
+
+    def test_parse_attack_with_custom_blockstun_hitstop(self):
+        str = """@State
+def NmlAtk5X():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingNormal()
+        Unknown11028(10)
+        Hitstop(10)
+    sprite('es201_00', 1)	# 1-1
+    sprite('es201_01', 2)	# 2-3
+    sprite('es201_02', 2)	# 4-5
+    SFX_0('006_swing_blade_0')
+    sprite('es201_03', 2)	# 6-7
+    Unknown7009(1)
+    sprite('es201_04', 5)	# 8-12	 **attackbox here**
+    sprite('es201_05', 3)	# 13-15
+    Recovery()
+    Unknown2063()
+    sprite('es201_06', 3)	# 16-18
+    sprite('es201_07', 3)	# 19-21"""
+        buf = StringIO.StringIO(str)
+        move_list = parse_move_file(buf, {}, {})
+        self.assertEqual(len(move_list), 1)
+        self.assertTrue("NmlAtk5X" in move_list)
+        move = Move()
+        move.frame_chunks = [WaitFrameChunk(7),
+                             AttackFrameChunk(5, 10, 10),
+                             WaitFrameChunk(9)
+                             ]
+        self.assertEqual(move_list["NmlAtk5X"], move)
+
+    def test_parse_attack_with_refreshMultihit(self):
+        str = """@State
+def NmlAtk5X():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingNormal()
+        AttackLevel_(3)
+    sprite('es201_00', 1)	# 1-1
+    sprite('es201_01', 2)	# 2-3
+    sprite('es201_02', 2)	# 4-5
+    SFX_0('006_swing_blade_0')
+    sprite('es201_03', 2)	# 6-7
+    Unknown7009(1)
+    sprite('es201_04', 2)	# 8-9	 **attackbox here**
+    sprite('es201_04', 3)	# 10-12	 **attackbox here**
+    RefreshMultihit()
+    sprite('es201_05', 3)	# 13-15
+    Recovery()
+    Unknown2063()
+    sprite('es201_06', 3)	# 16-18
+    sprite('es201_07', 3)	# 19-21"""
+        buf = StringIO.StringIO(str)
+        move_list = parse_move_file(buf, {}, {})
+        self.assertEqual(len(move_list), 1)
+        self.assertTrue("NmlAtk5X" in move_list)
+        move = Move()
+        move.frame_chunks = [WaitFrameChunk(7),
+                             AttackFrameChunk(2, 16, 11),
+                             AttackFrameChunk(3, 16, 11),
+                             WaitFrameChunk(9)
+                             ]
+        self.assertEqual(move_list["NmlAtk5X"], move)

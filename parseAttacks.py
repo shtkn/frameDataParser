@@ -26,7 +26,6 @@ class State:
         self.extraLines = ""
         self.duration = 0
         self.isAttackBox = False
-        self.isNewHit = False
         if is_new_move:
             self.moveName = ""
             self.totalDuration = 0
@@ -57,6 +56,11 @@ class AbstractChunk:
             return False
         return self.duration == other.duration
 
+    def __ne__(self, other):
+        if not isinstance(other, AbstractChunk):
+            return False
+        return not self.__eq__(other)
+
 
 class AttackFrameChunk(AbstractChunk):
     def __init__(self, duration=0, blockstun=0, hitstop=0, additional_hitstop_opponent=0, is_new_hit=True):
@@ -85,6 +89,11 @@ class AttackFrameChunk(AbstractChunk):
             self.additionalHitstopOpponent == other.additionalHitstopOpponent and \
             self.damage == other.damage
 
+    def __ne__(self, other):
+        if not isinstance(other, AbstractChunk):
+            return False
+        return not self.__eq__(other)
+
 
 class WaitFrameChunk(AbstractChunk):
     def __init__(self, duration=0):
@@ -95,6 +104,11 @@ class WaitFrameChunk(AbstractChunk):
             return False
         return self.duration == other.duration
 
+    def __ne__(self, other):
+        if not isinstance(other, WaitFrameChunk):
+            return False
+        return not self.__eq__(other)
+
 
 class SubroutineCall(AbstractChunk):
     def __init__(self, name):
@@ -104,12 +118,45 @@ class SubroutineCall(AbstractChunk):
     def __str__(self):
         return self.name
 
+    def __eq__(self, other):
+        if not isinstance(other, SubroutineCall):
+            return False
+        return self.name == other.name
+
+    def __ne__(self, other):
+        if not isinstance(other, SubroutineCall):
+            return False
+        return not self.__eq__(other)
+
 
 class Move:
     def __init__(self):
         self.frame_chunks = []
         self.additional_chunks = []
         self.landing_recovery = 0
+
+    def __eq__(self, other):
+        if not isinstance(other, Move):
+            return False
+
+        if len(self.frame_chunks) != len(other.frame_chunks):
+            return False
+        for i in range(len(self.frame_chunks)):
+            if self.frame_chunks[i] != other.frame_chunks[i]:
+                return False
+
+        if len(self.additional_chunks) != len(other.additional_chunks):
+            return False
+        for i in range(len(self.additional_chunks)):
+            if len(self.additional_chunks[i]) != len(other.additional_chunks[i]):
+                return False
+            for j in range(len(self.additional_chunks[i])):
+                if self.additional_chunks[i][j] != other.additional_chunks[i][j]:
+                    return False
+        if self.landing_recovery != other.landing_recovery:
+            return False
+
+        return True
 
 
 class Subroutine:
@@ -195,6 +242,8 @@ def parse_move_file(source, move_list, effect_list):
                                          state.additionalHitstopOpponent, state.isNewHit) \
                     if state.is_attackbox() else WaitFrameChunk(state.duration)
                 frame_chunks.append(chunk)
+                if isinstance(chunk, AttackFrameChunk):
+                    state.isNewHit = False
                 state.clear_values(False)
             state.duration = get_duration(line)
 
@@ -219,7 +268,7 @@ def parse_move_file(source, move_list, effect_list):
                 # hitstop by level 0: 8F, 1: 9F, 2: 10F, 3: 11F, 4: 12F, 5: 13F
                 state.hitstop = 8 + int(level)
             elif "Unknown11028(" in line:
-                state.blockstun = line[line.index("(")+1:line.index(")")]
+                state.blockstun = int(line[line.index("(")+1:line.index(")")])
                 # print "Hardcoded blockstun: " + state.blockstun
             elif "Hitstop(" in line:
                 state.hitstop = int(line[line.index("(")+1:line.index(")")])
