@@ -100,3 +100,12 @@ class TestParseAttackMethods(unittest.TestCase):
                                  ]
         self.assertItemsEqual(result.additional_chunks[0], expected_frame_chunks)
 
+    def test_calculate_frame_adv_1_hit_strike(self):
+        chunks = [WaitFrameChunk(4), AttackFrameChunk(1, 3, 3), WaitFrameChunk(12)]
+        result = calc_frame_adv_for_subroutine(chunks)
+        self.assertItemsEqual(result, (5, '1', '12', 17, 16, 7))
+
+    def test_calculate_frame_adv_1_hit_strike_bonus_hitstop(self):
+        chunks = [WaitFrameChunk(4), AttackFrameChunk(1, 3, 3, 10), WaitFrameChunk(12)]
+        result = calc_frame_adv_for_subroutine(chunks)
+        self.assertItemsEqual(result, (5, '1', '12', 17, 16, 17))
