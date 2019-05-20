@@ -158,6 +158,11 @@ class Move:
 
         return True
 
+    def __ne__(self, other):
+        if not isinstance(other, Move):
+            return False
+        return not self.__eq__(other)
+
 
 class Subroutine:
     def __init__(self):
@@ -166,7 +171,18 @@ class Subroutine:
         self.hitstop = 0
         self.additionalHitstopOpponent = 0
         self.landingRecovery = 0
-        pass
+
+    def __eq__(self, other):
+        if not isinstance(other, Subroutine):
+            return False
+        return self.damage == other.damage and self.blockstun == other.blockstun and self.hitstop == other.hitstop and \
+            self.additionalHitstopOpponent == other.additionalHitstopOpponent and \
+            self.landingRecovery == other.landingRecovery
+
+    def __ne__(self, other):
+        if not isinstance(other, Subroutine):
+            return False
+        return not self.__eq__(other)
     
 
 SPRITE_START = "    sprite('"
@@ -212,24 +228,24 @@ def parse_move_file(source, move_list, effect_list):
     for line in source.readlines():
         # new move, finish parsing existing move, then restart frame counters
         if "@State" in line or "@Subroutine" in line:
-            if frame_chunks is not None and len(frame_chunks) > 0:
+
+            if state.isSubroutine:
+                subroutine = Subroutine()
+                subroutine.blockstun = state.blockstun
+                subroutine.hitstop = state.hitstop
+                subroutine.additionalHitstopOpponent = state.additionalHitstopOpponent
+                effect_list[state.moveName] = subroutine
+
+            elif frame_chunks is not None and len(frame_chunks) > 0:
                 chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop,
                                          state.additionalHitstopOpponent, state.isNewHit) \
                     if state.is_attackbox() else WaitFrameChunk(state.duration)
                 frame_chunks.append(chunk)
 
-                if state.isSubroutine:
-                    subroutine = Subroutine()
-                    subroutine.blockstun = state.blockstun
-                    subroutine.hitstop = state.hitstop
-                    subroutine.additionalHitstopOpponent = state.additionalHitstopOpponent
-                    effect_list[state.moveName] = subroutine
-
-                else:
-                    move_list[state.moveName] = Move()
-                    move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
-                    if state.landingRecovery > 0:
-                        move_list[state.moveName].landing_recovery = state.landingRecovery
+                move_list[state.moveName] = Move()
+                move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
+                if state.landingRecovery > 0:
+                    move_list[state.moveName].landing_recovery = state.landingRecovery
             frame_chunks = []
             # print "*** NEW MOVE ***"
             # restart counters
@@ -255,7 +271,7 @@ def parse_move_file(source, move_list, effect_list):
                 state.disableAttackboxes = True
             elif "StartMultihit()" in line:  # turns off these active frames
                 state.disableAttackboxesThisFrame = True
-            elif "RefreshMultiHit()" in line:  # counts as a new hit, end previous frames; start a  new one
+            elif "RefreshMultihit()" in line:  # counts as a new hit, end previous frames; start a  new one
                 state.isNewHit = True
             elif "AttackLevel_(" in line:  # get hitstun/blockstun values according to it's level
                 level = line[line.index("(")+1:line.index("(")+2]
@@ -305,24 +321,23 @@ def parse_move_file(source, move_list, effect_list):
                 # we assume all the lines above this are for the move on block/whiff. Anything after is on hit
                 state.exitState = True
 
-    if state.duration > 0:
+    if state.isSubroutine:
+        subroutine = Subroutine()
+        subroutine.blockstun = state.blockstun
+        subroutine.hitstop = state.hitstop
+        subroutine.additionalHitstopOpponent = state.additionalHitstopOpponent
+        effect_list[state.moveName] = subroutine
+
+    elif state.duration > 0:
         chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop, state.additionalHitstopOpponent,
                                  state.isNewHit) \
             if state.is_attackbox() else WaitFrameChunk(state.duration)
         frame_chunks.append(chunk)
 
-        if state.isSubroutine:
-            subroutine = Subroutine()
-            subroutine.blockstun = state.blockstun
-            subroutine.hitstop = state.hitstop
-            subroutine.additionalHitstopOpponent = state.additionalHitstopOpponent
-            effect_list[state.moveName] = subroutine
-
-        else:
-            move_list[state.moveName] = Move()
-            move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
-            if state.landingRecovery > 0:
-                move_list[state.moveName].landing_recovery = state.landingRecovery
+        move_list[state.moveName] = Move()
+        move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
+        if state.landingRecovery > 0:
+            move_list[state.moveName].landing_recovery = state.landingRecovery
 
     return move_list
 
