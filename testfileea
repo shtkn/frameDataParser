@@ -10,6 +10,41 @@ def Monsho_AtkData():
     Unknown9016(1)
 
 @State
+def es203_effAtk():
+
+    def upon_IMMEDIATE():
+        Unknown2009()
+        callSubroutine('Monsho_AtkData')
+        AirPushbackX(5500)
+        AirPushbackY(20000)
+        PushbackX(20000)
+        Unknown23089('0100000000000000000000000000000000000000000000000100000001000000')
+
+        def upon_54():
+            Unknown13(25)
+
+        def upon_43():
+            if (SLOT_48 == 110):
+                Unknown13(25)
+            if (SLOT_48 == 129):
+                Unknown13(25)
+            if (SLOT_48 == 103):
+                sendToLabel(0)
+    sprite('null', 15)	# 1-15
+    sprite('null', 5)	# 16-20
+    GFX_0('es203_effAtk_Yotyou', -1)
+    clearUponHandler(43)
+    Unknown38(11, 1)
+    label(0)
+    clearUponHandler(43)
+    sprite('null', 4)	# 21-24
+    Unknown13(11)
+    GFX_0('esef_203Monsho', 100)
+    SFX_3('esse_01')
+    sprite('es203_effatk', 3)	# 25-27	 **attackbox here**
+    sprite('null', 50)	# 28-77
+
+@State
 def es213_effAtk():
 
     def upon_IMMEDIATE():
