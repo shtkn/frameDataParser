@@ -322,7 +322,7 @@ def parse_subroutine(name, move_list, effect_list, start_frame=0):
 
     subroutine_calls[0] = consolidate_frame_chunks(first_subroutine)
     # delete any subroutines that don't add anything
-    if start_frame > 0 and len(subroutine_calls[0]) == 1 and isinstance(subroutine_calls[0][0], WaitFrameChunk):
+    if len(subroutine_calls[0]) == 1 and isinstance(subroutine_calls[0][0], WaitFrameChunk):
         subroutine_calls.pop(0)
     return subroutine_calls
 

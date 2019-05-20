@@ -1,4 +1,4 @@
-import os, fnmatch
+import os
 
 attackHitboxFile = open("all_active.txt", "r")
 contents = attackHitboxFile.readlines()
