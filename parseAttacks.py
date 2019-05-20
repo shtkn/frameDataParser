@@ -316,6 +316,9 @@ def parse_move_file(source, move_list, effect_list):
                 # print "SUBROUTINE" + line[name_start:name_end]
                 frame_chunks.append(SubroutineCall(line[name_start:name_end]))
             elif "Unknown2036(" in line:
+                flash_start = line.index("(") + 1
+                flash_end = line.index(",")
+                print int(line[flash_start:flash_end])
                 pass  # superfreeze
             elif "ExitState()" in line:
                 # we assume all the lines above this are for the move on block/whiff. Anything after is on hit
@@ -507,7 +510,7 @@ def write_file(move_list, target):
         subroutine_block_timelines = []
         for subroutine in move.additional_chunks:
             result = calc_frame_adv_for_subroutine(subroutine)
-            subroutine_block_timelines.append(result[5])
+            subroutine_block_timelines.append(result)
         if startup > 0:
             target.write(str(startup) + " " + middle + " " + recovery)
         else:
@@ -520,10 +523,12 @@ def write_file(move_list, target):
         target.write("\n")
         target.write("\tduration on block: " + str(duration_on_block))
         if len(subroutine_block_timelines) > 0:
-            for num in subroutine_block_timelines:
-                last_blockstun_frame = num if num > last_blockstun_frame else last_blockstun_frame
+            for result in subroutine_block_timelines:
+                last_blockstun_frame = result[5] if result[5] > last_blockstun_frame else last_blockstun_frame
+                target.write("\n\tstartup: " + str(result[0]))
+                target.write(" blockstun: " + str(last_blockstun_frame))
         if last_blockstun_frame != 0:
-            target.write(" blockstun: " + str(last_blockstun_frame))
+            target.write("\nlast blockstun: " + str(last_blockstun_frame))
             target.write(" diff: " + str(last_blockstun_frame - duration_on_block))
         target.write("\n")
     print "DONE"
@@ -537,7 +542,6 @@ def main():
     effect_list = OrderedDict()
     effect_list = parse_move_file(effect_source, effect_list, effect_list)
     # Parse moves
-    source_dir = "./"
     entry = "testfile"
     char_source = open(source_dir + entry, "r")
     char_target = open(entry + "_out.txt", "w")
