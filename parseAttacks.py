@@ -370,11 +370,10 @@ def calc_frame_adv_for_subroutine(frame_chunks):
     startup = 0
     middle = ""
     recovery = ""
-    total_duration = 0
-    attack_timeline = 0
-    block_timeline = 0
+    duration_on_whiff = 0
+    duration_on_block = 0
+    last_frame_of_blockstun = 0
     for idx, chunk in enumerate(frame_chunks):
-        total_duration += chunk.duration
         if idx == 0 and len(frame_chunks) > 1:
             startup = chunk.duration + 1
         else:
@@ -382,19 +381,17 @@ def calc_frame_adv_for_subroutine(frame_chunks):
                 if len(middle) > 0 and middle[len(middle) - 1] != ")":
                     middle += ","
                 middle += str(chunk.duration)
-                attack_timeline += 1
-                block_timeline = attack_timeline + chunk.blockstun + chunk.hitstop + chunk.additionalHitstopOpponent
-                attack_timeline += chunk.hitstop + chunk.duration - 1
-            elif isinstance(chunk, SubroutineCall):
-                pass
+                last_frame_of_blockstun = duration_on_block + chunk.blockstun + chunk.hitstop + chunk.additionalHitstopOpponent + 1
+                duration_on_block += chunk.hitstop
             else:
-                attack_timeline += chunk.duration
                 if idx < len(frame_chunks) - 1:
                     middle += "(" + str(chunk.duration) + ")"
                 else:
                     recovery += str(chunk.duration)
+        duration_on_whiff += chunk.duration
+        duration_on_block += chunk.duration
 
-    return startup, middle, recovery, total_duration, attack_timeline, block_timeline
+    return startup, middle, recovery, duration_on_whiff, duration_on_block, last_frame_of_blockstun
 
 
 def combine_with_effects_on_block(move, effect_list):
@@ -441,22 +438,29 @@ def write_file(move_list, target):
         move = move_list[moveName]
 
         target.write(moveName + "\n")
-        startup, middle, recovery, total_duration, attack_timeline, block_timeline = \
+        startup, middle, recovery, total_duration, duration_on_block, last_blockstun_frame = \
             calc_frame_adv_for_subroutine(move.frame_chunks)
+        subroutine_block_timelines = []
+        for subroutine in move.additional_chunks:
+            result = calc_frame_adv_for_subroutine(subroutine)
+            subroutine_block_timelines.append(result[5])
         if startup > 0:
             target.write(str(startup) + " " + middle + " " + recovery)
         else:
             target.write(recovery)
         if move.landing_recovery > 0:
             target.write("+" + str(move.landing_recovery) + "L")
-        target.write(". Total duration: " + str(total_duration))
+        target.write(". Duration: " + str(total_duration))
         if move.landing_recovery > 0:
             target.write("+" + str(move.landing_recovery) + "L")
         target.write("\n")
-        target.write("\tattack duration: " + str(attack_timeline))
-        if block_timeline != 0:
-            target.write(" blockstun: " + str(block_timeline))
-            target.write(" diff: " + str(block_timeline - attack_timeline))
+        target.write("\tduration on block: " + str(duration_on_block))
+        if len(subroutine_block_timelines) > 0:
+            for num in subroutine_block_timelines:
+                last_blockstun_frame = num if num > last_blockstun_frame else last_blockstun_frame
+        if last_blockstun_frame != 0:
+            target.write(" blockstun: " + str(last_blockstun_frame))
+            target.write(" diff: " + str(last_blockstun_frame - duration_on_block))
         target.write("\n")
     print "DONE"
 

@@ -100,12 +100,32 @@ class TestParseAttackMethods(unittest.TestCase):
                                  ]
         self.assertItemsEqual(result.additional_chunks[0], expected_frame_chunks)
 
-    def test_calculate_frame_adv_1_hit_strike(self):
+    def test_calculate_frame_adv_1_hit(self):
         chunks = [WaitFrameChunk(4), AttackFrameChunk(1, 3, 3), WaitFrameChunk(12)]
         result = calc_frame_adv_for_subroutine(chunks)
-        self.assertItemsEqual(result, (5, '1', '12', 17, 16, 7))
+        self.assertItemsEqual(result, (5, '1', '12', 17, 20, 11))
 
-    def test_calculate_frame_adv_1_hit_strike_bonus_hitstop(self):
+    def test_calculate_frame_adv_2_hit(self):
+        chunks = [WaitFrameChunk(4), AttackFrameChunk(3, 3, 3), AttackFrameChunk(3, 3, 3), WaitFrameChunk(12)]
+        result = calc_frame_adv_for_subroutine(chunks)
+        self.assertItemsEqual(result, (5, '3,3', '12', 22, 28, 17))
+
+    def test_calculate_frame_adv_2_hit_with_gap(self):
+        chunks = [WaitFrameChunk(4),
+                  AttackFrameChunk(1, 3, 3),
+                  WaitFrameChunk(3),
+                  AttackFrameChunk(1, 3, 3),
+                  WaitFrameChunk(12)
+                  ]
+        result = calc_frame_adv_for_subroutine(chunks)
+        self.assertItemsEqual(result, (5, '1(3)1', '12', 21, 27, 18))
+
+    def test_calculate_frame_adv_with_5_active_frames(self):
+        chunks = [WaitFrameChunk(4), AttackFrameChunk(5, 3, 3), WaitFrameChunk(12)]
+        result = calc_frame_adv_for_subroutine(chunks)
+        self.assertItemsEqual(result, (5, '5', '12', 21, 24, 11))
+
+    def test_calculate_frame_adv_1_hit_bonus_hitstop(self):
         chunks = [WaitFrameChunk(4), AttackFrameChunk(1, 3, 3, 10), WaitFrameChunk(12)]
         result = calc_frame_adv_for_subroutine(chunks)
-        self.assertItemsEqual(result, (5, '1', '12', 17, 16, 17))
+        self.assertItemsEqual(result, (5, '1', '12', 17, 20, 21))
