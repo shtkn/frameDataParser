@@ -252,7 +252,7 @@ def parse_move_file(source, move_list, effect_list):
             state.clear_values(True)
             if "@Subroutine" in line:
                 state.isSubroutine = True
-        elif SPRITE_START in line:
+        elif not state.exitState and SPRITE_START in line:
             if state.duration > 0:
                 chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop,
                                          state.additionalHitstopOpponent, state.isNewHit) \
@@ -265,7 +265,6 @@ def parse_move_file(source, move_list, effect_list):
 
             if HAS_HITBOX in line:
                 state.isAttackBox = HAS_HITBOX in line
-
         elif not state.exitState:
             if "Recovery()" in line or "Unknown23027()" in line:  # disables active frames for rest of move
                 state.disableAttackboxes = True
@@ -536,14 +535,14 @@ def write_file(move_list, target):
 
 def main():
     # Parse effects
-    source_dir = "./"
+    source_dir = "."
     entry = "testfileea"
-    effect_source = open(source_dir + entry, "r")
+    effect_source = open(source_dir + "/" + entry, "r")
     effect_list = OrderedDict()
     effect_list = parse_move_file(effect_source, effect_list, effect_list)
     # Parse moves
     entry = "testfile"
-    char_source = open(source_dir + entry, "r")
+    char_source = open(source_dir + "/" + entry, "r")
     char_target = open(entry + "_out.txt", "w")
     move_list = OrderedDict()
     move_list = parse_move_file(char_source, move_list, effect_list)

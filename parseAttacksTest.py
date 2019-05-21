@@ -284,3 +284,150 @@ def NmlAtk5X():
                              ]
         self.assertEqual(move_list["NmlAtk5X"], move)
 
+        def test_early_exitState(self):
+            state = """@State
+    def NmlAtk5X():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingNormal()
+            AttackLevel_(3)
+            AirPushbackY(10000)
+            Unknown9016(1)
+            HitOrBlockCancel('NmlAtk2A')
+            HitOrBlockCancel('NmlAtk5B')
+            HitOrBlockCancel('NmlAtk2B')
+            HitJumpCancel(1)
+            Unknown1112('')
+        sprite('es201_00', 1)	# 1-1
+        sprite('es201_01', 2)	# 2-3
+        sprite('es201_02', 2)	# 4-5
+        SFX_0('006_swing_blade_0')
+        sprite('es201_03', 2)	# 6-7
+        Unknown7009(1)
+        sprite('es201_04', 5)	# 8-12	 **attackbox here**
+        sprite('es201_05', 3)	# 13-15
+        Recovery()
+        Unknown2063()
+        sprite('es201_06', 3)	# 16-18
+        ExitState()
+        sprite('es201_07', 3)	# 19-21"""
+            buf = StringIO.StringIO(state)
+            move_list = parse_move_file(buf, {}, {})
+            self.assertEqual(len(move_list), 1)
+            self.assertTrue("NmlAtk5X" in move_list)
+            move = Move()
+            move.frame_chunks = [WaitFrameChunk(7),
+                                 AttackFrameChunk(5, 16, 11),
+                                 WaitFrameChunk(6)
+                                 ]
+            self.assertEqual(move_list["NmlAtk5X"], move)
+
+    def test_early_exitState_and_second_move(self):
+        state = """@State
+    def NmlAtk5X():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingNormal()
+            AttackLevel_(3)
+            AirPushbackY(10000)
+            Unknown9016(1)
+            HitOrBlockCancel('NmlAtk2A')
+            HitOrBlockCancel('NmlAtk5B')
+            HitOrBlockCancel('NmlAtk2B')
+            HitJumpCancel(1)
+            Unknown1112('')
+        sprite('es201_00', 1)	# 1-1
+        sprite('es201_01', 2)	# 2-3
+        sprite('es201_02', 2)	# 4-5
+        SFX_0('006_swing_blade_0')
+        sprite('es201_03', 2)	# 6-7
+        Unknown7009(1)
+        sprite('es201_04', 5)	# 8-12	 **attackbox here**
+        sprite('es201_05', 3)	# 13-15
+        Recovery()
+        Unknown2063()
+        sprite('es201_06', 3)	# 16-18
+        ExitState()
+        sprite('es201_07', 3)	# 19-21
+        
+    @State
+    def NmlAtk6X():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingNormal()
+            AttackLevel_(3)
+            AirPushbackY(10000)
+            Unknown9016(1)
+            HitOrBlockCancel('NmlAtk2A')
+            HitOrBlockCancel('NmlAtk5B')
+            HitOrBlockCancel('NmlAtk2B')
+            HitJumpCancel(1)
+            Unknown1112('')
+        sprite('es201_00', 1)	# 1-1
+        sprite('es201_01', 2)	# 2-3
+        sprite('es201_02', 2)	# 4-5
+        SFX_0('006_swing_blade_0')
+        sprite('es201_03', 2)	# 6-7
+        Unknown7009(1)
+        sprite('es201_04', 5)	# 8-12	 **attackbox here**
+        sprite('es201_05', 3)	# 13-15
+        Recovery()
+        Unknown2063()
+        sprite('es201_06', 3)	# 16-18
+        sprite('es201_07', 3)	# 19-21
+        """
+        buf = StringIO.StringIO(state)
+        move_list = parse_move_file(buf, {}, {})
+        self.assertEqual(len(move_list), 2)
+        self.assertTrue("NmlAtk5X" in move_list)
+        move = Move()
+        move.frame_chunks = [WaitFrameChunk(7),
+                             AttackFrameChunk(5, 16, 11),
+                             WaitFrameChunk(6)
+                             ]
+        self.assertEqual(move_list["NmlAtk5X"], move)
+
+        self.assertTrue("NmlAtk6X" in move_list)
+        move = Move()
+        move.frame_chunks = [WaitFrameChunk(7),
+                             AttackFrameChunk(5, 16, 11),
+                             WaitFrameChunk(9)
+                             ]
+        self.assertEqual(move_list["NmlAtk6X"], move)
+
+    def test_attribute_invul(self):
+        state = """@State
+def NmlAtk5X():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingNormal()
+        AttackLevel_(3)
+        AirPushbackY(10000)
+        Unknown9016(1)
+        HitOrBlockCancel('NmlAtk2A')
+        HitOrBlockCancel('NmlAtk5B')
+        HitOrBlockCancel('NmlAtk2B')
+        HitJumpCancel(1)
+        Unknown1112('')
+        Unknown11058('0000000001000000000000000000000000000000')
+    sprite('es201_00', 1)	# 1-1
+    sprite('es201_01', 2)	# 2-3
+    sprite('es201_02', 2)	# 4-5
+    setInvincible(1)
+    SFX_0('006_swing_blade_0')
+    sprite('es201_03', 2)	# 6-7
+    Unknown7009(1)
+    setInvincible(1)
+    sprite('es201_04', 5)	# 8-12	 **attackbox here**
+    sprite('es201_05', 3)	# 13-15
+    setInvincible(0)
+    Recovery()
+    Unknown2063()
+    sprite('es201_06', 3)	# 16-18
+    sprite('es201_07', 3)	# 19-21"""
+        buf = StringIO.StringIO(state)
+        move_list = parse_move_file(buf, {}, {})
+        self.assertEqual(len(move_list), 1)
+        self.assertTrue("NmlAtk5X" in move_list)
+        self.assertTrue(False)  # TODO: Implement attribute invul
+        pass
