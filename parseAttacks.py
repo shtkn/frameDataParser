@@ -26,7 +26,6 @@ class State:
         self.extraLines = ""
         self.duration = 0
         self.isAttackBox = False
-        self.isNewHit = False
         if is_new_move:
             self.moveName = ""
             self.totalDuration = 0
@@ -57,6 +56,11 @@ class AbstractChunk:
             return False
         return self.duration == other.duration
 
+    def __ne__(self, other):
+        if not isinstance(other, AbstractChunk):
+            return False
+        return not self.__eq__(other)
+
 
 class AttackFrameChunk(AbstractChunk):
     def __init__(self, duration=0, blockstun=0, hitstop=0, additional_hitstop_opponent=0, is_new_hit=True):
@@ -85,6 +89,11 @@ class AttackFrameChunk(AbstractChunk):
             self.additionalHitstopOpponent == other.additionalHitstopOpponent and \
             self.damage == other.damage
 
+    def __ne__(self, other):
+        if not isinstance(other, AbstractChunk):
+            return False
+        return not self.__eq__(other)
+
 
 class WaitFrameChunk(AbstractChunk):
     def __init__(self, duration=0):
@@ -95,6 +104,11 @@ class WaitFrameChunk(AbstractChunk):
             return False
         return self.duration == other.duration
 
+    def __ne__(self, other):
+        if not isinstance(other, WaitFrameChunk):
+            return False
+        return not self.__eq__(other)
+
 
 class SubroutineCall(AbstractChunk):
     def __init__(self, name):
@@ -104,12 +118,50 @@ class SubroutineCall(AbstractChunk):
     def __str__(self):
         return self.name
 
+    def __eq__(self, other):
+        if not isinstance(other, SubroutineCall):
+            return False
+        return self.name == other.name
+
+    def __ne__(self, other):
+        if not isinstance(other, SubroutineCall):
+            return False
+        return not self.__eq__(other)
+
 
 class Move:
     def __init__(self):
         self.frame_chunks = []
         self.additional_chunks = []
         self.landing_recovery = 0
+
+    def __eq__(self, other):
+        if not isinstance(other, Move):
+            return False
+
+        if len(self.frame_chunks) != len(other.frame_chunks):
+            return False
+        for i in range(len(self.frame_chunks)):
+            if self.frame_chunks[i] != other.frame_chunks[i]:
+                return False
+
+        if len(self.additional_chunks) != len(other.additional_chunks):
+            return False
+        for i in range(len(self.additional_chunks)):
+            if len(self.additional_chunks[i]) != len(other.additional_chunks[i]):
+                return False
+            for j in range(len(self.additional_chunks[i])):
+                if self.additional_chunks[i][j] != other.additional_chunks[i][j]:
+                    return False
+        if self.landing_recovery != other.landing_recovery:
+            return False
+
+        return True
+
+    def __ne__(self, other):
+        if not isinstance(other, Move):
+            return False
+        return not self.__eq__(other)
 
 
 class Subroutine:
@@ -119,7 +171,18 @@ class Subroutine:
         self.hitstop = 0
         self.additionalHitstopOpponent = 0
         self.landingRecovery = 0
-        pass
+
+    def __eq__(self, other):
+        if not isinstance(other, Subroutine):
+            return False
+        return self.damage == other.damage and self.blockstun == other.blockstun and self.hitstop == other.hitstop and \
+            self.additionalHitstopOpponent == other.additionalHitstopOpponent and \
+            self.landingRecovery == other.landingRecovery
+
+    def __ne__(self, other):
+        if not isinstance(other, Subroutine):
+            return False
+        return not self.__eq__(other)
     
 
 SPRITE_START = "    sprite('"
@@ -165,48 +228,49 @@ def parse_move_file(source, move_list, effect_list):
     for line in source.readlines():
         # new move, finish parsing existing move, then restart frame counters
         if "@State" in line or "@Subroutine" in line:
-            if frame_chunks is not None and len(frame_chunks) > 0:
+
+            if state.isSubroutine:
+                subroutine = Subroutine()
+                subroutine.blockstun = state.blockstun
+                subroutine.hitstop = state.hitstop
+                subroutine.additionalHitstopOpponent = state.additionalHitstopOpponent
+                effect_list[state.moveName] = subroutine
+
+            elif frame_chunks is not None and len(frame_chunks) > 0:
                 chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop,
                                          state.additionalHitstopOpponent, state.isNewHit) \
                     if state.is_attackbox() else WaitFrameChunk(state.duration)
                 frame_chunks.append(chunk)
 
-                if state.isSubroutine:
-                    subroutine = Subroutine()
-                    subroutine.blockstun = state.blockstun
-                    subroutine.hitstop = state.hitstop
-                    subroutine.additionalHitstopOpponent = state.additionalHitstopOpponent
-                    effect_list[state.moveName] = subroutine
-
-                else:
-                    move_list[state.moveName] = Move()
-                    move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
-                    if state.landingRecovery > 0:
-                        move_list[state.moveName].landing_recovery = state.landingRecovery
+                move_list[state.moveName] = Move()
+                move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
+                if state.landingRecovery > 0:
+                    move_list[state.moveName].landing_recovery = state.landingRecovery
             frame_chunks = []
             # print "*** NEW MOVE ***"
             # restart counters
             state.clear_values(True)
             if "@Subroutine" in line:
                 state.isSubroutine = True
-        elif SPRITE_START in line:
+        elif not state.exitState and SPRITE_START in line:
             if state.duration > 0:
                 chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop,
                                          state.additionalHitstopOpponent, state.isNewHit) \
                     if state.is_attackbox() else WaitFrameChunk(state.duration)
                 frame_chunks.append(chunk)
+                if isinstance(chunk, AttackFrameChunk):
+                    state.isNewHit = False
                 state.clear_values(False)
             state.duration = get_duration(line)
 
             if HAS_HITBOX in line:
                 state.isAttackBox = HAS_HITBOX in line
-
         elif not state.exitState:
             if "Recovery()" in line or "Unknown23027()" in line:  # disables active frames for rest of move
                 state.disableAttackboxes = True
             elif "StartMultihit()" in line:  # turns off these active frames
                 state.disableAttackboxesThisFrame = True
-            elif "RefreshMultiHit()" in line:  # counts as a new hit, end previous frames; start a  new one
+            elif "RefreshMultihit()" in line:  # counts as a new hit, end previous frames; start a  new one
                 state.isNewHit = True
             elif "AttackLevel_(" in line:  # get hitstun/blockstun values according to it's level
                 level = line[line.index("(")+1:line.index("(")+2]
@@ -219,7 +283,7 @@ def parse_move_file(source, move_list, effect_list):
                 # hitstop by level 0: 8F, 1: 9F, 2: 10F, 3: 11F, 4: 12F, 5: 13F
                 state.hitstop = 8 + int(level)
             elif "Unknown11028(" in line:
-                state.blockstun = line[line.index("(")+1:line.index(")")]
+                state.blockstun = int(line[line.index("(")+1:line.index(")")])
                 # print "Hardcoded blockstun: " + state.blockstun
             elif "Hitstop(" in line:
                 state.hitstop = int(line[line.index("(")+1:line.index(")")])
@@ -251,29 +315,31 @@ def parse_move_file(source, move_list, effect_list):
                 # print "SUBROUTINE" + line[name_start:name_end]
                 frame_chunks.append(SubroutineCall(line[name_start:name_end]))
             elif "Unknown2036(" in line:
+                flash_start = line.index("(") + 1
+                flash_end = line.index(",")
+                print int(line[flash_start:flash_end])
                 pass  # superfreeze
             elif "ExitState()" in line:
                 # we assume all the lines above this are for the move on block/whiff. Anything after is on hit
                 state.exitState = True
 
-    if state.duration > 0:
+    if state.isSubroutine:
+        subroutine = Subroutine()
+        subroutine.blockstun = state.blockstun
+        subroutine.hitstop = state.hitstop
+        subroutine.additionalHitstopOpponent = state.additionalHitstopOpponent
+        effect_list[state.moveName] = subroutine
+
+    elif state.duration > 0:
         chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop, state.additionalHitstopOpponent,
                                  state.isNewHit) \
             if state.is_attackbox() else WaitFrameChunk(state.duration)
         frame_chunks.append(chunk)
 
-        if state.isSubroutine:
-            subroutine = Subroutine()
-            subroutine.blockstun = state.blockstun
-            subroutine.hitstop = state.hitstop
-            subroutine.additionalHitstopOpponent = state.additionalHitstopOpponent
-            effect_list[state.moveName] = subroutine
-
-        else:
-            move_list[state.moveName] = Move()
-            move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
-            if state.landingRecovery > 0:
-                move_list[state.moveName].landing_recovery = state.landingRecovery
+        move_list[state.moveName] = Move()
+        move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
+        if state.landingRecovery > 0:
+            move_list[state.moveName].landing_recovery = state.landingRecovery
 
     return move_list
 
@@ -370,11 +436,10 @@ def calc_frame_adv_for_subroutine(frame_chunks):
     startup = 0
     middle = ""
     recovery = ""
-    total_duration = 0
-    attack_timeline = 0
-    block_timeline = 0
+    duration_on_whiff = 0
+    duration_on_block = 0
+    last_frame_of_blockstun = 0
     for idx, chunk in enumerate(frame_chunks):
-        total_duration += chunk.duration
         if idx == 0 and len(frame_chunks) > 1:
             startup = chunk.duration + 1
         else:
@@ -382,19 +447,17 @@ def calc_frame_adv_for_subroutine(frame_chunks):
                 if len(middle) > 0 and middle[len(middle) - 1] != ")":
                     middle += ","
                 middle += str(chunk.duration)
-                attack_timeline += 1
-                block_timeline = attack_timeline + chunk.blockstun + chunk.hitstop + chunk.additionalHitstopOpponent
-                attack_timeline += chunk.hitstop + chunk.duration - 1
-            elif isinstance(chunk, SubroutineCall):
-                pass
+                last_frame_of_blockstun = duration_on_block + chunk.blockstun + chunk.hitstop + chunk.additionalHitstopOpponent + 1
+                duration_on_block += chunk.hitstop
             else:
-                attack_timeline += chunk.duration
                 if idx < len(frame_chunks) - 1:
                     middle += "(" + str(chunk.duration) + ")"
                 else:
                     recovery += str(chunk.duration)
+        duration_on_whiff += chunk.duration
+        duration_on_block += chunk.duration
 
-    return startup, middle, recovery, total_duration, attack_timeline, block_timeline
+    return startup, middle, recovery, duration_on_whiff, duration_on_block, last_frame_of_blockstun
 
 
 def combine_with_effects_on_block(move, effect_list):
@@ -441,37 +504,45 @@ def write_file(move_list, target):
         move = move_list[moveName]
 
         target.write(moveName + "\n")
-        startup, middle, recovery, total_duration, attack_timeline, block_timeline = \
+        startup, middle, recovery, total_duration, duration_on_block, last_blockstun_frame = \
             calc_frame_adv_for_subroutine(move.frame_chunks)
+        subroutine_block_timelines = []
+        for subroutine in move.additional_chunks:
+            result = calc_frame_adv_for_subroutine(subroutine)
+            subroutine_block_timelines.append(result)
         if startup > 0:
             target.write(str(startup) + " " + middle + " " + recovery)
         else:
             target.write(recovery)
         if move.landing_recovery > 0:
             target.write("+" + str(move.landing_recovery) + "L")
-        target.write(". Total duration: " + str(total_duration))
+        target.write(". Duration: " + str(total_duration))
         if move.landing_recovery > 0:
             target.write("+" + str(move.landing_recovery) + "L")
         target.write("\n")
-        target.write("\tattack duration: " + str(attack_timeline))
-        if block_timeline != 0:
-            target.write(" blockstun: " + str(block_timeline))
-            target.write(" diff: " + str(block_timeline - attack_timeline))
+        target.write("\tduration on block: " + str(duration_on_block))
+        if len(subroutine_block_timelines) > 0:
+            for result in subroutine_block_timelines:
+                last_blockstun_frame = result[5] if result[5] > last_blockstun_frame else last_blockstun_frame
+                target.write("\n\tstartup: " + str(result[0]))
+                target.write(" blockstun: " + str(last_blockstun_frame))
+        if last_blockstun_frame != 0:
+            target.write("\nlast blockstun: " + str(last_blockstun_frame))
+            target.write(" diff: " + str(last_blockstun_frame - duration_on_block))
         target.write("\n")
     print "DONE"
 
 
 def main():
     # Parse effects
-    source_dir = "./"
+    source_dir = "."
     entry = "testfileea"
-    effect_source = open(source_dir + entry, "r")
+    effect_source = open(source_dir + "/" + entry, "r")
     effect_list = OrderedDict()
     effect_list = parse_move_file(effect_source, effect_list, effect_list)
     # Parse moves
-    source_dir = "./"
     entry = "testfile"
-    char_source = open(source_dir + entry, "r")
+    char_source = open(source_dir + "/" + entry, "r")
     char_target = open(entry + "_out.txt", "w")
     move_list = OrderedDict()
     move_list = parse_move_file(char_source, move_list, effect_list)
