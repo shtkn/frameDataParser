@@ -1829,38 +1829,39 @@ def CmnActChangePartnerAssistAtk_A():
             Unknown2017(1)
             Unknown2034(1)
             Unknown2053(1)
-    sprite('Action_277_00', 4)	# 1-4
-    sprite('Action_277_02', 4)	# 5-8
-    sprite('Action_277_03', 6)	# 9-14
-    sprite('Action_277_04', 8)	# 15-22
-    sprite('Action_275_00', 3)	# 23-25
-    sprite('Action_275_01', 3)	# 26-28
+    sprite('Action_277_00', 7)	# 1-7
+    sprite('Action_277_01', 12)	# 8-19
+    sprite('Action_277_02', 10)	# 20-29
+    sprite('Action_277_03', 14)	# 30-43
+    sprite('Action_277_04', 8)	# 44-51
+    sprite('Action_275_00', 6)	# 52-57
+    sprite('Action_275_01', 3)	# 58-60
     GFX_0('Eff_Wirbelwind01', 100)
     Unknown12046(60)
     Unknown7006('uwa202_0', 100, 845248373, 828322352, 0, 0, 100, 845248373, 845099568, 0, 0, 100, 0, 0, 0, 0, 0)
-    sprite('Action_275_02', 3)	# 29-31	 **attackbox here**
+    sprite('Action_275_02', 3)	# 61-63	 **attackbox here**
     RefreshMultihit()
-    teleportRelativeX(40000)
+    teleportRelativeX(60000)
     SFX_3('SE051')
-    sprite('Action_275_03', 5)	# 32-36
-    teleportRelativeX(40000)
-    sprite('Action_275_04', 2)	# 37-38
-    teleportRelativeX(40000)
-    sprite('Action_275_05', 2)	# 39-40
+    sprite('Action_275_03', 5)	# 64-68
+    teleportRelativeX(60000)
+    sprite('Action_275_04', 2)	# 69-70
+    teleportRelativeX(60000)
+    sprite('Action_275_05', 2)	# 71-72
     GFX_0('Eff_Wirbelwind02', 100)
-    teleportRelativeX(80000)
-    sprite('Action_275_06', 4)	# 41-44	 **attackbox here**
+    teleportRelativeX(100000)
+    sprite('Action_275_06', 4)	# 73-76	 **attackbox here**
     RefreshMultihit()
-    teleportRelativeX(80000)
+    teleportRelativeX(100000)
     SFX_3('SE051')
-    sprite('Action_275_07', 4)	# 45-48
-    teleportRelativeX(40000)
-    sprite('Action_275_08', 4)	# 49-52
-    teleportRelativeX(40000)
-    sprite('Action_275_09', 2)	# 53-54
+    sprite('Action_275_07', 4)	# 77-80
+    teleportRelativeX(60000)
+    sprite('Action_275_08', 4)	# 81-84
+    teleportRelativeX(60000)
+    sprite('Action_275_09', 2)	# 85-86
     GFX_0('Eff_Wirbelwind03', 100)
-    teleportRelativeX(80000)
-    sprite('Action_275_10', 5)	# 55-59	 **attackbox here**
+    teleportRelativeX(100000)
+    sprite('Action_275_10', 5)	# 87-91	 **attackbox here**
     RefreshMultihit()
     AirHitstunAnimation(13)
     GroundedHitstunAnimation(13)
@@ -1870,9 +1871,9 @@ def CmnActChangePartnerAssistAtk_A():
     ScreenShake(5000, 10000)
     teleportRelativeX(80000)
     SFX_3('SE051')
-    sprite('Action_275_11', 12)	# 60-71
-    sprite('Action_275_12', 8)	# 72-79
-    sprite('Action_275_13', 8)	# 80-87
+    sprite('Action_275_11', 12)	# 92-103
+    sprite('Action_275_12', 8)	# 104-111
+    sprite('Action_275_13', 8)	# 112-119
 
 @State
 def CmnActChangePartnerAssistAtk_B():
@@ -1928,10 +1929,12 @@ def CmnActChangePartnerAssistAtk_D():
         AttackP1(70)
         GroundedHitstunAnimation(9)
         AirHitstunAnimation(9)
-        AirPushbackX(40000)
+        AirPushbackX(12000)
         AirPushbackY(-40000)
-        AirUntechableTime(30)
-        Unknown9310(1)
+        AirUntechableTime(60)
+        Unknown9190(1)
+        YImpluseBeforeWallbounce(0)
+        Unknown9118(80)
         Unknown11042(1)
     sprite('Action_264_00', 3)	# 1-3
     sprite('Action_264_01', 3)	# 4-6
@@ -2670,7 +2673,7 @@ def NmlAtk2B():
         AirUntechableTime(24)
         Unknown11058('0000000001000000000000000000000000000000')
         HitJumpCancel(1)
-        HitOrBlockCancel('NmlAtk2BB')
+        HitCancel('NmlAtk2BB')
         HitOrBlockCancel('NmlAtk5A')
         HitOrBlockCancel('NmlAtk5B')
         HitOrBlockCancel('NmlAtk2A')
@@ -3360,6 +3363,7 @@ def ThrowExe():
         Unknown11072(1, 400000, 100000)
         Unknown11050('0800000065665f6e6f6e0000000000000000000000000000000000000000000000000000')
         Unknown11080(1)
+        Unknown11069('ThrowExe')
         JumpCancel_(0)
     sprite('Action_056_00', 3)	# 1-3	 **attackbox here**
     Unknown5000(0, 0)
@@ -3395,6 +3399,7 @@ def ThrowExe():
     Unknown9190(1)
     Unknown11072(0, 400000, 100000)
     Unknown11080(0)
+    Unknown11069('')
     clearUponHandler(78)
 
     def upon_78():
@@ -3469,6 +3474,7 @@ def BackThrowExe():
         Unknown11072(1, 400000, 100000)
         Unknown11050('0800000065665f6e6f6e0000000000000000000000000000000000000000000000000000')
         Unknown11080(1)
+        Unknown11069('BackThrowExe')
         JumpCancel_(0)
     sprite('Action_056_00', 3)	# 1-3	 **attackbox here**
     Unknown5000(0, 0)
@@ -3505,6 +3511,7 @@ def BackThrowExe():
     Unknown9190(1)
     Unknown11072(0, 400000, 100000)
     Unknown11080(0)
+    Unknown11069('')
     clearUponHandler(78)
 
     def upon_78():
@@ -3529,6 +3536,7 @@ def CmnActInvincibleAttack():
         AirPushbackY(20000)
         AirUntechableTime(60)
         PushbackX(19800)
+        Unknown2073(1)
 
         def upon_78():
             if Unknown48('190000000200000000000000160000000200000025000000'):
@@ -3557,6 +3565,7 @@ def CmnActInvincibleAttack_Exe():
     def upon_IMMEDIATE():
         Unknown17011('CmnActInvincibleAttack_Exe2', 2, 0, 0)
         callSubroutine('Throw2Throw')
+        Unknown11032('40420f0001000000ffffffffffffffff')
         Unknown11069('CmnActInvincibleAttack_Exe2')
         JumpCancel_(0)
         Unknown14083(0)
@@ -3769,38 +3778,39 @@ def AssaultB():
         AirUntechableTime(60)
         Unknown9016(1)
         Hitstop(2)
-    sprite('Action_277_00', 2)	# 1-2
-    sprite('Action_277_02', 2)	# 3-4
-    sprite('Action_277_03', 4)	# 5-8
-    sprite('Action_277_04', 2)	# 9-10
-    sprite('Action_275_00', 2)	# 11-12
-    sprite('Action_275_01', 2)	# 13-14
+    sprite('Action_277_00', 3)	# 1-3
+    sprite('Action_277_01', 6)	# 4-9
+    sprite('Action_277_02', 3)	# 10-12
+    sprite('Action_277_03', 7)	# 13-19
+    sprite('Action_277_04', 4)	# 20-23
+    sprite('Action_275_00', 4)	# 24-27
+    sprite('Action_275_01', 2)	# 28-29
     GFX_0('Eff_Wirbelwind01', 100)
     Unknown12046(60)
     Unknown7006('uwa202_0', 100, 845248373, 828322352, 0, 0, 100, 845248373, 845099568, 0, 0, 100, 0, 0, 0, 0, 0)
-    sprite('Action_275_02', 3)	# 15-17	 **attackbox here**
+    sprite('Action_275_02', 3)	# 30-32	 **attackbox here**
     RefreshMultihit()
-    teleportRelativeX(40000)
+    teleportRelativeX(60000)
     SFX_3('SE051')
-    sprite('Action_275_03', 5)	# 18-22
-    teleportRelativeX(40000)
-    sprite('Action_275_04', 2)	# 23-24
-    teleportRelativeX(40000)
-    sprite('Action_275_05', 2)	# 25-26
+    sprite('Action_275_03', 5)	# 33-37
+    teleportRelativeX(60000)
+    sprite('Action_275_04', 2)	# 38-39
+    teleportRelativeX(60000)
+    sprite('Action_275_05', 2)	# 40-41
     GFX_0('Eff_Wirbelwind02', 100)
-    teleportRelativeX(80000)
-    sprite('Action_275_06', 4)	# 27-30	 **attackbox here**
+    teleportRelativeX(100000)
+    sprite('Action_275_06', 4)	# 42-45	 **attackbox here**
     RefreshMultihit()
-    teleportRelativeX(80000)
+    teleportRelativeX(100000)
     SFX_3('SE051')
-    sprite('Action_275_07', 4)	# 31-34
-    teleportRelativeX(40000)
-    sprite('Action_275_08', 4)	# 35-38
-    teleportRelativeX(40000)
-    sprite('Action_275_09', 2)	# 39-40
+    sprite('Action_275_07', 4)	# 46-49
+    teleportRelativeX(60000)
+    sprite('Action_275_08', 4)	# 50-53
+    teleportRelativeX(60000)
+    sprite('Action_275_09', 2)	# 54-55
     GFX_0('Eff_Wirbelwind03', 100)
-    teleportRelativeX(80000)
-    sprite('Action_275_10', 5)	# 41-45	 **attackbox here**
+    teleportRelativeX(100000)
+    sprite('Action_275_10', 5)	# 56-60	 **attackbox here**
     RefreshMultihit()
     AirHitstunAnimation(13)
     GroundedHitstunAnimation(13)
@@ -3809,9 +3819,9 @@ def AssaultB():
     Hitstop(12)
     ScreenShake(5000, 10000)
     SFX_3('SE051')
-    sprite('Action_275_11', 15)	# 46-60
-    sprite('Action_275_12', 6)	# 61-66
-    sprite('Action_275_13', 6)	# 67-72
+    sprite('Action_275_11', 15)	# 61-75
+    sprite('Action_275_12', 6)	# 76-81
+    sprite('Action_275_13', 6)	# 82-87
 
 @State
 def AssaultC():
@@ -3844,25 +3854,25 @@ def AssaultC():
     Unknown7006('uwa203_0', 100, 845248373, 828322608, 0, 0, 100, 845248373, 845099824, 0, 0, 100, 0, 0, 0, 0, 0)
     sprite('Action_277_14', 2)	# 15-16	 **attackbox here**
     RefreshMultihit()
-    teleportRelativeX(40000)
+    teleportRelativeX(60000)
     SFX_3('SE051')
     sprite('Action_277_15', 2)	# 17-18
-    teleportRelativeX(40000)
+    teleportRelativeX(60000)
     sprite('Action_277_16', 5)	# 19-23
-    teleportRelativeX(40000)
+    teleportRelativeX(60000)
     sprite('Action_277_17', 3)	# 24-26
     GFX_0('Eff_Wirbelwind02', 100)
-    teleportRelativeX(80000)
+    teleportRelativeX(100000)
     sprite('Action_277_18', 2)	# 27-28
-    teleportRelativeX(80000)
+    teleportRelativeX(100000)
     sprite('Action_277_19', 2)	# 29-30	 **attackbox here**
     RefreshMultihit()
-    teleportRelativeX(40000)
+    teleportRelativeX(60000)
     SFX_3('SE051')
     sprite('Action_277_20', 2)	# 31-32
-    teleportRelativeX(40000)
+    teleportRelativeX(60000)
     sprite('Action_277_21', 4)	# 33-36
-    teleportRelativeX(80000)
+    teleportRelativeX(100000)
     sprite('Action_277_22', 3)	# 37-39
     sprite('Action_277_23', 2)	# 40-41
     GFX_0('Eff_Wirbelwind03', 100)
@@ -3883,7 +3893,7 @@ def AssaultC():
     RefreshMultihit()
     AirPushbackX(40000)
     AirPushbackY(-40000)
-    Unknown9310(1)
+    Unknown9310(20)
     ScreenShake(5000, 10000)
     SFX_3('SE051')
     sprite('Action_277_29', 8)	# 56-63
@@ -5335,7 +5345,7 @@ def UltimateThrowExe4():
         Unknown23056('')
         AttackLevel_(5)
         Damage(5000)
-        Unknown11091(20)
+        Unknown11091(30)
         AttackP2(60)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
@@ -5350,7 +5360,7 @@ def UltimateThrowExe4():
         Unknown30048(1)
         Unknown23027()
         if SLOT_4:
-            Damage(1000)
+            Damage(1500)
             AttackP2(100)
             Unknown11091(100)
             SLOT_4 = 0
@@ -5358,6 +5368,7 @@ def UltimateThrowExe4():
         if SLOT_5:
             Damage(5782)
             SLOT_5 = 0
+            Unknown11091(29)
         setInvincible(1)
         GFX_0('UltimateThrowExe4_Camera', 1)
         Unknown13024(0)
@@ -5855,7 +5866,7 @@ def UltimateThrowODExe10():
         Unknown23056('')
         AttackLevel_(5)
         Damage(5000)
-        Unknown11091(20)
+        Unknown11091(30)
         AttackP2(60)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
@@ -5870,7 +5881,7 @@ def UltimateThrowODExe10():
         Unknown30048(1)
         Unknown23027()
         if SLOT_4:
-            Damage(1000)
+            Damage(1500)
             AttackP2(100)
             Unknown11091(100)
             SLOT_4 = 0
@@ -5878,6 +5889,7 @@ def UltimateThrowODExe10():
         if SLOT_5:
             Damage(5782)
             SLOT_5 = 0
+            Unknown11091(29)
         setInvincible(1)
         GFX_0('UltimateThrowExe4_Camera', 1)
         Unknown13024(0)
@@ -5957,7 +5969,7 @@ def UltimateRunningThrow():
             sendToLabel(1)
         Unknown28(8, 'UltimateRunningThrow_End')
     sprite('Action_435_00', 3)	# 1-3
-    setInvincible(1)
+    Unknown22008(100)
     sprite('Action_435_01', 3)	# 4-6
     sprite('Action_435_02', 6)	# 7-12
     sprite('Action_435_02', 52)	# 13-64
@@ -5976,7 +5988,7 @@ def UltimateRunningThrow():
     sprite('Action_435_05', 3)	# 74-76	 **attackbox here**
     Unknown8006(100, 1, 0)
     sprite('Action_435_06', 3)	# 77-79	 **attackbox here**
-    setInvincible(0)
+    Unknown22019('0000000000000000000000000100000000000000')
     Unknown2017(0)
 
     def upon_3():
@@ -6074,9 +6086,10 @@ def UltimateRunningThrow_Exe3():
         Unknown17012(3, 0, 0)
         callSubroutine('UltimateRunningThrow_Init')
         callSubroutine('UltimateRunningThrow_Atk')
-        Damage(5000)
+        Damage(5900)
         AttackP2(60)
         Hitstop(30)
+        Unknown11091(26)
         Unknown11064(0)
         Unknown13024(1)
         SFX_3('SE050_SlideDash')
@@ -6157,7 +6170,7 @@ def UltimateRunningThrowOD():
             sendToLabel(1)
         Unknown28(8, 'UltimateRunningThrow_End')
     sprite('Action_435_00', 3)	# 1-3
-    setInvincible(1)
+    Unknown22008(100)
     sprite('Action_435_01', 3)	# 4-6
     sprite('Action_435_02', 6)	# 7-12
     sprite('Action_435_02', 52)	# 13-64
@@ -6176,7 +6189,7 @@ def UltimateRunningThrowOD():
     sprite('Action_435_05', 3)	# 74-76	 **attackbox here**
     Unknown8006(100, 1, 0)
     sprite('Action_435_06', 3)	# 77-79	 **attackbox here**
-    setInvincible(0)
+    Unknown22019('0000000000000000000000000100000000000000')
     Unknown2017(0)
 
     def upon_3():
@@ -6325,9 +6338,10 @@ def UltimateRunningThrowOD_Exe5():
         Unknown17012(5, 0, 0)
         callSubroutine('UltimateRunningThrow_Init')
         callSubroutine('UltimateRunningThrow_Atk')
-        Damage(5000)
+        Damage(5500)
         AttackP2(60)
         Hitstop(30)
+        Unknown11091(24)
         Unknown11064(0)
         Unknown13024(1)
         SFX_3('SE050_SlideDash')

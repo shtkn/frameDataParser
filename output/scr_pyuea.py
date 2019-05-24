@@ -337,6 +337,7 @@ def PYU_Persona5B():
         Unknown2006()
         Unknown23078(1)
         Unknown23066(0)
+        Unknown23059(1)
     sprite('ko205_00', 2)	# 1-2
     teleportRelativeY(0)
     physicsXImpulse(5000)
@@ -428,6 +429,7 @@ def PYU_Persona5C():
         def upon_3():
             if (SLOT_19 <= 380000):
                 sendToLabel(1)
+        Unknown23059(1)
     sprite('ko206_00', 6)	# 1-6
     physicsXImpulse(17000)
     SFX_3('airdash_m')
@@ -533,6 +535,7 @@ def PYU_Persona2B():
         Unknown2017(1)
         Unknown23078(1)
         Unknown23066(0)
+        Unknown23059(1)
     sprite('ko232_00', 2)	# 1-2
     teleportRelativeY(0)
     Unknown2053(1)
@@ -602,6 +605,7 @@ def PYU_PersonaJB():
 
         def upon_11():
             SLOT_51 = 1
+        Unknown23059(1)
     sprite('ko254_00', 2)	# 1-2
     physicsXImpulse(5000)
     sprite('ko254_01', 2)	# 3-4
@@ -656,12 +660,15 @@ def PYU_PersonaJC():
 
     def upon_IMMEDIATE():
         Unknown23023()
-        Unknown23184('0300000064000000000000000000000000000000000000000000000000000000')
+        Unknown23184('03000000640000000000000000000000c0f2fcff80841e00c0f2fcff002d3101')
         callSubroutine('PYU_AttackInit')
         AttackLevel_(3)
         Damage(500)
         AttackP1(90)
         Unknown11092(1)
+        AirUntechableTime(21)
+        Unknown9154(21)
+        HitOverhead(2)
         Hitstop(1)
         Unknown23078(1)
         Unknown9016(1)
@@ -671,38 +678,47 @@ def PYU_PersonaJC():
         AirPushbackY(-25000)
         YImpluseBeforeWallbounce(1000)
         Unknown11058('0100000000000000000000000000000000000000')
-        callSubroutine('PYU_ForceWarp')
+        callSubroutine('PYU_CheckWarp')
         Unknown2017(0)
         Unknown2053(1)
 
         def upon_11():
             SLOT_51 = 1
+        Unknown23059(1)
         Unknown2049(1)
-    sprite('ko233_02', 6)	# 1-6
-    Unknown1007(150000)
-    teleportRelativeX(200000)
-    Unknown1019(0)
-    YAccel(0)
+    sprite('ko233_00', 1)	# 1-1
+    sprite('ko233_01', 1)	# 2-2
+    sprite('ko233_00', 1)	# 3-3
     Unknown3029(1)
-    sprite('ko233_03', 4)	# 7-10
+    physicsXImpulse(20000)
+    physicsYImpulse(70000)
+    Unknown2053(1)
+    SFX_0('highjump_m')
+    sprite('ko233_01', 1)	# 4-4
+    Unknown1028(10000)
+    sprite('ko233_00', 1)	# 5-5
+    YAccel(50)
+    sprite('ko233_01', 1)	# 6-6
+    sprite('ko233_00', 1)	# 7-7
+    Unknown1019(80)
+    YAccel(50)
+    Unknown3029(1)
+    sprite('ko233_01', 1)	# 8-8
+    sprite('ko233_02', 1)	# 9-9
+    Unknown1084(1)
+    Unknown3029(1)
+    sprite('ko233_03', 4)	# 10-13
     clearUponHandler(3)
-    sprite('ko233_04', 3)	# 11-13
-    sprite('ko233_05', 1)	# 14-14	 **attackbox here**
-    sprite('ko233_06', 1)	# 15-15	 **attackbox here**
-    sprite('ko233_07', 1)	# 16-16	 **attackbox here**
-    sprite('ko233_08', 1)	# 17-17	 **attackbox here**
-    sprite('ko233_09', 1)	# 18-18	 **attackbox here**
-    sprite('ko233_05', 1)	# 19-19	 **attackbox here**
+    sprite('ko233_04', 3)	# 14-16
+    sprite('ko233_05', 1)	# 17-17	 **attackbox here**
     physicsYImpulse(-28000)
     RefreshMultihit()
     SFX_3('slash_sword_slow')
-    sprite('ko233_06', 1)	# 20-20	 **attackbox here**
-    sprite('ko233_07', 1)	# 21-21	 **attackbox here**
-    sprite('ko233_08', 1)	# 22-22	 **attackbox here**
-    sprite('ko233_09', 1)	# 23-23	 **attackbox here**
+    sprite('ko233_07', 1)	# 18-18	 **attackbox here**
+    sprite('ko233_09', 1)	# 19-19	 **attackbox here**
     sendToLabelUpon(2, 1)
     label(0)
-    sprite('ko233_05', 1)	# 24-24	 **attackbox here**
+    sprite('ko233_05', 1)	# 20-20	 **attackbox here**
     GFX_1('koef_233firering', 0)
     GFX_1('koef_233firering', 1)
     GFX_1('koef_233firering', 2)
@@ -710,29 +726,29 @@ def PYU_PersonaJC():
     if SLOT_51:
         Unknown23029(2, 5031, 0)
         clearUponHandler(11)
-    sprite('ko233_06', 1)	# 25-25	 **attackbox here**
-    sprite('ko233_07', 1)	# 26-26	 **attackbox here**
-    sprite('ko233_08', 1)	# 27-27	 **attackbox here**
-    sprite('ko233_09', 1)	# 28-28	 **attackbox here**
+    sprite('ko233_06', 1)	# 21-21	 **attackbox here**
+    sprite('ko233_07', 1)	# 22-22	 **attackbox here**
+    sprite('ko233_08', 1)	# 23-23	 **attackbox here**
+    sprite('ko233_09', 1)	# 24-24	 **attackbox here**
     loopRest()
     gotoLabel(0)
     label(1)
-    sprite('ko233_05', 2)	# 29-30	 **attackbox here**
+    sprite('ko233_05', 2)	# 25-26	 **attackbox here**
     Unknown23027()
     Unknown8000(104, 1, 1)
-    sprite('ko233_06', 2)	# 31-32	 **attackbox here**
-    sprite('ko233_07', 2)	# 33-34	 **attackbox here**
-    sprite('ko233_08', 2)	# 35-36	 **attackbox here**
-    sprite('ko233_09', 2)	# 37-38	 **attackbox here**
-    sprite('ko233_05', 3)	# 39-41	 **attackbox here**
+    sprite('ko233_06', 2)	# 27-28	 **attackbox here**
+    sprite('ko233_07', 2)	# 29-30	 **attackbox here**
+    sprite('ko233_08', 2)	# 31-32	 **attackbox here**
+    sprite('ko233_09', 2)	# 33-34	 **attackbox here**
+    sprite('ko233_05', 3)	# 35-37	 **attackbox here**
     Unknown8000(104, 1, 0)
-    sprite('ko233_06', 2)	# 42-43	 **attackbox here**
-    sprite('ko233_07', 2)	# 44-45	 **attackbox here**
-    sprite('ko233_08', 2)	# 46-47	 **attackbox here**
-    sprite('ko233_09', 2)	# 48-49	 **attackbox here**
-    sprite('ko233_05', 3)	# 50-52	 **attackbox here**
+    sprite('ko233_06', 2)	# 38-39	 **attackbox here**
+    sprite('ko233_07', 2)	# 40-41	 **attackbox here**
+    sprite('ko233_08', 2)	# 42-43	 **attackbox here**
+    sprite('ko233_09', 2)	# 44-45	 **attackbox here**
+    sprite('ko233_05', 3)	# 46-48	 **attackbox here**
     Unknown8000(104, 1, 0)
-    sprite('keep', 32767)	# 53-32819
+    sprite('keep', 32767)	# 49-32815
     enterState('PersonaDeleteAndIdling')
 
 @State
@@ -758,6 +774,7 @@ def PYU_PersonaAgiA():
         Unknown2006()
         Unknown2053(1)
         Unknown23078(1)
+        Unknown23059(1)
     sprite('ko401_00', 4)	# 1-4
     physicsXImpulse(12000)
     sprite('ko401_01', 2)	# 5-6
@@ -817,6 +834,7 @@ def PYU_PersonaAirAgiA():
         Unknown2006()
         Unknown2053(1)
         Unknown23078(1)
+        Unknown23059(1)
     sprite('ko401_00', 4)	# 1-4
     physicsXImpulse(12000)
     sprite('ko401_01', 2)	# 5-6
@@ -876,6 +894,7 @@ def PYU_PersonaAgiB():
         Unknown2006()
         Unknown2053(1)
         Unknown23078(1)
+        Unknown23059(1)
     sprite('ko401_00', 4)	# 1-4
     physicsXImpulse(12000)
     sprite('ko401_01', 2)	# 5-6
@@ -936,6 +955,7 @@ def PYU_PersonaAirAgiB():
         Unknown2006()
         Unknown2053(1)
         Unknown23078(1)
+        Unknown23059(1)
     sprite('ko401_00', 4)	# 1-4
     physicsXImpulse(12000)
     sprite('ko401_01', 2)	# 5-6
@@ -998,6 +1018,7 @@ def PYU_PersonaAgiC():
         Unknown2006()
         Unknown2053(1)
         Unknown23078(1)
+        Unknown23059(1)
     sprite('ko401_00', 6)	# 1-6
     physicsXImpulse(6000)
     sprite('ko401_01', 2)	# 7-8
@@ -1061,6 +1082,7 @@ def PYU_PersonaAirAgiC():
         Unknown2006()
         Unknown2053(1)
         Unknown23078(1)
+        Unknown23059(1)
     sprite('ko401_00', 4)	# 1-4
     physicsXImpulse(6000)
     sprite('ko401_01', 2)	# 5-6
@@ -1111,6 +1133,7 @@ def PYU_PersonaMaharagiA():
         Unknown4008(2)
         callSubroutine('PYU_SPAttackInit')
         Unknown2006()
+        Unknown23059(1)
     sprite('ko402_00', 5)	# 1-5
     physicsXImpulse(2000)
     sprite('ko402_01', 2)	# 6-7
@@ -1153,6 +1176,7 @@ def PYU_PersonaMaharagiB():
         Unknown4008(2)
         callSubroutine('PYU_SPAttackInit')
         Unknown2006()
+        Unknown23059(1)
     sprite('ko402_00', 5)	# 1-5
     physicsXImpulse(2000)
     sprite('ko402_01', 2)	# 6-7
@@ -1195,34 +1219,35 @@ def PYU_PersonaMaharagiC():
         Unknown4008(2)
         callSubroutine('PYU_SPAttackInit')
         Unknown2006()
-    sprite('ko402_00', 8)	# 1-8
+        Unknown23059(1)
+    sprite('ko402_00', 5)	# 1-5
     physicsXImpulse(2000)
-    sprite('ko402_01', 3)	# 9-11
-    sprite('ko402_02', 1)	# 12-12
+    sprite('ko402_01', 2)	# 6-7
+    sprite('ko402_02', 1)	# 8-8
     SFX_3('slash_sword_slow')
     GFX_1('koef_firewing', 0)
     GFX_0('SlidingC', 1)
     Unknown23029(1, 4071, 0)
-    sprite('ko402_02', 2)	# 13-14
+    sprite('ko402_02', 2)	# 9-10
     Unknown23022(0)
-    sprite('ko402_03', 2)	# 15-16
+    sprite('ko402_03', 2)	# 11-12
     GFX_1('koef_firewing', 0)
-    sprite('ko402_04', 2)	# 17-18
+    sprite('ko402_04', 2)	# 13-14
     GFX_1('koef_firewing', 0)
-    sprite('ko402_05', 2)	# 19-20
+    sprite('ko402_05', 2)	# 15-16
     GFX_1('koef_firewing', 0)
-    sprite('ko402_06', 2)	# 21-22
+    sprite('ko402_06', 2)	# 17-18
     GFX_1('koef_firewing', 0)
     physicsXImpulse(0)
-    sprite('ko402_07', 6)	# 23-28
-    sprite('ko402_08', 6)	# 29-34
-    sprite('ko402_09', 6)	# 35-40
+    sprite('ko402_07', 6)	# 19-24
+    sprite('ko402_08', 6)	# 25-30
+    sprite('ko402_09', 6)	# 31-36
     SLOT_10 = 0
-    sprite('ko402_07', 6)	# 41-46
-    sprite('ko402_08', 6)	# 47-52
-    sprite('ko402_09', 6)	# 53-58
-    sprite('ko402_07', 6)	# 59-64
-    sprite('keep', 32767)	# 65-32831
+    sprite('ko402_07', 6)	# 37-42
+    sprite('ko402_08', 6)	# 43-48
+    sprite('ko402_09', 6)	# 49-54
+    sprite('ko402_07', 6)	# 55-60
+    sprite('keep', 32767)	# 61-32827
     enterState('PersonaDeleteAndIdling')
 
 @State
@@ -1244,6 +1269,7 @@ def PYU_PersonaFireBooster():
         def upon_STATE_END():
             SLOT_10 = 0
             Unknown3031()
+        Unknown23059(1)
     sprite('ko403_00', 4)	# 1-4
     sprite('ko403_01', 4)	# 5-8
     sprite('ko403_02', 4)	# 9-12
@@ -1276,6 +1302,7 @@ def PYU_PersonaFireAttackA():
         Unknown2006()
         Unknown2053(1)
         callSubroutine('BoosterDamageUp')
+        Unknown23059(1)
     sprite('ko404_00', 3)	# 1-3
     GFX_1('koef_404', 0)
     GFX_1('koef_404', 1)
@@ -1372,6 +1399,7 @@ def PersonaFireAttackB():
         if Unknown23145('PYU_Persona2B'):
             Unknown2006()
         callSubroutine('BoosterDamageUp')
+        Unknown23059(1)
     sprite('ko404_00', 2)	# 1-2
     GFX_1('koef_404', 0)
     GFX_1('koef_404', 1)
@@ -1478,6 +1506,7 @@ def PYU_PersonaFireBird():
         callSubroutine('PYU_ForceWarp')
         Unknown2017(0)
         callSubroutine('BoosterDamageUp')
+        Unknown23059(1)
     sprite('ko405_00', 3)	# 1-3
     sprite('ko405_01', 3)	# 4-6
     sprite('ko405_02', 3)	# 7-9
@@ -1635,6 +1664,7 @@ def PYU_PersonaAgidine():
         Unknown23066(1)
         setInvincible(1)
         Unknown23027()
+        Unknown23059(1)
     sprite('ko430_00', 2)	# 1-2	 **attackbox here**
     sprite('ko430_01', 2)	# 3-4	 **attackbox here**
     physicsXImpulse(14000)
@@ -1745,6 +1775,7 @@ def PYU_PersonaAgidine_OD():
 
         def upon_STATE_END():
             SLOT_10 = 0
+        Unknown23059(1)
     sprite('ko430_00', 2)	# 1-2	 **attackbox here**
     sprite('ko430_01', 2)	# 3-4	 **attackbox here**
     physicsXImpulse(14000)
@@ -1853,6 +1884,7 @@ def PYU_PersonaAgidineDUO():
         Unknown23066(1)
         setInvincible(1)
         Unknown23027()
+        Unknown23059(1)
     sprite('ko430_06', 2)	# 1-2
     Unknown1084(1)
     clearUponHandler(3)
@@ -1924,6 +1956,7 @@ def PYU_PersonaAgidineDUO_OD():
         Unknown23066(1)
         setInvincible(1)
         Unknown23027()
+        Unknown23059(1)
     sprite('ko430_06', 2)	# 1-2
     Unknown1084(1)
     clearUponHandler(3)
@@ -1976,6 +2009,7 @@ def PYU_PersonaMaharagidine():
         def upon_STATE_END():
             SLOT_10 = 0
             Unknown3031()
+        Unknown23059(1)
     sprite('ko431_00', 6)	# 1-6
     physicsYImpulse(-5000)
     sprite('ko431_01', 6)	# 7-12
@@ -2055,6 +2089,7 @@ def PYU_PersonaMaharagidine_OD():
         def upon_STATE_END():
             SLOT_10 = 0
             Unknown3031()
+        Unknown23059(1)
     sprite('ko431_00', 6)	# 1-6
     physicsYImpulse(-5000)
     sprite('ko431_01', 6)	# 7-12
@@ -2137,7 +2172,6 @@ def PersonaIchigeki():
         Unknown9310(60)
         Unknown9178(1)
         Unknown9346(0)
-        Unknown11031(0)
         Unknown4007(3)
         callSubroutine('PYU_CheckWarp')
         Unknown23022(1)
@@ -2461,6 +2495,7 @@ def PYU_Persona5C_TAG():
         def upon_3():
             if (SLOT_19 <= 150000):
                 sendToLabel(1)
+        Unknown23059(1)
     sprite('ko206_00', 3)	# 1-3
     physicsXImpulse(20000)
     SFX_0('airdash_m')
@@ -2539,6 +2574,7 @@ def PYU_PersonaMaharagi_TAG():
         Unknown4008(2)
         setInvincible(1)
         Unknown2019(500)
+        Unknown23059(1)
     sprite('ko402_00', 7)	# 1-7
     physicsXImpulse(2000)
     sprite('ko402_01', 3)	# 8-10
@@ -2588,6 +2624,7 @@ def PYU_PersonaAgi_TAG():
         callSubroutine('Init_CantCancelPersonaAction')
         Unknown2006()
         Unknown2053(1)
+        Unknown23059(1)
     sprite('ko401_00', 4)	# 1-4
     physicsXImpulse(12000)
     sprite('ko401_01', 2)	# 5-6
@@ -2646,6 +2683,7 @@ def PYU_PersonaReversalAction():
             if (SLOT_48 == 11):
                 sendToLabel(1)
                 Unknown3031()
+        Unknown23059(1)
     sprite('ko611_00', 6)	# 1-6
     sprite('ko611_01', 6)	# 7-12
     sprite('ko611_02', 6)	# 13-18
@@ -2682,6 +2720,7 @@ def PYU_PersonaReversalAction_TAG():
             if (SLOT_48 == 11):
                 sendToLabel(1)
                 Unknown3031()
+        Unknown23059(1)
     sprite('ko611_00', 6)	# 1-6
     sprite('ko611_01', 6)	# 7-12
     sprite('ko611_02', 6)	# 13-18
@@ -2719,6 +2758,7 @@ def PersonaFireAttack_TAG():
         callSubroutine('PYU_ForceWarp')
         Unknown2053(1)
         callSubroutine('BoosterDamageUp')
+        Unknown23059(1)
     sprite('ko404_00', 4)	# 1-4
     GFX_1('koef_404', 0)
     GFX_1('koef_404', 1)
@@ -2904,9 +2944,9 @@ def Init_Sensu_StandExSignal():
 
     def upon_43():
         if (SLOT_48 == 1011):
-            physicsXImpulse(30000)
+            physicsXImpulse(35000)
         if (SLOT_48 == 1012):
-            physicsXImpulse(22000)
+            physicsXImpulse(20000)
 
 @Subroutine
 def Init_Sensu_Gravity():
@@ -3697,7 +3737,8 @@ def Init_Maragi_Sliding():
     Unknown2010()
     AttackLevel_(4)
     Unknown11033(1)
-    Damage(700)
+    Damage(1000)
+    AttackP2(100)
     Hitstop(0)
     PushbackX(10000)
     Unknown9310(10)
@@ -3722,7 +3763,7 @@ def SlidingA():
 
     def upon_IMMEDIATE():
         callSubroutine('Init_Maragi_Sliding')
-        physicsXImpulse(45000)
+        physicsXImpulse(25000)
 
         def upon_43():
             if (SLOT_48 == 4050):
@@ -3746,11 +3787,19 @@ def SlidingA():
     RefreshMultihit()
     sprite('vr_ko402_col', 10)	# 6-15
     SFX_3('blaze_normal')
-    sprite('vr_ko402_col', 5)	# 16-20
+    sprite('vr_ko402_col', 10)	# 16-25
+    SFX_3('blaze_normal')
+    sprite('vr_ko402_col', 10)	# 26-35
+    SFX_3('blaze_normal')
+    sprite('vr_ko402_col', 10)	# 36-45
+    SFX_3('blaze_normal')
+    sprite('vr_ko402_col', 10)	# 46-55
+    SFX_3('blaze_normal')
+    sprite('vr_ko402_col', 10)	# 56-65
     SFX_3('blaze_normal')
     loopRest()
     label(0)
-    sprite('keep', 3)	# 21-23
+    sprite('keep', 3)	# 66-68
     clearUponHandler(3)
     clearUponHandler(11)
     clearUponHandler(55)
@@ -3763,7 +3812,7 @@ def SlidingA():
     GFX_0('Maharagi_fire', 100)
     ExitState()
     label(580)
-    sprite('keep', 20)	# 24-43
+    sprite('keep', 20)	# 69-88
     clearUponHandler(3)
     clearUponHandler(11)
     clearUponHandler(55)
@@ -3804,9 +3853,15 @@ def SlidingB():
     RefreshMultihit()
     sprite('vr_ko402_col', 5)	# 3-7
     SFX_3('blaze_normal')
+    sprite('vr_ko402_col', 5)	# 8-12
+    SFX_3('blaze_normal')
+    sprite('vr_ko402_col', 5)	# 13-17
+    SFX_3('blaze_normal')
+    sprite('vr_ko402_col', 5)	# 18-22
+    SFX_3('blaze_normal')
     loopRest()
     label(0)
-    sprite('keep', 1)	# 8-8
+    sprite('keep', 1)	# 23-23
     clearUponHandler(3)
     clearUponHandler(11)
     clearUponHandler(55)
@@ -3822,7 +3877,7 @@ def SlidingB():
         Unknown21007(1, 32)
     ExitState()
     label(580)
-    sprite('keep', 5)	# 9-13
+    sprite('keep', 5)	# 24-28
     clearUponHandler(3)
     clearUponHandler(11)
     clearUponHandler(55)
@@ -3840,7 +3895,7 @@ def SlidingC():
         callSubroutine('Init_Maragi_Sliding')
         Unknown30065(0)
         Unknown11091(10)
-        physicsXImpulse(25000)
+        physicsXImpulse(60000)
         AirPushbackX(3000)
         Unknown2053(1)
 
@@ -3864,33 +3919,14 @@ def SlidingC():
     teleportRelativeX(50000)
     SFX_3('airdash_l')
     RefreshMultihit()
-    sprite('vr_ko402_col', 10)	# 6-15
+    sprite('vr_ko402_col', 5)	# 6-10
     SFX_3('blaze_normal')
-    sprite('vr_ko402_col', 10)	# 16-25
+    sprite('vr_ko402_col', 5)	# 11-15
     SFX_3('blaze_normal')
-    sprite('vr_ko402_col', 10)	# 26-35
+    sprite('vr_ko402_col', 5)	# 16-20
     SFX_3('blaze_normal')
-    sprite('vr_ko402_col', 10)	# 36-45
-    SFX_3('blaze_normal')
-    sprite('vr_ko402_col', 10)	# 46-55
-    SFX_3('blaze_normal')
-    sprite('vr_ko402_col', 10)	# 56-65
-    SFX_3('blaze_normal')
-    sprite('vr_ko402_col', 10)	# 66-75
-    SFX_3('blaze_normal')
-    sprite('vr_ko402_col', 10)	# 76-85
-    SFX_3('blaze_normal')
-    sprite('vr_ko402_col', 10)	# 86-95
-    SFX_3('blaze_normal')
-    sprite('vr_ko402_col', 10)	# 96-105
-    SFX_3('blaze_normal')
-    sprite('vr_ko402_col', 10)	# 106-115
-    SFX_3('blaze_normal')
-    sprite('vr_ko402_col', 10)	# 116-125
-    SFX_3('blaze_normal')
-    loopRest()
     label(0)
-    sprite('null', 10)	# 126-135
+    sprite('null', 10)	# 21-30
     Unknown1019(0)
     clearUponHandler(3)
     clearUponHandler(11)
@@ -3901,13 +3937,13 @@ def SlidingC():
     Unknown23027()
     GFX_0('FireYugamiC', 100)
     GFX_0('Maharagi_fireC', 100)
-    sprite('null', 10)	# 136-145
+    sprite('null', 10)	# 31-40
     GFX_0('FireYugamiC', 100)
     GFX_0('Maharagi_fireC', 100)
     Unknown36(1)
     teleportRelativeX(160000)
     Unknown35()
-    sprite('null', 10)	# 146-155
+    sprite('null', 10)	# 41-50
     GFX_0('FireYugamiC', 100)
     GFX_0('Maharagi_fireC', 100)
     Unknown23029(1, 4061, 0)
@@ -3918,7 +3954,7 @@ def SlidingC():
         SLOT_5 = (SLOT_5 + (-1))
     ExitState()
     label(580)
-    sprite('keep', 5)	# 156-160
+    sprite('keep', 5)	# 51-55
     clearUponHandler(3)
     clearUponHandler(11)
     clearUponHandler(55)
@@ -4676,7 +4712,7 @@ def Maharagidine_AtkData():
     Damage(800)
     Unknown11091(15)
     AttackP2(60)
-    AirUntechableTime(29)
+    AirUntechableTime(40)
     Hitstop(0)
     GroundedHitstunAnimation(1)
     PushbackX(-39900)
@@ -4685,6 +4721,7 @@ def Maharagidine_AtkData():
     Unknown9017(1)
     Unknown23182(2)
     Unknown11092(1)
+    Unknown11110(88)
     Unknown3032()
     Unknown4003('797565665f343331686962617368697261432e444947000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
     Unknown23067('koef_431baku')
@@ -4943,7 +4980,7 @@ def MaharagidineC_Frontfire_col():
     def upon_IMMEDIATE():
         callSubroutine('Maharagidine_AtkData')
         AirPushbackX(18000)
-        Unknown30055('f04902003200000032000000')
+        Unknown30055('a08601003200000032000000')
         PushbackX(39900)
         Unknown23027()
     sprite('vr_yu431_dmg04', 9)	# 1-9	 **attackbox here**
@@ -4964,7 +5001,7 @@ def MaharagidineC_Backfire_col():
     def upon_IMMEDIATE():
         callSubroutine('Maharagidine_AtkData')
         AirPushbackX(-18000)
-        Unknown30055('10b6fdff3200000032000000')
+        Unknown30055('6079feff3200000032000000')
         Unknown23027()
     sprite('vr_yu431_dmg04', 9)	# 1-9	 **attackbox here**
     Unknown1067(100)
@@ -5223,7 +5260,7 @@ def MaharagidineD_Frontfire_col():
 
     def upon_IMMEDIATE():
         callSubroutine('Maharagidine_AtkData')
-        Unknown30055('10b6fdff3200000032000000')
+        Unknown30055('6079feff3200000032000000')
         AirPushbackX(-18000)
         Unknown23027()
     sprite('vr_yu431_dmg04', 9)	# 1-9	 **attackbox here**
@@ -5243,7 +5280,7 @@ def MaharagidineD_Backfire_col():
 
     def upon_IMMEDIATE():
         callSubroutine('Maharagidine_AtkData')
-        Unknown30055('f04902003200000032000000')
+        Unknown30055('a08601003200000032000000')
         AirPushbackX(18000)
         Unknown23027()
     sprite('vr_yu431_dmg04', 9)	# 1-9	 **attackbox here**
@@ -5506,7 +5543,7 @@ def MaharagidineOD_C_Frontfire_col():
         Damage(1000)
         callSubroutine('BoosterDamageUp')
         AirPushbackX(18000)
-        Unknown30055('f04902003200000032000000')
+        Unknown30055('a08601003200000032000000')
         PushbackX(39900)
         Unknown23027()
     sprite('vr_yu431_dmg04', 9)	# 1-9	 **attackbox here**
@@ -5529,7 +5566,7 @@ def MaharagidineOD_C_Backfire_col():
         Damage(1000)
         callSubroutine('BoosterDamageUp')
         AirPushbackX(-18000)
-        Unknown30055('10b6fdff3200000032000000')
+        Unknown30055('6079feff3200000032000000')
         Unknown23027()
     sprite('vr_yu431_dmg04', 9)	# 1-9	 **attackbox here**
     Unknown1067(100)
@@ -5790,7 +5827,7 @@ def MaharagidineOD_D_Frontfire_col():
         callSubroutine('Maharagidine_AtkData')
         Damage(1000)
         callSubroutine('BoosterDamageUp')
-        Unknown30055('10b6fdff3200000032000000')
+        Unknown30055('6079feff3200000032000000')
         AirPushbackX(-18000)
         Unknown23027()
     sprite('vr_yu431_dmg04', 9)	# 1-9	 **attackbox here**
@@ -5811,7 +5848,7 @@ def MaharagidineOD_D_Backfire_col():
     def upon_IMMEDIATE():
         callSubroutine('Maharagidine_AtkData')
         Damage(1000)
-        Unknown30055('f04902003200000032000000')
+        Unknown30055('a08601003200000032000000')
         AirPushbackX(18000)
         Unknown23027()
     sprite('vr_yu431_dmg04', 9)	# 1-9	 **attackbox here**

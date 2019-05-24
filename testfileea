@@ -226,3 +226,73 @@ def es400_B():
     sprite('es400eff_atk2', 100)	# 26-125	 **attackbox here**
     Unknown21015('73686f74000000000000000000000000000000000000000000000000000000007800000000000000')
     physicsXImpulse(70000)
+
+@State
+def es400_B_2nd():
+
+    def upon_IMMEDIATE():
+        callSubroutine('es400_Init')
+        Unknown9215()
+        Unknown1007(128000)
+        teleportRelativeX(110000)
+
+        def upon_43():
+            if (SLOT_48 == 119):
+                GFX_0('es400_B_2ndEX', -1)
+                Unknown26('es400_A')
+                Unknown26('esef_400eff_MatomeA')
+                Unknown13(25)
+                Unknown26('esef_400eff2nd_MatomeB')
+                Unknown26('esef_400eff2nd_MatomeB2')
+    Unknown48('190000000200000033000000030000000200000033000000')
+    if SLOT_51:
+        _gotolabel(10)
+    sprite('es400eff_atk1', 25)	# 1-25	 **attackbox here**
+    GFX_0('esef_400eff2nd_MatomeB', -1)
+    Unknown38(4, 1)
+    physicsXImpulse(2500)
+    sprite('es400eff_atk2', 100)	# 26-125	 **attackbox here**
+    Unknown21015('73686f74320000000000000000000000000000000000000000000000000000007800000000000000')
+    physicsXImpulse(65000)
+    ExitState()
+    label(10)
+    sprite('es400eff_atk1', 3)	# 126-128	 **attackbox here**
+    GFX_0('esef_400eff2nd_MatomeB2', -1)
+    Unknown38(4, 1)
+    physicsXImpulse(65000)
+    sprite('es400eff_atk2', 100)	# 129-228	 **attackbox here**
+
+@State
+def es400_B_2ndB():
+
+    def upon_IMMEDIATE():
+        callSubroutine('es400_Init')
+        Unknown9215()
+        Unknown1007(128000)
+        teleportRelativeX(110000)
+
+        def upon_43():
+            if (SLOT_48 == 119):
+                GFX_0('es400_B_2ndEX', -1)
+                Unknown26('es400_A')
+                Unknown26('esef_400eff_MatomeA')
+                Unknown13(25)
+                Unknown26('esef_400eff2nd_MatomeB')
+                Unknown26('esef_400eff2nd_MatomeB2')
+    Unknown48('190000000200000033000000030000000200000033000000')
+    if SLOT_51:
+        _gotolabel(10)
+    sprite('es400eff_atk1', 25)	# 1-25	 **attackbox here**
+    GFX_0('esef_400eff2nd_MatomeB', -1)
+    Unknown38(4, 1)
+    physicsXImpulse(2500)
+    sprite('es400eff_atk2', 100)	# 26-125	 **attackbox here**
+    Unknown21015('73686f74320000000000000000000000000000000000000000000000000000007800000000000000')
+    physicsXImpulse(65000)
+    ExitState()
+    label(10)
+    sprite('es400eff_atk1', 3)	# 126-128	 **attackbox here**
+    GFX_0('esef_400eff2nd_MatomeB2', -1)
+    Unknown38(4, 1)
+    physicsXImpulse(65000)
+    sprite('es400eff_atk2', 100)	# 129-228	 **attackbox here**

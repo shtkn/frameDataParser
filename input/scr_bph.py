@@ -344,12 +344,6 @@ def MatchInit():
     Unknown14024('CheckActivateMagicLv3')
     Unknown14015(0, 500000, -200000, 200000, 100, 0)
     Move_EndRegister()
-    Move_Register('MagicActivateEX_Lv0', INPUT_SPECIALMOVE)
-    Move_Input_(INPUT_236)
-    Move_Input_(INPUT_PRESS_C)
-    Unknown14013('MagicActivate_Lv0')
-    Unknown14015(0, 500000, -200000, 200000, 100, 0)
-    Move_EndRegister()
     Move_Register('MagicActivateEX_Lv1', INPUT_SPECIALMOVE)
     Move_AirGround_(0x3086)
     Move_Input_(INPUT_236)
@@ -687,6 +681,8 @@ def OnFrameStep():
     if SLOT_37:
         if SLOT_4:
             SLOT_4 = 0
+    if SLOT_8:
+        SLOT_8 = (SLOT_8 + (-1))
 
 @Subroutine
 def OnActionBegin():
@@ -794,6 +790,14 @@ def CmnActJumpPre():
 
 @State
 def CmnActJumpUpper():
+    sprite('ph020_00', 4)
+    sprite('ph020_01', 4)
+
+    def upon_3():
+        if SLOT_16:
+            if (not SLOT_8):
+                SLOT_31 = (SLOT_31 + 10)
+                callSubroutine('MagicIconUpDate')
     label(0)
     sprite('ph020_00', 4)
     sprite('ph020_01', 4)
@@ -802,12 +806,24 @@ def CmnActJumpUpper():
 
 @State
 def CmnActJumpUpperEnd():
+
+    def upon_3():
+        if SLOT_16:
+            if (not SLOT_8):
+                SLOT_31 = (SLOT_31 + 10)
+                callSubroutine('MagicIconUpDate')
     sprite('ph020_02', 3)
     sprite('ph020_03', 3)
     sprite('ph020_04', 3)
 
 @State
 def CmnActJumpDown():
+
+    def upon_3():
+        if SLOT_16:
+            if (not SLOT_8):
+                SLOT_31 = (SLOT_31 + 10)
+                callSubroutine('MagicIconUpDate')
     sprite('ph020_05', 3)
     sprite('ph020_06', 3)
     label(0)
@@ -840,6 +856,11 @@ def CmnActFWalk():
     sprite('ph030_00', 6)
     label(0)
     sprite('ph030_01', 6)
+
+    def upon_3():
+        if (not SLOT_8):
+            SLOT_31 = (SLOT_31 + 10)
+            callSubroutine('MagicIconUpDate')
     sprite('ph030_02', 6)
     SFX_FOOTSTEP_(100, 1, 1)
     sprite('ph030_03', 6)
@@ -932,11 +953,13 @@ def CmnActFDash():
         def upon_STATE_END():
             Unknown3001(255)
             Unknown3004(0)
-    sprite('ph032_00', 3)
+    sprite('ph032_00', 2)
     setInvincible(1)
     Unknown22019('0000000000000000000000000100000000000000')
     callSubroutine('2ndDashInputUD')
-    sprite('ph032_01', 3)
+    SLOT_31 = (SLOT_31 + 0)
+    callSubroutine('MagicIconUpDate')
+    sprite('ph032_01', 2)
     sprite('ph032_02', 3)
     Unknown22019('0100000001000000010000000100000001000000')
     GFX_0('ph032FireEff', -1)
@@ -981,11 +1004,11 @@ def CmnActBDash():
         def upon_STATE_END():
             Unknown3001(255)
             Unknown3004(0)
-    sprite('ph032_00', 3)
+    sprite('ph032_00', 2)
     setInvincible(1)
     Unknown22019('0000000000000000000000000100000000000000')
     callSubroutine('2ndDashInputUD')
-    sprite('ph032_01', 3)
+    sprite('ph032_01', 2)
     sprite('ph032_02', 3)
     Unknown22019('0100000001000000010000000100000001000000')
     GFX_0('ph032FireEff', -1)
@@ -1036,14 +1059,17 @@ def SpDashF_Air():
         def upon_STATE_END():
             Unknown3001(255)
             Unknown3004(0)
-    sprite('ph035_00', 3)
+    sprite('ph035_00', 2)
     setInvincible(1)
     Unknown22019('0000000000000000000000000100000000000000')
     Unknown1084(1)
     callSubroutine('2ndDashInputUD')
-    sprite('ph035_01', 3)
-    sprite('ph035_02', 3)
+    SLOT_31 = (SLOT_31 + 0)
+    callSubroutine('MagicIconUpDate')
+    sprite('ph035_01', 2)
+    sprite('ph035_01', 1)
     Unknown22019('0100000001000000010000000100000001000000')
+    sprite('ph035_02', 3)
     GFX_0('ph035FireEff', -1)
     SFX_0('000_airdash_0')
     Unknown3001(255)
@@ -1088,14 +1114,15 @@ def SpDashB_Air():
         def upon_STATE_END():
             Unknown3001(255)
             Unknown3004(0)
-    sprite('ph035_00', 3)
+    sprite('ph035_00', 2)
     setInvincible(1)
     Unknown22019('0000000000000000000000000100000000000000')
     Unknown1084(1)
     callSubroutine('2ndDashInputUD')
-    sprite('ph035_01', 3)
-    sprite('ph035_02', 3)
+    sprite('ph035_01', 2)
+    sprite('ph035_01', 1)
     Unknown22019('0100000001000000010000000100000001000000')
+    sprite('ph035_02', 3)
     GFX_0('ph035FireEff', -1)
     SFX_0('000_airdash_0')
     Unknown3001(255)
@@ -1141,17 +1168,17 @@ def Swoop():
     Unknown22019('0000000000000000000000000100000000000000')
     Unknown1084(1)
     callSubroutine('2ndDashInputFB')
-    sprite('ph035_01', 3)
-    sprite('ph035_02', 3)
+    sprite('ph035_01', 1)
+    sprite('ph035_01', 2)
     Unknown22019('0100000001000000010000000100000001000000')
+    sprite('ph035_02', 3)
     GFX_0('ph035FireEff', -1)
     SFX_0('000_airdash_0')
     Unknown3001(255)
     Unknown3004(-42)
-    sprite('ph035_03', 3)
-    sprite('ph035_04', 3)
-    sprite('null', 4)
+    sprite('ph035_03', 4)
     callSubroutine('2ndDashInputUD')
+    sprite('null', 2)
     Unknown3001(0)
     Unknown3004(0)
     Unknown2017(0)
@@ -1215,6 +1242,8 @@ def __2ndDash66():
     Unknown3001(255)
     Unknown3004(0)
     Unknown1084(1)
+    SLOT_31 = (SLOT_31 + 0)
+    callSubroutine('MagicIconUpDate')
     sprite('ph032_03', 3)
     sprite('ph032_04', 3)
     GFX_0('ph032FireEff', -1)
@@ -1255,6 +1284,8 @@ def __2ndDash66():
     Unknown3001(255)
     Unknown3004(0)
     Unknown1084(1)
+    SLOT_31 = (SLOT_31 + 0)
+    callSubroutine('MagicIconUpDate')
     sprite('ph035_03', 3)
     sprite('ph035_04', 3)
     GFX_0('ph035FireEff', -1)
@@ -2867,6 +2898,7 @@ def UltimateDUO():
         AttackDefaults_StandingDD()
         Unknown30063(1)
     sprite('ph431_00', 6)
+    setInvincible(1)
     sprite('ph431_01', 6)
     GFX_0('Eff_431_obi', -1)
     sprite('ph431_02', 6)
@@ -2933,6 +2965,7 @@ def UltimateDUOSP():
             if (SLOT_48 == 4311):
                 Unknown2037(1)
     sprite('ph431_00', 6)
+    setInvincible(1)
     sprite('ph431_01', 6)
     GFX_0('Eff_431_obi', -1)
     sprite('ph431_02', 6)
@@ -3134,6 +3167,25 @@ def MagicNormalAtkInit():
         SLOT_31 = (SLOT_31 + 1200)
         callSubroutine('MagicIconUpDate')
 
+    def upon_43():
+        if (SLOT_48 == 9002):
+            setInvincible(1)
+            Unknown22019('0000000000000000000000000100000000000000')
+            SLOT_55 = 1
+            SLOT_31 = (SLOT_31 + 1200)
+            callSubroutine('MagicIconUpDate')
+            WhiffCancelEnable(1)
+            Unknown13015(1)
+            if SLOT_57:
+                Unknown13010(1)
+            else:
+                Unknown13008(1)
+
+    def upon_3():
+        if SLOT_55:
+            SLOT_55 = 0
+            setInvincible(0)
+
 @State
 def NmlAtk5A():
 
@@ -3153,6 +3205,14 @@ def NmlAtk5A():
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
         HitOrBlockJumpCancel(1)
+        WhiffCancel('NmlAtk5AA')
+        WhiffCancel('NmlAtk5B')
+        WhiffCancel('NmlAtk2A')
+        WhiffCancel('NmlAtk2B')
+        WhiffCancel('CmnActCrushAttack')
+        WhiffCancel('NmlAtk2C')
+        WhiffCancel('NmlAtkThrow')
+        WhiffCancel('NmlAtkBackThrow')
         callSubroutine('MagicNormalAtkInit')
     sprite('ph216_00', 2)
     sprite('ph216_01', 3)
@@ -3161,6 +3221,7 @@ def NmlAtk5A():
     sprite('ph216_03', 3)
     SLOT_6 = 300
     GFX_0('ph216_eff', -1)
+    GFX_0('ph216_col_dmy', -1)
     SFX_3('phse_02')
     sprite('ph216_04', 3)
     sprite('ph216_05', 6)
@@ -3174,6 +3235,8 @@ def NmlAtk5AA():
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         AttackLevel_(3)
+        Unknown9154(21)
+        AirUntechableTime(21)
         Unknown9017(1)
         AirPushbackY(13000)
         HitOrBlockCancel('NmlAtk5AAA')
@@ -3185,6 +3248,14 @@ def NmlAtk5AA():
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
         HitJumpCancel(1)
+        WhiffCancel('NmlAtk5AAA')
+        WhiffCancel('NmlAtk5B')
+        WhiffCancel('NmlAtk2A')
+        WhiffCancel('NmlAtk2B')
+        WhiffCancel('CmnActCrushAttack')
+        WhiffCancel('NmlAtk2C')
+        WhiffCancel('NmlAtkThrow')
+        WhiffCancel('NmlAtkBackThrow')
         callSubroutine('MagicNormalAtkInit')
     sprite('ph202_00', 3)
     sprite('ph202_01', 4)
@@ -3193,6 +3264,7 @@ def NmlAtk5AA():
     sprite('ph202_03', 3)
     SLOT_6 = 300
     GFX_0('ph202_eff', -1)
+    GFX_0('ph202_col_dmy', -1)
     SFX_3('phse_02')
     sprite('ph202_03', 2)
     Unknown23027()
@@ -3209,6 +3281,8 @@ def NmlAtk5AAA():
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         AttackLevel_(3)
+        Unknown9154(21)
+        AirUntechableTime(21)
         Unknown9016(1)
         AirPushbackY(13000)
         HitOrBlockCancel('NmlAtk5AAAA_Lv1')
@@ -3220,6 +3294,14 @@ def NmlAtk5AAA():
         HitOrBlockCancel('CmnActCrushAttack')
         HitOrBlockCancel('NmlAtk2C')
         HitJumpCancel(1)
+        WhiffCancel('NmlAtk5AAAA_Lv1')
+        WhiffCancel('NmlAtk5AAAA_Lv2')
+        WhiffCancel('NmlAtk5AAAA_Lv3')
+        WhiffCancel('NmlAtk5B')
+        WhiffCancel('NmlAtk2A')
+        WhiffCancel('NmlAtk2B')
+        WhiffCancel('CmnActCrushAttack')
+        WhiffCancel('NmlAtk2C')
         callSubroutine('MagicNormalAtkInit')
     sprite('ph200_00', 3)
     sprite('ph200_01', 3)
@@ -3228,6 +3310,7 @@ def NmlAtk5AAA():
     sprite('ph200_03', 3)
     SLOT_6 = 100
     GFX_0('ph200_eff', -1)
+    GFX_0('ph200_col_dmy', -1)
     SFX_3('phse_00')
     sprite('ph200_03', 3)
     Unknown23027()
@@ -3276,17 +3359,17 @@ def NmlAtk5AAAA_Lv1():
     SFX_4('bph207')
     sprite('ph203_05', 2)
     sprite('ph203_06', 2)
-    sprite('ph203_07', 3)
+    sprite('ph203_07', 6)
     SLOT_6 = 100
     GFX_0('DriveAtk_BNN', -1)
     callSubroutine('MagicPointRankDown')
-    sprite('ph203_08', 3)
+    sprite('ph203_08', 5)
     Recovery()
     Unknown2063()
-    sprite('ph203_09', 5)
-    sprite('ph203_11', 5)
-    sprite('ph203_12', 5)
-    sprite('ph203_13', 5)
+    sprite('ph203_09', 6)
+    sprite('ph203_11', 6)
+    sprite('ph203_12', 6)
+    sprite('ph203_13', 6)
 
 @State
 def NmlAtk5AAAA_Lv2():
@@ -3301,19 +3384,21 @@ def NmlAtk5AAAA_Lv2():
     SFX_4('bph210')
     sprite('ph204_05', 2)
     sprite('ph204_06', 2)
-    sprite('ph204_07', 3)
+    sprite('ph204_07', 6)
     SLOT_6 = 100
     GFX_0('DriveAtk_BBN', -1)
     callSubroutine('MagicPointRankDown')
     physicsXImpulse(-7500)
     Unknown8000(100, 1, 0)
+    sprite('ph204_07', 4)
+    Unknown23027()
     sprite('ph204_08', 3)
     Unknown1019(50)
     Recovery()
     Unknown2063()
-    sprite('ph204_09', 3)
+    sprite('ph204_09', 4)
     Unknown1019(50)
-    sprite('ph204_10', 3)
+    sprite('ph204_10', 4)
     sprite('ph204_11', 3)
     Unknown1019(50)
     sprite('ph204_12', 3)
@@ -3334,21 +3419,21 @@ def NmlAtk5AAAA_Lv3():
     SFX_4('bph216')
     sprite('ph205_04', 2)
     sprite('ph205_05', 2)
-    sprite('ph205_06', 3)
+    sprite('ph205_06', 7)
     SLOT_6 = 100
     GFX_0('DriveAtk_BBB', -1)
     callSubroutine('MagicPointRankDown')
     physicsXImpulse(-10000)
     Unknown8000(100, 1, 0)
-    sprite('ph205_07', 3)
+    sprite('ph205_07', 4)
     Unknown1019(50)
     Recovery()
     Unknown2063()
-    sprite('ph205_08', 3)
-    sprite('ph205_09', 3)
-    sprite('ph205_10', 3)
+    sprite('ph205_08', 4)
+    sprite('ph205_09', 4)
+    sprite('ph205_10', 4)
     Unknown1019(50)
-    sprite('ph205_11', 3)
+    sprite('ph205_11', 4)
     Unknown1019(0)
     sprite('ph205_12', 4)
     sprite('ph205_13', 4)
@@ -3438,7 +3523,34 @@ def NmlAtk4A():
         HitOrBlockJumpCancel(1)
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
+        WhiffCancel('NmlAtk4AA')
+        WhiffCancel('NmlAtk5AA')
+        WhiffCancel('NmlAtk5B')
+        WhiffCancel('NmlAtk2A')
+        WhiffCancel('NmlAtk2B')
+        WhiffCancel('CmnActCrushAttack')
+        WhiffCancel('NmlAtk2C')
+        WhiffCancel('NmlAtkThrow')
+        WhiffCancel('NmlAtkBackThrow')
         callSubroutine('MagicNormalAtkInit')
+
+        def upon_43():
+            if (SLOT_48 == 9002):
+                setInvincible(1)
+                Unknown22019('0100000000000000000000000100000000000000')
+                SLOT_55 = 1
+                SLOT_31 = (SLOT_31 + 1200)
+                callSubroutine('MagicIconUpDate')
+                WhiffCancelEnable(1)
+                Unknown13008(1)
+                Unknown13015(1)
+
+        def upon_3():
+            if SLOT_55:
+                SLOT_55 = 0
+                Unknown22019('0100000000000000000000000000000000000000')
+            if SLOT_56:
+                setInvincible(0)
     sprite('ph210_00', 2)
     sprite('ph210_01', 2)
     sprite('ph210_02', 2)
@@ -3450,18 +3562,20 @@ def NmlAtk4A():
     sprite('ph210_05', 4)
     SLOT_6 = 100
     GFX_0('ph210_eff', -1)
+    GFX_0('ph210_col_dmy', -1)
     SFX_3('phse_00')
     sprite('ph210_06', 4)
     setInvincible(0)
     StartMultihit()
     Recovery()
     Unknown2063()
+    SLOT_56 = 1
     sprite('ph210_07', 4)
-    sprite('ph210_08', 5)
-    sprite('ph210_09', 5)
-    sprite('ph210_10', 5)
-    sprite('ph210_11', 5)
-    sprite('ph210_12', 5)
+    sprite('ph210_08', 3)
+    sprite('ph210_09', 3)
+    sprite('ph210_10', 3)
+    sprite('ph210_11', 3)
+    sprite('ph210_12', 3)
 
 @State
 def NmlAtk4AA():
@@ -3485,6 +3599,17 @@ def NmlAtk4AA():
         HitOrBlockJumpCancel(1)
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
+        WhiffCancel('NmlAtk4AAA_Lv1')
+        WhiffCancel('NmlAtk4AAA_Lv2')
+        WhiffCancel('NmlAtk4AAA_Lv3')
+        WhiffCancel('NmlAtk5AA')
+        WhiffCancel('NmlAtk5B')
+        WhiffCancel('NmlAtk2A')
+        WhiffCancel('NmlAtk2B')
+        WhiffCancel('CmnActCrushAttack')
+        WhiffCancel('NmlAtk2C')
+        WhiffCancel('NmlAtkThrow')
+        WhiffCancel('NmlAtkBackThrow')
         callSubroutine('MagicNormalAtkInit')
     sprite('ph212_00', 3)
     sprite('ph212_01', 3)
@@ -3494,6 +3619,7 @@ def NmlAtk4AA():
     sprite('ph212_05', 4)
     SLOT_6 = 300
     GFX_0('ph212_eff', -1)
+    GFX_0('ph212_col_dmy', -1)
     SFX_3('phse_02')
     sprite('ph212_06', 4)
     Recovery()
@@ -3603,7 +3729,13 @@ def NmlAtk5B():
         HitOrBlockCancel('NmlAtk2B')
         HitOrBlockCancel('CmnActCrushAttack')
         HitOrBlockCancel('NmlAtk2C')
-        HitJumpCancel(1)
+        HitOrBlockJumpCancel(1)
+        WhiffCancel('NmlAtk5BB_Lv1')
+        WhiffCancel('NmlAtk5BB_Lv2')
+        WhiffCancel('NmlAtk5BB_Lv3')
+        WhiffCancel('NmlAtk2B')
+        WhiffCancel('CmnActCrushAttack')
+        WhiffCancel('NmlAtk2C')
         callSubroutine('MagicNormalAtkInit')
     sprite('ph201_00', 3)
     sprite('ph201_01', 3)
@@ -3613,6 +3745,7 @@ def NmlAtk5B():
     sprite('ph201_04', 3)
     SLOT_6 = 200
     GFX_0('ph201_eff', -1)
+    GFX_0('ph201_col_dmy', -1)
     SFX_3('phse_01')
     sprite('ph201_05', 3)
     sprite('ph201_06', 6)
@@ -3742,6 +3875,13 @@ def NmlAtk2A():
         HitOrBlockCancel('NmlAtk2C')
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
+        WhiffCancel('NmlAtk5A')
+        WhiffCancel('NmlAtk5B')
+        WhiffCancel('NmlAtk2B')
+        WhiffCancel('CmnActCrushAttack')
+        WhiffCancel('NmlAtk2C')
+        WhiffCancel('NmlAtkThrow')
+        WhiffCancel('NmlAtkBackThrow')
         callSubroutine('MagicNormalAtkInit')
     sprite('ph230_00', 3)
     sprite('ph230_01', 3)
@@ -3750,6 +3890,7 @@ def NmlAtk2A():
     sprite('ph230_03', 3)
     SLOT_6 = 100
     GFX_0('ph230_eff', -1)
+    GFX_0('ph230_col_dmy', -1)
     SFX_3('phse_00')
     sprite('ph230_04', 4)
     Recovery()
@@ -3771,6 +3912,9 @@ def NmlAtk2B():
         HitOrBlockCancel('NmlAtk5B')
         HitOrBlockCancel('CmnActCrushAttack')
         HitOrBlockCancel('NmlAtk2C')
+        WhiffCancel('NmlAtk5B')
+        WhiffCancel('CmnActCrushAttack')
+        WhiffCancel('NmlAtk2C')
         callSubroutine('MagicNormalAtkInit')
     sprite('ph231_00', 3)
     sprite('ph231_00', 1)
@@ -3780,6 +3924,7 @@ def NmlAtk2B():
     sprite('ph231_03', 3)
     SLOT_6 = 200
     GFX_0('ph231_eff', -1)
+    GFX_0('ph231_col_dmy', -1)
     SFX_3('phse_01')
     sprite('ph231_04', 3)
     sprite('ph231_05', 6)
@@ -3800,7 +3945,7 @@ def NmlAtk2C():
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
         AirPushbackX(1500)
-        AirPushbackY(18000)
+        AirPushbackY(20000)
         AirUntechableTime(40)
         Unknown9017(1)
         callSubroutine('MagicNormalAtkInit')
@@ -3811,6 +3956,7 @@ def NmlAtk2C():
     sprite('ph235_03', 5)
     SLOT_6 = 300
     GFX_0('ph235_eff', -1)
+    GFX_0('ph235_col_dmy', -1)
     SFX_3('phse_02')
     sprite('ph235_04', 5)
     Recovery()
@@ -3825,9 +3971,10 @@ def NmlAtkAIR5A():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
+        SLOT_57 = 1
         AttackLevel_(3)
         AttackP1(80)
-        AirUntechableTime(22)
+        AirUntechableTime(24)
         AirPushbackX(6000)
         Unknown9016(1)
         HitOrBlockCancel('NmlAtkAIR5AA')
@@ -3836,14 +3983,20 @@ def NmlAtkAIR5A():
         HitOrBlockCancel('NmlAtkAIR5C_Lv2')
         HitOrBlockCancel('NmlAtkAIR5C_Lv3')
         HitOrBlockJumpCancel(1)
+        WhiffCancel('NmlAtkAIR5AA')
+        WhiffCancel('NmlAtkAIR5B')
+        WhiffCancel('NmlAtkAIR5C')
+        WhiffCancel('NmlAtkAIR5C_Lv2')
+        WhiffCancel('NmlAtkAIR5C_Lv3')
         callSubroutine('MagicNormalAtkInit')
     sprite('ph250_00', 3)
     sprite('ph250_01', 2)
     sprite('ph250_02', 2)
     Unknown7009(1)
-    sprite('ph250_03', 3)
+    sprite('ph250_03', 5)
     SLOT_6 = 100
     GFX_0('ph250_eff', -1)
+    GFX_0('ph250_col_dmy', -1)
     SFX_3('phse_00')
     sprite('ph250_04', 6)
     Recovery()
@@ -3858,9 +4011,10 @@ def NmlAtkAIR5AA():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
+        SLOT_57 = 1
         AttackLevel_(3)
         AttackP1(80)
-        AirUntechableTime(22)
+        AirUntechableTime(24)
         AirPushbackX(6000)
         AirHitstunAnimation(10)
         Unknown9017(1)
@@ -3870,6 +4024,11 @@ def NmlAtkAIR5AA():
         HitOrBlockCancel('NmlAtkAIR5C_Lv2')
         HitOrBlockCancel('NmlAtkAIR5C_Lv3')
         HitOrBlockJumpCancel(1)
+        WhiffCancel('NmlAtkAIR5A')
+        WhiffCancel('NmlAtkAIR5B')
+        WhiffCancel('NmlAtkAIR5C')
+        WhiffCancel('NmlAtkAIR5C_Lv2')
+        WhiffCancel('NmlAtkAIR5C_Lv3')
         callSubroutine('MagicNormalAtkInit')
     sprite('ph252_00', 3)
     sprite('ph252_00', 1)
@@ -3879,6 +4038,7 @@ def NmlAtkAIR5AA():
     sprite('ph252_03', 3)
     SLOT_6 = 300
     GFX_0('ph252_eff', -1)
+    GFX_0('ph252_col_dmy', -1)
     SFX_3('phse_02')
     sprite('ph252_04', 5)
     Recovery()
@@ -3893,17 +4053,23 @@ def NmlAtkAIR5B():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
+        SLOT_57 = 1
         AttackLevel_(4)
         AttackP1(80)
         Unknown9016(1)
         AirPushbackY(22000)
-        AirUntechableTime(22)
+        AirUntechableTime(24)
         HitOrBlockCancel('NmlAtkAIR5A')
         HitOrBlockCancel('NmlAtkAIR5BB')
         HitOrBlockCancel('NmlAtkAIR5C')
         HitOrBlockCancel('NmlAtkAIR5C_Lv2')
         HitOrBlockCancel('NmlAtkAIR5C_Lv3')
         HitOrBlockJumpCancel(1)
+        WhiffCancel('NmlAtkAIR5A')
+        WhiffCancel('NmlAtkAIR5BB')
+        WhiffCancel('NmlAtkAIR5C')
+        WhiffCancel('NmlAtkAIR5C_Lv2')
+        WhiffCancel('NmlAtkAIR5C_Lv3')
         callSubroutine('MagicNormalAtkInit')
     sprite('ph253_00', 3)
     sprite('ph253_00', 3)
@@ -3913,6 +4079,7 @@ def NmlAtkAIR5B():
     sprite('ph253_03', 3)
     SLOT_6 = 100
     GFX_0('ph253_eff', -1)
+    GFX_0('ph253_col_dmy', -1)
     SFX_3('phse_00')
     sprite('ph253_04', 7)
     Recovery()
@@ -3927,9 +4094,10 @@ def NmlAtkAIR5BB():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
+        SLOT_57 = 1
         AttackLevel_(4)
         AttackP1(80)
-        AirUntechableTime(22)
+        AirUntechableTime(24)
         AirPushbackX(6000)
         AirHitstunAnimation(10)
         Unknown9016(1)
@@ -3939,6 +4107,11 @@ def NmlAtkAIR5BB():
         HitOrBlockCancel('NmlAtkAIR5C_Lv2')
         HitOrBlockCancel('NmlAtkAIR5C_Lv3')
         HitOrBlockJumpCancel(1)
+        WhiffCancel('NmlAtkAIR5A')
+        WhiffCancel('NmlAtkAIR5B')
+        WhiffCancel('NmlAtkAIR5C')
+        WhiffCancel('NmlAtkAIR5C_Lv2')
+        WhiffCancel('NmlAtkAIR5C_Lv3')
         callSubroutine('MagicNormalAtkInit')
     sprite('ph251_00', 3)
     sprite('ph251_01', 3)
@@ -3947,6 +4120,7 @@ def NmlAtkAIR5BB():
     sprite('ph251_03', 3)
     SLOT_6 = 200
     GFX_0('ph251_eff', -1)
+    GFX_0('ph251_col_dmy', -1)
     SFX_3('phse_01')
     sprite('ph251_04', 3)
     sprite('ph251_04', 3)
@@ -4004,12 +4178,12 @@ def NmlAtkAIR5C():
     sprite('ph020_08', 4)
     gotoLabel(0)
     label(1)
-    sprite('ph024_00', 3)
+    sprite('ph024_00', 2)
     Unknown1084(1)
-    sprite('ph024_01', 3)
-    sprite('ph024_02', 3)
-    sprite('ph024_03', 3)
-    sprite('ph024_04', 3)
+    sprite('ph024_01', 2)
+    sprite('ph024_02', 2)
+    sprite('ph024_03', 2)
+    sprite('ph024_04', 2)
     ExitState()
 
 @State
@@ -4058,12 +4232,12 @@ def NmlAtkAIR5C_Lv2():
     sprite('ph020_08', 4)
     gotoLabel(0)
     label(1)
-    sprite('ph024_00', 3)
+    sprite('ph024_00', 2)
     Unknown1084(1)
-    sprite('ph024_01', 3)
-    sprite('ph024_02', 3)
-    sprite('ph024_03', 3)
-    sprite('ph024_04', 3)
+    sprite('ph024_01', 2)
+    sprite('ph024_02', 2)
+    sprite('ph024_03', 2)
+    sprite('ph024_04', 2)
     ExitState()
 
 @State
@@ -4112,12 +4286,12 @@ def NmlAtkAIR5C_Lv3():
     sprite('ph020_08', 4)
     gotoLabel(0)
     label(1)
-    sprite('ph024_00', 3)
+    sprite('ph024_00', 2)
     Unknown1084(1)
-    sprite('ph024_01', 3)
-    sprite('ph024_02', 3)
-    sprite('ph024_03', 3)
-    sprite('ph024_04', 3)
+    sprite('ph024_01', 2)
+    sprite('ph024_02', 2)
+    sprite('ph024_03', 2)
+    sprite('ph024_04', 2)
     ExitState()
 
 @State
@@ -4299,7 +4473,7 @@ def CmnActCrushAttackFinish():
     sprite('ph440_14', 4)
     sprite('ph440_15', 4)
     sprite('ph440_16', 3)
-    GFX_0('BurstDDMaster', -1)
+    GFX_0('BurstDDMasterCrushFinish', -1)
     Unknown38(6, 1)
     Unknown4020(6)
     sprite('ph440_17', 2)
@@ -4451,7 +4625,7 @@ def CmnActCrushAttackAssistFinish():
     sprite('ph440_14', 4)
     sprite('ph440_15', 4)
     sprite('ph440_16', 3)
-    GFX_0('BurstDDMaster', -1)
+    GFX_0('BurstDDMasterCrushFinish', -1)
     Unknown38(6, 1)
     Unknown4020(6)
     sprite('ph440_17', 2)
@@ -4483,6 +4657,10 @@ def NmlAtkThrow():
             if (SLOT_18 >= 3):
                 if (SLOT_19 < 180000):
                     sendToLabel(1)
+            if (SLOT_18 >= 7):
+                if (not SLOT_8):
+                    SLOT_31 = (SLOT_31 + 10)
+                    callSubroutine('MagicIconUpDate')
     sprite('ph030_00', 6)
     physicsXImpulse(10000)
     label(0)
@@ -4601,6 +4779,10 @@ def NmlAtkBackThrow():
             if (SLOT_18 >= 3):
                 if (SLOT_19 < 180000):
                     sendToLabel(1)
+            if (SLOT_18 >= 7):
+                if (not SLOT_8):
+                    SLOT_31 = (SLOT_31 + 10)
+                    callSubroutine('MagicIconUpDate')
     sprite('ph030_00', 6)
     physicsXImpulse(10000)
     label(0)
@@ -4812,12 +4994,16 @@ def SpecialMagicInitialize():
         AttackDefaults_StandingSpecial()
     Unknown11063(1)
 
+    def upon_STATE_END():
+        SLOT_8 = 120
+
 @State
 def MagicActivate_Lv0():
 
     def upon_IMMEDIATE():
         callSubroutine('SpecialMagicInitialize')
         Unknown11063(0)
+        clearUponHandler(1)
     sprite('ph203_00', 2)
     sprite('ph203_01', 2)
     sprite('ph203_05', 2)
@@ -4828,15 +5014,15 @@ def MagicActivate_Lv0():
     callSubroutine('MagicPointReset')
     if SLOT_37:
         Unknown8000(100, 1, 0)
-    sprite('ph203_08', 5)
-    sprite('ph203_09', 5)
-    sprite('ph203_10', 5)
-    sprite('ph203_11', 5)
+    sprite('ph203_08', 4)
+    sprite('ph203_09', 4)
+    sprite('ph203_10', 4)
+    sprite('ph203_11', 4)
     Unknown1043()
-    sprite('ph203_12', 5)
-    Unknown23183('70683230335f3135000000000000000000000000000000000000000000000000050000000200000024000000')
-    sprite('ph203_13', 5)
-    Unknown23183('70683230335f3136000000000000000000000000000000000000000000000000050000000200000024000000')
+    sprite('ph203_12', 4)
+    Unknown23183('70683230335f3135000000000000000000000000000000000000000000000000040000000200000024000000')
+    sprite('ph203_13', 4)
+    Unknown23183('70683230335f3136000000000000000000000000000000000000000000000000040000000200000024000000')
 
 @State
 def MagicActivateA_Lv1():
@@ -4856,9 +5042,6 @@ def MagicActivateA_Lv1():
     callSubroutine('MagicPointReset')
     if SLOT_37:
         Unknown8000(100, 1, 0)
-    sprite('ph203_09', 3)
-    sprite('ph203_10', 3)
-    sprite('ph203_08', 3)
     sprite('ph203_09', 3)
     sprite('ph203_10', 3)
     sprite('ph203_08', 3)
@@ -4929,10 +5112,6 @@ def MagicActivateA_Lv2():
     sprite('ph204_08', 4)
     sprite('ph204_09', 4)
     sprite('ph204_10', 4)
-    sprite('ph204_08', 4)
-    sprite('ph204_09', 4)
-    sprite('ph204_10', 4)
-    sprite('ph204_08', 4)
     label(9)
     sprite('ph204_09', 4)
     sprite('ph204_10', 4)
@@ -4958,13 +5137,13 @@ def MagicActivateA_Lv3():
     GFX_0('DriveAtk_BBR', -1)
     callSubroutine('MagicPointReset')
     sprite('ph205_07', 5)
-    sprite('ph205_10', 5)
-    sprite('ph205_11', 5)
-    sprite('ph205_12', 5)
-    Unknown23183('70683230355f3135000000000000000000000000000000000000000000000000050000000200000024000000')
+    sprite('ph205_10', 3)
+    sprite('ph205_11', 3)
+    sprite('ph205_12', 3)
+    Unknown23183('70683230355f3135000000000000000000000000000000000000000000000000030000000200000024000000')
     Unknown1043()
-    sprite('ph205_13', 5)
-    Unknown23183('70683230355f3136000000000000000000000000000000000000000000000000050000000200000024000000')
+    sprite('ph205_13', 3)
+    Unknown23183('70683230355f3136000000000000000000000000000000000000000000000000030000000200000024000000')
 
 @State
 def MagicActivateB_Lv1():
@@ -4972,6 +5151,11 @@ def MagicActivateB_Lv1():
     def upon_IMMEDIATE():
         callSubroutine('SpecialMagicInitialize')
         Unknown11063(0)
+
+        def upon_43():
+            if (SLOT_48 == 5102):
+                setInvincible(1)
+                Unknown22019('0000000000000000000000000100000000000000')
     sprite('ph203_00', 3)
     sprite('ph203_01', 3)
     SFX_4('bph212')
@@ -4989,9 +5173,6 @@ def MagicActivateB_Lv1():
     sprite('ph203_08', 3)
     sprite('ph203_09', 3)
     sprite('ph203_10', 3)
-    sprite('ph203_08', 3)
-    sprite('ph203_09', 3)
-    sprite('ph203_10', 3)
     sprite('ph203_11', 4)
     sprite('ph203_12', 3)
     Unknown23183('70683230335f3135000000000000000000000000000000000000000000000000030000000200000024000000')
@@ -5004,8 +5185,9 @@ def MagicActivateB_Lv2():
 
     def upon_IMMEDIATE():
         callSubroutine('SpecialMagicInitialize')
+        if SLOT_36:
+            sendToLabel(99)
     sprite('ph204_01', 3)
-    Unknown23183('70683230345f3134000000000000000000000000000000000000000000000000030000000200000024000000')
     sprite('ph204_02', 3)
     SFX_4('bph219')
     sprite('ph204_05', 3)
@@ -5014,16 +5196,36 @@ def MagicActivateB_Lv2():
     Unknown21015('447269766541746b5f5252470000000000000000000000000000000000000000f713000000000000')
     GFX_0('DriveAtk_RRG', -1)
     callSubroutine('MagicPointReset')
-    if SLOT_37:
-        Unknown8000(100, 1, 0)
+    Unknown8000(100, 1, 0)
     sprite('ph204_08', 5)
     sprite('ph204_09', 5)
     sprite('ph204_10', 5)
     sprite('ph212_11', 5)
-    Unknown23183('70683230345f3135000000000000000000000000000000000000000000000000050000000200000024000000')
     Unknown1043()
     sprite('ph212_12', 5)
-    Unknown23183('70683230345f3136000000000000000000000000000000000000000000000000050000000200000024000000')
+    ExitState()
+    label(99)
+    sprite('ph204_14', 3)
+    sprite('ph204_02', 3)
+    SFX_4('bph219')
+    sprite('ph204_05', 3)
+    sprite('ph204_06', 3)
+    sprite('ph204_07', 3)
+    Unknown21015('447269766541746b5f5252470000000000000000000000000000000000000000f713000000000000')
+    GFX_0('DriveAtk_RRG', -1)
+    callSubroutine('MagicPointReset')
+    sprite('ph204_08', 5)
+    sprite('ph204_09', 5)
+    sprite('ph204_10', 5)
+    sprite('ph204_15', 5)
+    Unknown1043()
+    sprite('ph204_16', 5)
+    sprite('ph020_05', 3)
+    sprite('ph020_06', 3)
+    label(0)
+    sprite('ph020_07', 4)
+    sprite('ph020_08', 4)
+    gotoLabel(0)
 
 @State
 def MagicActivateB_Lv3():
@@ -5042,13 +5244,13 @@ def MagicActivateB_Lv3():
     if SLOT_37:
         Unknown8000(100, 1, 0)
     sprite('ph205_07', 5)
-    sprite('ph205_10', 5)
-    sprite('ph205_11', 5)
-    sprite('ph205_12', 5)
-    Unknown23183('70683230355f3135000000000000000000000000000000000000000000000000050000000200000024000000')
+    sprite('ph205_10', 3)
+    sprite('ph205_11', 3)
+    sprite('ph205_12', 3)
+    Unknown23183('70683230355f3135000000000000000000000000000000000000000000000000030000000200000024000000')
     Unknown1043()
-    sprite('ph205_13', 5)
-    Unknown23183('70683230355f3136000000000000000000000000000000000000000000000000050000000200000024000000')
+    sprite('ph205_13', 3)
+    Unknown23183('70683230355f3136000000000000000000000000000000000000000000000000030000000200000024000000')
 
 @State
 def MagicActivateEX_Lv1():
@@ -5076,11 +5278,11 @@ def MagicActivateEX_Lv1():
     sprite('ph203_08', 3)
     sprite('ph203_09', 3)
     sprite('ph203_11', 3)
-    sprite('ph203_12', 5)
-    Unknown23183('70683230335f3135000000000000000000000000000000000000000000000000050000000200000024000000')
+    sprite('ph203_12', 3)
+    Unknown23183('70683230335f3135000000000000000000000000000000000000000000000000030000000200000024000000')
     Unknown1043()
-    sprite('ph203_13', 5)
-    Unknown23183('70683230335f3136000000000000000000000000000000000000000000000000050000000200000024000000')
+    sprite('ph203_13', 3)
+    Unknown23183('70683230335f3136000000000000000000000000000000000000000000000000030000000200000024000000')
 
 @State
 def MagicActivateEX_Lv2():
@@ -5107,11 +5309,11 @@ def MagicActivateEX_Lv2():
     sprite('ph204_08', 5)
     sprite('ph204_09', 5)
     sprite('ph204_10', 5)
-    sprite('ph212_11', 5)
-    Unknown23183('70683230345f3135000000000000000000000000000000000000000000000000050000000200000024000000')
+    sprite('ph212_11', 3)
+    Unknown23183('70683230345f3135000000000000000000000000000000000000000000000000030000000200000024000000')
     Unknown1043()
-    sprite('ph212_12', 5)
-    Unknown23183('70683230345f3136000000000000000000000000000000000000000000000000050000000200000024000000')
+    sprite('ph212_12', 3)
+    Unknown23183('70683230345f3136000000000000000000000000000000000000000000000000030000000200000024000000')
 
 @State
 def MagicActivateEX_Lv3():
@@ -5137,11 +5339,11 @@ def MagicActivateEX_Lv3():
     sprite('ph205_07', 5)
     sprite('ph205_10', 5)
     sprite('ph205_11', 5)
-    sprite('ph205_12', 5)
-    Unknown23183('70683230355f3135000000000000000000000000000000000000000000000000050000000200000024000000')
+    sprite('ph205_12', 3)
+    Unknown23183('70683230355f3135000000000000000000000000000000000000000000000000030000000200000024000000')
     Unknown1043()
-    sprite('ph205_13', 5)
-    Unknown23183('70683230355f3136000000000000000000000000000000000000000000000000050000000200000024000000')
+    sprite('ph205_13', 3)
+    Unknown23183('70683230355f3136000000000000000000000000000000000000000000000000030000000200000024000000')
 
 @State
 def MagicActivateEX_Special():
@@ -5151,6 +5353,9 @@ def MagicActivateEX_Special():
             Unknown17003()
         else:
             AttackDefaults_StandingSpecial()
+
+        def upon_STATE_END():
+            SLOT_8 = 120
     sprite('ph403_00', 3)
     sprite('ph403_01', 2)
     Unknown23183('70683430335f3031657830310000000000000000000000000000000000000000020000000200000024000000')
@@ -5360,7 +5565,7 @@ def LandAssaultEx():
                 setInvincible(0)
                 Recovery()
     sprite('ph440_13', 3)
-    sprite('ph440_13', 3)
+    sprite('ph440_13', 1)
     tag_voice(1, 'bph280_0', 'bph280_1', '', '')
     Unknown23125('')
     Unknown2058(-5000)
@@ -5412,14 +5617,8 @@ def LandAssaultEx():
     tag_voice(0, 'bph281_0', 'bph281_1', '', '')
     sprite('ph440_20', 4)
     sprite('ph440_21', 4)
-    sprite('ph440_19', 4)
-    setInvincible(0)
-    sprite('ph440_20', 4)
-    sprite('ph440_21', 4)
-    sprite('ph440_19', 4)
-    sprite('ph440_20', 4)
-    sprite('ph440_21', 4)
     sprite('ph440_22', 4)
+    setInvincible(0)
     sprite('ph440_23', 4)
     sprite('ph440_24', 4)
     ExitState()
@@ -5569,7 +5768,7 @@ def AirAssaultB():
 
         def upon_43():
             if (SLOT_48 == 4103):
-                pass
+                Unknown2037(1)
     sprite('ph020_02', 3)
     sprite('ph401_01', 3)
     tag_voice(1, 'bph201_0', 'bph201_1', 'bph201_2', '')
@@ -5609,6 +5808,15 @@ def AirAssaultB():
     ExitState()
     label(2)
     sprite('ph020_06', 3)
+    clearUponHandler(2)
+
+    def upon_LANDING():
+        enterState('CmnActJumpLanding')
+    label(3)
+    sprite('ph020_07', 4)
+    sprite('ph020_08', 4)
+    loopRest()
+    gotoLabel(3)
     ExitState()
 
 @State
@@ -5642,31 +5850,17 @@ def AirAssaultEx():
     sprite('ph321_02', 6)
     ScreenShake(25000, 10000)
     sprite('ph321_03', 6)
-    sprite('ph321_04', 5)
-    sprite('ph321_05', 5)
-    sprite('ph321_04', 5)
+    sprite('ph321_04', 3)
+    sprite('ph321_05', 3)
+    sprite('ph321_04', 3)
     Unknown1018()
     Unknown1023()
     YAccel(50)
     Unknown1043()
-    sprite('ph321_05', 5)
+    sprite('ph321_05', 3)
     sprite('ph321_06', 3)
     sprite('ph321_07', 3)
     sprite('ph321_08', 3)
-    sprite('ph020_05', 3)
-    sprite('ph020_06', 3)
-    label(0)
-    sprite('ph020_07', 4)
-    sprite('ph020_08', 4)
-    loopRest()
-    gotoLabel(0)
-    label(1)
-    sprite('ph024_00', 3)
-    sprite('ph024_01', 3)
-    sprite('ph024_02', 3)
-    sprite('ph024_03', 3)
-    sprite('ph024_04', 3)
-    ExitState()
 
 @State
 def UltimateShot():

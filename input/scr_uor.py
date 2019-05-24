@@ -3194,14 +3194,14 @@ def CommandOrderAirA():
     sprite('Action_078_10', 4)
     gotoLabel(0)
     label(10)
-    sprite('Action_078_11', 4)
+    sprite('Action_078_11', 5)
     Recovery()
     Unknown1084(1)
     Unknown8000(100, 1, 1)
     clearUponHandler(2)
-    sprite('Action_078_12', 6)
-    sprite('Action_078_13', 4)
-    sprite('Action_078_14', 3)
+    sprite('Action_078_12', 9)
+    sprite('Action_078_13', 6)
+    sprite('Action_078_14', 4)
 
 @State
 def CommandOrderAirB():
@@ -3272,6 +3272,7 @@ def AssaultEx():
         Unknown11001(20, 20, 20)
         Unknown11091(10)
         Unknown30065(0)
+        Unknown2073(1)
 
         def upon_77():
             clearUponHandler(77)
@@ -3361,12 +3362,12 @@ def CommandOrderEx():
     Unknown7006('uor208_0', 100, 846360437, 828323888, 0, 0, 100, 846360437, 845101104, 0, 0, 100, 0, 0, 0, 0, 0)
     sprite('Action_149_02', 5)
     sprite('Action_149_03', 6)
-    sprite('Action_149_04', 11)
+    sprite('Action_149_04', 9)
     sprite('Action_149_05', 3)
     sprite('Action_149_05', 16)
     Recovery()
-    sprite('Action_149_06', 8)
-    sprite('Action_149_07', 8)
+    sprite('Action_149_06', 6)
+    sprite('Action_149_07', 6)
 
 @State
 def CommandOrderAirEx():
@@ -3484,7 +3485,7 @@ def UltimateShotOD():
         AirHitstunAnimation(1)
         Unknown9016(1)
         Unknown2021(1)
-        Unknown11091(15)
+        Unknown11091(6)
 
         def upon_43():
             if (SLOT_48 == 5001):
@@ -3534,7 +3535,7 @@ def UltimateShotOD():
     Unknown2036(45, -1, 0)
     Unknown4004('6175726100000000000000000000000000000000000000000000000000000000ffff0000')
     Unknown1084(1)
-    Damage(2800)
+    Damage(2000)
     Unknown9266(0)
     Hitstop(0)
     AirUntechableTime(180)
@@ -3611,6 +3612,7 @@ def UltimateAssault():
         Unknown11056(0)
         Unknown11064(1)
         Unknown11072(1, 200000, 0)
+        Unknown2073(1)
         Unknown11091(10)
 
         def upon_78():
@@ -3688,7 +3690,7 @@ def UltimateAssault():
     SFX_3('SE045')
     GFX_0('InvincibleAttackBlade', 100)
     AttackLevel_(4)
-    Damage(1400)
+    Damage(2200)
     AirPushbackX(1500)
     AirPushbackY(40000)
     YImpluseBeforeWallbounce(800)
@@ -3759,12 +3761,12 @@ def UltimateAssault():
     sprite('Action_117_36ex01', 1)
     RefreshMultihit()
     AttackLevel_(4)
-    Damage(4200)
+    Damage(4900)
     Hitstop(20)
     AirPushbackX(1500)
     AirPushbackY(35000)
     YImpluseBeforeWallbounce(1800)
-    Unknown11091(20)
+    Unknown11091(19)
     Unknown9310(1)
     Unknown11064(0)
     Unknown30048(1)
@@ -3833,6 +3835,7 @@ def UltimateAssaultOD():
         Unknown11056(0)
         Unknown11064(1)
         Unknown11072(1, 200000, 0)
+        Unknown2073(1)
         Unknown11091(10)
 
         def upon_78():
@@ -3909,7 +3912,7 @@ def UltimateAssaultOD():
     SFX_3('SE045')
     GFX_0('InvincibleAttackBlade', 100)
     AttackLevel_(4)
-    Damage(1400)
+    Damage(2200)
     AirPushbackX(1500)
     AirPushbackY(14000)
     YImpluseBeforeWallbounce(500)
@@ -4007,12 +4010,12 @@ def UltimateAssaultOD():
     Unknown2038(-1)
     RefreshMultihit()
     AttackLevel_(4)
-    Damage(650)
+    Damage(800)
     Hitstop(3)
     AirPushbackX(1500)
     AirPushbackY(35000)
     YImpluseBeforeWallbounce(1800)
-    Unknown11091(20)
+    Unknown11091(10)
     Unknown11072(1, 120000, 0)
     Unknown2017(0)
     Unknown11069('')
@@ -4022,7 +4025,8 @@ def UltimateAssaultOD():
     GFX_0('UltimateAssault_Blade1', 100)
     RefreshMultihit()
     AttackLevel_(4)
-    Damage(2800)
+    Damage(3100)
+    Unknown11091(20)
     Hitstop(30)
     AirPushbackX(1500)
     AirPushbackY(35000)
@@ -4727,7 +4731,7 @@ def UltimateShotDDDOD():
     def upon_82():
         clearUponHandler(82)
         SFX_0('025_cleanhit_slash')
-    sprite('Action_100_03', 9)
+    sprite('Action_100_03', 2)
     GFX_0('UltimateShot_ODBlade', 100)
     GFX_0('Assault_Blade', 100)
     SFX_3('SE045')

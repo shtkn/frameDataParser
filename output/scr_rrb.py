@@ -1837,6 +1837,7 @@ def NmlAtkAIR5A():
         AttackDefaults_AirNormal()
         AttackLevel_(3)
         Unknown9016(1)
+        AirUntechableTime(19)
         Unknown11050('020000007272624869744566665f536c6173680000000000000000000000000000000000')
         HitOrBlockCancel('NmlAtkAIR5A_2nd')
         HitOrBlockCancel('NmlAtkAIR5B')
@@ -1902,6 +1903,7 @@ def NmlAtkAIR5B():
         AttackDefaults_AirNormal()
         AttackLevel_(3)
         AirPushbackY(20000)
+        AirUntechableTime(19)
         Unknown9016(1)
         Unknown11050('020000007272624869744566665f536c6173680000000000000000000000000000000000')
         HitOrBlockCancel('NmlAtkAIR5B_2nd')
@@ -1940,36 +1942,37 @@ def NmlAtkAIR5C():
         Unknown11050('020000007272624869744566660000000000000000000000000000000000000000000000')
     sprite('rrb253_00', 3)	# 1-3
     physicsYImpulse(16000)
-    setGravity(1800)
+    setGravity(1600)
     sprite('rrb253_01', 3)	# 4-6
-    sprite('rrb253_02', 3)	# 7-9
-    sprite('rrb204_04', 3)	# 10-12
-    sprite('rrb204_05', 3)	# 13-15
+    sprite('rrb253_02', 4)	# 7-10
+    sprite('rrb204_04', 3)	# 11-13
+    sprite('rrb204_05', 4)	# 14-17
     Unknown7009(5)
-    sprite('rrb204_06', 3)	# 16-18	 **attackbox here**
+    sprite('rrb204_06', 3)	# 18-20	 **attackbox here**
     GFX_0('rrb204MuzzleEff', 0)
+    loopRest()
     clearUponHandler(2)
     sendToLabelUpon(2, 9)
     label(0)
-    sprite('rrb204_07', 3)	# 19-21
+    sprite('rrb204_07', 3)	# 21-23
     Recovery()
     Unknown2063()
-    sprite('rrb204_08', 3)	# 22-24
+    sprite('rrb204_08', 3)	# 24-26
     loopRest()
     gotoLabel(0)
     label(9)
-    sprite('rrb204_09', 3)	# 25-27
+    sprite('rrb204_09', 3)	# 27-29
     GFX_0('rrbCaseEff', 0)
     SFX_3('rrbse_01')
     Unknown1084(1)
     Unknown8000(100, 1, 1)
-    sprite('rrb204_10', 3)	# 28-30
+    sprite('rrb204_10', 7)	# 30-36
     SFX_3('rrbse_13')
-    sprite('rrb204_11', 3)	# 31-33
-    sprite('rrb204_12', 3)	# 34-36
-    sprite('rrb204_13', 3)	# 37-39
-    sprite('rrb204_14', 3)	# 40-42
-    sprite('rrb204_15', 3)	# 43-45
+    sprite('rrb204_11', 4)	# 37-40
+    sprite('rrb204_12', 3)	# 41-43
+    sprite('rrb204_13', 3)	# 44-46
+    sprite('rrb204_14', 3)	# 47-49
+    sprite('rrb204_15', 5)	# 50-54
 
 @State
 def NmlAtkThrow():
@@ -2150,6 +2153,7 @@ def BackThrowExe():
         Unknown11050('060000007272624869744566660000000000000000000000000000000000000000000000')
         Unknown11099(1)
         Unknown11080(1)
+        Unknown11069('BackThrowExe')
         JumpCancel_(0)
     sprite('rrb310_02', 3)	# 1-3	 **attackbox here**
     Unknown5000(8, 0)
@@ -2179,6 +2183,7 @@ def BackThrowExe():
     Unknown11050('020000007272624869744566665f536c6173680000000000000000000000000000000000')
     Unknown11099(0)
     Unknown11080(0)
+    Unknown11069('')
     physicsYImpulse(15000)
     physicsXImpulse(10000)
     Unknown1028(-400)
@@ -2223,7 +2228,6 @@ def CmnActInvincibleAttack():
         Unknown9016(1)
         Unknown11050('020000007272624869744566665f536c6173680000000000000000000000000000000000')
     sprite('rrb320_00', 3)	# 1-3
-    setInvincible(1)
     Unknown7006('rrb200_1', 100, 845312626, 845099056, 0, 0, 100, 845312626, 811544624, 0, 0, 100, 0, 0, 0, 0, 0)
     sprite('rrb320_01', 3)	# 4-6
     sprite('rrb320_02', 3)	# 7-9
@@ -2250,6 +2254,8 @@ def CmnActInvincibleAttack():
 @Subroutine
 def SpDashInit():
     AttackLevel_(4)
+    Damage(1200)
+    AttackP2(75)
     Unknown9015(1)
     Unknown11050('020000007272624869744566660000000000000000000000000000000000000000000000')
     if Unknown23145('SpDash_Front'):
@@ -2268,6 +2274,46 @@ def SpDashInit():
     def upon_STATE_END():
         Unknown3001(255)
         Unknown3004(0)
+        Unknown22001(-1)
+        Unknown22003(-1)
+
+@Subroutine
+def SpDash_Hasei():
+
+    def upon_12():
+        HitOrBlockCancel('SpDash_Front')
+        HitOrBlockCancel('SpDash_Back')
+        HitOrBlockCancel('SpDash_AntiAir')
+        HitOrBlockCancel('AirSpDash_Front')
+        HitOrBlockCancel('AirSpDash_Back')
+        HitOrBlockCancel('AirSpDash_AntiLand')
+
+@Subroutine
+def SpDash_ShotHIT():
+
+    def upon_43():
+        if (SLOT_48 == 3001):
+            HitOrBlockCancel('SpDash_Front')
+            HitOrBlockCancel('SpDash_Back')
+            HitOrBlockCancel('SpDash_AntiAir')
+            HitOrBlockCancel('AirSpDash_Front')
+            HitOrBlockCancel('AirSpDash_Back')
+            HitOrBlockCancel('AirSpDash_AntiLand')
+
+@Subroutine
+def SpDash_DoNotBeginCancel():
+    if Unknown23145('Shot'):
+        Unknown30068(1)
+    if Unknown23145('AttackAndShotB'):
+        Unknown30068(1)
+    if Unknown23145('MultiAssault'):
+        Unknown30068(1)
+    if Unknown23145('AirRolling_A'):
+        Unknown30068(1)
+    if Unknown23145('AirRolling_B'):
+        Unknown30068(1)
+    if Unknown23145('AirRolling_Ex'):
+        Unknown30068(1)
 
 @Subroutine
 def DeriveInput_Hasei_SpDash():
@@ -2302,6 +2348,7 @@ def SpDash_Front():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         callSubroutine('SpDashInit')
+        callSubroutine('SpDash_DoNotBeginCancel')
         AttackP1(80)
         GroundedHitstunAnimation(12)
         AirHitstunAnimation(12)
@@ -2323,38 +2370,38 @@ def SpDash_Front():
     callSubroutine('DeriveInput_Hasei_SpDash')
     Unknown14074('Hasei_SpDash_Front')
     Unknown14074('Hasei_AirSpDash_Front')
-    sprite('rrb400_03', 3)	# 12-14
+    sprite('rrb400_03', 2)	# 12-13
     Unknown1019(600)
     Unknown3001(128)
     Unknown3004(-20)
     SFX_3('rrbse_08')
-    sprite('rrb400_02', 3)	# 15-17
-    sprite('rrb400_03', 3)	# 18-20
-    sprite('rrb400_04', 3)	# 21-23
+    sprite('rrb400_02', 2)	# 14-15
+    sprite('rrb400_03', 2)	# 16-17
+    sprite('rrb400_04', 2)	# 18-19
     physicsXImpulse(20000)
     Unknown2017(1)
     Unknown3001(128)
     Unknown3004(20)
-    sprite('rrb400_05', 3)	# 24-26
-    sprite('rrb400_06', 2)	# 27-28
+    sprite('rrb400_05', 3)	# 20-22
+    sprite('rrb400_06', 2)	# 23-24
     Unknown8007(100, 1, 1)
     Unknown3001(255)
     Unknown3004(0)
     callSubroutine('DeriveTiming_Hasei_SpDash')
-    sprite('rrb400_06', 2)	# 29-30
+    sprite('rrb400_06', 2)	# 25-26
     Unknown21012('727262343030506574616c45666600000000000000000000000000000000000020000000')
     Unknown1019(80)
     SFX_3('rrbse_01')
-    sprite('rrb400_07', 2)	# 31-32
-    Unknown1019(80)
-    sprite('rrb400_07', 2)	# 33-34
-    GFX_0('rrbCaseEff', 0)
+    sprite('rrb400_07', 2)	# 27-28
     Unknown1019(80)
     callSubroutine('DeriveClear_Hasei_SpDash')
-    sprite('rrb400_08', 2)	# 35-36
+    sprite('rrb400_07', 2)	# 29-30
+    GFX_0('rrbCaseEff', 0)
+    Unknown1019(80)
+    sprite('rrb400_08', 2)	# 31-32
     Unknown1019(80)
     Unknown8010(100, 1, 1)
-    sprite('rrb400_08', 2)	# 37-38
+    sprite('rrb400_08', 2)	# 33-34
     Unknown1084(1)
 
 @State
@@ -2363,6 +2410,7 @@ def SpDash_Back():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         callSubroutine('SpDashInit')
+        callSubroutine('SpDash_DoNotBeginCancel')
         AttackP1(80)
         GroundedHitstunAnimation(12)
         AirHitstunAnimation(12)
@@ -2382,14 +2430,14 @@ def SpDash_Back():
     callSubroutine('DeriveInput_Hasei_SpDash')
     Unknown14074('Hasei_SpDash_Back')
     Unknown14074('Hasei_AirSpDash_Back')
-    sprite('rrb401_03', 3)	# 12-14
+    sprite('rrb401_03', 2)	# 12-13
     Unknown1019(600)
     Unknown3001(128)
     Unknown3004(-20)
     SFX_3('rrbse_08')
-    sprite('rrb401_02', 3)	# 15-17
-    sprite('rrb401_03', 3)	# 18-20
-    sprite('rrb401_04', 3)	# 21-23
+    sprite('rrb401_02', 2)	# 14-15
+    sprite('rrb401_03', 2)	# 16-17
+    sprite('rrb401_04', 2)	# 18-19
     physicsXImpulse(-6000)
     physicsYImpulse(8000)
     setGravity(2000)
@@ -2397,17 +2445,18 @@ def SpDash_Back():
     Unknown3001(128)
     Unknown3004(20)
     callSubroutine('DeriveTiming_Hasei_SpDash')
-    sprite('rrb401_05', 3)	# 24-26
+    sprite('rrb401_05', 3)	# 20-22
     Unknown21012('727262343031506574616c45666600000000000000000000000000000000000020000000')
     SFX_3('rrbse_01')
-    sprite('rrb401_06', 3)	# 27-29
-    sprite('rrb401_07', 32767)	# 30-32796
+    sprite('rrb401_06', 3)	# 23-25
+    sprite('rrb401_07', 32767)	# 26-32792
     sendToLabelUpon(2, 9)
     label(9)
-    sprite('rrb401_08', 4)	# 32797-32800
+    sprite('rrb401_08', 4)	# 32793-32796
+    callSubroutine('DeriveClear_Hasei_SpDash')
     Unknown1019(80)
     Unknown8000(100, 1, 1)
-    sprite('rrb401_09', 4)	# 32801-32804
+    sprite('rrb401_09', 4)	# 32797-32800
     GFX_0('rrbCaseEff', 0)
     Unknown1019(80)
 
@@ -2417,6 +2466,7 @@ def SpDash_AntiAir():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         callSubroutine('SpDashInit')
+        callSubroutine('SpDash_DoNotBeginCancel')
         AttackP1(80)
         GroundedHitstunAnimation(11)
         AirHitstunAnimation(11)
@@ -2426,12 +2476,12 @@ def SpDash_AntiAir():
         Unknown9190(1)
         Unknown11099(1)
         Unknown11056(0)
-    sprite('rrb402_00', 3)	# 1-3
-    sprite('rrb402_01', 3)	# 4-6
+    sprite('rrb402_00', 2)	# 1-2
+    sprite('rrb402_01', 2)	# 3-4
     Unknown8003(100, 1, 1)
-    sprite('rrb402_02', 3)	# 7-9
+    sprite('rrb402_02', 3)	# 5-7
     GFX_0('rrb402PetalEff', 0)
-    sprite('rrb402_03ex', 3)	# 10-12	 **attackbox here**
+    sprite('rrb402_03ex', 3)	# 8-10	 **attackbox here**
     GFX_0('rrb402MuzzleEff', 0)
     physicsXImpulse(5000)
     physicsYImpulse(4000)
@@ -2440,13 +2490,13 @@ def SpDash_AntiAir():
     Unknown7006('rrb205_1', 100, 845312626, 845100336, 0, 0, 100, 845312626, 811545904, 0, 0, 100, 0, 0, 0, 0, 0)
     callSubroutine('DeriveInput_Hasei_SpDash')
     Unknown14074('Hasei_SpDash_AntiAir')
-    sprite('rrb402_03', 10)	# 13-22
+    sprite('rrb402_03', 5)	# 11-15
     Unknown1019(650)
     YAccel(650)
     Unknown3001(128)
     Unknown3004(-20)
     SFX_3('rrbse_08')
-    sprite('rrb402_04', 3)	# 23-25
+    sprite('rrb402_04', 3)	# 16-18
     Unknown1019(80)
     Unknown1028(-400)
     YAccel(80)
@@ -2454,22 +2504,23 @@ def SpDash_AntiAir():
     Unknown2017(1)
     Unknown3001(128)
     Unknown3004(20)
-    sprite('rrb402_05', 3)	# 26-28
+    sprite('rrb402_05', 3)	# 19-21
     Unknown1019(80)
     YAccel(80)
     callSubroutine('DeriveTiming_Hasei_SpDash')
-    sprite('rrb402_06', 3)	# 29-31
+    sprite('rrb402_06', 3)	# 22-24
     Unknown21012('727262343032506574616c45666600000000000000000000000000000000000020000000')
     Unknown1019(80)
     YAccel(80)
     SFX_3('rrbse_01')
-    sprite('rrb402_07', 3)	# 32-34
+    sprite('rrb402_07', 2)	# 25-26
+    callSubroutine('DeriveClear_Hasei_SpDash')
     Unknown1019(80)
     YAccel(80)
-    sprite('rrb402_08', 3)	# 35-37
+    sprite('rrb402_08', 2)	# 27-28
     Unknown1019(80)
     YAccel(80)
-    sprite('rrb402_09', 3)	# 38-40
+    sprite('rrb402_09', 2)	# 29-30
     GFX_0('rrbCaseEff', 0)
     Unknown1019(80)
     YAccel(80)
@@ -2480,6 +2531,7 @@ def AirSpDash_Front():
     def upon_IMMEDIATE():
         Unknown17003()
         callSubroutine('SpDashInit')
+        callSubroutine('SpDash_DoNotBeginCancel')
         AttackP1(80)
         GroundedHitstunAnimation(12)
         AirHitstunAnimation(12)
@@ -2504,32 +2556,33 @@ def AirSpDash_Front():
     callSubroutine('DeriveInput_Hasei_SpDash')
     Unknown14074('Hasei_SpDash_Front')
     Unknown14074('Hasei_AirSpDash_Front')
-    sprite('rrb400_03', 3)	# 12-14
+    sprite('rrb400_03', 2)	# 12-13
     Unknown1019(600)
     Unknown3001(128)
     Unknown3004(-20)
     SFX_3('rrbse_08')
-    sprite('rrb400_02', 3)	# 15-17
-    sprite('rrb400_03', 3)	# 18-20
-    sprite('rrb400_04', 3)	# 21-23
+    sprite('rrb400_02', 2)	# 14-15
+    sprite('rrb400_03', 2)	# 16-17
+    sprite('rrb400_04', 2)	# 18-19
     physicsXImpulse(20000)
     physicsYImpulse(8000)
     setGravity(1600)
     Unknown2017(1)
     Unknown3001(128)
     Unknown3004(20)
-    sprite('rrb400_11', 3)	# 24-26
-    sprite('rrb400_12', 3)	# 27-29
+    sprite('rrb400_11', 3)	# 20-22
+    sprite('rrb400_12', 3)	# 23-25
     Unknown3001(255)
     Unknown3004(0)
     Unknown1019(80)
     callSubroutine('DeriveTiming_Hasei_SpDash')
-    sprite('rrb400_13', 3)	# 30-32
+    sprite('rrb400_13', 3)	# 26-28
+    callSubroutine('DeriveClear_Hasei_SpDash')
     GFX_0('rrbCaseEff', 0)
     Unknown21012('727262343030506574616c45666600000000000000000000000000000000000020000000')
     SFX_3('rrbse_01')
     Unknown1019(80)
-    sprite('rrb400_14', 3)	# 33-35
+    sprite('rrb400_14', 3)	# 29-31
     Unknown1019(80)
 
 @State
@@ -2538,6 +2591,7 @@ def AirSpDash_Back():
     def upon_IMMEDIATE():
         Unknown17003()
         callSubroutine('SpDashInit')
+        callSubroutine('SpDash_DoNotBeginCancel')
         AttackP1(80)
         GroundedHitstunAnimation(12)
         AirHitstunAnimation(12)
@@ -2560,14 +2614,14 @@ def AirSpDash_Back():
     callSubroutine('DeriveInput_Hasei_SpDash')
     Unknown14074('Hasei_SpDash_Back')
     Unknown14074('Hasei_AirSpDash_Back')
-    sprite('rrb401_03', 3)	# 10-12
+    sprite('rrb401_03', 2)	# 10-11
     Unknown1019(600)
     Unknown3001(128)
     Unknown3004(-20)
     SFX_3('rrbse_08')
-    sprite('rrb401_02', 3)	# 13-15
-    sprite('rrb401_03', 3)	# 16-18
-    sprite('rrb401_04', 6)	# 19-24
+    sprite('rrb401_02', 2)	# 12-13
+    sprite('rrb401_03', 2)	# 14-15
+    sprite('rrb401_04', 5)	# 16-20
     physicsXImpulse(-4000)
     physicsYImpulse(12000)
     setGravity(2000)
@@ -2575,13 +2629,14 @@ def AirSpDash_Back():
     Unknown3001(128)
     Unknown3004(20)
     callSubroutine('DeriveTiming_Hasei_SpDash')
-    sprite('rrb401_05', 3)	# 25-27
+    sprite('rrb401_05', 3)	# 21-23
     Unknown21012('727262343031506574616c45666600000000000000000000000000000000000020000000')
     SFX_3('rrbse_01')
-    sprite('rrb401_06', 3)	# 28-30
-    sprite('rrb401_11', 3)	# 31-33
-    sprite('rrb401_12', 3)	# 34-36
-    sprite('rrb401_13', 3)	# 37-39
+    sprite('rrb401_06', 3)	# 24-26
+    sprite('rrb401_11', 3)	# 27-29
+    callSubroutine('DeriveClear_Hasei_SpDash')
+    sprite('rrb401_12', 3)	# 30-32
+    sprite('rrb401_13', 3)	# 33-35
     GFX_0('rrbCaseEff', 0)
 
 @State
@@ -2590,6 +2645,7 @@ def AirSpDash_AntiLand():
     def upon_IMMEDIATE():
         Unknown17003()
         callSubroutine('SpDashInit')
+        callSubroutine('SpDash_DoNotBeginCancel')
         AttackP1(80)
         GroundedHitstunAnimation(13)
         AirHitstunAnimation(13)
@@ -2624,8 +2680,8 @@ def AirSpDash_AntiLand():
     callSubroutine('DeriveInput_Hasei_SpDash')
     Unknown14074('Hasei_AirSpDash_AntiLand')
     sprite('rrb403_04', 3)	# 13-15
-    Unknown1019(900)
-    YAccel(900)
+    Unknown1019(1100)
+    YAccel(1100)
     Unknown3001(128)
     Unknown3004(-20)
     SFX_3('rrbse_08')
@@ -2634,7 +2690,7 @@ def AirSpDash_AntiLand():
     sprite('rrb403_04', 3)	# 19-21
     gotoLabel(0)
     label(9)
-    sprite('rrb403_05', 8)	# 22-29
+    sprite('rrb403_05', 6)	# 22-27
     Unknown1019(20)
     YAccel(0)
     Unknown1039(0)
@@ -2643,14 +2699,15 @@ def AirSpDash_AntiLand():
     Unknown3004(20)
     Unknown8000(100, 1, 1)
     callSubroutine('DeriveTiming_Hasei_SpDash')
-    sprite('rrb403_06', 3)	# 30-32
+    sprite('rrb403_06', 2)	# 28-29
+    callSubroutine('DeriveClear_Hasei_SpDash')
     GFX_0('rrbCaseEff', 0)
     Unknown21012('727262343033506574616c45666600000000000000000000000000000000000020000000')
     SFX_3('rrbse_01')
     Unknown1019(80)
-    sprite('rrb403_07', 3)	# 33-35
+    sprite('rrb403_07', 2)	# 30-31
     Unknown1019(80)
-    sprite('rrb403_08', 3)	# 36-38
+    sprite('rrb403_08', 2)	# 32-33
     Unknown1019(80)
     Unknown8010(100, 1, 1)
 
@@ -2714,6 +2771,8 @@ def AttackAndShotB():
         PushbackX(44800)
         Unknown9016(1)
         Unknown11050('020000007272624869744566665f536c6173680000000000000000000000000000000000')
+        callSubroutine('SpDash_Hasei')
+        callSubroutine('SpDash_ShotHIT')
     sprite('rrb404_00', 3)	# 1-3
     sprite('rrb404_01', 3)	# 4-6
     sprite('rrb404_02', 3)	# 7-9
@@ -2856,11 +2915,12 @@ def AirRolling_A():
         Unknown30055('400d03003200000000000000')
         Unknown11068(1)
         clearUponHandler(2)
-        sendToLabelUpon(2, 9)
     sprite('rrb408_00', 3)	# 1-3
     sprite('rrb408_01', 3)	# 4-6
     physicsXImpulse(5000)
     physicsYImpulse(20000)
+    Unknown1043()
+    sendToLabelUpon(2, 9)
     sprite('rrb408_02', 3)	# 7-9
     sprite('rrb408_03', 3)	# 10-12
     SFX_3('rrbse_04')
@@ -2893,6 +2953,8 @@ def AirRolling_A():
     Unknown26('rrb408PetalEff')
     Unknown26('rrb408Eff')
     Unknown30068(1)
+    callSubroutine('SpDash_Hasei')
+    callSubroutine('SpDash_ShotHIT')
     sprite('rrb409_01', 4)	# 32-35
     sprite('rrb409_02', 4)	# 36-39
     sprite('rrb409_03', 4)	# 40-43
@@ -2934,12 +2996,13 @@ def AirRolling_B():
         Unknown30055('400d03003200000000000000')
         Unknown11068(1)
         clearUponHandler(2)
-        sendToLabelUpon(2, 9)
     sprite('rrb408_00', 3)	# 1-3
     sprite('rrb408_01', 3)	# 4-6
     physicsXImpulse(5000)
     physicsYImpulse(22000)
     Unknown1028(400)
+    Unknown1043()
+    sendToLabelUpon(2, 9)
     sprite('rrb408_02', 3)	# 7-9
     sprite('rrb408_03', 3)	# 10-12
     SFX_3('rrbse_04')
@@ -2972,6 +3035,8 @@ def AirRolling_B():
     Unknown26('rrb408PetalEff')
     Unknown26('rrb408Eff')
     Unknown30068(1)
+    callSubroutine('SpDash_Hasei')
+    callSubroutine('SpDash_ShotHIT')
     sprite('rrb409_01', 4)	# 32-35
     sprite('rrb409_02', 4)	# 36-39
     sprite('rrb409_03', 4)	# 40-43
@@ -3057,6 +3122,8 @@ def AirRolling_Ex():
     Unknown26('rrb408PetalEff')
     Unknown26('rrb408Eff')
     Unknown30068(1)
+    callSubroutine('SpDash_Hasei')
+    callSubroutine('SpDash_ShotHIT')
     sprite('rrb409_01', 4)	# 32-35
     sprite('rrb409_02', 4)	# 36-39
     sprite('rrb409_03', 4)	# 40-43
@@ -3085,6 +3152,7 @@ def Shot():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
+        callSubroutine('SpDash_ShotHIT')
     sprite('rrb407_00', 3)	# 1-3
     sprite('rrb407_01', 3)	# 4-6
     sprite('rrb407_02', 4)	# 7-10
@@ -3124,6 +3192,8 @@ def MultiAssault():
         Unknown30065(0)
         Unknown11091(10)
         sendToLabelUpon(2, 9)
+        callSubroutine('SpDash_Hasei')
+        callSubroutine('SpDash_ShotHIT')
     sprite('rrb406_00', 2)	# 1-2
     teleportRelativeX(30000)
     sprite('rrb406_01', 1)	# 3-3
@@ -3215,6 +3285,7 @@ def UltimateAssault():
         Unknown11050('020000007272624869744566665f536c6173680000000000000000000000000000000000')
         Unknown11064(1)
         Unknown11069('UltimateAssault_AddAtk')
+        Unknown2073(1)
         Unknown1084(1)
 
         def upon_78():
@@ -3413,6 +3484,7 @@ def UltimateAssaultOD():
         Unknown11064(1)
         Unknown11069('UltimateAssaultOD_AddAtk')
         Unknown9001(5)
+        Unknown2073(1)
         Unknown1084(1)
 
         def upon_78():
@@ -3599,7 +3671,7 @@ def UltimateDance():
         Unknown23055('')
         AttackLevel_(4)
         Damage(1200)
-        Unknown11091(15)
+        Unknown11091(14)
         AttackP2(60)
         Unknown11092(1)
         AirPushbackX(10000)
@@ -3612,6 +3684,11 @@ def UltimateDance():
         Unknown11056(0)
         Unknown11064(1)
         Unknown1084(1)
+
+        def upon_78():
+            Unknown2037(1)
+            setInvincible(0)
+            Unknown22008(60)
     sprite('rrb430_00', 4)	# 1-4
     setInvincible(1)
     Unknown1045(10000)
@@ -3637,7 +3714,8 @@ def UltimateDance():
     sprite('rrb430_08', 3)	# 78-80	 **attackbox here**
     Unknown1084(1)
     sprite('rrb430_09', 3)	# 81-83
-    setInvincible(0)
+    if (not SLOT_2):
+        setInvincible(0)
     teleportRelativeX(40000)
     SFX_3('rrbse_03')
     sprite('rrb430_10', 3)	# 84-86	 **attackbox here**
@@ -3676,11 +3754,14 @@ def UltimateDance():
     AirPushbackX(8000)
     AirPushbackY(32000)
     Unknown11072(1, 120000, 0)
+    clearUponHandler(78)
 
     def upon_78():
         clearUponHandler(78)
         sendToLabel(0)
         Unknown11069('UltimateDance')
+        Unknown2037(1)
+        setInvincible(1)
     sprite('rrb430_17', 5)	# 126-130
     clearUponHandler(78)
     Unknown21012('727262343330456666000000000000000000000000000000000000000000000029000000')
@@ -3735,7 +3816,7 @@ def UltimateDance():
     tag_voice(0, 'rrb252_1', 'rrb252_2', 'rrb252_0', '')
     Unknown2015(-1)
     RefreshMultihit()
-    Damage(3600)
+    Damage(4700)
     GroundedHitstunAnimation(10)
     AirHitstunAnimation(10)
     AirPushbackX(2000)
@@ -3769,7 +3850,7 @@ def UltimateDanceOD():
         Unknown23055('')
         AttackLevel_(4)
         Damage(1200)
-        Unknown11091(15)
+        Unknown11091(13)
         AttackP2(60)
         Unknown11092(1)
         AirPushbackX(10000)
@@ -3785,6 +3866,9 @@ def UltimateDanceOD():
         def upon_78():
             Unknown4047(9, 9, 9)
             Unknown4045('72726265663433305f6869745f706574616c000000000000000000000000000066000000')
+            Unknown2037(1)
+            setInvincible(0)
+            Unknown22008(60)
         Unknown1084(1)
     sprite('rrb430_00', 4)	# 1-4
     setInvincible(1)
@@ -3811,7 +3895,8 @@ def UltimateDanceOD():
     sprite('rrb430_08', 3)	# 78-80	 **attackbox here**
     Unknown1084(1)
     sprite('rrb430_09', 3)	# 81-83
-    setInvincible(0)
+    if (not SLOT_2):
+        setInvincible(0)
     teleportRelativeX(40000)
     SFX_3('rrbse_03')
     sprite('rrb430_10', 3)	# 84-86	 **attackbox here**
@@ -3882,11 +3967,14 @@ def UltimateDanceOD():
     AirPushbackX(8000)
     AirPushbackY(42000)
     Unknown11072(1, 120000, 0)
+    clearUponHandler(78)
 
     def upon_78():
         clearUponHandler(78)
         sendToLabel(0)
         Unknown11069('UltimateDanceOD')
+        Unknown2037(1)
+        setInvincible(1)
     sprite('rrb430_17', 5)	# 186-190
     clearUponHandler(78)
     Unknown21012('7272623433304566664f4400000000000000000000000000000000000000000029000000')
@@ -3940,7 +4028,7 @@ def UltimateDanceOD():
     tag_voice(0, 'rrb252_1', 'rrb252_2', 'rrb252_0', '')
     Unknown2015(-1)
     RefreshMultihit()
-    Damage(3600)
+    Damage(4100)
     GroundedHitstunAnimation(10)
     AirHitstunAnimation(10)
     AirPushbackX(2000)
@@ -4669,6 +4757,7 @@ def AN_CmnActChangePartnerDDExe():
         Unknown11064(1)
         Unknown11069('UltimateAssault_AddAtk')
         Unknown30063(1)
+        Unknown2073(1)
         Unknown1084(1)
 
         def upon_78():
@@ -4863,6 +4952,7 @@ def AN_CmnActChangePartnerDDODExe():
         Unknown11069('UltimateAssaultOD_AddAtk')
         Unknown9001(5)
         Unknown30063(1)
+        Unknown2073(1)
         Unknown1084(1)
 
         def upon_78():

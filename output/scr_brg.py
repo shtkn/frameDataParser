@@ -93,6 +93,10 @@ def MatchInit():
     Unknown15014(3000)
     Unknown14015(0, 350000, -500000, 80000, 500, 1)
     Move_EndRegister()
+    Move_Register('ShortDash', 0x1)
+    Move_Input_(0xda)
+    Unknown14005(1)
+    Move_EndRegister()
     Move_Register('NmlAtkThrow', 0x5d)
     Unknown15010()
     Unknown15013(1)
@@ -2168,32 +2172,51 @@ def CmnActChangePartnerAssistAtk_B():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-    sprite('rg408_00', 1)	# 1-1
-    sprite('rg408_01', 1)	# 2-2
-    sprite('rg408_02', 1)	# 3-3
-    Unknown7007('6272673230375f300000000000000000640000006272673230375f310000000000000000640000006272673230375f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('rg408_03', 1)	# 4-4
-    sprite('rg408_04', 1)	# 5-5
-    sprite('rg408_05', 1)	# 6-6
-    sprite('rg408_06', 1)	# 7-7
-    sprite('rg408_07', 1)	# 8-8
-    sprite('rg408_08', 2)	# 9-10
-    GFX_0('rgef408ShotASS', -1)
-    SFX_3('rgse_06')
-    sprite('rg408_09', 6)	# 11-16
-    sprite('rg408_10', 5)	# 17-21
-    SFX_3('rgse_21')
-    sprite('rg408_11', 5)	# 22-26
+        Unknown11097(100, 100)
+        Unknown11031(0)
+        AttackLevel_(4)
+        AttackP1(70)
+        AirPushbackX(4800)
+        AirPushbackY(45000)
+        AirUntechableTime(75)
+        AirHitstunAnimation(9)
+        GroundedHitstunAnimation(9)
+        Unknown9016(1)
+        Unknown11042(1)
+    sprite('rg213_02', 1)	# 1-1
+    sprite('rg213_03', 2)	# 2-3
+    SFX_0('006_swing_blade_2')
+    SFX_3('rgse_03')
+    Unknown7007('6272673130365f310000000000000000640000006272673130365f3200000000000000006400000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
+    sprite('rg213_04', 2)	# 4-5
+    sprite('rg213_05', 2)	# 6-7
+    teleportRelativeX(50000)
+    physicsXImpulse(9500)
+    physicsYImpulse(18000)
+    Unknown1043()
+    sendToLabelUpon(2, 9)
+    sprite('rg213_06', 2)	# 8-9
+    GFX_0('rgef213atk', -1)
+    sprite('rg213_07', 2)	# 10-11
+    sprite('rg213_08', 3)	# 12-14	 **attackbox here**
+    RefreshMultihit()
+    sprite('rg213_09', 2)	# 15-16
     Recovery()
-    sprite('rg408_12', 5)	# 27-31
-    sprite('rg408_13', 4)	# 32-35
-    sprite('rg408_14', 4)	# 36-39
-    sprite('rg408_15', 4)	# 40-43
-    sprite('rg408_16', 4)	# 44-47
-    sprite('rg408_17', 4)	# 48-51
-    sprite('rg408_18', 4)	# 52-55
-    sprite('rg408_19', 4)	# 56-59
-    sprite('rg408_20', 6)	# 60-65
+    sprite('rg213_10', 2)	# 17-18
+    Unknown1019(60)
+    sprite('rg213_11', 2)	# 19-20
+    sprite('rg213_12', 2)	# 21-22
+    sprite('rg213_13', 2)	# 23-24
+    sprite('rg213_14', 32767)	# 25-32791
+    label(9)
+    sprite('rg213_15', 5)	# 32792-32796
+    Recovery()
+    Unknown1084(1)
+    Unknown8000(100, 1, 1)
+    sprite('rg213_16', 5)	# 32797-32801
+    sprite('rg213_17', 4)	# 32802-32805
+    sprite('rg213_18', 4)	# 32806-32809
+    sprite('rg213_19', 4)	# 32810-32813
 
 @State
 def CmnActChangePartnerAssistAtk_D():
@@ -2401,6 +2424,7 @@ def BloodWeaponFinishDDD():
             Unknown13024(0)
             enterState('BloodWeaponFinishDDD_2nd')
             tag_voice(1, 'brg253_0', 'brg253_1', '', '')
+            Unknown2017(0)
 
         def upon_3():
             if SLOT_52:
@@ -2468,6 +2492,8 @@ def BloodWeaponFinishDDD_2nd():
         Unknown30063(1)
         Unknown30068(1)
         Unknown11069('BloodWeaponFinishDDD_3rd')
+        Unknown11023(1)
+        Unknown2017(0)
         Unknown11108('03000000')
     sprite('rg432_05ex01', 3)	# 1-3	 **attackbox here**
     StartMultihit()
@@ -2502,7 +2528,7 @@ def BloodWeaponFinishDDD_3rd():
         Unknown11097(100, 100)
         Unknown11031(0)
         AttackLevel_(4)
-        Damage(2000)
+        Damage(2500)
         AttackP2(100)
         AttackP1(100)
         Unknown11091(100)
@@ -2649,6 +2675,7 @@ def BloodWeaponFinishDDDOD():
             Unknown13024(0)
             enterState('BloodWeaponFinishDDDOD_2nd')
             tag_voice(1, 'brg253_0', 'brg253_1', '', '')
+            Unknown2017(0)
 
         def upon_3():
             if SLOT_52:
@@ -2716,6 +2743,8 @@ def BloodWeaponFinishDDDOD_2nd():
         Unknown11068(1)
         Unknown13024(0)
         Unknown2015(500)
+        Unknown11023(1)
+        Unknown2017(0)
         Unknown11108('03000000')
         Unknown11069('BloodWeaponFinishDDDOD_3rd')
     sprite('rg432_05ex01', 3)	# 1-3	 **attackbox here**
@@ -2753,7 +2782,7 @@ def BloodWeaponFinishDDDOD_3rd():
         Unknown11097(100, 100)
         Unknown11031(0)
         AttackLevel_(4)
-        Damage(2500)
+        Damage(3000)
         Unknown11091(100)
         AttackP1(100)
         AttackP2(100)
@@ -3179,7 +3208,7 @@ def NmlAtk5AA():
         HitOrBlockCancel('CmnActCrushAttack')
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
-        HitJumpCancel(1)
+        HitOrBlockJumpCancel(1)
     sprite('rg202_00', 1)	# 1-1
     sprite('rg202_01', 1)	# 2-2
     sprite('rg202_02', 2)	# 3-4
@@ -3786,6 +3815,7 @@ def NmlAtkAIR5C():
     loopRest()
     gotoLabel(0)
     label(1)
+    clearUponHandler(17)
     Unknown1084(1)
     Unknown8000(-1, 1, 1)
     Unknown8004(100, 1, 1)
@@ -4415,6 +4445,25 @@ def ShotA():
     sprite('rg408_20', 1)	# 51-51
 
 @State
+def ShortDash():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingNormal()
+        Unknown11063(1)
+    sprite('rg032_00', 3)	# 1-3
+    sprite('rg032_01', 3)	# 4-6
+    sprite('rg032_02', 4)	# 7-10
+    Unknown8009(0)
+    physicsXImpulse(30000)
+    Unknown1047(50000)
+    sprite('rg032_03', 4)	# 11-14
+    sprite('rg032_04', 4)	# 15-18
+    sprite('rg032_10', 4)	# 19-22
+    Unknown1019(50)
+    sprite('rg032_11', 4)	# 23-26
+    Unknown1019(10)
+
+@State
 def ShotB():
 
     def upon_IMMEDIATE():
@@ -4426,6 +4475,7 @@ def ShotB():
     sprite('rg408_03', 3)	# 7-9
     sprite('rg408_04', 3)	# 10-12
     sprite('rg408_05', 3)	# 13-15
+    Unknown14070('ShortDash')
     sprite('rg408_06', 2)	# 16-17
     sprite('rg408_07', 2)	# 18-19
     sprite('rg408_08', 2)	# 20-21
@@ -4436,12 +4486,14 @@ def ShotB():
     SFX_3('rgse_21')
     sprite('rg408_11', 5)	# 33-37
     Recovery()
+    Unknown14072('ShortDash')
     sprite('rg408_12', 5)	# 38-42
     sprite('rg408_13', 2)	# 43-44
     sprite('rg408_14', 2)	# 45-46
     sprite('rg408_15', 2)	# 47-48
     sprite('rg408_16', 2)	# 49-50
     sprite('rg408_17', 2)	# 51-52
+    Unknown14074('ShortDash')
     sprite('rg408_18', 2)	# 53-54
     sprite('rg408_19', 2)	# 55-56
     sprite('rg408_20', 1)	# 57-57
@@ -4534,7 +4586,9 @@ def ShotC_3rd():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         AttackLevel_(5)
-        AttackP1(80)
+        Damage(4200)
+        AttackP1(50)
+        AttackP2(100)
         Unknown30065(0)
         AirHitstunAnimation(13)
         GroundedHitstunAnimation(13)
@@ -4698,7 +4752,6 @@ def CmnActInvincibleAttackAir():
     tag_voice(1, 'brg202_0', 'brg202_1', 'brg202_2', '')
     SFX_0('006_swing_blade_2')
     SFX_3('rgse_03')
-    setInvincible(1)
     sprite('rg402_01', 1)	# 2-2
     sprite('rg402_02', 1)	# 3-3
     sprite('rg402_03', 1)	# 4-4
@@ -4755,6 +4808,7 @@ def AntiAir2nd():
 
     def upon_IMMEDIATE():
         Unknown17025('')
+        Unknown30087(0)
         setInvincible(0)
         AttackLevel_(4)
         Damage(1000)
@@ -4825,6 +4879,7 @@ def AntiAir3rdTate():
 
     def upon_IMMEDIATE():
         Unknown17025('')
+        Unknown30087(0)
         setInvincible(0)
         Unknown11097(100, 100)
         Unknown11031(0)
@@ -5459,6 +5514,7 @@ def JumpAssault():
         AttackLevel_(5)
         Damage(2500)
         AttackP1(80)
+        AttackP2(80)
         Unknown30065(0)
         GroundedHitstunAnimation(11)
         AirHitstunAnimation(11)
@@ -5481,8 +5537,8 @@ def JumpAssault():
 
         def upon_LANDING():
             sendToLabel(2)
-    sprite('rg412_00', 5)	# 1-5
-    sprite('rg412_01', 2)	# 6-7
+    sprite('rg412_00', 3)	# 1-3
+    sprite('rg412_01', 2)	# 4-5
     Unknown23087(50000)
     physicsXImpulse(28000)
     Unknown1007(50000)
@@ -5493,33 +5549,33 @@ def JumpAssault():
     Unknown23125('')
     Unknown2058(-5000)
     Unknown7007('6272673230395f300000000000000000640000006272673230395f310000000000000000640000006272673230395f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('rg412_02', 2)	# 8-9
-    sprite('rg412_03', 2)	# 10-11
-    sprite('rg412_04', 2)	# 12-13
+    sprite('rg412_02', 2)	# 6-7
+    sprite('rg412_03', 2)	# 8-9
+    sprite('rg412_04', 2)	# 10-11
     Unknown2015(200)
-    sprite('rg412_05', 4)	# 14-17
-    sprite('rg412_06', 2)	# 18-19
+    sprite('rg412_05', 3)	# 12-14
+    sprite('rg412_06', 2)	# 15-16
     GFX_0('rgef412effpos', -1)
-    sprite('rg412_07', 2)	# 20-21
+    sprite('rg412_07', 2)	# 17-18
     SFX_0('010_swing_sword_2')
     SFX_3('rgse_03')
-    sprite('rg412_08', 2)	# 22-23
-    sprite('rg412_09ex', 4)	# 24-27	 **attackbox here**
+    sprite('rg412_08', 2)	# 19-20
+    sprite('rg412_09ex', 4)	# 21-24	 **attackbox here**
     Unknown2015(-1)
-    sprite('rg412_10', 2)	# 28-29
+    sprite('rg412_10', 2)	# 25-26
     Unknown1019(50)
     Recovery()
-    sprite('rg412_11', 2)	# 30-31
-    sprite('rg412_12', 2)	# 32-33
-    sprite('rg412_13', 32767)	# 34-32800
+    sprite('rg412_11', 2)	# 27-28
+    sprite('rg412_12', 2)	# 29-30
+    sprite('rg412_13', 32767)	# 31-32797
     label(2)
-    sprite('rg412_14', 4)	# 32801-32804
+    sprite('rg412_14', 4)	# 32798-32801
     Unknown1084(1)
     Unknown8000(-1, 1, 1)
     Unknown23087(-1)
-    sprite('rg024_02', 4)	# 32805-32808
-    sprite('rg024_03', 3)	# 32809-32811
-    sprite('rg024_04', 3)	# 32812-32814
+    sprite('rg024_02', 4)	# 32802-32805
+    sprite('rg024_03', 3)	# 32806-32808
+    sprite('rg024_04', 3)	# 32809-32811
 
 @State
 def AirJumpAssault():
@@ -5531,17 +5587,20 @@ def AirJumpAssault():
         AttackLevel_(5)
         Damage(2500)
         AttackP1(80)
+        AttackP2(80)
         Unknown30065(0)
         GroundedHitstunAnimation(11)
         AirHitstunAnimation(11)
-        AirPushbackX(30000)
-        AirPushbackY(-40000)
+        AirPushbackX(10000)
+        AirPushbackY(-80000)
         AirUntechableTime(60)
-        Unknown9310(1)
         Hitstop(16)
         Unknown11031(0)
         Unknown9016(1)
         Unknown11091(10)
+        Unknown9118(40)
+        Unknown9190(1)
+        YImpluseBeforeWallbounce(0)
         clearUponHandler(2)
 
         def upon_LANDING():
@@ -5580,12 +5639,12 @@ def AirJumpAssault():
     sprite('rg412_12', 4)	# 31-34
     sprite('rg412_13', 32767)	# 35-32801
     label(2)
-    sprite('rg412_14', 4)	# 32802-32805
+    sprite('rg412_14', 3)	# 32802-32804
     Unknown1084(1)
     Unknown8000(-1, 1, 1)
-    sprite('rg024_02', 4)	# 32806-32809
-    sprite('rg024_03', 3)	# 32810-32812
-    sprite('rg024_04', 3)	# 32813-32815
+    sprite('rg024_02', 3)	# 32805-32807
+    sprite('rg024_03', 2)	# 32808-32809
+    sprite('rg024_04', 2)	# 32810-32811
 
 @State
 def UltimateAssault():
@@ -5694,7 +5753,7 @@ def UltimateAssault():
     RefreshMultihit()
     Unknown11097(100, 100)
     Unknown11031(0)
-    Damage(4000)
+    Damage(5800)
     AirHitstunAnimation(13)
     GroundedHitstunAnimation(13)
     PushbackX(30400)
@@ -5704,6 +5763,7 @@ def UltimateAssault():
     Unknown9190(0)
     YImpluseBeforeWallbounce(1300)
     Unknown11097(300, 300)
+    Unknown11091(18)
     SFX_0('209_down_normal_0')
     SFX_0('209_down_normal_1')
     SFX_0('016_explode_2')
@@ -5836,7 +5896,7 @@ def UltimateAssault_OD():
     RefreshMultihit()
     Unknown11097(100, 100)
     Unknown11031(0)
-    Damage(4000)
+    Damage(5600)
     AirHitstunAnimation(13)
     GroundedHitstunAnimation(13)
     PushbackX(30400)
@@ -5846,6 +5906,7 @@ def UltimateAssault_OD():
     Unknown9190(0)
     YImpluseBeforeWallbounce(1300)
     Unknown11097(200, 200)
+    Unknown11091(15)
     SFX_0('209_down_normal_0')
     SFX_0('209_down_normal_1')
     SFX_0('016_explode_2')
@@ -5913,6 +5974,7 @@ def BloodWeaponFinish():
             clearUponHandler(78)
             Unknown13024(0)
             enterState('BloodWeaponFinish2nd')
+            Unknown2017(0)
 
         def upon_3():
             if SLOT_52:
@@ -5984,6 +6046,8 @@ def BloodWeaponFinish2nd():
         Unknown2015(500)
         Unknown30061(0)
         Unknown11069('BloodWeaponFinish3rd')
+        Unknown11023(1)
+        Unknown2017(0)
         Unknown11108('03000000')
     sprite('rg432_05ex01', 3)	# 1-3	 **attackbox here**
     StartMultihit()
@@ -6021,7 +6085,7 @@ def BloodWeaponFinish3rd():
         AttackLevel_(4)
         Damage(6000)
         AttackP2(60)
-        Unknown11091(20)
+        Unknown11091(29)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
         AirUntechableTime(100)
@@ -6164,6 +6228,7 @@ def BloodWeaponFinish_OD():
             clearUponHandler(78)
             Unknown13024(0)
             enterState('BloodWeaponFinish2nd_OD')
+            Unknown2017(0)
 
         def upon_3():
             if SLOT_52:
@@ -6234,6 +6299,8 @@ def BloodWeaponFinish2nd_OD():
         Unknown11068(1)
         Unknown13024(0)
         Unknown2015(500)
+        Unknown11023(1)
+        Unknown2017(0)
         Unknown11108('03000000')
     sprite('rg432_05ex01', 3)	# 1-3	 **attackbox here**
     StartMultihit()
@@ -6269,7 +6336,7 @@ def BloodWeaponFinish3rd_OD():
         AttackLevel_(4)
         Damage(7500)
         AttackP2(60)
-        Unknown11091(20)
+        Unknown11091(26)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
         AirUntechableTime(100)

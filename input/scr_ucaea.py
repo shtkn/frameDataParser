@@ -651,6 +651,15 @@ def RotationShot_Eff():
     sprite('Action_136_10', 2)
     Unknown23015(0)
     SLOT_51 = 1
+    sprite('Action_136_11', 3)
+    Unknown23027()
+    physicsXImpulse(-5000)
+    SFX_3('SE045')
+    sprite('Action_136_12', 3)
+    Unknown23027()
+    sprite('Action_136_13', 3)
+    Unknown23027()
+    loopRest()
     label(2)
     sprite('Action_136_11', 4)
     RefreshMultihit()
@@ -1187,16 +1196,17 @@ def PushUpShotTypeEx():
         Unknown9016(1)
         Unknown11084(1)
         Hitstop(0)
+        Unknown2073(1)
         Unknown11062(1)
         Unknown11068(1)
         Unknown23182(3)
+        Unknown2053(1)
         Unknown1086(22)
         teleportRelativeY(0)
 
         def upon_78():
             Unknown11064(1)
             GFX_0('PushUpShotExe', -1)
-            Unknown1087(22, 25)
             Unknown14()
 
         def upon_82():
@@ -1236,16 +1246,17 @@ def PushUpShotTypeEx_OD():
         Unknown9016(1)
         Unknown11084(1)
         Hitstop(0)
+        Unknown2073(1)
         Unknown11062(1)
         Unknown11068(1)
         Unknown23182(3)
+        Unknown2053(1)
         Unknown1086(22)
         teleportRelativeY(0)
 
         def upon_78():
             Unknown11064(1)
             GFX_0('PushUpShotExe', -1)
-            Unknown1087(22, 25)
             Unknown14()
 
         def upon_82():
@@ -1293,6 +1304,7 @@ def PushUpShotExe():
         Unknown11084(1)
         Unknown2019(1000)
         Unknown23182(3)
+        Unknown11023(1)
         Unknown11050('050000000000000000000000000000000000000000000000000000000000000000000000')
 
         def upon_78():
@@ -1312,6 +1324,7 @@ def PushUpShotExe():
             Unknown35()
             SLOT_11 = 0
     sprite('Action_185_08', 2)
+    Unknown1087(22, 25)
     GFX_0('PushUpShotDD_Clear', -1)
     sprite('Action_185_08', 2)
     StartMultihit()
@@ -1744,12 +1757,12 @@ def BloodAtk_RS():
         def upon_44():
             clearUponHandler(44)
             sendToLabel(1)
-    sprite('Action_147_01', 3)
-    sprite('Action_147_02', 3)
-    sprite('Action_147_03', 3)
-    sprite('Action_147_04', 3)
-    sprite('Action_147_05', 3)
-    sprite('Action_147_06', 3)
+    sprite('Action_147_01', 4)
+    sprite('Action_147_02', 4)
+    sprite('Action_147_03', 4)
+    sprite('Action_147_04', 4)
+    sprite('Action_147_05', 4)
+    sprite('Action_147_06', 4)
     physicsXImpulse(40000)
     Unknown1028(500)
     sprite('Action_147_09', 3)
@@ -1792,12 +1805,12 @@ def BloodAtk_RS_PS():
         def upon_44():
             clearUponHandler(44)
             sendToLabel(1)
-    sprite('Action_147_01', 3)
-    sprite('Action_147_02', 3)
-    sprite('Action_147_03', 3)
-    sprite('Action_147_04', 3)
-    sprite('Action_147_05', 3)
-    sprite('Action_147_06', 3)
+    sprite('Action_147_01', 4)
+    sprite('Action_147_02', 4)
+    sprite('Action_147_03', 4)
+    sprite('Action_147_04', 4)
+    sprite('Action_147_05', 4)
+    sprite('Action_147_06', 4)
     physicsXImpulse(40000)
     Unknown1028(500)
     sprite('Action_147_09', 3)
@@ -1825,7 +1838,7 @@ def BloodAtkInit_PU():
     Unknown2010()
     Unknown4011(3)
     AttackLevel_(3)
-    Damage(1000)
+    Damage(1500)
     AttackP2(80)
     Unknown11092(1)
     HitLow(2)
@@ -2116,6 +2129,7 @@ def UltimateShotFootEff():
         Unknown11091(15)
         Hitstop(0)
         Unknown9016(1)
+        Unknown2073(1)
         Unknown11064(1)
         HitLow(2)
         Unknown11032('40420f00ffffffff40420f00c0bdf0ff')
@@ -2218,13 +2232,14 @@ def UltimateShotAtkExe():
         Unknown9016(1)
         Hitstop(0)
         Unknown11001(0, 100, 100)
-        Unknown11091(15)
+        Unknown11091(20)
         Unknown11057(750)
         Unknown11064(1)
         Unknown9266(15)
-        Damage(500)
+        Damage(400)
         Unknown9154(90)
         AirUntechableTime(90)
+        Unknown30048(1)
         Unknown1086(22)
         Unknown1007(200000)
 
@@ -2271,7 +2286,7 @@ def UltimateShotAtkExe():
     elif (SLOT_51 == 2):
         pass
     elif (SLOT_51 == 3):
-        Damage(100)
+        Damage(300)
     Unknown1086(22)
     Unknown1007(200000)
     sprite('Action_244_01', 2)
@@ -2324,11 +2339,11 @@ def UltimateShotAtkFinish():
         AttackLevel_(4)
         Unknown9016(1)
         Hitstop(0)
-        Unknown11091(15)
+        Unknown11091(35)
         Unknown11057(750)
         Unknown11064(1)
         Unknown9266(15)
-        Damage(500)
+        Damage(580)
         AttackP2(100)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
@@ -2336,6 +2351,7 @@ def UltimateShotAtkFinish():
         AirPushbackY(35000)
         AirUntechableTime(90)
         Unknown11001(12, 12, 12)
+        Unknown30048(1)
         Unknown1086(22)
         Unknown1007(200000)
 
@@ -2351,15 +2367,18 @@ def UltimateShotAtkFinish():
                 clearUponHandler(43)
                 Unknown11001(10, 10, 10)
                 Unknown2037(1)
+                Unknown11091(26)
+                Damage(550)
             if (SLOT_48 == 2506):
                 clearUponHandler(43)
-                Damage(200)
+                Damage(100)
                 AttackP1(100)
                 AttackP2(100)
                 Unknown11091(100)
                 Unknown11001(10, 10, 10)
                 Unknown2037(1)
                 SLOT_51 = 1
+                SLOT_52 = 1
     sprite('Action_241_00', 3)
     SFX_3('SE_BigBomb')
     label(0)
@@ -2382,6 +2401,10 @@ def UltimateShotAtkFinish():
     if (not SLOT_51):
         Damage(2000)
         AttackP2(60)
+    if SLOT_51:
+        Damage(800)
+    if SLOT_52:
+        Damage(1000)
     Unknown11069('')
     Unknown11064(0)
     Unknown9266(0)

@@ -247,6 +247,7 @@ def PKA_PersonaA_Finish():
 
         def upon_11():
             sendToLabel(0)
+        Unknown23059(1)
     sprite('ta408_00', 2)	# 1-2
     SFX_3('airbackdash_l')
     Unknown2006()
@@ -327,6 +328,7 @@ def PKA_Persona5B():
         def upon_3():
             if (SLOT_18 >= 300):
                 sendToLabel(1)
+        Unknown23059(1)
     sprite('ta204_50', 3)	# 1-3
     GFX_1('taef_thunderbolt', 0)
     GFX_1('taef_thunderbolt', 1)
@@ -356,12 +358,14 @@ def PKA_Persona5B_Normal():
         callSubroutine('PKA_AttackInit')
         callSubroutine('PKA_Persona5B_ATK')
         callSubroutine('PKA_CheckWarp')
+        Unknown23059(1)
     sprite('ta204_04', 3)	# 1-3
     GFX_0('ta_5C_zanzoh', 100)
     SFX_3('slash_blade_fast')
     sprite('ta204_05', 3)	# 4-6	 **attackbox here**
     ScreenShake(20000, 20000)
     SFX_3('ka005')
+    Unknown4007(0)
     sprite('ta204_05', 20)	# 7-26	 **attackbox here**
     StartMultihit()
     sprite('keep', 32767)	# 27-32793
@@ -376,6 +380,7 @@ def PKA_Persona5B_Hold():
         callSubroutine('PKA_AttackInit')
         callSubroutine('PKA_Persona5B_ATK')
         callSubroutine('PKA_CheckWarp')
+        Unknown23059(1)
     sprite('ta204_01', 3)	# 1-3
     sprite('ta204_02', 3)	# 4-6
     sprite('ta204_03', 3)	# 7-9
@@ -385,6 +390,7 @@ def PKA_Persona5B_Hold():
     sprite('ta204_05', 3)	# 13-15	 **attackbox here**
     ScreenShake(20000, 20000)
     SFX_3('ka005')
+    Unknown4007(0)
     sprite('ta204_05', 20)	# 16-35	 **attackbox here**
     StartMultihit()
     sprite('keep', 32767)	# 36-32802
@@ -405,6 +411,7 @@ def PKA_Persona5B_Hold_Just():
         Unknown11001(0, 8, 8)
         Unknown9266(7)
         callSubroutine('PKA_CheckWarp')
+        Unknown23059(1)
     sprite('ta204_01', 3)	# 1-3
     sprite('ta204_02', 3)	# 4-6
     sprite('ta204_03', 3)	# 7-9
@@ -414,6 +421,7 @@ def PKA_Persona5B_Hold_Just():
     sprite('ta204_05', 3)	# 13-15	 **attackbox here**
     ScreenShake(20000, 20000)
     SFX_3('ka005')
+    Unknown4007(0)
     sprite('ta204_05', 20)	# 16-35	 **attackbox here**
     StartMultihit()
     sprite('keep', 32767)	# 36-32802
@@ -479,6 +487,7 @@ def PKA_Persona5B2nd():
         def upon_3():
             if (SLOT_18 >= 300):
                 sendToLabel(1)
+        Unknown23059(1)
     sprite('ta232_10', 3)	# 1-3
     Unknown2006()
     sprite('ta232_11', 2)	# 4-5
@@ -506,18 +515,22 @@ def PKA_Persona5B2nd_Hold():
         callSubroutine('PKA_AttackInit')
         callSubroutine('PKA_Persona5B2nd_ATK')
         callSubroutine('PKA_CheckWarp')
+        Unknown23059(1)
     sprite('ta232_00', 1)	# 1-1
     Unknown2006()
     physicsXImpulse(20000)
+    Unknown1028(60000)
     sprite('ta232_01', 1)	# 2-2
     sprite('ta232_02', 1)	# 3-3
     sprite('ta232_03', 1)	# 4-4	 **attackbox here**
     SFX_3('slash_blade_slow')
     physicsXImpulse(0)
+    Unknown1084(1)
     StartMultihit()
     sprite('ta232_05', 2)	# 5-6	 **attackbox here**
     Unknown23054('74613233325f303400000000000000000000000000000000000000000000000003000000')
     RefreshMultihit()
+    Unknown4007(0)
     sprite('ta232_05', 3)	# 7-9	 **attackbox here**
     StartMultihit()
     sprite('ta232_06', 5)	# 10-14
@@ -540,22 +553,27 @@ def PKA_Persona5B2nd_Hold_Just():
         Unknown11001(0, 8, 8)
         Unknown9266(7)
         callSubroutine('PKA_CheckWarp')
-    sprite('ta232_00', 2)	# 1-2
+        Unknown23059(1)
+    sprite('ta232_00', 1)	# 1-1
+    Unknown2006()
     physicsXImpulse(20000)
-    sprite('ta232_01', 2)	# 3-4
-    sprite('ta232_02', 2)	# 5-6
-    sprite('ta232_03', 2)	# 7-8	 **attackbox here**
+    Unknown1028(60000)
+    sprite('ta232_01', 1)	# 2-2
+    sprite('ta232_02', 1)	# 3-3
+    sprite('ta232_03', 1)	# 4-4	 **attackbox here**
     SFX_3('slash_blade_slow')
     physicsXImpulse(0)
+    Unknown1084(1)
     StartMultihit()
-    sprite('ta232_05', 2)	# 9-10	 **attackbox here**
+    sprite('ta232_05', 2)	# 5-6	 **attackbox here**
     Unknown23054('74613233325f303400000000000000000000000000000000000000000000000003000000')
     RefreshMultihit()
-    sprite('ta232_05', 3)	# 11-13	 **attackbox here**
+    Unknown4007(0)
+    sprite('ta232_05', 3)	# 7-9	 **attackbox here**
     StartMultihit()
-    sprite('ta232_06', 5)	# 14-18
-    sprite('ta232_07', 20)	# 19-38
-    sprite('keep', 32767)	# 39-32805
+    sprite('ta232_06', 5)	# 10-14
+    sprite('ta232_07', 20)	# 15-34
+    sprite('keep', 32767)	# 35-32801
     enterState('PersonaDeleteAndIdling')
 
 @State
@@ -606,6 +624,7 @@ def PKA_PersonaAir5C():
 
         def upon_56():
             sendToLabel(1)
+        Unknown23059(1)
     sprite('ta254_00', 3)	# 1-3
     label(0)
     sprite('ta254_01', 3)	# 4-6
@@ -631,24 +650,30 @@ def PKA_PersonaAir5C_ATK():
         Unknown9142(30)
         Unknown23078(1)
         Unknown11058('0100000000000000000000000000000000000000')
+        Unknown11001(0, 0, 12)
         Unknown2017(1)
         Unknown4007(3)
         Unknown2053(1)
         Unknown23022(1)
         callSubroutine('PKA_CheckWarp')
-    sprite('ta254_02', 5)	# 1-5
+        Unknown23059(1)
+
+        def upon_STATE_END():
+            Unknown23029(3, 2031, 0)
+    sprite('ta254_02', 3)	# 1-3
     Unknown4007(0)
     physicsXImpulse(20000)
     SFX_3('slash_blade_slow')
-    sprite('ta254_03', 2)	# 6-7
+    sprite('ta254_03', 2)	# 4-5
     physicsXImpulse(0)
-    sprite('ta254_04', 5)	# 8-12	 **attackbox here**
-    Unknown23022(0)
+    sprite('ta254_04', 5)	# 6-10	 **attackbox here**
     SFX_3('down_steal_m')
     GFX_0('taef_Air5C_Zanzoh', 100)
-    sprite('ta254_04', 20)	# 13-32	 **attackbox here**
+    sprite('ta254_04', 20)	# 11-30	 **attackbox here**
     StartMultihit()
-    sprite('keep', 32767)	# 33-32799
+    Unknown23022(0)
+    Unknown23029(3, 2031, 0)
+    sprite('keep', 32767)	# 31-32797
     enterState('PersonaDeleteAndIdling')
 
 @State
@@ -666,6 +691,7 @@ def PKA_Persona4Assist():
             SLOT_4 = 0
             SLOT_6 = 0
         callSubroutine('PKA_CheckWarp')
+        Unknown23059(1)
     sprite('ta205_00', 6)	# 1-6
     SLOT_4 = 1
     SLOT_6 = 1
@@ -1317,9 +1343,9 @@ def PKA_PersonaKurokoge_Exe():
     SFX_3('bomb_l')
     SFX_3('bonebroken_h')
     RefreshMultihit()
-    Damage(3200)
+    Damage(3700)
     if SLOT_7:
-        Damage(4200)
+        Damage(4700)
     AttackP2(60)
     Unknown30079(0)
     Unknown9346(1)
@@ -1354,9 +1380,9 @@ def PKA_PersonaKenkaOD():
         Unknown17012(2, 0, 0)
         callSubroutine('PKA_DDAttackInit')
         AttackLevel_(5)
-        Damage(1000)
+        Damage(1500)
         AttackP2(100)
-        Unknown11091(25)
+        Unknown11091(10)
         AirPushbackX(0)
         AirPushbackY(-30000)
         Unknown9310(30)
@@ -2149,8 +2175,8 @@ def ta_NageThunderOD():
         Unknown2011()
         Unknown17012(2, 0, 0)
         AttackLevel_(5)
-        Damage(1000)
-        Unknown11091(25)
+        Damage(1300)
+        Unknown11091(10)
         AttackP2(100)
         AirPushbackX(0)
         AirPushbackY(5000)

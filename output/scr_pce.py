@@ -49,6 +49,7 @@ def MatchInit():
     Move_AirGround_(0x3083)
     Unknown14005(1)
     Unknown14015(0, 150000, -150000, 180000, 1000, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('NmlAtk2A', 0x4)
     MoveMaxChainRepeat(2)
@@ -59,12 +60,14 @@ def MatchInit():
     Move_AirGround_(0x3083)
     MoveMaxChainRepeat(1)
     Unknown14015(0, 450000, -200000, 250000, 1000, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('NmlAtk5B2nd', 0x19)
     Unknown14005(1)
     MoveMaxChainRepeat(1)
     Move_AirGround_(0x3083)
     Unknown14015(0, 450000, -200000, 250000, 1000, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('NmlAtk2B', 0x16)
     MoveMaxChainRepeat(1)
@@ -91,10 +94,12 @@ def MatchInit():
     Move_Register('NmlAtkAIR5B', 0x22)
     Move_AirGround_(0x3083)
     Unknown14015(0, 250000, -250000, 150000, 1000, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('NmlAtkAIR5C', 0x34)
     Move_AirGround_(0x3083)
     Unknown14015(0, 450000, -300000, 450000, 1000, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('NmlAtkThrow', 0x5d)
     Unknown15010()
@@ -132,6 +137,7 @@ def MatchInit():
     Move_Input_(INPUT_PRESS_A)
     Unknown14005(1)
     Unknown14015(0, 150000, -150000, 180000, 500, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('DragonKickLand_NoutenHaseiB', INPUT_SPECIALMOVE)
     Move_AirGround_(0x2000)
@@ -140,6 +146,7 @@ def MatchInit():
     Unknown14005(1)
     Unknown14013('DragonKickLand_NoutenHasei')
     Unknown14015(0, 150000, -150000, 180000, 500, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('DragonKickLand_NoutenHaseiC', INPUT_SPECIALMOVE)
     Move_AirGround_(0x2000)
@@ -148,6 +155,7 @@ def MatchInit():
     Unknown14005(1)
     Unknown14013('DragonKickLand_NoutenHasei')
     Unknown14015(0, 150000, -150000, 180000, 500, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('AbaremakuriLandA', INPUT_SPECIALMOVE)
     Move_AirGround_(0x2000)
@@ -161,6 +169,7 @@ def MatchInit():
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_B)
     Unknown14015(0, 1200000, 100000, 300000, 100, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('DragonKickLandB_Hasei', INPUT_SPECIALMOVE)
     Move_AirGround_(0x3083)
@@ -169,6 +178,7 @@ def MatchInit():
     Unknown14005(1)
     Unknown14013('DragonKickLandB')
     Unknown14015(0, 1200000, 100000, 300000, 100, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('DragonKickLandEX', INPUT_SPECIALMOVE)
     Move_AirGround_(0x3083)
@@ -177,6 +187,7 @@ def MatchInit():
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_C)
     Unknown14015(0, 1400000, 100000, 400000, 100, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('DragonKickLandEX_Hasei', INPUT_SPECIALMOVE)
     Move_AirGround_(0x3083)
@@ -186,6 +197,7 @@ def MatchInit():
     Unknown14005(1)
     Unknown14013('DragonKickLandEX')
     Unknown14015(0, 1400000, 100000, 400000, 100, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('100inchPunchA', INPUT_SPECIALMOVE)
     Move_AirGround_(0x2000)
@@ -240,6 +252,7 @@ def MatchInit():
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_B)
     Unknown14015(0, 1200000, 100000, 500000, 300, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('DragonKickAirEX', INPUT_SPECIALMOVE)
     Move_AirGround_(0x3083)
@@ -248,6 +261,7 @@ def MatchInit():
     Move_Input_(INPUT_236)
     Move_Input_(INPUT_PRESS_C)
     Unknown14015(0, 1200000, 100000, 500000, 300, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('DashCancel', INPUT_SPECIALMOVE)
     Move_AirGround_(0x2000)
@@ -274,6 +288,7 @@ def MatchInit():
     Move_Input_(INPUT_236)
     Move_Input_(0xde)
     Unknown14015(0, 350000, -100000, 200000, 200, 0)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('UltimateGodHandOD', 0x68)
     Move_AirGround_(0x3083)
@@ -283,6 +298,7 @@ def MatchInit():
     Move_Input_(0xde)
     Move_AirGround_(0x3081)
     Unknown14015(0, 350000, -100000, 200000, 200, 0)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('UltimateCharge', 0x68)
     Move_AirGround_(0x2000)
@@ -306,6 +322,7 @@ def MatchInit():
     Move_Input_(INPUT_236)
     Move_Input_(0xde)
     Unknown14015(700000, 1500000, -400000, 400000, 200, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('UltimateAguneyasutoraOD_Far', 0x68)
     Move_AirGround_(0x3083)
@@ -315,6 +332,7 @@ def MatchInit():
     Move_Input_(0xde)
     Move_AirGround_(0x3081)
     Unknown14015(700000, 1500000, -400000, 400000, 200, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('UltimateAguneyasutora_Near', 0x68)
     Move_AirGround_(0x3083)
@@ -323,6 +341,7 @@ def MatchInit():
     Move_Input_(INPUT_214)
     Move_Input_(0xde)
     Unknown14015(300000, 1000000, -400000, 400000, 200, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('UltimateAguneyasutoraOD_Near', 0x68)
     Move_AirGround_(0x3083)
@@ -332,6 +351,7 @@ def MatchInit():
     Move_Input_(0xde)
     Move_AirGround_(0x3081)
     Unknown14015(300000, 1000000, -400000, 400000, 200, 50)
+    Move_AirGround_(0x300e)
     Move_EndRegister()
     Move_Register('AstralHeat', 0x69)
     Move_AirGround_(0x304a)
@@ -499,11 +519,11 @@ def OnFrameStep():
             Unknown23148('UltimateAguneyasutoraOD_Near')):
             if (not SLOT_114):
                 if (SLOT_59 == 1):
-                    SLOT_31 = (SLOT_31 + (-30))
+                    SLOT_31 = (SLOT_31 + (-150))
                 if (SLOT_59 == 2):
-                    SLOT_31 = (SLOT_31 + (-100))
+                    SLOT_31 = (SLOT_31 + (-150))
                 if (SLOT_59 == 3):
-                    SLOT_31 = (SLOT_31 + (-100))
+                    SLOT_31 = (SLOT_31 + (-150))
     if SLOT_91:
         Unknown58('TRI_PCEChargeLv', 2, 67)
         if (SLOT_67 == 1):
@@ -574,21 +594,21 @@ def OnFrameStep():
 def ChargeDamageUp():
     Unknown48('19000000020000004300000003000000020000003b000000')
     if (SLOT_67 == 1):
-        Unknown10000(120)
-    if (SLOT_67 == 2):
         Unknown10000(200)
-    if (SLOT_67 == 3):
+    if (SLOT_67 == 2):
         Unknown10000(300)
+    if (SLOT_67 == 3):
+        Unknown10000(400)
 
 @Subroutine
 def ChargeDamageUp_Kick():
     Unknown48('19000000020000004300000003000000020000003b000000')
     if (SLOT_67 == 1):
-        Unknown10000(120)
-    if (SLOT_67 == 2):
         Unknown10000(200)
-    if (SLOT_67 == 3):
+    if (SLOT_67 == 2):
         Unknown10000(300)
+    if (SLOT_67 == 3):
+        Unknown10000(400)
 
 @Subroutine
 def Charge_Count():
@@ -2097,76 +2117,71 @@ def CmnActChangePartnerAssistAtk_A():
     sprite('ce032_00', 2)	# 1-2
     Unknown8006(100, 1, 1)
     Unknown1084(1)
-    Unknown1047(32000)
-    sprite('ce032_01', 1)	# 3-3
-    sprite('ce032_01', 1)	# 4-4
-    sprite('ce032_02', 2)	# 5-6
-    sprite('ce032_03', 2)	# 7-8
-    sprite('ce032_04', 1)	# 9-9
+    Unknown1047(12000)
     Unknown7007('7063653231325f300000000000000000640000007063653231325f3100000000000000006400000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
-    sprite('ce404_00', 3)	# 10-12
-    sprite('ce404_01', 2)	# 13-14
-    sprite('ce404_01', 1)	# 15-15
+    sprite('ce404_00', 3)	# 3-5
+    sprite('ce404_01', 2)	# 6-7
+    sprite('ce404_01', 1)	# 8-8
     Unknown23029(11, 403, 0)
-    sprite('ce404_02', 5)	# 16-20
-    sprite('ce404_03', 3)	# 21-23
-    sprite('ce404_04', 1)	# 24-24
+    sprite('ce404_02', 5)	# 9-13
+    sprite('ce404_03', 3)	# 14-16
+    sprite('ce404_04', 1)	# 17-17
     Unknown8007(100, 1, 1)
     physicsXImpulse(30000)
     physicsYImpulse(13000)
     setGravity(1000)
     SFX_3('slash_blade_middle')
-    sprite('ce404_04', 2)	# 25-26
+    sprite('ce404_04', 2)	# 18-19
     Unknown1019(200)
     YAccel(200)
     SFX_3('slash_blade_fast')
     loopRest()
-    sprite('ce404_05', 3)	# 27-29
+    sprite('ce404_05', 3)	# 20-22
     Unknown1019(96)
-    sprite('ce404_06', 3)	# 30-32	 **attackbox here**
+    sprite('ce404_06', 3)	# 23-25	 **attackbox here**
     Unknown1019(96)
     Unknown2017(0)
     RefreshMultihit()
     GFX_0('DragonKick', 0)
     GFX_0('DragonKick_Launcher', 0)
     loopRest()
-    sprite('ce404_07', 3)	# 33-35	 **attackbox here**
+    sprite('ce404_07', 3)	# 26-28	 **attackbox here**
     Unknown1019(96)
-    sprite('ce404_06', 3)	# 36-38	 **attackbox here**
+    sprite('ce404_06', 3)	# 29-31	 **attackbox here**
     Unknown1019(96)
-    sprite('ce404_07', 3)	# 39-41	 **attackbox here**
+    sprite('ce404_07', 3)	# 32-34	 **attackbox here**
     Unknown1019(96)
     loopRest()
-    sprite('ce404_08', 3)	# 42-44
+    sprite('ce404_08', 3)	# 35-37
     sendToLabelUpon(2, 2)
     Unknown2017(1)
     setGravity(1800)
     Unknown1019(80)
-    sprite('ce404_09', 3)	# 45-47
+    sprite('ce404_09', 3)	# 38-40
     Unknown1019(80)
-    sprite('ce404_10', 3)	# 48-50
+    sprite('ce404_10', 3)	# 41-43
     Unknown1019(80)
-    sprite('ce404_11', 3)	# 51-53
+    sprite('ce404_11', 3)	# 44-46
     Unknown1019(80)
-    sprite('ce020_04', 3)	# 54-56
+    sprite('ce020_04', 3)	# 47-49
     Unknown1019(80)
-    sprite('ce020_05', 3)	# 57-59
+    sprite('ce020_05', 3)	# 50-52
     Unknown1019(80)
-    sprite('ce020_06', 3)	# 60-62
+    sprite('ce020_06', 3)	# 53-55
     loopRest()
     label(4)
-    sprite('ce020_07', 4)	# 63-66
-    sprite('ce020_08', 4)	# 67-70
+    sprite('ce020_07', 4)	# 56-59
+    sprite('ce020_08', 4)	# 60-63
     loopRest()
     gotoLabel(4)
     label(2)
-    sprite('ce010_00', 3)	# 71-73
+    sprite('ce010_00', 3)	# 64-66
     Unknown8000(100, 1, 1)
     Unknown2001()
     Unknown1084(1)
     Unknown18009(1)
-    sprite('ce010_01', 4)	# 74-77
-    sprite('ce010_02', 7)	# 78-84
+    sprite('ce010_01', 4)	# 67-70
+    sprite('ce010_02', 7)	# 71-77
 
 @State
 def CmnActChangePartnerAssistAtk_B():
@@ -2250,20 +2265,20 @@ def CmnActChangePartnerAssistAtk_D():
     sprite('ce406_00', 1)	# 1-1
     Unknown1084(1)
     sprite('ce406_01', 2)	# 2-3
-    sprite('ce406_02', 2)	# 4-5
-    sprite('ce406_04', 2)	# 6-7
+    sprite('ce406_02', 1)	# 4-4
+    sprite('ce406_04', 1)	# 5-5
     SFX_3('runjump_stone_heavy')
     SFX_3('hit_m_slow')
     Unknown8007(100, 1, 1)
     ScreenShake(0, 6000)
-    sprite('ce406_05', 3)	# 8-10
+    sprite('ce406_05', 3)	# 6-8
     physicsXImpulse(12000)
-    sprite('ce406_06', 4)	# 11-14
+    sprite('ce406_06', 4)	# 9-12
     SFX_3('slash_blade_fast')
     SFX_3('airdash_l')
     Unknown1019(300)
     Unknown7007('7063653231355f300000000000000000640000007063653231365f320000000000000000640000007063653231365f300000000000000000640000007063653231365f31000000000000000064000000')
-    sprite('ce406_07ex', 2)	# 15-16	 **attackbox here**
+    sprite('ce406_07ex', 2)	# 13-14	 **attackbox here**
     GFX_0('100InchPanch_hand', 0)
     GFX_0('100InchPanch_add', 0)
     GFX_0('100InchPanch_dash', 104)
@@ -2272,59 +2287,59 @@ def CmnActChangePartnerAssistAtk_D():
     physicsYImpulse(4000)
     setGravity(2400)
     RefreshMultihit()
-    sprite('ce406_08ex', 2)	# 17-18	 **attackbox here**
+    sprite('ce406_08ex', 2)	# 15-16	 **attackbox here**
     Unknown26('100InchPanch_add')
     label(1)
-    sprite('ce406_07ex', 2)	# 19-20	 **attackbox here**
+    sprite('ce406_07ex', 2)	# 17-18	 **attackbox here**
     Unknown8007(100, 0, 1)
-    sprite('ce406_08ex', 2)	# 21-22	 **attackbox here**
+    sprite('ce406_08ex', 2)	# 19-20	 **attackbox here**
     loopRest()
     gotoLabel(1)
     label(0)
-    sprite('keep', 1)	# 23-23
+    sprite('keep', 1)	# 21-21
     Unknown26('100InchPanch_hand')
     Unknown1019(60)
     if (not SLOT_2):
         pass
-    sprite('ce406_09', 5)	# 24-28
+    sprite('ce406_09', 5)	# 22-26
     SFX_3('brake_normal_light')
     Unknown8000(100, 0, 1)
     Unknown8006(100, 1, 1)
     Unknown1019(50)
     if SLOT_51:
         sendToLabel(2)
-    sprite('ce406_10', 5)	# 29-33
+    sprite('ce406_10', 5)	# 27-31
     Unknown1019(50)
-    sprite('ce406_11', 5)	# 34-38
+    sprite('ce406_11', 5)	# 32-36
     Unknown1084(1)
-    sprite('ce406_12', 5)	# 39-43
-    sprite('ce406_13', 5)	# 44-48
+    sprite('ce406_12', 5)	# 37-41
+    sprite('ce406_13', 5)	# 42-46
     ExitState()
     label(2)
-    sprite('ce405_10', 2)	# 49-50
+    sprite('ce405_10', 2)	# 47-48
     Unknown1084(1)
     Unknown1051(0)
     Unknown2004(1, 0)
-    sprite('ce405_11', 5)	# 51-55
+    sprite('ce405_11', 5)	# 49-53
     Unknown23029(11, 410, 0)
     GFX_0('KokutengekiCEtameC', 0)
-    sprite('ce405_12', 3)	# 56-58
+    sprite('ce405_12', 3)	# 54-56
     loopRest()
-    sprite('ce405_03', 3)	# 59-61
+    sprite('ce405_03', 3)	# 57-59
     teleportRelativeX(40000)
     Unknown7007('7063653231335f300000000000000000640000007063653231335f310000000000000000640000007063653231345f300000000000000000640000007063653231345f31000000000000000064000000')
-    sprite('ce405_04', 3)	# 62-64
-    sprite('ce405_05', 3)	# 65-67
-    sprite('ce405_06', 3)	# 68-70
-    sprite('ce405_04', 3)	# 71-73
-    sprite('ce405_05', 3)	# 74-76
-    sprite('ce405_06', 3)	# 77-79
-    sprite('ce405_04', 3)	# 80-82
-    sprite('ce405_07', 4)	# 83-86
+    sprite('ce405_04', 3)	# 60-62
+    sprite('ce405_05', 3)	# 63-65
+    sprite('ce405_06', 3)	# 66-68
+    sprite('ce405_04', 3)	# 69-71
+    sprite('ce405_05', 3)	# 72-74
+    sprite('ce405_06', 3)	# 75-77
+    sprite('ce405_04', 3)	# 78-80
+    sprite('ce405_07', 4)	# 81-84
     teleportRelativeX(-43000)
-    sprite('ce405_08', 4)	# 87-90
+    sprite('ce405_08', 4)	# 85-88
     teleportRelativeX(-8000)
-    sprite('ce405_09', 4)	# 91-94
+    sprite('ce405_09', 4)	# 89-92
     teleportRelativeX(-8000)
 
 @State
@@ -2570,21 +2585,21 @@ def NmlAtk5A():
     Unknown1015(20000)
     sprite('ce203_01', 2)	# 3-4
     Unknown1019(80)
-    sprite('ce203_01', 2)	# 5-6
+    sprite('ce203_01', 1)	# 5-5
     Unknown1019(50)
     Unknown7009(1)
-    sprite('ce203_02', 2)	# 7-8	 **attackbox here**
+    sprite('ce203_02', 2)	# 6-7	 **attackbox here**
     SFX_3('hit_l_slow')
     Unknown1019(0)
-    sprite('ce203_03', 2)	# 9-10	 **attackbox here**
-    sprite('ce203_04', 2)	# 11-12
+    sprite('ce203_03', 2)	# 8-9	 **attackbox here**
+    sprite('ce203_04', 2)	# 10-11
     Recovery()
     Unknown2063()
-    sprite('ce203_05', 3)	# 13-15
-    sprite('ce203_06', 4)	# 16-19
-    sprite('ce203_07', 3)	# 20-22
-    sprite('ce203_08', 3)	# 23-25
-    sprite('ce203_09', 3)	# 26-28
+    sprite('ce203_05', 3)	# 12-14
+    sprite('ce203_06', 4)	# 15-18
+    sprite('ce203_07', 3)	# 19-21
+    sprite('ce203_08', 3)	# 22-24
+    sprite('ce203_09', 3)	# 25-27
 
 @State
 def NmlAtk5A2nd():
@@ -2743,17 +2758,17 @@ def NmlAtk4A():
         callSubroutine('ChargeDamageUp')
     sprite('ce200_00', 2)	# 1-2
     sprite('ce200_01', 1)	# 3-3
-    sprite('ce200_01', 2)	# 4-5
-    sprite('ce200_03', 3)	# 6-8	 **attackbox here**
+    sprite('ce200_01', 1)	# 4-4
+    sprite('ce200_03', 3)	# 5-7	 **attackbox here**
     Unknown23054('63653230305f303200000000000000000000000000000000000000000000000003000000')
     Unknown7009(0)
     SFX_3('hit_l_fast')
-    sprite('ce200_03', 5)	# 9-13	 **attackbox here**
+    sprite('ce200_03', 5)	# 8-12	 **attackbox here**
     WhiffCancelEnable(1)
     Unknown23027()
     Recovery()
     Unknown2063()
-    sprite('ce200_04', 6)	# 14-19
+    sprite('ce200_04', 6)	# 13-18
     WhiffCancelEnable(0)
 
 @State
@@ -2930,24 +2945,24 @@ def NmlAtk5B():
         HitOrBlockCancel('NmlAtk2C')
         Unknown1112('')
         HitOrBlockCancel('DashCancel')
-    sprite('ce204_00', 4)	# 1-4
-    sprite('ce204_01', 1)	# 5-5
+    sprite('ce204_00', 2)	# 1-2
+    sprite('ce204_01', 1)	# 3-3
+    sprite('ce204_01', 3)	# 4-6
     Unknown23029(11, 101, 0)
-    sprite('ce204_01', 3)	# 6-8
-    sprite('ce204_02', 4)	# 9-12
+    sprite('ce204_02', 4)	# 7-10
     GFX_1('persona_enter_ply', 0)
     Unknown7007('7063653330355f300000000000000000640000007063653132305f310000000000000000640000007063653132305f320000000000000000640000000000000000000000000000000000000000000000')
+    sprite('ce204_03', 2)	# 11-12
     sprite('ce204_03', 2)	# 13-14
-    sprite('ce204_03', 2)	# 15-16
     Recovery()
     Unknown2063()
-    sprite('ce204_04', 4)	# 17-20
-    sprite('ce204_05', 4)	# 21-24
-    sprite('ce204_03', 4)	# 25-28
-    sprite('ce204_04', 4)	# 29-32
-    sprite('ce204_05', 4)	# 33-36
-    sprite('ce204_01', 4)	# 37-40
-    sprite('ce204_00', 4)	# 41-44
+    sprite('ce204_04', 4)	# 15-18
+    sprite('ce204_05', 4)	# 19-22
+    sprite('ce204_03', 4)	# 23-26
+    sprite('ce204_04', 4)	# 27-30
+    sprite('ce204_05', 4)	# 31-34
+    sprite('ce204_01', 4)	# 35-38
+    sprite('ce204_00', 4)	# 39-42
 
 @State
 def NmlAtk5B2nd():
@@ -3074,19 +3089,19 @@ def NmlAtk2A():
     sprite('ce230_01', 1)	# 3-3
     sprite('ce230_01', 1)	# 4-4
     Unknown1051(80)
-    sprite('ce230_02', 2)	# 5-6
+    sprite('ce230_02', 1)	# 5-5
     Unknown7009(0)
-    sprite('ce230_04', 2)	# 7-8	 **attackbox here**
+    sprite('ce230_04', 2)	# 6-7	 **attackbox here**
     Unknown23054('63653233305f303300000000000000000000000000000000000000000000000003000000')
     SFX_3('hit_l_fast')
     RefreshMultihit()
-    sprite('ce230_04', 5)	# 9-13	 **attackbox here**
+    sprite('ce230_04', 5)	# 8-12	 **attackbox here**
     Unknown23027()
     Recovery()
     Unknown2063()
-    sprite('ce230_01', 4)	# 14-17
+    sprite('ce230_01', 4)	# 13-16
     WhiffCancelEnable(1)
-    sprite('ce230_00', 3)	# 18-20
+    sprite('ce230_00', 3)	# 17-19
 
 @State
 def NmlAtk2B():
@@ -3149,7 +3164,7 @@ def NmlAtk2C():
         Unknown2004(1, 0)
         AttackLevel_(4)
         AttackP1(90)
-        AirPushbackY(16000)
+        AirPushbackY(13000)
         HitLow(2)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
@@ -3241,14 +3256,15 @@ def NmlAtkAIR5A2nd():
     sprite('ce252_03', 3)	# 7-9	 **attackbox here**
     Unknown23054('63653235325f303200000000000000000000000000000000000000000000000003000000')
     RefreshMultihit()
-    sprite('ce252_03', 3)	# 10-12	 **attackbox here**
+    sprite('ce252_03', 2)	# 10-11	 **attackbox here**
+    sprite('ce252_03', 2)	# 12-13	 **attackbox here**
     Unknown23027()
     Recovery()
     Unknown2063()
-    sprite('ce252_04', 3)	# 13-15
-    sprite('ce252_05', 3)	# 16-18
-    sprite('ce252_06', 3)	# 19-21
-    sprite('ce252_07', 3)	# 22-24
+    sprite('ce252_04', 3)	# 14-16
+    sprite('ce252_05', 3)	# 17-19
+    sprite('ce252_06', 3)	# 20-22
+    sprite('ce252_07', 3)	# 23-25
 
 @State
 def NmlAtkAIR5B():
@@ -3264,6 +3280,7 @@ def NmlAtkAIR5B():
 
         def upon_STATE_END():
             Unknown23029(11, 3002, 0)
+        Unknown4009(11)
     sprite('ce254_00', 5)	# 1-5
     sprite('ce254_01', 3)	# 6-8
     Unknown23029(11, 301, 0)
@@ -3284,6 +3301,10 @@ def NmlAtkAIR5C():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
+        Unknown4009(11)
+
+        def upon_STATE_END():
+            Unknown4009(0)
     sprite('ce255_00', 4)	# 1-4
     sprite('ce255_01', 4)	# 5-8
     Unknown1017()
@@ -3296,21 +3317,15 @@ def NmlAtkAIR5C():
     GFX_1('persona_enter_ply', 0)
     sprite('ce255_03', 4)	# 13-16
     sprite('ce255_04', 4)	# 17-20
-    sprite('ce255_05', 4)	# 21-24
-    sprite('ce255_03', 4)	# 25-28
-    sprite('ce255_04', 4)	# 29-32
-    sprite('ce255_05', 4)	# 33-36
-    sprite('ce255_03', 4)	# 37-40
-    sprite('ce255_04', 4)	# 41-44
-    sprite('ce255_05', 2)	# 45-46
+    sprite('ce255_05', 2)	# 21-22
     Unknown1018()
     Unknown1023()
     Unknown1038()
     Unknown1019(70)
     YAccel(70)
-    sprite('ce255_05', 2)	# 47-48
+    sprite('ce255_05', 2)	# 23-24
     Recovery()
-    sprite('ce255_06', 4)	# 49-52
+    sprite('ce255_06', 4)	# 25-28
 
 @State
 def CmnActCrushAttack():
@@ -3707,6 +3722,7 @@ def ThrowExe():
         JumpCancel_(0)
         Unknown11050('050000000000000000000000000000000000000000000000000000000000000000000000')
         Unknown2004(1, 0)
+        Unknown11069('ThrowExe')
         sendToLabelUpon(2, 0)
     sprite('ce310_02', 4)	# 1-4	 **attackbox here**
     StartMultihit()
@@ -3748,6 +3764,7 @@ def ThrowExe():
     Hitstop(6)
     callSubroutine('ChargeDamageUp')
     Unknown11050('010000000000000000000000000000000000000000000000000000000000000000000000')
+    Unknown11069('')
     sprite('ce311_10', 3)	# 32806-32808	 **attackbox here**
     Unknown23027()
     physicsXImpulse(-1000)
@@ -3839,6 +3856,7 @@ def BackThrowExe():
         JumpCancel_(0)
         Unknown11050('050000000000000000000000000000000000000000000000000000000000000000000000')
         Unknown2004(1, 0)
+        Unknown11069('BackThrowExe')
         sendToLabelUpon(2, 0)
     sprite('ce310_02', 4)	# 1-4	 **attackbox here**
     StartMultihit()
@@ -3881,6 +3899,7 @@ def BackThrowExe():
     Hitstop(6)
     callSubroutine('ChargeDamageUp')
     Unknown11050('010000000000000000000000000000000000000000000000000000000000000000000000')
+    Unknown11069('')
     sprite('ce311_10', 3)	# 32806-32808	 **attackbox here**
     Unknown23027()
     physicsXImpulse(-1000)
@@ -3976,7 +3995,7 @@ def CmnActInvincibleAttack():
     AttackLevel_(4)
     Hitstop(8)
     AirPushbackX(12000)
-    AirPushbackY(26000)
+    AirPushbackY(20000)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
     HitLow(0)
@@ -3986,7 +4005,6 @@ def CmnActInvincibleAttack():
     def upon_LANDING():
         pass
     sprite('ce401_09', 2)	# 60-61
-    setInvincible(0)
     tag_voice(0, 'pce206_0', 'pce206_0', 'pce206_2', 'pce206_2')
     sprite('ce401_10', 2)	# 62-63
     Unknown1015(1000)
@@ -4016,11 +4034,14 @@ def CmnActInvincibleAttack():
     Unknown23054('63653430315f313200000000000000000000000000000000000000000000000002000000')
     GFX_0('Hyper_Counter_kick_oku', 100)
     RefreshMultihit()
-    AirPushbackX(18000)
+    AirPushbackX(24000)
     AirPushbackY(26000)
     AirUntechableTime(50)
     SFX_3('hit_l_fast')
+    YImpluseBeforeWallbounce(3000)
     sprite('ce401_14', 2)	# 84-85
+    setInvincible(0)
+    Recovery()
     sprite('ce401_16', 3)	# 86-88
     sprite('ce020_04', 3)	# 89-91
     sprite('ce020_05', 3)	# 92-94
@@ -4035,8 +4056,8 @@ def CmnActInvincibleAttack():
     Unknown8000(100, 1, 1)
     Unknown1084(1)
     Unknown18009(1)
-    sprite('ce010_01', 5)	# 108-112
-    sprite('ce010_02', 12)	# 113-124
+    sprite('ce010_01', 2)	# 108-109
+    sprite('ce010_02', 4)	# 110-113
 
 @State
 def CmnActInvincibleAttackAir():
@@ -4124,8 +4145,7 @@ def CmnActInvincibleAttackAir():
     Unknown1084(1)
     Unknown18009(1)
     sprite('ce010_01', 2)	# 56-57
-    sprite('ce010_02', 11)	# 58-68
-    loopRest()
+    sprite('ce010_02', 4)	# 58-61
 
 @State
 def AbaremakuriLandA():
@@ -4263,8 +4283,6 @@ def DragonKickLandB():
         Unknown23014()
         Unknown11058('0100000000000000000000000000000000000000')
         Damage(3000)
-        AttackP1(80)
-        AttackP2(80)
         AirUntechableTime(60)
         Hitstop(9)
         AirPushbackX(3000)
@@ -4354,8 +4372,6 @@ def DragonKickLandEX():
         AttackDefaults_StandingSpecial()
         AttackLevel_(5)
         Damage(4500)
-        AttackP1(80)
-        AttackP2(80)
         Unknown11056(2)
         Unknown11058('0100000000000000000000000000000000000000')
         AirUntechableTime(80)
@@ -4549,7 +4565,7 @@ def __100inchPunchB():
         AttackP1(80)
         AirUntechableTime(45)
         Unknown11028(23)
-        AirPushbackX(63500)
+        AirPushbackX(93500)
         AirPushbackY(12000)
         PushbackX(60000)
         GroundedHitstunAnimation(12)
@@ -4900,8 +4916,6 @@ def DragonKickAirB():
         Unknown11058('0100000000000000000000000000000000000000')
         Unknown23014()
         Damage(3000)
-        AttackP1(80)
-        AttackP2(80)
         AirUntechableTime(60)
         Hitstop(9)
         GroundedHitstunAnimation(10)
@@ -4986,8 +5000,6 @@ def DragonKickAirEX():
         AttackDefaults_StandingSpecial()
         AttackLevel_(5)
         Damage(4500)
-        AttackP1(80)
-        AttackP2(80)
         Unknown11056(2)
         Unknown11058('0100000000000000000000000000000000000000')
         AirUntechableTime(80)
@@ -5160,17 +5172,12 @@ def DragonKickLand_NoutenHasei():
         Unknown23014()
         Unknown11058('0100000000000000000000000000000000000000')
         Damage(3000)
-        AttackP1(80)
-        AttackP2(80)
-        AirUntechableTime(48)
+        AirUntechableTime(60)
         Hitstop(9)
-        AirPushbackX(70000)
+        AirPushbackX(3000)
         AirPushbackY(50000)
-        GroundedHitstunAnimation(12)
-        AirHitstunAnimation(12)
-        Unknown9178(1)
-        AirHitstunAfterWallbounce(50)
-        WallbounceReboundTime(25)
+        GroundedHitstunAnimation(13)
+        AirHitstunAnimation(13)
         callSubroutine('ChargeDamageUp')
         callSubroutine('DoNotBeginCancel')
 
@@ -5261,14 +5268,14 @@ def DashCancel():
     def upon_3():
         Unknown1015(440)
         Unknown1047(440)
-    sprite('ce032_02', 5)	# 7-11
+    sprite('ce032_02', 4)	# 7-10
     Unknown8006(100, 1, 1)
-    sprite('ce032_03', 5)	# 12-16
-    sprite('ce032_09', 4)	# 17-20
+    sprite('ce032_03', 4)	# 11-14
+    sprite('ce032_09', 3)	# 15-17
     physicsXImpulse(0)
     clearUponHandler(3)
     Unknown8010(100, 1, 1)
-    sprite('ce032_10', 4)	# 21-24
+    sprite('ce032_10', 3)	# 18-20
 
 @State
 def UltimateGodHand():
@@ -5335,7 +5342,10 @@ def UltimateGodHand():
     sprite('ce430_16', 3)	# 121-123
     sprite('ce430_17', 3)	# 124-126
     label(10)
-    sprite('ce430_18', 3)	# 127-129
+    sprite('ce430_15', 3)	# 127-129
+    sprite('ce430_16', 3)	# 130-132
+    sprite('ce430_17', 3)	# 133-135
+    sprite('ce430_18', 3)	# 136-138
 
 @State
 def UltimateGodHandOD():
@@ -5415,7 +5425,10 @@ def UltimateGodHandOD():
     sprite('ce430_15', 3)	# 163-165
     sprite('ce430_16', 3)	# 166-168
     label(10)
-    sprite('ce430_18', 3)	# 169-171
+    sprite('ce430_15', 3)	# 169-171
+    sprite('ce430_16', 3)	# 172-174
+    sprite('ce430_17', 3)	# 175-177
+    sprite('ce430_18', 3)	# 178-180
 
 @State
 def UltimateCharge():

@@ -783,6 +783,11 @@ def CmnActFDash():
     sprite('ha032_05', 1)	# 15-15
     Unknown1052(0)
     Unknown13015(1)
+    Unknown13014(1)
+    Unknown13008(1)
+    Unknown13002(1)
+    Unknown13003(1)
+    Unknown13019(1)
     Unknown8000(100, 1, 1)
     Unknown1019(0)
     Unknown1051(30)
@@ -2065,9 +2070,9 @@ def CmnActChangePartnerAssistAtk_D():
         AirHitstunAnimation(12)
         AirUntechableTime(60)
         AirPushbackX(72000)
-        AirPushbackY(100)
+        AirPushbackY(4000)
         YImpluseBeforeWallbounce(0)
-        WallbounceReboundTime(12)
+        WallbounceReboundTime(24)
         PushbackX(12000)
         Unknown11056(0)
         Unknown9015(1)
@@ -2598,21 +2603,22 @@ def NmlAtk5A2nd():
     physicsXImpulse(26000)
     Unknown1045(40000)
     Unknown8000(100, 1, 1)
-    sprite('ha210_04', 3)	# 15-17	 **attackbox here**
+    sprite('ha210_04', 5)	# 15-19	 **attackbox here**
+    Unknown1019(150)
     Unknown8010(0, 1, 1)
-    sprite('ha210_05', 3)	# 18-20
+    sprite('ha210_05', 3)	# 20-22
     Unknown1019(50)
     Recovery()
     Unknown2063()
-    sprite('ha210_06', 3)	# 21-23
+    sprite('ha210_06', 3)	# 23-25
     Unknown1019(50)
-    sprite('ha210_07', 3)	# 24-26
+    sprite('ha210_07', 3)	# 26-28
     Unknown1019(50)
-    sprite('ha210_08', 4)	# 27-30
+    sprite('ha210_08', 4)	# 29-32
     Unknown1084(1)
-    sprite('ha210_09', 4)	# 31-34
-    sprite('ha210_10', 3)	# 35-37
-    sprite('ha210_10', 1)	# 38-38
+    sprite('ha210_09', 4)	# 33-36
+    sprite('ha210_10', 3)	# 37-39
+    sprite('ha210_10', 1)	# 40-40
     SFX_3('hase_22')
 
 @State
@@ -2716,12 +2722,13 @@ def NmlAtk5B():
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         AttackLevel_(4)
-        AttackP1(80)
+        AttackP1(90)
         AirPushbackX(16000)
         AirPushbackY(12000)
         AirUntechableTime(36)
         PushbackX(19800)
         Unknown9016(1)
+        Unknown11001(0, 0, 9)
         Unknown1112('')
         HitOrBlockCancel('NmlAtk5B2nd')
         HitOrBlockCancel('NmlAtk2C')
@@ -2737,6 +2744,11 @@ def NmlAtk5B():
             if SLOT_51:
                 SLOT_51 = 0
                 setInvincible(0)
+        SLOT_60 = 0
+
+        def upon_77():
+            clearUponHandler(77)
+            SLOT_60 = 1
     sprite('ha214_00', 3)	# 1-3
     sprite('ha214_01', 3)	# 4-6
     sprite('ha214_02', 3)	# 7-9
@@ -2763,30 +2775,39 @@ def NmlAtk5B2nd():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
-    sprite('ha403_00', 3)	# 1-3
-    sprite('ha403_01', 2)	# 4-5
+        if SLOT_60:
+            Unknown2016(350)
+    sprite('ha403_00', 2)	# 1-2
+    sprite('ha403_01', 1)	# 3-3
+    sprite('ha403_01', 1)	# 4-4
     Unknown7007('6268613230335f300000000000000000640000006268613230335f310000000000000000640000006268613230335f320000000000000000640000000000000000000000000000000000000000000000')
     physicsXImpulse(30000)
     Unknown3029(1)
     Unknown3069(0)
     Unknown8007(-1, 1, 1)
-    sprite('ha403_02', 2)	# 6-7
+    sprite('ha403_02', 2)	# 5-6
     Unknown1019(120)
     SFX_0('004_swing_grap_1_2')
     SFX_0('000_airdash_2')
+    sprite('ha403_02', 2)	# 7-8
     Unknown14070('NmlAtk5B3rd')
-    sprite('ha403_03', 2)	# 8-9
-    sprite('ha403_04', 2)	# 10-11
+    sprite('ha403_03', 2)	# 9-10
+    Unknown1019(130)
+    sprite('ha403_04', 2)	# 11-12
+    sprite('ha403_04', 2)	# 13-14
     Unknown14072('NmlAtk5B3rd')
-    sprite('ha403_03', 2)	# 12-13
-    sprite('ha403_04', 2)	# 14-15
-    sprite('ha403_02', 3)	# 16-18
-    Unknown1019(50)
+    sprite('ha403_03', 2)	# 15-16
+    Unknown1019(130)
+    sprite('ha403_04', 2)	# 17-18
+    sprite('ha403_02', 2)	# 19-20
+    Unknown1019(80)
     Unknown14074('NmlAtk5B3rd')
-    sprite('ha403_01', 3)	# 19-21
+    if SLOT_60:
+        Unknown2016(-1)
+    sprite('ha403_01', 2)	# 21-22
     Unknown3029(0)
-    Unknown1019(50)
-    sprite('ha403_00', 3)	# 22-24
+    Unknown1019(80)
+    sprite('ha403_00', 2)	# 23-24
     physicsXImpulse(0)
 
 @State
@@ -2801,6 +2822,9 @@ def NmlAtk5B3rd():
         GroundedHitstunAnimation(10)
         AirUntechableTime(40)
         Hitstop(16)
+        if SLOT_60:
+            Unknown2016(350)
+        Unknown2015(200)
     sprite('ha403_04', 2)	# 1-2
     Unknown3029(1)
     Unknown3069(0)
@@ -2815,6 +2839,9 @@ def NmlAtk5B3rd():
     physicsXImpulse(0)
     sprite('ha403_08', 2)	# 13-14
     Recovery()
+    if SLOT_60:
+        Unknown2016(-1)
+    Unknown2015(-1)
     sprite('ha403_09', 2)	# 15-16
     sprite('ha403_10', 2)	# 17-18
     sprite('ha403_11', 2)	# 19-20
@@ -2932,6 +2959,9 @@ def NmlAtk2C():
         HitLow(2)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
+        Unknown9310(1)
+        Unknown11065(1)
+        Unknown11001(0, 0, 8)
         AirPushbackX(-1000)
         AirPushbackY(15000)
         AirUntechableTime(36)
@@ -2949,25 +2979,25 @@ def NmlAtk2C():
                 setInvincible(0)
     sprite('ha234_00', 2)	# 1-2
     sprite('ha234_01', 2)	# 3-4
-    sprite('ha234_02', 2)	# 5-6
-    sprite('ha234_03', 2)	# 7-8
+    sprite('ha234_02', 1)	# 5-5
+    sprite('ha234_03', 1)	# 6-6
     SFX_0('006_swing_blade_2')
     SFX_0('006_swing_blade_1')
     Unknown7007('6268613130375f300000000000000000640000006268613130375f310000000000000000640000006268613130375f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('ha234_04', 2)	# 9-10
-    sprite('ha234_05', 1)	# 11-11
+    sprite('ha234_04', 1)	# 7-7
+    sprite('ha234_05', 1)	# 8-8
     GFX_0('ha234_col_dmy', 0)
-    sprite('ha234_06', 3)	# 12-14	 **attackbox here**
+    sprite('ha234_06', 3)	# 9-11	 **attackbox here**
     GFX_0('ha_234', -1)
-    sprite('ha234_07', 4)	# 15-18
+    sprite('ha234_07', 4)	# 12-15
     Recovery()
-    sprite('ha234_08', 3)	# 19-21
-    sprite('ha234_09', 6)	# 22-27
-    sprite('ha234_10', 3)	# 28-30
-    sprite('ha234_11', 3)	# 31-33
-    sprite('ha234_12', 3)	# 34-36
-    sprite('ha234_13', 3)	# 37-39
-    sprite('ha234_14', 3)	# 40-42
+    sprite('ha234_08', 3)	# 16-18
+    sprite('ha234_09', 6)	# 19-24
+    sprite('ha234_10', 4)	# 25-28
+    sprite('ha234_11', 4)	# 29-32
+    sprite('ha234_12', 4)	# 33-36
+    sprite('ha234_13', 4)	# 37-40
+    sprite('ha234_14', 4)	# 41-44
     SFX_3('hase_22')
 
 @State
@@ -3184,7 +3214,6 @@ def CmnActInvincibleAttack():
             GFX_0('ha_D_usui', 0)
             Unknown21012('68615f354400000000000000000000000000000000000000000000000000000021000000')
             enterState('Atk5DGrip')
-        setInvincible(1)
         GuardPoint_(1)
         Unknown22031(-1, 17)
     sprite('ha203_00', 2)	# 1-2
@@ -3325,7 +3354,6 @@ def CmnActInvincibleAttackAir():
             Unknown1084(1)
             Unknown2017(0)
             enterState('AtkAIR5DGrip')
-        setInvincible(1)
         GuardPoint_(1)
         Unknown22031(-1, 15)
     sprite('ha253_00', 2)	# 1-2
@@ -4045,6 +4073,7 @@ def BackThrowExe():
         Hitstop(0)
         AttackP2(100)
         JumpCancel_(0)
+        Unknown11069('BackThrowExe')
     sprite('ha310_02', 3)	# 1-3	 **attackbox here**
     StartMultihit()
     Unknown5000(8, 0)
@@ -4083,6 +4112,7 @@ def BackThrowExe():
     Unknown9362(1)
     Unknown9364(30)
     Unknown11072(1, -380000, 82000)
+    Unknown11069('')
     RefreshMultihit()
 
     def upon_12():
@@ -4250,6 +4280,7 @@ def Renka():
     sprite('ha401_02', 1)	# 3-3
     sprite('ha401_02', 1)	# 4-4
     Unknown7007('6268613230315f300000000000000000640000006268613230315f310000000000000000640000006268613230315f320000000000000000640000000000000000000000000000000000000000000000')
+    physicsXImpulse(10000)
     sprite('ha401_03', 2)	# 5-6
     sprite('ha401_04', 2)	# 7-8
     SFX_0('004_swing_grap_1_1')
@@ -4257,11 +4288,12 @@ def Renka():
     GFX_0('ha_kick', -1)
     GFX_0('ha_kick_b', -1)
     GFX_1('haef_kick_drop', 0)
+    physicsXImpulse(0)
     sprite('ha401_06', 2)	# 12-13
     GFX_0('ha_kick2', -1)
     GFX_0('ha_kick2b', -1)
     sprite('ha401_07', 2)	# 14-15
-    physicsXImpulse(6500)
+    physicsXImpulse(10000)
     sprite('ha401_08', 2)	# 16-17
     GFX_0('ha_kick3', -1)
     GFX_0('ha_kick3b', -1)
@@ -4308,7 +4340,7 @@ def RenkaEx():
         Unknown9142(39)
         Unknown9130(49)
         AirUntechableTime(30)
-        PushbackX(19800)
+        PushbackX(4800)
         AirPushbackY(12000)
         Unknown9310(1)
         HitLow(2)
@@ -4326,7 +4358,7 @@ def RenkaEx():
     sprite('ha401_01ex02', 1)	# 2-2
     Unknown3029(1)
     Unknown3069(0)
-    physicsXImpulse(500)
+    physicsXImpulse(20000)
     sprite('ha401_02ex01', 1)	# 3-3
     sprite('ha401_02ex01', 1)	# 4-4
     Unknown23125('')
@@ -4342,7 +4374,7 @@ def RenkaEx():
     sprite('ha410_00', 2)	# 15-16
     sprite('ha410_01', 2)	# 17-18
     sprite('ha410_02', 2)	# 19-20
-    physicsXImpulse(45000)
+    physicsXImpulse(70000)
     sprite('ha410_03', 3)	# 21-23
     SFX_0('004_swing_grap_1_2')
     Unknown1019(0)
@@ -4353,6 +4385,7 @@ def RenkaEx():
     AirHitstunAnimation(10)
     GroundedHitstunAnimation(10)
     AirPushbackY(30000)
+    PushbackX(39800)
     Unknown9310(0)
     HitLow(0)
     Unknown11058('0000000001000000000000000000000000000000')
@@ -4412,30 +4445,30 @@ def Zantetu():
     Unknown3029(1)
     Unknown3069(0)
     sprite('ha402_01', 2)	# 3-4
-    sprite('ha402_02', 3)	# 5-7
-    sprite('ha402_03', 3)	# 8-10
+    sprite('ha402_02', 2)	# 5-6
+    sprite('ha402_03', 3)	# 7-9
     physicsXImpulse(10000)
-    sprite('ha402_04', 4)	# 11-14
-    sprite('ha402_05', 4)	# 15-18
-    sprite('ha402_06', 4)	# 19-22
+    sprite('ha402_04', 4)	# 10-13
+    sprite('ha402_05', 4)	# 14-17
+    sprite('ha402_06', 4)	# 18-21
     physicsXImpulse(0)
     SFX_0('006_swing_blade_2')
     SFX_0('006_swing_blade_1')
     Unknown7007('6268613230325f300000000000000000640000006268613230325f310000000000000000640000006268613230325f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('ha402_07', 3)	# 23-25	 **attackbox here**
+    sprite('ha402_07', 3)	# 22-24	 **attackbox here**
     GFX_0('ha402_col_dmy', 0)
     GFX_0('ha_402a', -1)
-    sprite('ha402_08', 2)	# 26-27
-    sprite('ha402_09', 2)	# 28-29
-    sprite('ha402_10', 2)	# 30-31
-    sprite('ha402_11', 2)	# 32-33
+    sprite('ha402_08', 2)	# 25-26
+    sprite('ha402_09', 2)	# 27-28
+    sprite('ha402_10', 2)	# 29-30
+    sprite('ha402_11', 2)	# 31-32
     physicsXImpulse(12000)
-    sprite('ha402_12', 2)	# 34-35
-    sprite('ha402_13', 2)	# 36-37
-    sprite('ha402_14', 2)	# 38-39
+    sprite('ha402_12', 2)	# 33-34
+    sprite('ha402_13', 2)	# 35-36
+    sprite('ha402_14', 2)	# 37-38
     SFX_0('006_swing_blade_2')
     SFX_0('006_swing_blade_1')
-    sprite('ha402_15', 3)	# 40-42	 **attackbox here**
+    sprite('ha402_15', 3)	# 39-41	 **attackbox here**
     physicsXImpulse(0)
     RefreshMultihit()
     AttackLevel_(3)
@@ -4450,14 +4483,14 @@ def Zantetu():
     HitOverhead(0)
     HitLow(2)
     GFX_0('ha_402b', -1)
-    sprite('ha402_16', 6)	# 43-48
+    sprite('ha402_16', 6)	# 42-47
     Recovery()
     Unknown2063()
-    sprite('ha402_17', 6)	# 49-54
-    sprite('ha402_18', 6)	# 55-60
+    sprite('ha402_17', 6)	# 48-53
+    sprite('ha402_18', 6)	# 54-59
     Unknown3029(0)
-    sprite('ha402_19', 4)	# 61-64
-    sprite('ha402_20', 4)	# 65-68
+    sprite('ha402_19', 4)	# 60-63
+    sprite('ha402_20', 4)	# 64-67
 
 @State
 def Agito():
@@ -4823,8 +4856,8 @@ def UltimateAssault():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(5)
-        Damage(5000)
-        Unknown11091(30)
+        Damage(5800)
+        Unknown11091(33)
         AirHitstunAnimation(13)
         GroundedHitstunAnimation(13)
         AirUntechableTime(50)
@@ -4888,7 +4921,7 @@ def UltimateAssault():
     if (SLOT_52 == 4):
         GFX_1('haef_DD_1_ring', 0)
     if (SLOT_52 == 1):
-        Unknown10000(150)
+        Unknown10000(200)
     Unknown19(0, 2, 52)
     gotoLabel(99)
     label(0)
@@ -4938,17 +4971,19 @@ def UltimateAssault_OD():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(5)
-        Damage(6000)
-        Unknown11091(30)
+        Damage(5000)
+        Unknown11091(31)
         AirHitstunAnimation(13)
         GroundedHitstunAnimation(13)
         AirUntechableTime(50)
         AirPushbackX(45900)
-        AirPushbackY(36000)
+        AirPushbackY(40000)
+        YImpluseBeforeWallbounce(2600)
         Hitstop(25)
         Unknown9016(1)
         Unknown11058('0000000001000000000000000000000000000000')
         Unknown11089(1)
+        Unknown11064(1)
         Unknown2004(1, 0)
 
         def upon_32():
@@ -5003,7 +5038,8 @@ def UltimateAssault_OD():
     if (SLOT_52 == 4):
         GFX_1('haef_DD_1_ring', 0)
     if (SLOT_52 == 1):
-        Unknown10000(150)
+        Unknown10000(250)
+        Unknown11091(24)
     Unknown19(0, 2, 52)
     gotoLabel(99)
     label(0)
@@ -5031,6 +5067,18 @@ def UltimateAssault_OD():
     def upon_ON_HIT_OR_BLOCK():
         Unknown21007(9, 32)
         clearUponHandler(10)
+
+    def upon_78():
+        SLOT_56 = 1
+        if SLOT_56:
+            Unknown13024(0)
+            Unknown9310(1)
+            sendToLabel(1)
+        clearUponHandler(78)
+
+    def upon_43():
+        if (SLOT_48 == 1000):
+            pass
     GFX_0('ha_DD_1_shotSP', 0)
     Unknown38(9, 1)
     sprite('ha430_19', 5)	# 78-82
@@ -5045,6 +5093,55 @@ def UltimateAssault_OD():
     sprite('ha430_25', 4)	# 107-110
     sprite('ha430_26', 4)	# 111-114
     sprite('ha430_27', 4)	# 115-118
+    ExitState()
+    label(1)
+    sprite('ha430_18', 5)	# 119-123	 **attackbox here**
+    GFX_0('UltimateAssault_DamyAtk', 100)
+    sprite('ha430_19', 5)	# 124-128
+    sprite('ha430_20', 5)	# 129-133
+    sprite('ha430_19', 5)	# 134-138
+    sprite('ha430_20', 5)	# 139-143
+    sprite('ha430_19', 5)	# 144-148
+    sprite('ha430_20', 5)	# 149-153
+    label(2)
+    sprite('ha430_19', 3)	# 154-156
+    sprite('ha430_20', 3)	# 157-159
+    sprite('ha430_19', 3)	# 160-162
+    sprite('ha430_20', 3)	# 163-165
+    sprite('ha430_19', 3)	# 166-168
+    sprite('ha430_20', 3)	# 169-171
+    sprite('ha430_19', 3)	# 172-174
+    sprite('ha430_20', 3)	# 175-177
+    sprite('ha430_19', 3)	# 178-180
+    sprite('ha430_20', 3)	# 181-183
+    sprite('ha430_19', 3)	# 184-186
+    sprite('ha430_20', 3)	# 187-189
+    sprite('ha430_19', 4)	# 190-193
+    sprite('ha430_20', 4)	# 194-197
+    sprite('ha430_19', 4)	# 198-201
+    sprite('ha430_20', 4)	# 202-205
+    sprite('ha430_19', 5)	# 206-210
+    sprite('ha430_20', 5)	# 211-215
+    sprite('ha430_19', 6)	# 216-221
+    sprite('ha430_20', 6)	# 222-227
+    sprite('ha430_19', 4)	# 228-231
+    sprite('ha430_20', 4)	# 232-235
+    sprite('ha430_19', 5)	# 236-240
+    sprite('ha430_20', 5)	# 241-245
+    sprite('ha430_19', 6)	# 246-251
+    sprite('ha430_20', 6)	# 252-257
+    sprite('ha430_19', 6)	# 258-263
+    sprite('ha430_20', 5)	# 264-268
+    sprite('ha430_21', 5)	# 269-273
+    sprite('ha430_22', 5)	# 274-278
+    sprite('ha430_23', 5)	# 279-283
+    Unknown14077(1)
+    Unknown2015(-1)
+    sprite('ha430_24', 4)	# 284-287
+    sprite('ha430_25', 4)	# 288-291
+    Unknown13024(1)
+    sprite('ha430_26', 4)	# 292-295
+    sprite('ha430_27', 4)	# 296-299
 
 @State
 def UltimateGrip():
@@ -5086,7 +5183,7 @@ def UltimateGrip2():
         AttackDefaults_StandingDD()
         Unknown23056('')
         AttackLevel_(4)
-        Damage(5400)
+        Damage(6000)
         AttackP2(60)
         AirHitstunAnimation(9)
         GroundedHitstunAnimation(9)
@@ -5329,7 +5426,7 @@ def UltimateGrip2_OD():
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
     AttackLevel_(5)
-    Damage(4000)
+    Damage(5000)
     AttackP2(60)
     Hitstop(30)
     Unknown11001(0, 0, 0)

@@ -2,11 +2,11 @@
 def ChargeDamageUp():
     Unknown48('19000000020000004300000003000000020000003b000000')
     if (SLOT_67 == 1):
-        Unknown10000(120)
-    if (SLOT_67 == 2):
         Unknown10000(200)
-    if (SLOT_67 == 3):
+    if (SLOT_67 == 2):
         Unknown10000(300)
+    if (SLOT_67 == 3):
+        Unknown10000(400)
 
 @Subroutine
 def Charge_Count():
@@ -254,6 +254,13 @@ def PersonaDeleteEffect():
     Unknown2017(0)
     Unknown1084(1)
 
+@Subroutine
+def Init_CantCancelPersonaAction():
+    SLOT_10 = 1
+
+    def upon_STATE_END():
+        SLOT_10 = 0
+
 @State
 def PCE_Persona5C():
 
@@ -275,35 +282,36 @@ def PCE_Persona5C():
         callSubroutine('PCE_CheckWarp')
         Unknown4007(3)
         Unknown2053(1)
-    sprite('to204_00', 3)	# 1-3
+        Unknown23059(1)
+    sprite('to204_00', 2)	# 1-2
     Unknown2006()
-    sprite('to204_01', 1)	# 4-4
+    sprite('to204_01', 1)	# 3-3
     GFX_0('Zanzoh5C', 100)
     physicsXImpulse(30000)
-    sprite('to204_01', 1)	# 5-5
+    sprite('to204_01', 1)	# 4-4
     Unknown1019(60)
-    sprite('to204_02', 2)	# 6-7
+    sprite('to204_02', 2)	# 5-6
     Unknown1019(60)
     SFX_3('slash_pole_middle')
-    sprite('to204_04', 1)	# 8-8	 **attackbox here**
+    sprite('to204_04', 1)	# 7-7	 **attackbox here**
     Unknown23054('746f3230345f303300000000000000000000000000000000000000000000000003000000')
     Unknown1019(0)
     RefreshMultihit()
-    sprite('to204_04', 2)	# 9-10	 **attackbox here**
+    sprite('to204_04', 2)	# 8-9	 **attackbox here**
     Unknown23022(0)
-    sprite('to204_05', 3)	# 11-13
+    sprite('to204_05', 3)	# 10-12
     Unknown4007(0)
     Unknown23027()
-    sprite('to204_06', 3)	# 14-16
+    sprite('to204_06', 3)	# 13-15
     SFX_3('cloth_l')
-    sprite('to204_04', 4)	# 17-20	 **attackbox here**
-    sprite('to204_05', 4)	# 21-24
-    sprite('to204_06', 4)	# 25-28
+    sprite('to204_04', 4)	# 16-19	 **attackbox here**
+    sprite('to204_05', 4)	# 20-23
+    sprite('to204_06', 4)	# 24-27
     SFX_3('cloth_l')
-    sprite('to204_04', 5)	# 29-33	 **attackbox here**
-    sprite('to204_05', 5)	# 34-38
-    sprite('to204_06', 5)	# 39-43
-    sprite('keep', 32767)	# 44-32810
+    sprite('to204_04', 5)	# 28-32	 **attackbox here**
+    sprite('to204_05', 5)	# 33-37
+    sprite('to204_06', 5)	# 38-42
+    sprite('keep', 32767)	# 43-32809
     enterState('PersonaDeleteAndIdling')
 
 @State
@@ -393,6 +401,7 @@ def PCE_Persona2C():
 
         def upon_ON_HIT_OR_BLOCK():
             Unknown2037(1)
+        Unknown23059(1)
     sprite('to234_00', 3)	# 1-3
     Unknown2006()
     Unknown23015(0)
@@ -664,49 +673,51 @@ def PCE_Persona5B3rd():
         Unknown2017(1)
         Unknown2006()
         callSubroutine('PCE_CheckWarp')
-    sprite('to205_00', 2)	# 1-2
+        Unknown23059(1)
+    sprite('to205_00', 1)	# 1-1
     ScreenShake(20000, 0)
-    sprite('to205_01', 2)	# 3-4
+    sprite('to205_01', 1)	# 2-2
     Unknown4007(0)
     Unknown30032(1)
-    physicsXImpulse(30000)
+    physicsXImpulse(50000)
     GFX_0('Zanzoh5D_Short', 100)
-    sprite('to205_02', 2)	# 5-6
+    sprite('to205_02', 1)	# 3-3
+    sprite('to205_02', 1)	# 4-4
     Unknown1019(60)
-    sprite('to205_03', 2)	# 7-8
+    sprite('to205_03', 1)	# 5-5
     Unknown1019(60)
-    sprite('to205_04', 2)	# 9-10
+    sprite('to205_04', 2)	# 6-7
     Unknown1019(60)
-    sprite('to205_05', 2)	# 11-12
+    sprite('to205_05', 2)	# 8-9
     Unknown1019(60)
     SFX_3('slash_pole_fast')
-    sprite('to205_06', 2)	# 13-14	 **attackbox here**
+    sprite('to205_06', 2)	# 10-11	 **attackbox here**
     Unknown1019(60)
     RefreshMultihit()
-    sprite('to205_07', 3)	# 15-17
+    sprite('to205_07', 3)	# 12-14
     Unknown1019(60)
-    sprite('to205_08', 2)	# 18-19	 **attackbox here**
+    sprite('to205_08', 2)	# 15-16	 **attackbox here**
     Unknown1019(60)
     RefreshMultihit()
-    sprite('to205_09', 2)	# 20-21
+    sprite('to205_09', 2)	# 17-18
     Unknown1019(60)
-    sprite('to205_10', 3)	# 22-24
+    sprite('to205_10', 3)	# 19-21
     Unknown30033(1)
     SFX_3('slash_pole_slow')
     if SLOT_53:
         sendToLabel(819)
-    sprite('to205_11', 1)	# 25-25
+    sprite('to205_11', 1)	# 22-22
     Unknown30033(0)
     physicsXImpulse(20000)
-    sprite('to205_11', 1)	# 26-26
+    sprite('to205_11', 1)	# 23-23
     Unknown1019(85)
-    sprite('to205_11', 1)	# 27-27
+    sprite('to205_11', 1)	# 24-24
     Unknown1019(85)
-    sprite('to205_12', 1)	# 28-28
+    sprite('to205_12', 1)	# 25-25
     Unknown1019(85)
-    sprite('to205_12', 1)	# 29-29
+    sprite('to205_12', 1)	# 26-26
     Unknown1019(85)
-    sprite('to205_14', 3)	# 30-32	 **attackbox here**
+    sprite('to205_14', 3)	# 27-29	 **attackbox here**
     Unknown23054('746f3230355f313300000000000000000000000000000000000000000000000003000000')
     GFX_0('Zanzoh5D_2', 100)
     RefreshMultihit()
@@ -721,51 +732,51 @@ def PCE_Persona5B3rd():
     callSubroutine('ChargeDamageUp')
     Unknown2017(0)
     Unknown1019(0)
-    sprite('to205_15', 3)	# 33-35
+    sprite('to205_15', 3)	# 30-32
     Unknown23027()
-    sprite('to205_16', 3)	# 36-38
+    sprite('to205_16', 3)	# 33-35
     SFX_3('cloth_l')
-    sprite('to205_14', 3)	# 39-41	 **attackbox here**
-    sprite('to205_15', 3)	# 42-44
-    sprite('to205_16', 3)	# 45-47
-    sprite('to205_14', 3)	# 48-50	 **attackbox here**
+    sprite('to205_14', 3)	# 36-38	 **attackbox here**
+    sprite('to205_15', 3)	# 39-41
+    sprite('to205_16', 3)	# 42-44
+    sprite('to205_14', 3)	# 45-47	 **attackbox here**
     SFX_3('cloth_l')
-    sprite('to205_15', 3)	# 51-53
-    sprite('to205_16', 3)	# 54-56
-    sprite('to205_14', 3)	# 57-59	 **attackbox here**
-    sprite('to205_15', 3)	# 60-62
+    sprite('to205_15', 3)	# 48-50
+    sprite('to205_16', 3)	# 51-53
+    sprite('to205_14', 3)	# 54-56	 **attackbox here**
+    sprite('to205_15', 3)	# 57-59
     SFX_3('cloth_l')
-    sprite('to205_16', 3)	# 63-65
-    sprite('to205_14', 3)	# 66-68	 **attackbox here**
-    sprite('to205_15', 3)	# 69-71
+    sprite('to205_16', 3)	# 60-62
+    sprite('to205_14', 3)	# 63-65	 **attackbox here**
+    sprite('to205_15', 3)	# 66-68
     SFX_3('cloth_l')
-    sprite('to205_16', 3)	# 72-74
-    sprite('to205_14', 3)	# 75-77	 **attackbox here**
-    sprite('to205_15', 3)	# 78-80
+    sprite('to205_16', 3)	# 69-71
+    sprite('to205_14', 3)	# 72-74	 **attackbox here**
+    sprite('to205_15', 3)	# 75-77
     SFX_3('cloth_l')
-    sprite('to205_16', 3)	# 81-83
-    sprite('to205_14', 3)	# 84-86	 **attackbox here**
-    sprite('to205_15', 3)	# 87-89
+    sprite('to205_16', 3)	# 78-80
+    sprite('to205_14', 3)	# 81-83	 **attackbox here**
+    sprite('to205_15', 3)	# 84-86
     SFX_3('cloth_l')
-    sprite('to205_16', 3)	# 90-92
-    sprite('to205_14', 3)	# 93-95	 **attackbox here**
-    sprite('to205_15', 3)	# 96-98
+    sprite('to205_16', 3)	# 87-89
+    sprite('to205_14', 3)	# 90-92	 **attackbox here**
+    sprite('to205_15', 3)	# 93-95
     SFX_3('cloth_l')
-    sprite('to205_16', 3)	# 99-101
-    sprite('to205_14', 3)	# 102-104	 **attackbox here**
-    sprite('to205_15', 3)	# 105-107
+    sprite('to205_16', 3)	# 96-98
+    sprite('to205_14', 3)	# 99-101	 **attackbox here**
+    sprite('to205_15', 3)	# 102-104
     SFX_3('cloth_l')
-    sprite('to205_16', 3)	# 108-110
-    sprite('to205_14', 3)	# 111-113	 **attackbox here**
-    sprite('to205_15', 3)	# 114-116
+    sprite('to205_16', 3)	# 105-107
+    sprite('to205_14', 3)	# 108-110	 **attackbox here**
+    sprite('to205_15', 3)	# 111-113
     SFX_3('cloth_l')
-    sprite('keep', 32767)	# 117-32883
+    sprite('keep', 32767)	# 114-32880
     enterState('PersonaDeleteAndIdling')
     label(819)
-    sprite('to206_00', 3)	# 32884-32886
+    sprite('to206_00', 3)	# 32881-32883
     Unknown23027()
     Unknown1084(1)
-    sprite('to206_01', 2)	# 32887-32888	 **attackbox here**
+    sprite('to206_01', 2)	# 32884-32885	 **attackbox here**
     Damage(100)
     Hitstop(0)
     AirPushbackY(3000)
@@ -773,31 +784,31 @@ def PCE_Persona5B3rd():
     Unknown9016(1)
     RefreshMultihit()
     GFX_0('Zanzoh5DD', 0)
-    sprite('to206_02', 2)	# 32889-32890	 **attackbox here**
+    sprite('to206_02', 2)	# 32886-32887	 **attackbox here**
     RefreshMultihit()
     SFX_3('slash_pole_fast')
     Unknown11055(1)
-    sprite('to206_03', 2)	# 32891-32892	 **attackbox here**
+    sprite('to206_03', 2)	# 32888-32889	 **attackbox here**
     RefreshMultihit()
-    sprite('to206_01', 2)	# 32893-32894	 **attackbox here**
+    sprite('to206_01', 2)	# 32890-32891	 **attackbox here**
     RefreshMultihit()
     GFX_0('Zanzoh5DD', 0)
     SFX_3('slash_pole_fast')
-    sprite('to206_02', 2)	# 32895-32896	 **attackbox here**
+    sprite('to206_02', 2)	# 32892-32893	 **attackbox here**
     RefreshMultihit()
-    sprite('to206_03', 2)	# 32897-32898	 **attackbox here**
+    sprite('to206_03', 2)	# 32894-32895	 **attackbox here**
     RefreshMultihit()
     SFX_3('slash_pole_fast')
-    sprite('to206_04', 3)	# 32899-32901
+    sprite('to206_04', 3)	# 32896-32898
     Unknown23015(0)
     Unknown2019(100)
     GFX_0('Zanzoh5DD_2', 100)
-    sprite('to206_05', 2)	# 32902-32903
-    sprite('to206_06', 2)	# 32904-32905
-    sprite('to206_07', 2)	# 32906-32907
+    sprite('to206_05', 2)	# 32899-32900
+    sprite('to206_06', 2)	# 32901-32902
+    sprite('to206_07', 2)	# 32903-32904
     GFX_0('Zanzoh5DD_3', 100)
     SFX_3('slash_pole_middle')
-    sprite('to206_09', 3)	# 32908-32910	 **attackbox here**
+    sprite('to206_09', 3)	# 32905-32907	 **attackbox here**
     Unknown23054('746f3230365f303800000000000000000000000000000000000000000000000003000000')
     RefreshMultihit()
     AttackLevel_(4)
@@ -813,34 +824,34 @@ def PCE_Persona5B3rd():
     WallbounceReboundTime(0)
     Unknown2017(0)
     Unknown11055(0)
-    sprite('to206_10', 3)	# 32911-32913
+    sprite('to206_10', 3)	# 32908-32910
     Unknown23027()
-    sprite('to206_11', 3)	# 32914-32916
+    sprite('to206_11', 3)	# 32911-32913
     SFX_3('cloth_l')
-    sprite('to206_09', 3)	# 32917-32919	 **attackbox here**
-    sprite('to206_10', 3)	# 32920-32922
-    sprite('to206_11', 3)	# 32923-32925
-    sprite('to206_09', 3)	# 32926-32928	 **attackbox here**
+    sprite('to206_09', 3)	# 32914-32916	 **attackbox here**
+    sprite('to206_10', 3)	# 32917-32919
+    sprite('to206_11', 3)	# 32920-32922
+    sprite('to206_09', 3)	# 32923-32925	 **attackbox here**
     SFX_3('cloth_l')
-    sprite('to206_10', 3)	# 32929-32931
-    sprite('to206_11', 3)	# 32932-32934
-    sprite('to206_09', 3)	# 32935-32937	 **attackbox here**
-    sprite('to206_10', 3)	# 32938-32940
+    sprite('to206_10', 3)	# 32926-32928
+    sprite('to206_11', 3)	# 32929-32931
+    sprite('to206_09', 3)	# 32932-32934	 **attackbox here**
+    sprite('to206_10', 3)	# 32935-32937
     SFX_3('cloth_l')
-    sprite('to206_11', 3)	# 32941-32943
-    sprite('to206_09', 3)	# 32944-32946	 **attackbox here**
-    sprite('to206_10', 3)	# 32947-32949
-    sprite('to206_11', 3)	# 32950-32952
+    sprite('to206_11', 3)	# 32938-32940
+    sprite('to206_09', 3)	# 32941-32943	 **attackbox here**
+    sprite('to206_10', 3)	# 32944-32946
+    sprite('to206_11', 3)	# 32947-32949
     SFX_3('cloth_l')
-    sprite('to206_09', 3)	# 32953-32955	 **attackbox here**
-    sprite('to206_10', 3)	# 32956-32958
-    sprite('to206_11', 3)	# 32959-32961
-    sprite('to206_09', 3)	# 32962-32964	 **attackbox here**
+    sprite('to206_09', 3)	# 32950-32952	 **attackbox here**
+    sprite('to206_10', 3)	# 32953-32955
+    sprite('to206_11', 3)	# 32956-32958
+    sprite('to206_09', 3)	# 32959-32961	 **attackbox here**
     SFX_3('cloth_l')
-    sprite('to206_10', 3)	# 32965-32967
-    sprite('to206_11', 3)	# 32968-32970
+    sprite('to206_10', 3)	# 32962-32964
+    sprite('to206_11', 3)	# 32965-32967
     SFX_3('cloth_l')
-    sprite('keep', 32767)	# 32971-65737
+    sprite('keep', 32767)	# 32968-65734
     enterState('PersonaDeleteAndIdling')
 
 @State
@@ -1021,19 +1032,19 @@ def PCE_PersonaAir5C():
     RefreshMultihit()
     Unknown1019(0)
     YAccel(0)
-    sprite('to254_03', 3)	# 9-11	 **attackbox here**
+    sprite('to254_03', 5)	# 9-13	 **attackbox here**
     Unknown23022(0)
-    sprite('to254_04', 3)	# 12-14
+    sprite('to254_04', 3)	# 14-16
     Unknown23027()
     Unknown4007(0)
-    sprite('to254_05', 3)	# 15-17
-    sprite('to254_04', 3)	# 18-20
+    sprite('to254_05', 3)	# 17-19
+    sprite('to254_04', 3)	# 20-22
     SFX_3('cloth_l')
-    sprite('to254_05', 3)	# 21-23
-    sprite('to254_04', 3)	# 24-26
-    sprite('to254_05', 3)	# 27-29
+    sprite('to254_05', 3)	# 23-25
+    sprite('to254_04', 3)	# 26-28
+    sprite('to254_05', 3)	# 29-31
     label(580)
-    sprite('keep', 32767)	# 30-32796
+    sprite('keep', 32767)	# 32-32798
     enterState('PersonaDeleteAndIdling')
 
 @State
@@ -1041,12 +1052,13 @@ def PCE_PersonaAir4D():
 
     def upon_IMMEDIATE():
         Unknown23023()
-        Unknown23184('0300000064000000b03cffff50c3000000000000e09304000000000000000000')
+        Unknown23184('0300000064000000b03cffff204e000000000000e09304000000000000000000')
         callSubroutine('PCE_AttackInit')
         AttackLevel_(3)
         Damage(300)
         AirUntechableTime(25)
         AttackP1(80)
+        AttackP2(70)
         AirPushbackY(4000)
         PushbackX(22000)
         Hitstop(0)
@@ -1058,64 +1070,65 @@ def PCE_PersonaAir4D():
         callSubroutine('ChargeDamageUp')
         Unknown4007(3)
         Unknown2053(1)
-        Unknown23078(1)
+        callSubroutine('Init_CantCancelPersonaAction')
         callSubroutine('PCE_CheckWarp')
-    sprite('to255_00', 2)	# 1-2
-    sprite('to255_01', 2)	# 3-4
+        Unknown23059(1)
+    sprite('to255_00', 4)	# 1-4
+    sprite('to255_01', 4)	# 5-8
     Unknown4007(0)
-    physicsXImpulse(20000)
-    physicsYImpulse(-9000)
-    sprite('to255_02', 2)	# 5-6
+    physicsXImpulse(15000)
+    physicsYImpulse(-14000)
+    sprite('to255_02', 3)	# 9-11
     Unknown1019(80)
     YAccel(80)
-    sprite('to255_03', 2)	# 7-8
+    sprite('to255_03', 3)	# 12-14
     Unknown1019(80)
     YAccel(80)
-    sprite('to255_04', 2)	# 9-10
+    sprite('to255_04', 3)	# 15-17
     Unknown1019(80)
     YAccel(80)
-    sprite('to255_05', 2)	# 11-12	 **attackbox here**
+    sprite('to255_05', 2)	# 18-19	 **attackbox here**
     RefreshMultihit()
     Unknown1019(80)
     YAccel(80)
     SFX_3('slash_pole_fast')
-    sprite('to255_06', 2)	# 13-14	 **attackbox here**
+    sprite('to255_06', 2)	# 20-21	 **attackbox here**
     RefreshMultihit()
     Unknown1019(80)
     YAccel(80)
     GFX_0('ZanzohAir5D', 100)
-    sprite('to255_07', 2)	# 15-16	 **attackbox here**
+    sprite('to255_07', 2)	# 22-23	 **attackbox here**
     RefreshMultihit()
     Unknown1019(80)
     YAccel(80)
     SFX_3('slash_pole_fast')
-    sprite('to255_05', 2)	# 17-18	 **attackbox here**
+    sprite('to255_05', 2)	# 24-25	 **attackbox here**
     RefreshMultihit()
     Unknown1019(80)
     YAccel(80)
-    sprite('to255_06', 2)	# 19-20	 **attackbox here**
+    sprite('to255_06', 2)	# 26-27	 **attackbox here**
     RefreshMultihit()
     Unknown1019(80)
     YAccel(80)
     SFX_3('slash_pole_fast')
-    sprite('to255_07', 2)	# 21-22	 **attackbox here**
+    sprite('to255_07', 2)	# 28-29	 **attackbox here**
     RefreshMultihit()
     Unknown1019(80)
     YAccel(80)
-    sprite('to255_08', 3)	# 23-25
+    sprite('to255_08', 3)	# 30-32
     Unknown1019(0)
     YAccel(0)
     GFX_0('ZanzohAir5D_2', 100)
-    sprite('to255_09', 2)	# 26-27
-    sprite('to255_10', 2)	# 28-29
-    sprite('to255_11', 2)	# 30-31
+    sprite('to255_09', 2)	# 33-34
+    sprite('to255_10', 2)	# 35-36
+    sprite('to255_11', 2)	# 37-38
     SFX_3('slash_pole_middle')
-    sprite('to255_12', 1)	# 32-32
-    sprite('to255_13', 1)	# 33-33
+    sprite('to255_12', 1)	# 39-39
+    sprite('to255_13', 1)	# 40-40
     GFX_0('ZanzohAir5D_3', 100)
-    sprite('to255_14', 1)	# 34-34
-    sprite('to255_15', 1)	# 35-35
-    sprite('to255_17', 3)	# 36-38	 **attackbox here**
+    sprite('to255_14', 1)	# 41-41
+    sprite('to255_15', 1)	# 42-42
+    sprite('to255_17', 3)	# 43-45	 **attackbox here**
     Unknown23054('746f3235355f313600000000000000000000000000000000000000000000000002000000')
     Damage(1500)
     Unknown11092(0)
@@ -1125,27 +1138,28 @@ def PCE_PersonaAir4D():
     Unknown30055('000000000000000000000000')
     Unknown30056('000000000000000000000000')
     RefreshMultihit()
-    sprite('to255_18', 3)	# 39-41
+    SLOT_10 = 0
+    sprite('to255_18', 3)	# 46-48
     Unknown23027()
-    sprite('to255_19', 3)	# 42-44
+    sprite('to255_19', 3)	# 49-51
     Unknown2001()
-    sprite('to255_17', 3)	# 45-47	 **attackbox here**
-    sprite('to255_18', 3)	# 48-50
+    sprite('to255_17', 3)	# 52-54	 **attackbox here**
+    sprite('to255_18', 3)	# 55-57
     SFX_3('cloth_l')
-    sprite('to255_19', 3)	# 51-53
-    sprite('to255_17', 3)	# 54-56	 **attackbox here**
-    sprite('to255_18', 3)	# 57-59
+    sprite('to255_19', 3)	# 58-60
+    sprite('to255_17', 3)	# 61-63	 **attackbox here**
+    sprite('to255_18', 3)	# 64-66
     SFX_3('cloth_l')
-    sprite('to255_19', 3)	# 60-62
-    sprite('to255_17', 3)	# 63-65	 **attackbox here**
-    sprite('to255_18', 3)	# 66-68
+    sprite('to255_19', 3)	# 67-69
+    sprite('to255_17', 3)	# 70-72	 **attackbox here**
+    sprite('to255_18', 3)	# 73-75
     SFX_3('cloth_l')
-    sprite('to255_19', 3)	# 69-71
-    sprite('to255_17', 3)	# 72-74	 **attackbox here**
-    sprite('to255_18', 3)	# 75-77
+    sprite('to255_19', 3)	# 76-78
+    sprite('to255_17', 3)	# 79-81	 **attackbox here**
+    sprite('to255_18', 3)	# 82-84
     SFX_3('cloth_l')
-    sprite('to255_19', 3)	# 78-80
-    sprite('keep', 32767)	# 81-32847
+    sprite('to255_19', 3)	# 85-87
+    sprite('keep', 32767)	# 88-32854
     enterState('PersonaDeleteAndIdling')
 
 @State
@@ -1349,6 +1363,7 @@ def PCE_PersonaKokutengekiA():
         Unknown2053(1)
         Unknown2017(0)
         callSubroutine('PCE_CheckWarp')
+        Unknown23059(1)
     sprite('to405_00', 2)	# 1-2
     Unknown23022(1)
     GFX_0('KokutengekiTameC', 0)
@@ -1545,6 +1560,7 @@ def PCE_PersonaKokutengeki_PS():
         Unknown2053(1)
         Unknown2017(0)
         callSubroutine('PCE_CheckWarp')
+        Unknown23059(1)
     sprite('to405_00', 2)	# 1-2
     Unknown23022(1)
     teleportRelativeX(-75000)
@@ -1579,9 +1595,9 @@ def PCE_PersonaGodHand():
         callSubroutine('PCE_DDAttackInit')
         Unknown2011()
         AttackLevel_(5)
-        Damage(5000)
+        Damage(6000)
         AttackP2(60)
-        Unknown11091(30)
+        Unknown11091(32)
         Hitstop(0)
         Unknown11001(13, 13, 13)
         AirPushbackY(-500000)
@@ -1589,7 +1605,7 @@ def PCE_PersonaGodHand():
         YImpluseBeforeWallbounce(0)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
-        Unknown9310(20)
+        Unknown9310(40)
         Unknown23022(1)
         callSubroutine('ChargeDamageUp')
         Unknown4009(3)
@@ -1600,6 +1616,7 @@ def PCE_PersonaGodHand():
             Unknown4009(0)
             Unknown2054(0)
         callSubroutine('PCE_ForceWarp')
+        Unknown23059(1)
     sprite('to430_00', 3)	# 1-3
     GFX_0('GodHandKobusiKumo', 0)
     sprite('to430_01', 3)	# 4-6
@@ -1657,7 +1674,8 @@ def PCE_PersonaGodHandOD():
         callSubroutine('PCE_DDAttackInit')
         Unknown2011()
         AttackLevel_(5)
-        Damage(5000)
+        Damage(5100)
+        Unknown11091(22)
         AttackP2(60)
         Unknown11092(1)
         Hitstop(0)
@@ -1667,7 +1685,7 @@ def PCE_PersonaGodHandOD():
         YImpluseBeforeWallbounce(0)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
-        Unknown9310(20)
+        Unknown9310(40)
         Unknown23022(1)
         Unknown11068(1)
         callSubroutine('ChargeDamageUp')
@@ -1679,6 +1697,10 @@ def PCE_PersonaGodHandOD():
             Unknown4009(0)
             Unknown2054(0)
         callSubroutine('PCE_ForceWarp')
+        Unknown23059(1)
+
+        def upon_12():
+            SLOT_51 = 1
     sprite('to430_00', 3)	# 1-3
     GFX_0('GodHandKobusiKumo', 0)
     sprite('to430_01', 3)	# 4-6
@@ -1714,6 +1736,8 @@ def PCE_PersonaGodHandOD():
     Unknown23184('0300000064000000b08f0600f049020000000000000000000000000000000000')
     callSubroutine('PCE_ForceWarp')
     GFX_0('GodHandKobusiKumo', 0)
+    if SLOT_51:
+        Damage(5000)
     sprite('to430_01', 3)	# 73-75
     sprite('to430_02', 3)	# 76-78
     sprite('to430_00', 3)	# 79-81
@@ -2067,7 +2091,7 @@ def PCE_PersonaGodHand_DUO():
         YImpluseBeforeWallbounce(0)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
-        Unknown9310(20)
+        Unknown9310(40)
         Unknown23022(1)
         Unknown4009(3)
         Unknown23066(1)
@@ -2077,6 +2101,7 @@ def PCE_PersonaGodHand_DUO():
             Unknown4009(0)
             Unknown2054(0)
         callSubroutine('PCE_ForceWarp')
+        Unknown23059(1)
     sprite('to430_00', 3)	# 1-3
     GFX_0('GodHandKobusiKumo', 0)
     sprite('to430_01', 3)	# 4-6
@@ -2143,7 +2168,7 @@ def PCE_PersonaGodHand_DUOOD():
         YImpluseBeforeWallbounce(0)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
-        Unknown9310(20)
+        Unknown9310(40)
         Unknown23022(1)
         Unknown11068(1)
         Unknown4009(3)
@@ -2154,6 +2179,7 @@ def PCE_PersonaGodHand_DUOOD():
             Unknown4009(0)
             Unknown2054(0)
         callSubroutine('PCE_ForceWarp')
+        Unknown23059(1)
     sprite('to430_00', 3)	# 1-3
     GFX_0('GodHandKobusiKumo', 0)
     sprite('to430_01', 3)	# 4-6
@@ -3436,11 +3462,11 @@ def meteo_col():
 
         def upon_43():
             if (SLOT_48 == 5001):
-                Unknown10000(120)
-            if (SLOT_48 == 5002):
                 Unknown10000(200)
-            if (SLOT_48 == 5003):
+            if (SLOT_48 == 5002):
                 Unknown10000(300)
+            if (SLOT_48 == 5003):
+                Unknown10000(400)
     sprite('vr_to432_col', 1)	# 1-1	 **attackbox here**
     RefreshMultihit()
     GFX_0('meteo', 0)
@@ -3483,11 +3509,11 @@ def meteo_col_OD():
 
         def upon_43():
             if (SLOT_48 == 5001):
-                Unknown10000(120)
-            if (SLOT_48 == 5002):
                 Unknown10000(200)
-            if (SLOT_48 == 5003):
+            if (SLOT_48 == 5002):
                 Unknown10000(300)
+            if (SLOT_48 == 5003):
+                Unknown10000(400)
     sprite('vr_to432_col', 1)	# 1-1	 **attackbox here**
     RefreshMultihit()
     GFX_0('meteo', 0)

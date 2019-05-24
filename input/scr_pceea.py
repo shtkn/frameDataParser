@@ -2,11 +2,11 @@
 def ChargeDamageUp():
     Unknown48('19000000020000004300000003000000020000003b000000')
     if (SLOT_67 == 1):
-        Unknown10000(120)
-    if (SLOT_67 == 2):
         Unknown10000(200)
-    if (SLOT_67 == 3):
+    if (SLOT_67 == 2):
         Unknown10000(300)
+    if (SLOT_67 == 3):
+        Unknown10000(400)
 
 @Subroutine
 def Charge_Count():
@@ -254,6 +254,13 @@ def PersonaDeleteEffect():
     Unknown2017(0)
     Unknown1084(1)
 
+@Subroutine
+def Init_CantCancelPersonaAction():
+    SLOT_10 = 1
+
+    def upon_STATE_END():
+        SLOT_10 = 0
+
 @State
 def PCE_Persona5C():
 
@@ -275,7 +282,8 @@ def PCE_Persona5C():
         callSubroutine('PCE_CheckWarp')
         Unknown4007(3)
         Unknown2053(1)
-    sprite('to204_00', 3)
+        Unknown23059(1)
+    sprite('to204_00', 2)
     Unknown2006()
     sprite('to204_01', 1)
     GFX_0('Zanzoh5C', 100)
@@ -393,6 +401,7 @@ def PCE_Persona2C():
 
         def upon_ON_HIT_OR_BLOCK():
             Unknown2037(1)
+        Unknown23059(1)
     sprite('to234_00', 3)
     Unknown2006()
     Unknown23015(0)
@@ -664,16 +673,18 @@ def PCE_Persona5B3rd():
         Unknown2017(1)
         Unknown2006()
         callSubroutine('PCE_CheckWarp')
-    sprite('to205_00', 2)
+        Unknown23059(1)
+    sprite('to205_00', 1)
     ScreenShake(20000, 0)
-    sprite('to205_01', 2)
+    sprite('to205_01', 1)
     Unknown4007(0)
     Unknown30032(1)
-    physicsXImpulse(30000)
+    physicsXImpulse(50000)
     GFX_0('Zanzoh5D_Short', 100)
-    sprite('to205_02', 2)
+    sprite('to205_02', 1)
+    sprite('to205_02', 1)
     Unknown1019(60)
-    sprite('to205_03', 2)
+    sprite('to205_03', 1)
     Unknown1019(60)
     sprite('to205_04', 2)
     Unknown1019(60)
@@ -1021,7 +1032,7 @@ def PCE_PersonaAir5C():
     RefreshMultihit()
     Unknown1019(0)
     YAccel(0)
-    sprite('to254_03', 3)
+    sprite('to254_03', 5)
     Unknown23022(0)
     sprite('to254_04', 3)
     Unknown23027()
@@ -1041,12 +1052,13 @@ def PCE_PersonaAir4D():
 
     def upon_IMMEDIATE():
         Unknown23023()
-        Unknown23184('0300000064000000b03cffff50c3000000000000e09304000000000000000000')
+        Unknown23184('0300000064000000b03cffff204e000000000000e09304000000000000000000')
         callSubroutine('PCE_AttackInit')
         AttackLevel_(3)
         Damage(300)
         AirUntechableTime(25)
         AttackP1(80)
+        AttackP2(70)
         AirPushbackY(4000)
         PushbackX(22000)
         Hitstop(0)
@@ -1058,20 +1070,21 @@ def PCE_PersonaAir4D():
         callSubroutine('ChargeDamageUp')
         Unknown4007(3)
         Unknown2053(1)
-        Unknown23078(1)
+        callSubroutine('Init_CantCancelPersonaAction')
         callSubroutine('PCE_CheckWarp')
-    sprite('to255_00', 2)
-    sprite('to255_01', 2)
+        Unknown23059(1)
+    sprite('to255_00', 4)
+    sprite('to255_01', 4)
     Unknown4007(0)
-    physicsXImpulse(20000)
-    physicsYImpulse(-9000)
-    sprite('to255_02', 2)
+    physicsXImpulse(15000)
+    physicsYImpulse(-14000)
+    sprite('to255_02', 3)
     Unknown1019(80)
     YAccel(80)
-    sprite('to255_03', 2)
+    sprite('to255_03', 3)
     Unknown1019(80)
     YAccel(80)
-    sprite('to255_04', 2)
+    sprite('to255_04', 3)
     Unknown1019(80)
     YAccel(80)
     sprite('to255_05', 2)
@@ -1125,6 +1138,7 @@ def PCE_PersonaAir4D():
     Unknown30055('000000000000000000000000')
     Unknown30056('000000000000000000000000')
     RefreshMultihit()
+    SLOT_10 = 0
     sprite('to255_18', 3)
     Unknown23027()
     sprite('to255_19', 3)
@@ -1349,6 +1363,7 @@ def PCE_PersonaKokutengekiA():
         Unknown2053(1)
         Unknown2017(0)
         callSubroutine('PCE_CheckWarp')
+        Unknown23059(1)
     sprite('to405_00', 2)
     Unknown23022(1)
     GFX_0('KokutengekiTameC', 0)
@@ -1545,6 +1560,7 @@ def PCE_PersonaKokutengeki_PS():
         Unknown2053(1)
         Unknown2017(0)
         callSubroutine('PCE_CheckWarp')
+        Unknown23059(1)
     sprite('to405_00', 2)
     Unknown23022(1)
     teleportRelativeX(-75000)
@@ -1579,9 +1595,9 @@ def PCE_PersonaGodHand():
         callSubroutine('PCE_DDAttackInit')
         Unknown2011()
         AttackLevel_(5)
-        Damage(5000)
+        Damage(6000)
         AttackP2(60)
-        Unknown11091(30)
+        Unknown11091(32)
         Hitstop(0)
         Unknown11001(13, 13, 13)
         AirPushbackY(-500000)
@@ -1589,7 +1605,7 @@ def PCE_PersonaGodHand():
         YImpluseBeforeWallbounce(0)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
-        Unknown9310(20)
+        Unknown9310(40)
         Unknown23022(1)
         callSubroutine('ChargeDamageUp')
         Unknown4009(3)
@@ -1600,6 +1616,7 @@ def PCE_PersonaGodHand():
             Unknown4009(0)
             Unknown2054(0)
         callSubroutine('PCE_ForceWarp')
+        Unknown23059(1)
     sprite('to430_00', 3)
     GFX_0('GodHandKobusiKumo', 0)
     sprite('to430_01', 3)
@@ -1657,7 +1674,8 @@ def PCE_PersonaGodHandOD():
         callSubroutine('PCE_DDAttackInit')
         Unknown2011()
         AttackLevel_(5)
-        Damage(5000)
+        Damage(5100)
+        Unknown11091(22)
         AttackP2(60)
         Unknown11092(1)
         Hitstop(0)
@@ -1667,7 +1685,7 @@ def PCE_PersonaGodHandOD():
         YImpluseBeforeWallbounce(0)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
-        Unknown9310(20)
+        Unknown9310(40)
         Unknown23022(1)
         Unknown11068(1)
         callSubroutine('ChargeDamageUp')
@@ -1679,6 +1697,10 @@ def PCE_PersonaGodHandOD():
             Unknown4009(0)
             Unknown2054(0)
         callSubroutine('PCE_ForceWarp')
+        Unknown23059(1)
+
+        def upon_12():
+            SLOT_51 = 1
     sprite('to430_00', 3)
     GFX_0('GodHandKobusiKumo', 0)
     sprite('to430_01', 3)
@@ -1714,6 +1736,8 @@ def PCE_PersonaGodHandOD():
     Unknown23184('0300000064000000b08f0600f049020000000000000000000000000000000000')
     callSubroutine('PCE_ForceWarp')
     GFX_0('GodHandKobusiKumo', 0)
+    if SLOT_51:
+        Damage(5000)
     sprite('to430_01', 3)
     sprite('to430_02', 3)
     sprite('to430_00', 3)
@@ -2067,7 +2091,7 @@ def PCE_PersonaGodHand_DUO():
         YImpluseBeforeWallbounce(0)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
-        Unknown9310(20)
+        Unknown9310(40)
         Unknown23022(1)
         Unknown4009(3)
         Unknown23066(1)
@@ -2077,6 +2101,7 @@ def PCE_PersonaGodHand_DUO():
             Unknown4009(0)
             Unknown2054(0)
         callSubroutine('PCE_ForceWarp')
+        Unknown23059(1)
     sprite('to430_00', 3)
     GFX_0('GodHandKobusiKumo', 0)
     sprite('to430_01', 3)
@@ -2143,7 +2168,7 @@ def PCE_PersonaGodHand_DUOOD():
         YImpluseBeforeWallbounce(0)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
-        Unknown9310(20)
+        Unknown9310(40)
         Unknown23022(1)
         Unknown11068(1)
         Unknown4009(3)
@@ -2154,6 +2179,7 @@ def PCE_PersonaGodHand_DUOOD():
             Unknown4009(0)
             Unknown2054(0)
         callSubroutine('PCE_ForceWarp')
+        Unknown23059(1)
     sprite('to430_00', 3)
     GFX_0('GodHandKobusiKumo', 0)
     sprite('to430_01', 3)
@@ -3436,11 +3462,11 @@ def meteo_col():
 
         def upon_43():
             if (SLOT_48 == 5001):
-                Unknown10000(120)
-            if (SLOT_48 == 5002):
                 Unknown10000(200)
-            if (SLOT_48 == 5003):
+            if (SLOT_48 == 5002):
                 Unknown10000(300)
+            if (SLOT_48 == 5003):
+                Unknown10000(400)
     sprite('vr_to432_col', 1)
     RefreshMultihit()
     GFX_0('meteo', 0)
@@ -3483,11 +3509,11 @@ def meteo_col_OD():
 
         def upon_43():
             if (SLOT_48 == 5001):
-                Unknown10000(120)
-            if (SLOT_48 == 5002):
                 Unknown10000(200)
-            if (SLOT_48 == 5003):
+            if (SLOT_48 == 5002):
                 Unknown10000(300)
+            if (SLOT_48 == 5003):
+                Unknown10000(400)
     sprite('vr_to432_col', 1)
     RefreshMultihit()
     GFX_0('meteo', 0)

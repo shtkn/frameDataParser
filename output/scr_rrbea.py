@@ -53,6 +53,9 @@ def RifleShotB():
         Unknown1056(3000)
         Unknown1064(2000)
         physicsXImpulse(150000)
+
+        def upon_12():
+            Unknown23029(3, 3001, 0)
     sprite('RifleShotAtk', 60)	# 1-60	 **attackbox here**
     GFX_0('rrbBulletEff', 0)
 
@@ -107,6 +110,9 @@ def AirRollingShot():
         def upon_54():
             Unknown13(25)
         Unknown53(1)
+
+        def upon_12():
+            Unknown23029(3, 3001, 0)
     sprite('AirShotAtk', 4)	# 1-4	 **attackbox here**
 
 @State
@@ -133,6 +139,9 @@ def AirRollingShotEx():
         def upon_54():
             Unknown13(25)
         Unknown53(1)
+
+        def upon_12():
+            Unknown23029(3, 3001, 0)
     sprite('AirShotAtk', 4)	# 1-4	 **attackbox here**
     sprite('RifleShotAtk', 60)	# 5-64	 **attackbox here**
     teleportRelativeX(-150000)
@@ -173,6 +182,9 @@ def RollingShot():
         teleportRelativeX(440000)
         Unknown1007(250000)
         Unknown53(1)
+
+        def upon_12():
+            Unknown23029(3, 3001, 0)
     sprite('AirShotAtk', 4)	# 1-4	 **attackbox here**
 
 @State
@@ -222,6 +234,9 @@ def ShotAtk():
         Unknown53(1)
         teleportRelativeX(-150000)
         physicsXImpulse(80000)
+
+        def upon_12():
+            Unknown23029(3, 3001, 0)
     sprite('ShotAtk', 60)	# 1-60	 **attackbox here**
     GFX_0('rrbBulletEffB', 0)
 
@@ -258,7 +273,7 @@ def UltimateAssault_AddAtk():
         Unknown2011()
         Unknown23056('')
         AttackLevel_(4)
-        Damage(800)
+        Damage(720)
         AttackP2(100)
         GroundedHitstunAnimation(5)
         AirHitstunAnimation(5)
@@ -274,10 +289,11 @@ def UltimateAssault_AddAtk():
         Unknown11023(1)
         Unknown30048(1)
         Unknown11108('03000000')
+        Unknown11091(30)
 
         def upon_43():
             if (SLOT_48 == 4312):
-                Damage(250)
+                Damage(300)
                 Unknown11091(100)
                 AttackP1(100)
                 AttackP2(100)
@@ -305,6 +321,7 @@ def UltimateAssault_AddAtk():
     RefreshMultihit()
     if SLOT_2:
         AttackP2(100)
+        Damage(450)
     else:
         AttackP2(60)
     GroundedHitstunAnimation(13)
@@ -326,7 +343,7 @@ def UltimateAssaultOD_AddAtk():
         Unknown2011()
         Unknown23056('')
         AttackLevel_(4)
-        Damage(640)
+        Damage(600)
         AttackP2(100)
         GroundedHitstunAnimation(5)
         AirHitstunAnimation(5)
@@ -342,10 +359,11 @@ def UltimateAssaultOD_AddAtk():
         Unknown11023(1)
         Unknown30048(1)
         Unknown11108('03000000')
+        Unknown11091(27)
 
         def upon_43():
             if (SLOT_48 == 4312):
-                Damage(200)
+                Damage(240)
                 Unknown11091(100)
                 AttackP1(100)
                 AttackP2(100)
@@ -385,6 +403,7 @@ def UltimateAssaultOD_AddAtk():
     RefreshMultihit()
     if SLOT_2:
         AttackP2(100)
+        Damage(300)
     else:
         AttackP2(60)
     GroundedHitstunAnimation(13)

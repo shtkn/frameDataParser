@@ -2762,7 +2762,7 @@ def Special_Shot():
         Unknown4047(241, 240, 240)
         Unknown4045('697a65665f73686f745f6475737400000000000000000000000000000000000064000000')
 
-    def upon_78():
+    def upon_77():
         Hitstop(34)
         GFX_0('Special_Shot_Next', -1)
         Unknown21007(1, 32)
@@ -2858,7 +2858,7 @@ def Special_Shot_PS():
         Unknown4047(241, 240, 240)
         Unknown4045('697a65665f73686f745f6475737400000000000000000000000000000000000064000000')
 
-    def upon_78():
+    def upon_77():
         Hitstop(34)
         GFX_0('Special_Shot_Next_PS', -1)
         Unknown21007(1, 32)
@@ -2964,7 +2964,7 @@ def AirSpecial_Shot():
         Unknown4045('697a65665f73686f745f6475737400000000000000000000000000000000000064000000')
         Unknown1072(40000)
 
-    def upon_78():
+    def upon_77():
         Hitstop(34)
         GFX_0('Special_Shot_Next', -1)
         Unknown21007(1, 32)
@@ -5347,7 +5347,7 @@ def BurstDDFunnel():
         Unknown9016(1)
         Unknown11064(1)
         Unknown30048(1)
-        Unknown11091(10)
+        Unknown11091(12)
         Unknown11023(1)
         Unknown11066(1)
         Unknown11069('BurstDDFunnel')
@@ -5495,7 +5495,7 @@ def BurstDDFunnelLastAtk():
         Unknown2011()
         Unknown23056('')
         AttackLevel_(4)
-        Damage(2500)
+        Damage(3600)
         AirUntechableTime(60)
         Unknown9310(1)
         AirHitstunAnimation(10)
@@ -5507,7 +5507,7 @@ def BurstDDFunnelLastAtk():
         AttackP2(100)
         Unknown23182(2)
         Unknown1086(22)
-        Unknown11091(25)
+        Unknown11091(28)
         Unknown11066(1)
         Unknown23027()
 
@@ -5518,12 +5518,12 @@ def BurstDDFunnelLastAtk():
             if (SLOT_48 == 6006):
                 teleportRelativeX(300000)
             if (SLOT_48 == 6007):
-                Damage(1700)
+                Damage(2200)
                 teleportRelativeX(-300000)
                 Unknown2001()
                 sendToLabel(100)
             if (SLOT_48 == 6008):
-                Damage(1700)
+                Damage(2200)
                 teleportRelativeX(300000)
                 sendToLabel(100)
 

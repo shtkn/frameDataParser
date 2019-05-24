@@ -767,6 +767,9 @@ def rcef_252Wind():
     Unknown4007(2)
     GFX_1('rcef_252up_mc02', -1)
 
+    def upon_56():
+        Unknown4007(0)
+
 @State
 def rc201_Wind():
 
@@ -1074,6 +1077,9 @@ def rcef252windA():
         Unknown4013(2)
         Unknown4008(2)
         Unknown4006(2)
+
+        def upon_56():
+            Unknown4007(0)
     sprite('null', 120)	# 1-120
 
 @State
@@ -1086,6 +1092,9 @@ def rcef252windB():
         Unknown4013(2)
         Unknown4008(2)
         Unknown4006(2)
+
+        def upon_56():
+            Unknown4007(0)
     sprite('null', 120)	# 1-120
 
 @State
@@ -1250,7 +1259,7 @@ def ReichelStorm_Matome():
     Unknown23033(50)
     Unknown23032(-4)
     Unknown23001(50, 50)
-    Unknown23012(100, 100, 0)
+    Unknown23012(2000, 100, 0)
     Unknown4061(3)
     Unknown2019(-100)
     Unknown3032()
@@ -1320,6 +1329,7 @@ def ReichelStorm_Koumori():
     AirPushbackX(3000)
     AirPushbackY(35000)
     Unknown23182(2)
+    Unknown11110(80)
     Unknown1074(3000)
     physicsXImpulse(18000)
     physicsYImpulse(12000)
@@ -1350,6 +1360,7 @@ def ReichelStorm_Ushi():
     AirPushbackX(3000)
     AirPushbackY(35000)
     Unknown23182(2)
+    Unknown11110(80)
     Unknown1074(2500)
     physicsXImpulse(18000)
     physicsYImpulse(12000)
@@ -1383,6 +1394,7 @@ def ReichelStorm_Pumpkin():
     AirPushbackX(3000)
     AirPushbackY(35000)
     Unknown23182(2)
+    Unknown11110(80)
     Unknown1074(7500)
     physicsXImpulse(18000)
     physicsYImpulse(20000)
@@ -1410,6 +1422,7 @@ def ReichelStorm_KingFlog():
     AirPushbackX(3000)
     AirPushbackY(35000)
     Unknown23182(2)
+    Unknown11110(80)
     Unknown1074(7500)
     physicsXImpulse(18000)
     physicsYImpulse(20000)
@@ -3976,7 +3989,7 @@ def LightningObjAtk():
         Unknown2019(100)
         Unknown2054(1)
         AttackLevel_(4)
-        Damage(1000)
+        Damage(1100)
         Unknown11091(10)
         AttackP2(60)
         Unknown11092(1)
@@ -4206,7 +4219,7 @@ def LightningObjAtk_Matome():
         Unknown2019(100)
         Unknown2054(1)
         AttackLevel_(4)
-        Damage(1250)
+        Damage(1370)
         Unknown11091(10)
         AttackP2(60)
         Unknown11092(1)
@@ -4221,6 +4234,7 @@ def LightningObjAtk_Matome():
         PushbackX(12000)
         Hitstop(6)
         Unknown11001(0, 14, 19)
+        Unknown11110(92)
 
         def upon_43():
             if (SLOT_48 == 3008):
@@ -5494,39 +5508,39 @@ def LightningObjAtkMiniD_TAG():
             AirPushbackY(25000)
             Hitstop(12)
             AirUntechableTime(34)
-    sprite('null', 5)	# 1-5
-    sprite('vrrcef_lightning01', 2)	# 6-7
+    sprite('null', 3)	# 1-3
+    sprite('vrrcef_lightning01', 2)	# 4-5
     GFX_0('LightningOption', -1)
     GFX_0('LightningOption', -1)
     GFX_0('LightningOption', -1)
     SFX_0('013_thunder_0')
-    sprite('null', 2)	# 8-9
-    sprite('vrrcef_lightning01', 2)	# 10-11
+    sprite('null', 2)	# 6-7
+    sprite('vrrcef_lightning01', 2)	# 8-9
     GFX_0('LightningOption', -1)
     GFX_0('LightningOption', -1)
     GFX_0('LightningOption', -1)
-    sprite('vrrcef_lightning00', 2)	# 12-13	 **attackbox here**
+    sprite('vrrcef_lightning00', 2)	# 10-11	 **attackbox here**
     Unknown1072(0)
     Unknown1059(-100)
     Unknown1056(750)
     Unknown1064(1000)
     GFX_0('LightningLandSub', -1)
-    sprite('vrrcef_lightning00', 2)	# 14-15	 **attackbox here**
+    sprite('vrrcef_lightning00', 2)	# 12-13	 **attackbox here**
     Unknown1056(-750)
     Unknown1064(1000)
     GFX_0('LightningLandSub', -1)
-    sprite('vrrcef_lightning00', 2)	# 16-17	 **attackbox here**
+    sprite('vrrcef_lightning00', 2)	# 14-15	 **attackbox here**
     Unknown1056(1000)
     Unknown1064(1000)
     GFX_0('LightningLandSub', -1)
-    sprite('vrrcef_lightning00', 2)	# 18-19	 **attackbox here**
+    sprite('vrrcef_lightning00', 2)	# 16-17	 **attackbox here**
     Unknown1056(-1000)
     Unknown1064(1000)
     GFX_0('LightningLandSub', -1)
+    sprite('null', 2)	# 18-19
+    GFX_0('LightningOption', -1)
+    GFX_0('LightningOption', -1)
     sprite('null', 2)	# 20-21
-    GFX_0('LightningOption', -1)
-    GFX_0('LightningOption', -1)
-    sprite('null', 2)	# 22-23
     GFX_0('LightningOption', -1)
 
 @State

@@ -231,6 +231,7 @@ def PAG_Persona5C():
         Unknown23078(1)
         Unknown11058('0000000001000000000000000000000000000000')
         callSubroutine('PAG_CheckWarp')
+        Unknown23059(1)
     sprite('at204_01', 3)
     Unknown2006()
     sprite('at204_02', 2)
@@ -259,7 +260,7 @@ def Persona5B_2nd():
         callSubroutine('PAG_AttackInit')
         AttackLevel_(4)
         AttackP1(90)
-        AttackP2(75)
+        AttackP2(85)
         AirHitstunAnimation(13)
         GroundedHitstunAnimation(13)
         AirPushbackX(8000)
@@ -269,6 +270,7 @@ def Persona5B_2nd():
         Unknown11058('0000000001000000000000000000000000000000')
         Unknown2053(1)
         callSubroutine('PAG_CheckWarp')
+        Unknown23059(1)
     sprite('at205_03', 1)
     Unknown2006()
     sprite('at206_00', 1)
@@ -389,6 +391,7 @@ def PAG_PersonaAir5D():
         Unknown2053(1)
         callSubroutine('PAG_CheckWarp')
         sendToLabelUpon(2, 9)
+        Unknown23059(1)
     sprite('at256_00', 2)
     physicsXImpulse(-2000)
     physicsYImpulse(40000)
@@ -584,8 +587,8 @@ def PAG_PersonaAthenaSurfing():
         Unknown2011()
         Unknown23056('')
         AttackLevel_(5)
-        Damage(4500)
-        Unknown11091(30)
+        Damage(5200)
+        Unknown11091(32)
         AttackP1(80)
         AttackP2(60)
         GroundedHitstunAnimation(13)
@@ -679,8 +682,8 @@ def PAG_PersonaAthenaSurfingOD():
         Unknown2011()
         Unknown23056('')
         AttackLevel_(5)
-        Damage(4500)
-        Unknown11091(30)
+        Damage(4800)
+        Unknown11091(23)
         AttackP1(80)
         AttackP2(60)
         GroundedHitstunAnimation(13)
@@ -797,6 +800,7 @@ def PAG_UltimateSpear():
             clearUponHandler(3)
             clearUponHandler(17)
             Unknown51(0)
+        Unknown23059(1)
     sprite('at206_12', 2)
     physicsXImpulse(50000)
     sprite('at206_13', 3)
@@ -1155,9 +1159,10 @@ def PAG_Persona2C_TAG():
         Unknown11058('0000000001000000000000000000000000000000')
         Unknown2053(1)
         callSubroutine('PAG_CheckWarp')
-    sprite('at254_04', 3)
+        Unknown23059(1)
+    sprite('at254_04', 2)
     physicsXImpulse(40000)
-    sprite('at254_05', 3)
+    sprite('at254_05', 2)
     Unknown4007(0)
     GFX_0('Zanzoh2C', 100)
     Unknown1019(50)
@@ -2636,6 +2641,7 @@ def __5B_Shot():
 
         def upon_ON_HIT_OR_BLOCK():
             Unknown13(25)
+            Unknown23029(3, 2019, 0)
 
         def upon_44():
             Unknown13(25)
@@ -2744,6 +2750,7 @@ def __2B_Shot():
 
         def upon_ON_HIT_OR_BLOCK():
             Unknown13(25)
+            Unknown23029(3, 2318, 0)
 
         def upon_44():
             Unknown13(25)
@@ -2798,6 +2805,7 @@ def Gatling_Shot():
         PushbackX(24800)
         Unknown23182(2)
         Unknown11057(600)
+        Unknown11110(40)
         Unknown53(25)
         Unknown23089('0100000001000000010000000100000001000000000000000100000001000000')
 
@@ -2926,6 +2934,7 @@ def AirBalkan_Shot():
         Damage(300)
         AttackP1(80)
         AttackP2(90)
+        Unknown11110(85)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
         AirPushbackX(1000)
@@ -3204,15 +3213,84 @@ def AirCanonShot_B():
     GFX_1('agef_bom_06', 0)
 
 @State
-def CanonShot_TAG():
+def CanonShot_TAGMatome():
+
+    def upon_IMMEDIATE():
+        Unknown2010()
+        Unknown11042(1)
+    sprite('null', 3)
+    GFX_0('CanonShot_TAG1', 100)
+    sprite('null', 300)
+    GFX_0('CanonShot_TAG2', 100)
+
+@State
+def CanonShot_TAG1():
 
     def upon_IMMEDIATE():
         Unknown2010()
         callSubroutine('CanonShot_Init')
         AttackP1(70)
         AttackP2(80)
+        Unknown11092(1)
         Unknown11042(1)
-        physicsXImpulse(22000)
+        physicsXImpulse(15000)
+        physicsYImpulse(25000)
+        Unknown1028(-250)
+        setGravity(2000)
+        Unknown48('190000000200000033000000030000000200000013000000')
+        if (SLOT_51 <= 300000):
+            physicsXImpulse(7000)
+            physicsYImpulse(25000)
+            Unknown1028(-250)
+            setGravity(1500)
+
+        def upon_4():
+            Unknown1019(97)
+            Unknown1028(0)
+    sprite('dmy_canon', 10)
+    sprite('dmy_canon', 2)
+    Unknown2037(1)
+    label(2)
+    sprite('dmy_canon', 2)
+    loopRest()
+    gotoLabel(2)
+    label(3)
+    sprite('dmy_canon00', 5)
+    RefreshMultihit()
+    callSubroutine('CanonShot_Atk2nd')
+    SLOT_51 = 0
+    Unknown2037(0)
+    clearUponHandler(3)
+    clearUponHandler(10)
+    clearUponHandler(2)
+    clearUponHandler(44)
+    Unknown1084(1)
+    GFX_1('agef_bom_06', 0)
+    Unknown3004(-50)
+    sprite('dmy_canon00', 5)
+    GFX_1('agef_bom_06', 0)
+    sprite('dmy_canon00', 5)
+    GFX_1('agef_bom_06', 0)
+    sprite('dmy_canon00', 5)
+    GFX_1('agef_bom_06', 0)
+    sprite('dmy_canon00', 5)
+    GFX_1('agef_bom_06', 0)
+    Unknown23027()
+    sprite('dmy_canon00', 5)
+    GFX_1('agef_bom_06', 0)
+
+@State
+def CanonShot_TAG2():
+
+    def upon_IMMEDIATE():
+        Unknown2010()
+        callSubroutine('CanonShot_Init')
+        Unknown23182(2)
+        AttackP1(70)
+        AttackP2(80)
+        Unknown11092(1)
+        Unknown11042(1)
+        physicsXImpulse(25000)
         physicsYImpulse(25000)
         Unknown1028(-250)
         setGravity(2000)
@@ -3544,6 +3622,7 @@ def Pandora_Shot():
         Unknown9017(1)
         Unknown30065(0)
         Unknown11091(10)
+        Unknown11110(60)
         Unknown4061(2)
 
         def upon_ON_HIT_OR_BLOCK():
@@ -4055,7 +4134,7 @@ def AddSpear():
         Unknown2011()
         Unknown23056('')
         AttackLevel_(5)
-        Damage(3000)
+        Damage(3700)
         AttackP1(48)
         AttackP2(100)
         GroundedHitstunAnimation(10)
@@ -4140,8 +4219,8 @@ def Orion_Shot():
         Unknown2011()
         Unknown23056('')
         AttackLevel_(4)
-        Damage(300)
-        Unknown11091(10)
+        Damage(310)
+        Unknown11091(12)
         AttackP2(100)
         Hitstop(0)
         Unknown9178(1)
@@ -4264,7 +4343,6 @@ def Ichigeki_Shot():
         Unknown1072(25000)
         Unknown4055(0)
         Unknown4045('616765665f68616e6467756e666c6173685f303300000000000000000000000000000000')
-        Unknown1110(120000, 0)
         Unknown3033()
         Unknown4061(2)
         Unknown2054(1)
@@ -4279,7 +4357,9 @@ def Ichigeki_Shot():
             if (SLOT_48 == 7022):
                 sendToLabel(2)
     label(0)
+    sprite('null', 1)
     sprite('dmy_machinegunex', 32767)
+    Unknown1110(120000, 0)
     GFX_0('AgYakkyo', 100)
     GFX_2('agef_gunspeed_00')
 
@@ -4289,6 +4369,7 @@ def Ichigeki_Shot():
     loopRest()
     label(1)
     sprite('dmy_canon', 10)
+    Unknown1110(120000, 0)
     Unknown9017(1)
 
     def upon_LANDING():
@@ -4298,6 +4379,7 @@ def Ichigeki_Shot():
     gotoLabel(1)
     label(2)
     sprite('dmy_canon', 10)
+    Unknown1110(120000, 0)
     AirPushbackX(20000)
     AirPushbackY(38000)
     YImpluseBeforeWallbounce(1800)

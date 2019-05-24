@@ -2345,6 +2345,7 @@ def NmlAtk5A2nd():
                 Unknown14072('UltimateMaharagidineOD')
                 Unknown14072('CmnActCrushAttack')
                 Unknown14072('CmnActInvincibleAttack')
+                HitOrBlockJumpCancel(1)
     sprite('yu206_00', 3)	# 1-3
     sprite('yu206_01', 3)	# 4-6
     Unknown23029(11, 101, 0)
@@ -2733,33 +2734,33 @@ def NmlAtk5B():
         HitOrBlockCancel('NmlAtk2C')
         HitOrBlockCancel('CmnActCrushAttack')
     sprite('yu203_00', 3)	# 1-3
-    sprite('yu203_01', 3)	# 4-6
-    sprite('yu203_01', 1)	# 7-7
-    sprite('yu203_02', 4)	# 8-11
+    sprite('yu203_01', 1)	# 4-4
+    sprite('yu203_01', 1)	# 5-5
+    sprite('yu203_02', 4)	# 6-9
     Unknown14070('NmlAtk5B2nd')
     Unknown14070('NmlAtk5B2nd_Front')
     Unknown14070('NmlAtk5B2nd_Back')
-    sprite('yu203_03', 2)	# 12-13
+    sprite('yu203_03', 2)	# 10-11
     Unknown7007('7079753130325f310000000000000000640000007079753330325f300000000000000000640000007079753330365f310000000000000000640000000000000000000000000000000000000000000000')
     GFX_0('Sensu_Stand_A', 0)
-    sprite('yu203_04', 2)	# 14-15
-    sprite('yu203_05', 2)	# 16-17
+    sprite('yu203_04', 2)	# 12-13
+    sprite('yu203_05', 2)	# 14-15
     Unknown14072('NmlAtk5B2nd')
     Unknown14072('NmlAtk5B2nd_Front')
     Unknown14072('NmlAtk5B2nd_Back')
-    sprite('yu203_06', 3)	# 18-20
-    sprite('yu203_07', 3)	# 21-23
-    sprite('yu203_08', 3)	# 24-26
+    sprite('yu203_06', 3)	# 16-18
+    sprite('yu203_07', 3)	# 19-21
+    sprite('yu203_08', 3)	# 22-24
     Recovery()
     Unknown2063()
-    sprite('yu203_09', 5)	# 27-31
-    sprite('yu203_10', 7)	# 32-38
+    sprite('yu203_09', 5)	# 25-29
+    sprite('yu203_10', 7)	# 30-36
     Unknown14074('NmlAtk5B2nd')
     Unknown14074('NmlAtk5B2nd_Front')
     Unknown14074('NmlAtk5B2nd_Back')
-    sprite('yu203_11', 5)	# 39-43
+    sprite('yu203_11', 5)	# 37-41
     SFX_3('yu000')
-    sprite('yu203_12', 5)	# 44-48
+    sprite('yu203_12', 5)	# 42-46
 
 @State
 def NmlAtk6B():
@@ -2774,34 +2775,34 @@ def NmlAtk6B():
         HitOrBlockCancel('NmlAtk2C')
         HitOrBlockCancel('CmnActCrushAttack')
     sprite('yu203_00', 3)	# 1-3
-    sprite('yu203_01', 3)	# 4-6
-    sprite('yu203_01', 1)	# 7-7
-    sprite('yu203_02', 4)	# 8-11
+    sprite('yu203_01', 1)	# 4-4
+    sprite('yu203_01', 1)	# 5-5
+    sprite('yu203_02', 4)	# 6-9
     Unknown14070('NmlAtk5B2nd')
     Unknown14070('NmlAtk5B2nd_Front')
     Unknown14070('NmlAtk5B2nd_Back')
-    sprite('yu203_03', 2)	# 12-13
+    sprite('yu203_03', 2)	# 10-11
     Unknown7007('7079753130325f310000000000000000640000007079753330325f300000000000000000640000007079753330365f310000000000000000640000000000000000000000000000000000000000000000')
     GFX_0('Sensu_Stand_A', 0)
     Unknown23029(1, 1011, 0)
-    sprite('yu203_04', 3)	# 14-16
-    sprite('yu203_05', 3)	# 17-19
+    sprite('yu203_04', 3)	# 12-14
+    sprite('yu203_05', 3)	# 15-17
     Unknown14072('NmlAtk5B2nd')
     Unknown14072('NmlAtk5B2nd_Front')
     Unknown14072('NmlAtk5B2nd_Back')
-    sprite('yu203_06', 3)	# 20-22
-    sprite('yu203_07', 3)	# 23-25
-    sprite('yu203_08', 3)	# 26-28
+    sprite('yu203_06', 3)	# 18-20
+    sprite('yu203_07', 3)	# 21-23
+    sprite('yu203_08', 3)	# 24-26
     Recovery()
     Unknown2063()
-    sprite('yu203_09', 4)	# 29-32
-    sprite('yu203_10', 6)	# 33-38
+    sprite('yu203_09', 4)	# 27-30
+    sprite('yu203_10', 6)	# 31-36
     Unknown14074('NmlAtk5B2nd')
     Unknown14074('NmlAtk5B2nd_Front')
     Unknown14074('NmlAtk5B2nd_Back')
-    sprite('yu203_11', 5)	# 39-43
+    sprite('yu203_11', 5)	# 37-41
     SFX_3('yu000')
-    sprite('yu203_12', 5)	# 44-48
+    sprite('yu203_12', 5)	# 42-46
 
 @State
 def NmlAtk4B():
@@ -2816,34 +2817,34 @@ def NmlAtk4B():
         HitOrBlockCancel('NmlAtk2C')
         HitOrBlockCancel('CmnActCrushAttack')
     sprite('yu203_00', 3)	# 1-3
-    sprite('yu203_01', 3)	# 4-6
-    sprite('yu203_01', 1)	# 7-7
-    sprite('yu203_02', 4)	# 8-11
+    sprite('yu203_01', 1)	# 4-4
+    sprite('yu203_01', 1)	# 5-5
+    sprite('yu203_02', 4)	# 6-9
     Unknown14070('NmlAtk5B2nd')
     Unknown14070('NmlAtk5B2nd_Front')
     Unknown14070('NmlAtk5B2nd_Back')
-    sprite('yu203_03', 2)	# 12-13
+    sprite('yu203_03', 2)	# 10-11
     Unknown7007('7079753130325f310000000000000000640000007079753330325f300000000000000000640000007079753330365f310000000000000000640000000000000000000000000000000000000000000000')
     GFX_0('Sensu_Stand_A', 0)
     Unknown23029(1, 1012, 0)
-    sprite('yu203_04', 3)	# 14-16
-    sprite('yu203_05', 3)	# 17-19
+    sprite('yu203_04', 3)	# 12-14
+    sprite('yu203_05', 3)	# 15-17
     Unknown14072('NmlAtk5B2nd')
     Unknown14072('NmlAtk5B2nd_Front')
     Unknown14072('NmlAtk5B2nd_Back')
-    sprite('yu203_06', 3)	# 20-22
-    sprite('yu203_07', 3)	# 23-25
-    sprite('yu203_08', 3)	# 26-28
+    sprite('yu203_06', 3)	# 18-20
+    sprite('yu203_07', 3)	# 21-23
+    sprite('yu203_08', 3)	# 24-26
     Recovery()
     Unknown2063()
-    sprite('yu203_09', 4)	# 29-32
-    sprite('yu203_10', 6)	# 33-38
+    sprite('yu203_09', 4)	# 27-30
+    sprite('yu203_10', 6)	# 31-36
     Unknown14074('NmlAtk5B2nd')
     Unknown14074('NmlAtk5B2nd_Front')
     Unknown14074('NmlAtk5B2nd_Back')
-    sprite('yu203_11', 5)	# 39-43
+    sprite('yu203_11', 5)	# 37-41
     SFX_3('yu000')
-    sprite('yu203_12', 5)	# 44-48
+    sprite('yu203_12', 5)	# 42-46
 
 @State
 def NmlAtk5B2nd():
@@ -3076,7 +3077,7 @@ def NmlAtkAIR5A():
         AttackDefaults_AirNormal()
         AttackLevel_(3)
         Damage(1000)
-        AirUntechableTime(19)
+        AirUntechableTime(21)
         Unknown9016(1)
         HitOrBlockJumpCancel(1)
         HitOrBlockCancel('NmlAtkAIR5A2nd')
@@ -3104,7 +3105,7 @@ def NmlAtkAIR5A2nd():
         AttackDefaults_AirNormal()
         AttackLevel_(3)
         Damage(1000)
-        AirUntechableTime(19)
+        AirUntechableTime(21)
         Unknown9016(1)
         HitOrBlockJumpCancel(1)
         HitOrBlockCancel('NmlAtkAIR5A2nd')
@@ -3232,6 +3233,11 @@ def NmlAtkAIR5C():
 
         def upon_LANDING():
             sendToLabel(1)
+        loopRelated(17, 300)
+
+        def upon_17():
+            clearUponHandler(17)
+            Unknown1043()
     sprite('yu254_00', 3)	# 1-3
     sprite('yu254_01', 2)	# 4-5
     Unknown1017()
@@ -3239,9 +3245,9 @@ def NmlAtkAIR5C():
     Unknown1037()
     Unknown1084(1)
     GFX_1('persona_enter_ply', 0)
-    sprite('yu254_02', 3)	# 6-8
     Unknown7007('7079753132345f300000000000000000640000007079753132345f310000000000000000640000007079753132345f320000000000000000640000000000000000000000000000000000000000000000')
     Unknown23029(11, 302, 0)
+    sprite('yu254_02', 3)	# 6-8
     sprite('yu254_03', 3)	# 9-11
     sprite('yu254_01', 3)	# 12-14
     sprite('yu254_02', 3)	# 15-17
@@ -4039,25 +4045,25 @@ def MaharagiA():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         Unknown2006()
-    sprite('yu402_00', 3)	# 1-3
-    sprite('yu402_01', 3)	# 4-6
-    sprite('yu402_02', 3)	# 7-9
-    sprite('yu402_03', 3)	# 10-12
-    sprite('yu402_04', 3)	# 13-15
+    sprite('yu402_00', 2)	# 1-2
+    sprite('yu402_01', 2)	# 3-4
+    sprite('yu402_02', 2)	# 5-6
+    sprite('yu402_03', 2)	# 7-8
+    sprite('yu402_04', 3)	# 9-11
     GFX_1('persona_enter_ply', 0)
-    sprite('yu402_05', 4)	# 16-19
     Unknown23029(11, 4060, 0)
     Unknown7007('7079753230355f300000000000000000640000007079753230355f310000000000000000640000007079753230355f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('yu402_06', 4)	# 20-23
-    sprite('yu402_07', 4)	# 24-27
-    sprite('yu402_05', 4)	# 28-31
-    sprite('yu402_06', 4)	# 32-35
-    sprite('yu402_07', 4)	# 36-39
-    sprite('yu402_05', 4)	# 40-43
-    sprite('yu402_06', 4)	# 44-47
-    sprite('yu402_07', 4)	# 48-51
-    sprite('yu402_05', 4)	# 52-55
-    sprite('yu402_08', 4)	# 56-59
+    sprite('yu402_05', 4)	# 12-15
+    sprite('yu402_06', 4)	# 16-19
+    sprite('yu402_07', 4)	# 20-23
+    sprite('yu402_05', 4)	# 24-27
+    sprite('yu402_06', 4)	# 28-31
+    sprite('yu402_07', 4)	# 32-35
+    sprite('yu402_05', 4)	# 36-39
+    sprite('yu402_06', 4)	# 40-43
+    sprite('yu402_07', 4)	# 44-47
+    sprite('yu402_05', 4)	# 48-51
+    sprite('yu402_08', 4)	# 52-55
 
 @State
 def MaharagiB():
@@ -4071,19 +4077,16 @@ def MaharagiB():
     sprite('yu402_03', 3)	# 10-12
     sprite('yu402_04', 3)	# 13-15
     GFX_1('persona_enter_ply', 0)
-    sprite('yu402_05', 4)	# 16-19
+    sprite('yu402_05', 3)	# 16-18
     Unknown7007('7079753230345f300000000000000000640000007079753230345f310000000000000000640000007079753230345f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('yu402_06', 4)	# 20-23
-    sprite('yu402_07', 4)	# 24-27
-    sprite('yu402_05', 4)	# 28-31
+    sprite('yu402_06', 3)	# 19-21
+    sprite('yu402_07', 3)	# 22-24
+    sprite('yu402_05', 3)	# 25-27
     Unknown23029(11, 4050, 0)
-    sprite('yu402_06', 4)	# 32-35
-    sprite('yu402_07', 4)	# 36-39
-    sprite('yu402_05', 4)	# 40-43
-    sprite('yu402_06', 4)	# 44-47
-    sprite('yu402_07', 4)	# 48-51
-    sprite('yu402_05', 4)	# 52-55
-    sprite('yu402_08', 4)	# 56-59
+    sprite('yu402_06', 4)	# 28-31
+    sprite('yu402_07', 4)	# 32-35
+    sprite('yu402_05', 4)	# 36-39
+    sprite('yu402_08', 4)	# 40-43
 
 @State
 def MaharagiEX():
@@ -4091,26 +4094,23 @@ def MaharagiEX():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         Unknown2006()
-    sprite('yu402_00', 3)	# 1-3
+    sprite('yu402_00', 2)	# 1-2
+    sprite('yu402_01', 1)	# 3-3
     sprite('yu402_01', 1)	# 4-4
-    sprite('yu402_01', 3)	# 5-7
     Unknown23125('')
     Unknown2058(-5000)
     Unknown7007('7079753230365f300000000000000000640000007079753230365f310000000000000000640000007079753230365f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('yu402_02', 3)	# 8-10
-    sprite('yu402_03', 3)	# 11-13
-    sprite('yu402_04', 4)	# 14-17
+    sprite('yu402_02', 2)	# 5-6
+    sprite('yu402_03', 2)	# 7-8
+    sprite('yu402_04', 3)	# 9-11
     GFX_1('persona_enter_ply', 0)
-    sprite('yu402_05', 4)	# 18-21
     Unknown23029(11, 4071, 0)
-    sprite('yu402_06', 4)	# 22-25
-    sprite('yu402_07', 4)	# 26-29
-    sprite('yu402_05', 4)	# 30-33
-    sprite('yu402_06', 4)	# 34-37
-    sprite('yu402_07', 4)	# 38-41
-    sprite('yu402_05', 4)	# 42-45
-    sprite('yu402_06', 4)	# 46-49
-    sprite('yu402_08', 3)	# 50-52
+    sprite('yu402_05', 4)	# 12-15
+    sprite('yu402_06', 4)	# 16-19
+    sprite('yu402_07', 4)	# 20-23
+    sprite('yu402_05', 4)	# 24-27
+    sprite('yu402_06', 4)	# 28-31
+    sprite('yu402_08', 3)	# 32-34
     Recovery()
 
 @State
@@ -4394,7 +4394,7 @@ def UltimateMaharagidine():
     sprite('yu431_01', 4)	# 5-8
     sprite('yu431_02', 1)	# 9-9
     sprite('yu431_02', 4)	# 10-13
-    Unknown2036(77, -1, 0)
+    Unknown2036(87, -1, 0)
     Unknown2058(-10000)
     Unknown30080('')
     Unknown4004('436172640000000000000000000000000000000000000000000000000000000000000000')
@@ -4430,39 +4430,27 @@ def UltimateMaharagidine():
     sprite('yu431_08', 4)	# 87-90
     sprite('yu431_09', 4)	# 91-94
     sprite('yu431_10', 4)	# 95-98
-    sprite('yu431_08', 4)	# 99-102
-    sprite('yu431_09', 4)	# 103-106
-    sprite('yu431_10', 4)	# 107-110
-    setInvincible(0)
-    sprite('yu431_08', 4)	# 111-114
-    sprite('yu431_09', 4)	# 115-118
-    sprite('yu431_10', 4)	# 119-122
-    sprite('yu431_08', 4)	# 123-126
-    sprite('yu431_09', 4)	# 127-130
-    sprite('yu431_10', 4)	# 131-134
-    sprite('yu431_08', 4)	# 135-138
-    sprite('yu431_09', 4)	# 139-142
     label(0)
-    sprite('yu431_10', 4)	# 143-146
+    sprite('yu431_10', 4)	# 99-102
     clearUponHandler(3)
     clearUponHandler(43)
-    sprite('yu431_08', 4)	# 147-150
-    sprite('yu431_09', 4)	# 151-154
+    sprite('yu431_08', 4)	# 103-106
+    sprite('yu431_09', 4)	# 107-110
     setInvincible(0)
-    sprite('yu431_10', 4)	# 155-158
-    sprite('yu431_08', 4)	# 159-162
-    sprite('yu431_09', 4)	# 163-166
-    sprite('yu431_10', 4)	# 167-170
-    sprite('yu431_08', 4)	# 171-174
-    sprite('yu431_09', 4)	# 175-178
-    sprite('yu431_10', 4)	# 179-182
-    sprite('yu431_08', 4)	# 183-186
-    sprite('yu431_09', 4)	# 187-190
-    sprite('yu431_10', 4)	# 191-194
-    sprite('yu431_08', 4)	# 195-198
-    sprite('yu431_11', 5)	# 199-203
-    sprite('yu431_12', 6)	# 204-209
-    sprite('yu431_13', 6)	# 210-215
+    sprite('yu431_10', 4)	# 111-114
+    sprite('yu431_08', 4)	# 115-118
+    sprite('yu431_09', 4)	# 119-122
+    sprite('yu431_10', 4)	# 123-126
+    sprite('yu431_08', 4)	# 127-130
+    sprite('yu431_09', 4)	# 131-134
+    sprite('yu431_10', 4)	# 135-138
+    sprite('yu431_08', 4)	# 139-142
+    sprite('yu431_09', 4)	# 143-146
+    sprite('yu431_10', 4)	# 147-150
+    sprite('yu431_08', 4)	# 151-154
+    sprite('yu431_11', 5)	# 155-159
+    sprite('yu431_12', 6)	# 160-165
+    sprite('yu431_13', 6)	# 166-171
 
 @State
 def UltimateAgidine_OD():
@@ -4561,7 +4549,7 @@ def UltimateMaharagidineOD():
     sprite('yu431_01', 4)	# 5-8
     sprite('yu431_02', 1)	# 9-9
     sprite('yu431_02', 4)	# 10-13
-    Unknown2036(77, -1, 0)
+    Unknown2036(87, -1, 0)
     Unknown2058(-10000)
     Unknown30080('')
     Unknown4004('436172640000000000000000000000000000000000000000000000000000000000000000')
@@ -4597,39 +4585,27 @@ def UltimateMaharagidineOD():
     sprite('yu431_08', 4)	# 87-90
     sprite('yu431_09', 4)	# 91-94
     sprite('yu431_10', 4)	# 95-98
-    sprite('yu431_08', 4)	# 99-102
-    sprite('yu431_09', 4)	# 103-106
-    sprite('yu431_10', 4)	# 107-110
-    setInvincible(0)
-    sprite('yu431_08', 4)	# 111-114
-    sprite('yu431_09', 4)	# 115-118
-    sprite('yu431_10', 4)	# 119-122
-    sprite('yu431_08', 4)	# 123-126
-    sprite('yu431_09', 4)	# 127-130
-    sprite('yu431_10', 4)	# 131-134
-    sprite('yu431_08', 4)	# 135-138
-    sprite('yu431_09', 4)	# 139-142
     label(0)
-    sprite('yu431_10', 4)	# 143-146
+    sprite('yu431_10', 4)	# 99-102
     clearUponHandler(3)
     clearUponHandler(43)
-    sprite('yu431_08', 4)	# 147-150
-    sprite('yu431_09', 4)	# 151-154
+    sprite('yu431_08', 4)	# 103-106
+    sprite('yu431_09', 4)	# 107-110
     setInvincible(0)
-    sprite('yu431_10', 4)	# 155-158
-    sprite('yu431_08', 4)	# 159-162
-    sprite('yu431_09', 4)	# 163-166
-    sprite('yu431_10', 4)	# 167-170
-    sprite('yu431_08', 4)	# 171-174
-    sprite('yu431_09', 4)	# 175-178
-    sprite('yu431_10', 4)	# 179-182
-    sprite('yu431_08', 4)	# 183-186
-    sprite('yu431_09', 4)	# 187-190
-    sprite('yu431_10', 4)	# 191-194
-    sprite('yu431_08', 4)	# 195-198
-    sprite('yu431_11', 5)	# 199-203
-    sprite('yu431_12', 6)	# 204-209
-    sprite('yu431_13', 6)	# 210-215
+    sprite('yu431_10', 4)	# 111-114
+    sprite('yu431_08', 4)	# 115-118
+    sprite('yu431_09', 4)	# 119-122
+    sprite('yu431_10', 4)	# 123-126
+    sprite('yu431_08', 4)	# 127-130
+    sprite('yu431_09', 4)	# 131-134
+    sprite('yu431_10', 4)	# 135-138
+    sprite('yu431_08', 4)	# 139-142
+    sprite('yu431_09', 4)	# 143-146
+    sprite('yu431_10', 4)	# 147-150
+    sprite('yu431_08', 4)	# 151-154
+    sprite('yu431_11', 5)	# 155-159
+    sprite('yu431_12', 6)	# 160-165
+    sprite('yu431_13', 6)	# 166-171
 
 @State
 def Ichigeki():

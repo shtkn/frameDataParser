@@ -234,13 +234,13 @@ def PYO_Persona5C():
         AirPushbackX(20000)
         AirPushbackY(26000)
         Unknown11058('0000000001000000000000000000000000000000')
-        Unknown4007(3)
         Unknown23078(1)
         callSubroutine('PYO_CheckWarp')
+        Unknown23059(1)
     sprite('ji204_00', 3)	# 1-3
     Unknown2006()
     sprite('ji204_01', 1)	# 4-4
-    physicsXImpulse(40000)
+    physicsXImpulse(85000)
     sprite('ji204_01', 1)	# 5-5
     Unknown1019(80)
     sprite('ji204_01', 1)	# 6-6
@@ -333,6 +333,7 @@ def PYO_Persona2C():
         callSubroutine('PYO_CheckWarp')
         Unknown2017(1)
         Unknown2053(1)
+        Unknown23059(1)
     sprite('ji232_00', 6)	# 1-6
     sprite('ji232_01', 2)	# 7-8
     sprite('ji232_02', 2)	# 9-10
@@ -379,13 +380,14 @@ def PYO_Persona6C():
         def upon_77():
             sendToLabel(0)
         callSubroutine('PYO_CheckWarp')
+        Unknown4007(0)
+        Unknown23059(1)
     sprite('ji205_00', 3)	# 1-3
     Unknown2006()
     sprite('ji205_01', 3)	# 4-6
     sprite('ji205_02', 3)	# 7-9
     sprite('ji205_03', 3)	# 10-12
     sprite('ji205_04', 6)	# 13-18
-    Unknown4007(0)
     sprite('ji205_05', 6)	# 19-24
     sprite('ji205_06', 3)	# 25-27	 **attackbox here**
     GFX_0('5Dtornado01', 0)
@@ -655,7 +657,6 @@ def PYO_PersonaTentarahu():
         Unknown23027()
         callSubroutine('PYO_CheckWarp')
         Unknown23078(1)
-        Unknown4007(3)
         Unknown2017(1)
         Unknown2053(1)
 
@@ -672,6 +673,7 @@ def PYO_PersonaTentarahu():
         def upon_61():
             PushbackX(30400)
             Hitstop(12)
+        Unknown23059(1)
     sprite('ji402_00', 2)	# 1-2
     Unknown2006()
     SLOT_67 = SLOT_19
@@ -2405,7 +2407,7 @@ def Tatsumaki():
     def upon_IMMEDIATE():
         Unknown2011()
         AttackLevel_(4)
-        Damage(300)
+        Damage(360)
         Unknown11091(15)
         AttackP2(98)
         Hitstop(0)
@@ -2525,8 +2527,8 @@ def TatsumakiOD():
         Unknown2011()
         Unknown23056('')
         AttackLevel_(4)
-        Damage(360)
-        Unknown11091(15)
+        Damage(430)
+        Unknown11091(14)
         AttackP2(98)
         Hitstop(0)
         PushbackX(5000)
@@ -2538,6 +2540,7 @@ def TatsumakiOD():
         AirUntechableTime(90)
         Unknown9016(1)
         Unknown11057(800)
+        Unknown11110(99)
         Unknown4010(3)
         Unknown4009(3)
         Unknown13024(1)
@@ -3122,8 +3125,10 @@ def ultimatekunai3():
         Unknown2011()
         AttackLevel_(3)
         Damage(250)
+        Unknown11091(16)
         if Unknown23146('16000000556c74696d6174654b756e61694f444578650000000000000000000000000000'):
             Damage(200)
+            Unknown11091(13)
         AirPushbackX(3000)
         AirPushbackY(30000)
         Unknown11089(-1)
@@ -3353,7 +3358,6 @@ def IchigekiTatsumakiAtk():
         Unknown9310(60)
         PushbackX(0)
         Unknown9016(1)
-        Unknown11031(0)
         Unknown4007(2)
 
         def upon_12():

@@ -361,19 +361,19 @@ def OnEnemyComboBreak():
 def LifeDrain():
     if (not SLOT_62):
         op(3, 2, 161, 0, 100)
-        op(2, 2, 0, 0, 35)
+        op(2, 2, 0, 0, 40)
         if (SLOT_0 <= 500):
             Unknown21000(500)
             Unknown30030(500)
         else:
-            Unknown30086(35)
+            Unknown30086(40)
     else:
         op(3, 2, 161, 0, 100)
-        op(2, 2, 0, 0, 15)
+        op(2, 2, 0, 0, 20)
         if (SLOT_0 <= 500):
             Unknown30078(500)
         else:
-            Unknown30086(15)
+            Unknown30086(20)
     SLOT_62 = (SLOT_62 + 1)
 
 @State
@@ -1754,7 +1754,7 @@ def CmnActChangePartnerAssistAtk_A():
     GFX_0('RotationShot_Eff', -1)
     Unknown23029(1, 1307, 0)
     Unknown38(5, 1)
-    selfDamage(500)
+    selfDamage(750)
     SFX_3('SE045')
     sprite('Action_130_03', 3)	# 16-18
     sprite('Action_130_04', 6)	# 19-24
@@ -2392,6 +2392,7 @@ def NmlAtk5A4th():
         JumpCancel_(0)
         Unknown2004(1, 0)
         Unknown11044(1)
+        Unknown2073(1)
 
         def upon_78():
             enterState('NmlAtk5A4thPlus')
@@ -2577,7 +2578,7 @@ def NmlAtk5B():
     Unknown23029(4, 9999, 0)
     GFX_0('6B_Eff', -1)
     Unknown38(4, 1)
-    selfDamage(500)
+    selfDamage(750)
     sprite('Action_190_06', 8)	# 17-24
     sprite('Action_190_07', 7)	# 25-31
     sprite('Action_190_08', 6)	# 32-37
@@ -2903,7 +2904,7 @@ def NmlAtkAIR5B():
     GFX_0('J6B_Eff', -1)
     Unknown38(4, 1)
     setGravity(3000)
-    selfDamage(500)
+    selfDamage(750)
     sprite('Action_191_06', 4)	# 24-27
     sprite('Action_191_07', 3)	# 28-30
     sprite('Action_191_08', 3)	# 31-33
@@ -3046,11 +3047,11 @@ def NmlAtkAIR5C():
     Unknown23029(7, 9999, 0)
     GFX_0('DoubleShotC_Ground', -1)
     Unknown38(7, 1)
-    selfDamage(500)
+    selfDamage(750)
     Unknown23029(8, 9999, 0)
     GFX_0('DoubleShotC_Eff', -1)
     Unknown38(8, 1)
-    selfDamage(500)
+    selfDamage(750)
     sprite('Action_151_06', 5)	# 22-26
     sprite('Action_151_07', 4)	# 27-30
     sprite('Action_151_08', 4)	# 31-34
@@ -3689,6 +3690,7 @@ def CmnActInvincibleAttack():
         Unknown11001(0, 1, 3)
         Unknown9016(1)
         Unknown11057(600)
+        Unknown11110(85)
 
         def upon_11():
             Unknown2037(1)
@@ -3752,18 +3754,19 @@ def RotationShotA():
     sprite('Action_130_00', 3)	# 1-3
     sprite('Action_130_01', 6)	# 4-9
     Unknown7007('7563613230305f300000000000000000640000007563613230305f310000000000000000640000007563613230305f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('Action_130_02', 1)	# 10-10
+    sprite('Action_130_02', 4)	# 10-13
+    sprite('Action_130_02', 1)	# 14-14
     callSubroutine('DissolveActivateRS')
     GFX_0('RotationShot_Eff', -1)
     Unknown23029(1, 1301, 0)
     Unknown38(5, 1)
-    selfDamage(500)
+    selfDamage(750)
     SFX_3('SE045')
-    sprite('Action_130_03', 5)	# 11-15
-    sprite('Action_130_04', 8)	# 16-23
-    sprite('Action_130_05', 10)	# 24-33
-    sprite('Action_130_06', 9)	# 34-42
-    sprite('Action_130_07', 6)	# 43-48
+    sprite('Action_130_03', 2)	# 15-16
+    sprite('Action_130_04', 5)	# 17-21
+    sprite('Action_130_05', 7)	# 22-28
+    sprite('Action_130_06', 6)	# 29-34
+    sprite('Action_130_07', 3)	# 35-37
 
 @State
 def RotationShotB():
@@ -3773,18 +3776,19 @@ def RotationShotB():
     sprite('Action_131_00', 3)	# 1-3
     sprite('Action_131_01', 6)	# 4-9
     Unknown7007('7563613230305f300000000000000000640000007563613230305f310000000000000000640000007563613230305f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('Action_131_02', 1)	# 10-10
+    sprite('Action_131_02', 4)	# 10-13
+    sprite('Action_131_02', 1)	# 14-14
     callSubroutine('DissolveActivateRS')
     GFX_0('RotationShot_Eff', -1)
     Unknown23029(1, 1302, 0)
     Unknown38(5, 1)
-    selfDamage(500)
+    selfDamage(750)
     SFX_3('SE045')
-    sprite('Action_131_03', 5)	# 11-15
-    sprite('Action_131_04', 8)	# 16-23
-    sprite('Action_131_05', 10)	# 24-33
-    sprite('Action_131_06', 9)	# 34-42
-    sprite('Action_131_07', 6)	# 43-48
+    sprite('Action_131_03', 2)	# 15-16
+    sprite('Action_131_04', 5)	# 17-21
+    sprite('Action_131_05', 7)	# 22-28
+    sprite('Action_131_06', 6)	# 29-34
+    sprite('Action_131_07', 3)	# 35-37
 
 @State
 def RotationShotEX():
@@ -3801,13 +3805,13 @@ def RotationShotEX():
     GFX_0('RotationShotEx_Eff', -1)
     Unknown23029(1, 1303, 0)
     Unknown38(5, 1)
-    selfDamage(500)
+    selfDamage(750)
     SFX_3('SE045')
-    sprite('Action_132_03', 3)	# 11-13
-    sprite('Action_132_04', 6)	# 14-19
-    sprite('Action_132_05', 8)	# 20-27
-    sprite('Action_132_06', 7)	# 28-34
-    sprite('Action_132_07', 4)	# 35-38
+    sprite('Action_132_03', 2)	# 11-12
+    sprite('Action_132_04', 5)	# 13-17
+    sprite('Action_132_05', 7)	# 18-24
+    sprite('Action_132_06', 6)	# 25-30
+    sprite('Action_132_07', 3)	# 31-33
 
 @State
 def AirRotationShotA():
@@ -3835,7 +3839,7 @@ def AirRotationShotA():
     physicsXImpulse(-7500)
     physicsYImpulse(15000)
     Unknown1043()
-    selfDamage(500)
+    selfDamage(750)
     Unknown23026(0)
     sprite('Action_170_04', 7)	# 20-26
     sprite('Action_170_05', 6)	# 27-32
@@ -3875,7 +3879,7 @@ def AirRotationShotB():
     physicsXImpulse(-7500)
     physicsYImpulse(15000)
     Unknown1043()
-    selfDamage(500)
+    selfDamage(750)
     Unknown23026(0)
     sprite('Action_171_04', 7)	# 20-26
     sprite('Action_171_05', 6)	# 27-32
@@ -3915,7 +3919,7 @@ def AirRotationShotEX():
     physicsXImpulse(-7500)
     physicsYImpulse(15000)
     Unknown1043()
-    selfDamage(500)
+    selfDamage(750)
     Unknown23026(0)
     sprite('Action_172_04', 7)	# 20-26
     sprite('Action_172_05', 6)	# 27-32
@@ -3948,7 +3952,7 @@ def PushUpShotA():
     GFX_0('PushUpShot_Eff', -1)
     Unknown23029(1, 1791, 0)
     Unknown38(6, 1)
-    selfDamage(500)
+    selfDamage(750)
     sprite('Action_179_03', 8)	# 14-21
     sprite('Action_179_04', 7)	# 22-28
     sprite('Action_179_05', 6)	# 29-34
@@ -3969,7 +3973,7 @@ def PushUpShotB():
     GFX_0('PushUpShot_Eff', -1)
     Unknown23029(1, 1792, 0)
     Unknown38(6, 1)
-    selfDamage(500)
+    selfDamage(750)
     sprite('Action_180_03', 8)	# 14-21
     sprite('Action_180_04', 7)	# 22-28
     sprite('Action_180_05', 6)	# 29-34
@@ -3990,7 +3994,7 @@ def PushUpShotC():
     GFX_0('PushUpShot_Eff', -1)
     Unknown23029(1, 1793, 0)
     Unknown38(6, 1)
-    selfDamage(500)
+    selfDamage(750)
     sprite('Action_180_03', 8)	# 14-21
     sprite('Action_180_04', 7)	# 22-28
     sprite('Action_180_05', 6)	# 29-34

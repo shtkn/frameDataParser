@@ -286,7 +286,7 @@ def Atk_Shot_Mer_178():
         AttackLevel_(3)
         AttackP1(80)
         GroundedHitstunAnimation(9)
-        AirUntechableTime(30)
+        AirUntechableTime(40)
         Unknown9021(1)
         Unknown9017(1)
         physicsXImpulse(15000)
@@ -326,7 +326,7 @@ def Atk_Shot_Mer_178B():
         AttackLevel_(3)
         AttackP1(80)
         GroundedHitstunAnimation(9)
-        AirUntechableTime(30)
+        AirUntechableTime(40)
         Unknown9021(1)
         Unknown9017(1)
         physicsXImpulse(30000)
@@ -359,12 +359,60 @@ def Atk_Shot_Mer_178B():
     gotoLabel(0)
 
 @State
-def Atk_Shot_Mer_178PS():
+def Atk_Shot_Mer_178PS_1():
 
     def upon_IMMEDIATE():
         Unknown2010()
         AttackLevel_(3)
-        Damage(2000)
+        AttackP1(70)
+        Damage(1200)
+        GroundedHitstunAnimation(9)
+        AirUntechableTime(40)
+        Unknown9021(1)
+        Unknown9017(1)
+        Unknown11042(1)
+        physicsXImpulse(15000)
+        physicsYImpulse(-35000)
+        Unknown1072(150000)
+        Unknown53(1)
+
+        def upon_ON_HIT_OR_BLOCK():
+            GFX_0('Mer_187', -1)
+            SFX_0('016_explode_0')
+            clearUponHandler(10)
+        Unknown23089('0100000001000000010000000100000001000000000000000100000001000000')
+
+        def upon_54():
+            Unknown13(25)
+
+        def upon_LANDING():
+            Unknown13(25)
+            GFX_0('Mer_187', -1)
+            SFX_0('016_explode_0')
+    label(0)
+    sprite('Action_184_01', 3)	# 1-3	 **attackbox here**
+    GFX_0('Mer_160', -1)
+    sprite('Action_184_02', 3)	# 4-6	 **attackbox here**
+    sprite('Action_184_03', 3)	# 7-9	 **attackbox here**
+    GFX_0('Mer_160', -1)
+    sprite('Action_184_04', 3)	# 10-12	 **attackbox here**
+    sprite('Action_184_05', 3)	# 13-15	 **attackbox here**
+    GFX_0('Mer_160', -1)
+    sprite('Action_184_06', 3)	# 16-18	 **attackbox here**
+    sprite('Action_184_07', 3)	# 19-21	 **attackbox here**
+    GFX_0('Mer_160', -1)
+    sprite('Action_184_08', 3)	# 22-24	 **attackbox here**
+    sprite('Action_184_09', 3)	# 25-27	 **attackbox here**
+    GFX_0('Mer_160', -1)
+    gotoLabel(0)
+
+@State
+def Atk_Shot_Mer_178PS_2():
+
+    def upon_IMMEDIATE():
+        Unknown2010()
+        AttackLevel_(3)
+        Damage(1200)
         AttackP1(70)
         GroundedHitstunAnimation(9)
         AirUntechableTime(40)
@@ -390,13 +438,67 @@ def Atk_Shot_Mer_178PS():
             GFX_0('Mer_187', -1)
             SFX_0('016_explode_0')
     label(0)
-    sprite('Action_178_01', 3)	# 1-3	 **attackbox here**
+    sprite('Action_184_01', 3)	# 1-3	 **attackbox here**
     GFX_0('Mer_160', -1)
-    sprite('Action_178_02', 3)	# 4-6	 **attackbox here**
+    sprite('Action_184_02', 3)	# 4-6	 **attackbox here**
+    sprite('Action_184_03', 3)	# 7-9	 **attackbox here**
     GFX_0('Mer_160', -1)
-    sprite('Action_178_03', 3)	# 7-9	 **attackbox here**
+    sprite('Action_184_04', 3)	# 10-12	 **attackbox here**
+    sprite('Action_184_05', 3)	# 13-15	 **attackbox here**
     GFX_0('Mer_160', -1)
-    sprite('Action_178_04', 3)	# 10-12	 **attackbox here**
+    sprite('Action_184_06', 3)	# 16-18	 **attackbox here**
+    sprite('Action_184_07', 3)	# 19-21	 **attackbox here**
+    GFX_0('Mer_160', -1)
+    sprite('Action_184_08', 3)	# 22-24	 **attackbox here**
+    sprite('Action_184_09', 3)	# 25-27	 **attackbox here**
+    GFX_0('Mer_160', -1)
+    gotoLabel(0)
+
+@State
+def Atk_Shot_Mer_178PS_3():
+
+    def upon_IMMEDIATE():
+        Unknown2010()
+        AttackLevel_(3)
+        Damage(1200)
+        AttackP1(70)
+        GroundedHitstunAnimation(9)
+        AirUntechableTime(40)
+        Unknown9021(1)
+        Unknown9017(1)
+        Unknown11042(1)
+        physicsXImpulse(22500)
+        physicsYImpulse(-25000)
+        Unknown1072(135000)
+        Unknown53(1)
+
+        def upon_ON_HIT_OR_BLOCK():
+            GFX_0('Mer_187', -1)
+            SFX_0('016_explode_0')
+            clearUponHandler(10)
+        Unknown23089('0100000001000000010000000100000001000000000000000100000001000000')
+
+        def upon_54():
+            Unknown13(25)
+
+        def upon_LANDING():
+            Unknown13(25)
+            GFX_0('Mer_187', -1)
+            SFX_0('016_explode_0')
+    label(0)
+    sprite('Action_184_01', 3)	# 1-3	 **attackbox here**
+    GFX_0('Mer_160', -1)
+    sprite('Action_184_02', 3)	# 4-6	 **attackbox here**
+    sprite('Action_184_03', 3)	# 7-9	 **attackbox here**
+    GFX_0('Mer_160', -1)
+    sprite('Action_184_04', 3)	# 10-12	 **attackbox here**
+    sprite('Action_184_05', 3)	# 13-15	 **attackbox here**
+    GFX_0('Mer_160', -1)
+    sprite('Action_184_06', 3)	# 16-18	 **attackbox here**
+    sprite('Action_184_07', 3)	# 19-21	 **attackbox here**
+    GFX_0('Mer_160', -1)
+    sprite('Action_184_08', 3)	# 22-24	 **attackbox here**
+    sprite('Action_184_09', 3)	# 25-27	 **attackbox here**
     GFX_0('Mer_160', -1)
     gotoLabel(0)
 
@@ -408,7 +510,7 @@ def Atk_Shot_Mer_184_1():
         AttackLevel_(3)
         AttackP1(80)
         GroundedHitstunAnimation(9)
-        AirUntechableTime(30)
+        AirUntechableTime(40)
         Unknown9021(1)
         Unknown9017(1)
         Unknown11091(10)
@@ -456,7 +558,7 @@ def Atk_Shot_Mer_184_2():
         AttackLevel_(3)
         AttackP1(80)
         GroundedHitstunAnimation(9)
-        AirUntechableTime(30)
+        AirUntechableTime(40)
         Unknown9021(1)
         Unknown9017(1)
         Unknown11091(10)
@@ -504,7 +606,7 @@ def Atk_Shot_Mer_184_3():
         AttackLevel_(3)
         AttackP1(80)
         GroundedHitstunAnimation(9)
-        AirUntechableTime(30)
+        AirUntechableTime(40)
         Unknown9021(1)
         Unknown9017(1)
         Unknown11091(10)

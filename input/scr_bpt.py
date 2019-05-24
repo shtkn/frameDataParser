@@ -4110,6 +4110,8 @@ def NmlAtkAIR5AA():
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
         AttackLevel_(3)
+        AirUntechableTime(19)
+        AirPushbackY(20000)
         Unknown11050('06000000707465665f6869745f6d6964646c650000000000000000000000000000000000')
         HitOrBlockCancel('NmlAtkAIR5B')
         HitOrBlockCancel('NmlAtkAIR5C')
@@ -5062,7 +5064,6 @@ def CmnActInvincibleAttack():
         SLOT_4 = 1
         SLOT_59 = 7
     sprite('pt205_00', 2)
-    setInvincible(1)
     sprite('keep', 1)
     if SLOT_5:
         Unknown23159('SpBat')
@@ -5148,7 +5149,6 @@ def CmnActInvincibleAttackAir():
         SLOT_59 = 7
         clearUponHandler(2)
     sprite('pt256_00', 2)
-    setInvincible(1)
     sprite('keep', 1)
     if SLOT_5:
         Unknown23159('SpAirBat')
@@ -5446,6 +5446,7 @@ def Surfing_Ex():
         Unknown11050('06000000707465665f6869745f6869676800000000000000000000000000000000000000')
         Unknown23087(120000)
         Unknown11091(10)
+        Unknown30065(0)
         sendToLabelUpon(2, 1)
     sprite('pt402_00', 2)
     sprite('pt402_01', 1)
@@ -5856,7 +5857,7 @@ def AirDriveShot_B():
 @Subroutine
 def Hopping_Default():
     AttackLevel_(3)
-    Damage(1000)
+    Damage(1200)
     AttackP1(80)
     AttackP2(80)
     if SLOT_62:
@@ -5904,9 +5905,9 @@ def HoppingPlus_A():
         def upon_ON_HIT_OR_BLOCK():
             Unknown1019(50)
             Unknown1028(200)
-            Unknown1015(-6000)
+            Unknown1015(-4000)
             physicsYImpulse(15000)
-            setGravity(3000)
+            setGravity(2800)
             if SLOT_61:
                 Unknown1019(50)
                 Unknown1028(100)
@@ -5961,10 +5962,6 @@ def HoppingPlus_A():
     sprite('pt403_30', 3)
     sprite('pt403_06', 3)
     sprite('pt403_07', 3)
-    label(2)
-    sprite('pt020_07', 3)
-    sprite('pt020_08', 3)
-    gotoLabel(2)
 
 @State
 def HoppingPlus_B():
@@ -6037,10 +6034,6 @@ def HoppingPlus_B():
     sprite('pt403_30', 3)
     sprite('pt403_06', 3)
     sprite('pt403_07', 3)
-    label(2)
-    sprite('pt020_07', 3)
-    sprite('pt020_08', 3)
-    gotoLabel(2)
 
 @State
 def HoppingPlus_C():
@@ -6054,7 +6047,7 @@ def HoppingPlus_C():
         def upon_ON_HIT_OR_BLOCK():
             Unknown1019(40)
             Unknown1028(200)
-            Unknown1015(2000)
+            Unknown1015(1500)
             YAccel(30)
             Unknown1021(25000)
             setGravity(3000)
@@ -6113,10 +6106,6 @@ def HoppingPlus_C():
     sprite('pt403_30', 3)
     sprite('pt403_06', 3)
     sprite('pt403_07', 3)
-    label(2)
-    sprite('pt020_07', 3)
-    sprite('pt020_08', 3)
-    gotoLabel(2)
 
 @State
 def Hopping():
@@ -6131,14 +6120,19 @@ def Hopping():
 
         def upon_STATE_END():
             Unknown1019(50)
-        Unknown22004(8, 1)
+
+        def upon_3():
+            if (SLOT_19 <= 55000):
+                clearUponHandler(3)
+                Unknown1019(55)
+                Unknown1051(20)
     sprite('pt403_08', 2)
     if (not SLOT_7):
         SFX_1('bpt204_0')
     else:
         SFX_1('bpt204_1')
-    physicsXImpulse(15000)
-    physicsYImpulse(35000)
+    physicsXImpulse(21000)
+    physicsYImpulse(30000)
     setGravity(2400)
     SLOT_60 = 3
     SLOT_61 = 0
@@ -6683,11 +6677,11 @@ def UltimateAssault():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(4)
-        Damage(800)
+        Damage(990)
         AttackP1(80)
         AttackP2(60)
         Unknown11092(1)
-        Unknown11091(15)
+        Unknown11091(14)
         Unknown11050('06000000707465665f6869745f6d6964646c650000000000000000000000000000000000')
         AirHitstunAnimation(9)
         GroundedHitstunAnimation(9)
@@ -6924,7 +6918,7 @@ def UltimateAssault_OD():
         AttackP1(80)
         AttackP2(60)
         Unknown11092(1)
-        Unknown11091(15)
+        Unknown11091(13)
         Unknown11050('06000000707465665f6869745f6d6964646c650000000000000000000000000000000000')
         AirHitstunAnimation(9)
         GroundedHitstunAnimation(9)
@@ -6932,6 +6926,7 @@ def UltimateAssault_OD():
         AirPushbackY(18000)
         AirUntechableTime(100)
         Unknown9154(100)
+        Unknown11110(80)
         Unknown1084(1)
         if SLOT_37:
             sendToLabel(100)
@@ -7036,7 +7031,7 @@ def UltimateAssault_OD():
     sprite('pt431_14', 2)
     sprite('pt431_15', 2)
     sprite('pt431_16', 2)
-    Damage(550)
+    Damage(670)
     Hitstop(0)
     RefreshMultihit()
     SFX_0('005_swing_grap_2_0')

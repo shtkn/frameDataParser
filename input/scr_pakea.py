@@ -213,6 +213,7 @@ def PAK_Persona5A6th():
         Unknown2053(1)
         Unknown2017(0)
         callSubroutine('PAK_CheckWarp')
+        Unknown23059(1)
 
         def upon_78():
             Unknown23029(3, 2051, 0)
@@ -437,6 +438,7 @@ def PAK_PersonaCA():
         callSubroutine('PAK_CheckWarp')
         Unknown2003(1)
         Unknown23022(1)
+        Unknown23059(1)
     sprite('cs204_00', 3)
     sprite('cs204_01', 2)
     sprite('cs204_02', 2)
@@ -484,12 +486,13 @@ def PAK_PersonaJC():
         Unknown2017(0)
         Unknown4007(3)
         callSubroutine('PAK_CheckWarp')
+        Unknown23059(1)
 
         def upon_12():
             Unknown23029(3, 2061, 0)
-    sprite('cs254_00', 2)
-    sprite('cs254_01', 2)
-    sprite('cs254_02', 2)
+    sprite('cs254_00', 1)
+    sprite('cs254_01', 1)
+    sprite('cs254_02', 1)
     sprite('cs254_03', 2)
     Unknown4007(0)
     physicsXImpulse(15000)
@@ -1253,7 +1256,7 @@ def LightningPlasma_col():
     def upon_IMMEDIATE():
         Unknown2011()
         AttackLevel_(3)
-        Damage(500)
+        Damage(480)
         AttackP1(80)
         AttackP2(97)
         Unknown11091(15)
@@ -1317,10 +1320,10 @@ def LightningPlasmaCD_col():
     def upon_IMMEDIATE():
         Unknown2011()
         AttackLevel_(3)
-        Damage(400)
+        Damage(410)
         AttackP1(80)
         AttackP2(98)
-        Unknown11091(15)
+        Unknown11091(14)
         AirUntechableTime(100)
         AirPushbackY(5000)
         PushbackX(2000)
@@ -1345,12 +1348,15 @@ def LightningPlasmaCD_col():
         if (SLOT_6 == 3):
             Unknown10000(130)
             Unknown11031(8)
+            Unknown11110(99)
         if (SLOT_6 == 4):
             Unknown10000(140)
             Unknown11031(9)
+            Unknown11110(96)
         if (SLOT_6 == 5):
             Unknown10000(150)
             Unknown11031(10)
+            Unknown11110(94)
 
         def upon_3():
             op(4, 2, 51, 0, 2)

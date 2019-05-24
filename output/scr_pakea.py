@@ -213,6 +213,7 @@ def PAK_Persona5A6th():
         Unknown2053(1)
         Unknown2017(0)
         callSubroutine('PAK_CheckWarp')
+        Unknown23059(1)
 
         def upon_78():
             Unknown23029(3, 2051, 0)
@@ -437,6 +438,7 @@ def PAK_PersonaCA():
         callSubroutine('PAK_CheckWarp')
         Unknown2003(1)
         Unknown23022(1)
+        Unknown23059(1)
     sprite('cs204_00', 3)	# 1-3
     sprite('cs204_01', 2)	# 4-5
     sprite('cs204_02', 2)	# 6-7
@@ -484,42 +486,43 @@ def PAK_PersonaJC():
         Unknown2017(0)
         Unknown4007(3)
         callSubroutine('PAK_CheckWarp')
+        Unknown23059(1)
 
         def upon_12():
             Unknown23029(3, 2061, 0)
-    sprite('cs254_00', 2)	# 1-2
-    sprite('cs254_01', 2)	# 3-4
-    sprite('cs254_02', 2)	# 5-6
-    sprite('cs254_03', 2)	# 7-8
+    sprite('cs254_00', 1)	# 1-1
+    sprite('cs254_01', 1)	# 2-2
+    sprite('cs254_02', 1)	# 3-3
+    sprite('cs254_03', 2)	# 4-5
     Unknown4007(0)
     physicsXImpulse(15000)
-    sprite('cs254_04', 2)	# 9-10
-    sprite('cs254_05', 2)	# 11-12
+    sprite('cs254_04', 2)	# 6-7
+    sprite('cs254_05', 2)	# 8-9
     Unknown1019(150)
     physicsYImpulse(-10000)
-    sprite('cs254_06', 2)	# 13-14
-    sprite('cs254_07', 2)	# 15-16
+    sprite('cs254_06', 2)	# 10-11
+    sprite('cs254_07', 2)	# 12-13
     Unknown1019(150)
     YAccel(150)
-    sprite('cs254_08', 2)	# 17-18
+    sprite('cs254_08', 2)	# 14-15
     Unknown1019(50)
     GFX_0('ZanzohAir5C', 100)
-    sprite('cs254_09', 2)	# 19-20
+    sprite('cs254_09', 2)	# 16-17
     Unknown1019(50)
     YAccel(150)
     SFX_3('slash_sword_middle')
-    sprite('cs254_10', 1)	# 21-21	 **attackbox here**
+    sprite('cs254_10', 1)	# 18-18	 **attackbox here**
     RefreshMultihit()
     physicsXImpulse(0)
     physicsYImpulse(0)
-    sprite('cs254_10', 3)	# 22-24	 **attackbox here**
-    sprite('cs254_11', 3)	# 25-27
-    sprite('cs254_12', 3)	# 28-30
-    sprite('cs254_13', 3)	# 31-33
-    sprite('cs254_11', 3)	# 34-36
-    sprite('cs254_12', 3)	# 37-39
-    sprite('cs254_13', 3)	# 40-42
-    sprite('keep', 32767)	# 43-32809
+    sprite('cs254_10', 3)	# 19-21	 **attackbox here**
+    sprite('cs254_11', 3)	# 22-24
+    sprite('cs254_12', 3)	# 25-27
+    sprite('cs254_13', 3)	# 28-30
+    sprite('cs254_11', 3)	# 31-33
+    sprite('cs254_12', 3)	# 34-36
+    sprite('cs254_13', 3)	# 37-39
+    sprite('keep', 32767)	# 40-32806
     enterState('PersonaDeleteAndIdling')
 
 @State
@@ -1253,7 +1256,7 @@ def LightningPlasma_col():
     def upon_IMMEDIATE():
         Unknown2011()
         AttackLevel_(3)
-        Damage(500)
+        Damage(480)
         AttackP1(80)
         AttackP2(97)
         Unknown11091(15)
@@ -1317,10 +1320,10 @@ def LightningPlasmaCD_col():
     def upon_IMMEDIATE():
         Unknown2011()
         AttackLevel_(3)
-        Damage(400)
+        Damage(410)
         AttackP1(80)
         AttackP2(98)
-        Unknown11091(15)
+        Unknown11091(14)
         AirUntechableTime(100)
         AirPushbackY(5000)
         PushbackX(2000)
@@ -1345,12 +1348,15 @@ def LightningPlasmaCD_col():
         if (SLOT_6 == 3):
             Unknown10000(130)
             Unknown11031(8)
+            Unknown11110(99)
         if (SLOT_6 == 4):
             Unknown10000(140)
             Unknown11031(9)
+            Unknown11110(96)
         if (SLOT_6 == 5):
             Unknown10000(150)
             Unknown11031(10)
+            Unknown11110(94)
 
         def upon_3():
             op(4, 2, 51, 0, 2)

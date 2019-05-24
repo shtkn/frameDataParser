@@ -28,7 +28,7 @@ def PBC_ReceptionSignal():
 
     def upon_43():
         if (SLOT_48 == 200):
-            Unknown23185('5042435f506572736f6e615f364173736973740000000000000000000000000032000000')
+            Unknown23185('5042435f506572736f6e6153686f745f4173736973740000000000000000000032000000')
         if (SLOT_48 == 202):
             Unknown23185('5042435f506572736f6e614a440000000000000000000000000000000000000032000000')
         if (SLOT_48 == 220):
@@ -249,6 +249,7 @@ def PBC_Persona5D():
             if SLOT_2:
                 if (SLOT_19 < 250000):
                     sendToLabel(0)
+        Unknown23059(1)
     sprite('iz205_00', 2)
     Unknown2006()
     sprite('iz205_01', 3)
@@ -314,6 +315,7 @@ def PBC_Persona5DD():
         callSubroutine('PBC_CheckWarp')
         Unknown2053(1)
         Unknown2015(180)
+        Unknown23059(1)
     sprite('iz206_00', 2)
     Unknown2006()
     Unknown1084(1)
@@ -377,11 +379,12 @@ def PBC_Persona_6Assist():
                 if (SLOT_19 < 250000):
                     sendToLabel(0)
 
-        def upon_77():
+        def upon_78():
             SLOT_51 = 1
 
         def upon_14():
             Unknown21015('436d6e4163744368616e6765506172746e657241737369737441746b5f410000c900000000000000')
+        Unknown23059(1)
     sprite('iz205_00', 2)
     sprite('iz205_01', 2)
     sprite('iz205_02', 2)
@@ -435,6 +438,8 @@ def PBC_Persona_6Assist():
     sprite('iz205_10', 4)
     sprite('iz205_11', 4)
     sprite('iz205_12', 4)
+    if SLOT_52:
+        _gotolabel(1)
     loopRest()
     gotoLabel(580)
     label(1)
@@ -502,6 +507,7 @@ def PBC_Persona5C():
         Unknown23078(1)
         callSubroutine('PBC_CheckWarp')
         Unknown2053(1)
+        Unknown23059(1)
     sprite('iz204_00', 3)
     Unknown2006()
     sprite('iz204_01', 1)
@@ -547,13 +553,14 @@ def PBC_Persona2C():
         AirPushbackX(32000)
         AirPushbackY(20000)
         Unknown9016(1)
-        AirUntechableTime(28)
+        AirUntechableTime(30)
         PushbackX(19800)
         Unknown11058('0000000001000000000000000000000000000000')
         Unknown2017(1)
         Unknown2053(1)
         Unknown23078(1)
         callSubroutine('PBC_CheckWarp')
+        Unknown23059(1)
     sprite('iz232_00', 4)
     Unknown2006()
     sprite('iz232_01', 4)
@@ -647,7 +654,7 @@ def PBC_PersonaJD():
         AirHitstunAnimation(11)
         AirPushbackX(0)
         AirPushbackY(-40000)
-        AirUntechableTime(40)
+        AirUntechableTime(60)
         Unknown9310(1)
         Hitstop(8)
         Unknown9016(1)
@@ -661,6 +668,7 @@ def PBC_PersonaJD():
         Unknown4007(0)
         Unknown2053(1)
         sendToLabelUpon(2, 1)
+        Unknown23059(1)
     sprite('iz255_04', 3)
     sprite('iz255_05', 3)
     SFX_0('airdash_m')
@@ -778,6 +786,7 @@ def PBC_PersonaLowAssaultA():
         def upon_44():
             Unknown4007(0)
             sendToLabel(580)
+        Unknown23059(1)
     sprite('iz402_00', 4)
     sprite('iz402_01', 4)
     sprite('iz402_02', 2)
@@ -836,6 +845,7 @@ def PBC_PersonaLowAssaultB():
         def upon_44():
             Unknown4007(0)
             sendToLabel(580)
+        Unknown23059(1)
     sprite('iz402_00', 4)
     sprite('iz402_01', 4)
     sprite('iz402_02', 3)
@@ -884,6 +894,7 @@ def PBC_PersonaLowAssault_Ex():
         def upon_44():
             Unknown4007(0)
             sendToLabel(580)
+        Unknown23059(1)
     sprite('iz402_00', 2)
     sprite('iz402_01', 3)
     sprite('iz402_02', 3)
@@ -924,6 +935,7 @@ def PBC_PersonaShotA():
         Unknown23184('03000000640000006079feff00000000206cfbff40420f00c0bdf0ff40420f00')
         callSubroutine('PBC_SPAttackInit')
         callSubroutine('PBC_CheckWarp')
+        Unknown23059(1)
     sprite('iz403_00', 3)
     Unknown2006()
     sprite('iz403_01', 3)
@@ -963,6 +975,7 @@ def PBC_PersonaShotB():
         Unknown23184('03000000640000006079feff00000000206cfbff40420f00c0bdf0ff40420f00')
         callSubroutine('PBC_SPAttackInit')
         callSubroutine('PBC_CheckWarp')
+        Unknown23059(1)
     sprite('iz403_00', 3)
     Unknown2006()
     sprite('iz403_01', 3)
@@ -1006,6 +1019,7 @@ def PBC_PersonaShot_Ex():
 
         def upon_STATE_END():
             SLOT_10 = 0
+        Unknown23059(1)
     sprite('iz403_00', 3)
     Unknown2006()
     label(0)
@@ -1056,9 +1070,10 @@ def PBC_PersonaShot_A4th():
 
     def upon_IMMEDIATE():
         Unknown23023()
-        Unknown23184('0300000064000000a086010000000000206cfbff40420f00c0bdf0ff40420f00')
+        Unknown23184('0300000064000000a086010000000000206cfbff404b4c00c0bdf0ff40420f00')
         callSubroutine('PBC_SPAttackInit')
         callSubroutine('PBC_CheckWarp')
+        Unknown23059(1)
     sprite('iz403_00', 2)
     Unknown2006()
     sprite('iz403_01', 2)
@@ -1085,6 +1100,46 @@ def PBC_PersonaShot_A4th():
     enterState('PersonaDeleteAndIdling')
 
 @State
+def PBC_PersonaShot_Assist():
+
+    def upon_IMMEDIATE():
+        Unknown23023()
+        Unknown23184('03000000640000006079feff00000000206cfbff40420f00c0bdf0ff40420f00')
+        callSubroutine('PBC_SPAttackInit')
+        callSubroutine('PBC_CheckWarp')
+        Unknown23059(1)
+    sprite('iz403_00', 3)
+    Unknown2006()
+    sprite('iz403_01', 3)
+    GFX_0('ElectricBall_First', 0)
+    SFX_3('electric_m')
+    sprite('iz403_02', 3)
+    GFX_0('ElectricBall_Throw', 0)
+    SFX_3('electric_m')
+    sprite('iz403_04', 1)
+    GFX_0('ElectricBall_HontaiB_Assist', 0)
+    sprite('iz403_04', 4)
+    Unknown23022(0)
+    sprite('iz403_05', 3)
+    sprite('iz403_06', 3)
+    sprite('iz403_04', 4)
+    SFX_3('cloth_h')
+    sprite('iz403_05', 4)
+    sprite('iz403_06', 4)
+    sprite('iz403_04', 4)
+    sprite('iz403_05', 4)
+    sprite('iz403_06', 4)
+    sprite('iz403_04', 5)
+    sprite('iz403_05', 5)
+    sprite('iz403_06', 5)
+    sprite('iz403_04', 5)
+    sprite('iz403_05', 5)
+    sprite('iz403_06', 5)
+    label(580)
+    sprite('keep', 32767)
+    enterState('PersonaDeleteAndIdling')
+
+@State
 def PBC_PersonaUltimateLaser():
 
     def upon_IMMEDIATE():
@@ -1092,9 +1147,9 @@ def PBC_PersonaUltimateLaser():
         Unknown23184('0300000064000000400d03000000000000000000000000000000000000000000')
         callSubroutine('PBC_DDAttackInit')
         AttackLevel_(4)
-        Damage(270)
+        Damage(260)
         AttackP2(98)
-        Unknown11091(15)
+        Unknown11091(13)
         Hitstop(0)
         Unknown11034(0)
         Unknown11033(1)
@@ -1106,13 +1161,15 @@ def PBC_PersonaUltimateLaser():
         GroundedHitstunAnimation(12)
         Unknown9362(1)
         Unknown9364(30)
-        AirHitstunAfterWallbounce(30)
+        AirHitstunAfterWallbounce(40)
         WallbounceReboundTime(1)
         AirUntechableTime(62)
         Unknown9266(4)
         Unknown9021(1)
         Unknown11057(800)
         Unknown2053(1)
+        if SLOT_5:
+            Unknown9310(20)
         callSubroutine('PBC_ForceWarp')
         Unknown4007(3)
         Unknown23066(1)
@@ -1127,6 +1184,7 @@ def PBC_PersonaUltimateLaser():
         Unknown23022(1)
         Unknown2054(1)
         Unknown30056('d00101006400000000000000')
+        Unknown23059(1)
     sprite('iz431_00', 4)
     GFX_0('CreateUltimateLaserMatome', 0)
     Unknown4007(0)
@@ -1249,9 +1307,9 @@ def PBC_PersonaUltimateLaserOD():
         Unknown11034(0)
         Unknown11033(1)
         AttackLevel_(4)
-        Damage(330)
+        Damage(320)
         AttackP2(98)
-        Unknown11091(15)
+        Unknown11091(13)
         Hitstop(0)
         PushbackX(11000)
         AirPushbackY(1000)
@@ -1261,7 +1319,7 @@ def PBC_PersonaUltimateLaserOD():
         GroundedHitstunAnimation(12)
         Unknown9362(1)
         Unknown9364(30)
-        AirHitstunAfterWallbounce(30)
+        AirHitstunAfterWallbounce(40)
         WallbounceReboundTime(1)
         AirUntechableTime(47)
         Unknown9266(4)
@@ -1269,10 +1327,14 @@ def PBC_PersonaUltimateLaserOD():
         Unknown11057(800)
         Unknown2053(1)
         Unknown2054(1)
+        Unknown11110(95)
+        if SLOT_5:
+            Unknown9310(20)
         callSubroutine('PBC_ForceWarp')
         Unknown4007(3)
         Unknown23022(1)
         Unknown30056('d00101006400000000000000')
+        Unknown23059(1)
     sprite('iz431_00', 4)
     GFX_0('CreateUltimateLaserMatome', 0)
     Unknown23029(1, 911, 0)
@@ -1399,8 +1461,8 @@ def PBC_PersonaUltimateBlade():
         Unknown3032()
         Unknown3001(0)
         AttackLevel_(5)
-        Damage(4000)
-        Unknown11091(25)
+        Damage(4800)
+        Unknown11091(30)
         AttackP1(80)
         GroundedHitstunAnimation(2)
         AirHitstunAnimation(2)
@@ -1495,7 +1557,7 @@ def PBC_PersonaUltimateBladeTAG():
         Unknown3032()
         Unknown3001(0)
         AttackLevel_(5)
-        Damage(1000)
+        Damage(1500)
         Unknown11091(100)
         AttackP1(100)
         AttackP2(100)
@@ -1668,7 +1730,7 @@ def PBC_PersonaUltimateBladeOD():
     RefreshMultihit()
     SFX_3('counter_hit_l45')
     SFX_3('blaze_long')
-    Damage(4000)
+    Damage(4700)
     AttackP2(60)
     Unknown36(3)
     Unknown13024(1)
@@ -1765,7 +1827,7 @@ def PBC_PersonaUltimateBladeODTAG():
 
     def upon_12():
         pass
-    Damage(800)
+    Damage(1300)
     Unknown36(3)
     Unknown13024(1)
     Unknown35()
@@ -2105,7 +2167,7 @@ def ElectricBall_HontaiA():
         AirUntechableTime(30)
         Unknown9266(4)
         Unknown9021(1)
-        physicsXImpulse(40000)
+        physicsXImpulse(50000)
         callSubroutine('PBC_EffectInit')
 
         def upon_3():
@@ -2260,6 +2322,8 @@ def ElectricBall_HontaiEx():
     GFX_0('ElectricBall_Ex_Add', 100)
     RefreshMultihit()
     Damage(400)
+    AirPushbackX(9800)
+    AirPushbackY(20000)
     Unknown9266(4)
     Unknown9021(1)
     Hitstop(3)
@@ -2284,6 +2348,50 @@ def ElectricBall_HontaiEx():
     sprite('vr_iz403_01', 2)
     GFX_1('izef_enagyballthunder_04', 0)
     sprite('vr_iz403_02', 2)
+
+@State
+def ElectricBall_HontaiB_Assist():
+
+    def upon_IMMEDIATE():
+        Unknown2010()
+        AttackLevel_(3)
+        AttackP1(70)
+        Unknown11042(1)
+        GroundedHitstunAnimation(1)
+        AirPushbackY(19000)
+        AirUntechableTime(60)
+        Unknown9266(4)
+        Unknown9021(1)
+        Unknown53(1)
+        physicsXImpulse(70000)
+        callSubroutine('PBC_EffectInit')
+        Unknown53(1)
+        Unknown23089('0100000001000000010000000100000001000000000000000100000000000000')
+        sendToLabelUpon(54, 0)
+        loopRelated(17, 75)
+
+        def upon_17():
+            Unknown23090(25)
+        Unknown3033()
+        Unknown4061(3)
+    label(10)
+    sprite('vr_iz403_05', 1)
+    RefreshMultihit()
+    label(1)
+    sprite('vr_iz403_05', 1)
+    GFX_1('izef_enagyballthunder_04', 0)
+    sprite('vr_iz403_06', 1)
+    sprite('vr_iz403_07', 1)
+    loopRest()
+    gotoLabel(1)
+    label(0)
+    sprite('vr_iz403_08', 2)
+    GFX_1('izef_enagyballthunder_04', 0)
+    Unknown1084(1)
+    sprite('vr_iz403_09', 2)
+    sprite('vr_iz403_10', 2)
+    GFX_1('izef_enagyballthunder_04', 0)
+    sprite('vr_iz403_11', 2)
 
 @State
 def ElectricBall_HontaiA4th():

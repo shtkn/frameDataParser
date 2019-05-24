@@ -1815,8 +1815,7 @@ def CmnActAirCrossRushEnd():
 def CmnActCrossChangeBegin():
 
     def upon_IMMEDIATE():
-        Unknown21015('44444d756c746953776f72644d61737465720000000000000000000000000000d210000000000000')
-        Unknown21015('44444d756c746953776f72644d61737465724f44000000000000000000000000d210000000000000')
+        pass
     sprite('ny331_00', 2)	# 1-2
     sprite('ny331_01', 2)	# 3-4
     sprite('ny331_02', 2)	# 5-6
@@ -1843,8 +1842,7 @@ def CmnActCrossChangeEnd():
 def CmnActAirCrossChangeBegin():
 
     def upon_IMMEDIATE():
-        Unknown21015('44444d756c746953776f72644d61737465720000000000000000000000000000d210000000000000')
-        Unknown21015('44444d756c746953776f72644d61737465724f44000000000000000000000000d210000000000000')
+        pass
     sprite('ny331_00', 2)	# 1-2
     sprite('ny331_01', 2)	# 3-4
     sprite('ny331_02', 2)	# 5-6
@@ -2194,8 +2192,6 @@ def CmnActChangePartnerQuickOut():
 
     def upon_IMMEDIATE():
         Unknown17013()
-        Unknown21015('44444d756c746953776f72644d61737465720000000000000000000000000000d210000000000000')
-        Unknown21015('44444d756c746953776f72644d61737465724f44000000000000000000000000d210000000000000')
 
         def upon_LANDING():
             clearUponHandler(2)
@@ -2248,6 +2244,7 @@ def CmnActChangePartnerAssistAtk_A():
             Unknown2017(1)
             Unknown2034(1)
             Unknown2053(1)
+            Unknown12046(0)
     sprite('ny400_00', 3)	# 1-3
     sprite('ny400_00', 1)	# 4-4
     GFX_0('SummonDmc', -1)
@@ -2627,6 +2624,8 @@ def NmlAtk5A_2nd():
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
         HitOrBlockJumpCancel(1)
+        HitOrBlockCancel('SpecialDashF')
+        HitOrBlockCancel('SpecialDashB')
 
         def upon_STATE_END():
             Unknown23029(4, 2029, 0)
@@ -3817,7 +3816,7 @@ def NmlAtkAIR5C():
     Unknown23029(1, 4024, 0)
     sprite('ny402_03', 3)	# 8-10
     sprite('ny402_04', 1)	# 11-11
-    Unknown22004(13, 1)
+    Unknown22004(15, 1)
     sprite('ny402_04', 1)	# 12-12
     sprite('ny402_05', 5)	# 13-17
     sprite('ny402_06', 5)	# 18-22
@@ -3826,8 +3825,8 @@ def NmlAtkAIR5C():
     sprite('ny402_09', 5)	# 33-37
     Recovery()
     sprite('ny020_04', 5)	# 38-42
-    setGravity(2500)
-    Unknown1021(-3000)
+    setGravity(2000)
+    Unknown1021(-1000)
     sprite('ny020_05', 5)	# 43-47
     sprite('ny020_06', 5)	# 48-52
     sprite('ny020_07', 5)	# 53-57
@@ -4365,51 +4364,51 @@ def CmnActInvincibleAttack():
         def upon_11():
             Unknown2037(1)
         sendToLabelUpon(2, 1)
-    sprite('ny407_00', 2)	# 1-2	 **attackbox here**
-    sprite('ny407_01', 2)	# 3-4	 **attackbox here**
+    sprite('ny407_00', 3)	# 1-3	 **attackbox here**
+    sprite('ny407_01', 3)	# 4-6	 **attackbox here**
     Unknown7006('bny204_0', 100, 846818914, 828322864, 0, 0, 100, 846818914, 845100080, 0, 0, 100, 0, 0, 0, 0, 0)
-    sprite('ny407_02', 2)	# 5-6	 **attackbox here**
+    sprite('ny407_02', 7)	# 7-13	 **attackbox here**
     SFX_0('006_swing_blade_2')
     SFX_3('nyse_33')
-    sprite('ny407_03', 2)	# 7-8	 **attackbox here**
-    sprite('ny407_04', 3)	# 9-11	 **attackbox here**
+    sprite('ny407_03', 3)	# 14-16	 **attackbox here**
+    sprite('ny407_04', 3)	# 17-19	 **attackbox here**
     physicsXImpulse(-4500)
     physicsYImpulse(13000)
     Unknown1043()
-    sprite('ny407_05', 1)	# 12-12	 **attackbox here**
+    sprite('ny407_05', 1)	# 20-20	 **attackbox here**
     GFX_0('407slash', -1)
     RefreshMultihit()
-    sprite('ny407_05', 1)	# 13-13	 **attackbox here**
+    sprite('ny407_05', 1)	# 21-21	 **attackbox here**
     RefreshMultihit()
-    sprite('ny407_05', 1)	# 14-14	 **attackbox here**
+    sprite('ny407_05', 1)	# 22-22	 **attackbox here**
     RefreshMultihit()
-    sprite('ny407_05', 1)	# 15-15	 **attackbox here**
+    sprite('ny407_05', 1)	# 23-23	 **attackbox here**
     RefreshMultihit()
-    sprite('ny407_06', 1)	# 16-16	 **attackbox here**
+    sprite('ny407_06', 1)	# 24-24	 **attackbox here**
     RefreshMultihit()
-    sprite('ny407_06', 1)	# 17-17	 **attackbox here**
+    sprite('ny407_06', 1)	# 25-25	 **attackbox here**
     RefreshMultihit()
-    sprite('ny407_06', 1)	# 18-18	 **attackbox here**
+    sprite('ny407_06', 1)	# 26-26	 **attackbox here**
     RefreshMultihit()
-    sprite('ny407_06', 1)	# 19-19	 **attackbox here**
+    sprite('ny407_06', 1)	# 27-27	 **attackbox here**
     RefreshMultihit()
-    sprite('ny407_07', 4)	# 20-23	 **attackbox here**
+    sprite('ny407_07', 4)	# 28-31	 **attackbox here**
     setInvincible(0)
-    sprite('ny407_08', 32767)	# 24-32790	 **attackbox here**
+    sprite('ny407_08', 32767)	# 32-32798	 **attackbox here**
     label(1)
-    sprite('ny407_09', 5)	# 32791-32795	 **attackbox here**
+    sprite('ny407_09', 5)	# 32799-32803	 **attackbox here**
     Unknown8000(100, 1, 1)
     Unknown1019(50)
-    sprite('ny407_10', 5)	# 32796-32800	 **attackbox here**
+    sprite('ny407_10', 5)	# 32804-32808	 **attackbox here**
     Unknown1019(50)
-    sprite('ny407_11', 5)	# 32801-32805	 **attackbox here**
+    sprite('ny407_11', 5)	# 32809-32813	 **attackbox here**
     Unknown1019(50)
-    sprite('ny407_12', 5)	# 32806-32810	 **attackbox here**
+    sprite('ny407_12', 5)	# 32814-32818	 **attackbox here**
     Unknown1084(1)
-    sprite('ny407_13', 5)	# 32811-32815	 **attackbox here**
-    sprite('ny407_14', 5)	# 32816-32820	 **attackbox here**
-    sprite('ny407_15', 5)	# 32821-32825	 **attackbox here**
-    sprite('ny407_16', 5)	# 32826-32830	 **attackbox here**
+    sprite('ny407_13', 5)	# 32819-32823	 **attackbox here**
+    sprite('ny407_14', 5)	# 32824-32828	 **attackbox here**
+    sprite('ny407_15', 5)	# 32829-32833	 **attackbox here**
+    sprite('ny407_16', 5)	# 32834-32838	 **attackbox here**
 
 @State
 def CmnActInvincibleAttackAir():
@@ -4429,7 +4428,6 @@ def CmnActInvincibleAttackAir():
         Unknown11057(600)
         Unknown11058('0100000000000000000000000000000000000000')
         Unknown13024(0)
-        setInvincible(1)
 
         def upon_11():
             Unknown2037(1)

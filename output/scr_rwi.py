@@ -1942,59 +1942,59 @@ def CmnActChangePartnerAssistAtk_B():
     Unknown38(10, 1)
     sprite('rwi400_01', 2)	# 3-4
     sprite('rwi400_02', 2)	# 5-6
-    GFX_0('rwief401_slash', -1)
+    GFX_0('rwief401_slashAssist', -1)
     SFX_3('rwise_10')
-    sprite('rwi400_03', 3)	# 7-9
-    sprite('rwi400_04', 3)	# 10-12
-    sprite('rwi400_05', 3)	# 13-15
+    sprite('rwi400_03', 2)	# 7-8
+    sprite('rwi400_04', 2)	# 9-10
+    sprite('rwi400_05', 2)	# 11-12
     SFX_3('rwise_00')
     Unknown2037(1)
     physicsXImpulse(120000)
     Unknown23029(10, 4001, 0)
-    sprite('rwi400_06', 3)	# 16-18
+    sprite('rwi400_06', 2)	# 13-14
     label(0)
-    sprite('rwi400_05', 3)	# 19-21
+    sprite('rwi400_05', 2)	# 15-16
     Unknown23029(10, 4002, 0)
-    sprite('rwi400_06', 3)	# 22-24
+    sprite('rwi400_06', 2)	# 17-18
     gotoLabel(0)
     label(1)
-    sprite('rwi401_00', 3)	# 25-27
-    GFX_0('rwief401_Slash_Hit', -1)
+    sprite('rwi401_00', 2)	# 19-20
+    GFX_0('rwief401_Slash_HitAssist', -1)
     Unknown1019(25)
     clearUponHandler(17)
     clearUponHandler(3)
     Unknown23029(10, 4003, 0)
-    sprite('rwi401_01', 3)	# 28-30
+    sprite('rwi401_01', 2)	# 21-22
     Unknown1019(50)
-    sprite('rwi401_02', 3)	# 31-33
+    sprite('rwi401_02', 2)	# 23-24
     Unknown1019(50)
-    sprite('rwi401_03', 3)	# 34-36
+    sprite('rwi401_03', 2)	# 25-26
     Unknown1084(1)
     tag_voice(1, 'rwi202_0', 'rwi202_1', 'rwi202_2', '')
     SFX_3('rwise_03')
-    sprite('rwi401_04', 3)	# 37-39	 **attackbox here**
+    sprite('rwi401_04_ex', 3)	# 27-29
     physicsXImpulse(10000)
     physicsYImpulse(40000)
     Unknown1043()
     Unknown28(2, '_NEUTRAL')
-    sprite('rwi401_05', 3)	# 40-42	 **attackbox here**
-    sprite('rwi401_04', 3)	# 43-45	 **attackbox here**
+    sprite('rwi401_05_ex', 3)	# 30-32
+    sprite('rwi401_04_ex', 3)	# 33-35
     YAccel(50)
-    sprite('rwi401_05', 3)	# 46-48	 **attackbox here**
-    sprite('rwi401_06', 3)	# 49-51
+    sprite('rwi401_05_ex', 3)	# 36-38
+    sprite('rwi401_06', 3)	# 39-41
     Recovery()
     Unknown1043()
-    sprite('rwi401_07', 3)	# 52-54
-    sprite('rwi401_08', 3)	# 55-57
-    sprite('rwi401_09', 3)	# 58-60
+    sprite('rwi401_07', 3)	# 42-44
+    sprite('rwi401_08', 3)	# 45-47
+    sprite('rwi401_09', 3)	# 48-50
     Unknown23029(10, 4004, 0)
     label(2)
-    sprite('rwi020_07', 3)	# 61-63
-    sprite('rwi020_08', 3)	# 64-66
+    sprite('rwi020_07', 3)	# 51-53
+    sprite('rwi020_08', 3)	# 54-56
     gotoLabel(2)
     label(3)
-    sprite('rwi010_01', 2)	# 67-68
-    sprite('rwi010_00', 2)	# 69-70
+    sprite('rwi010_01', 2)	# 57-58
+    sprite('rwi010_00', 2)	# 59-60
 
 @State
 def CmnActChangePartnerAssistAtk_D():
@@ -2014,7 +2014,7 @@ def CmnActChangePartnerAssistAtk_D():
         Unknown9016(1)
         Unknown11057(750)
         Unknown2004(1, 0)
-        loopRelated(17, 21)
+        loopRelated(17, 26)
 
         def upon_17():
             sendToLabel(1)
@@ -2046,7 +2046,7 @@ def CmnActChangePartnerAssistAtk_D():
     Unknown2037(1)
     SFX_3('rwise_44')
     sprite('rwi400_05', 3)	# 15-17
-    physicsXImpulse(90000)
+    physicsXImpulse(100000)
     Unknown23029(10, 4001, 0)
     sprite('rwi400_06', 3)	# 18-20
     Unknown1019(50)
@@ -2327,16 +2327,16 @@ def NmlAtk4A():
         HitOrBlockCancel('NmlAtkBackThrow')
         HitOrBlockJumpCancel(1)
     sprite('rwi200_00', 3)	# 1-3
-    sprite('rwi200_01', 4)	# 4-7
+    sprite('rwi200_01', 3)	# 4-6
     Unknown7009(0)
-    sprite('rwi200_02', 3)	# 8-10	 **attackbox here**
+    sprite('rwi200_02', 3)	# 7-9	 **attackbox here**
     GFX_0('rwief200_slash', -1)
     SFX_3('rwise_00')
-    sprite('rwi200_03', 4)	# 11-14
+    sprite('rwi200_03', 4)	# 10-13
     Recovery()
     Unknown2063()
-    sprite('rwi200_04', 4)	# 15-18
-    sprite('rwi200_05', 4)	# 19-22
+    sprite('rwi200_04', 4)	# 14-17
+    sprite('rwi200_05', 4)	# 18-21
 
 @State
 def NmlAtk5A():
@@ -2355,20 +2355,20 @@ def NmlAtk5A():
         HitOrBlockCancel('NmlAtkBackThrow')
         HitOrBlockJumpCancel(1)
         Unknown1112('')
-    sprite('rwi201_00', 3)	# 1-3
-    sprite('rwi201_01', 3)	# 4-6
-    sprite('rwi201_02', 3)	# 7-9
+    sprite('rwi201_00', 2)	# 1-2
+    sprite('rwi201_01', 2)	# 3-4
+    sprite('rwi201_02', 3)	# 5-7
     Unknown7009(1)
     GFX_0('rwief201_slash', -1)
     SFX_3('rwise_03')
-    sprite('rwi201_03', 3)	# 10-12	 **attackbox here**
-    sprite('rwi201_04', 4)	# 13-16
+    sprite('rwi201_03', 3)	# 8-10	 **attackbox here**
+    sprite('rwi201_04', 4)	# 11-14
     Recovery()
     Unknown2063()
-    sprite('rwi201_05', 4)	# 17-20
-    sprite('rwi201_06', 4)	# 21-24
-    sprite('rwi201_07', 4)	# 25-28
-    sprite('rwi201_08', 3)	# 29-31
+    sprite('rwi201_05', 4)	# 15-18
+    sprite('rwi201_06', 4)	# 19-22
+    sprite('rwi201_07', 4)	# 23-26
+    sprite('rwi201_08', 3)	# 27-29
 
 @State
 def NmlAtk5AA():
@@ -2380,7 +2380,9 @@ def NmlAtk5AA():
         AttackP2(80)
         Unknown11092(1)
         AirUntechableTime(22)
+        AirPushbackX(1500)
         AirPushbackY(-40000)
+        PushbackX(5000)
         Unknown11058('0100000000000000000000000000000000000000')
         Unknown9190(1)
         Unknown9118(25)
@@ -2401,36 +2403,44 @@ def NmlAtk5AA():
             sendToLabel(1)
     sprite('rwi270_00', 3)	# 1-3
     sprite('rwi270_01', 2)	# 4-5
-    physicsXImpulse(17500)
+    if (SLOT_19 < 300000):
+        physicsXImpulse(17500)
+    elif (SLOT_19 < 500000):
+        physicsXImpulse(20000)
+    else:
+        physicsXImpulse(22500)
     physicsYImpulse(10000)
     Unknown1043()
     sprite('rwi270_02', 3)	# 6-8
+    Unknown2016(400)
     sprite('rwi270_03', 3)	# 9-11
     GFX_0('rwief270_wind', -1)
     Unknown7009(1)
     SFX_0('004_swing_grap_1_0')
     sprite('rwi270_04', 3)	# 12-14	 **attackbox here**
     sprite('rwi270_05', 3)	# 15-17
+    Unknown2016(-1)
     sprite('rwi270_06', 32767)	# 18-32784
     label(1)
     sprite('rwi270_06', 2)	# 32785-32786
     GFX_0('rwief270_wind2', -1)
     SFX_0('003_swing_grap_0_1')
-    sprite('rwi270_07', 3)	# 32787-32789	 **attackbox here**
+    sprite('rwi270_07', 5)	# 32787-32791	 **attackbox here**
     RefreshMultihit()
     AttackLevel_(3)
     PushbackX(30400)
+    AirPushbackX(5400)
     AirUntechableTime(17)
     Hitstop(11)
     Unknown11058('0000000001000000000000000000000000000000')
     Unknown14077(1)
-    sprite('rwi270_08', 4)	# 32790-32793
+    sprite('rwi270_08', 4)	# 32792-32795
     Recovery()
     Unknown2063()
-    sprite('rwi270_09', 4)	# 32794-32797
+    sprite('rwi270_09', 4)	# 32796-32799
     Unknown1084(1)
-    sprite('rwi270_10', 4)	# 32798-32801
-    sprite('rwi270_11', 4)	# 32802-32805
+    sprite('rwi270_10', 4)	# 32800-32803
+    sprite('rwi270_11', 4)	# 32804-32807
 
 @State
 def NmlAtk5AAA():
@@ -2711,6 +2721,13 @@ def NmlAtkAIR5A():
         HitOrBlockCancel('NmlAtkAIR5B')
         HitOrBlockCancel('NmlAtkAIR5C')
         HitOrBlockJumpCancel(1)
+
+        def upon_ON_HIT_OR_BLOCK():
+            Unknown21015('7277693235315f30335f6b69636b5f64616d7900000000000000000000000000d009000000000000')
+
+        def upon_43():
+            if (SLOT_48 == 2511):
+                Unknown23027()
     sprite('rwi251_00', 2)	# 1-2
     sprite('rwi251_01', 3)	# 3-5
     sprite('rwi251_02', 3)	# 6-8
@@ -2718,14 +2735,16 @@ def NmlAtkAIR5A():
     Unknown7009(4)
     SFX_3('rwise_00')
     sprite('rwi251_03', 5)	# 9-13	 **attackbox here**
+    GFX_0('rwi251_03_kick_damy', -1)
     Unknown21012('72776965663235315f736c61736800000000000000000000000000000000000020000000')
-    sprite('rwi251_04', 5)	# 14-18	 **attackbox here**
+    sprite('rwi251_03', 2)	# 14-15	 **attackbox here**
+    sprite('rwi251_04', 5)	# 16-20	 **attackbox here**
     StartMultihit()
     Recovery()
     Unknown2063()
-    sprite('rwi251_05', 5)	# 19-23
-    sprite('rwi251_06', 5)	# 24-28
-    sprite('rwi251_07', 5)	# 29-33
+    sprite('rwi251_05', 5)	# 21-25
+    sprite('rwi251_06', 5)	# 26-30
+    sprite('rwi251_07', 5)	# 31-35
 
 @State
 def NmlAtkAIR5B():
@@ -3477,7 +3496,7 @@ def AssaultA():
         GroundedHitstunAnimation(1)
         AttackP1(80)
         AirPushbackX(20000)
-        AirPushbackY(14000)
+        AirPushbackY(16000)
         AirUntechableTime(30)
         Unknown9016(1)
         Unknown2004(1, 0)
@@ -3575,8 +3594,8 @@ def AssaultB():
         PushbackX(49800)
         AttackP1(80)
         Unknown11092(1)
-        AirUntechableTime(30)
-        Unknown9168(40)
+        AirUntechableTime(60)
+        Unknown9168(60)
         Unknown9016(1)
         Unknown2004(1, 0)
         loopRelated(17, 35)
@@ -3660,7 +3679,7 @@ def AssaultB():
     sprite('rwi401_03', 3)	# 61-63
     Unknown1084(1)
     tag_voice(0, 'rwi202_0', 'rwi202_1', 'rwi202_2', '')
-    sprite('rwi401_04', 3)	# 64-66	 **attackbox here**
+    sprite('rwi401_04_ex', 3)	# 64-66
     RefreshMultihit()
     Damage(1200)
     AirUntechableTime(45)
@@ -3675,10 +3694,10 @@ def AssaultB():
     def upon_12():
         GFX_0('rwief401_Hit', 103)
     Unknown28(2, '_NEUTRAL')
-    sprite('rwi401_05', 3)	# 67-69	 **attackbox here**
-    sprite('rwi401_04', 3)	# 70-72	 **attackbox here**
+    sprite('rwi401_05_ex', 3)	# 67-69
+    sprite('rwi401_04_ex', 3)	# 70-72
     YAccel(50)
-    sprite('rwi401_05', 3)	# 73-75	 **attackbox here**
+    sprite('rwi401_05_ex', 3)	# 73-75
     sprite('rwi401_06', 4)	# 76-79
     Recovery()
     Unknown1043()
@@ -3715,11 +3734,13 @@ def AssaultC():
         AirPushbackX(20000)
         AirPushbackY(20000)
         AttackP1(80)
+        AttackP2(75)
         Unknown11092(1)
         AirUntechableTime(35)
         Unknown9016(1)
         Unknown11057(750)
         Unknown2004(1, 0)
+        Unknown11056(0)
         loopRelated(17, 21)
 
         def upon_17():
@@ -3794,22 +3815,21 @@ def AssaultC():
     sprite('rwi402_09', 3)	# 52-54	 **attackbox here**
     RefreshMultihit()
     Hitstop(12)
-    AirPushbackX(35000)
-    AirPushbackY(17500)
+    AirPushbackX(60000)
+    AirPushbackY(12000)
+    Unknown9178(1)
+    WallbounceReboundTime(0)
+    AirHitstunAfterWallbounce(40)
     SFX_3('rwise_03')
 
     def upon_12():
         GFX_0('rwief402_Hit', 102)
     sprite('rwi402_10', 3)	# 55-57
     Recovery()
-    Unknown1019(50)
     sprite('rwi402_11', 3)	# 58-60
-    Unknown1019(50)
     sprite('rwi402_12', 3)	# 61-63
-    Unknown1019(50)
     Unknown23029(10, 4004, 0)
     sprite('rwi402_13', 3)	# 64-66
-    Unknown1019(50)
     sprite('rwi402_14', 3)	# 67-69
 
     def upon_LANDING():
@@ -4033,7 +4053,7 @@ def AirAssaultC():
     sprite('rwi401_03', 3)	# 43-45
     Unknown1019(50)
     SFX_3('rwise_10')
-    sprite('rwi401_04', 2)	# 46-47	 **attackbox here**
+    sprite('rwi401_04_ex', 2)	# 46-47
     tag_voice(0, 'rwi205_0', 'rwi205_1', 'rwi205_2', '')
     physicsXImpulse(5000)
     physicsYImpulse(30000)
@@ -4048,11 +4068,11 @@ def AirAssaultC():
     def upon_12():
         GFX_0('rwief401_Hit', 103)
         clearUponHandler(12)
-    sprite('rwi401_05', 2)	# 48-49	 **attackbox here**
+    sprite('rwi401_05_ex', 2)	# 48-49
     RefreshMultihit()
-    sprite('rwi401_04', 2)	# 50-51	 **attackbox here**
+    sprite('rwi401_04_ex', 2)	# 50-51
     RefreshMultihit()
-    sprite('rwi401_05', 2)	# 52-53	 **attackbox here**
+    sprite('rwi401_05_ex', 2)	# 52-53
     RefreshMultihit()
     sprite('rwi401_06', 3)	# 54-56
     Recovery()
@@ -4062,20 +4082,11 @@ def AirAssaultC():
     Unknown23029(10, 4004, 0)
     sprite('rwi020_05', 3)	# 66-68
     sprite('rwi020_06', 3)	# 69-71
-
-    def upon_LANDING():
-        clearUponHandler(2)
-        Unknown1084(1)
-        Unknown8000(100, 1, 1)
-        sendToLabel(11)
+    Unknown28(2, 'CmnActJumpLanding')
     label(10)
     sprite('rwi020_07', 3)	# 72-74
     sprite('rwi020_08', 3)	# 75-77
     gotoLabel(10)
-    label(11)
-    sprite('rwi010_00', 3)	# 78-80
-    sprite('rwi010_01', 3)	# 81-83
-    sprite('rwi010_00', 3)	# 84-86
 
 @State
 def IceShieldA():
@@ -4206,13 +4217,14 @@ def IceShieldCounter():
         GroundedHitstunAnimation(9)
         AttackP1(80)
         AttackP2(75)
-        AirUntechableTime(25)
-        AirPushbackY(-40000)
+        AirUntechableTime(39)
+        AirPushbackY(-50000)
         Unknown9190(1)
         Unknown9118(50)
         Unknown9016(1)
         Unknown12051(0)
         Unknown2004(1, 0)
+        Unknown11001(0, 5, 5)
         setInvincible(1)
     sprite('rwi202_00', 3)	# 1-3
     sprite('rwi202_01', 3)	# 4-6
@@ -4220,17 +4232,16 @@ def IceShieldCounter():
     sprite('rwi202_03', 2)	# 10-11
     sprite('rwi202_04', 2)	# 12-13
     tag_voice(1, 'rwi207_0', 'rwi207_1', 'rwi207_2', '')
-    sprite('rwi202_05', 3)	# 14-16	 **attackbox here**
+    sprite('rwi202_05', 5)	# 14-18	 **attackbox here**
     GFX_0('rwief202_slash', -1)
-    sprite('rwi202_06', 3)	# 17-19
-    setInvincible(0)
+    sprite('rwi202_06', 3)	# 19-21
     Recovery()
-    sprite('rwi202_07', 3)	# 20-22
-    sprite('rwi202_08', 3)	# 23-25
-    sprite('rwi202_09', 3)	# 26-28
-    sprite('rwi202_10', 3)	# 29-31
-    sprite('rwi202_11', 3)	# 32-34
-    sprite('rwi202_12', 3)	# 35-37
+    sprite('rwi202_07', 3)	# 22-24
+    sprite('rwi202_08', 3)	# 25-27
+    sprite('rwi202_09', 3)	# 28-30
+    sprite('rwi202_10', 3)	# 31-33
+    sprite('rwi202_11', 3)	# 34-36
+    sprite('rwi202_12', 3)	# 37-39
 
 @State
 def SetMagicA():
@@ -4238,7 +4249,7 @@ def SetMagicA():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         Unknown2003(1)
-        loopRelated(17, 15)
+        loopRelated(17, 10)
 
         def upon_17():
             clearUponHandler(17)
@@ -4248,41 +4259,41 @@ def SetMagicA():
         def upon_3():
             if CheckInput(0x5):
                 Unknown2037(1)
-    sprite('rwi406_00', 3)	# 1-3
-    sprite('rwi406_01', 3)	# 4-6
-    sprite('rwi406_02', 3)	# 7-9
+    sprite('rwi406_00', 2)	# 1-2
+    sprite('rwi406_01', 2)	# 3-4
+    sprite('rwi406_02', 2)	# 5-6
     tag_voice(1, 'rwi208_0', 'rwi208_1', 'rwi208_2', '')
     label(0)
-    sprite('rwi406_03', 3)	# 10-12
-    sprite('rwi406_04', 3)	# 13-15
-    sprite('rwi406_05', 3)	# 16-18
+    sprite('rwi406_03', 2)	# 7-8
+    sprite('rwi406_04', 2)	# 9-10
+    sprite('rwi406_05', 2)	# 11-12
     gotoLabel(0)
     label(1)
-    sprite('rwi406_06', 3)	# 19-21
-    sprite('rwi406_07', 3)	# 22-24
-    sprite('rwi406_08', 3)	# 25-27
+    sprite('rwi406_06', 2)	# 13-14
+    sprite('rwi406_07', 2)	# 15-16
+    sprite('rwi406_08', 2)	# 17-18
     Unknown23029(4, 4069, 0)
     GFX_0('InstallationMagic', -1)
     Unknown38(4, 1)
     Unknown23029(4, 4061, 0)
-    sprite('rwi406_09', 3)	# 28-30
+    sprite('rwi406_09', 2)	# 19-20
     Recovery()
     if SLOT_2:
         sendToLabel(3)
-    sprite('rwi406_10', 3)	# 31-33
-    sprite('rwi406_11', 3)	# 34-36
+    sprite('rwi406_10', 4)	# 21-24
+    sprite('rwi406_11', 4)	# 25-28
     Unknown23029(4, 4066, 0)
-    sprite('rwi406_12', 3)	# 37-39
-    sprite('rwi406_13', 3)	# 40-42
+    sprite('rwi406_12', 4)	# 29-32
+    sprite('rwi406_13', 5)	# 33-37
     ExitState()
     label(3)
-    sprite('rwi406_10', 4)	# 43-46
-    sprite('rwi406_11', 4)	# 47-50
-    sprite('rwi406_12', 4)	# 51-54
-    sprite('rwi406_10', 4)	# 55-58
-    sprite('rwi406_11', 4)	# 59-62
-    sprite('rwi406_12', 4)	# 63-66
-    sprite('rwi406_13', 5)	# 67-71
+    sprite('rwi406_10', 4)	# 38-41
+    sprite('rwi406_11', 4)	# 42-45
+    sprite('rwi406_12', 4)	# 46-49
+    sprite('rwi406_10', 4)	# 50-53
+    sprite('rwi406_11', 4)	# 54-57
+    sprite('rwi406_12', 4)	# 58-61
+    sprite('rwi406_13', 5)	# 62-66
     ExitState()
 
 @State
@@ -4291,7 +4302,7 @@ def SetMagicB():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         Unknown2003(1)
-        loopRelated(17, 15)
+        loopRelated(17, 10)
 
         def upon_17():
             clearUponHandler(17)
@@ -4301,41 +4312,41 @@ def SetMagicB():
         def upon_3():
             if CheckInput(0xe):
                 Unknown2037(1)
-    sprite('rwi406_00', 3)	# 1-3
-    sprite('rwi406_01', 3)	# 4-6
-    sprite('rwi406_02', 3)	# 7-9
+    sprite('rwi406_00', 2)	# 1-2
+    sprite('rwi406_01', 2)	# 3-4
+    sprite('rwi406_02', 2)	# 5-6
     tag_voice(1, 'rwi208_0', 'rwi208_1', 'rwi208_2', '')
     label(0)
-    sprite('rwi406_03', 3)	# 10-12
-    sprite('rwi406_04', 3)	# 13-15
-    sprite('rwi406_05', 3)	# 16-18
+    sprite('rwi406_03', 2)	# 7-8
+    sprite('rwi406_04', 2)	# 9-10
+    sprite('rwi406_05', 2)	# 11-12
     gotoLabel(0)
     label(1)
-    sprite('rwi406_06', 3)	# 19-21
-    sprite('rwi406_07', 3)	# 22-24
-    sprite('rwi406_08', 3)	# 25-27
+    sprite('rwi406_06', 2)	# 13-14
+    sprite('rwi406_07', 2)	# 15-16
+    sprite('rwi406_08', 2)	# 17-18
     Unknown23029(5, 4069, 0)
     GFX_0('InstallationMagic', -1)
     Unknown38(5, 1)
     Unknown23029(5, 4062, 0)
-    sprite('rwi406_09', 3)	# 28-30
+    sprite('rwi406_09', 2)	# 19-20
     Recovery()
     if SLOT_2:
         sendToLabel(3)
-    sprite('rwi406_10', 3)	# 31-33
-    sprite('rwi406_11', 3)	# 34-36
+    sprite('rwi406_10', 4)	# 21-24
+    sprite('rwi406_11', 4)	# 25-28
     Unknown23029(5, 4066, 0)
-    sprite('rwi406_12', 3)	# 37-39
-    sprite('rwi406_13', 3)	# 40-42
+    sprite('rwi406_12', 4)	# 29-32
+    sprite('rwi406_13', 5)	# 33-37
     ExitState()
     label(3)
-    sprite('rwi406_10', 4)	# 43-46
-    sprite('rwi406_11', 4)	# 47-50
-    sprite('rwi406_12', 4)	# 51-54
-    sprite('rwi406_10', 4)	# 55-58
-    sprite('rwi406_11', 4)	# 59-62
-    sprite('rwi406_12', 4)	# 63-66
-    sprite('rwi406_13', 5)	# 67-71
+    sprite('rwi406_10', 4)	# 38-41
+    sprite('rwi406_11', 4)	# 42-45
+    sprite('rwi406_12', 4)	# 46-49
+    sprite('rwi406_10', 4)	# 50-53
+    sprite('rwi406_11', 4)	# 54-57
+    sprite('rwi406_12', 4)	# 58-61
+    sprite('rwi406_13', 5)	# 62-66
     ExitState()
 
 @State
@@ -4344,7 +4355,7 @@ def SetMagicC():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         Unknown2003(1)
-        loopRelated(17, 15)
+        loopRelated(17, 10)
 
         def upon_17():
             clearUponHandler(17)
@@ -4354,48 +4365,49 @@ def SetMagicC():
         def upon_3():
             if CheckInput(0x17):
                 Unknown2037(1)
-    sprite('rwi406_00', 3)	# 1-3
-    sprite('rwi406_01', 3)	# 4-6
+    sprite('rwi406_00', 2)	# 1-2
+    sprite('rwi406_01', 1)	# 3-3
+    sprite('rwi406_01', 1)	# 4-4
     Unknown23125('')
     Unknown2058(-5000)
-    sprite('rwi406_02', 3)	# 7-9
+    sprite('rwi406_02', 2)	# 5-6
     tag_voice(1, 'rwi208_0', 'rwi208_1', 'rwi208_2', '')
     label(0)
-    sprite('rwi406_03', 3)	# 10-12
-    sprite('rwi406_04', 3)	# 13-15
-    sprite('rwi406_05', 3)	# 16-18
+    sprite('rwi406_03', 2)	# 7-8
+    sprite('rwi406_04', 2)	# 9-10
+    sprite('rwi406_05', 2)	# 11-12
     gotoLabel(0)
     label(1)
-    sprite('rwi406_06', 3)	# 19-21
-    sprite('rwi406_07', 3)	# 22-24
-    sprite('rwi406_08', 3)	# 25-27
+    sprite('rwi406_06', 2)	# 13-14
+    sprite('rwi406_07', 2)	# 15-16
+    sprite('rwi406_08', 2)	# 17-18
     Unknown23029(6, 4069, 0)
     Unknown23029(7, 4069, 0)
     GFX_0('InstallationMagic', -1)
     Unknown38(6, 1)
     Unknown23029(6, 4063, 0)
-    sprite('rwi406_09', 3)	# 28-30
+    sprite('rwi406_09', 2)	# 19-20
     GFX_0('InstallationMagic', -1)
     Unknown38(7, 1)
     Unknown23029(7, 4064, 0)
     Recovery()
     if SLOT_2:
         sendToLabel(3)
-    sprite('rwi406_10', 3)	# 31-33
-    sprite('rwi406_11', 3)	# 34-36
+    sprite('rwi406_10', 4)	# 21-24
+    sprite('rwi406_11', 4)	# 25-28
     Unknown23029(6, 4066, 0)
     Unknown23029(7, 4066, 0)
-    sprite('rwi406_12', 3)	# 37-39
-    sprite('rwi406_13', 3)	# 40-42
+    sprite('rwi406_12', 4)	# 29-32
+    sprite('rwi406_13', 5)	# 33-37
     ExitState()
     label(3)
-    sprite('rwi406_10', 4)	# 43-46
-    sprite('rwi406_11', 4)	# 47-50
-    sprite('rwi406_12', 4)	# 51-54
-    sprite('rwi406_10', 4)	# 55-58
-    sprite('rwi406_11', 4)	# 59-62
-    sprite('rwi406_12', 4)	# 63-66
-    sprite('rwi406_13', 5)	# 67-71
+    sprite('rwi406_10', 4)	# 38-41
+    sprite('rwi406_11', 4)	# 42-45
+    sprite('rwi406_12', 4)	# 46-49
+    sprite('rwi406_10', 4)	# 50-53
+    sprite('rwi406_11', 4)	# 54-57
+    sprite('rwi406_12', 4)	# 58-61
+    sprite('rwi406_13', 5)	# 62-66
     ExitState()
 
 @State
@@ -4415,7 +4427,6 @@ def ExLandAssaultA():
         Unknown11056(3)
         Unknown9016(1)
         Unknown9310(1)
-        Unknown11065(1)
         Unknown11058('0100000000000000000000000000000000000000')
         Unknown12051(2)
 
@@ -4428,15 +4439,15 @@ def ExLandAssaultA():
                 Unknown21005(1)
         Unknown2006()
         callSubroutine('ExAssaultCancelSetting')
-    sprite('rwi407_00', 2)	# 1-2
-    sprite('rwi407_01', 2)	# 3-4
+    sprite('rwi407_00', 1)	# 1-1
+    sprite('rwi407_01', 1)	# 2-2
     Unknown1084(1)
     callSubroutine('DeleteMagicCircle')
-    sprite('rwi407_02', 2)	# 5-6
-    sprite('rwi407_03', 2)	# 7-8
-    sprite('rwi407_04', 2)	# 9-10
+    sprite('rwi407_02', 1)	# 3-3
+    sprite('rwi407_03', 1)	# 4-4
+    sprite('rwi407_04', 1)	# 5-5
     SFX_3('rwise_44')
-    sprite('rwi407_05', 2)	# 11-12
+    sprite('rwi407_05', 2)	# 6-7
     physicsXImpulse(25000)
     physicsYImpulse(18000)
     Unknown1043()
@@ -4446,30 +4457,30 @@ def ExLandAssaultA():
     def upon_LANDING():
         clearUponHandler(2)
         sendToLabel(1)
-    sprite('rwi407_06', 2)	# 13-14
-    sprite('rwi407_07', 2)	# 15-16
+    sprite('rwi407_06', 2)	# 8-9
+    sprite('rwi407_07', 2)	# 10-11
     tag_voice(1, 'rwi209_0', 'rwi209_1', 'rwi209_2', '')
-    sprite('rwi407_08', 2)	# 17-18
-    sprite('rwi407_09', 3)	# 19-21
+    sprite('rwi407_08', 2)	# 12-13
+    sprite('rwi407_09', 3)	# 14-16
     GFX_0('rwief407_slash', -1)
-    sprite('rwi407_10', 3)	# 22-24
+    sprite('rwi407_10', 2)	# 17-18
     SFX_3('rwise_03')
-    sprite('rwi407_11', 5)	# 25-29	 **attackbox here**
+    sprite('rwi407_11', 5)	# 19-23	 **attackbox here**
     SLOT_60 = 1
-    sprite('rwi407_12', 3)	# 30-32
+    sprite('rwi407_12', 3)	# 24-26
     Recovery()
     label(0)
-    sprite('rwi407_13', 3)	# 33-35
-    sprite('rwi407_14', 3)	# 36-38
+    sprite('rwi407_13', 3)	# 27-29
+    sprite('rwi407_14', 3)	# 30-32
     gotoLabel(0)
     label(1)
-    sprite('rwi407_15', 3)	# 39-41
+    sprite('rwi407_15', 2)	# 33-34
     Unknown1019(50)
     Unknown8000(100, 1, 1)
     Unknown23073()
-    sprite('rwi407_16', 3)	# 42-44
+    sprite('rwi407_16', 2)	# 35-36
     Unknown1084(1)
-    sprite('rwi407_17', 2)	# 45-46
+    sprite('rwi407_17', 2)	# 37-38
 
 @State
 def ExAirAssaultA():
@@ -4500,24 +4511,24 @@ def ExAirAssaultA():
                 Unknown21005(1)
         Unknown2006()
         callSubroutine('ExAssaultCancelSetting')
-    sprite('rwi408_01', 2)	# 1-2
+    sprite('rwi408_01', 1)	# 1-1
     physicsXImpulse(-15000)
     physicsYImpulse(10000)
     GFX_0('rwief408_Glyph', -1)
     Unknown38(9, 1)
     Unknown23029(9, 4071, 0)
     physicsXImpulse(-5000)
-    sprite('rwi408_02', 2)	# 3-4
+    sprite('rwi408_02', 1)	# 2-2
     Unknown1019(50)
     callSubroutine('DeleteMagicCircle')
-    sprite('rwi403_01', 2)	# 5-6
+    sprite('rwi403_01', 1)	# 3-3
     Unknown1019(50)
-    sprite('rwi403_02', 2)	# 7-8
+    sprite('rwi403_02', 1)	# 4-4
     Unknown1019(50)
-    sprite('rwi403_03', 2)	# 9-10
+    sprite('rwi403_03', 1)	# 5-5
     Unknown1084(1)
     SFX_3('rwise_44')
-    sprite('rwi407_05', 2)	# 11-12
+    sprite('rwi407_05', 2)	# 6-7
     Unknown23029(9, 4072, 0)
     Unknown1007(30000)
     physicsXImpulse(18000)
@@ -4529,30 +4540,30 @@ def ExAirAssaultA():
     def upon_LANDING():
         clearUponHandler(2)
         sendToLabel(1)
-    sprite('rwi407_06', 2)	# 13-14
-    sprite('rwi407_07', 2)	# 15-16
+    sprite('rwi407_06', 2)	# 8-9
+    sprite('rwi407_07', 2)	# 10-11
     tag_voice(1, 'rwi209_0', 'rwi209_1', 'rwi209_2', '')
-    sprite('rwi407_08', 2)	# 17-18
-    sprite('rwi407_09', 3)	# 19-21
+    sprite('rwi407_08', 2)	# 12-13
+    sprite('rwi407_09', 3)	# 14-16
     GFX_0('rwief407_slash', -1)
-    sprite('rwi407_10', 3)	# 22-24
+    sprite('rwi407_10', 3)	# 17-19
     SFX_3('rwise_03')
-    sprite('rwi407_11', 5)	# 25-29	 **attackbox here**
+    sprite('rwi407_11', 5)	# 20-24	 **attackbox here**
     SLOT_60 = 1
-    sprite('rwi407_12', 3)	# 30-32
+    sprite('rwi407_12', 3)	# 25-27
     Recovery()
     label(0)
-    sprite('rwi407_13', 3)	# 33-35
-    sprite('rwi407_14', 3)	# 36-38
+    sprite('rwi407_13', 3)	# 28-30
+    sprite('rwi407_14', 3)	# 31-33
     gotoLabel(0)
     label(1)
-    sprite('rwi407_15', 5)	# 39-43
+    sprite('rwi407_15', 5)	# 34-38
     Unknown1019(50)
     Unknown8000(100, 1, 1)
     Unknown23073()
-    sprite('rwi407_16', 5)	# 44-48
+    sprite('rwi407_16', 5)	# 39-43
     Unknown1084(1)
-    sprite('rwi407_17', 5)	# 49-53
+    sprite('rwi407_17', 5)	# 44-48
 
 @State
 def ExLandAssaultB():
@@ -4628,6 +4639,7 @@ def ExLandAssaultB():
     Recovery()
     Unknown21012('72776965663430385f736c61736800000000000000000000000000000000000020000000')
     SFX_3('rwise_11')
+    setInvincible(0)
     sprite('rwi408_06', 2)	# 48-49
     Unknown1019(50)
     sprite('rwi408_09', 3)	# 50-52
@@ -4702,6 +4714,7 @@ def ExAirAssaultB():
     Unknown8000(100, 1, 1)
     Recovery()
     SFX_3('rwise_11')
+    setInvincible(0)
     sprite('rwi408_06', 2)	# 36-37
     Unknown1019(50)
     sprite('rwi408_07', 2)	# 38-39
@@ -4729,7 +4742,7 @@ def ExLandAssaultC():
         AirUntechableTime(30)
         AirHitstunAnimation(9)
         GroundedHitstunAnimation(9)
-        AirPushbackX(30000)
+        AirPushbackX(15000)
         AirPushbackY(17000)
         Unknown11056(3)
         Unknown9016(1)
@@ -4781,7 +4794,7 @@ def ExLandAssaultC():
     Unknown1084(1)
     Unknown8000(100, 1, 1)
     sprite('rwi407_16ex01', 2)	# 44-45
-    sprite('rwi407_17ex01', 2)	# 46-47
+    sprite('rwi407_17ex01', 1)	# 46-46
 
 @State
 def ExAirAssaultC():
@@ -4798,7 +4811,7 @@ def ExAirAssaultC():
         AirUntechableTime(35)
         AirHitstunAnimation(9)
         GroundedHitstunAnimation(9)
-        AirPushbackX(30000)
+        AirPushbackX(15000)
         AirPushbackY(15000)
         Unknown11056(3)
         Unknown9016(1)
@@ -4860,7 +4873,7 @@ def ExAirAssaultC():
     Unknown1084(1)
     Unknown8000(100, 1, 1)
     sprite('rwi407_16ex01', 2)	# 44-45
-    sprite('rwi407_17ex01', 2)	# 46-47
+    sprite('rwi407_17ex01', 1)	# 46-46
 
 @State
 def UltimateShot():
@@ -4878,7 +4891,7 @@ def UltimateShot():
         def upon_43():
             if (SLOT_48 == 4314):
                 clearUponHandler(43)
-                sendToLabel(1)
+                sendToLabel(2)
             if (SLOT_48 == 4315):
                 clearUponHandler(43)
                 sendToLabel(1)
@@ -4923,6 +4936,29 @@ def UltimateShot():
     sprite('rwi431_14', 4)	# 108-111
     sprite('rwi431_15', 4)	# 112-115
     sprite('rwi431_16', 4)	# 116-119
+    ExitState()
+    label(2)
+    sprite('keep', 1)	# 120-120
+    setInvincible(0)
+    clearUponHandler(17)
+    sprite('rwi431_08', 4)	# 121-124
+    sprite('rwi431_09', 4)	# 125-128
+    sprite('rwi431_10', 4)	# 129-132
+    sprite('rwi431_08', 4)	# 133-136
+    sprite('rwi431_09', 4)	# 137-140
+    sprite('rwi431_10', 4)	# 141-144
+    sprite('rwi431_08', 4)	# 145-148
+    sprite('rwi431_09', 4)	# 149-152
+    sprite('rwi431_10', 4)	# 153-156
+    sprite('rwi431_08', 5)	# 157-161
+    sprite('rwi431_09', 5)	# 162-166
+    sprite('rwi431_10', 5)	# 167-171
+    sprite('rwi431_11', 5)	# 172-176
+    sprite('rwi431_12', 5)	# 177-181
+    sprite('rwi431_13', 5)	# 182-186
+    sprite('rwi431_14', 4)	# 187-190
+    sprite('rwi431_15', 4)	# 191-194
+    sprite('rwi431_16', 4)	# 195-198
 
 @State
 def UltimateShotSP():
@@ -4944,6 +4980,7 @@ def UltimateShotSP():
                 Unknown2037(1)
                 Unknown13024(0)
                 sendToLabel(1)
+                setInvincible(1)
             if (SLOT_48 == 4315):
                 sendToLabel(1)
             if (SLOT_48 == 4317):
@@ -4967,7 +5004,8 @@ def UltimateShotSP():
     Unknown23029(1, 4316, 0)
     tag_voice(0, 'rwi254_0', 'rwi254_1', 'rwi254_2', '')
     sprite('rwi431_08', 3)	# 53-55
-    setInvincible(0)
+    if (not SLOT_2):
+        setInvincible(0)
     label(0)
     sprite('rwi431_09', 3)	# 56-58
     sprite('rwi431_10', 3)	# 59-61
@@ -4975,8 +5013,8 @@ def UltimateShotSP():
     gotoLabel(0)
     label(1)
     sprite('keep', 1)	# 65-65
-    setInvincible(0)
     clearUponHandler(17)
+    clearUponHandler(43)
     sprite('rwi431_08', 4)	# 66-69
     sprite('rwi431_09', 4)	# 70-73
     sprite('rwi431_10', 4)	# 74-77
@@ -5001,9 +5039,9 @@ def UltimateShotSP_Add():
         Unknown23056('')
         Unknown11108('03000000')
         AttackLevel_(5)
-        Damage(2500)
+        Damage(2700)
         AttackP2(100)
-        Unknown11091(10)
+        Unknown11091(7)
         Unknown9016(1)
         AirUntechableTime(60)
         Hitstop(0)
@@ -5078,6 +5116,7 @@ def UltimateRush():
         Unknown9016(1)
         Unknown12051(2)
         setInvincible(1)
+        Unknown2073(1)
 
         def upon_78():
             Unknown11069('UltimateRushChase')
@@ -5119,7 +5158,6 @@ def UltimateRush():
     Unknown21012('727769656634333000000000000000000000000000000000000000000000000020000000')
     label(1)
     sprite('vrrwi_UltimateRushAtk', 3)	# 91-93	 **attackbox here**
-    StartMultihit()
     sprite('rwi408_05', 3)	# 94-96
     Unknown2017(1)
     setInvincible(0)
@@ -5146,9 +5184,10 @@ def UltimateRushChase():
         Unknown23056('')
         Unknown11108('03000000')
         AttackLevel_(3)
-        Damage(1000)
+        Damage(1250)
         Unknown11064(1)
         AttackP2(100)
+        Unknown11091(25)
         Unknown9016(1)
         GroundedHitstunAnimation(1)
         AirUntechableTime(60)
@@ -5305,6 +5344,7 @@ def UltimateRushSP():
         Unknown30082(1)
         Unknown12051(2)
         setInvincible(1)
+        Unknown2073(1)
 
         def upon_78():
             Unknown11069('UltimateRushSPChase')
@@ -5346,7 +5386,6 @@ def UltimateRushSP():
     Unknown21012('727769656634333000000000000000000000000000000000000000000000000020000000')
     label(1)
     sprite('vrrwi_UltimateRushAtk', 3)	# 91-93	 **attackbox here**
-    StartMultihit()
     sprite('rwi408_05', 3)	# 94-96
     Unknown2017(1)
     setInvincible(0)
@@ -5373,9 +5412,10 @@ def UltimateRushSPChase():
         Unknown23056('')
         Unknown11108('03000000')
         AttackLevel_(3)
-        Damage(1000)
+        Damage(1250)
         Unknown11064(1)
         AttackP2(100)
+        Unknown11091(25)
         Unknown9016(1)
         GroundedHitstunAnimation(1)
         AirUntechableTime(60)
@@ -5514,7 +5554,7 @@ def UltimateRushSPChase():
     AttackP2(60)
     Unknown11092(1)
     Unknown11023(0)
-    Damage(500)
+    Damage(570)
     Unknown11091(10)
     Unknown11064(0)
     Hitstop(3)

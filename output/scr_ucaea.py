@@ -651,40 +651,49 @@ def RotationShot_Eff():
     sprite('Action_136_10', 2)	# 23-24
     Unknown23015(0)
     SLOT_51 = 1
+    sprite('Action_136_11', 3)	# 25-27	 **attackbox here**
+    Unknown23027()
+    physicsXImpulse(-5000)
+    SFX_3('SE045')
+    sprite('Action_136_12', 3)	# 28-30	 **attackbox here**
+    Unknown23027()
+    sprite('Action_136_13', 3)	# 31-33	 **attackbox here**
+    Unknown23027()
+    loopRest()
     label(2)
-    sprite('Action_136_11', 4)	# 25-28	 **attackbox here**
+    sprite('Action_136_11', 4)	# 34-37	 **attackbox here**
     RefreshMultihit()
     if (SLOT_53 == 0):
         physicsXImpulse(-5000)
     SFX_3('SE045')
-    sprite('Action_136_12', 4)	# 29-32	 **attackbox here**
-    sprite('Action_136_13', 4)	# 33-36	 **attackbox here**
+    sprite('Action_136_12', 4)	# 38-41	 **attackbox here**
+    sprite('Action_136_13', 4)	# 42-45	 **attackbox here**
     loopRest()
     SLOT_53 = (SLOT_53 + 1)
     if SLOT_2:
         SLOT_54 = (SLOT_54 + 1)
     gotoLabel(2)
     label(0)
-    sprite('Action_136_15', 1)	# 37-37
+    sprite('Action_136_15', 1)	# 46-46
     Unknown1084(1)
-    sprite('Action_136_16', 3)	# 38-40
-    sprite('Action_136_17', 3)	# 41-43
-    sprite('Action_136_18', 3)	# 44-46
-    sprite('Action_136_19', 3)	# 47-49
-    sprite('Action_136_20', 3)	# 50-52
-    sprite('Action_136_21', 32767)	# 53-32819
+    sprite('Action_136_16', 3)	# 47-49
+    sprite('Action_136_17', 3)	# 50-52
+    sprite('Action_136_18', 3)	# 53-55
+    sprite('Action_136_19', 3)	# 56-58
+    sprite('Action_136_20', 3)	# 59-61
+    sprite('Action_136_21', 32767)	# 62-32828
     GFX_0('RotationShot_Blood', -1)
     enterState('BloodPool_RS')
     ExitState()
     label(1)
-    sprite('Action_136_15', 1)	# 32820-32820
+    sprite('Action_136_15', 1)	# 32829-32829
     Unknown1084(1)
-    sprite('Action_136_16', 3)	# 32821-32823
-    sprite('Action_136_17', 3)	# 32824-32826
-    sprite('Action_136_18', 3)	# 32827-32829
-    sprite('Action_136_19', 3)	# 32830-32832
-    sprite('Action_136_20', 3)	# 32833-32835
-    sprite('Action_136_21', 1)	# 32836-32836
+    sprite('Action_136_16', 3)	# 32830-32832
+    sprite('Action_136_17', 3)	# 32833-32835
+    sprite('Action_136_18', 3)	# 32836-32838
+    sprite('Action_136_19', 3)	# 32839-32841
+    sprite('Action_136_20', 3)	# 32842-32844
+    sprite('Action_136_21', 1)	# 32845-32845
     GFX_0('RotationShot_Blood', -1)
     ExitState()
 
@@ -1187,16 +1196,17 @@ def PushUpShotTypeEx():
         Unknown9016(1)
         Unknown11084(1)
         Hitstop(0)
+        Unknown2073(1)
         Unknown11062(1)
         Unknown11068(1)
         Unknown23182(3)
+        Unknown2053(1)
         Unknown1086(22)
         teleportRelativeY(0)
 
         def upon_78():
             Unknown11064(1)
             GFX_0('PushUpShotExe', -1)
-            Unknown1087(22, 25)
             Unknown14()
 
         def upon_82():
@@ -1236,16 +1246,17 @@ def PushUpShotTypeEx_OD():
         Unknown9016(1)
         Unknown11084(1)
         Hitstop(0)
+        Unknown2073(1)
         Unknown11062(1)
         Unknown11068(1)
         Unknown23182(3)
+        Unknown2053(1)
         Unknown1086(22)
         teleportRelativeY(0)
 
         def upon_78():
             Unknown11064(1)
             GFX_0('PushUpShotExe', -1)
-            Unknown1087(22, 25)
             Unknown14()
 
         def upon_82():
@@ -1293,6 +1304,7 @@ def PushUpShotExe():
         Unknown11084(1)
         Unknown2019(1000)
         Unknown23182(3)
+        Unknown11023(1)
         Unknown11050('050000000000000000000000000000000000000000000000000000000000000000000000')
 
         def upon_78():
@@ -1312,6 +1324,7 @@ def PushUpShotExe():
             Unknown35()
             SLOT_11 = 0
     sprite('Action_185_08', 2)	# 1-2	 **attackbox here**
+    Unknown1087(22, 25)
     GFX_0('PushUpShotDD_Clear', -1)
     sprite('Action_185_08', 2)	# 3-4	 **attackbox here**
     StartMultihit()
@@ -1744,33 +1757,33 @@ def BloodAtk_RS():
         def upon_44():
             clearUponHandler(44)
             sendToLabel(1)
-    sprite('Action_147_01', 3)	# 1-3
-    sprite('Action_147_02', 3)	# 4-6
-    sprite('Action_147_03', 3)	# 7-9
-    sprite('Action_147_04', 3)	# 10-12
-    sprite('Action_147_05', 3)	# 13-15
-    sprite('Action_147_06', 3)	# 16-18
+    sprite('Action_147_01', 4)	# 1-4
+    sprite('Action_147_02', 4)	# 5-8
+    sprite('Action_147_03', 4)	# 9-12
+    sprite('Action_147_04', 4)	# 13-16
+    sprite('Action_147_05', 4)	# 17-20
+    sprite('Action_147_06', 4)	# 21-24
     physicsXImpulse(40000)
     Unknown1028(500)
-    sprite('Action_147_09', 3)	# 19-21	 **attackbox here**
-    sprite('Action_147_10', 3)	# 22-24	 **attackbox here**
-    sprite('Action_147_11', 3)	# 25-27	 **attackbox here**
-    sprite('Action_147_12', 3)	# 28-30	 **attackbox here**
-    sprite('Action_147_13', 3)	# 31-33	 **attackbox here**
-    sprite('Action_147_14', 3)	# 34-36	 **attackbox here**
+    sprite('Action_147_09', 3)	# 25-27	 **attackbox here**
+    sprite('Action_147_10', 3)	# 28-30	 **attackbox here**
+    sprite('Action_147_11', 3)	# 31-33	 **attackbox here**
+    sprite('Action_147_12', 3)	# 34-36	 **attackbox here**
+    sprite('Action_147_13', 3)	# 37-39	 **attackbox here**
+    sprite('Action_147_14', 3)	# 40-42	 **attackbox here**
     label(1)
-    sprite('Action_147_16', 4)	# 37-40
+    sprite('Action_147_16', 4)	# 43-46
     Unknown1019(5)
     Unknown1028(0)
     Unknown1059(-75)
     Unknown1067(-100)
-    sprite('Action_147_17', 4)	# 41-44
+    sprite('Action_147_17', 4)	# 47-50
     Unknown1056(700)
     Unknown1064(600)
     Unknown1059(0)
     Unknown1067(0)
-    sprite('Action_147_18', 4)	# 45-48
-    sprite('Action_147_19', 1)	# 49-49
+    sprite('Action_147_18', 4)	# 51-54
+    sprite('Action_147_19', 1)	# 55-55
 
 @State
 def BloodAtk_RS_PS():
@@ -1792,40 +1805,40 @@ def BloodAtk_RS_PS():
         def upon_44():
             clearUponHandler(44)
             sendToLabel(1)
-    sprite('Action_147_01', 3)	# 1-3
-    sprite('Action_147_02', 3)	# 4-6
-    sprite('Action_147_03', 3)	# 7-9
-    sprite('Action_147_04', 3)	# 10-12
-    sprite('Action_147_05', 3)	# 13-15
-    sprite('Action_147_06', 3)	# 16-18
+    sprite('Action_147_01', 4)	# 1-4
+    sprite('Action_147_02', 4)	# 5-8
+    sprite('Action_147_03', 4)	# 9-12
+    sprite('Action_147_04', 4)	# 13-16
+    sprite('Action_147_05', 4)	# 17-20
+    sprite('Action_147_06', 4)	# 21-24
     physicsXImpulse(40000)
     Unknown1028(500)
-    sprite('Action_147_09', 3)	# 19-21	 **attackbox here**
-    sprite('Action_147_10', 3)	# 22-24	 **attackbox here**
-    sprite('Action_147_11', 3)	# 25-27	 **attackbox here**
-    sprite('Action_147_12', 3)	# 28-30	 **attackbox here**
-    sprite('Action_147_13', 3)	# 31-33	 **attackbox here**
-    sprite('Action_147_14', 3)	# 34-36	 **attackbox here**
+    sprite('Action_147_09', 3)	# 25-27	 **attackbox here**
+    sprite('Action_147_10', 3)	# 28-30	 **attackbox here**
+    sprite('Action_147_11', 3)	# 31-33	 **attackbox here**
+    sprite('Action_147_12', 3)	# 34-36	 **attackbox here**
+    sprite('Action_147_13', 3)	# 37-39	 **attackbox here**
+    sprite('Action_147_14', 3)	# 40-42	 **attackbox here**
     label(1)
-    sprite('Action_147_16', 4)	# 37-40
+    sprite('Action_147_16', 4)	# 43-46
     Unknown1019(5)
     Unknown1028(0)
     Unknown1059(-75)
     Unknown1067(-100)
-    sprite('Action_147_17', 4)	# 41-44
+    sprite('Action_147_17', 4)	# 47-50
     Unknown1056(700)
     Unknown1064(600)
     Unknown1059(0)
     Unknown1067(0)
-    sprite('Action_147_18', 4)	# 45-48
-    sprite('Action_147_19', 1)	# 49-49
+    sprite('Action_147_18', 4)	# 51-54
+    sprite('Action_147_19', 1)	# 55-55
 
 @Subroutine
 def BloodAtkInit_PU():
     Unknown2010()
     Unknown4011(3)
     AttackLevel_(3)
-    Damage(1000)
+    Damage(1500)
     AttackP2(80)
     Unknown11092(1)
     HitLow(2)
@@ -2116,6 +2129,7 @@ def UltimateShotFootEff():
         Unknown11091(15)
         Hitstop(0)
         Unknown9016(1)
+        Unknown2073(1)
         Unknown11064(1)
         HitLow(2)
         Unknown11032('40420f00ffffffff40420f00c0bdf0ff')
@@ -2218,13 +2232,14 @@ def UltimateShotAtkExe():
         Unknown9016(1)
         Hitstop(0)
         Unknown11001(0, 100, 100)
-        Unknown11091(15)
+        Unknown11091(20)
         Unknown11057(750)
         Unknown11064(1)
         Unknown9266(15)
-        Damage(500)
+        Damage(400)
         Unknown9154(90)
         AirUntechableTime(90)
+        Unknown30048(1)
         Unknown1086(22)
         Unknown1007(200000)
 
@@ -2271,7 +2286,7 @@ def UltimateShotAtkExe():
     elif (SLOT_51 == 2):
         pass
     elif (SLOT_51 == 3):
-        Damage(100)
+        Damage(300)
     Unknown1086(22)
     Unknown1007(200000)
     sprite('Action_244_01', 2)	# 46-47
@@ -2324,11 +2339,11 @@ def UltimateShotAtkFinish():
         AttackLevel_(4)
         Unknown9016(1)
         Hitstop(0)
-        Unknown11091(15)
+        Unknown11091(35)
         Unknown11057(750)
         Unknown11064(1)
         Unknown9266(15)
-        Damage(500)
+        Damage(580)
         AttackP2(100)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
@@ -2336,6 +2351,7 @@ def UltimateShotAtkFinish():
         AirPushbackY(35000)
         AirUntechableTime(90)
         Unknown11001(12, 12, 12)
+        Unknown30048(1)
         Unknown1086(22)
         Unknown1007(200000)
 
@@ -2351,15 +2367,18 @@ def UltimateShotAtkFinish():
                 clearUponHandler(43)
                 Unknown11001(10, 10, 10)
                 Unknown2037(1)
+                Unknown11091(26)
+                Damage(550)
             if (SLOT_48 == 2506):
                 clearUponHandler(43)
-                Damage(200)
+                Damage(100)
                 AttackP1(100)
                 AttackP2(100)
                 Unknown11091(100)
                 Unknown11001(10, 10, 10)
                 Unknown2037(1)
                 SLOT_51 = 1
+                SLOT_52 = 1
     sprite('Action_241_00', 3)	# 1-3
     SFX_3('SE_BigBomb')
     label(0)
@@ -2382,6 +2401,10 @@ def UltimateShotAtkFinish():
     if (not SLOT_51):
         Damage(2000)
         AttackP2(60)
+    if SLOT_51:
+        Damage(800)
+    if SLOT_52:
+        Damage(1000)
     Unknown11069('')
     Unknown11064(0)
     Unknown9266(0)

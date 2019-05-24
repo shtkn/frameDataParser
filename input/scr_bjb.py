@@ -633,6 +633,12 @@ def Rekkouzan_DeriveInputBegin():
     Unknown14070('UltimateAirAssault')
     Unknown14070('UltimateAirAssault_OD')
     Unknown14070('AstralHeat')
+    if Unknown23148('NmlAtk5B2nd'):
+        Unknown14070('NmlAtk5B3rd')
+    if Unknown23148('NmlAtk5B4th'):
+        Unknown14070('NmlAtk5B5th')
+    if Unknown23148('NmlAtkAIR5B2nd'):
+        Unknown14070('NmlAtkAIR5B3rd')
 
     def upon_ON_HIT_OR_BLOCK():
         clearUponHandler(10)
@@ -714,7 +720,7 @@ def Assault_Low_Atk():
     AirPushbackY(25000)
     AirPushbackX(2000)
     YImpluseBeforeWallbounce(3000)
-    AirUntechableTime(30)
+    AirUntechableTime(60)
     HitLow(2)
     Unknown9016(1)
     Unknown11058('0000000000000000010000000000000000000000')
@@ -740,19 +746,24 @@ def Assault_Chage_Atk():
     Unknown9016(1)
 
     def upon_ON_HIT_OR_BLOCK():
-        ScreenShake(8000, 8000)
+        if SLOT_52:
+            ScreenShake(25000, 25000)
+        else:
+            ScreenShake(8000, 8000)
 
     def upon_3():
-        if (SLOT_18 == 30):
+        if (SLOT_18 == 24):
             if (not SLOT_2):
                 Unknown10000(120)
                 AttackP2(90)
-                AirPushbackY(35000)
+                AirPushbackY(32500)
                 Unknown8004(100, 1, 1)
                 Unknown2037(1)
         if SLOT_37:
-            if (SLOT_18 >= 44):
+            if (SLOT_18 >= 24):
                 sendToLabel(9)
+                SLOT_52 = 1
+                Unknown23119(16763080, 4, 2)
             if (SLOT_18 >= 17):
                 if (not SLOT_2):
                     if CheckInput(0xe):
@@ -1071,12 +1082,11 @@ def FDash_Turn():
         Unknown2018(0, 50)
         sendToLabelUpon(2, 1)
     sprite('jb033_00', 3)
-    Unknown1084(1)
     sprite('jb033_01', 3)
     Unknown2005()
     Unknown23072()
     Unknown8002()
-    physicsXImpulse(-20000)
+    physicsXImpulse(-25000)
     physicsYImpulse(15800)
     setGravity(2400)
     Unknown2017(0)
@@ -1101,16 +1111,16 @@ def FDash_Turn():
     Unknown2017(1)
     loopRest()
     label(1)
-    sprite('jb033_06', 3)
+    sprite('jb033_06', 1)
     clearUponHandler(3)
     Unknown8000(100, 1, 1)
     Unknown2018(1, 50)
     Unknown2015(-1)
     setInvincible(0)
     Unknown1084(1)
-    sprite('jb033_07', 3)
-    sprite('jb033_08', 3)
-    sprite('jb033_09', 3)
+    sprite('jb033_07', 1)
+    sprite('jb033_08', 1)
+    sprite('jb033_09', 1)
 
 @State
 def CmnActFDashStop():
@@ -2954,11 +2964,16 @@ def NmlAtk5A():
         HitOrBlockCancel('NmlAtk2C')
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
+        if Unknown23145('BDash2FDash'):
+            SLOT_51 = 1
     sprite('jb201_00', 2)
-    physicsXImpulse(15000)
+    if (not SLOT_51):
+        physicsXImpulse(15000)
+    else:
+        Unknown1047(20000)
     sprite('jb201_00', 2)
     Unknown1019(250)
-    sprite('jb201_01', 3)
+    sprite('jb201_01', 2)
     Unknown7009(1)
     Unknown1019(10)
     SFX_0('003_swing_grap_0_1')
@@ -3020,7 +3035,7 @@ def NmlAtk5A2nd():
     Unknown1084(1)
     Unknown8006(100, 1, 0)
     RefreshMultihit()
-    AirUntechableTime(23)
+    AirUntechableTime(27)
     Unknown9071()
     AirPushbackY(30000)
     PushbackX(19800)
@@ -3196,8 +3211,11 @@ def NmlAtk5B():
         callSubroutine('Rekkouzan_Atk')
         SLOT_64 = 0
         Unknown1112('')
+        if Unknown23145('BDash2FDash'):
+            SLOT_51 = 1
     sprite('jb400_00', 3)
-    Unknown1051(60)
+    if (not SLOT_51):
+        Unknown1051(60)
     sprite('jb400_00', 1)
     Unknown8007(100, 1, 1)
     sprite('jb400_01', 4)
@@ -3463,17 +3481,18 @@ def NmlAtk2B():
     Unknown23027()
     Recovery()
     Unknown2063()
+    setGravity(2200)
     sprite('jb232_05', 3)
     sprite('jb232_06', 3)
     sprite('jb232_07', 3)
     sprite('jb232_08', 32767)
     label(9)
-    sprite('jb232_09', 4)
+    sprite('jb232_09', 2)
     Unknown1084(1)
     Unknown8000(100, 1, 1)
-    sprite('jb232_10', 4)
-    sprite('jb232_11', 4)
-    sprite('jb232_12', 4)
+    sprite('jb232_10', 2)
+    sprite('jb232_11', 2)
+    sprite('jb232_12', 2)
 
 @State
 def NmlAtk2C():
@@ -3489,11 +3508,13 @@ def NmlAtk2C():
         AirPushbackX(15000)
         AirPushbackY(-60000)
         Unknown9310(1)
-        AirUntechableTime(25)
+        AirUntechableTime(40)
         PushbackX(12000)
         Unknown11058('0000000000000000010000000000000000000000')
         HitLow(2)
+        HitOrBlockCancel('NmlAtk5B')
         Unknown2004(1, 0)
+        HitOrBlockJumpCancel(1)
     sprite('jb211_03', 8)
     Unknown2018(1, 60)
     sprite('jb211_04', 5)
@@ -3523,9 +3544,6 @@ def NmlAtk2C():
 
     def upon_11():
         ScreenShake(5000, 5000)
-
-    def upon_ON_HIT_OR_BLOCK():
-        HitJumpCancel(1)
     sprite('jb211_11', 2)
     sprite('jb211_12', 5)
     Recovery()
@@ -4752,7 +4770,7 @@ def Assault_Low():
     Recovery()
     Unknown2063()
     sprite('jb403_07', 4)
-    sprite('jb403_08', 4)
+    sprite('jb403_08', 3)
     sprite('jb403_09', 3)
     sprite('jb403_10', 3)
     sprite('jb403_11', 3)
@@ -4764,6 +4782,8 @@ def Assault_ChageAttack():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         callSubroutine('Assault_Chage_Atk')
+        AirPushbackX(3000)
+        AirPushbackY(32500)
         sendToLabelUpon(2, 10)
     sprite('jb406_17', 2)
     physicsXImpulse(20000)
@@ -4810,11 +4830,13 @@ def Assault_ChageAttack():
     sprite('jb406_07', 1)
     teleportRelativeX(40000)
     physicsXImpulse(-4000)
-    physicsYImpulse(24000)
-    Unknown1043()
+    physicsYImpulse(16000)
+    setGravity(2200)
+    Unknown11001(6, 0, 8)
     GFX_0('jbef406_zanzou', 100)
     GFX_0('jbef406_zanzou2', 100)
     Unknown8000(100, 1, 0)
+    sendToLabelUpon(2, 11)
     sprite('jb406_07', 3)
     StartMultihit()
     sprite('jb406_08', 4)
@@ -4828,6 +4850,13 @@ def Assault_ChageAttack():
     Unknown8000(100, 1, 0)
     sprite('jb406_14', 3)
     sprite('jb406_15', 3)
+    ExitState()
+    label(11)
+    sprite('jb406_13', 2)
+    Unknown1084(1)
+    Unknown8000(100, 1, 0)
+    sprite('jb406_14', 2)
+    sprite('jb406_15', 2)
 
 @State
 def Assault_Low_EX():
@@ -4836,9 +4865,12 @@ def Assault_Low_EX():
         AttackDefaults_StandingSpecial()
         callSubroutine('Assault_Low_Atk')
         Damage(2200)
+        AttackP2(75)
         Unknown11028(24)
         Unknown30065(0)
         Unknown11091(10)
+        Unknown9310(1)
+        Unknown11065(1)
     sprite('jb403_13', 2)
     Unknown1045(60000)
     Unknown8007(100, 1, 0)
@@ -4867,7 +4899,7 @@ def Assault_Low_EX():
     sprite('jb403_09', 4)
     sprite('jb403_10', 4)
     sprite('jb403_11', 4)
-    sprite('jb403_12', 4)
+    sprite('jb403_12', 3)
 
 @State
 def Assault_Mid():
@@ -5071,7 +5103,7 @@ def Rekkouzan_Low():
     sprite('jb403_06', 2)
     Recovery()
     sprite('jb403_07', 4)
-    sprite('jb403_08', 4)
+    sprite('jb403_08', 3)
     sprite('jb403_09', 3)
     sprite('jb403_10', 3)
     sprite('jb403_11', 3)
@@ -5143,12 +5175,13 @@ def Rekkouzan_Chage():
     sprite('jb406_07', 1)
     teleportRelativeX(40000)
     physicsXImpulse(-4000)
-    physicsYImpulse(24000)
-    Unknown1043()
+    physicsYImpulse(16000)
+    setGravity(2200)
+    Unknown11001(6, 0, 8)
     GFX_0('jbef406_zanzou', 100)
     GFX_0('jbef406_zanzou2', 100)
     Unknown8000(100, 1, 0)
-    sendToLabelUpon(2, 10)
+    sendToLabelUpon(2, 11)
     sprite('jb406_07', 3)
     StartMultihit()
     sprite('jb406_08', 4)
@@ -5162,6 +5195,13 @@ def Rekkouzan_Chage():
     Unknown8000(100, 1, 0)
     sprite('jb406_14', 3)
     sprite('jb406_15', 3)
+    ExitState()
+    label(11)
+    sprite('jb406_13', 2)
+    Unknown1084(1)
+    Unknown8000(100, 1, 0)
+    sprite('jb406_14', 2)
+    sprite('jb406_15', 2)
 
 @State
 def Rekkouzan_Mid():
@@ -5343,6 +5383,8 @@ def Rekkouzan_Low_EX():
         Unknown11091(10)
         Unknown30068(1)
         clearUponHandler(12)
+        Unknown9310(1)
+        Unknown11065(1)
 
         def upon_STATE_END():
             SLOT_62 = 0
@@ -5388,7 +5430,7 @@ def Rekkouzan_Low_EX():
     sprite('jb403_09', 4)
     sprite('jb403_10', 4)
     sprite('jb403_11', 4)
-    sprite('jb403_12', 4)
+    sprite('jb403_12', 3)
 
 @State
 def Rekkouzan_Mid_EX():
@@ -5473,6 +5515,8 @@ def Shiranui_Hagane_236A():
         def upon_STATE_END():
             Unknown2006()
             Unknown3001(255)
+            Unknown22001(-1)
+            Unknown22003(-1)
     sprite('jb203_00', 3)
     Unknown23183('6a623235335f3030000000000000000000000000000000000000000000000000030000000200000024000000')
     sprite('jb203_01', 3)
@@ -5509,7 +5553,7 @@ def Shiranui_Hagane_236A():
     GFX_0('jbef203_zanzou', 100)
     Unknown1019(5)
     physicsYImpulse(12000)
-    setGravity(1000)
+    Unknown1043()
     Unknown3004(45)
     tag_voice(0, 'bjb106_1', 'bjb106_2', 'bjb107_1', '')
     Unknown14083(1)
@@ -5518,22 +5562,6 @@ def Shiranui_Hagane_236A():
     sprite('jb203_17', 4)
     sprite('jb203_18', 4)
     sprite('jb203_19', 3)
-
-    def upon_LANDING():
-        sendToLabel(2)
-    sprite('jb020_05', 3)
-    sprite('jb020_06', 3)
-    label(3)
-    sprite('jb020_07', 4)
-    sprite('jb020_08', 4)
-    loopRest()
-    gotoLabel(3)
-    label(2)
-    sprite('jb401_09', 5)
-    Unknown8000(100, 1, 0)
-    Unknown1084(1)
-    sprite('jb401_10', 5)
-    sprite('jb401_11', 5)
 
 @State
 def Shiranui_Hagane_236B():
@@ -5557,6 +5585,8 @@ def Shiranui_Hagane_236B():
         def upon_STATE_END():
             Unknown2006()
             Unknown3001(255)
+            Unknown22001(-1)
+            Unknown22003(-1)
     sprite('jb203_00', 3)
     Unknown23183('6a623235335f3030000000000000000000000000000000000000000000000000030000000200000024000000')
     sprite('jb203_01', 3)
@@ -5593,7 +5623,7 @@ def Shiranui_Hagane_236B():
     GFX_0('jbef203_zanzou', 100)
     Unknown1019(5)
     physicsYImpulse(12000)
-    setGravity(1000)
+    Unknown1043()
     Unknown3004(45)
     tag_voice(0, 'bjb106_1', 'bjb106_2', 'bjb107_1', '')
     Unknown14083(1)
@@ -5602,22 +5632,6 @@ def Shiranui_Hagane_236B():
     sprite('jb203_17', 4)
     sprite('jb203_18', 4)
     sprite('jb203_19', 3)
-
-    def upon_LANDING():
-        sendToLabel(2)
-    sprite('jb020_05', 3)
-    sprite('jb020_06', 3)
-    label(3)
-    sprite('jb020_07', 4)
-    sprite('jb020_08', 4)
-    loopRest()
-    gotoLabel(3)
-    label(2)
-    sprite('jb401_09', 5)
-    Unknown8000(100, 1, 0)
-    Unknown1084(1)
-    sprite('jb401_10', 5)
-    sprite('jb401_11', 5)
 
 @State
 def Shiranui_Hagane_236EX():
@@ -5641,6 +5655,8 @@ def Shiranui_Hagane_236EX():
         def upon_STATE_END():
             Unknown2006()
             Unknown3001(255)
+            Unknown22001(-1)
+            Unknown22003(-1)
     sprite('jb203_00', 3)
     Unknown23183('6a623235335f3030000000000000000000000000000000000000000000000000030000000200000024000000')
     sprite('jb203_01', 3)
@@ -5689,22 +5705,6 @@ def Shiranui_Hagane_236EX():
     sprite('jb203_18', 4)
     sprite('jb203_19', 3)
 
-    def upon_LANDING():
-        sendToLabel(2)
-    sprite('jb020_05', 3)
-    sprite('jb020_06', 3)
-    label(3)
-    sprite('jb020_07', 4)
-    sprite('jb020_08', 4)
-    loopRest()
-    gotoLabel(3)
-    label(2)
-    sprite('jb401_09', 3)
-    Unknown8000(100, 1, 0)
-    Unknown1084(1)
-    sprite('jb401_10', 3)
-    sprite('jb401_11', 3)
-
 @State
 def Shiranui_Hagane_214A():
 
@@ -5727,6 +5727,8 @@ def Shiranui_Hagane_214A():
         def upon_STATE_END():
             Unknown2006()
             Unknown3001(255)
+            Unknown22001(-1)
+            Unknown22003(-1)
     sprite('jb203_00', 3)
     Unknown23183('6a623235335f3030000000000000000000000000000000000000000000000000030000000200000024000000')
     sprite('jb203_01', 3)
@@ -5763,7 +5765,7 @@ def Shiranui_Hagane_214A():
     GFX_0('jbef203_zanzou', 100)
     Unknown1019(5)
     physicsYImpulse(12000)
-    setGravity(1000)
+    Unknown1043()
     Unknown3004(45)
     tag_voice(0, 'bjb106_1', 'bjb106_2', 'bjb107_1', '')
     Unknown14083(1)
@@ -5772,22 +5774,6 @@ def Shiranui_Hagane_214A():
     sprite('jb203_17', 4)
     sprite('jb203_18', 4)
     sprite('jb203_19', 3)
-
-    def upon_LANDING():
-        sendToLabel(2)
-    sprite('jb020_05', 3)
-    sprite('jb020_06', 3)
-    label(3)
-    sprite('jb020_07', 4)
-    sprite('jb020_08', 4)
-    loopRest()
-    gotoLabel(3)
-    label(2)
-    sprite('jb401_09', 5)
-    Unknown8000(100, 1, 0)
-    Unknown1084(1)
-    sprite('jb401_10', 5)
-    sprite('jb401_11', 5)
 
 @State
 def Shiranui_Hagane_214B():
@@ -5811,6 +5797,8 @@ def Shiranui_Hagane_214B():
         def upon_STATE_END():
             Unknown2006()
             Unknown3001(255)
+            Unknown22001(-1)
+            Unknown22003(-1)
     sprite('jb203_00', 3)
     Unknown23183('6a623235335f3030000000000000000000000000000000000000000000000000030000000200000024000000')
     sprite('jb203_01', 3)
@@ -5847,7 +5835,7 @@ def Shiranui_Hagane_214B():
     GFX_0('jbef203_zanzou', 100)
     Unknown1019(5)
     physicsYImpulse(12000)
-    setGravity(1000)
+    Unknown1043()
     Unknown3004(45)
     tag_voice(0, 'bjb106_1', 'bjb106_2', 'bjb107_1', '')
     Unknown14083(1)
@@ -5856,22 +5844,6 @@ def Shiranui_Hagane_214B():
     sprite('jb203_17', 4)
     sprite('jb203_18', 4)
     sprite('jb203_19', 3)
-
-    def upon_LANDING():
-        sendToLabel(2)
-    sprite('jb020_05', 3)
-    sprite('jb020_06', 3)
-    label(3)
-    sprite('jb020_07', 4)
-    sprite('jb020_08', 4)
-    loopRest()
-    gotoLabel(3)
-    label(2)
-    sprite('jb401_09', 5)
-    Unknown8000(100, 1, 0)
-    Unknown1084(1)
-    sprite('jb401_10', 5)
-    sprite('jb401_11', 5)
 
 @State
 def Shiranui_Hagane_214EX():
@@ -5895,6 +5867,8 @@ def Shiranui_Hagane_214EX():
         def upon_STATE_END():
             Unknown2006()
             Unknown3001(255)
+            Unknown22001(-1)
+            Unknown22003(-1)
     sprite('jb203_00', 3)
     Unknown23183('6a623235335f3030000000000000000000000000000000000000000000000000030000000200000024000000')
     sprite('jb203_01', 3)
@@ -5943,22 +5917,6 @@ def Shiranui_Hagane_214EX():
     sprite('jb203_18', 4)
     sprite('jb203_19', 3)
 
-    def upon_LANDING():
-        sendToLabel(2)
-    sprite('jb020_05', 3)
-    sprite('jb020_06', 3)
-    label(3)
-    sprite('jb020_07', 4)
-    sprite('jb020_08', 4)
-    loopRest()
-    gotoLabel(3)
-    label(2)
-    sprite('jb401_09', 3)
-    Unknown8000(100, 1, 0)
-    Unknown1084(1)
-    sprite('jb401_10', 3)
-    sprite('jb401_11', 3)
-
 @State
 def UltimateAssault():
 
@@ -5976,6 +5934,7 @@ def UltimateAssault():
         Unknown11056(0)
         Unknown11050('080000000000000000000000000000000000000000000000000000000000000000000000')
         Unknown11064(1)
+        Unknown2073(1)
 
         def upon_78():
             clearUponHandler(78)
@@ -6073,9 +6032,10 @@ def UltimateAssault():
     sprite('jb431_13', 3)
     sprite('jb431_14', 3)
     RefreshMultihit()
-    Damage(4000)
+    Damage(5000)
     AttackP2(60)
     Unknown9155()
+    Unknown11091(26)
     GroundedHitstunAnimation(2)
     AirHitstunAnimation(2)
     Unknown9130(30)
@@ -6126,6 +6086,7 @@ def UltimateAssault_OD():
         Unknown11056(0)
         Unknown11050('080000000000000000000000000000000000000000000000000000000000000000000000')
         Unknown11064(1)
+        Unknown2073(1)
 
         def upon_78():
             clearUponHandler(78)
@@ -6222,7 +6183,8 @@ def UltimateAssault_OD():
     sprite('jb431_13', 3)
     sprite('jb431_14', 3)
     RefreshMultihit()
-    Damage(650)
+    Damage(730)
+    Unknown11091(23)
     Unknown9155()
     GroundedHitstunAnimation(2)
     AirHitstunAnimation(2)
@@ -6284,9 +6246,9 @@ def UltimateAirAssault():
         AttackDefaults_AirDD()
         Unknown23055('')
         AttackLevel_(5)
-        Damage(1000)
+        Damage(1700)
         AttackP2(100)
-        Unknown11091(25)
+        Unknown11091(22)
         GroundedHitstunAnimation(2)
         AirHitstunAnimation(11)
         Unknown11072(1, 110000, -30000)
@@ -6385,7 +6347,7 @@ def UltimateAirAssault():
     sprite('jb430_16', 3)
     sprite('jb430_14', 3)
     RefreshMultihit()
-    Damage(5000)
+    Damage(6000)
     AttackP2(60)
     Hitstop(20)
     GroundedHitstunAnimation(13)
@@ -6425,9 +6387,9 @@ def UltimateAirAssault_OD():
         AttackDefaults_AirDD()
         Unknown23055('')
         AttackLevel_(5)
-        Damage(1000)
+        Damage(1700)
         AttackP2(100)
-        Unknown11091(25)
+        Unknown11091(20)
         GroundedHitstunAnimation(2)
         AirHitstunAnimation(11)
         Unknown11072(1, 110000, -30000)
@@ -6531,9 +6493,9 @@ def UltimateAirAssault_OD():
     sprite('jb430_16', 3)
     sprite('jb430_24', 3)
     RefreshMultihit()
-    Damage(1600)
+    Damage(1850)
     AttackP2(90)
-    Unknown11091(20)
+    Unknown11091(17)
     Hitstop(0)
     Unknown11001(3, 3, 3)
     GroundedHitstunAnimation(13)

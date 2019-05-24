@@ -529,7 +529,7 @@ def UHY_Request_ShotExplodeASS():
         Unknown11092(1)
         AirPushbackX(2500)
         AirPushbackY(30000)
-        AirUntechableTime(40)
+        AirUntechableTime(60)
         Hitstop(2)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
@@ -555,13 +555,13 @@ def UHY_Request_ShotExplodeASS():
     Unknown1084(1)
     SFX_3('VanishDiscBall')
     sprite('Action_172_01', 6)	# 8-13
-    sprite('Action_172_02', 3)	# 14-16	 **attackbox here**
+    sprite('Action_172_02ex01', 3)	# 14-16
     RefreshMultihit()
-    sprite('Action_172_03', 3)	# 17-19	 **attackbox here**
+    sprite('Action_172_03ex01', 3)	# 17-19
     GFX_0('UHY_Request_ExplodeBlackEffect', 100)
     SFX_3('SE220')
     RefreshMultihit()
-    sprite('Action_172_04', 3)	# 20-22	 **attackbox here**
+    sprite('Action_172_04ex01', 3)	# 20-22
     RefreshMultihit()
     sprite('Action_172_05', 5)	# 23-27	 **attackbox here**
     sprite('Action_172_06', 4)	# 28-31
@@ -737,7 +737,7 @@ def FloatShot():
     def upon_IMMEDIATE():
         Unknown2009()
         AttackLevel_(4)
-        AttackP2(75)
+        AttackP2(85)
         Unknown11092(1)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
@@ -747,6 +747,7 @@ def FloatShot():
         Unknown11001(10, 10, 15)
         callSubroutine('InsulatorInit')
         Unknown23182(2)
+        Unknown11108('03000000')
         Unknown1007(-100000)
         if (SLOT_23 <= 50000):
             teleportRelativeY(50000)
@@ -925,7 +926,7 @@ def ShotEx_Assist():
         Unknown11092(1)
         AirPushbackY(15000)
         Unknown30055('60ea00003200000000000000')
-        AirUntechableTime(24)
+        AirUntechableTime(40)
         Hitstop(3)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
@@ -1118,9 +1119,9 @@ def ObjIWMatome():
         Unknown2011()
         Unknown23056('')
         AttackLevel_(5)
-        Damage(700)
+        Damage(790)
         AttackP2(96)
-        Unknown11091(15)
+        Unknown11091(17)
         Unknown11033(3)
         AirUntechableTime(100)
         AirHitstunAnimation(10)
@@ -1396,7 +1397,7 @@ def ObjIWMatomeOD():
         Unknown2011()
         Unknown23056('')
         AttackLevel_(5)
-        Damage(460)
+        Damage(510)
         AttackP2(98)
         Unknown11091(15)
         Unknown11033(3)

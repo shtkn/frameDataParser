@@ -2418,14 +2418,15 @@ def CmnActChangePartnerAssistAtk_A():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-        AttackLevel_(4)
-        Damage(2200)
+        AttackLevel_(5)
+        Damage(2500)
         AttackP1(70)
         AirUntechableTime(60)
         GroundedHitstunAnimation(12)
         AirHitstunAnimation(12)
-        AirPushbackX(60000)
-        AirPushbackY(12000)
+        WallbounceReboundTime(30)
+        AirPushbackX(80000)
+        AirPushbackY(20000)
         Unknown11042(1)
         Unknown30040(1)
 
@@ -2434,10 +2435,10 @@ def CmnActChangePartnerAssistAtk_A():
             Unknown2034(1)
             Unknown2053(1)
 
-        def upon_3():
-            if (SLOT_19 < 700000):
-                clearUponHandler(3)
-                sendToLabel(10)
+        def upon_ON_HIT_OR_BLOCK():
+            sendToLabel(0)
+            Unknown1019(30)
+            clearUponHandler(10)
         Unknown3029(1)
         Unknown3069(0)
         Unknown3070(2)
@@ -2452,59 +2453,49 @@ def CmnActChangePartnerAssistAtk_A():
     sprite('mk404_02', 2)	# 6-7
     sprite('mk404_03', 2)	# 8-9
     Unknown1019(200)
-    sprite('mk404_03', 2)	# 10-11
-    sprite('mk404_04', 4)	# 12-15
-    sprite('mk404_05', 4)	# 16-19
-    sprite('mk404_06', 4)	# 20-23
-    sprite('mk404_07', 4)	# 24-27
-    sprite('mk404_08', 4)	# 28-31
-    sprite('mk404_09', 4)	# 32-35
-    loopRest()
-    label(10)
-    sprite('mk404_04', 2)	# 36-37
+    sprite('mk404_04', 2)	# 10-11
     clearUponHandler(3)
     Unknown1084(1)
     physicsXImpulse(10000)
-    sprite('mk413_00', 2)	# 38-39
+    sprite('mk413_00', 2)	# 12-13
     physicsXImpulse(8000)
-    sprite('mk413_01', 2)	# 40-41
+    sprite('mk413_01', 2)	# 14-15
     GFX_0('DriveChargeWind', 0)
     GFX_0('DriveChargeAura', 0)
     GFX_0('DriveChargelightning', 0)
-    sprite('mk413_02', 3)	# 42-44
-    sprite('mk413_01', 3)	# 45-47
+    sprite('mk413_02', 3)	# 16-18
+    sprite('mk413_01', 3)	# 19-21
     physicsXImpulse(6000)
-    sprite('mk413_02', 3)	# 48-50
-    sprite('mk413_01', 3)	# 51-53
-    GFX_0('DriveChargelightning', 0)
-    sprite('mk413_02', 3)	# 54-56
-    sprite('mk413_01', 3)	# 57-59
-    sprite('keep', 1)	# 60-60
+    sprite('keep', 1)	# 22-22
     SFX_4('mk215')
     Unknown21015('447269766543686172676557696e640000000000000000000000000000000000ff03000000000000')
     Unknown21015('4472697665436861726765417572610000000000000000000000000000000000fd03000000000000')
     callSubroutine('AfterImage_Lv3')
-    sprite('mk413_04', 3)	# 61-63
+    sprite('mk413_04', 3)	# 23-25
     Unknown7015()
     SFX_3('mkse_03')
     Unknown2015(150)
     physicsXImpulse(100000)
     Unknown8007(100, 1, 1)
-    sprite('mk413_05', 6)	# 64-69	 **attackbox here**
+    sprite('mk413_05', 6)	# 26-31	 **attackbox here**
     Unknown1019(60)
     ScreenShake(0, 35000)
     GFX_0('mkef413_lv3', -1)
     GFX_1('mkef_Lv3Puncheairwall', 0)
-    loopRest()
-    sprite('mk413_06', 4)	# 70-73
+    sprite('mk413_05', 2)	# 32-33	 **attackbox here**
     Unknown1019(30)
+    clearUponHandler(10)
+    loopRest()
+    label(0)
+    sprite('mk413_06', 4)	# 34-37
+    clearUponHandler(10)
     Unknown2015(-1)
     Unknown8010(100, 1, 1)
     Recovery()
-    sprite('mk413_07', 4)	# 74-77
+    sprite('mk413_07', 4)	# 38-41
     Unknown8010(100, 1, 1)
-    sprite('mk404_12', 3)	# 78-80
-    sprite('mk404_13', 3)	# 81-83
+    sprite('mk404_12', 3)	# 42-44
+    sprite('mk404_13', 3)	# 45-47
 
 @State
 def CmnActChangePartnerAssistAtk_B():
@@ -2618,6 +2609,10 @@ def CmnActChangePartnerAssistAtk_D():
             Unknown2017(1)
             Unknown2034(1)
             Unknown2053(1)
+
+        def upon_ON_HIT_OR_BLOCK():
+            clearUponHandler(10)
+            Unknown1019(95)
     sprite('mk404_00', 3)	# 1-3
     sprite('mk404_00', 1)	# 4-4
     SFX_3('mkse_21')
@@ -2629,7 +2624,7 @@ def CmnActChangePartnerAssistAtk_D():
     sprite('mk404_03', 2)	# 8-9
 
     def upon_3():
-        if (SLOT_19 < 180000):
+        if (SLOT_19 < 400000):
             clearUponHandler(3)
             sendToLabel(10)
     Unknown1019(200)
@@ -2641,29 +2636,29 @@ def CmnActChangePartnerAssistAtk_D():
     loopRest()
     label(10)
     clearUponHandler(3)
-    sprite('mk410_00', 2)	# 28-29
-    sprite('mk410_01', 2)	# 30-31
-    sprite('mk410_02', 2)	# 32-33
+    sprite('mk410_00', 1)	# 28-28
+    sprite('mk410_01', 1)	# 29-29
+    sprite('mk410_02', 2)	# 30-31
     SFX_0('004_swing_grap_1_1')
-    sprite('mk410_03', 2)	# 34-35	 **attackbox here**
+    sprite('mk410_03', 2)	# 32-33	 **attackbox here**
     Unknown1019(50)
     RefreshMultihit()
-    sprite('mk410_04', 2)	# 36-37
+    sprite('mk410_04', 2)	# 34-35
     Unknown1019(200)
-    sprite('mk410_05', 2)	# 38-39
-    sprite('mk410_06', 2)	# 40-41
+    sprite('mk410_05', 2)	# 36-37
+    sprite('mk410_06', 2)	# 38-39
     SFX_0('004_swing_grap_1_1')
-    sprite('mk410_07', 2)	# 42-43	 **attackbox here**
+    sprite('mk410_07', 2)	# 40-41	 **attackbox here**
     Unknown1019(50)
     RefreshMultihit()
-    sprite('mk410_08', 2)	# 44-45
+    sprite('mk410_08', 2)	# 42-43
     physicsXImpulse(8000)
-    sprite('mk410_09', 2)	# 46-47
-    sprite('mk410_10', 2)	# 48-49
-    sprite('mk410_11', 2)	# 50-51
+    sprite('mk410_09', 2)	# 44-45
+    sprite('mk410_10', 2)	# 46-47
+    sprite('mk410_11', 2)	# 48-49
     Unknown7007('626d6b3231325f30000000000000000064000000626d6b3231325f31000000000000000064000000626d6b3231325f320000000000000000640000000000000000000000000000000000000000000000')
     SFX_0('004_swing_grap_1_1')
-    sprite('mk410_12', 4)	# 52-55	 **attackbox here**
+    sprite('mk410_12', 4)	# 50-53	 **attackbox here**
     Unknown1019(0)
     Damage(2000)
     GroundedHitstunAnimation(10)
@@ -2673,15 +2668,15 @@ def CmnActChangePartnerAssistAtk_D():
     AirPushbackX(8000)
     AirPushbackY(30000)
     RefreshMultihit()
-    sprite('mk410_13', 12)	# 56-67
+    sprite('mk410_13', 12)	# 54-65
     Recovery()
     Unknown3029(0)
-    sprite('mk410_14', 4)	# 68-71
-    sprite('mk410_15', 4)	# 72-75
-    sprite('mk410_16', 4)	# 76-79
-    sprite('mk410_17', 4)	# 80-83
-    sprite('mk410_18', 4)	# 84-87
-    sprite('mk410_19', 4)	# 88-91
+    sprite('mk410_14', 4)	# 66-69
+    sprite('mk410_15', 4)	# 70-73
+    sprite('mk410_16', 4)	# 74-77
+    sprite('mk410_17', 4)	# 78-81
+    sprite('mk410_18', 4)	# 82-85
+    sprite('mk410_19', 4)	# 86-89
 
 @State
 def CmnActChangePartnerDD():
@@ -2975,29 +2970,29 @@ def NmlAtk5A():
         HitOrBlockCancel('NmlAtkBackThrow')
         HitOrBlockJumpCancel(1)
         Unknown1112('')
-    sprite('mk201_00', 3)	# 1-3
-    sprite('mk201_01', 3)	# 4-6
+    sprite('mk201_00', 2)	# 1-2
+    sprite('mk201_01', 2)	# 3-4
     Unknown23153(65000)
-    sprite('mk201_02', 1)	# 7-7
+    sprite('mk201_02', 1)	# 5-5
     Unknown23153(35000)
-    sprite('mk201_03', 1)	# 8-8
+    sprite('mk201_03', 1)	# 6-6
     Unknown23153(20000)
-    sprite('mk201_04', 1)	# 9-9	 **attackbox here**
+    sprite('mk201_04', 1)	# 7-7	 **attackbox here**
     SFX_0('003_swing_grap_0_1')
     Unknown7009(0)
     Unknown23153(5000)
-    sprite('mk201_04', 5)	# 10-14	 **attackbox here**
-    sprite('mk201_05', 4)	# 15-18
+    sprite('mk201_04', 5)	# 8-12	 **attackbox here**
+    sprite('mk201_05', 4)	# 13-16
     Recovery()
     Unknown2063()
     Unknown23153(5000)
-    sprite('mk201_06', 3)	# 19-21
+    sprite('mk201_06', 3)	# 17-19
     Unknown23153(20000)
-    sprite('mk201_07', 3)	# 22-24
+    sprite('mk201_07', 3)	# 20-22
     Unknown23153(-10000)
-    sprite('mk201_08', 3)	# 25-27
+    sprite('mk201_08', 3)	# 23-25
     Unknown23153(-5000)
-    sprite('mk201_09', 3)	# 28-30
+    sprite('mk201_09', 3)	# 26-28
     Unknown23153(-15000)
 
 @State
@@ -3018,7 +3013,7 @@ def Atk5AA():
         HitOrBlockCancel('CmnActCrushAttack')
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
-        HitJumpCancel(1)
+        HitOrBlockJumpCancel(1)
     sprite('mk202_00', 2)	# 1-2
     sprite('mk202_01', 4)	# 3-6
     sprite('mk202_02', 1)	# 7-7
@@ -3054,7 +3049,7 @@ def Atk5AAA():
         HitOrBlockCancel('NmlAtk2B')
         HitOrBlockCancel('NmlAtk2C')
         HitOrBlockCancel('CmnActCrushAttack')
-        HitJumpCancel(1)
+        HitOrBlockJumpCancel(1)
     sprite('mk202_05', 4)	# 1-4
     sprite('mk202_06', 2)	# 5-6
     sprite('mk202_07', 6)	# 7-12	 **attackbox here**
@@ -5543,6 +5538,9 @@ def DashStraight():
         def upon_17():
             setInvincible(1)
             Unknown22019('0000000000000000010000000000000000000000')
+
+        def upon_ON_HIT_OR_BLOCK():
+            Unknown1019(50)
     sprite('mk404_04', 2)	# 1-2
     Unknown7014('mkse_00')
     physicsXImpulse(10000)
@@ -5580,50 +5578,65 @@ def DashStraight():
     SFX_0('004_swing_grap_1_1')
     SFX_0('004_swing_grap_1_1')
     Unknown2015(150)
-    physicsXImpulse(80000)
+    physicsXImpulse(100000)
     Unknown8007(100, 1, 1)
     sprite('mk413_05', 6)	# 33-38	 **attackbox here**
     Unknown1019(60)
     GFX_0('mkef413_lv2', -1)
     GFX_1('mkef_Lv2Puncheairwall', 0)
+    sprite('mk413_05', 2)	# 39-40	 **attackbox here**
+    Unknown1019(30)
     loopRest()
-    gotoLabel(99)
+    gotoLabel(991)
     label(2)
     AttackLevel_(5)
     AirPushbackY(17000)
     AirUntechableTime(40)
     Unknown9154(27)
     Unknown23159('DashStraightTame')
-    sprite('keep', 1)	# 39-39
+    sprite('keep', 1)	# 41-41
     SFX_4('mk215')
     Unknown21015('447269766543686172676557696e640000000000000000000000000000000000ff03000000000000')
     Unknown21015('4472697665436861726765417572610000000000000000000000000000000000fd03000000000000')
     callSubroutine('AfterImage_Lv3')
-    sprite('mk413_04', 3)	# 40-42
+    sprite('mk413_04', 3)	# 42-44
     Unknown7015()
     SFX_3('mkse_03')
     Unknown2015(150)
-    physicsXImpulse(100000)
+    physicsXImpulse(120000)
     Unknown8007(100, 1, 1)
-    sprite('mk413_05', 6)	# 43-48	 **attackbox here**
+    sprite('mk413_05', 6)	# 45-50	 **attackbox here**
     Unknown1019(60)
     ScreenShake(0, 35000)
     GFX_0('mkef413_lv3', -1)
     GFX_1('mkef_Lv3Puncheairwall', 0)
+    sprite('mk413_05', 2)	# 51-52	 **attackbox here**
+    Unknown1019(50)
     loopRest()
-    gotoLabel(99)
-    label(99)
-    sprite('mk413_06', 4)	# 49-52
+    gotoLabel(992)
+    label(991)
+    sprite('mk413_06', 4)	# 53-56
     setInvincible(0)
-    Unknown1019(30)
     Unknown2015(-1)
     Unknown8010(100, 1, 1)
     Recovery()
-    sprite('mk413_07', 5)	# 53-57
+    sprite('mk413_07', 5)	# 57-61
     Unknown8010(100, 1, 1)
-    sprite('mk404_12', 5)	# 58-62
+    sprite('mk404_12', 3)	# 62-64
     Unknown1019(0)
-    sprite('mk404_13', 5)	# 63-67
+    sprite('mk404_13', 3)	# 65-67
+    ExitState()
+    label(992)
+    sprite('mk413_06', 4)	# 68-71
+    setInvincible(0)
+    Unknown2015(-1)
+    Unknown8010(100, 1, 1)
+    Recovery()
+    sprite('mk413_07', 4)	# 72-75
+    Unknown8010(100, 1, 1)
+    sprite('mk404_12', 3)	# 76-78
+    Unknown1019(0)
+    sprite('mk404_13', 3)	# 79-81
 
 @State
 def DashStraight_EX():
@@ -5654,6 +5667,11 @@ def DashStraight_EX():
         def upon_17():
             setInvincible(1)
             Unknown22019('0000000000000000010000000000000000000000')
+
+        def upon_ON_HIT_OR_BLOCK():
+            clearUponHandler(10)
+            sendToLabel(99)
+            Unknown1019(30)
     sprite('mk404_04', 2)	# 1-2
     Unknown23008(0, 0)
     Unknown7014('mkse_00')
@@ -5690,26 +5708,29 @@ def DashStraight_EX():
     Unknown7015()
     SFX_3('mkse_03')
     Unknown2015(150)
-    physicsXImpulse(90000)
+    physicsXImpulse(120000)
     Unknown8007(100, 1, 1)
     sprite('mk413_05', 6)	# 32-37	 **attackbox here**
-    Unknown1019(40)
+    Unknown1019(60)
     ScreenShake(0, 35000)
     GFX_0('mkef413_lvG', -1)
     GFX_1('mkef_PuncheairwallLvG', 0)
+    sprite('mk413_05', 2)	# 38-39	 **attackbox here**
+    Unknown1019(30)
+    clearUponHandler(10)
     loopRest()
     gotoLabel(99)
     label(99)
-    sprite('mk413_06', 4)	# 38-41
+    sprite('mk413_06', 4)	# 40-43
+    clearUponHandler(10)
     setInvincible(0)
-    Unknown1019(30)
     Unknown2015(-1)
     Unknown8010(100, 1, 1)
     Recovery()
-    sprite('mk413_07', 3)	# 42-44
+    sprite('mk413_07', 3)	# 44-46
     Unknown8010(100, 1, 1)
-    sprite('mk404_12', 2)	# 45-46
-    sprite('mk404_13', 3)	# 47-49
+    sprite('mk404_12', 2)	# 47-48
+    sprite('mk404_13', 3)	# 49-51
 
 @State
 def Pile__sp__Bunker():
@@ -6159,25 +6180,25 @@ def CreateEnergyBall():
     sprite('mk400_00', 2)	# 1-2
     sprite('mk400_01', 2)	# 3-4
     tag_voice(1, 'bmk200_0', 'bmk200_1', 'bmk200_2', '')
-    sprite('mk400_02', 3)	# 5-7
-    sprite('mk400_03', 2)	# 8-9
-    sprite('mk400_04', 4)	# 10-13
-    sprite('mk400_05', 2)	# 14-15
+    sprite('mk400_02', 2)	# 5-6
+    sprite('mk400_03', 1)	# 7-7
+    sprite('mk400_04', 3)	# 8-10
+    sprite('mk400_05', 1)	# 11-11
     GFX_0('mkef_hibana', 0)
     SFX_3('mkse_20')
     SFX_0('014_electric_sl')
     Unknown14070('PunchShot')
-    sprite('mk400_06', 3)	# 16-18
+    sprite('mk400_06', 2)	# 12-13
     GFX_0('EnergyBall', 103)
-    sprite('mk400_07', 3)	# 19-21
-    sprite('mk400_07', 3)	# 22-24
+    sprite('mk400_07', 3)	# 14-16
+    sprite('mk400_07', 3)	# 17-19
     Unknown14072('PunchShot')
-    sprite('mk400_08', 4)	# 25-28
-    sprite('mk400_09', 6)	# 29-34
-    sprite('mk400_10', 6)	# 35-40
+    sprite('mk400_08', 4)	# 20-23
+    sprite('mk400_09', 6)	# 24-29
+    sprite('mk400_10', 6)	# 30-35
     Unknown14074('PunchShot')
-    sprite('mk400_11', 6)	# 41-46
-    sprite('mk400_12', 3)	# 47-49
+    sprite('mk400_11', 6)	# 36-41
+    sprite('mk400_12', 3)	# 42-44
     Recovery()
 
 @State
@@ -6230,13 +6251,14 @@ def PunchShot():
     GFX_0('DriveLv3PunchefD', 0)
     Unknown38(5, 1)
     Unknown21015('456e6572677942616c6c000000000000000000000000000000000000000000001504000000000000')
-    sprite('mk407_07', 3)	# 49-51
+    sprite('mk407_06', 5)	# 49-53	 **attackbox here**
+    sprite('mk407_07', 3)	# 54-56
     loopRest()
     gotoLabel(99)
     label(2)
     AttackLevel_(5)
     Damage(1000)
-    sprite('mk407_04', 2)	# 52-53
+    sprite('mk407_04', 2)	# 57-58
     callSubroutine('AfterImage_Lv3')
     Unknown7015()
     tag_voice(0, 'bmk201_0', 'bmk201_1', 'bmk201_2', '')
@@ -6244,13 +6266,14 @@ def PunchShot():
     Unknown21015('447269766543686172676557696e640000000000000000000000000000000000ff03000000000000')
     Unknown21015('4472697665436861726765417572610000000000000000000000000000000000fd03000000000000')
     ScreenShake(0, 35000)
-    sprite('mk407_05', 1)	# 54-54
-    sprite('mk407_06', 3)	# 55-57	 **attackbox here**
+    sprite('mk407_05', 1)	# 59-59
+    sprite('mk407_06', 3)	# 60-62	 **attackbox here**
     GFX_1('mkef_400Lv3airwall', 0)
     GFX_0('DriveLv3PunchefD', 0)
     Unknown38(5, 1)
     Unknown21015('456e6572677942616c6c000000000000000000000000000000000000000000001604000000000000')
-    sprite('mk407_07', 3)	# 58-60
+    sprite('mk407_06', 5)	# 63-67	 **attackbox here**
+    sprite('mk407_07', 3)	# 68-70
     loopRest()
     gotoLabel(99)
     label(3)
@@ -6258,7 +6281,7 @@ def PunchShot():
     Damage(1100)
     FatalCounter(1)
     Unknown23159('PunchShot_Lv3')
-    sprite('mk407_04', 2)	# 61-62
+    sprite('mk407_04', 2)	# 71-72
     callSubroutine('AfterImage_Lv3')
     Unknown7015()
     SFX_1('mk201')
@@ -6266,13 +6289,13 @@ def PunchShot():
     Unknown21015('447269766543686172676557696e640000000000000000000000000000000000ff03000000000000')
     Unknown21015('4472697665436861726765417572610000000000000000000000000000000000fd03000000000000')
     ScreenShake(0, 35000)
-    sprite('mk407_05', 1)	# 63-63
-    sprite('mk407_06', 3)	# 64-66	 **attackbox here**
+    sprite('mk407_05', 1)	# 73-73
+    sprite('mk407_06', 3)	# 74-76	 **attackbox here**
     GFX_1('mkef_400Lv3airwall', 0)
     GFX_0('DriveLv3PunchefD', 0)
     Unknown38(5, 1)
     Unknown21015('456e6572677942616c6c000000000000000000000000000000000000000000001604000000000000')
-    sprite('mk407_07', 3)	# 67-69
+    sprite('mk407_07', 3)	# 77-79
     loopRest()
     gotoLabel(99)
     label(4)
@@ -6280,7 +6303,7 @@ def PunchShot():
     Damage(1100)
     FatalCounter(1)
     Unknown23159('PunchShot_LvG')
-    sprite('mk407_04', 2)	# 70-71
+    sprite('mk407_04', 2)	# 80-81
     Unknown7015()
     SFX_1('mk201')
     SFX_3('mkse_03')
@@ -6288,22 +6311,22 @@ def PunchShot():
     Unknown21015('4472697665436861726765417572610000000000000000000000000000000000fd03000000000000')
     callSubroutine('AfterImage_LvG')
     ScreenShake(0, 35000)
-    sprite('mk407_05', 1)	# 72-72
-    sprite('mk407_06', 3)	# 73-75	 **attackbox here**
+    sprite('mk407_05', 1)	# 82-82
+    sprite('mk407_06', 3)	# 83-85	 **attackbox here**
     Unknown21015('456e6572677942616c6c000000000000000000000000000000000000000000001704000000000000')
     GFX_1('mkef_400LvGairwall', 0)
     GFX_0('DriveLvG_PunchefD', 0)
-    sprite('mk407_07', 3)	# 76-78
+    sprite('mk407_07', 3)	# 86-88
     Unknown21015('456e6572677942616c6c000000000000000000000000000000000000000000001704000000000000')
     loopRest()
     gotoLabel(99)
     label(99)
-    sprite('mk407_08', 3)	# 79-81
-    sprite('mk407_09', 3)	# 82-84
-    sprite('mk407_10', 3)	# 85-87
-    sprite('mk407_11', 3)	# 88-90
+    sprite('mk407_08', 3)	# 89-91
+    sprite('mk407_09', 3)	# 92-94
+    sprite('mk407_10', 3)	# 95-97
+    sprite('mk407_11', 3)	# 98-100
     Unknown3029(0)
-    sprite('mk407_12', 3)	# 91-93
+    sprite('mk407_12', 3)	# 101-103
 
 @State
 def CmnActInvincibleAttack():
@@ -6317,7 +6340,6 @@ def CmnActInvincibleAttack():
         AirPushbackY(50000)
         AirPushbackX(12000)
         AirUntechableTime(50)
-        setInvincible(1)
         clearUponHandler(2)
         sendToLabelUpon(2, 41)
 
@@ -6384,7 +6406,6 @@ def CmnActInvincibleAttackAir():
         AirPushbackX(10000)
         AirUntechableTime(50)
         Unknown11058('0100000000000000000000000000000000000000')
-        setInvincible(1)
         clearUponHandler(2)
         sendToLabelUpon(2, 41)
 
@@ -6439,6 +6460,8 @@ def PowerDunk():
 
     def upon_IMMEDIATE():
         Unknown17025('')
+        Unknown30087(0)
+        setInvincible(0)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
         AirPushbackX(12000)
@@ -6748,7 +6771,7 @@ def ShinSyouryu1():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingDD()
-        Unknown11091(15)
+        Unknown11091(20)
         Hitstop(30)
         GroundedHitstunAnimation(2)
         AttackP2(100)
@@ -6923,7 +6946,7 @@ def ShinSyouryu2():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingDD()
-        Unknown11091(15)
+        Unknown11091(20)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
         AttackP2(60)
@@ -7081,7 +7104,7 @@ def ShinSyouryu3():
     def upon_IMMEDIATE():
         AttackDefaults_AirDD()
         Unknown23055('')
-        Unknown11091(15)
+        Unknown11091(20)
         AttackP2(100)
         Hitstop(35)
         AirHitstunAnimation(10)
@@ -7671,7 +7694,7 @@ def ShinSyouryu3_OD():
         Unknown23056('')
         AttackLevel_(5)
         Damage(10500)
-        Unknown11091(15)
+        Unknown11091(20)
         AttackP2(100)
         Hitstop(35)
         AirHitstunAnimation(10)

@@ -1154,6 +1154,85 @@ def ha_TAG_1_shot():
     sprite('vrhaef430_dummy', 90)	# 5-94	 **attackbox here**
 
 @State
+def UltimateAssault_DamyAtk():
+
+    def upon_IMMEDIATE():
+        Unknown2011()
+        Unknown23056('')
+        AttackLevel_(1)
+        Damage(200)
+        Unknown11034(1)
+        Unknown11033(0)
+        AttackP1(48)
+        AttackP2(100)
+        Unknown11092(1)
+        Unknown11108('03000000')
+        Unknown11091(12)
+        Unknown11084(1)
+        Unknown9016(1)
+        Unknown11057(700)
+        AirPushbackX(5000)
+        AirPushbackY(21000)
+        AirUntechableTime(60)
+        Hitstop(1)
+        Unknown9310(0)
+        AirHitstunAnimation(11)
+        GroundedHitstunAnimation(11)
+        SLOT_52 = 4
+        Unknown11056(3)
+        Unknown11064(1)
+
+        def upon_3():
+            Unknown23151(22, 103)
+    sprite('null', 25)	# 1-25
+    label(1)
+    sprite('ha430_atkdmy', 1)	# 26-26
+    Unknown4045('686165665f44445f32000000000000000000000000000000000000000000000000000000')
+    Unknown4053(-40000, 40000)
+    SFX_0('006_swing_blade_2')
+    SFX_0('006_swing_blade_1')
+    ScreenShake(0, 16000)
+    sprite('ha430_atkdmy', 1)	# 27-27
+    RefreshMultihit()
+    AirHitstunAnimation(18)
+    GroundedHitstunAnimation(18)
+    sprite('ha430_atkdmy', 1)	# 28-28
+    RefreshMultihit()
+    AirHitstunAnimation(10)
+    GroundedHitstunAnimation(10)
+    sprite('ha430_atkdmy', 1)	# 29-29
+    RefreshMultihit()
+    AirHitstunAnimation(9)
+    GroundedHitstunAnimation(9)
+    SLOT_52 = (SLOT_52 + (-1))
+    Unknown19(2, 2, 52)
+    gotoLabel(1)
+    label(2)
+    sprite('ha430_atkdmy', 1)	# 30-30
+    RefreshMultihit()
+    AirHitstunAnimation(11)
+    GroundedHitstunAnimation(11)
+    sprite('ha430_atkdmy', 1)	# 31-31
+    RefreshMultihit()
+    AirHitstunAnimation(10)
+    GroundedHitstunAnimation(10)
+    Hitstop(40)
+    sprite('ha430_atkdmy', 1)	# 32-32
+    RefreshMultihit()
+    AirHitstunAnimation(10)
+    GroundedHitstunAnimation(10)
+    AttackLevel_(5)
+    Damage(1800)
+    Hitstop(41)
+    AttackP2(60)
+    Unknown11057(1000)
+    Unknown11064(0)
+    Unknown4045('686165665f44445f32000000000000000000000000000000000000000000000000000000')
+    Unknown4053(-40000, 40000)
+    ScreenShake(0, 32000)
+    sprite('null', 1)	# 33-33
+
+@State
 def ha_DD_2_ex():
 
     def upon_IMMEDIATE():

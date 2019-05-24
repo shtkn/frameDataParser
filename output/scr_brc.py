@@ -2179,26 +2179,26 @@ def CmnActChangePartnerAssistAtk_B():
         Unknown11063(1)
         Unknown23012(0, 0, 0)
         Unknown2006()
-    sprite('rc216_00', 2)	# 1-2
+    sprite('rc216_00', 1)	# 1-1
     Unknown7007('6272633230385f300000000000000000640000006272633230385f310000000000000000640000006272633230385f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('rc216_01', 2)	# 3-4
-    sprite('rc216_02', 2)	# 5-6
-    sprite('rc216_03', 2)	# 7-8
-    sprite('rc216_04', 2)	# 9-10
-    sprite('rc216_05', 2)	# 11-12
+    sprite('rc216_01', 1)	# 2-2
+    sprite('rc216_02', 2)	# 3-4
     GFX_0('LightningObjAtkMiniD_TAG', -1)
     Unknown23029(4, 3001, 0)
     Unknown23029(5, 3001, 0)
     Unknown23029(6, 3001, 0)
     Unknown23012(0, 0, 0)
-    sprite('rc216_06', 6)	# 13-18
+    sprite('rc216_03', 2)	# 5-6
     SFX_0('003_swing_grap_0_2')
-    sprite('rc216_07', 6)	# 19-24
-    sprite('rc216_08', 4)	# 25-28
-    sprite('rc216_09', 4)	# 29-32
-    sprite('rc216_10', 4)	# 33-36
-    sprite('rc216_11', 4)	# 37-40
-    sprite('rc216_12', 4)	# 41-44
+    sprite('rc216_04', 2)	# 7-8
+    sprite('rc216_05', 2)	# 9-10
+    sprite('rc216_06', 6)	# 11-16
+    sprite('rc216_07', 6)	# 17-22
+    sprite('rc216_08', 4)	# 23-26
+    sprite('rc216_09', 4)	# 27-30
+    sprite('rc216_10', 4)	# 31-34
+    sprite('rc216_11', 4)	# 35-38
+    sprite('rc216_12', 4)	# 39-42
 
 @State
 def CmnActChangePartnerAssistAtk_D():
@@ -2227,6 +2227,9 @@ def CmnActChangePartnerAssistAtk_D():
         Unknown30040(1)
         JumpCancel_(0)
         Unknown2006()
+
+        def upon_78():
+            SLOT_51 = 1
     sprite('rc212_00', 4)	# 1-4
     physicsXImpulse(6000)
     sprite('rc212_01', 4)	# 5-8
@@ -2268,6 +2271,8 @@ def CmnActChangePartnerAssistAtk_D():
     GFX_0('rcef_212Rose', -1)
     GFX_0('rcef212windA', -1)
     GFX_0('rcef212windB', -1)
+    if SLOT_51:
+        sendToLabel(10)
     sprite('rc212_04', 3)	# 37-39	 **attackbox here**
     RefreshMultihit()
     sprite('rc212_05', 3)	# 40-42	 **attackbox here**
@@ -2283,19 +2288,53 @@ def CmnActChangePartnerAssistAtk_D():
     RefreshMultihit()
     loopRest()
     gotoLabel(1)
+    label(10)
+    sprite('rc320_00', 2)	# 55-56
+    AttackLevel_(4)
+    GroundedHitstunAnimation(11)
+    AirHitstunAnimation(11)
+    AirPushbackY(-40000)
+    AirUntechableTime(40)
+    Unknown9310(20)
+    Unknown23027()
+    HitOverhead(0)
+    JumpCancel_(0)
+    Unknown30068(1)
+    Unknown23019(0)
+    Unknown22004(10, 1)
+    physicsXImpulse(3000)
+    physicsYImpulse(10000)
+    Unknown1043()
+    clearUponHandler(78)
+    Unknown30055('ffffffffffffffffffffffff')
+    Unknown30056('ffffffffffffffffffffffff')
+    sprite('rc320_01', 2)	# 57-58
+    sprite('rc320_02', 3)	# 59-61	 **attackbox here**
+    SFX_0('003_swing_grap_0_1')
+    sprite('rc321_03', 6)	# 62-67	 **attackbox here**
+    RefreshMultihit()
+    SFX_0('004_swing_grap_1_2')
+    sprite('rc321_04', 4)	# 68-71
+    Recovery()
+    sprite('rc321_05', 4)	# 72-75
+    sprite('rc321_06', 3)	# 76-78
+    sprite('rc321_07', 3)	# 79-81
+    sprite('rc321_08', 3)	# 82-84
+    ExitState()
     label(2)
-    sprite('rc212_10', 4)	# 55-58
+    sprite('rc212_10', 4)	# 85-88
     Unknown23087(0)
     StartMultihit()
     Unknown8000(100, 1, 1)
     Unknown1019(10)
     StartMultihit()
     Recovery()
-    sprite('rc212_11', 4)	# 59-62
+    clearUponHandler(78)
+    sprite('rc212_11', 4)	# 89-92
     StartMultihit()
-    sprite('rc212_12', 4)	# 63-66
-    sprite('rc212_13', 4)	# 67-70
-    sprite('rc212_14', 6)	# 71-76
+    sprite('rc212_12', 4)	# 93-96
+    sprite('rc212_13', 4)	# 97-100
+    sprite('rc212_14', 6)	# 101-106
 
 @State
 def CmnActChangePartnerDD():
@@ -2963,7 +3002,7 @@ def NmlAtk5A():
         AttackDefaults_StandingNormal()
         AttackLevel_(3)
         AirPushbackY(16000)
-        PushbackX(15300)
+        PushbackX(19800)
         Unknown9016(1)
         Unknown1112('')
         HitOrBlockCancel('NmlAtk5AA')
@@ -3140,10 +3179,14 @@ def NmlAtk5AAA():
     clearUponHandler(10)
 
     def upon_ON_HIT_OR_BLOCK():
+        HitOrBlockCancel('NmlAtkAIR5B')
+        HitOrBlockCancel('NmlAtkAIR5C')
         HitOrBlockCancel('NmlAtk5AAAA')
     sprite('rc212_08', 3)	# 22-24	 **attackbox here**
     RefreshMultihit()
     clearUponHandler(10)
+    HitOrBlockCancel('NmlAtkAIR5B')
+    HitOrBlockCancel('NmlAtkAIR5C')
     HitOrBlockCancel('NmlAtk5AAAA')
     sprite('rc212_09', 3)	# 25-27	 **attackbox here**
     RefreshMultihit()
@@ -3422,15 +3465,14 @@ def NmlAtk2B():
         AttackDefaults_CrouchingNormal()
         AttackLevel_(5)
         AttackP1(80)
+        AttackP2(80)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
-        AirUntechableTime(60)
-        AirPushbackY(40000)
+        AirUntechableTime(30)
+        AirPushbackY(30000)
         Unknown11058('0000000001000000000000000000000000000000')
         Unknown11084(1)
         Unknown9266(7)
-        JumpCancel_(0)
-        Unknown23017(0)
         Unknown2018(0, 50)
     sprite('rc232_00', 2)	# 1-2
     sprite('rc232_01', 2)	# 3-4
@@ -3575,7 +3617,6 @@ def NmlAtk2C():
     Unknown19(9, 2, 0)
     sprite('rc234_10', 2)	# 18-19	 **attackbox here**
     RefreshMultihit()
-    JumpCancel_(0)
     Unknown2037(1)
     sprite('rc234_11', 2)	# 20-21	 **attackbox here**
     sprite('rc234_12', 2)	# 22-23	 **attackbox here**
@@ -3668,6 +3709,7 @@ def NmlAtkAIR5B():
         AirUntechableTime(24)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
+        PushbackX(36000)
         AirPushbackY(28000)
         HitOverhead(0)
         HitOrBlockCancel('NmlAtkAIR5C')
@@ -3735,6 +3777,7 @@ def NmlAtkAIR5C():
                 def upon_ON_HIT_OR_BLOCK():
                     ScreenShake(80000, 0)
         Unknown23012(100, 150, 0)
+        HitOrBlockCancel('NmlAtkAIR5B')
     sprite('rc260_01', 3)	# 1-3
     sprite('rc260_02', 3)	# 4-6
     callSubroutine('AddChainWind_Air')
@@ -3766,6 +3809,8 @@ def NmlAtkAIR5C():
     ScreenShake(0, 10000)
     GFX_1('rcef_falldown_mc02', -1)
     Recovery()
+    WhiffCancelEnable(0)
+    Unknown13015(1)
     HitOrBlockCancel('NmlAtk2C')
     HitOrBlockCancel('CmnActCrushAttack')
     sprite('rc260_11', 8)	# 25-32
@@ -3986,38 +4031,32 @@ def CmnActInvincibleAttack():
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
         AirUntechableTime(60)
-        AirPushbackY(40000)
+        AirPushbackY(30000)
+        Unknown11001(0, 0, 0)
         Hitstop(3)
         PushbackX(12000)
         Unknown11058('0000000001000000000000000000000000000000')
         HitAirUnblockable(3)
     sprite('rc440_00', 3)	# 1-3
-    setInvincible(1)
     sprite('rc440_01', 3)	# 4-6
     sprite('rc440_02', 3)	# 7-9
     sprite('rc440_03', 3)	# 10-12
     sprite('rc440_03', 3)	# 13-15
     Unknown7007('6272633130335f300000000000000000640000006272633130345f320000000000000000640000006272633130325f300000000000000000640000000000000000000000000000000000000000000000')
     GFX_0('ActInvincibleAttack_Eff', 0)
-    sprite('rc440_04', 4)	# 16-19	 **attackbox here**
-    sprite('rc440_05', 4)	# 20-23
+    sprite('rc440_04', 8)	# 16-23	 **attackbox here**
+    sprite('rc440_05', 4)	# 24-27
     setInvincible(0)
-    sprite('rc440_06', 4)	# 24-27
-    sprite('rc440_07', 4)	# 28-31
-    sprite('rc440_05', 4)	# 32-35
-    sprite('rc440_06', 4)	# 36-39
-    sprite('rc440_07', 4)	# 40-43
-    sprite('rc440_05', 4)	# 44-47
-    sprite('rc440_06', 4)	# 48-51
-    sprite('rc440_07', 4)	# 52-55
-    sprite('rc440_05', 4)	# 56-59
-    sprite('rc440_06', 4)	# 60-63
-    sprite('rc440_04', 4)	# 64-67	 **attackbox here**
+    sprite('rc440_06', 4)	# 28-31
+    sprite('rc440_07', 4)	# 32-35
+    sprite('rc440_05', 4)	# 36-39
+    sprite('rc440_06', 4)	# 40-43
+    sprite('rc440_04', 4)	# 44-47	 **attackbox here**
     Unknown23027()
-    sprite('rc440_03', 4)	# 68-71
-    sprite('rc440_02', 4)	# 72-75
-    sprite('rc440_01', 4)	# 76-79
-    sprite('rc440_00', 4)	# 80-83
+    sprite('rc440_03', 4)	# 48-51
+    sprite('rc440_02', 4)	# 52-55
+    sprite('rc440_01', 4)	# 56-59
+    sprite('rc440_00', 4)	# 60-63
     loopRest()
 
 @Subroutine
@@ -5340,6 +5379,14 @@ def UltimateStorm():
     Unknown30080('')
     Unknown2058(-10000)
     Unknown22019('0100000001000000010000000100000001000000')
+    if SLOT_38:
+        Unknown23000(80, -350, 0)
+        Unknown21007(10, 36)
+        SLOT_62 = 60
+    else:
+        Unknown23000(80, 350, 0)
+        Unknown21007(10, 38)
+        SLOT_62 = 60
     sprite('rc432_04', 5)	# 15-19
     Unknown7007('6272633235325f300000000000000000640000006272633235325f3100000000000000006400000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
     Unknown4004('6175726100000000000000000000000000000000000000000000000000000000ffff0000')
@@ -5376,15 +5423,15 @@ def UltimateStorm():
     sprite('rc432_11', 3)	# 83-85
     SFX_3('rcse_23')
     label(1)
-    sprite('rc432_09', 4)	# 86-89
+    sprite('rc432_09', 3)	# 86-88
     Unknown21015('5265696368656c53746f726d4c76340000000000000000000000000000000000f013000000000000')
-    sprite('rc432_10', 4)	# 90-93
-    sprite('rc432_11', 4)	# 94-97
-    sprite('rc432_12', 4)	# 98-101
+    sprite('rc432_10', 3)	# 89-91
+    sprite('rc432_11', 3)	# 92-94
+    sprite('rc432_12', 3)	# 95-97
     Unknown23029(11, 5103, 0)
-    sprite('rc432_13', 4)	# 102-105
-    sprite('rc432_14', 5)	# 106-110
-    sprite('rc432_15', 5)	# 111-115
+    sprite('rc432_13', 3)	# 98-100
+    sprite('rc432_14', 4)	# 101-104
+    sprite('rc432_15', 4)	# 105-108
 
 @State
 def UltimateStorm_OD():
@@ -5407,6 +5454,14 @@ def UltimateStorm_OD():
     Unknown30080('')
     Unknown2058(-10000)
     Unknown22019('0100000001000000010000000100000001000000')
+    if SLOT_38:
+        Unknown23000(80, -350, 0)
+        Unknown21007(10, 36)
+        SLOT_62 = 60
+    else:
+        Unknown23000(80, 350, 0)
+        Unknown21007(10, 38)
+        SLOT_62 = 60
     sprite('rc432_04', 5)	# 15-19
     Unknown7007('6272633235325f300000000000000000640000006272633235325f3100000000000000006400000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
     Unknown4004('6175726100000000000000000000000000000000000000000000000000000000ffff0000')
@@ -5443,15 +5498,15 @@ def UltimateStorm_OD():
     sprite('rc432_11', 3)	# 83-85
     SFX_3('rcse_23')
     label(1)
-    sprite('rc432_09', 4)	# 86-89
+    sprite('rc432_09', 3)	# 86-88
     Unknown21015('5265696368656c53746f726d4c76340000000000000000000000000000000000f013000000000000')
-    sprite('rc432_10', 4)	# 90-93
-    sprite('rc432_11', 4)	# 94-97
-    sprite('rc432_12', 4)	# 98-101
+    sprite('rc432_10', 3)	# 89-91
+    sprite('rc432_11', 3)	# 92-94
+    sprite('rc432_12', 3)	# 95-97
     Unknown23029(11, 5103, 0)
-    sprite('rc432_13', 4)	# 102-105
-    sprite('rc432_14', 5)	# 106-110
-    sprite('rc432_15', 5)	# 111-115
+    sprite('rc432_13', 3)	# 98-100
+    sprite('rc432_14', 4)	# 101-104
+    sprite('rc432_15', 4)	# 105-108
 
 @State
 def AstralHeat():

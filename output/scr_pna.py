@@ -131,19 +131,21 @@ def MatchInit():
     Unknown14005(1)
     Move_Input_(INPUT_PRESS_A)
     Unknown14013('NmlAtk5A3rd')
+    Unknown14027('NmlAtk5A3rd')
     Unknown15000(0)
     Move_EndRegister()
     Move_Register('NmlAtk5A4thEx', 0x1)
     Unknown14005(1)
     Move_Input_(INPUT_PRESS_A)
     Unknown14013('NmlAtk5A4th')
+    Unknown14027('NmlAtk5A4th')
     Unknown15000(0)
     Move_EndRegister()
     Move_Register('NmlAtk5BEx', 0x1)
     Unknown14005(1)
     Move_Input_(INPUT_PRESS_B)
     Unknown14013('NmlAtk5B')
-    Unknown14027('NmlAtk5A')
+    Unknown14027('NmlAtk5B')
     Unknown15000(0)
     Move_EndRegister()
     Move_Register('NmlAtk2BEx', 0x1)
@@ -151,12 +153,14 @@ def MatchInit():
     Move_Input_(INPUT_PRESS_B)
     Move_Input_(0x45)
     Unknown14013('NmlAtk2B')
+    Unknown14027('NmlAtk2B')
     Unknown15000(0)
     Move_EndRegister()
     Move_Register('CmnActCrushAttackEx', 0x1)
     Unknown14005(1)
     Move_Input_(INPUT_PRESS_C)
     Unknown14013('CmnActCrushAttack')
+    Unknown14027('CmnActCrushAttack')
     Unknown15000(0)
     Move_EndRegister()
     Move_Register('NmlAtk2CEx', 0x1)
@@ -164,18 +168,21 @@ def MatchInit():
     Move_Input_(INPUT_PRESS_C)
     Move_Input_(0x45)
     Unknown14013('NmlAtk2C')
+    Unknown14027('NmlAtk2C')
     Unknown15000(0)
     Move_EndRegister()
     Move_Register('AN_NmlAtkThrowEX', 0x1)
     Move_Input_(0xd3)
     Unknown14005(1)
     Unknown14013('NmlAtkThrow')
+    Unknown14027('NmlAtkThrow')
     Unknown15000(0)
     Move_EndRegister()
     Move_Register('AN_NmlAtkBackThrowEX', 0x1)
     Move_Input_(0xd3)
     Unknown14005(1)
     Unknown14013('NmlAtkBackThrow')
+    Unknown14027('NmlAtkBackThrow')
     Unknown15000(0)
     Move_EndRegister()
     Move_Register('KamaeA', INPUT_SPECIALMOVE)
@@ -2049,11 +2056,8 @@ def CmnActChangePartnerAssistAtk_A():
             Unknown2017(1)
             Unknown2034(1)
             Unknown2053(1)
-
-    def upon_IMMEDIATE():
-        AttackDefaults_StandingSpecial()
         Unknown1084(1)
-        SLOT_60 = 1
+        SLOT_60 = 5
         SLOT_61 = 0
         Unknown11063(1)
         Unknown14083(0)
@@ -2073,20 +2077,46 @@ def CmnActChangePartnerAssistAtk_A():
     sprite('na401_02', 1)	# 10-10
     callSubroutine('HaikyouEx0')
     sprite('na401_02', 1)	# 11-11
-    sprite('na401_03', 17)	# 12-28
-    sprite('na404_00', 1)	# 29-29
-    sprite('na404_00', 2)	# 30-31
+    sprite('na401_03', 27)	# 12-38
+    sprite('na401_03', 2)	# 39-40
+    loopRest()
+    gotoLabel(16)
+    label(16)
+    (SLOT_60 <= 1)
+    if SLOT_0:
+        _gotolabel(17)
+    sprite('na401_52', 1)	# 41-41
+    sprite('na404_00', 2)	# 42-43
+    SLOT_60 = (SLOT_60 + (-1))
+    SLOT_59 = (SLOT_59 + 1)
+    GFX_0('Dangan_PS', 1)
+    Unknown23029(1, 3010, 0)
+    SFX_3('na001')
+    sprite('na404_01', 2)	# 44-45
+    sprite('na404_00', 1)	# 46-46
+    sendToLabel(16)
+    sprite('na404_00', 3)	# 47-49
+    sprite('na401_03', 3)	# 50-52
+    sprite('na401_03', 3)	# 53-55
+    WhiffCancelEnable(0)
+    sprite('na401_03', 32767)	# 56-32822
+    enterState('KamaeBase')
+    loopRest()
+    ExitState()
+    label(17)
+    sprite('na404_00', 1)	# 32823-32823
+    sprite('na404_00', 2)	# 32824-32825
     GFX_0('DanganLastA_PS', 1)
     Unknown7007('706e613230375f30000000000000000064000000706e613230375f31000000000000000064000000706e613230375f320000000000000000640000000000000000000000000000000000000000000000')
     ScreenShake(10000, 0)
     Unknown1047(-10000)
     SFX_3('na002')
-    sprite('na404_02', 3)	# 32-34
-    sprite('na404_03', 4)	# 35-38
-    sprite('na404_04', 14)	# 39-52
-    sprite('na404_05', 6)	# 53-58
-    sprite('na404_06', 5)	# 59-63
-    sprite('na401_03', 3)	# 64-66
+    sprite('na404_02', 6)	# 32826-32831
+    sprite('na404_03', 6)	# 32832-32837
+    sprite('na404_04', 14)	# 32838-32851
+    sprite('na404_05', 7)	# 32852-32858
+    sprite('na404_06', 6)	# 32859-32864
+    sprite('na401_03', 3)	# 32865-32867
     enterState('KamaeCancel')
     loopRest()
 
@@ -2890,6 +2920,7 @@ def NmlAtkAIR5A():
 
         def upon_STATE_END():
             Unknown23029(11, 303, 0)
+        Unknown4009(11)
 sprite('na254_00', 3)	# 1-3
 sprite('na254_01', 3)	# 4-6
 Unknown23029(11, 301, 0)
@@ -2944,6 +2975,7 @@ def NmlAtkAIR5B():
 
         def upon_STATE_END():
             Unknown23029(11, 303, 0)
+        Unknown4009(11)
 sprite('na254_00', 3)	# 1-3
 sprite('na254_01', 3)	# 4-6
 Unknown23029(11, 305, 0)
@@ -4211,7 +4243,7 @@ def AirBanditRevolverEX():
         Unknown17003()
         Unknown17003()
         AttackLevel_(4)
-        Damage(1100)
+        Damage(1300)
         AttackP1(80)
         Unknown11092(1)
         GroundedHitstunAnimation(10)
@@ -4258,26 +4290,24 @@ def AirBanditRevolverEX():
     SLOT_61 = 0
     RefreshMultihit()
     AirPushbackX(29000)
-    AirPushbackY(-90000)
+    AirPushbackY(-71000)
     YImpluseBeforeWallbounce(0)
     Unknown9190(1)
-    Unknown9118(20)
+    Unknown9118(50)
     AirHitstunAfterWallbounce(60)
     Unknown11001(0, 0, 5)
     Unknown11058('0100000000000000000000000000000000000000')
     HitOverhead(2)
     SFX_3('hit_l_slow')
-    sprite('na407_11', 3)	# 33-35
+    sprite('na407_11', 32767)	# 33-32799
     Recovery()
-    sprite('na402_05', 32767)	# 36-32802
     label(9)
-    sprite('na402_06', 4)	# 32803-32806
+    sprite('na211_00', 2)	# 32800-32801
     Unknown8000(100, 1, 1)
     Recovery()
     Unknown1084(1)
-    Unknown2006()
-    sprite('na401_03', 32767)	# 32807-65573
-    enterState('KamaeBase')
+    Unknown18009(1)
+    sprite('na211_01', 11)	# 32802-32812
 
 @State
 def WalkingShotEX():
@@ -4609,12 +4639,7 @@ def CmnActInvincibleAttack():
     def upon_IMMEDIATE():
         Unknown17024('')
         Unknown11063(1)
-        loopRelated(17, 1)
-
-        def upon_17():
-            clearUponHandler(17)
-            Unknown23029(11, 403, 0)
-    sprite('na400_00', 3)	# 1-3
+    sprite('na400_00', 2)	# 1-2
     GFX_0('BarrierJizoku', 0)
     GuardPoint_(1)
     Unknown22031(4, 14)
@@ -4627,6 +4652,8 @@ def CmnActInvincibleAttack():
             sendToLabel(1)
         else:
             sendToLabel(0)
+    sprite('na400_00', 1)	# 3-3
+    Unknown23029(11, 403, 0)
     sprite('na400_01', 3)	# 4-6
     sprite('na400_02', 3)	# 7-9
     sprite('na400_00', 3)	# 10-12
@@ -4679,7 +4706,7 @@ def CmnActInvincibleAttack():
     SFX_3('na002')
     Unknown7007('706e613230325f30000000000000000064000000706e613230325f31000000000000000064000000706e613230325f320000000000000000640000000000000000000000000000000000000000000000')
     sprite('na400_04', 4)	# 112-115
-    setInvincible(0)
+    Unknown22019('0000000000000000000000000100000000000000')
     sprite('na400_05', 4)	# 116-119
     sprite('na400_06', 4)	# 120-123
     sprite('na400_04', 4)	# 124-127

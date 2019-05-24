@@ -236,6 +236,7 @@ def PMI_Persona5A4th():
             def upon_44():
                 sendToLabel(2)
             sendToLabel(1)
+        Unknown23059(1)
     sprite('ar204_00', 3)	# 1-3
     sprite('ar204_01', 1)	# 4-4
     physicsXImpulse(80000)
@@ -392,6 +393,7 @@ def PMI_Persona4PS():
         Unknown11042(1)
         Unknown11058('0000000001000000000000000000000000000000')
         callSubroutine('PMI_CheckWarp')
+        Unknown23059(1)
     sprite('ar254_00', 4)	# 1-4
     sprite('ar254_01', 3)	# 5-7
     GFX_0('aref_254', 100)
@@ -498,6 +500,7 @@ def __2BBhikiyose():
 
         def upon_ON_HIT_OR_BLOCK():
             Unknown23029(3, 2331, 0)
+        Unknown23059(1)
     sprite('dmy_atk01', 1)	# 1-1
     RefreshMultihit()
     sprite('null', 1)	# 2-2
@@ -560,6 +563,7 @@ def PMI_PersonaAir5C():
 
         def upon_77():
             SLOT_51 = 1
+        Unknown23059(1)
     sprite('ar255_00', 12)	# 1-12
     sprite('ar255_01', 4)	# 13-16
     sprite('ar255_02', 2)	# 17-18
@@ -1333,6 +1337,7 @@ def MarinKarin_shot():
         Unknown11050('080000007374617475735f636861726d5f64616d61676500000000000000000000000000')
         Unknown23089('0100000001000000010000000100000001000000000000000100000001000000')
         sendToLabelUpon(54, 1)
+        Unknown11106(0)
         Unknown2053(1)
         Unknown23027()
         Unknown4061(3)
@@ -1515,6 +1520,7 @@ def Tentarafu_dmy():
         Unknown4061(3)
         Unknown3001(150)
         Unknown3038(1)
+        Unknown2073(1)
 
         def upon_43():
             if (SLOT_48 == 4032):
@@ -2008,9 +2014,9 @@ def aref_431_colC():
     def upon_IMMEDIATE():
         Unknown2011()
         AttackLevel_(5)
-        Damage(5000)
+        Damage(5500)
         AttackP2(60)
-        Unknown11091(30)
+        Unknown11091(33)
         AirPushbackX(18000)
         AirPushbackY(60000)
         AirUntechableTime(90)
@@ -2110,9 +2116,9 @@ def aref_431_colCD():
     def upon_IMMEDIATE():
         Unknown2011()
         AttackLevel_(5)
-        Damage(6000)
+        Damage(6500)
         AttackP2(60)
-        Unknown11091(30)
+        Unknown11091(31)
         AirPushbackX(18000)
         AirPushbackY(60000)
         AirUntechableTime(90)

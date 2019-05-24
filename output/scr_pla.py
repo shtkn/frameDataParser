@@ -493,22 +493,28 @@ def OnFrameStep():
                 else:
                     SLOT_31 = (SLOT_31 + 10)
             if SLOT_90:
+                Unknown23003(1, 0, 0, 1, 999, 0, -1, -1)
                 Unknown58('TRI_PLAAxeLv', 2, 67)
                 if (SLOT_67 == 1):
+                    SLOT_32 = (SLOT_32 + 999)
                     SLOT_5 = 0
                     SLOT_31 = 0
                 if (SLOT_67 == 2):
+                    SLOT_32 = (SLOT_32 + 999)
                     SLOT_5 = 1
                     SLOT_31 = 5000
                 if (SLOT_67 == 3):
+                    SLOT_32 = (SLOT_32 + 999)
                     SLOT_5 = 2
                     SLOT_31 = 10000
                 if (SLOT_67 == 4):
+                    SLOT_32 = (SLOT_32 + 999)
                     SLOT_5 = 3
                     SLOT_31 = 15000
                 if (SLOT_67 == 5):
+                    SLOT_32 = (SLOT_32 + 999)
                     SLOT_5 = 4
-                    SLOT_31 = 20000
+                    SLOT_31 = 25000
             if (SLOT_31 >= 20000):
                 SLOT_5 = 4
                 Unknown23006(0, 16)
@@ -734,9 +740,10 @@ def RocketPunch_Atk():
 
 @Subroutine
 def RocketPunch_Bunki():
+    Unknown11084(1)
 
-    def upon_ON_HIT_OR_BLOCK():
-        clearUponHandler(10)
+    def upon_11():
+        clearUponHandler(11)
         Unknown23086(1)
         if (not Unknown23148('RocketPunchA')):
             HitOrBlockCancel('RokepanDash6')
@@ -1894,7 +1901,7 @@ def CmnActAirCrossChangeEnd():
     sprite('la020_07', 4)	# 16-19
     sprite('la020_08', 4)	# 20-23
     loopRest()
-    gotoLabel(2)
+    gotoLabel(0)
 
 @State
 def CmnActTagBattleWait():
@@ -2274,21 +2281,21 @@ def CmnActChangePartnerAssistAtk_B():
             Unknown2034(1)
             Unknown2053(1)
         SLOT_58 = 1
-    sprite('la202_00', 3)	# 1-3
-    sprite('la202_01', 4)	# 4-7
-    sprite('la202_02', 4)	# 8-11
-    sprite('la202_03', 3)	# 12-14
+    sprite('la202_00', 2)	# 1-2
+    sprite('la202_01', 3)	# 3-5
+    sprite('la202_02', 3)	# 6-8
+    sprite('la202_03', 2)	# 9-10
     Unknown7007('706c613331325f30000000000000000064000000706c613331325f3100000000000000006400000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
-    sprite('la202_04', 3)	# 15-17	 **attackbox here**
+    sprite('la202_04', 3)	# 11-13	 **attackbox here**
     SFX_3('slash_blade_slow')
     RefreshMultihit()
-    sprite('la202_05', 3)	# 18-20	 **attackbox here**
+    sprite('la202_05', 3)	# 14-16	 **attackbox here**
     Unknown23027()
     Recovery()
-    sprite('la202_06', 4)	# 21-24
-    sprite('la202_07', 8)	# 25-32
-    sprite('la202_08', 6)	# 33-38
-    sprite('la202_09', 6)	# 39-44
+    sprite('la202_06', 4)	# 17-20
+    sprite('la202_07', 8)	# 21-28
+    sprite('la202_08', 6)	# 29-34
+    sprite('la202_09', 6)	# 35-40
 
 @State
 def CmnActChangePartnerAssistAtk_C():
@@ -2942,16 +2949,14 @@ def NmlAtk5B():
     sprite('la204_05', 4)	# 45-48
     Recovery()
     sprite('la204_03', 4)	# 49-52
+    sprite('la204_04', 4)	# 53-56
+    sprite('la204_05', 4)	# 57-60
     Unknown14074('NmlAtk5A')
     Unknown14074('NmlAtk5B2nd')
     Unknown14074('NmlAtk2B')
     Unknown14074('NmlAtk2C')
     Unknown14074('CmnActCrushAttack')
-    sprite('la204_04', 4)	# 53-56
-    sprite('la204_05', 4)	# 57-60
-    sprite('la204_03', 4)	# 61-64
-    sprite('la204_04', 4)	# 65-68
-    sprite('la204_06', 4)	# 69-72
+    sprite('la204_06', 4)	# 61-64
 
 @State
 def NmlAtk5B2nd():
@@ -2996,10 +3001,6 @@ def NmlAtk5B2nd():
     Recovery()
     sprite('la205_05', 4)	# 68-71
     sprite('la205_03', 4)	# 72-75
-    Unknown14074('NmlAtk5A')
-    Unknown14074('NmlAtk2B')
-    Unknown14074('NmlAtk2C')
-    Unknown14074('CmnActCrushAttack')
     sprite('la205_04', 4)	# 76-79
     sprite('la205_05', 4)	# 80-83
     sprite('la205_03', 4)	# 84-87
@@ -3804,7 +3805,7 @@ def NmlAtkBackThrowExe():
     Unknown5001('0200000001000000010000000000000000000000')
     sprite('la311_02', 6)	# 13-18
     Unknown5000(29, 0)
-    Unknown5001('0100000001000000010000000000000000000000')
+    Unknown5001('0100000001000000010000000000000008000000')
     sprite('la311_03', 3)	# 19-21
     Unknown2018(1, 80)
     sprite('la311_04', 3)	# 22-24
@@ -3845,7 +3846,6 @@ def CmnActInvincibleAttack():
         Unknown9016(1)
         callSubroutine('AxeLv_Powerup')
         callSubroutine('AxeLvExp_Special')
-        setInvincible(1)
         GuardPoint_(1)
     sprite('la400_00', 3)	# 1-3
     sprite('la400_01', 3)	# 4-6
@@ -4128,6 +4128,8 @@ def RocketPunchAB():
     sprite('la401_01', 1)	# 4-4
     Unknown23125('')
     Unknown2058(-5000)
+    setInvincible(1)
+    Unknown22019('0000000000000000000000000100000000000000')
     sprite('la401_02', 2)	# 5-6
     sprite('la401_03', 2)	# 7-8
     sprite('la401_04', 2)	# 9-10
@@ -4236,6 +4238,7 @@ def RocketPunchAB():
     sprite('la401_17', 2)	# 77-78
     GFX_1('laef_401_attachment', 4)
     Unknown7015()
+    setInvincible(0)
     sprite('la401_18', 2)	# 79-80
     sprite('la401_19', 2)	# 81-82
     sprite('la401_04', 2)	# 83-84
@@ -4285,6 +4288,8 @@ def RokepanDash():
             Unknown3075('00000000000000000000000010000000')
             Unknown3076(1010)
             Unknown3077(900)
+            setInvincible(1)
+            Unknown22019('0000000000000000000000000100000000000000')
     (SLOT_62 == 6)
     if SLOT_0:
         _gotolabel(6)
@@ -4393,6 +4398,7 @@ def RokepanDash():
     Unknown1045(40000)
     Unknown8010(100, 1, 1)
     clearUponHandler(3)
+    setInvincible(0)
     sprite('la402_05', 2)	# 59-60
     sprite('la402_06', 2)	# 61-62
     Unknown8010(100, 1, 1)
@@ -4774,20 +4780,20 @@ def AxeAttackAB():
     GFX_0('laef404burner3_add', 6)
     SFX_3('la001')
     SFX_3('la003')
-    sprite('la404_12', 8)	# 28-35	 **attackbox here**
+    sprite('la404_12', 3)	# 28-30	 **attackbox here**
     Unknown23027()
     Recovery()
-    sprite('la404_13', 4)	# 36-39
+    sprite('la404_13', 4)	# 31-34
     Unknown26('laef404burner_add')
     Unknown26('laef404burner2_add')
     Unknown26('laef404burner3_add')
     Unknown26('laef404burner')
     Unknown26('laef404burner2')
     Unknown26('laef404burner3')
-    sprite('la404_14', 4)	# 40-43
-    sprite('la404_15', 4)	# 44-47
-    sprite('la404_16', 3)	# 48-50
-    sprite('la404_17', 3)	# 51-53
+    sprite('la404_14', 4)	# 35-38
+    sprite('la404_15', 4)	# 39-42
+    sprite('la404_16', 3)	# 43-45
+    sprite('la404_17', 3)	# 46-48
 
 @State
 def AxeAttackAirA():
@@ -5050,10 +5056,10 @@ def AxeAttackAirAB():
     sprite('la405_14', 3)	# 39-41
     sprite('la405_15', 3)	# 42-44
     sprite('la405_16', 3)	# 45-47
-    sprite('la405_17', 4)	# 48-51
-    sprite('la405_18', 4)	# 52-55
-    sprite('la405_19', 4)	# 56-59
-    sprite('la405_20', 4)	# 60-63
+    sprite('la405_17', 3)	# 48-50
+    sprite('la405_18', 3)	# 51-53
+    sprite('la405_19', 3)	# 54-56
+    sprite('la405_20', 3)	# 57-59
 
 @State
 def UltimateTackle():

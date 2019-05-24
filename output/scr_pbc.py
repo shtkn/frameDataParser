@@ -1622,7 +1622,7 @@ def CmnActAirCrossChangeEnd():
     sprite('bc020_07', 4)	# 16-19
     sprite('bc020_08', 4)	# 20-23
     loopRest()
-    gotoLabel(2)
+    gotoLabel(0)
 
 @State
 def NmlAtk5A():
@@ -2422,6 +2422,7 @@ def NmlAtkAIR5A2nd():
         AttackLevel_(3)
         Unknown9016(1)
         HitOrBlockJumpCancel(1)
+        AirUntechableTime(20)
         HitOrBlockCancel('NmlAtkAIR5B')
         HitOrBlockCancel('NmlAtkAIR5C')
     sprite('bc252_00', 2)	# 1-2
@@ -2445,12 +2446,14 @@ def NmlAtkAIR5B():
         AttackDefaults_AirNormal()
         HitOrBlockJumpCancel(1)
         HitOrBlockCancel('NmlAtkAIR5C')
+        Unknown4009(11)
 
         def upon_LANDING():
             Unknown23029(11, 261, 0)
 
         def upon_STATE_END():
             Unknown23029(11, 262, 0)
+            Unknown4009(0)
     sprite('bc254_00', 3)	# 1-3
     sprite('bc254_01', 2)	# 4-5
     sprite('bc254_01', 2)	# 6-7
@@ -2476,15 +2479,17 @@ def NmlAtkAIR5C():
         AttackDefaults_StandingNormal()
         AttackLevel_(5)
         AttackP1(80)
+        AttackP2(80)
         GroundedHitstunAnimation(1)
         AirPushbackX(55000)
         AirPushbackY(-40000)
         AirUntechableTime(36)
-        Unknown9202(1)
+        Unknown9202(3)
         Unknown9016(1)
         Unknown11058('0100000000000000000000000000000000000000')
         HitOverhead(2)
         JumpCancel_(0)
+        Unknown14082(1)
         callSubroutine('MidAssault_koutyoku')
     sprite('bc401_01', 3)	# 1-3
     sprite('bc401_02', 3)	# 4-6
@@ -2497,30 +2502,30 @@ def NmlAtkAIR5C():
     Unknown23087(80000)
     sprite('bc401_03', 2)	# 7-8
     sprite('bc401_04', 2)	# 9-10
-    sprite('bc401_05', 2)	# 11-12
-    sprite('bc401_06', 2)	# 13-14
+    sprite('bc401_05', 3)	# 11-13
+    sprite('bc401_06', 2)	# 14-15
     Unknown7009(5)
-    sprite('bc401_09', 2)	# 15-16	 **attackbox here**
+    sprite('bc401_09', 2)	# 16-17	 **attackbox here**
     SFX_3('airdash_m')
     SFX_3('slash_pole_middle')
     physicsXImpulse(33750)
     physicsYImpulse(-29250)
     setGravity(0)
-    sprite('bc401_10', 2)	# 17-18	 **attackbox here**
+    sprite('bc401_10', 2)	# 18-19	 **attackbox here**
     GFX_0('AirMidAssault', 0)
     Unknown38(4, 1)
     Unknown4048(-45000)
     Unknown4045('626365665f6d696461737361756c745f6164645f30330000000000000000000000000000')
-    sprite('bc401_11', 3)	# 19-21	 **attackbox here**
+    sprite('bc401_11', 3)	# 20-22	 **attackbox here**
     GFX_0('AirMidAssault', 0)
     Unknown38(4, 1)
     label(0)
-    sprite('bc401_10', 3)	# 22-24	 **attackbox here**
+    sprite('bc401_10', 3)	# 23-25	 **attackbox here**
     GFX_0('AirMidAssault', 0)
     Unknown38(4, 1)
     Unknown4048(-45000)
     Unknown4045('626365665f6d696461737361756c745f6164645f30330000000000000000000000000000')
-    sprite('bc401_11', 3)	# 25-27	 **attackbox here**
+    sprite('bc401_11', 3)	# 26-28	 **attackbox here**
     GFX_0('AirMidAssault', 0)
     Unknown38(4, 1)
     Unknown1015(22500)
@@ -2528,7 +2533,7 @@ def NmlAtkAIR5C():
     loopRest()
     gotoLabel(0)
     label(1)
-    sprite('bc401_12', 4)	# 28-31
+    sprite('bc401_12', 6)	# 29-34
     Unknown8000(100, 1, 1)
     Unknown18009(1)
     setGravity(0)
@@ -2537,15 +2542,15 @@ def NmlAtkAIR5C():
     Unknown13(4)
     Recovery()
     Unknown23087(-1)
-    sprite('bc401_13', 4)	# 32-35
+    sprite('bc401_13', 8)	# 35-42
     Unknown1019(30)
-    sprite('bc401_14', 5)	# 36-40
+    sprite('bc401_14', 5)	# 43-47
     Unknown1019(0)
-    sprite('bc401_15', 5)	# 41-45
+    sprite('bc401_15', 9)	# 48-56
     loopRest()
     ExitState()
     label(2)
-    sprite('bc401_12', 3)	# 46-48
+    sprite('bc401_12', 4)	# 57-60
     Unknown8000(100, 1, 1)
     Unknown18009(1)
     setGravity(0)
@@ -2554,21 +2559,21 @@ def NmlAtkAIR5C():
     Unknown13(4)
     Recovery()
     Unknown23087(-1)
-    sprite('bc401_12', 3)	# 49-51
+    sprite('bc401_12', 4)	# 61-64
     Unknown1019(60)
-    sprite('bc401_12', 3)	# 52-54
+    sprite('bc401_12', 4)	# 65-68
     Unknown1019(30)
-    sprite('bc401_13', 3)	# 55-57
+    sprite('bc401_13', 4)	# 69-72
     Unknown1019(20)
-    sprite('bc401_13', 3)	# 58-60
+    sprite('bc401_13', 4)	# 73-76
     Unknown1019(0)
-    sprite('bc401_13', 3)	# 61-63
-    sprite('bc401_14', 5)	# 64-68
-    sprite('bc401_15', 5)	# 69-73
+    sprite('bc401_13', 4)	# 77-80
+    sprite('bc401_14', 5)	# 81-85
+    sprite('bc401_15', 9)	# 86-94
     loopRest()
     ExitState()
     label(3)
-    sprite('bc401_12', 4)	# 74-77
+    sprite('bc401_12', 5)	# 95-99
     Unknown8000(100, 1, 1)
     Unknown18009(1)
     setGravity(0)
@@ -2577,17 +2582,17 @@ def NmlAtkAIR5C():
     Unknown13(4)
     Recovery()
     Unknown23087(-1)
-    sprite('bc401_12', 4)	# 78-81
+    sprite('bc401_12', 5)	# 100-104
     Unknown1019(60)
-    sprite('bc401_12', 4)	# 82-85
+    sprite('bc401_12', 5)	# 105-109
     Unknown1019(30)
-    sprite('bc401_13', 4)	# 86-89
+    sprite('bc401_13', 5)	# 110-114
     Unknown1019(20)
-    sprite('bc401_13', 4)	# 90-93
+    sprite('bc401_13', 5)	# 115-119
     Unknown1019(0)
-    sprite('bc401_13', 4)	# 94-97
-    sprite('bc401_14', 7)	# 98-104
-    sprite('bc401_15', 7)	# 105-111
+    sprite('bc401_13', 5)	# 120-124
+    sprite('bc401_14', 7)	# 125-131
+    sprite('bc401_15', 7)	# 132-138
 
 @State
 def NmlAtkThrow():
@@ -3161,7 +3166,7 @@ def ShotA():
     sprite('bc403_03', 4)	# 36-39
     Recovery()
     sprite('bc403_04', 4)	# 40-43
-    sprite('bc403_00', 4)	# 44-47
+    sprite('bc403_00', 7)	# 44-50
 
 @State
 def ShotB():
@@ -3341,6 +3346,9 @@ def UltimateLaser():
     Unknown1084(1)
     if SLOT_36:
         GFX_0('UltimateLaserAsiba', 100)
+        SLOT_5 = 1
+    else:
+        SLOT_5 = 0
     sprite('bc431_01', 4)	# 5-8
     tag_voice(1, 'pbc252_0', 'pbc252_1', '', '')
     Unknown2036(33, -1, 0)
@@ -3458,12 +3466,29 @@ def UltimateLaser():
     ExitState()
     label(99)
     sprite('bc431_09', 6)	# 202-207
+
+    def upon_LANDING():
+        sendToLabel(101)
     sprite('bc431_10', 6)	# 208-213
     sprite('bc010_00', 3)	# 214-216
     sprite('bc020_00', 3)	# 217-219
     physicsYImpulse(10000)
     sprite('bc020_01', 3)	# 220-222
     YAccel(20)
+    sprite('bc020_02', 3)	# 223-225
+    setGravity(1350)
+    sprite('bc020_03', 3)	# 226-228
+    sprite('bc020_04', 3)	# 229-231
+    sprite('bc020_05', 3)	# 232-234
+    sprite('bc020_06', 3)	# 235-237
+    label(100)
+    sprite('bc020_07', 4)	# 238-241
+    sprite('bc020_08', 4)	# 242-245
+    loopRest()
+    gotoLabel(100)
+    label(101)
+    sprite('bc010_00', 5)	# 246-250
+    Unknown8000(100, 1, 1)
 
 @State
 def UltimateLaserOD():
@@ -3476,6 +3501,9 @@ def UltimateLaserOD():
     Unknown1084(1)
     if SLOT_36:
         GFX_0('UltimateLaserAsibaOD', 100)
+        SLOT_5 = 1
+    else:
+        SLOT_5 = 0
     sprite('bc431_01', 4)	# 5-8
     tag_voice(1, 'pbc252_0', 'pbc252_1', '', '')
     Unknown2036(33, -1, 0)
@@ -3593,12 +3621,29 @@ def UltimateLaserOD():
     ExitState()
     label(99)
     sprite('bc431_09', 6)	# 202-207
+
+    def upon_LANDING():
+        sendToLabel(101)
     sprite('bc431_10', 6)	# 208-213
     sprite('bc010_00', 3)	# 214-216
     sprite('bc020_00', 3)	# 217-219
     physicsYImpulse(10000)
     sprite('bc020_01', 3)	# 220-222
     YAccel(20)
+    sprite('bc020_02', 3)	# 223-225
+    setGravity(1350)
+    sprite('bc020_03', 3)	# 226-228
+    sprite('bc020_04', 3)	# 229-231
+    sprite('bc020_05', 3)	# 232-234
+    sprite('bc020_06', 3)	# 235-237
+    label(100)
+    sprite('bc020_07', 4)	# 238-241
+    sprite('bc020_08', 4)	# 242-245
+    loopRest()
+    gotoLabel(100)
+    label(101)
+    sprite('bc010_00', 5)	# 246-250
+    Unknown8000(100, 1, 1)
 
 @State
 def UltimateBlade():
@@ -3621,6 +3666,7 @@ def UltimateBlade():
         Unknown11068(1)
         Unknown11062(1)
         Unknown2004(1, 0)
+        Unknown2073(1)
         setInvincible(1)
 
         def upon_78():
@@ -3707,7 +3753,8 @@ def UltimateBlade():
     sprite('bc430_10', 4)	# 89-92	 **attackbox here**
     sprite('bc430_11', 4)	# 93-96
     Unknown23027()
-    setInvincible(0)
+    if (not SLOT_51):
+        setInvincible(0)
     loopRest()
     Unknown19(2, 2, 51)
     sprite('bc430_12', 4)	# 97-100
@@ -3768,6 +3815,7 @@ def UltimateBladeOD():
         Unknown11064(1)
         Unknown11068(1)
         Unknown11062(1)
+        Unknown2073(1)
         Unknown2004(1, 0)
         setInvincible(1)
 
@@ -3856,7 +3904,8 @@ def UltimateBladeOD():
     sprite('bc430_10', 4)	# 89-92	 **attackbox here**
     sprite('bc430_11', 4)	# 93-96
     Unknown23027()
-    setInvincible(0)
+    if (not SLOT_51):
+        setInvincible(0)
     loopRest()
     Unknown19(2, 2, 51)
     sprite('bc430_13', 4)	# 97-100
@@ -4186,12 +4235,6 @@ def CmnActChangePartnerAssistAtk_A():
         Unknown30039(24)
         Unknown30040(1)
         Unknown2006()
-
-        def upon_43():
-            if (SLOT_48 == 201):
-                clearUponHandler(17)
-                clearUponHandler(43)
-                sendToLabel(1)
         loopRelated(17, 180)
 
         def upon_17():
@@ -4203,24 +4246,25 @@ def CmnActChangePartnerAssistAtk_A():
             Unknown2017(1)
             Unknown2034(1)
             Unknown2053(1)
-    sprite('bc205_00', 2)	# 1-2
-    sprite('bc205_01', 4)	# 3-6
-    sprite('bc205_02', 4)	# 7-10
-    sprite('bc205_03', 4)	# 11-14
-    Unknown7007('7062633132315f300000000000000000640000007062633132315f310000000000000000640000007062633132315f320000000000000000640000000000000000000000000000000000000000000000')
+    sprite('bc403_00', 3)	# 1-3
+    Unknown1084(1)
+    sprite('bc403_01', 4)	# 4-7
     Unknown23029(11, 200, 0)
+    Unknown7006('pbc207_0', 100, 845374064, 828323632, 0, 0, 100, 845374064, 845100848, 0, 0, 100, 0, 0, 0, 0, 0)
+    sprite('bc403_02', 4)	# 8-11
     GFX_1('persona_enter_ply', 0)
-    label(0)
-    sprite('bc205_04', 4)	# 15-18
-    sprite('bc205_05', 4)	# 19-22
-    sprite('bc205_06', 4)	# 23-26
-    loopRest()
-    gotoLabel(0)
-    label(1)
-    sprite('bc205_04', 4)	# 27-30
-    sprite('bc205_05', 4)	# 31-34
-    sprite('bc205_06', 4)	# 35-38
-    sprite('bc205_00', 4)	# 39-42
+    sprite('bc403_03', 4)	# 12-15
+    sprite('bc403_04', 4)	# 16-19
+    sprite('bc403_05', 4)	# 20-23
+    sprite('bc403_03', 4)	# 24-27
+    sprite('bc403_04', 4)	# 28-31
+    sprite('bc403_05', 4)	# 32-35
+    sprite('bc403_03', 4)	# 36-39
+    sprite('bc403_04', 4)	# 40-43
+    sprite('bc403_05', 4)	# 44-47
+    Recovery()
+    sprite('bc403_03', 4)	# 48-51
+    sprite('bc403_00', 4)	# 52-55
 
 @State
 def CmnActChangePartnerAssistAtk_B():
@@ -4451,6 +4495,7 @@ def UltimateBladeDDD():
         Unknown9154(40)
         Unknown9310(1)
         Unknown30063(1)
+        Unknown2073(1)
         setInvincible(1)
 
         def upon_78():
@@ -4526,7 +4571,8 @@ def UltimateBladeDDD():
     sprite('bc430_10', 4)	# 80-83	 **attackbox here**
     sprite('bc430_11', 4)	# 84-87
     Unknown23027()
-    setInvincible(0)
+    if (not SLOT_51):
+        setInvincible(0)
     loopRest()
     Unknown19(2, 2, 51)
     sprite('bc430_12', 4)	# 88-91
@@ -4594,6 +4640,7 @@ def UltimateBladeDDDOD():
         Unknown9154(40)
         Unknown9310(1)
         Unknown30063(1)
+        Unknown2073(1)
         Unknown2004(1, 0)
         setInvincible(1)
 
@@ -4672,7 +4719,8 @@ def UltimateBladeDDDOD():
     sprite('bc430_10', 4)	# 80-83	 **attackbox here**
     sprite('bc430_11', 4)	# 84-87
     Unknown23027()
-    setInvincible(0)
+    if (not SLOT_51):
+        setInvincible(0)
     loopRest()
     Unknown19(2, 2, 51)
     sprite('bc430_13', 4)	# 88-91

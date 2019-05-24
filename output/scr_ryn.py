@@ -2495,14 +2495,14 @@ def NmlAtk5B():
     GFX_0('rynef201', -1)
     GFX_0('AddAtkFire', 0)
     Unknown23029(1, 9903, 0)
-    sprite('ryn201_04', 5)	# 13-17
+    sprite('ryn201_04', 8)	# 13-20
     setInvincible(0)
     Unknown1019(0)
     Recovery()
     Unknown2063()
-    sprite('ryn201_05', 5)	# 18-22
-    sprite('ryn201_06', 5)	# 23-27
-    sprite('ryn201_07', 5)	# 28-32
+    sprite('ryn201_05', 4)	# 21-24
+    sprite('ryn201_06', 4)	# 25-28
+    sprite('ryn201_07', 4)	# 29-32
     sprite('ryn201_08', 5)	# 33-37
 
 @State
@@ -2626,7 +2626,7 @@ def NmlAtk2B():
     Unknown7009(2)
     GFX_1('rynef320_smoke', -1)
     sprite('ryn402_10', 8)	# 9-16	 **attackbox here**
-    physicsXImpulse(5000)
+    physicsXImpulse(7000)
     physicsYImpulse(25000)
     Unknown1043()
     Unknown18009(0)
@@ -2636,6 +2636,7 @@ def NmlAtk2B():
     setInvincible(0)
     Recovery()
     Unknown2063()
+    Unknown1019(60)
     sprite('ryn431_30', 4)	# 21-24
     label(0)
     sprite('ryn320_10', 3)	# 25-27
@@ -2707,13 +2708,13 @@ def NmlAtkAIR5A():
     Unknown7009(4)
     SFX_0('004_swing_grap_1_1')
     sprite('ryn251_03', 5)	# 11-15	 **attackbox here**
-    sprite('ryn251_04', 6)	# 16-21
+    sprite('ryn251_04', 3)	# 16-18
     Recovery()
     Unknown2063()
-    sprite('ryn251_05', 4)	# 22-25
-    sprite('ryn251_06', 4)	# 26-29
-    sprite('ryn251_07', 4)	# 30-33
-    sprite('ryn251_08', 4)	# 34-37
+    sprite('ryn251_05', 3)	# 19-21
+    sprite('ryn251_06', 3)	# 22-24
+    sprite('ryn251_07', 3)	# 25-27
+    sprite('ryn251_08', 3)	# 28-30
 
 @State
 def NmlAtkAIR5AA():
@@ -2763,10 +2764,10 @@ def NmlAtkAIR5B():
     sprite('ryn252_03', 3)	# 10-12
     Unknown7009(4)
     SFX_0('004_swing_grap_1_1')
-    sprite('ryn252_04', 3)	# 13-15	 **attackbox here**
+    sprite('ryn252_04', 5)	# 13-17	 **attackbox here**
     GFX_0('AddAtkFire', 0)
     Unknown23029(1, 9908, 0)
-    sprite('ryn252_05', 5)	# 16-20
+    sprite('ryn252_05', 3)	# 18-20
     Recovery()
     Unknown2063()
     sprite('ryn252_06', 5)	# 21-25
@@ -2782,10 +2783,11 @@ def NmlAtkAIR5C():
         AttackDefaults_AirNormal()
         AttackLevel_(5)
         AttackP1(80)
+        AttackP2(80)
         GroundedHitstunAnimation(9)
         AirPushbackY(-90000)
         AirUntechableTime(24)
-        Unknown9310(1)
+        Unknown9310(15)
         clearUponHandler(2)
         JumpCancel_(0)
         if SLOT_5:
@@ -2823,6 +2825,7 @@ sprite('ryn203_08', 3)	# 22-24	 **attackbox here**
 Unknown1084(1)
 Unknown8000(100, 1, 1)
 ScreenShake(0, 30000)
+Unknown14082(1)
 Unknown26('rynef203_Fall')
 GFX_0('rynef203_LandParticle', -1)
 
@@ -2837,14 +2840,14 @@ if SLOT_5:
 else:
     Unknown23027()
     Recovery()
-sprite('ryn203_09', 3)	# 25-27
+sprite('ryn203_09', 4)	# 25-28
 Recovery()
-sprite('ryn203_10', 3)	# 28-30
-sprite('ryn203_12', 3)	# 31-33
-sprite('ryn203_13', 3)	# 34-36
-sprite('ryn203_14', 3)	# 37-39
-sprite('ryn203_15', 3)	# 40-42
-sprite('ryn203_16', 3)	# 43-45
+sprite('ryn203_10', 4)	# 29-32
+sprite('ryn203_12', 4)	# 33-36
+sprite('ryn203_13', 4)	# 37-40
+sprite('ryn203_14', 6)	# 41-46
+sprite('ryn203_15', 4)	# 47-50
+sprite('ryn203_16', 4)	# 51-54
 endState()
 
 @State
@@ -3473,13 +3476,7 @@ def CmnActInvincibleAttackAir():
         if SLOT_5:
             Unknown11092(1)
             Unknown9266(1)
-
-        def upon_LANDING():
-            clearUponHandler(2)
-            Unknown1084(1)
-            Unknown8000(100, 1, 1)
-            setInvincible(0)
-            sendToLabel(1)
+        clearUponHandler(2)
         SLOT_4 = 1
     sprite('ryn320_00', 2)	# 1-2
     Unknown1007(50000)
@@ -3495,6 +3492,13 @@ def CmnActInvincibleAttackAir():
     Unknown1043()
     GFX_0('AddAtkFireSpecial', 0)
     Unknown23029(1, 9909, 0)
+
+    def upon_LANDING():
+        clearUponHandler(2)
+        Unknown1084(1)
+        Unknown8000(100, 1, 1)
+        setInvincible(0)
+        sendToLabel(1)
     sprite('ryn320_03', 3)	# 10-12	 **attackbox here**
     if SLOT_5:
         RefreshMultihit()
@@ -3620,14 +3624,14 @@ def AssaultA():
         AirUntechableTime(24)
         Unknown9154(19)
         Unknown11032('400d0300ffffffffffffffffffffffff')
-        HitOrBlockCancel('AddAssaultA')
-        HitOrBlockCancel('AddAssaultB')
-        HitOrBlockCancel('AddAssaultC')
 
         def upon_11():
             clearUponHandler(11)
             sendToLabel(1)
             GFX_0('rynef402_Singal02', -1)
+            Unknown14072('AddAssaultA')
+            Unknown14072('AddAssaultB')
+            Unknown14072('AddAssaultC')
         SLOT_4 = 1
     sprite('ryn402_00', 3)	# 1-3
     sprite('ryn402_01', 3)	# 4-6
@@ -3642,6 +3646,9 @@ def AssaultA():
         Unknown22035(0)
     Unknown22031(15, -1)
     sprite('ryn402_03', 4)	# 11-14
+    Unknown14070('AddAssaultA')
+    Unknown14070('AddAssaultB')
+    Unknown14070('AddAssaultC')
     sprite('ryn402_04', 3)	# 15-17
     physicsXImpulse(100000)
     GFX_0('rynef402', -1)
@@ -3678,6 +3685,9 @@ def AssaultA():
     Unknown1019(50)
     Unknown14077(0)
     sprite('ryn402_23', 4)	# 61-64
+    Unknown14074('AddAssaultA')
+    Unknown14074('AddAssaultB')
+    Unknown14074('AddAssaultC')
     Unknown1019(0)
     sprite('ryn402_24', 4)	# 65-68
 
@@ -3838,8 +3848,8 @@ def AddAssaultC():
         AttackDefaults_StandingSpecial()
         AttackLevel_(3)
         Damage(500)
-        AttackP1(80)
-        AttackP2(75)
+        AttackP1(100)
+        AttackP2(85)
         Unknown11092(1)
         AirUntechableTime(40)
         Hitstop(1)
@@ -3931,11 +3941,11 @@ def AddAssaultC():
     Damage(1500)
     GroundedHitstunAnimation(9)
     Hitstop(12)
-    AirPushbackX(50000)
-    AirPushbackY(15000)
+    AirPushbackX(35000)
+    AirPushbackY(17000)
     Unknown9215()
     Unknown9202(5)
-    Unknown11028(18)
+    Unknown11028(25)
     if SLOT_5:
         Unknown10000(150)
     Unknown1019(50)
@@ -4208,7 +4218,8 @@ def AssaultCExe():
     if SLOT_5:
         Unknown10000(120)
         GroundedHitstunAnimation(9)
-        AirPushbackX(60000)
+        Unknown9202(1)
+        AirPushbackX(50000)
         AirPushbackY(15000)
         Unknown9178(1)
         WallbounceReboundTime(0)
@@ -4337,9 +4348,9 @@ def UltimateAssault():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(5)
-        Damage(5400)
+        Damage(5500)
         Hitstop(20)
-        Unknown11091(25)
+        Unknown11091(32)
         setInvincible(1)
         GroundedHitstunAnimation(9)
         Unknown11056(0)
@@ -4347,7 +4358,7 @@ def UltimateAssault():
         AirPushbackX(60000)
         AirPushbackY(35000)
         if SLOT_5:
-            Unknown10000(110)
+            Unknown10000(119)
             Unknown9266(1)
 
         def upon_11():
@@ -4437,11 +4448,16 @@ def UltimateAssaultSP():
             if SLOT_51:
                 if (SLOT_163 < 300000):
                     Unknown1019(50)
+                    if SLOT_58:
+                        SLOT_58 = 0
+                        Unknown1019(200)
         if SLOT_5:
             Unknown10000(110)
             Unknown9266(1)
         if Unknown23145('AssaultBExe'):
             Unknown2006()
+        if Unknown23145('AssaultCExe'):
+            SLOT_58 = 1
         SLOT_4 = 1
     sprite('ryn430_00', 8)	# 1-8
     tag_voice(1, 'ryn250_0', 'ryn250_1', '', '')
@@ -4457,6 +4473,9 @@ def UltimateAssaultSP():
     SFX_3('rynse_12')
     sprite('ryn430_06', 3)	# 54-56
     physicsXImpulse(40000)
+    if SLOT_58:
+        Unknown1019(120)
+        Unknown2016(250)
     GFX_0('rynef430', -1)
     sprite('ryn430_07', 3)	# 57-59
     Unknown1019(500)
@@ -4536,15 +4555,16 @@ def UltimateAssaultSP():
     RefreshMultihit()
     AttackLevel_(5)
     Unknown11056(0)
-    Damage(2700)
+    Damage(2900)
     Unknown11064(0)
     Hitstop(20)
-    Unknown11091(10)
+    Unknown11091(23)
     Unknown11001(0, 0, 8)
     Unknown11069('')
     Unknown11050('0200000072796e65663433305f4869744100000000000000000000000000000000000000')
     if SLOT_5:
         Unknown10000(110)
+        Unknown11091(20)
 
     def upon_11():
         ScreenShake(150000, 150000)
@@ -4562,9 +4582,9 @@ def UltimateRush():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(3)
-        Damage(1350)
+        Damage(1450)
         Unknown11064(1)
-        Unknown11091(10)
+        Unknown11091(14)
         AirHitstunAnimation(4)
         Unknown11092(1)
         Unknown11032('40420f0000000000ffffffffffffffff')
@@ -4580,14 +4600,18 @@ def UltimateRush():
         Unknown22031(9, 8)
         Unknown11050('0200000072796e65663433315f4869743031000000000000000000000000000000000000')
         if SLOT_5:
-            Unknown10000(110)
+            Unknown10000(120)
+            Unknown11091(13)
             Unknown9266(1)
         Unknown2037(0)
 
         def upon_12():
-            clearUponHandler(12)
             Unknown2037(1)
             Unknown13024(0)
+            setInvincible(0)
+            Unknown22008(60)
+            Unknown22019('0100000001000000010000000100000001000000')
+            GuardPoint_(0)
         SLOT_4 = 1
     sprite('ryn431_00', 8)	# 1-8
     tag_voice(1, 'ryn252_0', 'ryn252_1', '', '')
@@ -4617,7 +4641,8 @@ def UltimateRush():
     GFX_0('AddAtkFireUltimate', 0)
     Unknown23029(1, 9919, 0)
     sprite('ryn431_12', 5)	# 102-106
-    setInvincible(0)
+    if (not SLOT_2):
+        setInvincible(0)
     tag_voice(0, 'ryn253_0', 'ryn253_1', '', '')
     sprite('ryn431_13', 5)	# 107-111
     SFX_0('004_swing_grap_1_1')
@@ -4680,6 +4705,8 @@ def UltimateRush():
     ExitState()
     label(100)
     sprite('ryn431_16', 5)	# 201-205
+    clearUponHandler(12)
+    setInvincible(1)
     Unknown23024(2)
     sprite('ryn431_17', 5)	# 206-210
     sprite('ryn431_18', 5)	# 211-215
@@ -4694,7 +4721,7 @@ def UltimateRush():
     Unknown11050('0200000072796e65665f45584849545f4100000000000000000000000000000000000000')
     RefreshMultihit()
     AttackLevel_(5)
-    Damage(2500)
+    Damage(2700)
     Unknown11064(0)
     Unknown11091(20)
     GroundedHitstunAnimation(9)
@@ -4735,7 +4762,7 @@ def UltimateRushSP():
         AttackLevel_(3)
         Damage(600)
         Unknown11064(1)
-        Unknown11091(10)
+        Unknown11091(15)
         AirHitstunAnimation(4)
         Unknown11092(1)
         Unknown11032('40420f0000000000ffffffffffffffff')
@@ -4756,9 +4783,12 @@ def UltimateRushSP():
         Unknown2037(0)
 
         def upon_12():
-            clearUponHandler(12)
             Unknown2037(1)
             Unknown13024(0)
+            setInvincible(0)
+            Unknown22008(60)
+            Unknown22019('0100000001000000010000000100000001000000')
+            GuardPoint_(0)
         if Unknown23145('AssaultBExe'):
             Unknown2006()
         SLOT_4 = 1
@@ -4790,7 +4820,8 @@ def UltimateRushSP():
     Unknown23029(1, 9919, 0)
     Unknown21012('72796e65663433314f440000000000000000000000000000000000000000000020000000')
     sprite('ryn431_12', 4)	# 99-102
-    setInvincible(0)
+    if (not SLOT_2):
+        setInvincible(0)
     tag_voice(0, 'ryn253_0', 'ryn253_1', '', '')
     sprite('ryn431_13', 4)	# 103-106
     SFX_0('004_swing_grap_1_1')
@@ -4901,6 +4932,8 @@ def UltimateRushSP():
     ExitState()
     label(100)
     sprite('ryn402_07', 5)	# 204-208
+    clearUponHandler(12)
+    setInvincible(1)
     physicsXImpulse(20000)
     sprite('ryn402_08', 5)	# 209-213
     Unknown1019(50)
@@ -4912,6 +4945,7 @@ def UltimateRushSP():
     RefreshMultihit()
     AttackLevel_(4)
     Damage(900)
+    Unknown11091(10)
     Hitstop(12)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
@@ -4969,9 +5003,9 @@ def UltimateRushSP():
     sprite('ryn431_21', 3)	# 276-278	 **attackbox here**
     RefreshMultihit()
     AttackLevel_(5)
-    Damage(3000)
+    Damage(3600)
     Unknown11064(0)
-    Unknown11091(10)
+    Unknown11091(11)
     GroundedHitstunAnimation(9)
     Hitstop(13)
     AirUntechableTime(60)
@@ -4981,6 +5015,7 @@ def UltimateRushSP():
     Unknown9118(55)
     if SLOT_5:
         Unknown10000(110)
+        Unknown11091(9)
     Unknown1019(0)
     Unknown13024(1)
     Unknown11050('0200000072796e65665f45584849545f4100000000000000000000000000000000000000')

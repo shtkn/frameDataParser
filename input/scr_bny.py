@@ -1815,8 +1815,7 @@ def CmnActAirCrossRushEnd():
 def CmnActCrossChangeBegin():
 
     def upon_IMMEDIATE():
-        Unknown21015('44444d756c746953776f72644d61737465720000000000000000000000000000d210000000000000')
-        Unknown21015('44444d756c746953776f72644d61737465724f44000000000000000000000000d210000000000000')
+        pass
     sprite('ny331_00', 2)
     sprite('ny331_01', 2)
     sprite('ny331_02', 2)
@@ -1843,8 +1842,7 @@ def CmnActCrossChangeEnd():
 def CmnActAirCrossChangeBegin():
 
     def upon_IMMEDIATE():
-        Unknown21015('44444d756c746953776f72644d61737465720000000000000000000000000000d210000000000000')
-        Unknown21015('44444d756c746953776f72644d61737465724f44000000000000000000000000d210000000000000')
+        pass
     sprite('ny331_00', 2)
     sprite('ny331_01', 2)
     sprite('ny331_02', 2)
@@ -2194,8 +2192,6 @@ def CmnActChangePartnerQuickOut():
 
     def upon_IMMEDIATE():
         Unknown17013()
-        Unknown21015('44444d756c746953776f72644d61737465720000000000000000000000000000d210000000000000')
-        Unknown21015('44444d756c746953776f72644d61737465724f44000000000000000000000000d210000000000000')
 
         def upon_LANDING():
             clearUponHandler(2)
@@ -2248,6 +2244,7 @@ def CmnActChangePartnerAssistAtk_A():
             Unknown2017(1)
             Unknown2034(1)
             Unknown2053(1)
+            Unknown12046(0)
     sprite('ny400_00', 3)
     sprite('ny400_00', 1)
     GFX_0('SummonDmc', -1)
@@ -2627,6 +2624,8 @@ def NmlAtk5A_2nd():
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
         HitOrBlockJumpCancel(1)
+        HitOrBlockCancel('SpecialDashF')
+        HitOrBlockCancel('SpecialDashB')
 
         def upon_STATE_END():
             Unknown23029(4, 2029, 0)
@@ -3817,7 +3816,7 @@ def NmlAtkAIR5C():
     Unknown23029(1, 4024, 0)
     sprite('ny402_03', 3)
     sprite('ny402_04', 1)
-    Unknown22004(13, 1)
+    Unknown22004(15, 1)
     sprite('ny402_04', 1)
     sprite('ny402_05', 5)
     sprite('ny402_06', 5)
@@ -3826,8 +3825,8 @@ def NmlAtkAIR5C():
     sprite('ny402_09', 5)
     Recovery()
     sprite('ny020_04', 5)
-    setGravity(2500)
-    Unknown1021(-3000)
+    setGravity(2000)
+    Unknown1021(-1000)
     sprite('ny020_05', 5)
     sprite('ny020_06', 5)
     sprite('ny020_07', 5)
@@ -4365,13 +4364,13 @@ def CmnActInvincibleAttack():
         def upon_11():
             Unknown2037(1)
         sendToLabelUpon(2, 1)
-    sprite('ny407_00', 2)
-    sprite('ny407_01', 2)
+    sprite('ny407_00', 3)
+    sprite('ny407_01', 3)
     Unknown7006('bny204_0', 100, 846818914, 828322864, 0, 0, 100, 846818914, 845100080, 0, 0, 100, 0, 0, 0, 0, 0)
-    sprite('ny407_02', 2)
+    sprite('ny407_02', 7)
     SFX_0('006_swing_blade_2')
     SFX_3('nyse_33')
-    sprite('ny407_03', 2)
+    sprite('ny407_03', 3)
     sprite('ny407_04', 3)
     physicsXImpulse(-4500)
     physicsYImpulse(13000)
@@ -4429,7 +4428,6 @@ def CmnActInvincibleAttackAir():
         Unknown11057(600)
         Unknown11058('0100000000000000000000000000000000000000')
         Unknown13024(0)
-        setInvincible(1)
 
         def upon_11():
             Unknown2037(1)

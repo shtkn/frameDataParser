@@ -1972,7 +1972,7 @@ def CmnActChangePartnerAssistAtk_B():
         Unknown11042(1)
         AttackLevel_(4)
         AttackP1(70)
-        AttackP2(75)
+        AttackP2(85)
         AirUntechableTime(60)
         AirPushbackX(5000)
         AirPushbackY(40000)
@@ -2012,7 +2012,7 @@ def CmnActChangePartnerAssistAtk_D():
         AttackLevel_(4)
         Damage(2000)
         AttackP1(70)
-        AttackP2(75)
+        AttackP2(85)
         AirUntechableTime(60)
         GroundedHitstunAnimation(12)
         AirHitstunAnimation(12)
@@ -2471,7 +2471,6 @@ def CmnActChangePartnerBurst():
     Unknown1084(1)
     Unknown8000(100, 1, 1)
     Unknown23027()
-    Recovery()
     sprite('ma403_07', 7)	# 139-145	 **attackbox here**
     sprite('ma403_08', 10)	# 146-155
     sprite('ma403_09', 4)	# 156-159
@@ -3353,7 +3352,7 @@ def NmlAtkAIR5B():
         def upon_3():
             if CheckInput(0xe):
                 SLOT_57 = 1
-            if (SLOT_18 >= 120):
+            if (SLOT_18 >= 60):
                 SLOT_57 = 1
             if (not SLOT_57):
                 if SLOT_56:
@@ -3580,6 +3579,13 @@ def NmlAtkAIR5B():
     sprite('ma253_15', 4)	# 145-148
     sprite('ma253_16', 4)	# 149-152
     sprite('ma253_17', 4)	# 153-156
+    sprite('ma020_05', 3)	# 157-159
+    Recovery()
+    sprite('ma020_06', 3)	# 160-162
+    label(999)
+    sprite('ma020_07', 4)	# 163-166
+    sprite('ma020_08', 4)	# 167-170
+    gotoLabel(999)
 
 @State
 def NmlAtkAIR5B2nd():
@@ -3637,6 +3643,13 @@ def NmlAtkAIR5B2nd():
     sprite('ma253_15', 4)	# 34-37
     sprite('ma253_16', 4)	# 38-41
     sprite('ma253_17', 3)	# 42-44
+    sprite('ma020_05', 3)	# 45-47
+    Recovery()
+    sprite('ma020_06', 3)	# 48-50
+    label(999)
+    sprite('ma020_07', 4)	# 51-54
+    sprite('ma020_08', 4)	# 55-58
+    gotoLabel(999)
 
 @State
 def NmlAtkAIR5C():
@@ -4590,7 +4603,7 @@ def Assault_C_Init():
     GroundedHitstunAnimation(13)
     AirHitstunAnimation(13)
     AirPushbackX(44000)
-    AirPushbackY(12000)
+    AirPushbackY(20000)
     Hitstop(3)
     Unknown9016(1)
     Unknown11091(10)
@@ -5175,12 +5188,12 @@ def Backflip_C():
     Unknown9015(1)
     Unknown11028(22)
     Hitstop(16)
-    sprite('ma403_07', 6)	# 25-30	 **attackbox here**
+    sprite('ma403_07', 4)	# 25-28	 **attackbox here**
     Unknown23027()
     Recovery()
-    sprite('ma403_08', 10)	# 31-40
-    sprite('ma403_09', 4)	# 41-44
-    sprite('ma403_10', 4)	# 45-48
+    sprite('ma403_08', 6)	# 29-34
+    sprite('ma403_09', 3)	# 35-37
+    sprite('ma403_10', 3)	# 38-40
 
 @State
 def CmnActInvincibleAttack():
@@ -5209,7 +5222,7 @@ def CmnActInvincibleAttack():
     sprite('ma401_01', 2)	# 5-6
     sprite('ma401_02', 2)	# 7-8
     sprite('ma401_03', 2)	# 9-10
-    sprite('ma401_13ex', 2)	# 11-12	 **attackbox here**
+    sprite('ma401_13ex_01', 2)	# 11-12
     Unknown14070('AntiAir2nd')
     GFX_0('maef_401C', 0)
     SFX_3('mase_06')
@@ -5262,6 +5275,7 @@ def AntiAir2nd():
 
     def upon_IMMEDIATE():
         Unknown17025('')
+        Unknown30087(0)
         AttackLevel_(4)
         Damage(1000)
         AttackP1(48)
@@ -5431,7 +5445,7 @@ def UltimateJump():
         AttackLevel_(5)
         Damage(1800)
         Unknown11092(1)
-        Unknown11091(15)
+        Unknown11091(16)
         PushbackX(8000)
         Unknown11001(0, -5, -5)
         AirUntechableTime(100)
@@ -5546,10 +5560,10 @@ def UltimateJump():
         SLOT_22 = 1750000
     RefreshMultihit()
     if SLOT_51:
-        Damage(7000)
+        Damage(8700)
         Hitstop(0)
     else:
-        Damage(4500)
+        Damage(5000)
     PushbackX(30400)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
@@ -5789,10 +5803,10 @@ def UltimateJump_OD():
         SLOT_22 = 1750000
     RefreshMultihit()
     if SLOT_51:
-        Damage(7000)
+        Damage(8200)
         Hitstop(0)
     else:
-        Damage(5500)
+        Damage(6000)
     PushbackX(30400)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
@@ -5869,8 +5883,8 @@ def UltimateAssault():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(5)
-        Damage(4500)
-        Unknown11091(33)
+        Damage(5200)
+        Unknown11091(31)
         AirUntechableTime(60)
         AirHitstunAnimation(12)
         GroundedHitstunAnimation(12)
@@ -5975,8 +5989,8 @@ def UltimateAssault_OD():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(5)
-        Damage(5500)
-        Unknown11091(32)
+        Damage(6200)
+        Unknown11091(30)
         AirUntechableTime(60)
         AirHitstunAnimation(12)
         GroundedHitstunAnimation(12)

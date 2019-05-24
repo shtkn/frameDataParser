@@ -1748,32 +1748,40 @@ def CmnActChangePartnerAssistAtk_A():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
     sprite('es400_00', 2)	# 1-2
-    tag_voice(1, 'bes200_0', 'bes200_1', 'bes200_2', '')
     sprite('es400_01', 3)	# 3-5
-    sprite('es400_04', 3)	# 6-8
-    sprite('es400_05', 3)	# 9-11
-    sprite('es400_06', 3)	# 12-14
-    sprite('es400_07', 3)	# 15-17
+    sprite('es400_02', 3)	# 6-8
+    sprite('es400_03', 3)	# 9-11
+    tag_voice(1, 'bes200_0', 'bes200_1', 'bes200_2', '')
+    sprite('es400_01', 3)	# 12-14
+    sprite('es400_04', 3)	# 15-17
+    Unknown14070('ShotA_2nd')
+    Unknown14070('ShotB_2nd')
+    sprite('es400_05', 3)	# 18-20
+    sprite('es400_06', 3)	# 21-23
+    sprite('es400_07', 4)	# 24-27
     GFX_0('esef_400_zanzou', -1)
-    GFX_0('es400_ASS', -1)
-    sprite('es400_08', 3)	# 18-20
-    sprite('es400_13', 2)	# 21-22
-    sprite('es400_14', 4)	# 23-26
-    sprite('es400_15', 4)	# 27-30
-    sprite('es400_16', 2)	# 31-32
-    sprite('es400_17', 3)	# 33-35
+    GFX_0('es400_B', -1)
+    Unknown38(5, 1)
+    Unknown23029(5, 126, 0)
+    sprite('es400_13', 2)	# 28-29
+    sprite('es400_14', 4)	# 30-33
+    sprite('es400_15', 4)	# 34-37
+    sprite('es400_16', 2)	# 38-39
+    sprite('es400_17', 3)	# 40-42
     GFX_0('esef_400_zanzou2', -1)
-    GFX_0('es400_ASS_2ndASS', -1)
-    sprite('es400_18', 4)	# 36-39
+    GFX_0('es400_EX_2ndEX_ASS', -1)
+    Unknown38(6, 1)
+    Unknown2037(1)
+    sprite('es400_18', 4)	# 43-46
     tag_voice(0, 'bes201_0', 'bes201_1', 'bes201_2', '')
-    sprite('es400_19', 4)	# 40-43
-    sprite('es400_20', 4)	# 44-47
-    sprite('es400_18', 3)	# 48-50
-    sprite('es400_21', 3)	# 51-53
-    sprite('es400_22', 3)	# 54-56
+    sprite('es400_19', 4)	# 47-50
+    sprite('es400_20', 4)	# 51-54
+    sprite('es400_18', 3)	# 55-57
+    sprite('es400_21', 3)	# 58-60
+    sprite('es400_22', 3)	# 61-63
     Recovery()
-    sprite('es400_23', 3)	# 57-59
-    sprite('es400_24', 3)	# 60-62
+    sprite('es400_23', 3)	# 64-66
+    sprite('es400_24', 3)	# 67-69
 
 @State
 def CmnActChangePartnerAssistAtk_B():
@@ -2097,7 +2105,7 @@ def ChangePartnerDD_Exe():
     physicsXImpulse(96000)
     Unknown1028(-8000)
     Unknown3004(42)
-    Damage(1300)
+    Damage(1800)
     AttackP2(100)
     Unknown11091(100)
     Hitstop(0)
@@ -2285,7 +2293,7 @@ def ChangePartnerDDOD_Exe():
     sprite('es431_18', 1)	# 128-128	 **attackbox here**
     RefreshMultihit()
     sprite('es431_18', 1)	# 129-129	 **attackbox here**
-    Damage(1320)
+    Damage(1820)
     AttackP2(100)
     Unknown11091(100)
     Unknown11057(1000)
@@ -2425,22 +2433,22 @@ def NmlAtk5A():
         HitOrBlockCancel('NmlAtkBackThrow')
         HitJumpCancel(1)
         Unknown1112('')
-    sprite('es201_00', 1)	# 1-1
-    sprite('es201_01', 2)	# 2-3
-    sprite('es201_02', 2)	# 4-5
+    sprite('es201_00', 2)	# 1-2
+    sprite('es201_01', 2)	# 3-4
+    sprite('es201_02', 2)	# 5-6
     SFX_0('006_swing_blade_0')
-    sprite('es201_03', 2)	# 6-7
+    sprite('es201_03', 2)	# 7-8
     Unknown7009(1)
-    sprite('es201_04', 5)	# 8-12	 **attackbox here**
+    sprite('es201_04', 5)	# 9-13	 **attackbox here**
     GFX_0('esef_201', -1)
-    sprite('es201_05', 3)	# 13-15
+    sprite('es201_05', 4)	# 14-17
     Recovery()
     Unknown2063()
-    sprite('es201_06', 3)	# 16-18
-    sprite('es201_07', 3)	# 19-21
-    sprite('es201_08', 3)	# 22-24
-    sprite('es201_09', 3)	# 25-27
-    sprite('es201_10', 3)	# 28-30
+    sprite('es201_06', 4)	# 18-21
+    sprite('es201_07', 4)	# 22-25
+    sprite('es201_08', 4)	# 26-29
+    sprite('es201_09', 4)	# 30-33
+    sprite('es201_10', 5)	# 34-38
 
 @State
 def NmlAtk5A2nd():
@@ -2898,7 +2906,7 @@ def NmlAtkAIR5B():
         AirUntechableTime(30)
         AirPushbackY(-20000)
         Unknown9016(1)
-        HitOrBlockCancel('NmlAtkAIR5C')
+        HitCancel('NmlAtkAIR5C')
     sprite('es252_00', 3)	# 1-3
     sprite('es252_01', 3)	# 4-6
     sprite('es252_02', 3)	# 7-9
@@ -4340,7 +4348,8 @@ def MidAssault():
     ScreenShake(8000, 8000)
     Unknown23159('MidAssault_Tame')
     AttackLevel_(4)
-    Damage(2700)
+    Damage(2200)
+    AttackP2(75)
     GroundedHitstunAnimation(10)
     Unknown9118(35)
     Unknown9202(8)
@@ -4493,7 +4502,6 @@ def CmnActInvincibleAttack():
             SLOT_51 = 1
     sprite('es402_00', 2)	# 1-2
     Unknown1084(1)
-    setInvincible(1)
     SFX_0('006_swing_blade_2')
     sprite('es402_01', 3)	# 3-5
     sprite('es402_02', 3)	# 6-8
@@ -4566,6 +4574,7 @@ def AntiAir2nd():
 
     def upon_IMMEDIATE():
         Unknown17025('')
+        Unknown30087(0)
         setInvincible(0)
         Unknown30068(1)
         Unknown14083(0)
@@ -4714,6 +4723,7 @@ def AirAntiAir2nd():
 
     def upon_IMMEDIATE():
         Unknown17025('')
+        Unknown30087(0)
         setInvincible(0)
         Unknown30068(1)
         Unknown14083(0)
@@ -5000,8 +5010,8 @@ def UltimateAssault():
     physicsXImpulse(96000)
     Unknown1028(-8000)
     Unknown3004(42)
-    Damage(4500)
-    Unknown11091(25)
+    Damage(4300)
+    Unknown11091(33)
     AttackP2(60)
     Hitstop(0)
     GroundedHitstunAnimation(2)
@@ -5194,9 +5204,10 @@ def UltimateAssaultOD():
     sprite('es431_18', 1)	# 126-126	 **attackbox here**
     RefreshMultihit()
     sprite('es431_18', 1)	# 127-127	 **attackbox here**
-    Damage(4500)
+    Damage(4300)
     AttackP2(60)
     Unknown11092(0)
+    Unknown11091(30)
     Unknown11057(1000)
     Unknown11069('')
     Unknown11064(0)

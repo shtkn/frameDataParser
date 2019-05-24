@@ -148,6 +148,7 @@ def MatchInit():
     Move_Register('AssaultA', INPUT_SPECIALMOVE)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_A)
+    Move_AirGround_(0x300a)
     Unknown15014(1)
     Unknown15021(2000)
     Unknown14015(200000, 480000, -150000, 200000, 150, 5)
@@ -155,12 +156,14 @@ def MatchInit():
     Move_Register('AssaultB', INPUT_SPECIALMOVE)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_B)
+    Move_AirGround_(0x300b)
     Unknown15021(2000)
     Unknown14015(50000, 450000, -150000, 350000, 150, 5)
     Move_EndRegister()
     Move_Register('AssaultC', INPUT_SPECIALMOVE)
     Move_Input_(INPUT_214)
     Move_Input_(INPUT_PRESS_C)
+    Move_AirGround_(0x300c)
     Move_AirGround_(0x3086)
     Unknown15021(2000)
     Unknown14015(-50000, 350000, -150000, 400000, 100, 1)
@@ -501,6 +504,10 @@ def OnFrameStep():
     if (not SLOT_81):
         if SLOT_4:
             SLOT_4 = (SLOT_4 + (-1))
+    if SLOT_37:
+        SLOT_6 = 0
+        SLOT_7 = 0
+        SLOT_8 = 0
 
 @Subroutine
 def EX_Eff():
@@ -2551,7 +2558,7 @@ def NmlAtk5BB():
         AirPushbackX(-3000)
         AirPushbackY(10000)
         PushbackX(9800)
-        Unknown9154(12)
+        Unknown9154(16)
         AirUntechableTime(27)
         Unknown9016(1)
         Unknown2037(3)
@@ -3733,13 +3740,32 @@ def ChainAssault_DeriveClear():
 
 @Subroutine
 def ChainAssaultShadowCreate():
+    SLOT_60 = 0
     if (SLOT_59 == 101):
+        SLOT_60 = 0
+        if Unknown23145('AssaultLandA'):
+            SLOT_60 = 1
+        if Unknown23145('AssaultAirA'):
+            SLOT_60 = 1
         Unknown1019(50)
-        GFX_0('ShadowObjectAssaultA', -1)
+        if SLOT_60:
+            GFX_0('ShadowObjectAssaultA', -1)
     if (SLOT_59 == 102):
-        GFX_0('ShadowObjectAssaultB', -1)
+        SLOT_60 = 0
+        if Unknown23145('AssaultLandB'):
+            SLOT_60 = 1
+        if Unknown23145('AssaultAirB'):
+            SLOT_60 = 1
+        if SLOT_60:
+            GFX_0('ShadowObjectAssaultB', -1)
     if (SLOT_59 == 103):
-        GFX_0('ShadowObjectAssaultC', -1)
+        SLOT_60 = 0
+        if Unknown23145('AssaultLandC'):
+            SLOT_60 = 1
+        if Unknown23145('AssaultAirC'):
+            SLOT_60 = 1
+        if SLOT_60:
+            GFX_0('ShadowObjectAssaultC', -1)
     SLOT_59 = 0
 
 @State
@@ -3776,6 +3802,8 @@ def AssaultA():
 
         def upon_12():
             Unknown21012('72626c65663430335f536c61736800000000000000000000000000000000000020000000')
+        if SLOT_36:
+            SLOT_6 = 1
     sprite('rbl403_00', 3)	# 1-3
     Unknown23183('72626c3430335f31340000000000000000000000000000000000000000000000020000000200000024000000')
     sprite('rbl403_01', 3)	# 4-6
@@ -3867,6 +3895,8 @@ def AssaultB():
         Unknown11057(500)
         Unknown11058('0100000000000000000000000000000000000000')
         SLOT_59 = 102
+        if SLOT_36:
+            SLOT_7 = 1
     sprite('rbl031_00', 3)	# 1-3
     Unknown23183('72626c3032305f30350000000000000000000000000000000000000000000000030000000200000024000000')
     sprite('rbl405_00', 3)	# 4-6
@@ -3951,6 +3981,8 @@ def AssaultC():
         Unknown30065(0)
         callSubroutine('ChainAssaultCancel')
         SLOT_59 = 103
+        if SLOT_36:
+            SLOT_8 = 1
     sprite('rbl404_00', 3)	# 1-3
     Unknown23183('72626c3430345f31340000000000000000000000000000000000000000000000030000000200000024000000')
     sprite('rbl404_01', 3)	# 4-6
@@ -3978,32 +4010,15 @@ def AssaultC():
     setInvincible(0)
     sprite('rbl404_06', 3)	# 21-23
     callSubroutine('ChainAssault_DeriveTiming')
-    sprite('rbl404_07', 3)	# 24-26
+    sprite('rbl404_07', 2)	# 24-25
     callSubroutine('ChainAssault_DeriveClear')
     Unknown14077(0)
-    sprite('rbl404_08', 3)	# 27-29
-    sprite('rbl404_09', 3)	# 30-32
-    sprite('rbl404_10', 3)	# 33-35
-    sprite('rbl404_11', 3)	# 36-38
-    sprite('rbl404_12', 3)	# 39-41
-    sprite('rbl404_13', 3)	# 42-44
-    sprite('rbl020_05', 3)	# 45-47
-    Unknown1043()
-
-    def upon_LANDING():
-        clearUponHandler(2)
-        Unknown1084(1)
-        Unknown8000(100, 1, 1)
-        sendToLabel(11)
-    sprite('rbl020_06', 3)	# 48-50
-    label(10)
-    sprite('rbl020_07', 3)	# 51-53
-    sprite('rbl020_08', 3)	# 54-56
-    gotoLabel(10)
-    label(11)
-    sprite('rbl010_00', 3)	# 57-59
-    sprite('rbl010_01', 3)	# 60-62
-    sprite('rbl010_00', 3)	# 63-65
+    sprite('rbl404_08', 2)	# 26-27
+    sprite('rbl404_09', 2)	# 28-29
+    sprite('rbl404_10', 2)	# 30-31
+    sprite('rbl404_11', 2)	# 32-33
+    sprite('rbl404_12', 2)	# 34-35
+    sprite('rbl404_13', 2)	# 36-37
 
 @State
 def ChainAssaultA():
@@ -4214,10 +4229,6 @@ def ChainAssaultC():
 
         def upon_8():
             Unknown2006()
-
-        def upon_LANDING():
-            clearUponHandler(2)
-            sendToLabel(1)
         callSubroutine('ChainAssaultShadowCreate')
         SLOT_51 = 0
         if Unknown23145('AssaultLandC'):
@@ -4226,6 +4237,7 @@ def ChainAssaultC():
             SLOT_51 = 1
         if SLOT_51:
             Unknown9310(23)
+        clearUponHandler(2)
     sprite('null', 1)	# 1-1
     StartMultihit()
     sprite('rbl408_00', 2)	# 2-3
@@ -4264,6 +4276,9 @@ def ChainAssaultC():
     sprite('rbl408_06', 3)	# 19-21
     GFX_0('rblef408_Wind', -1)
     sprite('rbl408_07', 3)	# 22-24	 **attackbox here**
+
+    def upon_LANDING():
+        sendToLabel(1)
     sprite('rbl408_08', 3)	# 25-27
     Recovery()
     Unknown1043()
@@ -4385,38 +4400,21 @@ def AirShadowCreateA():
     sprite('rbl402_05', 3)	# 16-18
     sprite('rbl402_06', 3)	# 19-21
     sprite('rbl402_12', 3)	# 22-24
-    label(5)
-    sprite('rbl020_05', 3)	# 25-27
-    Unknown1043()
-
-    def upon_LANDING():
-        clearUponHandler(2)
-        Unknown1084(1)
-        Unknown8000(100, 1, 1)
-        sendToLabel(11)
-    sprite('rbl020_06', 3)	# 28-30
-    label(10)
-    sprite('rbl020_07', 3)	# 31-33
-    sprite('rbl020_08', 3)	# 34-36
-    gotoLabel(10)
-    label(11)
-    sprite('rbl010_00', 3)	# 37-39
     ExitState()
     label(50)
-    sprite('rbl405_11', 5)	# 40-44
+    sprite('rbl405_11', 5)	# 25-29
     Unknown23029(5, 4021, 0)
     GFX_0('ShadowObjectAirCreateA', -1)
     Unknown38(5, 1)
     SLOT_4 = 60
     physicsXImpulse(18000)
-    physicsYImpulse(18000)
+    physicsYImpulse(8000)
     setGravity(1200)
     SFX_3('rblse_33')
-    sprite('rbl405_12', 5)	# 45-49
+    sprite('rbl405_12', 5)	# 30-34
     Unknown1019(75)
-    sprite('rbl405_13', 5)	# 50-54
+    sprite('rbl405_13', 5)	# 35-39
     Unknown1019(50)
-    sendToLabel(5)
 
 @State
 def LandShadowCreateB():
@@ -4519,38 +4517,21 @@ def AirShadowCreateB():
     sprite('rbl402_05', 3)	# 16-18
     sprite('rbl402_06', 3)	# 19-21
     sprite('rbl402_12', 3)	# 22-24
-    label(5)
-    sprite('rbl020_05', 3)	# 25-27
-    Unknown1043()
-
-    def upon_LANDING():
-        clearUponHandler(2)
-        Unknown1084(1)
-        Unknown8000(100, 1, 1)
-        sendToLabel(11)
-    sprite('rbl020_06', 3)	# 28-30
-    label(10)
-    sprite('rbl020_07', 3)	# 31-33
-    sprite('rbl020_08', 3)	# 34-36
-    gotoLabel(10)
-    label(11)
-    sprite('rbl010_00', 3)	# 37-39
     ExitState()
     label(50)
-    sprite('rbl405_11', 5)	# 40-44
+    sprite('rbl405_11', 5)	# 25-29
     Unknown23029(5, 4021, 0)
     GFX_0('ShadowObjectAirCreateB', -1)
     Unknown38(5, 1)
     SLOT_4 = 60
     physicsXImpulse(18000)
-    physicsYImpulse(18000)
+    physicsYImpulse(8000)
     setGravity(1200)
     SFX_3('rblse_33')
-    sprite('rbl405_12', 5)	# 45-49
+    sprite('rbl405_12', 5)	# 30-34
     Unknown1019(75)
-    sprite('rbl405_13', 5)	# 50-54
+    sprite('rbl405_13', 5)	# 35-39
     Unknown1019(50)
-    sendToLabel(5)
 
 @State
 def LandShadowCreateC():
@@ -4657,38 +4638,21 @@ def AirShadowCreateC():
     sprite('rbl402_05', 3)	# 16-18
     sprite('rbl402_06', 3)	# 19-21
     sprite('rbl402_12', 3)	# 22-24
-    label(5)
-    sprite('rbl020_05', 3)	# 25-27
-    Unknown1043()
-
-    def upon_LANDING():
-        clearUponHandler(2)
-        Unknown1084(1)
-        Unknown8000(100, 1, 1)
-        sendToLabel(11)
-    sprite('rbl020_06', 3)	# 28-30
-    label(10)
-    sprite('rbl020_07', 3)	# 31-33
-    sprite('rbl020_08', 3)	# 34-36
-    gotoLabel(10)
-    label(11)
-    sprite('rbl010_00', 3)	# 37-39
     ExitState()
     label(50)
-    sprite('rbl405_11', 5)	# 40-44
+    sprite('rbl405_11', 5)	# 25-29
     Unknown23029(5, 4021, 0)
     GFX_0('ShadowObjectAirCreateC', -1)
     Unknown38(5, 1)
     SLOT_4 = 60
     physicsXImpulse(18000)
-    physicsYImpulse(18000)
+    physicsYImpulse(8000)
     setGravity(1200)
     SFX_3('rblse_33')
-    sprite('rbl405_12', 5)	# 45-49
+    sprite('rbl405_12', 5)	# 30-34
     Unknown1019(75)
-    sprite('rbl405_13', 5)	# 50-54
+    sprite('rbl405_13', 5)	# 35-39
     Unknown1019(50)
-    sendToLabel(5)
 
 @State
 def UltimateShot():
@@ -4819,6 +4783,7 @@ def UltimateRush():
         Unknown11056(0)
         Unknown11072(1, 300000, 0)
         Unknown9016(1)
+        Unknown2073(1)
         loopRelated(17, 60)
 
         def upon_17():
@@ -4872,6 +4837,7 @@ def UltimateRushChase():
         Damage(1000)
         Unknown11064(1)
         AttackP2(100)
+        Unknown11091(30)
         Unknown9016(1)
         GroundedHitstunAnimation(1)
         AirUntechableTime(60)
@@ -4975,9 +4941,9 @@ def UltimateRushChase():
     Unknown1084(1)
     RefreshMultihit()
     AttackLevel_(3)
-    Damage(650)
+    Damage(680)
     Hitstop(4)
-    Unknown11091(10)
+    Unknown11091(13)
     Unknown11050('000000000000000000000000000000000000000000000000000000000000000000000000')
     sprite('rbl431_20', 2)	# 109-110	 **attackbox here**
     RefreshMultihit()
@@ -5031,6 +4997,7 @@ def UltimateRushSP():
         Unknown11056(0)
         Unknown11072(1, 300000, 0)
         Unknown9016(1)
+        Unknown2073(1)
         loopRelated(17, 60)
 
         def upon_17():
@@ -5086,6 +5053,7 @@ def UltimateRushSPChase():
         Damage(1000)
         Unknown11064(1)
         AttackP2(100)
+        Unknown11091(30)
         Unknown9016(1)
         GroundedHitstunAnimation(1)
         AirUntechableTime(60)
@@ -5187,9 +5155,9 @@ def UltimateRushSPChase():
     Unknown1084(1)
     RefreshMultihit()
     AttackLevel_(3)
-    Damage(650)
+    Damage(680)
     Hitstop(2)
-    Unknown11091(10)
+    Unknown11091(12)
     Unknown11050('000000000000000000000000000000000000000000000000000000000000000000000000')
     Unknown21012('72626c65663433315f326e645f4f44000000000000000000000000000000000020000000')
     sprite('rbl431_20', 2)	# 109-110	 **attackbox here**
@@ -5262,6 +5230,7 @@ def UltimateRushSPChase():
     Unknown11056(0)
     AirPushbackX(-10000)
     AirPushbackY(-60000)
+    Unknown11091(10)
     Unknown9190(1)
     Unknown9118(40)
     Hitstop(12)

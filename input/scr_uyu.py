@@ -1156,9 +1156,9 @@ def IaiFDash():
     Unknown35()
     sprite('Action_166_08', 1)
     sprite('Action_166_09', 1)
-    sprite('null', 4)
+    sprite('null', 1)
     Unknown2017(0)
-    physicsXImpulse(112500)
+    physicsXImpulse(450000)
     if (SLOT_25 <= 60000):
         teleportRelativeX(-10000)
     Unknown2006()
@@ -1177,9 +1177,9 @@ def IaiFDash():
     sprite('Action_166_15', 1)
     setInvincible(0)
     sprite('Action_166_16', 1)
-    sprite('Action_166_17', 5)
-    sprite('Action_166_18', 6)
-    sprite('Action_166_19', 4)
+    sprite('Action_166_17', 1)
+    sprite('Action_166_18', 1)
+    sprite('Action_166_19', 1)
 
 @State
 def CmnActBDash():
@@ -2274,7 +2274,7 @@ def NmlAtk5A():
         HitOrBlockJumpCancel(1)
     sprite('Action_002_00', 3)
     Unknown1051(120)
-    sprite('Action_002_00', 1)
+    sprite('Action_002_00', 2)
     SLOT_4 = 0
     sprite('Action_002_01', 4)
     Unknown7009(1)
@@ -2622,7 +2622,8 @@ def AtkB_Finish():
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         AttackLevel_(5)
-        Damage(1200)
+        Damage(1600)
+        Unknown11092(1)
         AirHitstunAnimation(12)
         GroundedHitstunAnimation(12)
         AirPushbackY(12000)
@@ -2646,15 +2647,15 @@ def AtkB_Finish():
     sprite('Action_236_03', 3)
     sprite('Action_236_03', 3)
     RefreshMultihit()
-    sprite('Action_236_05', 6)
-    sprite('Action_236_06', 6)
-    sprite('Action_236_07', 3)
-    sprite('Action_236_08', 3)
-    sprite('Action_236_09', 4)
-    sprite('Action_236_10', 6)
-    sprite('Action_236_11', 3)
-    sprite('Action_236_12', 3)
-    sprite('Action_236_13', 3)
+    sprite('Action_236_05', 3)
+    sprite('Action_236_06', 3)
+    sprite('Action_236_07', 2)
+    sprite('Action_236_08', 2)
+    sprite('Action_236_09', 2)
+    sprite('Action_236_10', 3)
+    sprite('Action_236_11', 2)
+    sprite('Action_236_12', 2)
+    sprite('Action_236_13', 2)
     sprite('Action_236_14', 2)
     SFX_3('SE_SheatheSword')
     sprite('Action_418_00', 4)
@@ -2732,9 +2733,9 @@ def NmlAtkAIR5A():
         HitOrBlockCancel('NmlAtkAIR5B')
         HitOrBlockCancel('NmlAtkAIR5C')
         HitOrBlockJumpCancel(1)
-    sprite('Action_008_00', 4)
-    sprite('Action_008_01', 4)
-    sprite('Action_008_02', 4)
+    sprite('Action_008_00', 5)
+    sprite('Action_008_01', 5)
+    sprite('Action_008_02', 2)
     SLOT_4 = 0
     Unknown7009(3)
     GFX_0('AIR5B_Blade', 100)
@@ -2867,7 +2868,7 @@ def AN_NmlAtkAIR5B_3rd():
         WallbounceReboundTime(0)
         PushbackX(30400)
         Hitstop(2)
-        Unknown11001(0, 3, 8)
+        Unknown11001(0, 6, 11)
         Unknown9016(1)
         JumpCancel_(0)
         Unknown1017()
@@ -2885,7 +2886,7 @@ def AN_NmlAtkAIR5B_3rd():
     sprite('Action_225_06', 6)
     GFX_0('FF_Blade_1st', 100)
     GFX_0('FF_Blade_2nd', 100)
-    sprite('Action_225_07', 12)
+    sprite('Action_225_07', 6)
     Recovery()
     sprite('Action_225_08', 4)
     sprite('Action_225_09', 4)
@@ -2893,7 +2894,7 @@ def AN_NmlAtkAIR5B_3rd():
     Unknown1023()
     Unknown1019(60)
     YAccel(60)
-    setGravity(1600)
+    setGravity(2800)
     clearUponHandler(2)
     sendToLabelUpon(2, 1)
     sprite('Action_225_10', 6)
@@ -2910,12 +2911,12 @@ def AN_NmlAtkAIR5B_3rd():
     loopRest()
     gotoLabel(0)
     label(1)
-    sprite('Action_023_00', 4)
+    sprite('Action_023_00', 1)
     Unknown8000(100, 1, 1)
     Unknown1084(1)
-    sprite('Action_023_01', 2)
-    sprite('Action_023_02', 3)
-    sprite('Action_023_03', 4)
+    sprite('Action_023_01', 1)
+    sprite('Action_023_02', 1)
+    sprite('Action_023_03', 1)
 
 @State
 def NmlAtkAIR5C():
@@ -2932,6 +2933,11 @@ def NmlAtkAIR5C():
         HitOrBlockCancel('NmlAtkAIR5A')
         HitOrBlockCancel('NmlAtkAIR5B')
         HitOrBlockJumpCancel(1)
+        loopRelated(17, 300)
+
+        def upon_17():
+            clearUponHandler(17)
+            Unknown1043()
     sprite('Action_007_00', 4)
     sprite('Action_007_01', 6)
     SFX_1('uyu108_1')
@@ -3592,6 +3598,9 @@ def CmnActInvincibleAttack():
         AirHitstunAnimation(9)
         AirUntechableTime(60)
 
+        def upon_78():
+            SLOT_51 = 1
+
         def upon_43():
             if (SLOT_48 == 1000):
                 Unknown2038(1)
@@ -3610,6 +3619,7 @@ def CmnActInvincibleAttack():
     sprite('Action_461_00', 2)
     physicsXImpulse(24000)
     physicsYImpulse(1200)
+    Unknown23087(60000)
     Unknown7006('uyu203_0', 100, 846559605, 828322608, 0, 0, 100, 846559605, 845100080, 0, 0, 100, 0, 0, 0, 0, 0)
     Unknown4004('6566666563745f3530350000000000000000000000000000000000000000000064000000')
     SFX_0('002_highjump_0')
@@ -3619,7 +3629,8 @@ def CmnActInvincibleAttack():
     setGravity(2500)
     sprite('Action_461_03ex01', 2)
     sprite('Action_461_04ex01', 3)
-    Unknown2017(0)
+    if SLOT_51:
+        Unknown2017(0)
     sprite('Action_461_05', 3)
     sprite('Action_461_06', 1)
     SFX_3('SE_DrawnSword')
@@ -3943,9 +3954,19 @@ def SlashAtk():
                 Unknown11069('SlashFinishSP')
             else:
                 Unknown11069('AirSlashFinishSP')
+    SLOT_9 = 0
+
+    def upon_82():
+        if SLOT_58:
+            if (not SLOT_7):
+                SLOT_9 = 1
     SLOT_4 = 0
     SLOT_62 = 0
     callSubroutine('SlashHoldToKamae')
+
+    def upon_STATE_END():
+        if (SLOT_18 <= 3):
+            SLOT_60 = 0
 
 @State
 def SlashA():
@@ -5302,6 +5323,7 @@ def UltimateSlash():
         AirHitstunAnimation(5)
         Hitstop(9)
         Unknown11001(10, 10, 10)
+        Unknown2073(1)
         Unknown9154(60)
         Unknown11064(1)
         Unknown11032('804f120000000000ffffffffffffffff')
@@ -5403,6 +5425,7 @@ def UltimateSlash():
     Unknown9130(16)
     Unknown9142(100)
     Unknown11064(0)
+    Unknown2073(0)
 
     def upon_77():
         Unknown1019(75)
@@ -5435,7 +5458,7 @@ def UltimateSlashExe():
         AttackLevel_(5)
         Damage(0)
         Hitstop(2)
-        Unknown11091(20)
+        Unknown11091(24)
         AttackP2(100)
         PushbackX(0)
         Unknown9016(1)
@@ -5512,7 +5535,7 @@ def UltimateSlashExe():
     sprite('Action_216_15', 3)
     GFX_0('IW_Kanji_Chiru', 100)
     RefreshMultihit()
-    Damage(5400)
+    Damage(6500)
     AirUntechableTime(120)
     Unknown9310(1)
     AirPushbackX(1000)
@@ -5590,6 +5613,7 @@ def UltimateSlashOD():
         AirHitstunAnimation(5)
         Hitstop(9)
         Unknown11001(10, 10, 10)
+        Unknown2073(1)
         Unknown9154(60)
         Unknown11064(1)
         Unknown11032('804f120000000000ffffffffffffffff')
@@ -5671,6 +5695,50 @@ def UltimateSlashOD():
     sprite('Action_215_17', 7)
     SFX_3('SE_SheatheSword')
     sprite('Action_215_17', 2)
+    loopRest()
+    if SLOT_2:
+        _gotolabel(10)
+    sprite('Action_215_19', 10)
+    SFX_3('SE_DrawnSword')
+    GFX_0('IW_Blade3', 100)
+    RefreshMultihit()
+    physicsXImpulse(100000)
+    Unknown2017(0)
+    Unknown1028(-4000)
+    Unknown11069('')
+    Hitstop(2)
+    Unknown11032('ffffffffffffffffffffffffffffffff')
+    AirHitstunAnimation(2)
+    GroundedHitstunAnimation(2)
+    Unknown9154(15)
+    Unknown9130(16)
+    Unknown9142(100)
+    Unknown11064(0)
+    Unknown2073(0)
+
+    def upon_77():
+        Unknown1019(75)
+        Unknown1034(75)
+    sprite('Action_215_20', 6)
+    Unknown2017(1)
+    sprite('Action_215_21', 6)
+    sprite('Action_215_22', 4)
+    Unknown1084(1)
+    physicsXImpulse(10000)
+    Unknown1028(-1000)
+    sprite('Action_215_23', 4)
+    sprite('Action_215_24', 2)
+    GFX_0('IW_Ralease', 100)
+    sprite('Action_215_25', 5)
+    Unknown1084(1)
+    sprite('Action_215_26', 5)
+    sprite('Action_215_27', 6)
+    SFX_3('SE_SheatheSword')
+    sprite('Action_215_28', 20)
+    sprite('Action_215_29', 5)
+    sprite('Action_215_30', 5)
+    ExitState()
+    label(10)
     sprite('Action_215_19', 4)
     SFX_3('SE_DrawnSword')
     GFX_0('IW_Blade3', 100)
@@ -5687,6 +5755,7 @@ def UltimateSlashOD():
     Unknown9154(15)
     Unknown9130(16)
     Unknown9142(100)
+    Unknown30048(1)
 
     def upon_78():
         Unknown23024(2)
@@ -5765,6 +5834,7 @@ def UltimateSlashODExe():
         AttackDefaults_StandingDD()
         Unknown23056('')
         AttackLevel_(5)
+        Damage(2200)
         Hitstop(2)
         Unknown11091(20)
         AttackP2(100)
@@ -5913,7 +5983,7 @@ def UltimateRush():
         Damage(590)
         Hitstop(1)
         Unknown11057(800)
-        Unknown11091(17)
+        Unknown11091(15)
         AttackP1(80)
         AttackP2(96)
         AirPushbackY(3500)
@@ -5931,6 +6001,11 @@ def UltimateRush():
         if random_(2, 0, 50):
             SLOT_51 = 1
         callSubroutine('DS_KamaeAction')
+
+        def upon_78():
+            SLOT_57 = 1
+            setInvincible(0)
+            Unknown22008(45)
     if SLOT_56:
         _gotolabel(0)
     sprite('Action_262_00', 5)
@@ -5986,7 +6061,8 @@ def UltimateRush():
     RefreshMultihit()
     sprite('Action_439_10', 1)
     sprite('Action_439_11', 1)
-    setInvincible(0)
+    if (not SLOT_57):
+        setInvincible(0)
     sprite('Action_439_06', 1)
     sprite('Action_439_07', 1)
     sprite('Action_439_08', 1)
@@ -6087,6 +6163,7 @@ def UltimateRush():
     sprite('Action_439_23', 6)
     sprite('Action_439_24', 6)
     sprite('Action_439_25', 6)
+    StartMultihit()
     SFX_3('SE_SheatheSword')
     GFX_0('UltimateRush_Release', 100)
     GFX_0('UltimateRush_AddAtk', 100)
@@ -6118,11 +6195,11 @@ def UltimateRushOD():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(5)
-        Damage(385)
+        Damage(370)
         Hitstop(1)
         Unknown11028(30)
         Unknown11057(800)
-        Unknown11091(17)
+        Unknown11091(15)
         AttackP1(80)
         AttackP2(98)
         AirPushbackY(3500)
@@ -6140,6 +6217,11 @@ def UltimateRushOD():
         if random_(2, 0, 50):
             SLOT_51 = 1
         callSubroutine('DS_KamaeAction')
+
+        def upon_78():
+            SLOT_57 = 1
+            setInvincible(0)
+            Unknown22008(45)
     if SLOT_56:
         _gotolabel(0)
     sprite('Action_262_00', 5)
@@ -6197,7 +6279,8 @@ def UltimateRushOD():
     RefreshMultihit()
     sprite('Action_439_10', 1)
     sprite('Action_439_11', 1)
-    setInvincible(0)
+    if (not SLOT_57):
+        setInvincible(0)
     sprite('Action_439_06', 1)
     sprite('Action_439_07', 1)
     sprite('Action_439_08', 1)
@@ -6304,7 +6387,7 @@ def UltimateRushOD():
     RefreshMultihit()
     Damage(900)
     Unknown11028(20)
-    Unknown11091(20)
+    Unknown11091(10)
     Hitstop(5)
     Unknown11001(4, 4, 4)
     Unknown30055('000000000000000000000000')
@@ -6410,7 +6493,7 @@ def UltimateAirRush():
         Damage(590)
         Hitstop(1)
         Unknown11057(800)
-        Unknown11091(17)
+        Unknown11091(15)
         AttackP1(80)
         AttackP2(96)
         AirPushbackY(3500)
@@ -6432,6 +6515,11 @@ def UltimateAirRush():
         def upon_LANDING():
             sendToLabel(30)
         callSubroutine('DS_KamaeAction')
+
+        def upon_78():
+            SLOT_57 = 1
+            setInvincible(0)
+            Unknown22008(45)
     Unknown1017()
     Unknown1022()
     Unknown1084(1)
@@ -6439,7 +6527,7 @@ def UltimateAirRush():
         _gotolabel(0)
     sprite('Action_262_00', 5)
     Unknown23024(1)
-    Unknown2036(35, -1, 0)
+    Unknown2036(36, -1, 0)
     Unknown2058(-10000)
     Unknown30080('')
     SFX_1('uyu253')
@@ -6464,7 +6552,7 @@ def UltimateAirRush():
     sprite('Action_225_01', 6)
     sprite('Action_225_02', 6)
     Unknown23024(1)
-    Unknown2036(35, -1, 0)
+    Unknown2036(36, -1, 0)
     Unknown2058(-10000)
     Unknown30080('')
     SFX_1('uyu253')
@@ -6489,7 +6577,8 @@ def UltimateAirRush():
     RefreshMultihit()
     sprite('Action_479_07', 1)
     sprite('Action_479_08', 1)
-    setInvincible(0)
+    if (not SLOT_57):
+        setInvincible(0)
     sprite('Action_479_04', 1)
     sprite('Action_479_05', 1)
     sprite('Action_479_06ex01', 1)
@@ -6574,6 +6663,7 @@ def UltimateAirRush():
     sprite('Action_479_15', 7)
     sprite('Action_479_16', 7)
     sprite('Action_479_17', 15)
+    StartMultihit()
     SFX_3('SE_SheatheSword')
     GFX_0('UltimateAirRush_Release', 100)
     GFX_0('UltimateRush_AddAtk', 100)
@@ -6611,11 +6701,11 @@ def UltimateAirRushOD():
         AttackDefaults_AirDD()
         Unknown23055('')
         AttackLevel_(5)
-        Damage(385)
+        Damage(370)
         Hitstop(1)
         Unknown11028(30)
         Unknown11057(800)
-        Unknown11091(17)
+        Unknown11091(15)
         AttackP1(80)
         AttackP2(98)
         AirPushbackY(3500)
@@ -6637,6 +6727,11 @@ def UltimateAirRushOD():
         def upon_LANDING():
             sendToLabel(30)
         callSubroutine('DS_KamaeAction')
+
+        def upon_78():
+            SLOT_57 = 1
+            setInvincible(0)
+            Unknown22008(45)
     Unknown1017()
     Unknown1022()
     Unknown1084(1)
@@ -6644,7 +6739,7 @@ def UltimateAirRushOD():
         _gotolabel(0)
     sprite('Action_262_00', 5)
     Unknown23024(1)
-    Unknown2036(35, -1, 0)
+    Unknown2036(36, -1, 0)
     Unknown2058(-10000)
     Unknown30080('')
     SFX_1('uyu253')
@@ -6669,7 +6764,7 @@ def UltimateAirRushOD():
     sprite('Action_225_01', 6)
     sprite('Action_225_02', 6)
     Unknown23024(1)
-    Unknown2036(35, -1, 0)
+    Unknown2036(36, -1, 0)
     Unknown2058(-10000)
     Unknown30080('')
     SFX_1('uyu253')
@@ -6694,7 +6789,8 @@ def UltimateAirRushOD():
     RefreshMultihit()
     sprite('Action_479_07', 1)
     sprite('Action_479_08', 1)
-    setInvincible(0)
+    if (not SLOT_57):
+        setInvincible(0)
     sprite('Action_479_04', 1)
     sprite('Action_479_05', 1)
     sprite('Action_479_06ex01', 1)
@@ -6807,7 +6903,7 @@ def UltimateAirRushOD():
     RefreshMultihit()
     Damage(900)
     Unknown11028(20)
-    Unknown11091(20)
+    Unknown11091(10)
     Hitstop(5)
     Unknown11001(4, 4, 4)
     Unknown30055('000000000000000000000000')
@@ -7496,6 +7592,7 @@ def UltimateSlashDDD():
         AirHitstunAnimation(5)
         Hitstop(9)
         Unknown11001(10, 10, 10)
+        Unknown2073(1)
         Unknown9154(60)
         Unknown11064(1)
         Unknown30063(1)
@@ -7576,6 +7673,7 @@ def UltimateSlashDDD():
     Unknown9130(16)
     Unknown9142(100)
     Unknown11064(0)
+    Unknown2073(0)
     sprite('Action_215_20', 6)
     Unknown2017(1)
     sprite('Action_215_21', 6)
@@ -7677,7 +7775,7 @@ def UltimateSlashDDDExe():
     sprite('Action_216_15', 3)
     GFX_0('IW_Kanji_Chiru', 100)
     RefreshMultihit()
-    Damage(1000)
+    Damage(1500)
     AirUntechableTime(120)
     Unknown9310(1)
     AirPushbackX(1000)
@@ -7753,6 +7851,7 @@ def UltimateSlashODDDD():
         AirHitstunAnimation(5)
         Hitstop(9)
         Unknown11001(10, 10, 10)
+        Unknown2073(1)
         Unknown9154(60)
         Unknown11064(1)
         Unknown30063(1)
@@ -7818,6 +7917,50 @@ def UltimateSlashODDDD():
     sprite('Action_215_17', 7)
     SFX_3('SE_SheatheSword')
     sprite('Action_215_17', 2)
+    loopRest()
+    if SLOT_2:
+        _gotolabel(10)
+    sprite('Action_215_19', 10)
+    SFX_3('SE_DrawnSword')
+    GFX_0('IW_Blade3', 100)
+    RefreshMultihit()
+    physicsXImpulse(100000)
+    Unknown2017(0)
+    Unknown1028(-4000)
+    Unknown11069('')
+    Hitstop(2)
+    Unknown11032('ffffffffffffffffffffffffffffffff')
+    AirHitstunAnimation(2)
+    GroundedHitstunAnimation(2)
+    Unknown9154(15)
+    Unknown9130(16)
+    Unknown9142(100)
+    Unknown11064(0)
+    Unknown2073(0)
+
+    def upon_77():
+        Unknown1019(75)
+        Unknown1034(75)
+    sprite('Action_215_20', 6)
+    Unknown2017(1)
+    sprite('Action_215_21', 6)
+    sprite('Action_215_22', 4)
+    Unknown1084(1)
+    physicsXImpulse(10000)
+    Unknown1028(-1000)
+    sprite('Action_215_23', 4)
+    sprite('Action_215_24', 2)
+    GFX_0('IW_Ralease', 100)
+    sprite('Action_215_25', 5)
+    Unknown1084(1)
+    sprite('Action_215_26', 5)
+    sprite('Action_215_27', 6)
+    SFX_3('SE_SheatheSword')
+    sprite('Action_215_28', 20)
+    sprite('Action_215_29', 5)
+    sprite('Action_215_30', 5)
+    ExitState()
+    label(10)
     sprite('Action_215_19', 4)
     SFX_3('SE_DrawnSword')
     GFX_0('IW_Blade3', 100)
@@ -7834,6 +7977,7 @@ def UltimateSlashODDDD():
     Unknown9154(15)
     Unknown9130(16)
     Unknown9142(100)
+    Unknown30048(1)
 
     def upon_78():
         Unknown23024(2)
@@ -7986,7 +8130,7 @@ def UltimateSlashODDDDExe():
     sprite('Action_216_15', 3)
     GFX_0('IW_Kanji_Chiru', 100)
     RefreshMultihit()
-    Damage(1000)
+    Damage(1500)
     AirUntechableTime(120)
     Unknown9310(30)
     AirPushbackX(-1000)

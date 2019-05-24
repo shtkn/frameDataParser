@@ -1358,12 +1358,14 @@ def PLA_Persona5B2nd():
         callSubroutine('PLA_CheckWarp')
         Unknown4007(3)
         Unknown2017(0)
+        Unknown23059(1)
     sprite('lp205_00', 3)
     GFX_0('Cmnrasen', 100)
     sprite('lp205_01', 3)
     sprite('lp205_02', 3)
     GFX_0('205birdwing', 100)
     GFX_0('205bird', 100)
+    Unknown4007(0)
     sprite('lp205_03', 3)
     sprite('lp205_04', 3)
     sprite('lp205_05', 3)
@@ -1387,7 +1389,7 @@ def PLA_Persona5B3rd():
 
     def upon_IMMEDIATE():
         Unknown23023()
-        Unknown23184('0300000064000000b03cffff000000006079feffa08601006079feffa0860100')
+        Unknown23184('0300000064000000b03cffff000000006079feff809698006079feffa0860100')
         callSubroutine('PLA_AttackInit')
         callSubroutine('PLA_CheckWarp')
     sprite('lp206_00', 4)
@@ -1433,6 +1435,7 @@ def PLA_PersonaAir5C():
         callSubroutine('PLA_ForceWarp')
         Unknown4007(3)
         Unknown2017(0)
+        Unknown23059(1)
     sprite('lp254_00', 3)
     GFX_0('254atk', 100)
     GFX_0('254circle', 1)
@@ -1441,11 +1444,11 @@ def PLA_PersonaAir5C():
     sprite('lp254_02', 1)
     GFX_0('vr_lp254atk', 100)
     SFX_3('cloth_m')
+    Unknown4007(0)
     sprite('lp254_02', 7)
     sprite('lp254_03', 6)
     sprite('lp254_04', 6)
     sprite('lp254_02', 6)
-    Unknown4007(0)
     sprite('lp254_03', 6)
     sprite('lp254_04', 6)
     sprite('lp254_02', 6)
@@ -1601,6 +1604,11 @@ def PLA_PersonaShot_TAG():
         Unknown4007(3)
         Unknown2017(0)
         Unknown11063(1)
+        Unknown23059(1)
+
+        def upon_43():
+            if (SLOT_48 == 308):
+                Unknown4007(0)
     sprite('lp407_00', 3)
     sprite('lp407_01', 3)
     sprite('lp407_02', 3)
@@ -1885,9 +1893,9 @@ def __205bird():
     def upon_IMMEDIATE():
         Unknown3032()
         Unknown3001(0)
-        Unknown4007(3)
+        Unknown4007(2)
         Unknown4010(3)
-    sprite('null', 8)
+    sprite('null', 3)
     Unknown3004(20)
     sprite('null', 10)
     GFX_0('205birdline', 100)
@@ -1900,7 +1908,7 @@ def __205birdwing():
 
     def upon_IMMEDIATE():
         Unknown4003('6c6165665f3230356269726477696e672e4449470000000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
-        Unknown4007(3)
+        Unknown4007(2)
         Unknown4010(3)
         Unknown23015(2)
         Unknown3032()
@@ -1922,7 +1930,7 @@ def __205birdline():
         teleportRelativeY(75000)
         Unknown3001(0)
         Unknown4015()
-        Unknown4007(3)
+        Unknown4007(2)
         Unknown4010(3)
     sprite('null', 15)
     Unknown3004(40)
@@ -1937,7 +1945,7 @@ def __206bird():
         Unknown3032()
         Unknown4007(28)
         Unknown4010(2)
-    sprite('null', 2)
+    sprite('null', 12)
     sprite('null', 1)
     GFX_0('206birdline1', 100)
     GFX_0('206pattern', 100)
@@ -2304,7 +2312,7 @@ def __407Shot_SB():
     sprite('null', 2)
     sprite('null', 2)
     SFX_3('la000')
-    Unknown1028(300)
+    Unknown1028(600)
     Unknown1099(-12)
     physicsYImpulse(-3000)
     setGravity(-20)
@@ -2330,6 +2338,7 @@ def __407Shot_atk_SB():
         AttackP1(70)
         Unknown11033(1)
         Damage(1500)
+        AirUntechableTime(40)
         Hitstop(0)
         Unknown11001(0, 26, 26)
         GroundedHitstunAnimation(9)
@@ -2345,6 +2354,7 @@ def __407Shot_atk_SB():
         def upon_ON_HIT_OR_BLOCK():
             clearUponHandler(10)
             Unknown23029(2, 303, 0)
+            Unknown21015('504c415f506572736f6e6153686f745f544147000000000000000000000000003401000000000000')
 
         def upon_78():
             clearUponHandler(10)
@@ -2965,9 +2975,10 @@ def vr_lp205atk():
         AttackLevel_(3)
         Damage(1000)
         Unknown11092(1)
-        AirPushbackX(10000)
-        AirPushbackY(20000)
-        AirUntechableTime(30)
+        AirPushbackX(5000)
+        AirPushbackY(17000)
+        YImpluseBeforeWallbounce(1800)
+        AirUntechableTime(40)
         Hitstop(0)
         Unknown11001(6, 6, 8)
         Unknown9016(1)
@@ -3044,7 +3055,7 @@ def vr_lp206atk():
     AirHitstunAnimation(10)
     AirPushbackX(10000)
     AirPushbackY(20000)
-    AirUntechableTime(30)
+    AirUntechableTime(50)
     Hitstop(0)
     Unknown11001(8, 8, 13)
     Unknown9016(1)
@@ -3067,7 +3078,7 @@ def vr_lp206atk_00():
         Unknown1007(400000)
         physicsXImpulse(40000)
         setGravity(2000)
-    sprite('vr_lp206atkcol', 10)
+    sprite('vr_lp206atkcol_ex', 11)
 
 @State
 def vr_lp206atk_01():
@@ -3079,7 +3090,7 @@ def vr_lp206atk_01():
         teleportRelativeX(200000)
         Unknown1007(250000)
         physicsXImpulse(40000)
-    sprite('vr_lp206atkcol', 10)
+    sprite('vr_lp206atkcol', 11)
 
 @State
 def vr_lp206atk_02():
@@ -3092,7 +3103,7 @@ def vr_lp206atk_02():
         Unknown1007(350000)
         physicsXImpulse(60000)
         setGravity(2000)
-    sprite('vr_lp206atkcol', 10)
+    sprite('vr_lp206atkcol_ex', 11)
 
 @State
 def vr_lp206atk_03():
@@ -3103,7 +3114,7 @@ def vr_lp206atk_03():
         teleportRelativeX(100000)
         Unknown1007(150000)
         physicsXImpulse(50000)
-    sprite('vr_lp206atkcol', 10)
+    sprite('vr_lp206atkcol_ex2', 11)
 
 @State
 def vr_lp206atk_04():
@@ -3115,7 +3126,7 @@ def vr_lp206atk_04():
         Unknown1007(50000)
         physicsXImpulse(50000)
         setGravity(-2000)
-    sprite('vr_lp206atkcol', 10)
+    sprite('vr_lp206atkcol_ex', 11)
 
 @State
 def vr_lp254atk():
@@ -3131,6 +3142,7 @@ def vr_lp254atk():
         Unknown30055('f04902001e00000000000000')
         Unknown30056('400d03001e00000000000000')
         Hitstop(6)
+        AirUntechableTime(21)
         Unknown4007(2)
         Unknown4010(2)
     sprite('vr_lp254atkcol', 6)
@@ -3572,7 +3584,6 @@ def Ichigeki_atk():
         GroundedHitstunAnimation(5)
         Unknown11094(1)
         Unknown11033(3)
-        Unknown11031(0)
 
         def upon_78():
             clearUponHandler(78)

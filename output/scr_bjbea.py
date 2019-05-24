@@ -1994,6 +1994,8 @@ def Shot_Eff():
         Damage(1800)
         AttackP1(70)
         AttackP2(80)
+        Unknown9154(22)
+        AirUntechableTime(40)
         Unknown11042(1)
         AirPushbackY(15000)
         Unknown9017(1)

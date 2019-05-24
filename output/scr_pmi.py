@@ -1742,7 +1742,7 @@ def CmnActChangePartnerAssistAtk_D():
         Unknown9016(1)
         Unknown11056(2)
         Unknown9178(1)
-        WallbounceReboundTime(0)
+        WallbounceReboundTime(20)
 
         def upon_12():
             PushbackX(39520)
@@ -1756,40 +1756,40 @@ def CmnActChangePartnerAssistAtk_D():
             Unknown2053(1)
             Unknown2015(-1)
     sprite('mi401_00', 3)	# 1-3
-    sprite('mi401_01', 3)	# 4-6
-    sprite('mi401_02', 3)	# 7-9
-    sprite('mi401_03', 3)	# 10-12
+    sprite('mi401_01', 2)	# 4-5
+    sprite('mi401_02', 2)	# 6-7
+    sprite('mi401_03', 3)	# 8-10
     Unknown7007('706d693230315f30000000000000000064000000706d693230315f32000000000000000064000000706d693230325f31000000000000000064000000706d693230325f32000000000000000064000000')
-    sprite('mi401_04', 1)	# 13-13
+    sprite('mi401_04', 1)	# 11-11
     Unknown3029(1)
-    sprite('mi401_04', 1)	# 14-14
-    sprite('mi401_05', 2)	# 15-16	 **attackbox here**
+    sprite('mi401_04', 1)	# 12-12
+    sprite('mi401_05ex', 2)	# 13-14
     GFX_1('mief_401smoke_04', 0)
     GFX_0('mief_401', 1)
     RefreshMultihit()
     physicsXImpulse(50000)
     Unknown2015(220)
     SFX_3('airdash_m')
-    sprite('mi401_06', 2)	# 17-18	 **attackbox here**
+    sprite('mi401_06ex', 2)	# 15-16
     SFX_3('slash_blade_fast')
-    sprite('mi401_05', 2)	# 19-20	 **attackbox here**
+    sprite('mi401_05ex', 2)	# 17-18
     SFX_3('slash_rapier_fast')
-    sprite('mi401_06', 2)	# 21-22	 **attackbox here**
-    sprite('mi401_05', 2)	# 23-24	 **attackbox here**
-    sprite('mi401_07', 3)	# 25-27
+    sprite('mi401_06', 2)	# 19-20	 **attackbox here**
+    sprite('mi401_05', 2)	# 21-22	 **attackbox here**
+    sprite('mi401_07', 3)	# 23-25
     Recovery()
     Unknown1019(30)
     Unknown3029(0)
-    sprite('mi401_08', 3)	# 28-30
+    sprite('mi401_08', 3)	# 26-28
     Unknown1019(60)
     Unknown2015(-1)
-    sprite('mi401_09', 3)	# 31-33
+    sprite('mi401_09', 3)	# 29-31
     GFX_1('mief_401stopsmoke_03', 0)
     Unknown1019(60)
-    sprite('mi401_10', 4)	# 34-37
-    sprite('mi401_11', 4)	# 38-41
+    sprite('mi401_10', 4)	# 32-35
+    sprite('mi401_11', 4)	# 36-39
     Unknown1019(0)
-    sprite('mi401_12', 4)	# 42-45
+    sprite('mi401_12', 4)	# 40-43
 
 @State
 def CmnActChangePartnerDD():
@@ -2251,8 +2251,7 @@ def NmlAtk5B():
     setInvincible(1)
     Unknown22019('0000000000000000010000000000000000000000')
     sprite('mi203_02', 3)	# 7-9
-    sprite('mi203_03', 1)	# 10-10
-    sprite('mi203_03', 2)	# 11-12
+    sprite('mi203_03', 3)	# 10-12
     sprite('mi203_02', 3)	# 13-15
     sprite('mi203_03', 3)	# 16-18
     label(0)
@@ -2456,7 +2455,7 @@ def NmlAtk2B():
         AirPushbackY(30000)
         GroundedHitstunAnimation(1)
         Unknown11058('0000000001000000000000000000000000000000')
-        HitOrBlockCancel('NmlAtk2B2nd')
+        HitCancel('NmlAtk2B2nd')
         HitOrBlockCancel('NmlAtk5B')
         HitOrBlockCancel('CmnActCrushAttack')
         HitOrBlockCancel('NmlAtk2C')
@@ -2608,6 +2607,7 @@ def NmlAtkAIR5A2nd():
         HitOrBlockCancel('NmlAtkAIR5B')
         HitOrBlockCancel('NmlAtkAIR5C')
         HitOrBlockJumpCancel(1)
+        Unknown4009(11)
     sprite('mi255_00', 2)	# 1-2
     sprite('mi255_01', 2)	# 3-4
     sprite('mi255_02', 3)	# 5-7
@@ -2640,9 +2640,9 @@ def NmlAtkAIR5B():
         AirPushbackX(24000)
         AirPushbackY(-36000)
         Unknown9016(1)
-        HitOrBlockJumpCancel(1)
-        HitOrBlockCancel('NmlAtkAIR5A')
-        HitOrBlockCancel('NmlAtkAIR5C')
+        HitJumpCancel(1)
+        HitCancel('NmlAtkAIR5A')
+        HitCancel('NmlAtkAIR5C')
     sprite('mi251_00', 2)	# 1-2
     sprite('mi251_01', 5)	# 3-7
     sprite('mi251_02', 1)	# 8-8
@@ -3722,9 +3722,9 @@ def Setsuna_Samidare_Uchi():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(3)
-        Damage(400)
+        Damage(500)
         AttackP2(98)
-        Unknown11091(15)
+        Unknown11091(19)
         Hitstop(0)
         PushbackX(2000)
         Unknown9016(1)
@@ -3740,6 +3740,8 @@ def Setsuna_Samidare_Uchi():
             if (not SLOT_2):
                 Unknown13024(0)
                 Unknown2037(1)
+            setInvincible(0)
+            Unknown22008(45)
 
         def upon_82():
             clearUponHandler(82)
@@ -3771,7 +3773,8 @@ def Setsuna_Samidare_Uchi():
     SFX_3('slash_rapier_fast')
     sprite('mi430_09', 2)	# 67-68	 **attackbox here**
     GFX_0('RenzokuTsukiB', 0)
-    setInvincible(0)
+    if (not SLOT_2):
+        setInvincible(0)
     RefreshMultihit()
     SFX_3('slash_rapier_fast')
     sprite('mi430_10', 2)	# 69-70	 **attackbox here**
@@ -3855,8 +3858,6 @@ def Setsuna_Samidare_Uchi():
     SFX_3('slash_blade_fast')
     sprite('mi430_21', 10)	# 111-120	 **attackbox here**
     StartMultihit()
-    if SLOT_2:
-        setInvincible(0)
     sprite('mi430_22', 6)	# 121-126
     sprite('mi430_23', 6)	# 127-132
     sprite('mi430_24', 6)	# 133-138
@@ -3871,9 +3872,9 @@ def Setsuna_Samidare_UchiSP():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(3)
-        Damage(250)
+        Damage(300)
         AttackP2(99)
-        Unknown11091(15)
+        Unknown11091(18)
         Hitstop(0)
         PushbackX(2000)
         Unknown9016(1)
@@ -3889,6 +3890,8 @@ def Setsuna_Samidare_UchiSP():
             if (not SLOT_2):
                 Unknown13024(0)
                 Unknown2037(1)
+            setInvincible(0)
+            Unknown22008(45)
 
         def upon_82():
             clearUponHandler(82)
@@ -3919,7 +3922,8 @@ def Setsuna_Samidare_UchiSP():
     SFX_3('slash_rapier_fast')
     sprite('mi430_09', 2)	# 67-68	 **attackbox here**
     GFX_0('RenzokuTsukiB', 0)
-    setInvincible(0)
+    if (not SLOT_2):
+        setInvincible(0)
     RefreshMultihit()
     SFX_3('slash_rapier_fast')
     sprite('mi430_10', 2)	# 69-70	 **attackbox here**
@@ -4003,8 +4007,6 @@ def Setsuna_Samidare_UchiSP():
     SFX_3('slash_blade_fast')
     sprite('mi430_21', 10)	# 111-120	 **attackbox here**
     StartMultihit()
-    if SLOT_2:
-        setInvincible(0)
     sprite('mi430_22', 6)	# 121-126
     sprite('mi430_23', 6)	# 127-132
     sprite('mi430_24', 6)	# 133-138

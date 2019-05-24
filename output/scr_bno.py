@@ -2549,7 +2549,7 @@ def NmlAtkAIR5C():
     sprite('no404_00', 3)	# 1-3
     Unknown1084(1)
     physicsXImpulse(10000)
-    physicsYImpulse(32000)
+    physicsYImpulse(26000)
     Unknown1043()
     sprite('no404_01', 3)	# 4-6
     tag_voice(1, 'bno201_0', 'bno201_1', 'bno201_2', '')
@@ -2575,33 +2575,33 @@ def NmlAtkAIR5C():
     GFX_0('BLT', 1)
     GFX_0('EFF_SakuretsuNear', 2)
     GFX_0('EFF_SakuretsuFar', 3)
-    sprite('no404_06', 3)	# 19-21	 **attackbox here**
+    sprite('no404_06', 2)	# 19-20	 **attackbox here**
     RefreshMultihit()
     SFX_0('016_explode_1')
     GFX_0('BLT', 0)
     GFX_0('BLT', 1)
     GFX_0('EFF_SakuretsuNear', 2)
     GFX_0('EFF_SakuretsuFar', 3)
-    sprite('no404_07', 3)	# 22-24	 **attackbox here**
+    sprite('no404_07', 2)	# 21-22	 **attackbox here**
     RefreshMultihit()
     SFX_0('016_explode_1')
     GFX_0('BLT', 0)
     GFX_0('BLT', 1)
     GFX_0('EFF_SakuretsuNear', 0)
     GFX_0('EFF_SakuretsuFar', 1)
-    sprite('no404_08', 3)	# 25-27
+    sprite('no404_08', 2)	# 23-24
     SFX_3('nose_01')
     Unknown22004(8, 1)
     Recovery()
     Unknown2063()
-    sprite('no404_09', 3)	# 28-30
+    sprite('no404_09', 2)	# 25-26
     Unknown14072('NmlAtkAIR5C_2nd')
-    sprite('no404_10', 3)	# 31-33
-    sprite('no404_11', 3)	# 34-36
-    sprite('no404_12', 3)	# 37-39
+    sprite('no404_10', 2)	# 27-28
+    sprite('no404_11', 2)	# 29-30
+    sprite('no404_12', 2)	# 31-32
     Unknown14074('NmlAtkAIR5C_2nd')
-    sprite('no404_13', 3)	# 40-42
-    sprite('no404_14', 3)	# 43-45
+    sprite('no404_13', 2)	# 33-34
+    sprite('no404_14', 2)	# 35-36
     loopRest()
 
 @State
@@ -2614,7 +2614,7 @@ def NmlAtkAIR5C_2nd():
         HitOverhead(0)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
-        AirPushbackX(32000)
+        AirPushbackX(38000)
         AirPushbackY(-40000)
         AirUntechableTime(40)
         Unknown9310(1)
@@ -4154,7 +4154,7 @@ def BloomTrigger():
     WallbounceReboundTime(0)
     Unknown9346(0)
     Hitstop(1)
-    Damage(700)
+    Damage(900)
     Unknown9017(1)
     sprite('no286_10', 2)	# 20-21	 **attackbox here**
     RefreshMultihit()
@@ -4162,12 +4162,12 @@ def BloomTrigger():
     RefreshMultihit()
     sprite('no286_10', 2)	# 24-25	 **attackbox here**
     RefreshMultihit()
-    sprite('no286_10', 21)	# 26-46	 **attackbox here**
+    sprite('no286_10', 15)	# 26-40	 **attackbox here**
     StartMultihit()
     Recovery()
-    sprite('no286_11', 5)	# 47-51
+    sprite('no286_11', 5)	# 41-45
     SFX_3('nose_01')
-    sprite('no286_12', 3)	# 52-54
+    sprite('no286_12', 3)	# 46-48
 
 @State
 def AssaultThrough():
@@ -4255,6 +4255,7 @@ def UltimateShot():
         def upon_78():
             SLOT_62 = 1
             GuardPoint_(0)
+            Unknown2021(1)
             ScreenShake(40000, 5000)
             Unknown13024(0)
             Unknown11069('MajuShotObj')
@@ -4654,8 +4655,9 @@ def UltimateShot():
     AirPushbackY(55000)
     YImpluseBeforeWallbounce(3000)
     Hitstop(0)
-    Damage(4000)
+    Damage(4100)
     AttackP2(60)
+    Unknown11091(25)
     AirUntechableTime(120)
     Unknown9190(1)
     Unknown9118(15)
@@ -4723,6 +4725,7 @@ def UltimateShotOD():
             Unknown13024(0)
             SLOT_62 = 1
             GuardPoint_(0)
+            Unknown2021(1)
             ScreenShake(40000, 5000)
             Unknown11069('MajuShotObjOD')
         Unknown11056(2)
@@ -5151,9 +5154,9 @@ def UltimateShotOD():
     AirPushbackY(43500)
     YImpluseBeforeWallbounce(3000)
     Hitstop(0)
-    Damage(4000)
+    Damage(4100)
     AttackP2(60)
-    Unknown11091(25)
+    Unknown11091(22)
     AirUntechableTime(120)
     Unknown9190(1)
     Unknown9118(15)
@@ -6658,7 +6661,7 @@ def CmnActChangePartnerAssistAtk_D():
         AttackDefaults_StandingSpecial()
         AttackLevel_(4)
         Unknown11033(1)
-        Damage(1100)
+        Damage(700)
         AttackP1(70)
         Unknown11092(1)
         GroundedHitstunAnimation(9)
@@ -6675,48 +6678,121 @@ def CmnActChangePartnerAssistAtk_D():
         Unknown9018(1)
         Unknown2004(1, 0)
         Unknown11042(1)
+
+        def upon_78():
+            SLOT_51 = 1
+            AirPushbackY(20000)
     sprite('no284_00', 2)	# 1-2
     SFX_3('nose_07')
     sprite('no284_01', 4)	# 3-6
     physicsXImpulse(52000)
-    sprite('no284_02', 3)	# 7-9
+    sprite('no284_02', 2)	# 7-8
     Unknown1019(85)
     callSubroutine('NoelComboDeriveInputBegin')
-    sprite('no284_03', 3)	# 10-12
+    sprite('no284_03', 2)	# 9-10
     Unknown1019(45)
-    sprite('no284_04', 2)	# 13-14	 **attackbox here**
+    sprite('no284_04', 2)	# 11-12	 **attackbox here**
     StartMultihit()
-    sprite('no284_05ex01', 3)	# 15-17	 **attackbox here**
+    sprite('no284_05ex01', 3)	# 13-15	 **attackbox here**
     Unknown1019(0)
     SFX_0('016_explode_1')
     GFX_0('BLT', 1)
     GFX_0('EFF_LongFireTypeA', 3)
     ScreenShake(0, 5000)
-    sprite('no284_04', 2)	# 18-19	 **attackbox here**
+    sprite('no284_04', 2)	# 16-17	 **attackbox here**
     Unknown7006('bno307_0', 100, 862940770, 828323632, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     StartMultihit()
-    sprite('no284_05ex01', 3)	# 20-22	 **attackbox here**
+    sprite('no284_05ex01', 3)	# 18-20	 **attackbox here**
     RefreshMultihit()
     SFX_0('016_explode_1')
     GFX_0('BLT', 0)
     GFX_0('EFF_LongFireTypeA', 2)
     ScreenShake(0, 5000)
-    sprite('no284_05ex01', 1)	# 23-23	 **attackbox here**
+    sprite('no284_05ex01', 1)	# 21-21	 **attackbox here**
     StartMultihit()
-    sprite('no284_05ex01', 2)	# 24-25	 **attackbox here**
+    sprite('no284_05ex01', 2)	# 22-23	 **attackbox here**
     StartMultihit()
-    sprite('no284_06', 5)	# 26-30
+    sprite('no284_06', 5)	# 24-28
     SFX_3('nose_01')
     callSubroutine('NoelComboDeriveTimingBegin')
-    sprite('no284_07', 5)	# 31-35
+    if SLOT_51:
+        sendToLabel(0)
+    sprite('no284_07', 5)	# 29-33
     Recovery()
-    sprite('no284_08', 5)	# 36-40
+    sprite('no284_08', 5)	# 34-38
     callSubroutine('NoelComboDeriveClear')
-    sprite('no284_09', 5)	# 41-45
-    sprite('no284_10', 5)	# 46-50
+    sprite('no284_09', 5)	# 39-43
+    sprite('no284_10', 5)	# 44-48
     physicsXImpulse(0)
-    sprite('no284_11', 5)	# 51-55
+    sprite('no284_11', 5)	# 49-53
     loopRest()
+    ExitState()
+    label(0)
+    sprite('no286_00', 2)	# 54-55
+    sprite('no286_01', 1)	# 56-56
+    sprite('no286_02', 2)	# 57-58
+    sprite('no286_03', 2)	# 59-60
+    sprite('no286_04', 4)	# 61-64
+    sprite('no286_05', 2)	# 65-66
+    sprite('no286_06', 2)	# 67-68	 **attackbox here**
+    AttackLevel_(5)
+    RefreshMultihit()
+    GroundedHitstunAnimation(2)
+    AirPushbackX(16000)
+    AirPushbackY(6000)
+    YImpluseBeforeWallbounce(1000)
+    Hitstop(4)
+    clearUponHandler(78)
+    Damage(700)
+    Unknown2004(1, 0)
+    SFX_0('006_swing_blade_1')
+    sprite('no286_07', 2)	# 69-70
+    sprite('no286_08', 2)	# 71-72
+    sprite('no286_09', 2)	# 73-74
+    sprite('no286_10', 1)	# 75-75	 **attackbox here**
+    StartMultihit()
+    SFX_0('016_explode_1')
+    ScreenShake(0, 5000)
+    GFX_0('BLT', 1)
+    GFX_0('EFF_LongFireTypeC', 0)
+    Unknown36(1)
+    Unknown1064(1200)
+    Unknown35()
+    GFX_0('EFF_Spark', 0)
+    Unknown36(1)
+    Unknown1096(1500)
+    Unknown35()
+    sprite('no286_10', 2)	# 76-77	 **attackbox here**
+    RefreshMultihit()
+    Unknown9018(1)
+    Unknown9346(1)
+    AirHitstunAnimation(12)
+    GroundedHitstunAnimation(12)
+    AirPushbackX(50000)
+    AirPushbackY(1500)
+    YImpluseBeforeWallbounce(100)
+    Hitstop(0)
+    Unknown11033(1)
+    AirUntechableTime(50)
+    AirHitstunAfterWallbounce(50)
+    Unknown30056('000000000000000000000000')
+    WallbounceReboundTime(40)
+    Unknown9346(0)
+    Hitstop(1)
+    Damage(500)
+    Unknown9017(1)
+    sprite('no286_10', 2)	# 78-79	 **attackbox here**
+    RefreshMultihit()
+    sprite('no286_10', 2)	# 80-81	 **attackbox here**
+    RefreshMultihit()
+    sprite('no286_10', 2)	# 82-83	 **attackbox here**
+    RefreshMultihit()
+    sprite('no286_10', 15)	# 84-98	 **attackbox here**
+    StartMultihit()
+    Recovery()
+    sprite('no286_11', 5)	# 99-103
+    SFX_3('nose_01')
+    sprite('no286_12', 3)	# 104-106
 
 @State
 def CmnActChangePartnerAttackIn():
@@ -6788,6 +6864,7 @@ def UltimateShotDDD():
         Unknown11056(2)
 
         def upon_78():
+            Unknown2021(1)
             Unknown2038(1)
             Unknown11069('UltimateShotDDD')
     sprite('no214_00', 4)	# 1-4
@@ -6998,6 +7075,7 @@ def UltimateShotDDDOD():
         Unknown11064(1)
 
         def upon_78():
+            Unknown2021(1)
             Unknown2038(1)
             Unknown11069('MajuShotObj_TsuikaDDD')
         setInvincible(1)

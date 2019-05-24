@@ -5,7 +5,7 @@ def PreInit():
 @Subroutine
 def MatchInit():
     Health(18000)
-    DashFInitialVelocity(6000)
+    DashFInitialVelocity(10000)
     DashFAccel(70)
     DashFMaxVelocity(19000)
     Unknown12038(18000)
@@ -1983,6 +1983,7 @@ def ChangePartnerDD_Exe():
         Unknown30055('a08601003200000000000000')
         Unknown11068(1)
         Unknown11064(1)
+        Unknown2073(1)
 
         def upon_ON_HIT_OR_BLOCK():
             SLOT_51 = 1
@@ -2067,7 +2068,7 @@ def ChangePartnerDD_Exe():
     YAccel(80)
     RefreshMultihit()
     AttackLevel_(5)
-    Damage(600)
+    Damage(800)
     AirUntechableTime(51)
     AirHitstunAnimation(1)
     GroundedHitstunAnimation(0)
@@ -2108,7 +2109,7 @@ def ChangePartnerDD_Exe():
     GFX_0('kaef430_atk3', 100)
     Unknown1019(80)
     RefreshMultihit()
-    Damage(700)
+    Damage(1000)
     Hitstop(30)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
@@ -2184,6 +2185,7 @@ def ChangePartnerDDOD_Exe():
         Unknown30055('a08601003200000000000000')
         Unknown11068(1)
         Unknown11064(1)
+        Unknown2073(1)
 
         def upon_ON_HIT_OR_BLOCK():
             SLOT_51 = 1
@@ -2268,7 +2270,7 @@ def ChangePartnerDDOD_Exe():
     YAccel(80)
     RefreshMultihit()
     AttackLevel_(5)
-    Damage(600)
+    Damage(800)
     AirUntechableTime(51)
     AirHitstunAnimation(1)
     GroundedHitstunAnimation(0)
@@ -2309,7 +2311,7 @@ def ChangePartnerDDOD_Exe():
     GFX_0('kaef430_atk3', 100)
     Unknown1019(80)
     RefreshMultihit()
-    Damage(700)
+    Damage(1000)
     Hitstop(30)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
@@ -2507,7 +2509,6 @@ def NmlAtk5A2nd():
         AttackLevel_(3)
         PushbackX(11000)
         AirPushbackY(20000)
-        AirUntechableTime(19)
         HitOrBlockCancel('NmlAtk5A3rd')
         HitOrBlockCancel('NmlAtk5B')
         HitOrBlockCancel('NmlAtk2B')
@@ -2543,7 +2544,10 @@ def NmlAtk5A3rd():
         AirPushbackY(-30000)
         PushbackX(19800)
         Unknown9310(1)
+        Unknown9154(19)
         HitOrBlockCancel('NmlAtk5A4th')
+        HitOrBlockCancel('NmlAtk5B')
+        HitOrBlockCancel('NmlAtk2B')
         HitOrBlockCancel('CmnActCrushAttack')
         HitOrBlockCancel('NmlAtk2C')
     sprite('ka202_00', 3)	# 1-3
@@ -2673,6 +2677,7 @@ def NmlAtk4A3rd():
         AttackP2(85)
         HitOrBlockCancel('NmlAtk4A4th_Land')
         Unknown11044(1)
+        Unknown2073(1)
 
         def upon_78():
             Hitstop(0)
@@ -3224,57 +3229,68 @@ def NmlAtkAIR5C():
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
         JumpCancel_(0)
+
+        def upon_43():
+            if (SLOT_48 == 2031):
+                Recovery()
+                Unknown2063()
+                setInvincible(0)
+        loopRelated(17, 300)
+
+        def upon_17():
+            clearUponHandler(17)
+            Unknown1043()
     sprite('ka253_00', 3)	# 1-3
     sprite('ka253_01', 4)	# 4-7
     Unknown23029(11, 2530, 0)
     GFX_1('persona_enter_ply', 0)
-    sprite('ka253_02', 4)	# 8-11
-    sprite('ka253_02', 1)	# 12-12
+    sprite('ka253_02', 3)	# 8-10
+    sprite('ka253_02', 1)	# 11-11
     sendToLabelUpon(25, 1)
     label(0)
-    sprite('ka253_01', 3)	# 13-15
-    sprite('ka253_02', 3)	# 16-18
+    sprite('ka253_01', 3)	# 12-14
+    sprite('ka253_02', 3)	# 15-17
     loopRest()
     gotoLabel(0)
     label(1)
     clearUponHandler(25)
-    sprite('ka253_03', 2)	# 19-20
+    sprite('ka253_03', 2)	# 18-19
     setInvincible(1)
     Unknown22019('0000000001000000000000000000000000000000')
     Unknown1084(1)
     physicsXImpulse(-15000)
-    physicsYImpulse(30000)
+    physicsYImpulse(10000)
     Unknown22004(9, 9)
-    sprite('ka253_04', 2)	# 21-22
+    sprite('ka253_04', 2)	# 20-21
     Unknown23029(11, 2531, 0)
     Unknown1019(80)
     YAccel(80)
-    sprite('ka253_05', 5)	# 23-27
+    sprite('ka253_05', 5)	# 22-26
     Unknown1019(80)
     YAccel(80)
     Unknown7007('706b613132305f30000000000000000064000000706b613132335f32000000000000000064000000706b613132345f30000000000000000064000000706b613132345f32000000000000000064000000')
     SFX_3('hit_m_fast')
-    sprite('ka253_06', 1)	# 28-28
+    sprite('ka253_06', 1)	# 27-27
     Unknown1019(50)
     YAccel(50)
-    sprite('ka253_06', 4)	# 29-32
-    setInvincible(0)
-    sprite('ka253_07', 5)	# 33-37
+    sprite('ka253_06', 4)	# 28-31
+    sprite('ka253_07', 5)	# 32-36
     Recovery()
     Unknown2063()
+    setInvincible(0)
     Unknown1019(50)
     YAccel(50)
-    sprite('ka253_06', 5)	# 38-42
+    sprite('ka253_06', 5)	# 37-41
     YAccel(0)
     setGravity(4000)
-    sprite('ka253_07', 5)	# 43-47
-    sprite('ka253_09', 5)	# 48-52
-    sprite('ka020_04', 3)	# 53-55
-    sprite('ka020_05', 3)	# 56-58
-    sprite('ka020_06', 3)	# 59-61
+    sprite('ka253_07', 5)	# 42-46
+    sprite('ka253_09', 5)	# 47-51
+    sprite('ka020_04', 3)	# 52-54
+    sprite('ka020_05', 3)	# 55-57
+    sprite('ka020_06', 3)	# 58-60
     label(2)
-    sprite('ka020_07', 3)	# 62-64
-    sprite('ka020_08', 3)	# 65-67
+    sprite('ka020_07', 3)	# 61-63
+    sprite('ka020_08', 3)	# 64-66
     gotoLabel(2)
 
 @State
@@ -3754,6 +3770,7 @@ def BackThrowExe():
         YImpluseBeforeWallbounce(2200)
         Unknown11050('050000000000000000000000000000000000000000000000000000000000000000000000')
         JumpCancel_(0)
+        Unknown11069('BackThrowExe')
         Unknown21015('6b615f6973756f6b6973656d6500000000000000000000000000000000000000ce10000000000000')
     sprite('ka310_03', 3)	# 1-3	 **attackbox here**
     StartMultihit()
@@ -3789,6 +3806,7 @@ def BackThrowExe():
     AirUntechableTime(120)
     Unknown9310(12)
     Unknown11050('000000000000000000000000000000000000000000000000000000000000000000000000')
+    Unknown11069('')
 
     def upon_ON_HIT_OR_BLOCK():
         JumpCancel_(1)
@@ -3841,7 +3859,6 @@ def CmnActInvincibleAttack():
             clearUponHandler(42)
     sprite('ka400_00', 2)	# 1-2
     Unknown1084(0)
-    setInvincible(1)
     GuardPoint_(1)
     GFX_1('kaef_spark_01', 0)
     GFX_1('kaef_spark_01', 1)
@@ -4055,6 +4072,7 @@ def BusterAttackEX():
     SLOT_62 = 1
     callSubroutine('Taete_Input')
     SFX_3('highjump_l')
+    Unknown23087(100000)
     sprite('ka401_03', 2)	# 12-13
     sprite('ka401_04', 32767)	# 14-32780
     callSubroutine('Taete_Timing')
@@ -4479,6 +4497,7 @@ def Kushizashi_Exe():
     Unknown5001('0000000001000000010000000000000000000000')
     sprite('ka403_06', 3)	# 41-43	 **attackbox here**
     RefreshMultihit()
+    Unknown11072(1, 150000, 60000)
     sprite('ka403_07', 4)	# 44-47
     sprite('ka403_08', 6)	# 48-53
     sprite('ka403_09', 6)	# 54-59
@@ -4653,60 +4672,60 @@ def TaetemiyagareA():
         sendToLabelUpon(2, 1)
     if SLOT_62:
         _gotolabel(3)
-    sprite('ka406_00', 6)	# 1-6
+    sprite('ka406_00', 3)	# 1-3
     Unknown1019(15)
     YAccel(15)
     setGravity(0)
-    sprite('ka406_00', 3)	# 7-9
+    sprite('ka406_00', 3)	# 4-6
     tag_voice(1, 'pka210_0', 'pka210_1', 'pka210_2', '')
     SFX_3('airdash_m')
     physicsXImpulse(10000)
-    physicsYImpulse(40000)
+    physicsYImpulse(30000)
     setGravity(3500)
     sendToLabelUpon(4, 0)
-    sprite('ka406_01', 3)	# 10-12	 **attackbox here**
+    sprite('ka406_01', 3)	# 7-9	 **attackbox here**
     GFX_0('406isumove', 100)
     label(2)
-    sprite('ka406_02', 3)	# 13-15	 **attackbox here**
-    sprite('ka406_01', 3)	# 16-18	 **attackbox here**
+    sprite('ka406_02', 3)	# 10-12	 **attackbox here**
+    sprite('ka406_01', 3)	# 13-15	 **attackbox here**
     loopRest()
     gotoLabel(2)
     label(0)
     clearUponHandler(4)
-    sprite('ka406_01', 3)	# 19-21	 **attackbox here**
-    sprite('ka406_02', 3)	# 22-24	 **attackbox here**
-    sprite('ka406_01', 3)	# 25-27	 **attackbox here**
+    sprite('ka406_01', 2)	# 16-17	 **attackbox here**
+    sprite('ka406_02', 2)	# 18-19	 **attackbox here**
+    sprite('ka406_01', 3)	# 20-22	 **attackbox here**
     RefreshMultihit()
     SLOT_5 = SLOT_12
-    sprite('ka406_02', 3)	# 28-30	 **attackbox here**
+    sprite('ka406_02', 3)	# 23-25	 **attackbox here**
     loopRest()
     gotoLabel(0)
     label(1)
-    sprite('ka406_03', 3)	# 31-33
+    sprite('ka406_03', 3)	# 26-28
     Unknown1084(1)
     SFX_3('bound_stone_m')
     SLOT_62 = 0
-    sprite('ka406_04', 3)	# 34-36
-    sprite('ka406_05', 5)	# 37-41
-    sprite('ka406_06', 5)	# 42-46
-    sprite('ka401_09', 2)	# 47-48
-    sprite('ka401_10', 1)	# 49-49
-    sprite('ka401_10', 1)	# 50-50
+    sprite('ka406_04', 3)	# 29-31
+    sprite('ka406_05', 5)	# 32-36
+    sprite('ka406_06', 5)	# 37-41
+    sprite('ka401_09', 2)	# 42-43
+    sprite('ka401_10', 1)	# 44-44
+    sprite('ka401_10', 1)	# 45-45
     tag_voice(0, 'pka211_0', 'pka211_1', 'pka211_2', '')
     SLOT_64 = 2
     ExitState()
     label(3)
     clearUponHandler(4)
     SLOT_62 = 0
-    sprite('ka406_01', 4)	# 51-54	 **attackbox here**
+    sprite('ka406_01', 4)	# 46-49	 **attackbox here**
     GFX_0('406isumove', 100)
     tag_voice(1, 'pka210_0', 'pka210_1', 'pka210_2', '')
     Unknown1017()
     Unknown1022()
     Unknown1037()
     Unknown1084(1)
-    sprite('ka406_02', 3)	# 55-57	 **attackbox here**
-    sprite('ka406_01', 3)	# 58-60	 **attackbox here**
+    sprite('ka406_02', 3)	# 50-52	 **attackbox here**
+    sprite('ka406_01', 3)	# 53-55	 **attackbox here**
     Unknown1018()
     Unknown1023()
     Unknown1038()
@@ -4714,9 +4733,9 @@ def TaetemiyagareA():
     Unknown1039(80)
     RefreshMultihit()
     label(4)
-    sprite('ka406_02', 3)	# 61-63	 **attackbox here**
+    sprite('ka406_02', 3)	# 56-58	 **attackbox here**
     SLOT_5 = SLOT_12
-    sprite('ka406_01', 3)	# 64-66	 **attackbox here**
+    sprite('ka406_01', 3)	# 59-61	 **attackbox here**
     loopRest()
     gotoLabel(4)
 
@@ -4726,7 +4745,7 @@ def TaetemiyagareA_Exe():
     def upon_IMMEDIATE():
         Unknown17012(2, 0, 0)
         AttackLevel_(4)
-        Damage(400)
+        Damage(600)
         AttackP2(100)
         Unknown11091(5)
         AirHitstunAnimation(13)
@@ -4918,7 +4937,7 @@ def TaetemiyagareB_Exe():
     def upon_IMMEDIATE():
         Unknown17012(2, 0, 0)
         AttackLevel_(4)
-        Damage(400)
+        Damage(600)
         AttackP2(100)
         Unknown11091(5)
         AirHitstunAnimation(13)
@@ -5205,7 +5224,7 @@ def TaetemiyagareEX_Exe():
     GFX_1('kaef_407atk3', 0)
     RefreshMultihit()
     AttackLevel_(5)
-    Damage(3600)
+    Damage(4500)
     Hitstop(13)
     Unknown11064(0)
     ScreenShake(20000, 20000)
@@ -5250,6 +5269,7 @@ def KenkaSappou():
         Unknown30055('a08601003200000000000000')
         Unknown11068(1)
         Unknown11064(1)
+        Unknown2073(1)
 
         def upon_ON_HIT_OR_BLOCK():
             SLOT_51 = 1
@@ -5338,7 +5358,8 @@ def KenkaSappou():
     YAccel(80)
     RefreshMultihit()
     AttackLevel_(5)
-    Damage(2000)
+    Damage(2600)
+    Unknown11091(25)
     AirUntechableTime(51)
     AirHitstunAnimation(1)
     GroundedHitstunAnimation(0)
@@ -5379,7 +5400,8 @@ def KenkaSappou():
     GFX_0('kaef430_atk3', 100)
     Unknown1019(80)
     RefreshMultihit()
-    Damage(3000)
+    Damage(3600)
+    Unknown11091(27)
     Hitstop(30)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
@@ -5455,6 +5477,7 @@ def KenkaSappou_OD():
         Unknown30055('a08601003200000000000000')
         Unknown11068(1)
         Unknown11064(1)
+        Unknown2073(1)
 
         def upon_ON_HIT_OR_BLOCK():
             SLOT_51 = 1
@@ -5544,6 +5567,7 @@ def KenkaSappou_OD():
     RefreshMultihit()
     AttackLevel_(5)
     Damage(2000)
+    Unknown11091(35)
     AirUntechableTime(51)
     AirHitstunAnimation(1)
     GroundedHitstunAnimation(0)
@@ -5586,6 +5610,7 @@ def KenkaSappou_OD():
     RefreshMultihit()
     Damage(3000)
     AttackP2(100)
+    Unknown11091(30)
     Hitstop(30)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)

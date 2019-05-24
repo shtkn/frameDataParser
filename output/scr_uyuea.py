@@ -545,6 +545,10 @@ def Yae_AtkCol():
 
         def upon_78():
             Unknown23029(3, 1000, 1)
+        SLOT_9 = 0
+
+        def upon_82():
+            SLOT_9 = 1
     sprite('Action_463_00', 5)	# 1-5	 **attackbox here**
     RefreshMultihit()
     sprite('Action_463_01', 5)	# 6-10	 **attackbox here**
@@ -626,6 +630,12 @@ def Yae_AddAtk():
                 Unknown2003(0)
             else:
                 Unknown2003(1)
+            if SLOT_9:
+                Unknown48('19000000020000003400000017000000020000001e000000')
+                if SLOT_52:
+                    Unknown30048(0)
+                else:
+                    Unknown30048(1)
     sprite('Action_461_21_dmyatk', 3)	# 1-3
 
 @State
@@ -806,6 +816,12 @@ def Slash_AddAtk():
                 Unknown2003(0)
             else:
                 Unknown2003(1)
+            if SLOT_9:
+                Unknown48('19000000020000003400000017000000020000001e000000')
+                if SLOT_52:
+                    Unknown30048(0)
+                else:
+                    Unknown30048(1)
 
         def upon_43():
             if (SLOT_48 == 1100):
@@ -841,6 +857,10 @@ def SlashFinishSP_AtkCol():
 
         def upon_78():
             Unknown23029(3, 1000, 1)
+        SLOT_9 = 0
+
+        def upon_82():
+            SLOT_9 = 1
     sprite('Action_463_00', 5)	# 1-5	 **attackbox here**
     RefreshMultihit()
     sprite('Action_463_01', 5)	# 6-10	 **attackbox here**
@@ -885,6 +905,12 @@ def SlashFinishSP_AddAtk():
                 Unknown2003(0)
             else:
                 Unknown2003(1)
+            if SLOT_9:
+                Unknown48('19000000020000003400000017000000020000001e000000')
+                if SLOT_52:
+                    Unknown30048(0)
+                else:
+                    Unknown30048(1)
     sprite('Action_461_21_dmyatk', 3)	# 1-3
 
 @State
@@ -902,6 +928,7 @@ def KimonoDmy():
 
     def upon_IMMEDIATE():
         Unknown2019(-1)
+        Unknown23022(1)
     sprite('Action_216_32', 15)	# 1-15	 **attackbox here**
     Unknown3001(0)
     Unknown3004(25)
@@ -1322,9 +1349,9 @@ def IWOD_AddAtk():
         Unknown4011(3)
         Unknown2019(-1)
         AttackLevel_(5)
-        Damage(2000)
+        Damage(3000)
         Hitstop(18)
-        Unknown11091(30)
+        Unknown11091(22)
         AttackP1(100)
         AttackP2(100)
         AirPushbackX(3000)
@@ -1629,7 +1656,7 @@ def UltimateRush_AddAtk():
         Unknown4011(3)
         Unknown2019(-1)
         AttackLevel_(5)
-        Damage(2000)
+        Damage(1600)
         Hitstop(15)
         Unknown11091(10)
         AttackP1(100)
@@ -1645,8 +1672,6 @@ def UltimateRush_AddAtk():
         Unknown11034(1)
         Unknown11033(0)
         Unknown11058('0000000001000000000000000000000000000000')
-        Unknown11023(1)
-        Unknown30048(1)
         Unknown11108('03000000')
 
         def upon_78():

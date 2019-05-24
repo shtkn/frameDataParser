@@ -58,6 +58,12 @@ def MatchInit():
     Unknown14005(1)
     Unknown14015(0, 460000, -200000, 160000, 1500, 50)
     Move_EndRegister()
+    Move_Register('AN_NmlAtk5B_2ndShot', 0x19)
+    MoveMaxChainRepeat(1)
+    Unknown14020(1)
+    Unknown14005(1)
+    Unknown14015(0, 460000, -200000, 160000, 1500, 50)
+    Move_EndRegister()
     Move_Register('AN_NmlAtk5B_3rd', 0x19)
     MoveMaxChainRepeat(1)
     Unknown14020(1)
@@ -301,6 +307,7 @@ def MatchInit():
     Move_Register('AirUltimateAssault', 0x68)
     Move_AirGround_(0x2001)
     Move_AirGround_(0x3089)
+    Move_AirGround_(0x3009)
     Move_Input_(INPUT_236)
     Move_Input_(0xde)
     Unknown15012(1)
@@ -314,6 +321,7 @@ def MatchInit():
     Move_AirGround_(0x2001)
     Move_AirGround_(0x3089)
     Move_AirGround_(0x3081)
+    Move_AirGround_(0x3009)
     Move_Input_(INPUT_236)
     Move_Input_(0xde)
     Unknown15012(1)
@@ -517,10 +525,12 @@ def ChainRoot():
 @Subroutine
 def OnLanding():
     SLOT_31 = 999
+    SLOT_5 = 0
 
 @Subroutine
 def OnDamage():
     SLOT_31 = 999
+    SLOT_5 = 0
 
 @State
 def CmnActStand():
@@ -1784,9 +1794,12 @@ def NmlAtk5B():
         Unknown1112('')
         callSubroutine('ChainRoot')
         HitOrBlockCancel('AN_NmlAtk5B_2nd')
-    sprite('Action_002_00', 4)	# 1-4
-    sprite('Action_002_01', 4)	# 5-8
-    sprite('Action_002_02', 2)	# 9-10	 **attackbox here**
+
+        def upon_ON_HIT_OR_BLOCK():
+            Unknown2038(1)
+    sprite('Action_002_00', 3)	# 1-3
+    sprite('Action_002_01', 3)	# 4-6
+    sprite('Action_002_02', 2)	# 7-8	 **attackbox here**
     StartMultihit()
     GFX_0('EffNmlAtk5B', -1)
     physicsXImpulse(30000)
@@ -1794,17 +1807,21 @@ def NmlAtk5B():
     Unknown7009(1)
     SFX_0('005_swing_grap_2_0')
     Unknown8007(100, 1, 1)
-    sprite('Action_002_02', 3)	# 11-13	 **attackbox here**
-    sprite('Action_002_03', 3)	# 14-16	 **attackbox here**
+    sprite('Action_002_02', 3)	# 9-11	 **attackbox here**
+    Unknown14070('AN_NmlAtk5B_2ndShot')
+    sprite('Action_002_03', 3)	# 12-14	 **attackbox here**
     Unknown1019(50)
     Unknown8010(100, 1, 1)
-    sprite('Action_002_04', 4)	# 17-20
+    sprite('Action_002_04', 4)	# 15-18
     Unknown1084(1)
     Recovery()
     Unknown2063()
-    sprite('Action_002_05', 4)	# 21-24
-    sprite('Action_002_06', 4)	# 25-28
-    sprite('Action_002_07', 4)	# 29-32
+    if (not SLOT_2):
+        Unknown14072('AN_NmlAtk5B_2ndShot')
+    sprite('Action_002_05', 4)	# 19-22
+    Unknown14074('AN_NmlAtk5B_2ndShot')
+    sprite('Action_002_06', 4)	# 23-26
+    sprite('Action_002_07', 4)	# 27-30
 
 @State
 def AN_NmlAtk5B_2nd():
@@ -1817,6 +1834,7 @@ def AN_NmlAtk5B_2nd():
         AirPushbackY(20000)
         PushbackX(12000)
         AirUntechableTime(30)
+        Unknown11033(1)
         callSubroutine('ChainRoot')
         HitOrBlockCancel('AN_NmlAtk5B_3rd')
 
@@ -1845,6 +1863,47 @@ def AN_NmlAtk5B_2nd():
     sprite('Action_130_10', 4)	# 37-40
 
 @State
+def AN_NmlAtk5B_2ndShot():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingNormal()
+        AttackLevel_(4)
+        Damage(2200)
+        AttackP1(80)
+        GroundedHitstunAnimation(12)
+        AirHitstunAnimation(12)
+        AirPushbackX(65000)
+        AirPushbackY(30000)
+        WallbounceReboundTime(35)
+        PushbackX(39800)
+        Hitstop(8)
+        AirUntechableTime(80)
+        Unknown11033(1)
+
+        def upon_ON_HIT_OR_BLOCK():
+            ScreenShake(3000, 3000)
+    sprite('Action_130_00', 2)	# 1-2
+    Unknown8010(100, 1, 1)
+    sprite('Action_130_01', 1)	# 3-3
+    sprite('Action_130_01', 12)	# 4-15
+    GFX_0('EffNmlAtk5BB_03', 0)
+    sprite('Action_130_02', 6)	# 16-21
+    SFX_0('016_explode_0')
+    sprite('Action_130_03', 2)	# 22-23	 **attackbox here**
+    GFX_0('EffNmlAtk5BB_02', -1)
+    Unknown7009(1)
+    physicsXImpulse(-25000)
+    Unknown1028(2500)
+    sprite('Action_130_04', 2)	# 24-25	 **attackbox here**
+    sprite('Action_130_05', 5)	# 26-30
+    sprite('Action_130_06', 5)	# 31-35
+    Unknown1084(1)
+    sprite('Action_130_07', 5)	# 36-40
+    sprite('Action_130_08', 5)	# 41-45
+    sprite('Action_130_09', 4)	# 46-49
+    sprite('Action_130_10', 4)	# 50-53
+
+@State
 def AN_NmlAtk5B_3rd():
 
     def upon_IMMEDIATE():
@@ -1853,7 +1912,7 @@ def AN_NmlAtk5B_3rd():
         AttackP2(75)
         GroundedHitstunAnimation(9)
         AirPushbackX(20000)
-        AirPushbackY(20000)
+        AirPushbackY(22000)
         AirUntechableTime(32)
         Unknown11058('0100000000000000000000000000000000000000')
         Unknown1084(1)
@@ -2759,7 +2818,6 @@ def CmnActInvincibleAttack():
         Unknown1084(0)
         sendToLabelUpon(2, 1)
         Hitstop(2)
-        setInvincible(1)
     sprite('Action_422_00', 6)	# 1-6
     sprite('Action_422_01', 6)	# 7-12
     sprite('Action_422_02', 2)	# 13-14	 **attackbox here**
@@ -2822,7 +2880,6 @@ def CmnActInvincibleAttackAir():
         clearUponHandler(2)
         sendToLabelUpon(2, 1)
         Hitstop(2)
-        setInvincible(1)
     sprite('Action_420_00', 7)	# 1-7
     sprite('Action_422_02', 2)	# 8-9	 **attackbox here**
     StartMultihit()
@@ -3719,7 +3776,7 @@ def CommandThrow_B():
     sprite('Action_198_01', 6)	# 7-12
     sprite('Action_198_02', 4)	# 13-16
     Unknown8000(100, 1, 1)
-    physicsXImpulse(30000)
+    physicsXImpulse(40000)
     physicsYImpulse(12000)
     setGravity(2000)
     SFX_0('001_airbackdash_0')
@@ -3820,6 +3877,7 @@ def CommandThrow_Exe():
             Damage(4000)
             AirHitstunAnimation(13)
             GroundedHitstunAnimation(13)
+            AirPushbackX(5000)
             AirPushbackY(38000)
             Hitstop(20)
             Unknown11091(10)
@@ -3888,10 +3946,14 @@ def CommandThrow_Exe():
     sprite('Action_201_10', 5)	# 32814-32818	 **attackbox here**
     Unknown1045(-30000)
     sprite('Action_201_11', 9)	# 32819-32827
+    Unknown23183('416374696f6e5f3230315f313100000000000000000000000000000000000000070000000200000002000000')
     sprite('Action_201_12', 5)	# 32828-32832
+    Unknown23183('416374696f6e5f3230315f313200000000000000000000000000000000000000030000000200000002000000')
     sprite('Action_201_13', 6)	# 32833-32838
+    Unknown23183('416374696f6e5f3230315f313300000000000000000000000000000000000000040000000200000002000000')
     Unknown1084(1)
     sprite('Action_201_14', 6)	# 32839-32844
+    Unknown23183('416374696f6e5f3230315f313400000000000000000000000000000000000000050000000200000002000000')
     SLOT_4 = 1
 
 @State
@@ -3913,6 +3975,7 @@ def UltimateAssault():
         Unknown9310(1)
         Unknown11056(0)
         Unknown11058('0100000000000000000000000000000000000000')
+        Unknown2073(1)
         setInvincible(1)
 
         def upon_78():
@@ -3979,6 +4042,7 @@ def UltimateAssault():
     Unknown9310(-1)
     Hitstop(8)
     Unknown11064(0)
+    Unknown2073(0)
     physicsXImpulse(50000)
     physicsYImpulse(-60000)
     setGravity(800)
@@ -4033,7 +4097,9 @@ def AirUltimateAssault():
         Unknown9310(1)
         Unknown11056(0)
         Unknown11058('0100000000000000000000000000000000000000')
+        Unknown2073(1)
         Unknown11072(1, 100000, 150000)
+        SLOT_5 = 1
         setInvincible(1)
 
         def upon_78():
@@ -4110,6 +4176,7 @@ def AirUltimateAssault():
     Unknown9310(-1)
     Hitstop(8)
     Unknown11064(0)
+    Unknown2073(0)
     physicsXImpulse(50000)
     physicsYImpulse(-60000)
     setGravity(800)
@@ -4117,33 +4184,41 @@ def AirUltimateAssault():
     sprite('Action_223_09', 3)	# 110-112	 **attackbox here**
     sprite('Action_223_10', 3)	# 113-115	 **attackbox here**
     sprite('Action_223_11', 5)	# 116-120	 **attackbox here**
+    label(108)
+    sprite('Action_223_08', 3)	# 121-123	 **attackbox here**
+    GFX_0('EffUltimateAssault_02', -1)
+    GFX_0('EffUltimateAssault_03', -1)
+    sprite('Action_223_09', 3)	# 124-126	 **attackbox here**
+    sprite('Action_223_10', 3)	# 127-129	 **attackbox here**
+    sprite('Action_223_11', 5)	# 130-134	 **attackbox here**
+    gotoLabel(108)
     label(109)
-    sprite('Action_223_12', 5)	# 121-125
+    sprite('Action_223_12', 5)	# 135-139
     GFX_0('EffGroundBreak03', 0)
     Unknown1084(1)
     SFX_0('016_explode_2')
     ScreenShake(0, 20000)
-    sprite('Action_224_00', 5)	# 126-130
+    sprite('Action_224_00', 5)	# 140-144
     physicsXImpulse(-6000)
     physicsYImpulse(20000)
     setGravity(1600)
     sendToLabelUpon(2, 111)
-    sprite('Action_224_01', 5)	# 131-135
-    sprite('Action_224_02', 5)	# 136-140
-    sprite('Action_224_03', 5)	# 141-145
-    sprite('Action_224_04', 4)	# 146-149
+    sprite('Action_224_01', 5)	# 145-149
+    sprite('Action_224_02', 5)	# 150-154
+    sprite('Action_224_03', 5)	# 155-159
+    sprite('Action_224_04', 4)	# 160-163
     label(110)
-    sprite('Action_224_05', 3)	# 150-152
-    sprite('Action_224_06', 3)	# 153-155
+    sprite('Action_224_05', 3)	# 164-166
+    sprite('Action_224_06', 3)	# 167-169
     loopRest()
     gotoLabel(110)
     label(111)
-    sprite('Action_224_07', 5)	# 156-160
+    sprite('Action_224_07', 5)	# 170-174
     Unknown1084(1)
     Unknown8000(100, 1, 1)
     clearUponHandler(2)
-    sprite('Action_224_08', 6)	# 161-166
-    sprite('Action_224_09', 5)	# 167-171
+    sprite('Action_224_08', 6)	# 175-180
+    sprite('Action_224_09', 5)	# 181-185
 
 @State
 def UltimateAssault_catch():
@@ -4169,7 +4244,7 @@ def UltimateAssault_catch():
         Unknown11069('UltimateAssault_exe_1')
         Unknown11064(1)
         Unknown11023(1)
-    sprite('Action_225_00', 1)	# 1-1	 **attackbox here**
+    sprite('Action_225_00', 4)	# 1-4	 **attackbox here**
     GFX_0('EffUltimateAssault_04', -1)
     Unknown5000(0, 0)
     Unknown5001('0000000001000000010000000000000000000000')
@@ -4177,6 +4252,10 @@ def UltimateAssault_catch():
     physicsXImpulse(0)
     physicsYImpulse(5000)
     setGravity(100)
+    sprite('keep', 1)	# 5-5
+    StartMultihit()
+    Unknown2053(1)
+    Unknown26('UltimateAssaultLookAtMeCamera')
 
 @State
 def UltimateAssault_exe_1():
@@ -4352,12 +4431,12 @@ def UltimateAssault_exe_2():
     RefreshMultihit()
     Unknown1084(1)
     clearUponHandler(2)
-    Damage(2000)
+    Damage(3000)
     AirPushbackX(3000)
     AirPushbackY(100000)
     AttackP1(80)
     AttackP2(60)
-    Unknown11091(30)
+    Unknown11091(37)
     AirUntechableTime(120)
     Unknown9310(30)
     Unknown11064(0)
@@ -4471,6 +4550,7 @@ def UltimateAssaultOD():
         Unknown9310(1)
         Unknown11056(0)
         Unknown11058('0100000000000000000000000000000000000000')
+        Unknown2073(1)
         setInvincible(1)
 
         def upon_78():
@@ -4537,6 +4617,7 @@ def UltimateAssaultOD():
     Unknown9310(-1)
     Hitstop(8)
     Unknown11064(0)
+    Unknown2073(0)
     physicsXImpulse(50000)
     physicsYImpulse(-60000)
     setGravity(800)
@@ -4591,7 +4672,9 @@ def AirUltimateAssaultOD():
         Unknown9310(1)
         Unknown11056(0)
         Unknown11058('0100000000000000000000000000000000000000')
+        Unknown2073(1)
         Unknown11072(1, 100000, 150000)
+        SLOT_5 = 1
         setInvincible(1)
 
         def upon_78():
@@ -4668,6 +4751,7 @@ def AirUltimateAssaultOD():
     Unknown9310(-1)
     Hitstop(8)
     Unknown11064(0)
+    Unknown2073(0)
     physicsXImpulse(50000)
     physicsYImpulse(-60000)
     setGravity(800)
@@ -4675,33 +4759,41 @@ def AirUltimateAssaultOD():
     sprite('Action_223_09', 3)	# 110-112	 **attackbox here**
     sprite('Action_223_10', 3)	# 113-115	 **attackbox here**
     sprite('Action_223_11', 5)	# 116-120	 **attackbox here**
+    label(108)
+    sprite('Action_223_08', 3)	# 121-123	 **attackbox here**
+    GFX_0('EffUltimateAssault_02', -1)
+    GFX_0('EffUltimateAssault_03', -1)
+    sprite('Action_223_09', 3)	# 124-126	 **attackbox here**
+    sprite('Action_223_10', 3)	# 127-129	 **attackbox here**
+    sprite('Action_223_11', 5)	# 130-134	 **attackbox here**
+    gotoLabel(108)
     label(109)
-    sprite('Action_223_12', 5)	# 121-125
+    sprite('Action_223_12', 5)	# 135-139
     GFX_0('EffGroundBreak03', 0)
     Unknown1084(1)
     SFX_0('016_explode_2')
     ScreenShake(0, 20000)
-    sprite('Action_224_00', 5)	# 126-130
+    sprite('Action_224_00', 5)	# 140-144
     physicsXImpulse(-6000)
     physicsYImpulse(20000)
     setGravity(1600)
     sendToLabelUpon(2, 111)
-    sprite('Action_224_01', 5)	# 131-135
-    sprite('Action_224_02', 5)	# 136-140
-    sprite('Action_224_03', 5)	# 141-145
-    sprite('Action_224_04', 4)	# 146-149
+    sprite('Action_224_01', 5)	# 145-149
+    sprite('Action_224_02', 5)	# 150-154
+    sprite('Action_224_03', 5)	# 155-159
+    sprite('Action_224_04', 4)	# 160-163
     label(110)
-    sprite('Action_224_05', 3)	# 150-152
-    sprite('Action_224_06', 3)	# 153-155
+    sprite('Action_224_05', 3)	# 164-166
+    sprite('Action_224_06', 3)	# 167-169
     loopRest()
     gotoLabel(110)
     label(111)
-    sprite('Action_224_07', 5)	# 156-160
+    sprite('Action_224_07', 5)	# 170-174
     Unknown1084(1)
     Unknown8000(100, 1, 1)
     clearUponHandler(2)
-    sprite('Action_224_08', 6)	# 161-166
-    sprite('Action_224_09', 5)	# 167-171
+    sprite('Action_224_08', 6)	# 175-180
+    sprite('Action_224_09', 5)	# 181-185
 
 @State
 def UltimateAssaultOD_catch():
@@ -4727,7 +4819,7 @@ def UltimateAssaultOD_catch():
         Unknown11069('UltimateAssaultOD_exe_1')
         Unknown11064(1)
         Unknown11023(1)
-    sprite('Action_225_00', 1)	# 1-1	 **attackbox here**
+    sprite('Action_225_00', 4)	# 1-4	 **attackbox here**
     GFX_0('EffUltimateAssault_04', -1)
     Unknown5000(0, 0)
     Unknown5001('0000000001000000010000000000000000000000')
@@ -4735,6 +4827,10 @@ def UltimateAssaultOD_catch():
     physicsXImpulse(0)
     physicsYImpulse(5000)
     setGravity(100)
+    sprite('keep', 1)	# 5-5
+    StartMultihit()
+    Unknown2053(1)
+    Unknown26('UltimateAssaultLookAtMeCamera')
 
 @State
 def UltimateAssaultOD_exe_1():
@@ -4935,12 +5031,12 @@ def UltimateAssaultOD_exe_2():
     RefreshMultihit()
     Unknown1084(1)
     clearUponHandler(2)
-    Damage(2200)
+    Damage(3000)
     AirPushbackX(3000)
     AirPushbackY(100000)
     AttackP1(80)
     AttackP2(60)
-    Unknown11091(30)
+    Unknown11091(35)
     AirUntechableTime(120)
     Unknown9310(30)
     Unknown11064(0)
@@ -5041,7 +5137,7 @@ def UltimateThrow():
     def upon_IMMEDIATE():
         Unknown17011('UltimateThrowExe_1', 3, 0, 0)
         Unknown23055('')
-        Unknown11054(120000)
+        Unknown11054(170000)
         Unknown11032('80ee360001000000ffffffffffffffff')
         Unknown2018(0, 80)
         setInvincible(1)
@@ -5405,7 +5501,7 @@ def UltimateThrowOD():
     def upon_IMMEDIATE():
         Unknown17011('UltimateThrowODExe_1', 3, 0, 0)
         Unknown23055('')
-        Unknown11054(120000)
+        Unknown11054(170000)
         Unknown11032('80ee360001000000ffffffffffffffff')
         Unknown2018(0, 80)
         setInvincible(1)
@@ -6304,8 +6400,8 @@ def CmnActChangePartnerAssistAtk_A():
     setGravity(1000)
     SLOT_12 = SLOT_19
     Unknown1019(2)
-    if (SLOT_12 >= 18000):
-        SLOT_12 = 18000
+    if (SLOT_12 >= 23000):
+        SLOT_12 = 23000
     sprite('Action_148_01', 3)	# 4-6
     sprite('Action_148_02', 3)	# 7-9
     sprite('Action_148_03', 3)	# 10-12
@@ -6519,6 +6615,7 @@ def UltimateAssaultDDD():
         Unknown9310(1)
         Unknown11056(0)
         Unknown11058('0100000000000000000000000000000000000000')
+        Unknown2073(1)
         setInvincible(1)
 
         def upon_78():
@@ -6579,6 +6676,7 @@ def UltimateAssaultDDD():
     Unknown9310(-1)
     Hitstop(8)
     Unknown11064(0)
+    Unknown2073(0)
     physicsXImpulse(50000)
     physicsYImpulse(-60000)
     setGravity(800)
@@ -6639,7 +6737,7 @@ def UltimateAssaultDDD_catch():
         Unknown11069('UltimateAssaultDDD_exe_1')
         Unknown11064(1)
         Unknown11023(1)
-    sprite('Action_225_00', 1)	# 1-1	 **attackbox here**
+    sprite('Action_225_00', 4)	# 1-4	 **attackbox here**
     GFX_0('EffUltimateAssault_04', -1)
     Unknown5000(0, 0)
     Unknown5001('0000000001000000010000000000000000000000')
@@ -6647,6 +6745,10 @@ def UltimateAssaultDDD_catch():
     physicsXImpulse(0)
     physicsYImpulse(5000)
     setGravity(100)
+    sprite('keep', 1)	# 5-5
+    StartMultihit()
+    Unknown2053(1)
+    Unknown26('UltimateAssaultLookAtMeCamera')
 
 @State
 def UltimateAssaultDDD_exe_1():
@@ -6825,7 +6927,7 @@ def UltimateAssaultDDD_exe_2():
     RefreshMultihit()
     Unknown1084(1)
     clearUponHandler(2)
-    Damage(200)
+    Damage(700)
     AirPushbackX(3000)
     AirPushbackY(100000)
     AirUntechableTime(120)
@@ -6875,6 +6977,7 @@ def UltimateAssaultDDDOD():
         Unknown9310(1)
         Unknown11056(0)
         Unknown11058('0100000000000000000000000000000000000000')
+        Unknown2073(1)
         setInvincible(1)
 
         def upon_78():
@@ -6935,6 +7038,7 @@ def UltimateAssaultDDDOD():
     Unknown9310(-1)
     Hitstop(8)
     Unknown11064(0)
+    Unknown2073(0)
     physicsXImpulse(50000)
     physicsYImpulse(-60000)
     setGravity(800)
@@ -6994,7 +7098,7 @@ def UltimateAssaultDDDOD_catch():
         Unknown11069('UltimateAssaultDDDOD_exe_1')
         Unknown11064(1)
         Unknown11023(1)
-    sprite('Action_225_00', 1)	# 1-1	 **attackbox here**
+    sprite('Action_225_00', 4)	# 1-4	 **attackbox here**
     GFX_0('EffUltimateAssault_04', -1)
     Unknown5000(0, 0)
     Unknown5001('0000000001000000010000000000000000000000')
@@ -7002,6 +7106,10 @@ def UltimateAssaultDDDOD_catch():
     physicsXImpulse(0)
     physicsYImpulse(5000)
     setGravity(100)
+    sprite('keep', 1)	# 5-5
+    StartMultihit()
+    Unknown2053(1)
+    Unknown26('UltimateAssaultLookAtMeCamera')
 
 @State
 def UltimateAssaultDDDOD_exe_1():
@@ -7205,7 +7313,7 @@ def UltimateAssaultDDDOD_exe_2():
     RefreshMultihit()
     Unknown1084(1)
     clearUponHandler(2)
-    Damage(300)
+    Damage(800)
     AirPushbackX(3000)
     AirPushbackY(100000)
     AirUntechableTime(120)
@@ -8066,10 +8174,12 @@ def CmnActMatchWin():
     sprite('Action_052_07', 10)	# 65690-65699
     physicsYImpulse(13000)
     setGravity(1000)
-    tag_voice(1, 'umi523', 'umi999', '', '')
+    if SLOT_158:
+        tag_voice(1, 'umi523', 'umi999', '', '')
     sprite('Action_052_08', 7)	# 65700-65706
     sprite('Action_052_09', 6)	# 65707-65712
-    tag_voice(0, '', 'umi522', '', '')
+    if SLOT_158:
+        tag_voice(0, '', 'umi522', '', '')
     sprite('Action_052_10', 5)	# 65713-65717
     sprite('Action_052_11', 4)	# 65718-65721
     sprite('Action_052_12', 4)	# 65722-65725

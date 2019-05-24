@@ -1546,7 +1546,7 @@ def Flying_Start():
 
         def upon_LANDING():
             sendToLabel(2)
-        loopRelated(17, 100)
+        loopRelated(17, 60)
 
         def upon_17():
             clearUponHandler(17)
@@ -1711,9 +1711,6 @@ def Airdash():
             Unknown1043()
             Unknown2015(-1)
             Unknown2016(-1)
-
-        def upon_ON_HIT_OR_BLOCK():
-            Unknown13014(1)
         Unknown2003(1)
     sprite('Action_147_00', 6)	# 1-6	 **attackbox here**
     if (SLOT_13 >= 0):
@@ -1750,6 +1747,7 @@ def Airdash():
     Unknown1028(3000)
     sprite('Action_147_04', 4)	# 20-23	 **attackbox here**
     YAccel(50)
+    Unknown13014(1)
     Unknown13015(1)
     sprite('Action_147_05', 4)	# 24-27	 **attackbox here**
     sprite('Action_147_04', 4)	# 28-31	 **attackbox here**
@@ -1937,6 +1935,7 @@ def AN_NmlAtk5A_3rd():
         AttackLevel_(3)
         AttackP2(70)
         Unknown11044(1)
+        Unknown2073(1)
 
         def upon_78():
             JumpCancel_(0)
@@ -3316,9 +3315,10 @@ def RushA():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         AttackLevel_(3)
-        Damage(450)
+        Damage(400)
         AttackP1(80)
-        AttackP2(90)
+        AttackP2(80)
+        Unknown11092(1)
         AirPushbackX(20000)
         AirPushbackY(15000)
         AirHitstunAnimation(13)
@@ -3357,11 +3357,11 @@ def RushA():
     sprite('Action_110_12', 3)	# 29-31
     Recovery()
     Unknown12046(0)
-    sprite('Action_110_13', 6)	# 32-37
-    sprite('Action_110_14', 4)	# 38-41
-    sprite('Action_110_15', 4)	# 42-45
-    sprite('Action_110_16', 4)	# 46-49
-    sprite('Action_110_17', 4)	# 50-53
+    sprite('Action_110_13', 4)	# 32-35
+    sprite('Action_110_14', 3)	# 36-38
+    sprite('Action_110_15', 3)	# 39-41
+    sprite('Action_110_16', 3)	# 42-44
+    sprite('Action_110_17', 3)	# 45-47
 
 @State
 def RushB():
@@ -3369,9 +3369,10 @@ def RushB():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         AttackLevel_(3)
-        Damage(500)
+        Damage(450)
         AttackP1(80)
-        AttackP2(90)
+        AttackP2(80)
+        Unknown11092(1)
         AirPushbackX(20000)
         AirPushbackY(20000)
         AirHitstunAnimation(13)
@@ -3428,9 +3429,10 @@ def Rush_Ex():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         AttackLevel_(3)
-        Damage(500)
+        Damage(350)
         AttackP1(80)
-        AttackP2(90)
+        AttackP2(80)
+        Unknown11092(1)
         AirPushbackX(20000)
         AirPushbackY(20000)
         AirHitstunAnimation(13)
@@ -3521,6 +3523,7 @@ def CaptureA():
         Unknown28(78, 'CaptureAPlus')
         Unknown11064(1)
         Unknown11057(0)
+        Unknown2073(1)
 
         def upon_78():
             GFX_0('Mer_071', 0)
@@ -3668,6 +3671,7 @@ def CaptureB():
         Unknown28(78, 'CaptureBPlus')
         Unknown11064(1)
         Unknown11057(0)
+        Unknown2073(1)
 
         def upon_78():
             GFX_0('Mer_071', 0)
@@ -3819,6 +3823,7 @@ def Capture_Ex():
         Unknown28(78, 'CaptureEXPlus')
         Unknown11064(1)
         Unknown11057(0)
+        Unknown2073(1)
 
         def upon_78():
             GFX_0('Mer_071', 0)
@@ -4113,45 +4118,45 @@ def AirShotA():
     sprite('Action_174_02', 3)	# 5-7
     Unknown7007('756d653230365f30000000000000000064000000756d653230365f31000000000000000064000000756d653230365f320000000000000000640000000000000000000000000000000000000000000000')
     Unknown1007(50000)
-    sprite('Action_174_03', 8)	# 8-15
-    sprite('Action_174_04', 5)	# 16-20
-    sprite('Action_174_05', 5)	# 21-25
+    sprite('Action_174_03', 6)	# 8-13
+    sprite('Action_174_04', 5)	# 14-18
+    sprite('Action_174_05', 5)	# 19-23
     physicsXImpulse(-1250)
     physicsYImpulse(16000)
     Unknown1043()
     GFX_0('Atk_Shot_Mer_178', 0)
     GFX_0('Mer_179', 0)
     SFX_3('SE221')
-    sprite('Action_174_06', 6)	# 26-31
-    sprite('Action_174_07', 6)	# 32-37
-    sprite('Action_174_08', 5)	# 38-42
-    sprite('Action_174_09', 4)	# 43-46
-    sprite('Action_174_10', 4)	# 47-50
-    sprite('Action_174_11', 3)	# 51-53
+    sprite('Action_174_06', 5)	# 24-28
+    sprite('Action_174_07', 5)	# 29-33
+    sprite('Action_174_08', 5)	# 34-38
+    sprite('Action_174_09', 4)	# 39-42
+    sprite('Action_174_10', 4)	# 43-46
+    sprite('Action_174_11', 3)	# 47-49
 
 @State
 def AirShotB():
 
     def upon_IMMEDIATE():
         Unknown17003()
-        Unknown22004(8, 1)
+        Unknown22004(4, 1)
     sprite('Action_175_00', 2)	# 1-2	 **attackbox here**
     Unknown1084(1)
     sprite('Action_175_01', 2)	# 3-4
     sprite('Action_175_02', 3)	# 5-7
     Unknown7007('756d653230365f30000000000000000064000000756d653230365f31000000000000000064000000756d653230365f320000000000000000640000000000000000000000000000000000000000000000')
     Unknown1007(50000)
-    sprite('Action_175_03', 8)	# 8-15
-    sprite('Action_175_04', 5)	# 16-20
-    sprite('Action_175_05', 5)	# 21-25
+    sprite('Action_175_03', 10)	# 8-17
+    sprite('Action_175_04', 5)	# 18-22
+    sprite('Action_175_05', 5)	# 23-27
     physicsXImpulse(-1600)
     physicsYImpulse(18000)
     Unknown1043()
     GFX_0('Mer_179B', 0)
     GFX_0('Atk_Shot_Mer_178B', 0)
     SFX_3('SE221')
-    sprite('Action_175_06', 6)	# 26-31
-    sprite('Action_175_07', 6)	# 32-37
+    sprite('Action_175_06', 5)	# 28-32
+    sprite('Action_175_07', 5)	# 33-37
     sprite('Action_175_08', 5)	# 38-42
     sprite('Action_175_09', 4)	# 43-46
     sprite('Action_175_10', 4)	# 47-50
@@ -4162,7 +4167,7 @@ def AirShot_Ex():
 
     def upon_IMMEDIATE():
         Unknown17003()
-        Unknown22004(8, 1)
+        Unknown22004(4, 1)
     sprite('Action_174_00', 2)	# 1-2	 **attackbox here**
     Unknown1017()
     Unknown1022()
@@ -4175,9 +4180,9 @@ def AirShot_Ex():
     Unknown7007('756d653230375f30000000000000000064000000756d653230375f31000000000000000064000000756d653230375f320000000000000000640000000000000000000000000000000000000000000000')
     sprite('Action_174_02', 3)	# 5-7
     Unknown1007(50000)
-    sprite('Action_174_03', 8)	# 8-15
-    sprite('Action_174_04', 5)	# 16-20
-    sprite('Action_174_05', 3)	# 21-23
+    sprite('Action_175_03', 9)	# 8-16
+    sprite('Action_174_04', 5)	# 17-21
+    sprite('Action_174_05', 3)	# 22-24
     GFX_0('Atk_Shot_Mer_184_1', 0)
     GFX_0('Atk_Shot_Mer_184_2', 0)
     GFX_0('Atk_Shot_Mer_184_3', 0)
@@ -4188,12 +4193,12 @@ def AirShot_Ex():
     Unknown1038()
     Unknown1019(60)
     YAccel(60)
-    sprite('Action_174_06', 3)	# 24-26
-    sprite('Action_174_07', 3)	# 27-29
-    sprite('Action_174_08', 3)	# 30-32
-    sprite('Action_174_09', 3)	# 33-35
-    sprite('Action_174_10', 3)	# 36-38
-    sprite('Action_174_11', 3)	# 39-41
+    sprite('Action_174_06', 3)	# 25-27
+    sprite('Action_174_07', 3)	# 28-30
+    sprite('Action_174_08', 3)	# 31-33
+    sprite('Action_174_09', 3)	# 34-36
+    sprite('Action_174_10', 3)	# 37-39
+    sprite('Action_174_11', 3)	# 40-42
 
 @State
 def CmnActInvincibleAttack():
@@ -4210,10 +4215,10 @@ def CmnActInvincibleAttack():
         GroundedHitstunAnimation(1)
         AirHitstunAnimation(1)
         Unknown11056(2)
+        Unknown11110(85)
 
         def upon_LANDING():
             sendToLabel(1)
-        setInvincible(1)
     sprite('Action_121_00', 4)	# 1-4
     Unknown1084(1)
     sprite('Action_121_01', 3)	# 5-7
@@ -4289,7 +4294,6 @@ def CmnActInvincibleAttackAir():
 
         def upon_LANDING():
             sendToLabel(1)
-        setInvincible(1)
     sprite('Action_037_02', 4)	# 1-4
     Unknown1084(1)
     sprite('Action_037_04', 7)	# 5-11
@@ -4356,6 +4360,7 @@ def UltimateCapture():
         Unknown11064(1)
         Unknown11069('UltimateCapturePlus')
         Unknown11084(1)
+        Unknown2073(1)
 
         def upon_LANDING():
             clearUponHandler(2)
@@ -4570,7 +4575,7 @@ def UltimateCapturePlus():
         Unknown5000(3, 0)
         Unknown5001('0000000001000000010000000000000000000000')
         sprite('Action_191_09', 4)	# 33-36	 **attackbox here**
-        Damage(1000)
+        Damage(1500)
         ScreenShake(15000, 15000)
         teleportRelativeX(-50000)
         RefreshMultihit()
@@ -4611,8 +4616,9 @@ def UltimateCapturePlus():
         sprite('Action_191_16', 1)	# 62-62	 **attackbox here**
         tag_voice(0, 'ume254_0', 'ume254_1', 'ume254_2', '')
         RefreshMultihit()
-        Damage(2500)
+        Damage(3100)
         AttackP2(60)
+        Unknown11091(34)
         Hitstop(21)
         Unknown5000(14, 0)
         Unknown5001('0000000001000000010000000000000000000000')
@@ -4671,6 +4677,7 @@ def UltimateCapturePlus():
             Unknown11064(1)
             Unknown11069('UltimateCaptureODPlus')
             Unknown11084(1)
+            Unknown2073(1)
 
             def upon_LANDING():
                 clearUponHandler(2)
@@ -4989,8 +4996,9 @@ def UltimateCapturePlus():
             sprite('Action_191_16', 1)	# 112-112	 **attackbox here**
             tag_voice(0, 'ume254_0', 'ume254_1', 'ume254_2', '')
             RefreshMultihit()
-            Damage(2500)
+            Damage(3200)
             AttackP2(60)
+            Unknown11091(29)
             Hitstop(21)
             Unknown5000(14, 0)
             Unknown5001('0000000001000000010000000000000000000000')
@@ -5066,16 +5074,6 @@ def UltimateCapturePlus():
 
             def upon_ON_HIT_OR_BLOCK():
                 ScreenShake(5000, 5000)
-                if SLOT_51:
-                    AirPushbackX(3000)
-                    AirPushbackY(-30000)
-                    PushbackX(8000)
-                    SLOT_51 = 0
-                else:
-                    AirPushbackX(-4000)
-                    AirPushbackY(30000)
-                    PushbackX(-12000)
-                    SLOT_51 = 1
 
         @State
         def UltimateAssault():
@@ -5084,14 +5082,14 @@ def UltimateCapturePlus():
                 AttackDefaults_StandingDD()
                 Unknown23055('')
                 AttackLevel_(5)
-                Damage(600)
+                Damage(670)
                 AttackP1(80)
                 AttackP2(60)
                 Unknown11092(1)
                 AirHitstunAnimation(13)
                 GroundedHitstunAnimation(13)
                 AirUntechableTime(100)
-                Unknown11091(12)
+                Unknown11091(14)
                 Unknown9190(1)
                 Hitstop(1)
                 Unknown11056(0)
@@ -5116,63 +5114,139 @@ def UltimateCapturePlus():
             Unknown3070(2)
             SLOT_52 = 2
             Unknown2037(1)
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 74-75	 **attackbox here**
             tag_voice(0, 'ume251_0', '', '', '')
             sprite('Action_200_08', 2)	# 76-77	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 78-79	 **attackbox here**
             sprite('Action_200_10', 2)	# 80-81	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 82-83	 **attackbox here**
             sprite('Action_200_12', 2)	# 84-85	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             setInvincible(0)
             sprite('Action_200_13', 2)	# 86-87	 **attackbox here**
             sprite('Action_200_14', 2)	# 88-89	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 90-91	 **attackbox here**
             sprite('Action_200_16', 2)	# 92-93	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             tag_voice(0, '', 'ume251_1', '', '')
             sprite('Action_200_17', 2)	# 94-95	 **attackbox here**
             sprite('Action_200_06', 2)	# 96-97	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 98-99	 **attackbox here**
             sprite('Action_200_08', 2)	# 100-101	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 102-103	 **attackbox here**
             sprite('Action_200_10', 2)	# 104-105	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 106-107	 **attackbox here**
             sprite('Action_200_12', 2)	# 108-109	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_13', 2)	# 110-111	 **attackbox here**
             sprite('Action_200_14', 2)	# 112-113	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 114-115	 **attackbox here**
             sprite('Action_200_16', 2)	# 116-117	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_17', 2)	# 118-119	 **attackbox here**
             sprite('Action_200_06', 2)	# 120-121	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 122-123	 **attackbox here**
             sprite('Action_200_08', 2)	# 124-125	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 126-127	 **attackbox here**
             sprite('Action_200_10', 2)	# 128-129	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 130-131	 **attackbox here**
             sprite('Action_200_12', 2)	# 132-133	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_13', 2)	# 134-135	 **attackbox here**
             sprite('Action_200_14', 2)	# 136-137	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 138-139	 **attackbox here**
             sprite('Action_200_16', 2)	# 140-141	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_17', 2)	# 142-143	 **attackbox here**
             sprite('Action_200_06', 2)	# 144-145	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 146-147	 **attackbox here**
             sprite('Action_200_08', 2)	# 148-149	 **attackbox here**
             RefreshMultihit()
@@ -5207,7 +5281,7 @@ def UltimateCapturePlus():
                 AttackDefaults_StandingDD()
                 Unknown23055('')
                 AttackLevel_(5)
-                Damage(600)
+                Damage(640)
                 AttackP1(80)
                 AttackP2(60)
                 Unknown11092(1)
@@ -5219,6 +5293,7 @@ def UltimateCapturePlus():
                 Hitstop(1)
                 Unknown11056(0)
                 Unknown30055('e09304001400000014000000')
+                Unknown11110(76)
                 callSubroutine('UltimateAssault_LandShake')
             sprite('Action_200_00', 25)	# 1-25
             GFX_0('Mer_202', -1)
@@ -5239,78 +5314,174 @@ def UltimateCapturePlus():
             Unknown3070(2)
             SLOT_52 = 2
             Unknown2037(1)
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 74-75	 **attackbox here**
             tag_voice(0, 'ume251_0', '', '', '')
             sprite('Action_200_08', 2)	# 76-77	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 78-79	 **attackbox here**
             sprite('Action_200_10', 2)	# 80-81	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 82-83	 **attackbox here**
             sprite('Action_200_12', 2)	# 84-85	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             setInvincible(0)
             sprite('Action_200_13', 2)	# 86-87	 **attackbox here**
             sprite('Action_200_14', 2)	# 88-89	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 90-91	 **attackbox here**
             sprite('Action_200_16', 2)	# 92-93	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             tag_voice(0, '', 'ume251_1', '', '')
             sprite('Action_200_17', 2)	# 94-95	 **attackbox here**
             sprite('Action_200_06', 2)	# 96-97	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 98-99	 **attackbox here**
             sprite('Action_200_08', 2)	# 100-101	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 102-103	 **attackbox here**
             sprite('Action_200_10', 2)	# 104-105	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 106-107	 **attackbox here**
             sprite('Action_200_12', 2)	# 108-109	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_13', 2)	# 110-111	 **attackbox here**
             sprite('Action_200_14', 2)	# 112-113	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 114-115	 **attackbox here**
             sprite('Action_200_16', 2)	# 116-117	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_17', 2)	# 118-119	 **attackbox here**
             sprite('Action_200_06', 2)	# 120-121	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 122-123	 **attackbox here**
             sprite('Action_200_08', 2)	# 124-125	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 126-127	 **attackbox here**
             sprite('Action_200_10', 2)	# 128-129	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 130-131	 **attackbox here**
             sprite('Action_200_12', 2)	# 132-133	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_13', 2)	# 134-135	 **attackbox here**
             sprite('Action_200_14', 2)	# 136-137	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 138-139	 **attackbox here**
             sprite('Action_200_16', 2)	# 140-141	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_17', 2)	# 142-143	 **attackbox here**
             sprite('Action_200_06', 2)	# 144-145	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 146-147	 **attackbox here**
             sprite('Action_200_08', 2)	# 148-149	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 150-151	 **attackbox here**
             sprite('Action_200_10', 2)	# 152-153	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 154-155	 **attackbox here**
             sprite('Action_200_12', 2)	# 156-157	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_13', 2)	# 158-159	 **attackbox here**
             sprite('Action_200_14', 2)	# 160-161	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 162-163	 **attackbox here**
             sprite('Action_200_16', 2)	# 164-165	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_17', 2)	# 166-167	 **attackbox here**
             sprite('Action_200_06', 2)	# 168-169	 **attackbox here**
             RefreshMultihit()
@@ -5875,7 +6046,8 @@ def UltimateCapturePlus():
             def upon_IMMEDIATE():
                 AttackDefaults_StandingSpecial()
                 Unknown11042(1)
-                Unknown28(2, 'CmnActJumpLanding')
+                clearUponHandler(2)
+                sendToLabelUpon(2, 1)
             sprite('Action_038_00', 2)	# 1-2
             sprite('Action_038_01', 2)	# 3-4
             sprite('Action_038_02', 3)	# 5-7
@@ -5896,8 +6068,10 @@ def UltimateCapturePlus():
             physicsXImpulse(-1600)
             physicsYImpulse(18000)
             Unknown1043()
-            GFX_0('Mer_179B', 0)
-            GFX_0('Atk_Shot_Mer_178PS', 0)
+            GFX_0('Mer_179', 0)
+            GFX_0('Atk_Shot_Mer_178PS_1', 0)
+            GFX_0('Atk_Shot_Mer_178PS_2', 0)
+            GFX_0('Atk_Shot_Mer_178PS_3', 0)
             SFX_3('SE221')
             sprite('Action_175_06', 6)	# 41-46
             sprite('Action_175_07', 6)	# 47-52
@@ -5909,6 +6083,14 @@ def UltimateCapturePlus():
             sprite('Action_037_06', 3)	# 69-71
             sprite('Action_037_07', 3)	# 72-74
             gotoLabel(0)
+            label(1)
+            sprite('Action_021_00', 2)	# 75-76	 **attackbox here**
+            Unknown1084(1)
+            Unknown8000(100, 1, 1)
+            sprite('Action_021_01', 3)	# 77-79
+            sprite('Action_021_02', 3)	# 80-82
+            sprite('Action_021_03', 3)	# 83-85
+            sprite('Action_021_04', 5)	# 86-90
 
         @State
         def CmnActChangePartnerAssistAtk_B():
@@ -6073,62 +6255,138 @@ def UltimateCapturePlus():
             Unknown3070(2)
             SLOT_52 = 2
             Unknown2037(1)
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 74-75	 **attackbox here**
             tag_voice(1, 'ume251_0', 'ume251_1', '', '')
             sprite('Action_200_08', 2)	# 76-77	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 78-79	 **attackbox here**
             sprite('Action_200_10', 2)	# 80-81	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 82-83	 **attackbox here**
             sprite('Action_200_12', 2)	# 84-85	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             setInvincible(0)
             sprite('Action_200_13', 2)	# 86-87	 **attackbox here**
             sprite('Action_200_14', 2)	# 88-89	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 90-91	 **attackbox here**
             sprite('Action_200_16', 2)	# 92-93	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_17', 2)	# 94-95	 **attackbox here**
             sprite('Action_200_06', 2)	# 96-97	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 98-99	 **attackbox here**
             sprite('Action_200_08', 2)	# 100-101	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 102-103	 **attackbox here**
             sprite('Action_200_10', 2)	# 104-105	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 106-107	 **attackbox here**
             sprite('Action_200_12', 2)	# 108-109	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_13', 2)	# 110-111	 **attackbox here**
             sprite('Action_200_14', 2)	# 112-113	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 114-115	 **attackbox here**
             sprite('Action_200_16', 2)	# 116-117	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_17', 2)	# 118-119	 **attackbox here**
             sprite('Action_200_06', 2)	# 120-121	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 122-123	 **attackbox here**
             sprite('Action_200_08', 2)	# 124-125	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 126-127	 **attackbox here**
             sprite('Action_200_10', 2)	# 128-129	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 130-131	 **attackbox here**
             sprite('Action_200_12', 2)	# 132-133	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_13', 2)	# 134-135	 **attackbox here**
             sprite('Action_200_14', 2)	# 136-137	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 138-139	 **attackbox here**
             sprite('Action_200_16', 2)	# 140-141	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_17', 2)	# 142-143	 **attackbox here**
             sprite('Action_200_06', 2)	# 144-145	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 146-147	 **attackbox here**
             sprite('Action_200_08', 2)	# 148-149	 **attackbox here**
             RefreshMultihit()
@@ -6192,77 +6450,173 @@ def UltimateCapturePlus():
             Unknown3070(2)
             SLOT_52 = 2
             Unknown2037(1)
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 74-75	 **attackbox here**
             tag_voice(1, 'ume251_0', 'ume251_1', '', '')
             sprite('Action_200_08', 2)	# 76-77	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 78-79	 **attackbox here**
             sprite('Action_200_10', 2)	# 80-81	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 82-83	 **attackbox here**
             sprite('Action_200_12', 2)	# 84-85	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             setInvincible(0)
             sprite('Action_200_13', 2)	# 86-87	 **attackbox here**
             sprite('Action_200_14', 2)	# 88-89	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 90-91	 **attackbox here**
             sprite('Action_200_16', 2)	# 92-93	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_17', 2)	# 94-95	 **attackbox here**
             sprite('Action_200_06', 2)	# 96-97	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 98-99	 **attackbox here**
             sprite('Action_200_08', 2)	# 100-101	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 102-103	 **attackbox here**
             sprite('Action_200_10', 2)	# 104-105	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 106-107	 **attackbox here**
             sprite('Action_200_12', 2)	# 108-109	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_13', 2)	# 110-111	 **attackbox here**
             sprite('Action_200_14', 2)	# 112-113	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 114-115	 **attackbox here**
             sprite('Action_200_16', 2)	# 116-117	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_17', 2)	# 118-119	 **attackbox here**
             sprite('Action_200_06', 2)	# 120-121	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 122-123	 **attackbox here**
             sprite('Action_200_08', 2)	# 124-125	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 126-127	 **attackbox here**
             sprite('Action_200_10', 2)	# 128-129	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 130-131	 **attackbox here**
             sprite('Action_200_12', 2)	# 132-133	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_13', 2)	# 134-135	 **attackbox here**
             sprite('Action_200_14', 2)	# 136-137	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 138-139	 **attackbox here**
             sprite('Action_200_16', 2)	# 140-141	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_17', 2)	# 142-143	 **attackbox here**
             sprite('Action_200_06', 2)	# 144-145	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_07', 2)	# 146-147	 **attackbox here**
             sprite('Action_200_08', 2)	# 148-149	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_09', 2)	# 150-151	 **attackbox here**
             sprite('Action_200_10', 2)	# 152-153	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_11', 2)	# 154-155	 **attackbox here**
             sprite('Action_200_12', 2)	# 156-157	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_13', 2)	# 158-159	 **attackbox here**
             sprite('Action_200_14', 2)	# 160-161	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(-4000)
+            AirPushbackY(30000)
+            PushbackX(-12000)
+            Unknown9190(0)
             sprite('Action_200_15', 2)	# 162-163	 **attackbox here**
             sprite('Action_200_16', 2)	# 164-165	 **attackbox here**
             RefreshMultihit()
+            AirPushbackX(3000)
+            AirPushbackY(-30000)
+            PushbackX(8000)
+            Unknown9190(1)
             sprite('Action_200_17', 2)	# 166-167	 **attackbox here**
             sprite('Action_200_06', 2)	# 168-169	 **attackbox here**
             RefreshMultihit()

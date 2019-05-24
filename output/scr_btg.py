@@ -28,6 +28,7 @@ def MatchInit():
     Unknown12029(0)
     Move_Register('NmlAtk5A', 0x7)
     Unknown14015(300000, 600000, -100000, 700000, 2000, 50)
+    MoveMaxChainRepeat(1)
     Move_EndRegister()
     Move_Register('NmlAtk5A2nd', 0x7)
     Unknown14005(1)
@@ -2591,11 +2592,13 @@ def NmlAtk5A4th():
         AttackLevel_(5)
         AttackP1(80)
         AttackP2(85)
+        AirUntechableTime(60)
         HitOverhead(2)
         GroundedHitstunAnimation(10)
         AirPushbackX(-1000)
         AirPushbackY(-44000)
-        Unknown9310(1)
+        Unknown9190(1)
+        Unknown9118(30)
         HitAirUnblockable(0)
 
         def upon_STATE_END():
@@ -2641,6 +2644,7 @@ def NmlAtk4A():
         AttackLevel_(2)
         AirPushbackX(2000)
         AirPushbackY(12000)
+        PushbackX(4800)
         HitAirUnblockable(0)
         HitOrBlockJumpCancel(1)
         HitOrBlockCancel('NmlAtk5A')
@@ -2704,6 +2708,7 @@ def NmlAtk4A3rd():
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         AttackLevel_(3)
+        PushbackX(15300)
         AirPushbackY(8000)
         HitAirUnblockable(0)
         AirUntechableTime(29)
@@ -2774,10 +2779,11 @@ def NmlAtk2A():
         AttackP2(75)
         GroundedHitstunAnimation(10)
         AirHitstunAnimation(10)
-        AirPushbackY(36000)
+        AirPushbackY(30000)
         AirUntechableTime(25)
         HitAirUnblockable(0)
         Unknown11058('0000000001000000000000000000000000000000')
+        HitOrBlockCancel('NmlAtk5A')
         HitOrBlockCancel('NmlAtk5B')
         HitOrBlockCancel('NmlAtk2B')
         HitOrBlockCancel('CmnActCrushAttack')
@@ -4857,6 +4863,11 @@ def CommandThrowB2_Exe():
     Unknown1045(30000)
     sprite('tg412_11', 6)	# 35-40	 **attackbox here**
     Unknown2003(0)
+
+    def upon_3():
+        Unknown48('19000000020000003300000016000000020000001e000000')
+        if (not SLOT_51):
+            Unknown2003(1)
     sprite('tg412_12', 6)	# 41-46	 **attackbox here**
     sprite('tg412_12', 10)	# 47-56	 **attackbox here**
     RefreshMultihit()
@@ -5606,7 +5617,6 @@ def CmnActInvincibleAttack():
         HitAirUnblockable(3)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
-        setInvincible(1)
         GuardPoint_(1)
     sprite('tg405_00', 3)	# 1-3
     SFX_3('tgse_03')
@@ -5649,7 +5659,7 @@ def MTH():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(4)
-        Damage(200)
+        Damage(250)
         AttackP1(80)
         AttackP2(100)
         AirPushbackX(-2000)
@@ -5748,8 +5758,9 @@ def MTH():
     sprite('tg430_13', 3)	# 88-90	 **attackbox here**
     RefreshMultihit()
     AttackLevel_(4)
-    Damage(4000)
+    Damage(4200)
     AttackP2(60)
+    Unknown11091(23)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
     AirUntechableTime(80)
@@ -5799,7 +5810,7 @@ def MTH_OD():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(4)
-        Damage(200)
+        Damage(250)
         AttackP1(80)
         AttackP2(100)
         AirPushbackX(-2000)
@@ -5899,8 +5910,9 @@ def MTH_OD():
     sprite('tg430_13', 3)	# 88-90	 **attackbox here**
     RefreshMultihit()
     AttackLevel_(4)
-    Damage(4000)
+    Damage(4200)
     AttackP2(60)
+    Unknown11091(23)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
     AirUntechableTime(80)
@@ -5965,8 +5977,9 @@ def MTH_OD():
     sprite('tg431_06', 4)	# 197-200	 **attackbox here**
     RefreshMultihit()
     AttackLevel_(4)
-    Damage(3000)
+    Damage(2600)
     AttackP2(100)
+    Unknown11091(8)
     Unknown9190(0)
     AirHitstunAnimation(12)
     GroundedHitstunAnimation(12)

@@ -1914,7 +1914,7 @@ def NmlAtk2A():
 
     def upon_IMMEDIATE():
         AttackDefaults_CrouchingNormal()
-        AttackLevel_(1)
+        AttackLevel_(2)
         AttackP1(90)
         HitLow(2)
         Unknown9016(1)
@@ -1948,7 +1948,7 @@ def NmlAtk2A_Renda():
 
     def upon_IMMEDIATE():
         AttackDefaults_CrouchingNormal()
-        AttackLevel_(1)
+        AttackLevel_(2)
         AttackP1(90)
         HitLow(2)
         Unknown9016(1)
@@ -2051,22 +2051,22 @@ def NmlAtk2C():
         HitJumpCancel(1)
     sprite('Action_231_00', 4)	# 1-4	 **attackbox here**
     sprite('Action_231_01', 4)	# 5-8	 **attackbox here**
-    sprite('Action_231_02', 6)	# 9-14	 **attackbox here**
+    sprite('Action_231_02', 5)	# 9-13	 **attackbox here**
     tag_voice(1, 'uva110_0', 'uva305_0', 'uva305_1', '')
-    sprite('Action_231_03', 2)	# 15-16	 **attackbox here**
+    sprite('Action_231_03', 2)	# 14-15	 **attackbox here**
     GFX_0('Vat_242', -1)
-    sprite('Action_231_04', 3)	# 17-19	 **attackbox here**
-    sprite('Action_231_05', 4)	# 20-23	 **attackbox here**
-    sprite('Action_231_06', 2)	# 24-25	 **attackbox here**
+    sprite('Action_231_04', 3)	# 16-18	 **attackbox here**
+    sprite('Action_231_05', 4)	# 19-22	 **attackbox here**
+    sprite('Action_231_06', 2)	# 23-24	 **attackbox here**
     RefreshMultihit()
     GFX_0('Vat_242_2', -1)
-    sprite('Action_231_07', 3)	# 26-28	 **attackbox here**
-    sprite('Action_231_08', 3)	# 29-31	 **attackbox here**
-    sprite('Action_231_09', 4)	# 32-35	 **attackbox here**
-    sprite('Action_231_10', 8)	# 36-43	 **attackbox here**
-    sprite('Action_231_11', 5)	# 44-48	 **attackbox here**
-    sprite('Action_231_12', 3)	# 49-51	 **attackbox here**
-    sprite('Action_231_13', 3)	# 52-54	 **attackbox here**
+    sprite('Action_231_07', 3)	# 25-27	 **attackbox here**
+    sprite('Action_231_08', 3)	# 28-30	 **attackbox here**
+    sprite('Action_231_09', 4)	# 31-34	 **attackbox here**
+    sprite('Action_231_10', 8)	# 35-42	 **attackbox here**
+    sprite('Action_231_11', 5)	# 43-47	 **attackbox here**
+    sprite('Action_231_12', 3)	# 48-50	 **attackbox here**
+    sprite('Action_231_13', 3)	# 51-53	 **attackbox here**
 
 @State
 def NmlAtkAIR5A():
@@ -2255,6 +2255,7 @@ def NmlAtkAIR5C():
     AirPushbackX(50000)
     AirPushbackY(10000)
     YImpluseBeforeWallbounce(500)
+    Unknown11028(13)
     WallbounceReboundTime(0)
     Unknown9310(0)
     Hitstop(11)
@@ -3184,7 +3185,6 @@ def CmnActInvincibleAttack():
         Unknown9016(1)
         Unknown11068(1)
         Unknown11056(0)
-        setInvincible(1)
         sendToLabelUpon(2, 1)
 
         def upon_78():
@@ -3236,6 +3236,7 @@ def AntiAir2nd():
 
     def upon_IMMEDIATE():
         Unknown17025('')
+        Unknown30087(0)
         setInvincible(0)
         AttackLevel_(4)
         Damage(1300)
@@ -3439,9 +3440,9 @@ def UltimateAssault():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(4)
-        Damage(900)
+        Damage(950)
         AttackP2(60)
-        Unknown11091(15)
+        Unknown11091(13)
         Unknown11092(1)
         GroundedHitstunAnimation(13)
         AirHitstunAnimation(13)
@@ -3594,9 +3595,9 @@ def UltimateAssault_OD():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(4)
-        Damage(900)
+        Damage(950)
         AttackP2(60)
-        Unknown11091(15)
+        Unknown11091(12)
         Unknown11092(1)
         GroundedHitstunAnimation(13)
         AirHitstunAnimation(13)
@@ -3733,9 +3734,12 @@ def UltimateAssault_OD():
     sprite('Action_134_01', 5)	# 139-143	 **attackbox here**
     sprite('Action_134_02', 3)	# 144-146	 **attackbox here**
     RefreshMultihit()
-    Damage(2500)
-    AirPushbackX(16000)
-    AirPushbackY(36000)
+    Damage(2600)
+    Unknown11091(13)
+    AirPushbackX(70000)
+    AirPushbackY(-20000)
+    AirUntechableTime(42)
+    Unknown9310(25)
     Hitstop(16)
     physicsXImpulse(-5000)
     physicsYImpulse(15000)
@@ -4390,46 +4394,31 @@ def CmnActChangePartnerAssistAtk_A():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-        Unknown11042(1)
-        JumpCancel_(0)
-        Unknown2003(1)
-        sendToLabelUpon(2, 1)
-    sprite('Action_111_00', 8)	# 1-8	 **attackbox here**
-    sprite('Action_111_01', 8)	# 9-16	 **attackbox here**
-    sprite('Action_111_02', 2)	# 17-18	 **attackbox here**
-    sprite('Action_111_03', 3)	# 19-21	 **attackbox here**
-    GFX_0('Vat_095_Basi', 0)
-    GFX_0('Vat_101_B', 0)
-    physicsXImpulse(-20000)
-    physicsYImpulse(15000)
-    Unknown1015(-150)
-    Unknown1021(150)
-    setGravity(2000)
-    tag_voice(1, 'uva200_0', 'uva200_1', 'uva200_2', '')
-    SFX_3('SE_LightBall')
-    sprite('Action_111_04', 3)	# 22-24	 **attackbox here**
-    sprite('Action_111_05', 3)	# 25-27	 **attackbox here**
-    sprite('Action_111_06', 4)	# 28-31	 **attackbox here**
-    sprite('Action_111_07', 4)	# 32-35	 **attackbox here**
-    sprite('Action_111_08', 4)	# 36-39	 **attackbox here**
-    loopRest()
-    label(0)
-    sprite('Action_037_09', 3)	# 40-42	 **attackbox here**
-    sprite('Action_037_10', 3)	# 43-45	 **attackbox here**
-    sprite('Action_037_11', 3)	# 46-48	 **attackbox here**
-    gotoLabel(0)
-    label(1)
-    sprite('Action_111_09', 3)	# 49-51	 **attackbox here**
-    Unknown8000(100, 1, 1)
+    sprite('Action_113_00', 3)	# 1-3	 **attackbox here**
+    Unknown1051(60)
+    sprite('Action_113_00', 3)	# 4-6	 **attackbox here**
+    sprite('Action_113_01', 6)	# 7-12	 **attackbox here**
     Unknown1084(1)
-    sprite('Action_111_10', 3)	# 52-54	 **attackbox here**
-    sprite('Action_014_00', 3)	# 55-57	 **attackbox here**
-    sprite('Action_014_01', 4)	# 58-61	 **attackbox here**
-    sprite('Action_014_02', 5)	# 62-66	 **attackbox here**
-    sprite('Action_014_03', 4)	# 67-70	 **attackbox here**
-    sprite('Action_014_04', 4)	# 71-74	 **attackbox here**
-    sprite('Action_014_05', 3)	# 75-77	 **attackbox here**
-    sprite('Action_014_06', 2)	# 78-79	 **attackbox here**
+    GFX_0('Vat_105_B', 0)
+    tag_voice(1, 'uva201_1', 'uva201_2', '', '')
+    sprite('Action_113_02', 4)	# 13-16	 **attackbox here**
+    sprite('Action_113_03', 4)	# 17-20	 **attackbox here**
+    sprite('Action_113_04', 4)	# 21-24	 **attackbox here**
+    sprite('Action_113_05', 4)	# 25-28	 **attackbox here**
+    sprite('Action_113_06', 4)	# 29-32	 **attackbox here**
+    sprite('Action_113_07', 4)	# 33-36	 **attackbox here**
+    sprite('Action_113_08', 2)	# 37-38	 **attackbox here**
+    sprite('Action_113_09', 6)	# 39-44	 **attackbox here**
+    GFX_0('Vat_095_4', 0)
+    Unknown23029(1, 1200, 0)
+    SFX_3('SE_LightBall')
+    sprite('Action_113_10', 8)	# 45-52	 **attackbox here**
+    Unknown1045(-8000)
+    sprite('Action_113_11', 6)	# 53-58	 **attackbox here**
+    sprite('Action_113_12', 5)	# 59-63	 **attackbox here**
+    sprite('Action_113_13', 5)	# 64-68	 **attackbox here**
+    Unknown1084(1)
+    sprite('Action_113_14', 5)	# 69-73	 **attackbox here**
 
 @State
 def CmnActChangePartnerAssistAtk_B():
@@ -4474,13 +4463,18 @@ def CmnActChangePartnerAssistAtk_D():
         Unknown11092(1)
         Hitstop(4)
         PushbackX(15300)
-        AirPushbackX(12000)
+        AirPushbackX(10000)
         AirPushbackY(30000)
+        YImpluseBeforeWallbounce(1600)
         AirUntechableTime(60)
         Unknown9016(1)
         Unknown11042(1)
         GroundedHitstunAnimation(13)
         AirHitstunAnimation(13)
+        Unknown11056(0)
+
+        def upon_78():
+            Unknown2037(1)
     sprite('Action_045_01', 2)	# 1-2	 **attackbox here**
     physicsXImpulse(30000)
     Unknown1019(110)
@@ -4508,15 +4502,56 @@ def CmnActChangePartnerAssistAtk_D():
     Unknown1019(20)
     sprite('Action_403_07ex', 1)	# 24-24	 **attackbox here**
     RefreshMultihit()
+    AirPushbackY(30000)
     sprite('Action_403_08', 1)	# 25-25	 **attackbox here**
     sprite('Action_403_09', 3)	# 26-28
     sprite('Action_404_00', 4)	# 29-32	 **attackbox here**
     Unknown13(4)
     sprite('Action_404_01', 4)	# 33-36	 **attackbox here**
     sprite('Action_404_02', 6)	# 37-42	 **attackbox here**
+    if SLOT_2:
+        sendToLabel(99)
     sprite('Action_404_03', 6)	# 43-48	 **attackbox here**
     Unknown1084(1)
     sprite('Action_404_04', 6)	# 49-54	 **attackbox here**
+    ExitState()
+    label(99)
+    sprite('Action_184_00', 3)	# 55-57	 **attackbox here**
+
+    def upon_LANDING():
+        sendToLabel(1)
+    JumpCancel_(0)
+    Unknown2003(1)
+    Unknown1084(1)
+    sprite('Action_184_01', 3)	# 58-60	 **attackbox here**
+    sprite('Action_184_02', 3)	# 61-63	 **attackbox here**
+    SFX_4('uva209')
+    sprite('Action_184_03', 3)	# 64-66	 **attackbox here**
+    sprite('Action_184_04', 3)	# 67-69	 **attackbox here**
+    sprite('Action_184_05', 3)	# 70-72	 **attackbox here**
+    sprite('Action_184_05', 1)	# 73-73	 **attackbox here**
+    GFX_0('Vat_187', 0)
+    Unknown36(1)
+    teleportRelativeX(150000)
+    Unknown35()
+    sprite('Action_184_06', 2)	# 74-75	 **attackbox here**
+    sprite('Action_184_07', 2)	# 76-77	 **attackbox here**
+    sprite('Action_184_08', 3)	# 78-80	 **attackbox here**
+    physicsXImpulse(-3500)
+    physicsYImpulse(7000)
+    setGravity(600)
+    sprite('Action_184_09', 4)	# 81-84	 **attackbox here**
+    Unknown2063()
+    label(0)
+    sprite('Action_184_10', 4)	# 85-88	 **attackbox here**
+    sprite('Action_184_11', 4)	# 89-92	 **attackbox here**
+    gotoLabel(0)
+    label(1)
+    sprite('Action_184_12', 2)	# 93-94	 **attackbox here**
+    sprite('Action_184_12', 2)	# 95-96	 **attackbox here**
+    Unknown8000(100, 1, 1)
+    sprite('Action_184_13', 3)	# 97-99	 **attackbox here**
+    sprite('Action_184_14', 2)	# 100-101	 **attackbox here**
 
 @State
 def CmnActChangePartnerAttackIn():

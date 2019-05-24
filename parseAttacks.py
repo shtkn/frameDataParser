@@ -20,6 +20,9 @@ class State:
         self.landingRecovery = 0
         self.isSubroutine = False
         self.damage = 0
+        self.isInv = False
+        self.invType = 0    # Inv or Guard
+        self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
 
     def clear_values(self, is_new_move):
         self.spriteLine = ""
@@ -38,6 +41,9 @@ class State:
             self.landingRecovery = 0
             self.isSubroutine = False
             self.damage = 0
+            self.isInv = False
+            self.invType = 0
+            self.invAttr = [True, True, True, True, True]
         self.disableAttackboxesThisFrame = False
 
     def is_attackbox(self):
@@ -47,6 +53,8 @@ class State:
 class AbstractChunk:
     def __init__(self, duration=0):
         self.duration = duration
+        self.inv_type = 0    # 0 = no inv, 1 = inv, 2 = guard
+        self.inv_attr = [False, False, False, False, False]
 
     def __str__(self):
         return str(self.duration)
@@ -54,7 +62,7 @@ class AbstractChunk:
     def __eq__(self, other):
         if not isinstance(other, AbstractChunk):
             return False
-        return self.duration == other.duration
+        return self.duration == other.duration and self.inv_type == other.inv_type and self.inv_attr == other.inv_attr
 
     def __ne__(self, other):
         if not isinstance(other, AbstractChunk):
@@ -87,10 +95,11 @@ class AttackFrameChunk(AbstractChunk):
             self.isNewHit == other.isNewHit and \
             self.hitstop == other.hitstop and \
             self.additionalHitstopOpponent == other.additionalHitstopOpponent and \
-            self.damage == other.damage
+            self.damage == other.damage and \
+            self.duration == other.duration and self.inv_type == other.inv_type and self.inv_attr == other.inv_attr
 
     def __ne__(self, other):
-        if not isinstance(other, AbstractChunk):
+        if not isinstance(other, AttackFrameChunk):
             return False
         return not self.__eq__(other)
 
@@ -102,7 +111,7 @@ class WaitFrameChunk(AbstractChunk):
     def __eq__(self, other):
         if not isinstance(other, WaitFrameChunk):
             return False
-        return self.duration == other.duration
+        return self.duration == other.duration and self.inv_type == other.inv_type and self.inv_attr == other.inv_attr
 
     def __ne__(self, other):
         if not isinstance(other, WaitFrameChunk):
@@ -189,7 +198,7 @@ SPRITE_START = "    sprite('"
 SPRITE_MID = "', "
 SPRITE_END = ")"
 HAS_HITBOX = "**attackbox here**"
-GFX_START = "    GFX_0('"
+GFX_START = "GFX_0('"
 CALL_SUBROUTINE_START = "callSubroutine('"
 
 
@@ -199,18 +208,33 @@ def get_duration(sprite_str):
     return int(sprite_str[number_start:number_end])
 
 
+def parse_attributes(inv_str):
+    return [inv_str[1] == "1",
+            inv_str[9] == "1",
+            inv_str[17] == "1",
+            inv_str[25] == "1",
+            inv_str[33] == "1"
+            ]
+
+
+def has_same_inv(chunk1, chunk2):
+    return chunk1.inv_type == chunk2.inv_type and chunk1.inv_attr == chunk2.inv_attr
+
+
 def consolidate_frame_chunks(chunk_list):
     new_chunk_list = []
     prev_chunk = copy.copy(chunk_list[0])
     for i in range(1, len(chunk_list)):
         chunk = chunk_list[i]
-        if isinstance(prev_chunk, AttackFrameChunk) and isinstance(chunk, AttackFrameChunk):
+        if isinstance(prev_chunk, AttackFrameChunk) and isinstance(chunk, AttackFrameChunk) \
+                and has_same_inv(prev_chunk, chunk):
             if chunk.isNewHit:
                 new_chunk_list.append(prev_chunk)
                 prev_chunk = copy.copy(chunk)
             else:
                 prev_chunk.duration += chunk.duration
-        elif isinstance(prev_chunk, WaitFrameChunk) and isinstance(chunk, WaitFrameChunk):
+        elif isinstance(prev_chunk, WaitFrameChunk) and isinstance(chunk, WaitFrameChunk) \
+                and has_same_inv(prev_chunk, chunk):
             prev_chunk.duration += chunk.duration
         else:
             new_chunk_list.append(prev_chunk)
@@ -240,6 +264,10 @@ def parse_move_file(source, move_list, effect_list):
                 chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop,
                                          state.additionalHitstopOpponent, state.isNewHit) \
                     if state.is_attackbox() else WaitFrameChunk(state.duration)
+                if state.isInv:
+                    chunk.inv_type = 1 if state.invType == 0 else 2
+                    chunk.inv_attr = state.invAttr
+
                 frame_chunks.append(chunk)
 
                 move_list[state.moveName] = Move()
@@ -257,6 +285,10 @@ def parse_move_file(source, move_list, effect_list):
                 chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop,
                                          state.additionalHitstopOpponent, state.isNewHit) \
                     if state.is_attackbox() else WaitFrameChunk(state.duration)
+                if state.isInv:
+                    chunk.inv_type = 1 if state.invType == 0 else 2
+                    chunk.inv_attr = state.invAttr
+
                 frame_chunks.append(chunk)
                 if isinstance(chunk, AttackFrameChunk):
                     state.isNewHit = False
@@ -302,7 +334,7 @@ def parse_move_file(source, move_list, effect_list):
                 number_end = line.index(",")
                 # print "Landing" + line[number_start: number_end]
                 state.landingRecovery = int(line[number_start: number_end]) - 1
-            elif line.startswith(GFX_START):    # only care about gfx calls in teh main body, not sub functions
+            elif GFX_START in line:
                 name_start = line.index("('") + 2
                 name_end = line.index("',")
                 # print "GFX " + line[name_start:name_end]
@@ -319,6 +351,17 @@ def parse_move_file(source, move_list, effect_list):
                 flash_end = line.index(",")
                 print int(line[flash_start:flash_end])
                 pass  # superfreeze
+            elif "Unknown22019(" in line:
+                # set invul to which attributes
+                params = line[line.index("('") + 2: line.index("')")]
+                state.invAttr = parse_attributes(params)
+            elif "setInvincible(" in line:
+                # active/deactivate invul
+                idx = line.index("(") + 1
+                state.isInv = line[idx: idx+1] == "1"
+            elif "GuardPoint_(" in line:
+                idx = line.index("(") + 1
+                state.invType = int(line[idx: idx+1])
             elif "ExitState()" in line:
                 # we assume all the lines above this are for the move on block/whiff. Anything after is on hit
                 state.exitState = True
@@ -334,6 +377,10 @@ def parse_move_file(source, move_list, effect_list):
         chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop, state.additionalHitstopOpponent,
                                  state.isNewHit) \
             if state.is_attackbox() else WaitFrameChunk(state.duration)
+        if state.isInv:
+            chunk.inv_type = 1 if state.invType == 0 else 2
+            chunk.inv_attr = state.invAttr
+
         frame_chunks.append(chunk)
 
         move_list[state.moveName] = Move()

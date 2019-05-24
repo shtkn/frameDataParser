@@ -25,7 +25,7 @@ def MatchInit():
     Unknown14013('CmnActFDash')
     Move_EndRegister()
     Move_Register('NmlAtk5A', 0x7)
-    MoveMaxChainRepeat(3)
+    MoveMaxChainRepeat(2)
     Unknown14015(0, 300000, -100000, 250000, 1000, 50)
     Move_EndRegister()
     Move_Register('NmlAtk5A2nd', 0x7)
@@ -39,7 +39,7 @@ def MatchInit():
     Unknown14015(0, 350000, -150000, 300000, 1500, 50)
     Move_EndRegister()
     Move_Register('NmlAtk4A', 0x6)
-    MoveMaxChainRepeat(3)
+    MoveMaxChainRepeat(2)
     Unknown14015(0, 220000, -100000, 180000, 800, 50)
     Move_EndRegister()
     Move_Register('NmlAtk4A2nd', 0x6)
@@ -58,7 +58,7 @@ def MatchInit():
     Unknown14015(0, 500000, -300000, 200000, 1500, 50)
     Move_EndRegister()
     Move_Register('NmlAtk2A', 0x4)
-    Unknown14027('NmlAtk4A')
+    MoveMaxChainRepeat(2)
     Unknown15009()
     Unknown14015(0, 300000, -250000, 50000, 1500, 50)
     Move_EndRegister()
@@ -1909,30 +1909,31 @@ def NmlAtk5A():
         Unknown1112('')
         HitOrBlockCancel('NmlAtk5A2nd')
         HitOrBlockCancel('NmlAtk5B')
+        HitOrBlockCancel('NmlAtk2A')
         HitOrBlockCancel('NmlAtk2B')
         HitOrBlockCancel('NmlAtk2C')
         HitOrBlockCancel('CmnActCrushAttack')
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
-        HitJumpCancel(1)
-    sprite('yo203_00', 2)	# 1-2
-    sprite('yo203_01', 2)	# 3-4
-    sprite('yo203_02', 2)	# 5-6
-    sprite('yo203_03', 2)	# 7-8
-    sprite('yo203_04', 2)	# 9-10	 **attackbox here**
+        HitOrBlockJumpCancel(1)
+    sprite('yo203_00', 1)	# 1-1
+    sprite('yo203_01', 1)	# 2-2
+    sprite('yo203_02', 2)	# 3-4
+    sprite('yo203_03', 2)	# 5-6
+    sprite('yo203_04', 2)	# 7-8	 **attackbox here**
     Unknown7009(1)
     SFX_3('slash_knife_middle')
-    sprite('yo203_05', 2)	# 11-12	 **attackbox here**
+    sprite('yo203_05', 2)	# 9-10	 **attackbox here**
     RefreshMultihit()
     SFX_3('slash_knife_middle')
-    sprite('yo203_06', 2)	# 13-14	 **attackbox here**
+    sprite('yo203_06', 2)	# 11-12	 **attackbox here**
     RefreshMultihit()
     SFX_3('slash_knife_middle')
-    sprite('yo203_07', 5)	# 15-19
+    sprite('yo203_07', 5)	# 13-17
     Recovery()
     Unknown2063()
-    sprite('yo203_08', 6)	# 20-25
-    sprite('yo203_09', 5)	# 26-30
+    sprite('yo203_08', 6)	# 18-23
+    sprite('yo203_09', 5)	# 24-28
 
 @State
 def NmlAtk5A2nd():
@@ -1946,6 +1947,7 @@ def NmlAtk5A2nd():
         Unknown9190(1)
         HitOrBlockCancel('NmlAtk5A3rd')
         HitOrBlockCancel('NmlAtk5B')
+        HitOrBlockCancel('NmlAtk2A')
         HitOrBlockCancel('NmlAtk2B')
         HitOrBlockCancel('CmnActCrushAttack')
         HitOrBlockCancel('NmlAtk2C')
@@ -2063,18 +2065,18 @@ def NmlAtk4A():
         HitOrBlockJumpCancel(1)
         Unknown9016(1)
     sprite('yo200_00', 2)	# 1-2
-    sprite('yo200_01', 3)	# 3-5
-    sprite('yo200_04', 3)	# 6-8	 **attackbox here**
+    sprite('yo200_01', 2)	# 3-4
+    sprite('yo200_04', 3)	# 5-7	 **attackbox here**
     Unknown23054('796f3230305f303200000000000000000000000000000000000000000000000003000000')
     Unknown7009(0)
     SFX_3('slash_knife_fast')
     WhiffCancelEnable(1)
-    sprite('yo200_04', 3)	# 9-11	 **attackbox here**
-    sprite('yo200_05', 4)	# 12-15
+    sprite('yo200_04', 3)	# 8-10	 **attackbox here**
+    sprite('yo200_05', 4)	# 11-14
     Unknown23027()
     Recovery()
     Unknown2063()
-    sprite('yo200_06', 4)	# 16-19
+    sprite('yo200_06', 4)	# 15-18
 
 @State
 def NmlAtk4A2nd():
@@ -2239,21 +2241,21 @@ def NmlAtk2A():
         HitOrBlockCancel('NmlAtk2C')
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
-    sprite('yo230_00', 2)	# 1-2
-    sprite('yo230_01', 2)	# 3-4
-    sprite('yo230_02', 2)	# 5-6
-    sprite('yo230_04', 3)	# 7-9	 **attackbox here**
+    sprite('yo230_00', 1)	# 1-1
+    sprite('yo230_01', 2)	# 2-3
+    sprite('yo230_02', 2)	# 4-5
+    sprite('yo230_04', 3)	# 6-8	 **attackbox here**
     Unknown23054('796f3233305f303300000000000000000000000000000000000000000000000003000000')
     Unknown7009(0)
     SFX_3('hit_m_fast')
     SFX_3('slash_knife_fast')
-    sprite('yo230_04', 3)	# 10-12	 **attackbox here**
+    sprite('yo230_04', 3)	# 9-11	 **attackbox here**
     Unknown23027()
     Recovery()
     Unknown2063()
     WhiffCancelEnable(1)
-    sprite('yo230_02', 6)	# 13-18
-    sprite('yo230_00', 6)	# 19-24
+    sprite('yo230_02', 6)	# 12-17
+    sprite('yo230_00', 6)	# 18-23
 
 @State
 def NmlAtk5B():
@@ -2505,6 +2507,7 @@ def NmlAtkAIR5B():
             Unknown23029(11, 3003, 0)
             Unknown21015('4169723543746f726e61646f3030000000000000000000000000000000000000bb0b000000000000')
             Unknown21015('4169723543746f726e61646f3031000000000000000000000000000000000000bb0b000000000000')
+        Unknown4009(11)
     sprite('yo254_00', 3)	# 1-3
     sprite('yo254_01', 4)	# 4-7
     Unknown23029(11, 301, 0)
@@ -2675,13 +2678,13 @@ def NmlAtkThrowExe():
             Unknown2038(1)
             SFX_0('101_hit_slash_1')
             if (SLOT_2 >= 2):
-                JumpCancel_(1)
                 if SLOT_62:
                     HitOrBlockCancel('Sukukaja5A')
                     HitOrBlockCancel('CmnActAirFDash')
                     HitOrBlockCancel('CmnActAirBDash')
         JumpCancel_(0)
         Unknown11064(1)
+        Unknown11069('NmlAtkThrowExe')
     sprite('yo310_02', 4)	# 1-4	 **attackbox here**
     Unknown5000(8, 0)
     Unknown5001('0000000004000000040000000000000000000000')
@@ -2708,6 +2711,7 @@ def NmlAtkThrowExe():
     sprite('yo311_05', 4)	# 30-33	 **attackbox here**
     RefreshMultihit()
     Unknown11064(0)
+    Unknown11069('')
     GroundedHitstunAnimation(0)
     physicsXImpulse(-115000)
     SFX_3('damage_slash_h')
@@ -2716,6 +2720,7 @@ def NmlAtkThrowExe():
         physicsXImpulse(-85000)
     sprite('yo311_06', 10)	# 34-43	 **attackbox here**
     Unknown1019(0)
+    JumpCancel_(1)
     sprite('yo311_07', 4)	# 44-47
     Unknown1019(0)
     sprite('yo311_08', 4)	# 48-51
@@ -2797,13 +2802,13 @@ def NmlAtkBackThrowExe():
             Unknown2038(1)
             SFX_0('101_hit_slash_1')
             if (SLOT_2 >= 2):
-                JumpCancel_(1)
                 if SLOT_62:
                     HitOrBlockCancel('Sukukaja5A')
                     HitOrBlockCancel('CmnActAirFDash')
                     HitOrBlockCancel('CmnActAirBDash')
         JumpCancel_(0)
         Unknown11064(1)
+        Unknown11069('NmlAtkBackThrowExe')
     sprite('yo310_02', 4)	# 1-4	 **attackbox here**
     Unknown5000(8, 0)
     Unknown5001('0000000004000000040000000000000000000000')
@@ -2832,6 +2837,7 @@ def NmlAtkBackThrowExe():
     RefreshMultihit()
     GroundedHitstunAnimation(0)
     Unknown11064(0)
+    Unknown11069('')
     physicsXImpulse(-115000)
     SFX_3('damage_slash_h')
     clearUponHandler(55)
@@ -2839,6 +2845,7 @@ def NmlAtkBackThrowExe():
         physicsXImpulse(-85000)
     sprite('yo311_06', 10)	# 34-43	 **attackbox here**
     Unknown1019(0)
+    JumpCancel_(1)
     sprite('yo311_07', 4)	# 44-47
     Unknown1019(0)
     sprite('yo311_08', 4)	# 48-51
@@ -2872,7 +2879,6 @@ def CmnActInvincibleAttack():
         Unknown36(22)
         Unknown11051('080000000000000000000000000000000000000000000000000000000000000000000000')
         Unknown35()
-        setInvincible(1)
         GuardPoint_(1)
         Unknown22019('0100000001000000010000000100000001000000')
         Unknown22031(-1, 17)
@@ -2934,7 +2940,7 @@ def KakeagariA():
         AttackP2(70)
         Unknown11092(1)
         Hitstop(0)
-        Unknown11001(8, 8, 8)
+        Unknown11001(8, 5, 5)
         Unknown9310(1)
         AirHitstunAnimation(11)
         Unknown9154(20)
@@ -3228,7 +3234,7 @@ def KakeagariEX():
     Unknown2058(-5000)
     sprite('yo403_02', 3)	# 12-14
     Unknown7007('70796f3230375f3000000000000000006400000070796f3230375f3100000000000000006400000070796f3230375f3200000000000000006400000070796f3230385f30000000000000000064000000')
-    physicsXImpulse(58800)
+    physicsXImpulse(78800)
     SFX_3('runjump_stone_light')
     sprite('yo403_03', 2)	# 15-16
     SFX_3('airdash_m')
@@ -3236,47 +3242,43 @@ def KakeagariEX():
     SLOT_51 = 1
     sprite('yo403_05', 2)	# 19-20
     sprite('yo403_06', 2)	# 21-22
-    sprite('yo403_03', 2)	# 23-24
+    sprite('yo403_03', 1)	# 23-23
     SFX_3('runjump_stone_light')
-    sprite('yo403_04', 2)	# 25-26
-    sprite('yo403_05', 2)	# 27-28
-    sprite('yo403_06', 2)	# 29-30
-    sprite('yo403_03', 2)	# 31-32
     label(2)
-    sprite('yo403_21', 2)	# 33-34
+    sprite('yo403_21', 2)	# 24-25
     SLOT_51 = 0
     Unknown1019(30)
     Recovery()
-    sprite('yo403_22', 4)	# 35-38
+    sprite('yo403_22', 4)	# 26-29
     Unknown1019(50)
     Unknown8010(100, 1, 1)
-    sprite('yo403_23', 4)	# 39-42
+    sprite('yo403_23', 4)	# 30-33
     Unknown1019(50)
     Unknown8010(100, 1, 1)
-    sprite('yo403_24', 4)	# 43-46
+    sprite('yo403_24', 4)	# 34-37
     Unknown1019(50)
-    sprite('yo403_25', 4)	# 47-50
+    sprite('yo403_25', 4)	# 38-41
     Unknown1019(0)
     loopRest()
     ExitState()
     label(0)
-    sprite('yo403_07', 2)	# 51-52
-    sprite('yo403_08', 3)	# 53-55	 **attackbox here**
+    sprite('yo403_07', 2)	# 42-43
+    sprite('yo403_08', 3)	# 44-46	 **attackbox here**
     RefreshMultihit()
     loopRest()
     gotoLabel(2)
     label(1)
-    sprite('yo403_08', 2)	# 56-57	 **attackbox here**
-    sprite('yo403_09', 2)	# 58-59	 **attackbox here**
-    sprite('yo403_10', 2)	# 60-61
+    sprite('yo403_08', 2)	# 47-48	 **attackbox here**
+    sprite('yo403_09', 2)	# 49-50	 **attackbox here**
+    sprite('yo403_10', 2)	# 51-52
     physicsXImpulse(10000)
     physicsYImpulse(20000)
     setGravity(4500)
-    sprite('yo403_11', 2)	# 62-63
-    sprite('yo403_12', 2)	# 64-65	 **attackbox here**
+    sprite('yo403_11', 2)	# 53-54
+    sprite('yo403_12', 2)	# 55-56	 **attackbox here**
     Unknown2015(40)
     Unknown1084(1)
-    sprite('yo403_13', 3)	# 66-68	 **attackbox here**
+    sprite('yo403_13', 3)	# 57-59	 **attackbox here**
     RefreshMultihit()
     GroundedHitstunAnimation(10)
     AirHitstunAnimation(10)
@@ -3284,31 +3286,31 @@ def KakeagariEX():
     AirPushbackY(36000)
     Hitstop(9)
     Unknown9310(-1)
-    sprite('yo403_14', 3)	# 69-71	 **attackbox here**
+    sprite('yo403_14', 3)	# 60-62	 **attackbox here**
     Unknown23027()
     Recovery()
     Unknown2015(-1)
-    sprite('yo403_15', 3)	# 72-74
+    sprite('yo403_15', 3)	# 63-65
     Unknown1007(50000)
     physicsXImpulse(-10000)
     physicsYImpulse(20000)
     setGravity(2400)
-    sprite('yo403_16', 3)	# 75-77
+    sprite('yo403_16', 3)	# 66-68
     clearUponHandler(3)
     callSubroutine('Kakeagari_DeriveTiming')
-    sprite('yo403_17', 3)	# 78-80
-    sprite('yo403_18', 3)	# 81-83
-    sprite('yo403_19', 3)	# 84-86
-    sprite('yo403_20', 3)	# 87-89
+    sprite('yo403_17', 3)	# 69-71
+    sprite('yo403_18', 3)	# 72-74
+    sprite('yo403_19', 3)	# 75-77
+    sprite('yo403_20', 3)	# 78-80
     label(3)
-    sprite('yo020_07', 3)	# 90-92
-    sprite('yo020_08', 3)	# 93-95
+    sprite('yo020_07', 3)	# 81-83
+    sprite('yo020_08', 3)	# 84-86
     loopRest()
     gotoLabel(3)
     label(9)
-    sprite('yo231_00', 3)	# 96-98
-    sprite('yo231_01', 7)	# 99-105
-    sprite('yo231_00', 3)	# 106-108
+    sprite('yo231_00', 3)	# 87-89
+    sprite('yo231_01', 7)	# 90-96
+    sprite('yo231_00', 3)	# 97-99
 
 @State
 def MoonsaltMove_Hasei():
@@ -3341,7 +3343,7 @@ def MoonsaltMoveR():
     Unknown1084(1)
     physicsXImpulse(20000)
     physicsYImpulse(54000)
-    setGravity(4000)
+    setGravity(5500)
     Unknown22004(10, 1)
     Unknown2017(0)
     Unknown2015(40)
@@ -3387,7 +3389,7 @@ def MoonsaltMoveL():
     Unknown1084(1)
     physicsXImpulse(20000)
     physicsYImpulse(54000)
-    setGravity(4000)
+    setGravity(5500)
     Unknown22004(10, 1)
     Unknown2017(0)
     Unknown2015(40)
@@ -3422,11 +3424,9 @@ def MoonsaltMove_Ex():
         AttackLevel_(4)
         Damage(2000)
         AttackP1(80)
-        AirPushbackX(0)
-        AirPushbackY(36000)
         AirUntechableTime(32)
         Hitstop(8)
-        Unknown11001(0, 3, 3)
+        Unknown11001(0, 8, 8)
         PushbackX(8000)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
@@ -3436,34 +3436,34 @@ def MoonsaltMove_Ex():
         Unknown30055('f04902001e00000000000000')
         Unknown30065(0)
         Unknown11091(10)
+        AirPushbackX(20000)
+        AirPushbackY(-60000)
+        Unknown9310(15)
         SLOT_60 = (SLOT_60 + 1)
-        if (SLOT_60 == 3):
-            AirPushbackX(20000)
-            AirPushbackY(-60000)
-            Unknown9310(1)
-        HitOrBlockCancel('VSlash_R')
-        HitOrBlockCancel('VSlash_L')
-        HitOrBlockCancel('VSlash_Hasei')
-        HitOrBlockCancel('VSlash_R_Hasei')
-        HitOrBlockCancel('VSlash_L_Hasei')
-        HitOrBlockCancel('MoonsaltMoveR')
-        HitOrBlockCancel('MoonsaltMoveL')
-        HitOrBlockCancel('MoonsaltMove_Hasei')
-        HitOrBlockCancel('MoonsaltMoveR_Hasei')
-        HitOrBlockCancel('MoonsaltMoveL_Hasei')
-        HitOrBlockCancel('MoonsaltMove_Ex')
-        HitOrBlockCancel('MoonsaltMove_Ex_Back')
-        HitOrBlockCancel('MoonsaltMove_Ex_Hasei')
+
+        def upon_80():
+            HitOrBlockCancel('VSlash_R')
+            HitOrBlockCancel('VSlash_L')
+            HitOrBlockCancel('VSlash_Hasei')
+            HitOrBlockCancel('VSlash_R_Hasei')
+            HitOrBlockCancel('VSlash_L_Hasei')
+            HitOrBlockCancel('MoonsaltMoveR')
+            HitOrBlockCancel('MoonsaltMoveL')
+            HitOrBlockCancel('MoonsaltMove_Hasei')
+            HitOrBlockCancel('MoonsaltMoveR_Hasei')
+            HitOrBlockCancel('MoonsaltMoveL_Hasei')
+            HitOrBlockCancel('MoonsaltMove_Ex')
+            HitOrBlockCancel('MoonsaltMove_Ex_Back')
+            HitOrBlockCancel('MoonsaltMove_Ex_Hasei')
 
         def upon_11():
             Unknown1019(30)
-            physicsYImpulse(8000)
+            physicsYImpulse(5000)
             Unknown2037(1)
 
         def upon_12():
             SLOT_63 = (SLOT_63 + 1)
         clearUponHandler(2)
-        sendToLabelUpon(2, 9)
         callSubroutine('DoNotBeginCancel')
         if (SLOT_60 == 2):
             Unknown23159('MoonsaltMove_Ex2')
@@ -3473,7 +3473,7 @@ def MoonsaltMove_Ex():
     Unknown2006()
     physicsXImpulse(0)
     Unknown1045(0)
-    physicsYImpulse(40000)
+    physicsYImpulse(25000)
     setGravity(3000)
     sprite('yo025_01', 1)	# 4-4
     Unknown23125('')
@@ -3484,32 +3484,33 @@ def MoonsaltMove_Ex():
     sprite('yo405_01', 2)	# 7-8
     sprite('yo405_02', 2)	# 9-10
     Unknown2005()
-    sprite('yo405_03', 4)	# 11-14
+    sprite('yo405_03', 3)	# 11-13
     setInvincible(0)
-    sprite('yo405_04', 3)	# 15-17
-    sprite('yo405_05', 3)	# 18-20
-    sprite('yo405_06', 1)	# 21-21
-    sprite('yo405_06', 1)	# 22-22
-    sprite('yo405_07', 8)	# 23-30	 **attackbox here**
+    sprite('yo405_04', 2)	# 14-15
+    sprite('yo405_05', 2)	# 16-17
+    sprite('yo405_06', 1)	# 18-18
+    sprite('yo405_06', 1)	# 19-19
+    sprite('yo405_07', 8)	# 20-27	 **attackbox here**
     GFX_0('yoef_moonslash', 100)
     RefreshMultihit()
-    sprite('yo405_08', 3)	# 31-33
+    sendToLabelUpon(2, 9)
+    sprite('yo405_08', 3)	# 28-30
     Recovery()
-    sprite('yo405_09', 3)	# 34-36
-    sprite('yo405_10', 3)	# 37-39
-    sprite('yo405_11', 3)	# 40-42
-    sprite('yo020_05', 3)	# 43-45
-    sprite('yo020_06', 3)	# 46-48
+    sprite('yo405_09', 3)	# 31-33
+    sprite('yo405_10', 3)	# 34-36
+    sprite('yo405_11', 3)	# 37-39
+    sprite('yo020_05', 3)	# 40-42
+    sprite('yo020_06', 3)	# 43-45
     label(0)
-    sprite('yo020_07', 3)	# 49-51
-    sprite('yo020_08', 3)	# 52-54
+    sprite('yo020_07', 3)	# 46-48
+    sprite('yo020_08', 3)	# 49-51
     gotoLabel(0)
     label(9)
-    sprite('yo231_00', 2)	# 55-56
+    sprite('yo231_00', 4)	# 52-55
     Unknown1084(1)
     Unknown8000(100, 1, 1)
-    sprite('yo231_01', 4)	# 57-60
-    sprite('yo231_00', 3)	# 61-63
+    sprite('yo231_01', 6)	# 56-61
+    sprite('yo231_00', 5)	# 62-66
 
 @State
 def MoonsaltSlash():
@@ -3519,7 +3520,7 @@ def MoonsaltSlash():
         AttackLevel_(4)
         AttackP1(80)
         AirPushbackX(0)
-        AirPushbackY(44000)
+        AirPushbackY(24000)
         AirUntechableTime(32)
         Hitstop(8)
         Unknown11001(0, 3, 3)
@@ -4284,7 +4285,7 @@ def UltimateKunai():
         Unknown23055('')
         AttackLevel_(5)
         AttackP2(100)
-        Hitstop(20)
+        Hitstop(4)
         AirUntechableTime(120)
         AirHitstunAnimation(9)
         GroundedHitstunAnimation(9)
@@ -4296,13 +4297,17 @@ def UltimateKunai():
         Unknown11064(1)
         Unknown11058('0100000000000000000000000000000000000000')
         Unknown11069('UltimateKunaiExe')
+        Unknown2073(1)
 
         def upon_78():
-            clearUponHandler(11)
+            clearUponHandler(78)
             Unknown13024(0)
             Unknown23024(2)
             Unknown23025(1)
             enterState('UltimateKunaiExe')
+
+        def upon_77():
+            Hitstop(20)
         clearUponHandler(2)
         sendToLabelUpon(2, 9)
         Unknown1084(1)
@@ -4313,10 +4318,10 @@ def UltimateKunai():
     sprite('yo432_01', 1)	# 4-4
     physicsYImpulse(1000)
     setGravity(-100)
-    sprite('yo432_02', 36)	# 5-40
-    Unknown2036(40, -1, 0)
+    Unknown2036(39, -1, 0)
     Unknown2058(-10000)
     Unknown30080('')
+    sprite('yo432_02', 36)	# 5-40
     tag_voice(1, 'pyo254_0', 'pyo254_1', '', '')
     Unknown1084(1)
     YAccel(0)
@@ -4361,7 +4366,7 @@ def UltimateKunaiOD():
         Unknown23055('')
         AttackLevel_(5)
         AttackP2(100)
-        Hitstop(20)
+        Hitstop(4)
         AirUntechableTime(120)
         AirHitstunAnimation(9)
         GroundedHitstunAnimation(9)
@@ -4373,13 +4378,17 @@ def UltimateKunaiOD():
         Unknown11064(1)
         Unknown11058('0100000000000000000000000000000000000000')
         Unknown11069('UltimateKunaiODExe')
+        Unknown2073(1)
 
         def upon_78():
-            clearUponHandler(11)
+            clearUponHandler(78)
             Unknown13024(0)
             Unknown23024(2)
             Unknown23025(1)
             enterState('UltimateKunaiODExe')
+
+        def upon_77():
+            Hitstop(20)
         clearUponHandler(2)
         sendToLabelUpon(2, 9)
         Unknown1084(1)
@@ -4390,10 +4399,10 @@ def UltimateKunaiOD():
     sprite('yo432_01', 1)	# 4-4
     physicsYImpulse(1000)
     setGravity(-100)
-    sprite('yo432_02', 36)	# 5-40
-    Unknown2036(40, -1, 0)
+    Unknown2036(39, -1, 0)
     Unknown2058(-10000)
     Unknown30080('')
+    sprite('yo432_02', 36)	# 5-40
     tag_voice(1, 'pyo254_0', 'pyo254_1', '', '')
     Unknown1084(1)
     YAccel(0)
@@ -4437,6 +4446,7 @@ def UltimateKunaiExe():
         AttackDefaults_AirDD()
         Unknown23056('')
         AttackLevel_(5)
+        Unknown11091(30)
         AirUntechableTime(100)
         Hitstop(8)
         Unknown11001(0, 10, 10)
@@ -4651,7 +4661,7 @@ def UltimateKunaiODExe():
                 if (SLOT_0 == 0):
                     GFX_0('KunaiZanzoh', 100)
         Unknown11069('ultimatekunai3')
-        Unknown11091(20)
+        Unknown11091(30)
 
         def upon_LANDING():
             clearUponHandler(2)

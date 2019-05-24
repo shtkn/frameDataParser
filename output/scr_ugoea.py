@@ -550,6 +550,7 @@ def UGO_Scratch_AtkCol():
         AirHitstunAnimation(9)
         AirPushbackY(15000)
         AirPushbackX(6500)
+        Unknown11106(0)
         Hitstop(2)
         teleportRelativeX(300000)
         Unknown1007(220000)
@@ -562,7 +563,7 @@ def UGO_Scratch_AtkCol():
             if (not SLOT_2):
                 Unknown2058(250)
                 Unknown36(22)
-                Unknown2058(-500)
+                Unknown2058(-100)
                 Unknown35()
             else:
                 Unknown2038(1)
@@ -609,6 +610,7 @@ def UGO_Scratch_AtkCol_Assist():
         AirHitstunAnimation(9)
         AirPushbackY(25000)
         AirPushbackX(6500)
+        Unknown11106(0)
         Hitstop(2)
         teleportRelativeX(300000)
         Unknown1007(220000)
@@ -623,7 +625,7 @@ def UGO_Scratch_AtkCol_Assist():
             if (not SLOT_2):
                 Unknown2058(250)
                 Unknown36(22)
-                Unknown2058(-500)
+                Unknown2058(-100)
                 Unknown35()
             else:
                 Unknown2038(1)

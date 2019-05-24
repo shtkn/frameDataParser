@@ -402,6 +402,37 @@ def BurstDDMaster():
             if SLOT_2:
                 clearUponHandler(78)
                 Unknown23029(3, 4403, 0)
+    sprite('null', 1)	# 1-1
+    sprite('null', 4)	# 2-5
+    GFX_0('BurstDDEff', -1)
+    GFX_0('BurstDDRevEff', -1)
+    sprite('ph402_cutinRev', 6)	# 6-11	 **attackbox here**
+    sprite('ph402_cutinRev', 4)	# 12-15	 **attackbox here**
+    StartMultihit()
+    ExitState()
+    label(1)
+    sprite('null', 14)	# 16-29
+    sprite('null', 4)	# 30-33
+    GFX_0('BurstDDEff', -1)
+    GFX_0('BurstDDRevEff', -1)
+    sprite('ph402_cutinRevex', 2)	# 34-35	 **attackbox here**
+    sprite('ph402_cutinRev', 4)	# 36-39	 **attackbox here**
+    sprite('ph402_cutinRev', 4)	# 40-43	 **attackbox here**
+    Unknown23029(3, 4405, 0)
+    StartMultihit()
+    ExitState()
+
+@State
+def BurstDDMasterCrushFinish():
+
+    def upon_IMMEDIATE():
+        Unknown2010()
+        Unknown4011(3)
+        Unknown3038(1)
+        Unknown2053(1)
+        Unknown1086(3)
+        teleportRelativeX(180000)
+        Unknown1007(200000)
     sprite('null', 3)	# 1-3
     sprite('null', 4)	# 4-7
     GFX_0('BurstDDEff', -1)
@@ -409,18 +440,6 @@ def BurstDDMaster():
     sprite('ph402_cutinRev', 6)	# 8-13	 **attackbox here**
     sprite('ph402_cutinRev', 4)	# 14-17	 **attackbox here**
     StartMultihit()
-    ExitState()
-    label(1)
-    sprite('null', 14)	# 18-31
-    sprite('null', 4)	# 32-35
-    GFX_0('BurstDDEff', -1)
-    GFX_0('BurstDDRevEff', -1)
-    sprite('ph402_cutinRevex', 2)	# 36-37	 **attackbox here**
-    sprite('ph402_cutinRev', 4)	# 38-41	 **attackbox here**
-    sprite('ph402_cutinRev', 4)	# 42-45	 **attackbox here**
-    Unknown23029(3, 4405, 0)
-    StartMultihit()
-    ExitState()
 
 @State
 def BurstDDEff():
@@ -2239,7 +2258,7 @@ def BlueMagicInit():
     Unknown23078(1)
     AirPushbackY(12000)
     Unknown9250(1)
-    Unknown9262(25)
+    Unknown9262(35)
 
 @State
 def DriveAtk_BNN():
@@ -2656,6 +2675,7 @@ def GreenMagicInit():
     GroundedHitstunAnimation(9)
     AirPushbackX(60000)
     AirPushbackY(5000)
+    Unknown9202(40)
     Unknown9178(1)
     WallbounceReboundTime(15)
     Unknown11001(0, 0, 0)
@@ -2694,12 +2714,16 @@ def DriveAtk_GNN():
     SFX_3('phse_01')
     Unknown1056(15000)
     teleportRelativeX(-400000)
+    Unknown1064(5000)
+    Unknown1007(-10000)
     sprite('vr_ph_magictest', 3)	# 4-6	 **attackbox here**
     Unknown1056(25000)
     teleportRelativeX(160000)
+    Unknown1064(5000)
     sprite('vr_ph_magictest', 3)	# 7-9	 **attackbox here**
     Unknown1056(40000)
     teleportRelativeX(240000)
+    Unknown1064(5000)
     ExitState()
 
 @State
@@ -2788,12 +2812,16 @@ def DriveAtk_GGN():
     SFX_0('022_magiccircle_b')
     Unknown1056(15000)
     teleportRelativeX(-400000)
+    Unknown1064(5000)
+    Unknown1007(-10000)
     sprite('vr_ph_magictest', 3)	# 4-6	 **attackbox here**
     Unknown1056(25000)
     teleportRelativeX(160000)
+    Unknown1064(5000)
     sprite('vr_ph_magictest', 3)	# 7-9	 **attackbox here**
     Unknown1056(40000)
     teleportRelativeX(240000)
+    Unknown1064(5000)
     RefreshMultihit()
     Damage(1200)
     Hitstop(12)
@@ -2885,17 +2913,21 @@ def DriveAtk_GGG():
     ScreenShake(5000, 5000)
     Unknown1056(15000)
     teleportRelativeX(-400000)
+    Unknown1064(5000)
+    Unknown1007(-10000)
     sprite('vr_ph_magictest', 3)	# 4-6	 **attackbox here**
     RefreshMultihit()
     Damage(600)
     Unknown1056(25000)
     teleportRelativeX(160000)
+    Unknown1064(5000)
     sprite('vr_ph_magictest', 3)	# 7-9	 **attackbox here**
     RefreshMultihit()
     Damage(1500)
     Hitstop(13)
     Unknown1056(40000)
     teleportRelativeX(240000)
+    Unknown1064(5000)
     ExitState()
 
 @State
@@ -3100,28 +3132,29 @@ def DriveAtk_BRN():
                 clearUponHandler(10)
                 Unknown2037(0)
                 sendToLabel(1)
-    sprite('vr_ph_magictest_ex', 10)	# 1-10	 **attackbox here**
-    Unknown2037(5)
+    sprite('vr_ph_magictest_ex', 14)	# 1-14	 **attackbox here**
+    Unknown2037(18)
     GFX_0('Eff_BRN', -1)
     SFX_3('phse_04')
-    GFX_1('phef_rbn_mc', -1)
+    GFX_1('phef_rbn_mc', 0)
+    teleportRelativeX(-100000)
     label(0)
-    sprite('vr_ph_magictest_ex', 9)	# 11-19	 **attackbox here**
+    sprite('vr_ph_magictest_ex', 13)	# 15-27	 **attackbox here**
     RefreshMultihit()
     GFX_0('Eff_BRN', -1)
-    teleportRelativeX(200000)
-    if (SLOT_2 <= 4):
-        teleportRelativeX(-40000)
-    if (SLOT_2 <= 2):
-        teleportRelativeX(-30000)
-    if (SLOT_2 <= 1):
-        teleportRelativeX(-30000)
-    sprite('vr_ph_magictest_ex', 1)	# 20-20	 **attackbox here**
+    teleportRelativeX(20000)
+    if (SLOT_2 <= 16):
+        teleportRelativeX(30000)
+    if (SLOT_2 <= 16):
+        teleportRelativeX(30000)
+    if (SLOT_2 <= 13):
+        teleportRelativeX(80000)
+    sprite('vr_ph_magictest_ex', 1)	# 28-28	 **attackbox here**
     if SLOT_2:
         Unknown2038(-1)
         sendToLabel(0)
     label(1)
-    sprite('null', 10)	# 21-30
+    sprite('null', 10)	# 29-38
     clearUponHandler(54)
     clearUponHandler(32)
 
@@ -3228,6 +3261,7 @@ def DriveAtk_GRN():
         Unknown2037(0)
 
         def upon_42():
+            Unknown21015('4d616769634163746976617465425f4c76310000000000000000000000000000ee13000000000000')
             if (SLOT_163 > 0):
                 if (SLOT_2 == 0):
                     GFX_0('RefShotAtk_GRN', 0)
@@ -3252,12 +3286,12 @@ def DriveAtk_GRN():
     sprite('phdrivecol_grn', 3)	# 2-4	 **attackbox here**
     Unknown3001(128)
     physicsXImpulse(10000)
-    sprite('phdrivecol_grn', 180)	# 5-184	 **attackbox here**
+    sprite('phdrivecol_grn', 80)	# 5-84	 **attackbox here**
     Unknown2017(0)
     label(0)
-    sprite('phdrivecol_grn', 20)	# 185-204	 **attackbox here**
+    sprite('phdrivecol_grn', 20)	# 85-104	 **attackbox here**
     label(1)
-    sprite('null', 10)	# 205-214
+    sprite('null', 10)	# 105-114
     clearUponHandler(42)
     clearUponHandler(14)
     clearUponHandler(11)
@@ -3412,7 +3446,8 @@ def DriveAtk_GGB():
         Damage(400)
         Hitstop(0)
         Unknown11001(11, 11, 13)
-        AirPushbackY(15000)
+        AirPushbackY(20000)
+        AirUntechableTime(40)
         Unknown11032('f049020010b6fdff90d00300702ffcff')
         Unknown1056(4000)
         Unknown1064(4000)
@@ -3620,8 +3655,10 @@ def DriveAtk_GGB_Init():
     AirHitstunAnimation(13)
     GroundedHitstunAnimation(13)
     AirPushbackX(25000)
-    AirPushbackY(10000)
+    AirPushbackY(15000)
     PushbackX(39900)
+    AirUntechableTime(40)
+    Unknown11110(85)
     Unknown11057(200)
     Unknown11084(1)
     Unknown11056(1)
@@ -4157,10 +4194,10 @@ def DriveAtk_RRG():
     def upon_IMMEDIATE():
         callSubroutine('SpecialMagicInit')
         Unknown3038(1)
-        Unknown1056(2500)
-        Unknown1064(2500)
+        Unknown1056(4500)
+        Unknown1064(3000)
         teleportRelativeX(100000)
-        Unknown1007(300000)
+        Unknown1007(270000)
         AttackLevel_(3)
         Damage(400)
         Hitstop(6)
@@ -4191,10 +4228,13 @@ def DriveAtk_RRG():
                 sendToLabel(2)
     sprite('vr_ph_magictest', 6)	# 1-6	 **attackbox here**
     StartMultihit()
-    physicsXImpulse(7500)
+    physicsXImpulse(8500)
     physicsYImpulse(10000)
     Unknown1043()
     GFX_0('phEff_RRGseed', -1)
+    Unknown36(1)
+    Unknown1007(30000)
+    Unknown35()
     SFX_3('phse_04')
     sprite('vr_ph_magictest', 32767)	# 7-32773	 **attackbox here**
     label(0)
@@ -4915,7 +4955,7 @@ def DriveAtk_BGR():
         Unknown2008()
         Unknown30065(0)
         Unknown3038(1)
-        Unknown11091(10)
+        Unknown11091(35)
         Unknown11033(1)
 
         def upon_3():
@@ -4933,19 +4973,22 @@ def DriveAtk_BGR():
                 Damage(1500)
                 AttackP1(75)
                 AttackP2(70)
-                Unknown11031(10)
+                Unknown11031(20)
+                Unknown11110(70)
             if (SLOT_48 == 5203):
                 AttackLevel_(4)
                 Damage(1750)
                 AttackP1(65)
                 AttackP2(75)
-                Unknown11031(10)
+                Unknown11031(20)
+                Unknown11110(70)
             if (SLOT_48 == 5204):
                 AttackLevel_(5)
                 Damage(2000)
                 AttackP1(55)
                 AttackP2(80)
-                Unknown11031(10)
+                Unknown11031(20)
+                Unknown11110(70)
             if (SLOT_48 == 5205):
                 SLOT_7 = 1
                 sendToLabel(100)
@@ -4963,7 +5006,7 @@ def DriveAtk_BGR():
     clearUponHandler(43)
     Unknown1086(22)
     Unknown21007(4, 32)
-    Unknown2036(60, -1, 2)
+    Unknown2036(63, -1, 2)
     Unknown48('19000000020000000200000002000000020000009e000000')
     if SLOT_2:
         GFX_0('Eff_BGRCamera', -1)
@@ -5361,7 +5404,8 @@ def Eff_BGRbg():
         Unknown21010(1)
         Unknown2054(1)
         Unknown4010(2)
-        Unknown1096(600)
+        Unknown1056(1000)
+        Unknown1064(600)
         sendToLabelUpon(32, 0)
 
         def upon_3():
@@ -6236,6 +6280,7 @@ def UltimateLock_Atk2ndInit():
     Unknown11057(400)
     Unknown9266(8)
     Unknown11108('03000000')
+    Unknown30048(1)
     Unknown9178(1)
     WallbounceReboundTime(0)
     Hitstop(1)
@@ -6375,7 +6420,8 @@ def UltimateLock_Atk2ndLv2():
                 clearUponHandler(43)
                 callSubroutine('UltimateLock_Atk2ndODInit')
         AttackLevel_(3)
-        Damage(1750)
+        Damage(2050)
+        Unknown11091(14)
         Unknown23027()
         Unknown3038(1)
     sprite('null', 2)	# 1-2
@@ -6470,7 +6516,8 @@ def UltimateLock_Atk2ndLv3():
                 clearUponHandler(43)
                 callSubroutine('UltimateLock_Atk2ndODInit')
         AttackLevel_(4)
-        Damage(900)
+        Damage(1050)
+        Unknown11091(14)
         Unknown23027()
         Unknown3038(1)
     sprite('null', 2)	# 1-2
@@ -6533,7 +6580,8 @@ def UltimateLock_Atk2ndLv4():
                 clearUponHandler(43)
                 callSubroutine('UltimateLock_Atk2ndODInit')
         AttackLevel_(5)
-        Damage(600)
+        Damage(720)
+        Unknown11091(14)
         Unknown23027()
         Unknown3038(1)
     sprite('null', 2)	# 1-2
@@ -6656,8 +6704,8 @@ def UltimateLock_AtkSPAdd():
         Unknown4011(3)
         Unknown1096(20000)
         AttackLevel_(5)
-        Damage(250)
-        Unknown11091(10)
+        Damage(270)
+        Unknown11091(9)
         AttackP2(100)
         Unknown11092(1)
         AirHitstunAnimation(10)
@@ -6670,6 +6718,7 @@ def UltimateLock_AtkSPAdd():
         Unknown11050('050000000000000000000000000000000000000000000000000000000000000000000000')
         Unknown11108('03000000')
         Unknown9266(8)
+        Unknown30048(1)
         Unknown3038(1)
     sprite('vr_ph_magictest', 1)	# 1-1	 **attackbox here**
     Unknown1086(22)
@@ -8343,3 +8392,120 @@ def phef_602_Fire_End():
         teleportRelativeX(-20000)
     sprite('null', 1)	# 1-1
     GFX_1('phef_600fire_end', -1)
+
+@Subroutine
+def ShotDelete_dmy():
+    Unknown4011(2)
+    Unknown4010(2)
+    Unknown4007(2)
+    Unknown4009(2)
+    GuardPoint_(1)
+    setInvincible(1)
+    Unknown22019('0000000000000000000000000100000000000000')
+    Unknown22031(0, 0)
+    Unknown22032(1)
+    Unknown2037(1)
+
+    def upon_3():
+        if (not SLOT_30):
+
+            def upon_42():
+                if SLOT_2:
+                    Unknown23029(3, 9002, 0)
+                    Unknown2037(0)
+                    Unknown13(25)
+
+@State
+def ph216_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph216_03_col_damy', 3)	# 1-3
+    sprite('ph216_04_col_damy', 3)	# 4-6
+
+@State
+def ph202_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph202_03_col_damy', 3)	# 1-3
+
+@State
+def ph200_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph200_03_col_damy', 3)	# 1-3
+
+@State
+def ph210_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph210_05_col_damy', 4)	# 1-4
+
+@State
+def ph212_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph212_05_col_damy', 4)	# 1-4
+
+@State
+def ph201_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph201_04_col_damy', 3)	# 1-3
+    sprite('ph201_05_col_damy', 3)	# 4-6
+
+@State
+def ph230_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph230_03_col_damy', 3)	# 1-3
+
+@State
+def ph231_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph231_03_col_damy', 3)	# 1-3
+    sprite('ph231_04_col_damy', 3)	# 4-6
+
+@State
+def ph235_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph235_03_col_damy', 5)	# 1-5
+
+@State
+def ph250_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph250_03_col_damy', 5)	# 1-5
+
+@State
+def ph252_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph252_03_col_damy', 3)	# 1-3
+
+@State
+def ph253_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph253_03_col_damy', 3)	# 1-3
+
+@State
+def ph251_col_dmy():
+
+    def upon_IMMEDIATE():
+        callSubroutine('ShotDelete_dmy')
+    sprite('ph251_03_col_damy', 3)	# 1-3
+    sprite('ph251_04_col_damy', 3)	# 4-6

@@ -586,6 +586,11 @@ def OnFrameStep():
         if (SLOT_67 == 1):
             if SLOT_90:
                 SLOT_59 = 3
+        Unknown48('1900000002000000070000001600000002000000aa000000')
+        if SLOT_7:
+            SLOT_4 = 0
+            SLOT_5 = 0
+            SLOT_7 = 0
 
 @Subroutine
 def OnEnemyComboBreak():
@@ -2759,14 +2764,14 @@ def NmlAtk5A():
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
     sprite('az201_00', 2)	# 1-2
-    sprite('az201_01', 3)	# 3-5
-    sprite('az201_02', 3)	# 6-8
+    sprite('az201_01', 2)	# 3-4
+    sprite('az201_02', 2)	# 5-6
     Unknown7009(1)
-    sprite('az201_03', 4)	# 9-12	 **attackbox here**
+    sprite('az201_03', 4)	# 7-10	 **attackbox here**
     SFX_0('005_swing_grap_2_1')
     Unknown14070('NmlAtk5A2nd')
-    sprite('az201_04', 3)	# 13-15	 **attackbox here**
-    sprite('az201_05', 2)	# 16-17
+    sprite('az201_04', 3)	# 11-13	 **attackbox here**
+    sprite('az201_05', 2)	# 14-15
     Unknown14072('NmlAtk5A2nd')
     Unknown14072('NmlAtk2A')
     Unknown14072('NmlAtk5B')
@@ -2775,8 +2780,8 @@ def NmlAtk5A():
     Unknown14072('NmlAtk2C')
     Recovery()
     Unknown2063()
-    sprite('az201_06', 4)	# 18-21
-    sprite('az201_07', 4)	# 22-25
+    sprite('az201_06', 4)	# 16-19
+    sprite('az201_07', 4)	# 20-23
     Unknown14074('NmlAtk5A2nd')
 
 @State
@@ -2875,7 +2880,9 @@ def NmlAtk5A4th():
 
         def upon_78():
             clearUponHandler(78)
-            if callSubroutine('WeakPointAttack_Judge'):
+            if 
+            if (not op(6, 2, 4, 2, 5)):
+                callSubroutine('WeakPointAttack_Judge'):
                 AttackLevel_(5)
                 Unknown11001(0, 0, 5)
                 Hitstop(15)
@@ -3065,7 +3072,9 @@ def NmlAtk5B2nd():
 
         def upon_78():
             clearUponHandler(78)
-            if callSubroutine('WeakPointAttack_Judge'):
+            if 
+            if (not op(6, 2, 4, 2, 5)):
+                callSubroutine('WeakPointAttack_Judge'):
                 AttackLevel_(5)
                 Unknown9310(30)
                 JumpCancel_(1)
@@ -3183,13 +3192,17 @@ def NmlAtk2A():
         AirPushbackY(15000)
         AirUntechableTime(25)
         PushbackX(15300)
+        HitOrBlockCancel('CmnActCrushAttack')
+        HitOrBlockCancel('NmlAtk2C')
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
         callSubroutine('WeakPointAttack_Pre')
 
         def upon_78():
             clearUponHandler(78)
-            if callSubroutine('WeakPointAttack_Judge'):
+            if 
+            if (not op(6, 2, 4, 2, 5)):
+                callSubroutine('WeakPointAttack_Judge'):
                 AttackLevel_(5)
                 Hitstop(15)
                 AirPushbackY(23000)
@@ -3315,7 +3328,9 @@ def NmlAtk2C():
 
         def upon_78():
             clearUponHandler(78)
-            if callSubroutine('WeakPointAttack_Judge'):
+            if 
+            if (not op(6, 2, 4, 2, 5)):
+                callSubroutine('WeakPointAttack_Judge'):
                 AttackLevel_(5)
                 AirPushbackY(-36000)
                 if SLOT_125:
@@ -3454,12 +3469,16 @@ def NmlAtkAIR5B():
 
         def upon_78():
             clearUponHandler(78)
-            if callSubroutine('WeakPointAttack_Judge'):
+            if 
+            if (not op(6, 2, 4, 2, 5)):
+                callSubroutine('WeakPointAttack_Judge'):
                 AttackLevel_(5)
                 Hitstop(15)
                 AirUntechableTime(60)
                 AirHitstunAnimation(9)
-                AirPushbackX(24000)
+                Unknown9190(1)
+                Unknown9118(50)
+                AirPushbackX(10000)
                 AirPushbackY(-36000)
                 ScreenShake(32000, 32000)
                 GFX_0('weakhit00', -1)
@@ -4209,12 +4228,12 @@ def Assault():
         Unknown11028(30)
         AirPushbackX(16200)
         AirPushbackY(13000)
-        PushbackX(39900)
+        PushbackX(19800)
         Unknown11056(0)
 
         def upon_3():
             if SLOT_51:
-                if (SLOT_19 < 400000):
+                if (SLOT_19 < 550000):
                     sendToLabel(0)
                     SLOT_51 = 0
 
@@ -4223,7 +4242,7 @@ def Assault():
 
         def upon_11():
             if (SLOT_19 < 200000):
-                PushbackX(52000)
+                PushbackX(39800)
             else:
                 Unknown1045(10000)
         callSubroutine('BoostCancel')
@@ -4238,6 +4257,7 @@ def Assault():
     GFX_0('405smoke', -1)
     GFX_0('213rock', -1)
     sprite('az405_04', 1)	# 10-10
+    Unknown1028(2000)
     sprite('az405_05', 2)	# 11-12
     sprite('az405_06', 2)	# 13-14
     PushbackX(19800)
@@ -4251,11 +4271,11 @@ def Assault():
     sprite('az405_07', 1)	# 20-20
     SFX_0('005_swing_grap_2_2')
     SFX_3('azse_05')
-    Unknown1019(80)
+    Unknown1019(90)
     GFX_1('azef_blood_01', 0)
     sprite('az405_08', 1)	# 21-21	 **attackbox here**
     StartMultihit()
-    Unknown1019(50)
+    Unknown1019(80)
     GFX_0('405punch', -1)
     Unknown36(1)
     teleportRelativeX(80000)
@@ -4265,18 +4285,19 @@ def Assault():
     GFX_1('azef_blood_01', 2)
     GFX_1('azef_blood_01', 3)
     sprite('az405_09', 6)	# 22-27	 **attackbox here**
-    Unknown1019(50)
+    Unknown1019(20)
     GFX_1('azef_blood_01', 0)
     GFX_1('azef_blood_01', 1)
     sprite('az405_10', 4)	# 28-31
     Recovery()
     Unknown1019(0)
+    Unknown1084(1)
     sprite('az405_11', 4)	# 32-35
-    sprite('az405_12', 4)	# 36-39
-    sprite('az405_13', 4)	# 40-43
-    sprite('az405_14', 4)	# 44-47
-    sprite('az405_15', 4)	# 48-51
-    sprite('az405_16', 4)	# 52-55
+    sprite('az405_12', 3)	# 36-38
+    sprite('az405_13', 4)	# 39-42
+    sprite('az405_14', 4)	# 43-46
+    sprite('az405_15', 4)	# 47-50
+    sprite('az405_16', 3)	# 51-53
 
 @State
 def AZcombo1():
@@ -4628,7 +4649,8 @@ def VanishingAttack():
             SFX_0('025_cleanhit_grap')
             if 
             if (not (SLOT_2 == 1)):
-                callSubroutine('WeakPointAttack_Judge'):
+                if (not op(6, 2, 4, 2, 5)):
+                    callSubroutine('WeakPointAttack_Judge'):
                 AttackLevel_(5)
                 Damage(2090)
                 AirHitstunAnimation(12)
@@ -4700,14 +4722,15 @@ def VanishingAttack():
     sprite('az404_01', 1)	# 47-47
     clearUponHandler(25)
     sprite('az404_04', 3)	# 48-50
-    setInvincible(0)
     Unknown21015('34303474616d6500000000000000000000000000000000000000000000000000c90f000000000000')
     sprite('az404_05', 3)	# 51-53
     SFX_3('azse_14')
     GFX_0('404swing', -1)
     GFX_0('404nigiyakasi', -1)
-    sprite('az404_06', 3)	# 54-56	 **attackbox here**
-    physicsXImpulse(52000)
+    setInvincible(0)
+    sprite('az404_06', 1)	# 54-54	 **attackbox here**
+    physicsXImpulse(60000)
+    sprite('az404_06', 2)	# 55-56	 **attackbox here**
     sprite('az404_07', 3)	# 57-59	 **attackbox here**
     Unknown1019(80)
     sprite('az404_08', 3)	# 60-62	 **attackbox here**
@@ -4845,7 +4868,8 @@ def DustAttack():
             clearUponHandler(78)
             if 
             if (not (SLOT_2 == 1)):
-                callSubroutine('WeakPointAttack_Judge'):
+                if (not op(6, 2, 4, 2, 5)):
+                    callSubroutine('WeakPointAttack_Judge'):
                 AttackLevel_(5)
                 Damage(2090)
                 AirHitstunAnimation(13)
@@ -4907,22 +4931,23 @@ def DustAttack():
     label(0)
     clearUponHandler(25)
     sprite('az403_05', 3)	# 43-45
-    setInvincible(0)
     Unknown26('azef_dustattack_hold')
     sprite('az403_06', 3)	# 46-48
+    setInvincible(0)
     sprite('az403_07', 3)	# 49-51
-    physicsXImpulse(32000)
+    physicsXImpulse(40000)
     sprite('az403_08', 2)	# 52-53	 **attackbox here**
     StartMultihit()
     GFX_0('403swing', -1)
     SFX_3('azse_14')
     GFX_1('azef_blood_01', 0)
     GFX_1('azef_blood_01', 1)
-    sprite('az403_09', 5)	# 54-58	 **attackbox here**
+    sprite('az403_09', 1)	# 54-54	 **attackbox here**
     Unknown1019(20)
     GFX_1('azef_blood_01', 0)
     GFX_1('azef_blood_01', 1)
     GFX_1('azef_blood_01', 2)
+    sprite('az403_09', 4)	# 55-58	 **attackbox here**
     sprite('az403_10', 3)	# 59-61	 **attackbox here**
     physicsXImpulse(0)
     GFX_1('azef_blood_01', 0)
@@ -4945,8 +4970,12 @@ def HomingJump():
         Unknown28(2, 'CmnActJumpLanding')
         callSubroutine('HomingCancel')
         SLOT_5 = 60
+
+        def upon_49():
+            SLOT_5 = 0
     sprite('az023_00', 2)	# 1-2
     Unknown23123(16711935, 10)
+    Unknown13019(1)
     sprite('az023_01', 4)	# 3-6
     sprite('az020_00', 2)	# 7-8
     sprite('az020_01', 1)	# 9-9
@@ -5019,7 +5048,7 @@ def SuperPunch():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(4)
-        Damage(5600)
+        Damage(5500)
         Hitstop(20)
         AirPushbackX(54000)
         AirPushbackY(22000)
@@ -5028,7 +5057,7 @@ def SuperPunch():
         AirUntechableTime(60)
         PushbackX(60800)
         Unknown11050('04000000617a65665f3433316869745f6c696e6500000000000000000000000000000000')
-        Unknown11091(30)
+        Unknown11091(33)
         Unknown11056(0)
 
         def upon_12():
@@ -5137,7 +5166,7 @@ def SuperPunch_OD():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(4)
-        Damage(6600)
+        Damage(6500)
         Hitstop(20)
         AirPushbackX(80000)
         AirPushbackY(22000)
@@ -5147,7 +5176,7 @@ def SuperPunch_OD():
         PushbackX(60800)
         Unknown9202(40)
         Unknown11050('04000000617a65665f3433316869745f6c696e6500000000000000000000000000000000')
-        Unknown11091(30)
+        Unknown11091(31)
         Unknown11056(0)
 
         def upon_12():
@@ -5301,6 +5330,7 @@ def Spartan():
         Unknown13024(0)
         Unknown11064(1)
         Unknown11069('SpartanExe')
+        Unknown2073(1)
 
         def upon_78():
             enterState('SpartanExe')
@@ -5330,18 +5360,18 @@ def Spartan():
     sprite('az440_03', 3)	# 82-84
     SFX_0('005_swing_grap_2_2')
     SFX_0('005_swing_grap_2_2')
-    sprite('az440_04', 3)	# 85-87	 **attackbox here**
-    sprite('az440_04', 3)	# 88-90	 **attackbox here**
+    sprite('az440_04', 5)	# 85-89	 **attackbox here**
+    sprite('az440_04', 3)	# 90-92	 **attackbox here**
     Unknown23027()
     setInvincible(0)
     Unknown13024(1)
-    sprite('az440_05', 7)	# 91-97
-    sprite('az440_06', 7)	# 98-104
-    sprite('az440_07', 7)	# 105-111
-    sprite('az440_08', 5)	# 112-116
-    sprite('az440_09', 5)	# 117-121
-    sprite('az313_09ex01', 5)	# 122-126
-    sprite('az313_10ex01', 5)	# 127-131
+    sprite('az440_05', 7)	# 93-99
+    sprite('az440_06', 7)	# 100-106
+    sprite('az440_07', 7)	# 107-113
+    sprite('az440_08', 5)	# 114-118
+    sprite('az440_09', 5)	# 119-123
+    sprite('az313_09ex01', 5)	# 124-128
+    sprite('az313_10ex01', 5)	# 129-133
 
 @State
 def SpartanExe():
@@ -5361,7 +5391,7 @@ def SpartanExe():
         WallbounceReboundTime(5)
         Unknown9310(10)
         Unknown11023(1)
-        Unknown11091(15)
+        Unknown11091(16)
         Unknown13024(0)
         Unknown30048(1)
         Unknown11064(1)
@@ -5464,7 +5494,7 @@ def SpartanExe():
     Unknown9310(1)
     Unknown11064(0)
     Unknown11069('')
-    Unknown11091(20)
+    Unknown11091(33)
     Unknown13024(1)
 
     def upon_11():
@@ -5540,6 +5570,7 @@ def Spartan_OD():
         Unknown13024(0)
         Unknown11064(1)
         Unknown11069('SpartanExe_OD')
+        Unknown2073(1)
 
         def upon_78():
             enterState('SpartanExe_OD')
@@ -5569,18 +5600,18 @@ def Spartan_OD():
     sprite('az440_03', 3)	# 82-84
     SFX_0('005_swing_grap_2_2')
     SFX_0('005_swing_grap_2_2')
-    sprite('az440_04', 3)	# 85-87	 **attackbox here**
-    sprite('az440_04', 3)	# 88-90	 **attackbox here**
+    sprite('az440_04', 5)	# 85-89	 **attackbox here**
+    sprite('az440_04', 3)	# 90-92	 **attackbox here**
     Unknown23027()
     setInvincible(0)
     Unknown13024(1)
-    sprite('az440_05', 7)	# 91-97
-    sprite('az440_06', 7)	# 98-104
-    sprite('az440_07', 7)	# 105-111
-    sprite('az440_08', 5)	# 112-116
-    sprite('az440_09', 5)	# 117-121
-    sprite('az313_09ex01', 5)	# 122-126
-    sprite('az313_10ex01', 5)	# 127-131
+    sprite('az440_05', 7)	# 93-99
+    sprite('az440_06', 7)	# 100-106
+    sprite('az440_07', 7)	# 107-113
+    sprite('az440_08', 5)	# 114-118
+    sprite('az440_09', 5)	# 119-123
+    sprite('az313_09ex01', 5)	# 124-128
+    sprite('az313_10ex01', 5)	# 129-133
 
 @State
 def SpartanExe_OD():
@@ -5600,7 +5631,7 @@ def SpartanExe_OD():
         WallbounceReboundTime(5)
         Unknown9310(10)
         Unknown11023(1)
-        Unknown11091(15)
+        Unknown11091(13)
         Unknown13024(0)
         Unknown30048(1)
         Unknown11108('03000000')
@@ -5713,7 +5744,7 @@ def SpartanExe_OD():
     Unknown1084(1)
     RefreshMultihit()
     AttackLevel_(5)
-    Damage(6000)
+    Damage(5800)
     AttackP2(70)
     GroundedHitstunAnimation(12)
     AirHitstunAnimation(12)
@@ -5725,7 +5756,7 @@ def SpartanExe_OD():
     AirUntechableTime(360)
     Unknown9310(1)
     Unknown11064(0)
-    Unknown11091(20)
+    Unknown11091(28)
     Unknown11069('')
     Unknown13024(1)
 

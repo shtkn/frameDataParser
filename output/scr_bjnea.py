@@ -1350,8 +1350,8 @@ def air_ice_shot():
     sprite('vrjnef400_08', 2)	# 15-16	 **attackbox here**
     SFX_0('017_freeze_1')
     Unknown1108(0)
-    physicsXImpulse(8000)
-    Unknown1028(900)
+    physicsXImpulse(20000)
+    Unknown1028(1100)
     sprite('vrjnef400_09', 3)	# 17-19	 **attackbox here**
     GFX_1('jnef_iceshot', 0)
     sprite('vrjnef400_09', 3)	# 20-22	 **attackbox here**
@@ -1884,7 +1884,8 @@ def UltimateSlashShotObj():
         Unknown2011()
         Unknown23056('')
         AttackLevel_(4)
-        Unknown11091(15)
+        Damage(1650)
+        Unknown11091(14)
         AttackP1(80)
         AttackP2(60)
         Unknown11092(1)
@@ -1976,6 +1977,7 @@ def OverDriveSlashShotObj():
         Unknown9016(1)
         Unknown11057(600)
         Unknown11043(0)
+        Unknown11110(65)
         physicsXImpulse(50000)
         Unknown1028(800)
         Unknown2055(120)
@@ -2188,6 +2190,7 @@ def IceArrow():
         Unknown9019(1)
         Unknown11062(1)
         Unknown11069('IceArrow')
+        Unknown2073(1)
         Unknown4011(3)
         Unknown2054(1)
         Unknown53(1)
@@ -2229,7 +2232,12 @@ def IceArrow():
 
         def upon_78():
             clearUponHandler(78)
+            Unknown53(0)
             sendToLabel(3)
+
+        def upon_82():
+            clearUponHandler(82)
+            SLOT_56 = 1
 
         def upon_3():
             if (not SLOT_2):
@@ -2274,17 +2282,29 @@ def IceArrow():
     label(3)
     sprite('vrjnef431atk_00', 1)	# 65-65	 **attackbox here**
     if SLOT_51:
-        Unknown36(27)
+        Unknown36(22)
         Unknown1086(26)
         teleportRelativeX(-200000)
         Unknown1007(-100000)
         Unknown35()
+        if SLOT_56:
+            Unknown36(23)
+            Unknown1086(26)
+            teleportRelativeX(-200000)
+            Unknown1007(-100000)
+            Unknown35()
     else:
-        Unknown36(27)
+        Unknown36(22)
         Unknown1086(26)
         teleportRelativeX(-200000)
         Unknown1007(-300000)
         Unknown35()
+        if SLOT_56:
+            Unknown36(23)
+            Unknown1086(26)
+            teleportRelativeX(-200000)
+            Unknown1007(-300000)
+            Unknown35()
     Unknown23029(3, 5003, 0)
 
     def upon_12():
@@ -2299,6 +2319,7 @@ def IceArrow():
     Unknown1022()
     physicsXImpulse(0)
     physicsYImpulse(0)
+    Unknown11023(1)
     sprite('vrjnef431atk_00', 19)	# 66-84	 **attackbox here**
     if SLOT_51:
         Unknown1086(22)
@@ -2368,9 +2389,10 @@ def IceArrow():
     Unknown3077(1000)
     Unknown23029(3, 5004, 0)
     RefreshMultihit()
-    Damage(3000)
+    Damage(4100)
     Unknown11001(0, 0, 5)
     Unknown11069('')
+    Unknown11091(28)
     if SLOT_51:
         YImpluseBeforeWallbounce(10)
         AirHitstunAnimation(12)
@@ -2607,6 +2629,7 @@ def IceArrow_OD():
         Unknown9019(1)
         Unknown11062(1)
         Unknown11069('IceArrow_OD')
+        Unknown2073(1)
         Unknown4011(3)
         Unknown2054(1)
         Unknown53(1)
@@ -2649,7 +2672,12 @@ def IceArrow_OD():
         def upon_78():
             clearUponHandler(78)
             GFX_0('EffAtk8D', 0)
+            Unknown53(0)
             sendToLabel(3)
+
+        def upon_82():
+            clearUponHandler(82)
+            SLOT_56 = 1
 
         def upon_3():
             if (not SLOT_2):
@@ -2694,17 +2722,29 @@ def IceArrow_OD():
     label(3)
     sprite('vrjnef431atk_00', 1)	# 65-65	 **attackbox here**
     if SLOT_51:
-        Unknown36(27)
+        Unknown36(22)
         Unknown1086(26)
         teleportRelativeX(-200000)
         Unknown1007(-100000)
         Unknown35()
+        if SLOT_56:
+            Unknown36(23)
+            Unknown1086(26)
+            teleportRelativeX(-200000)
+            Unknown1007(-100000)
+            Unknown35()
     else:
-        Unknown36(27)
+        Unknown36(22)
         Unknown1086(26)
         teleportRelativeX(-200000)
         Unknown1007(-300000)
         Unknown35()
+        if SLOT_56:
+            Unknown36(23)
+            Unknown1086(26)
+            teleportRelativeX(-200000)
+            Unknown1007(-300000)
+            Unknown35()
     Unknown23029(3, 5003, 0)
 
     def upon_12():
@@ -2719,6 +2759,7 @@ def IceArrow_OD():
     Unknown1022()
     physicsXImpulse(0)
     physicsYImpulse(0)
+    Unknown11023(1)
     sprite('vrjnef431atk_00', 19)	# 66-84	 **attackbox here**
     if SLOT_51:
         Unknown1086(22)
@@ -2788,7 +2829,8 @@ def IceArrow_OD():
     Unknown3077(1000)
     Unknown23029(3, 5004, 0)
     RefreshMultihit()
-    Damage(4000)
+    Damage(3600)
+    Unknown11091(27)
     Unknown11001(0, 0, 5)
     Unknown11069('')
     if SLOT_51:
@@ -3708,6 +3750,19 @@ def RushAssaultFinishAtkObj():
             SFX_0('018_ice_break_1')
             GFX_0('JNFreezeDamageBreakParts', -1)
             GFX_0('JNFreezeDamageBreakParts', -1)
+
+        def upon_45():
+            Unknown48('19000000020000003300000016000000020000001e000000')
+            if SLOT_51:
+                Unknown2003(0)
+            else:
+                Unknown2003(1)
+            if SLOT_6:
+                Unknown48('19000000020000003400000017000000020000001e000000')
+                if SLOT_52:
+                    Unknown30048(0)
+                else:
+                    Unknown30048(1)
     sprite('vrdmy_yukikaze', 3)	# 1-3	 **attackbox here**
 
 @State
@@ -3834,6 +3889,8 @@ def OverDriveSlashShotFinish():
         Unknown4009(3)
         Unknown4011(3)
         AttackLevel_(4)
+        Damage(1000)
+        Unknown11091(1)
         AttackP2(100)
         PushbackX(8000)
         Unknown9142(9999)

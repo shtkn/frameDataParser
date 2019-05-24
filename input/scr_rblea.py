@@ -1198,7 +1198,6 @@ def ShadowObjectInit():
     Unknown2009()
     Unknown2003(1)
     Unknown23022(1)
-    Unknown4010(3)
     Unknown4011(3)
     Unknown48('19000000020000000c00000003000000020000000c000000')
     Unknown48('19000000020000000d00000003000000020000000d000000')
@@ -2600,6 +2599,7 @@ def LandShotAtkObjC():
     AirPushbackX(-30000)
     AirPushbackY(-30000)
     Unknown9202(30)
+    AirUntechableTime(25)
     PushbackX(-60000)
     if SLOT_2:
         Damage(1500)
@@ -2747,10 +2747,10 @@ def UltimateShotObj():
         Unknown2011()
         Unknown23056('')
         AttackLevel_(5)
-        Damage(4800)
+        Damage(4400)
         AttackP2(60)
         Unknown11092(1)
-        Unknown11091(30)
+        Unknown11091(28)
         GroundedHitstunAnimation(9)
         AirUntechableTime(28)
         AirPushbackX(30000)
@@ -2771,6 +2771,8 @@ def UltimateShotObj():
         def upon_43():
             if (SLOT_48 == 4301):
                 Unknown30070('5055556c74696d61746553686f743173744f626a000000000000000000000000')
+                Damage(4500)
+                Unknown11091(27)
                 Unknown23182(3)
             if (SLOT_48 == 4302):
                 Unknown30070('5055556c74696d61746553686f74326e644f626a000000000000000000000000')
@@ -3063,7 +3065,7 @@ def UltimateRushSPFinishAtk():
     sprite('rbl431_20', 1)
     RefreshMultihit()
     AttackLevel_(5)
-    Damage(400)
+    Damage(500)
     Unknown11091(10)
     Hitstop(3)
     AirPushbackX(1000)

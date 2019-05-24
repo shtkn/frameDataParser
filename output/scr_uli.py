@@ -7,6 +7,9 @@ def PreInit():
 def MatchInit():
     DashFAccel(1000)
     DashFMaxVelocity(32000)
+    JumpYVelocity(31500)
+    SuperJumpYVelocity(38000)
+    DoubleJumpCount(2)
     Unknown12038(23000)
     Unknown12034(33)
     Unknown12036(-1500)
@@ -733,7 +736,7 @@ def CmnActBDashLanding():
 def CmnActAirFDash():
 
     def upon_IMMEDIATE():
-        pass
+        Unknown22001(-1)
     sprite('Action_068_01', 3)	# 1-3
     sprite('Action_068_02', 3)	# 4-6
     sprite('Action_068_03', 3)	# 7-9
@@ -764,6 +767,9 @@ def AirFDashRigor():
 
 @State
 def CmnActAirBDash():
+
+    def upon_IMMEDIATE():
+        Unknown22001(-1)
     sprite('Action_046_03', 4)	# 1-4
     physicsYImpulse(12000)
     sprite('Action_046_04', 4)	# 5-8
@@ -1944,6 +1950,7 @@ def AN_NmlAtk5B_3rd():
     Unknown2015(200)
     sprite('Action_142_03', 3)	# 16-18
     sprite('Action_142_04', 1)	# 19-19
+    Unknown2016(400)
     Unknown2015(250)
     tag_voice(0, 'uli111_0', 'uli111_1', 'uli111_2', '')
     SFX_0('006_swing_blade_2')
@@ -2851,7 +2858,6 @@ def CmnActInvincibleAttack():
         def upon_12():
             Unknown2037(1)
     sprite('Action_100_00', 6)	# 1-6
-    setInvincible(1)
     sprite('Action_100_01', 3)	# 7-9	 **attackbox here**
     StartMultihit()
     sprite('Action_100_01', 3)	# 10-12	 **attackbox here**
@@ -2963,7 +2969,6 @@ def CmnActInvincibleAttackAir():
         clearUponHandler(2)
         sendToLabelUpon(2, 1)
     sprite('Action_101_03', 9)	# 1-9	 **attackbox here**
-    setInvincible(1)
     StartMultihit()
     Hitstop(3)
     physicsYImpulse(26500)
@@ -3202,12 +3207,12 @@ def Assault_B():
     RefreshMultihit()
     Hitstop(12)
     PushbackX(12000)
-    sprite('Action_182_11', 4)	# 32791-32794
+    sprite('Action_182_11', 2)	# 32791-32792
     Recovery()
-    sprite('Action_182_12', 6)	# 32795-32800
-    sprite('Action_182_13', 8)	# 32801-32808
-    sprite('Action_182_14', 4)	# 32809-32812
-    sprite('Action_182_15', 3)	# 32813-32815
+    sprite('Action_182_12', 4)	# 32793-32796
+    sprite('Action_182_13', 8)	# 32797-32804
+    sprite('Action_182_14', 4)	# 32805-32808
+    sprite('Action_182_15', 3)	# 32809-32811
 
 @State
 def AirShot_A():
@@ -3450,7 +3455,7 @@ def Assault_EX():
     Unknown23087(50000)
     physicsXImpulse(36000)
     physicsYImpulse(16000)
-    setGravity(2000)
+    setGravity(2300)
     Unknown8001(0, 100)
     tag_voice(1, 'uli213_0', 'uli213_1', 'uli213_2', '')
     SFX_0('002_highjump_0')
@@ -3482,12 +3487,12 @@ def Assault_EX():
     RefreshMultihit()
     Hitstop(12)
     PushbackX(12000)
-    sprite('Action_184_12', 6)	# 32794-32799
+    sprite('Action_184_12', 4)	# 32794-32797
     Recovery()
     Unknown2063()
-    sprite('Action_184_13', 8)	# 32800-32807
-    sprite('Action_184_14', 4)	# 32808-32811
-    sprite('Action_184_15', 3)	# 32812-32814
+    sprite('Action_184_13', 8)	# 32798-32805
+    sprite('Action_184_14', 4)	# 32806-32809
+    sprite('Action_184_15', 3)	# 32810-32812
 
 @State
 def AirShot_EX():
@@ -3539,8 +3544,8 @@ def UltimateRush():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(4)
-        Damage(300)
-        Unknown11091(15)
+        Damage(360)
+        Unknown11091(18)
         AttackP2(98)
         GroundedHitstunAnimation(10)
         AirHitstunAnimation(10)
@@ -3559,6 +3564,11 @@ def UltimateRush():
         Unknown11064(1)
         Unknown1084(1)
         GFX_0('UltimateRushEff', 100)
+
+        def upon_78():
+            Unknown2037(1)
+            setInvincible(0)
+            Unknown22008(60)
     sprite('Action_189_00', 5)	# 1-5
     Unknown2036(60, -1, 0)
     Unknown2058(-10000)
@@ -3593,7 +3603,8 @@ def UltimateRush():
     RefreshMultihit()
     sprite('Action_190_08', 4)	# 82-85	 **attackbox here**
     sprite('Action_190_09', 2)	# 86-87
-    setInvincible(0)
+    if (not SLOT_2):
+        setInvincible(0)
     sprite('Action_190_10', 2)	# 88-89
     sprite('Action_190_11', 2)	# 90-91
     sprite('Action_190_12', 2)	# 92-93
@@ -3658,6 +3669,9 @@ def UltimateRush():
     RefreshMultihit()
     sprite('Action_190_29', 28)	# 166-193
     GFX_0('UltimateLightwall', 0)
+    setInvincible(0)
+    Unknown22008(0)
+    clearUponHandler(78)
     sprite('Action_190_30', 2)	# 194-195
     sprite('Action_190_31', 6)	# 196-201
     sprite('Action_190_32', 3)	# 202-204
@@ -3686,8 +3700,8 @@ def UltimateRushOD():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(4)
-        Damage(300)
-        Unknown11091(15)
+        Damage(340)
+        Unknown11091(13)
         AttackP2(98)
         GroundedHitstunAnimation(10)
         AirHitstunAnimation(10)
@@ -3706,6 +3720,11 @@ def UltimateRushOD():
         Unknown11064(1)
         Unknown1084(1)
         GFX_0('UltimateRushEffOD', 100)
+
+        def upon_78():
+            Unknown2037(1)
+            setInvincible(0)
+            Unknown22008(60)
     sprite('Action_189_00', 5)	# 1-5
     Unknown2036(60, -1, 0)
     Unknown2058(-10000)
@@ -3739,7 +3758,8 @@ def UltimateRushOD():
     RefreshMultihit()
     sprite('Action_190_08', 4)	# 82-85	 **attackbox here**
     sprite('Action_190_00', 2)	# 86-87
-    setInvincible(0)
+    if (not SLOT_2):
+        setInvincible(0)
     sprite('Action_190_01', 2)	# 88-89
     sprite('Action_190_02', 2)	# 90-91
     sprite('Action_190_03', 2)	# 92-93
@@ -3835,6 +3855,9 @@ def UltimateRushOD():
     RefreshMultihit()
     sprite('Action_190_29', 38)	# 218-255
     GFX_0('UltimateLightwallOD', 0)
+    setInvincible(0)
+    Unknown22008(0)
+    clearUponHandler(78)
     sprite('Action_190_30', 2)	# 256-257
     sprite('Action_190_31', 6)	# 258-263
     sprite('Action_190_32', 3)	# 264-266
@@ -3918,6 +3941,7 @@ def UltimateRanbu():
         Unknown9016(1)
         Unknown11069('UltimateRanbu_Exe')
         Unknown11064(1)
+        Unknown2073(1)
 
         def upon_78():
             Unknown13024(0)
@@ -3947,16 +3971,16 @@ def UltimateRanbu():
     sprite('Action_262_06', 5)	# 57-61
     sprite('Action_154_00', 6)	# 62-67
     sprite('Action_154_01', 4)	# 68-71
-    Unknown1045(40000)
+    Unknown1045(65000)
     sprite('Action_154_02', 4)	# 72-75	 **attackbox here**
     GFX_0('Lin_157', 0)
     Unknown1084(1)
     SFX_0('007_swing_knife_1')
-    sprite('Action_154_03', 8)	# 76-83
+    sprite('Action_154_03', 9)	# 76-84
     setInvincible(0)
-    sprite('Action_154_04', 5)	# 84-88
-    sprite('Action_154_05', 4)	# 89-92
-    sprite('Action_154_06', 3)	# 93-95
+    sprite('Action_154_04', 7)	# 85-91
+    sprite('Action_154_05', 5)	# 92-96
+    sprite('Action_154_06', 4)	# 97-100
 
 @State
 def UltimateRanbu_Exe():
@@ -3965,8 +3989,8 @@ def UltimateRanbu_Exe():
         AttackDefaults_StandingDD()
         Unknown23056('')
         AttackLevel_(4)
-        Damage(750)
-        Unknown11091(15)
+        Damage(790)
+        Unknown11091(8)
         AttackP2(100)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
@@ -4082,6 +4106,7 @@ def UltimateRanbu_Exe():
     Hitstop(1)
     Unknown11001(0, 20, 20)
     Unknown11099(1)
+    Unknown11091(24)
     physicsXImpulse(60000)
     Unknown8007(100, 1, 1)
     GFX_0('Lin_169', 0)
@@ -4138,6 +4163,7 @@ def UltimateRanbuOD():
         Unknown9016(1)
         Unknown11069('UltimateRanbuOD_Exe')
         Unknown11064(1)
+        Unknown2073(1)
 
         def upon_78():
             Unknown13024(0)
@@ -4167,16 +4193,16 @@ def UltimateRanbuOD():
     sprite('Action_262_06', 5)	# 57-61
     sprite('Action_154_00', 6)	# 62-67
     sprite('Action_154_01', 4)	# 68-71
-    Unknown1045(40000)
+    Unknown1045(65000)
     sprite('Action_154_02', 4)	# 72-75	 **attackbox here**
     GFX_0('Lin_157', 0)
     Unknown1084(1)
     SFX_0('007_swing_knife_1')
-    sprite('Action_154_03', 8)	# 76-83
+    sprite('Action_154_03', 9)	# 76-84
     setInvincible(0)
-    sprite('Action_154_04', 5)	# 84-88
-    sprite('Action_154_05', 4)	# 89-92
-    sprite('Action_154_06', 3)	# 93-95
+    sprite('Action_154_04', 7)	# 85-91
+    sprite('Action_154_05', 5)	# 92-96
+    sprite('Action_154_06', 4)	# 97-100
 
 @State
 def UltimateRanbuOD_Exe():
@@ -4185,8 +4211,8 @@ def UltimateRanbuOD_Exe():
         AttackDefaults_StandingDD()
         Unknown23056('')
         AttackLevel_(4)
-        Damage(850)
-        Unknown11091(15)
+        Damage(870)
+        Unknown11091(7)
         AttackP2(100)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
@@ -4336,6 +4362,7 @@ def UltimateRanbuOD_Exe():
     Hitstop(1)
     Unknown11001(0, 20, 20)
     Unknown11099(1)
+    Unknown11091(23)
     physicsXImpulse(60000)
     Unknown8007(100, 1, 1)
     GFX_0('Lin_169', 0)
@@ -4892,7 +4919,8 @@ def CmnActChangePartnerAssistAtk_A():
             Unknown2017(1)
             Unknown2034(1)
             Unknown2053(1)
-        Unknown28(2, 'CmnActJumpLanding')
+        clearUponHandler(2)
+        sendToLabelUpon(2, 1)
     sprite('Action_036_00', 4)	# 1-4
     sprite('Action_036_01', 4)	# 5-8
     SLOT_12 = SLOT_19
@@ -4922,6 +4950,13 @@ def CmnActChangePartnerAssistAtk_A():
     sprite('Action_022_01', 3)	# 60-62
     loopRest()
     gotoLabel(0)
+    label(1)
+    sprite('Action_023_00', 3)	# 63-65
+    Unknown1084(1)
+    clearUponHandler(2)
+    sprite('Action_023_01', 3)	# 66-68
+    sprite('Action_023_02', 3)	# 69-71
+    sprite('Action_023_03', 4)	# 72-75
 
 @State
 def CmnActChangePartnerAssistAtk_B():
@@ -5129,6 +5164,11 @@ def AN_CmnActChangePartnerDDExe():
         Unknown30063(1)
         Unknown30019('0000000001000000')
         GFX_0('UltimateRushEff', 100)
+
+        def upon_78():
+            Unknown2037(1)
+            setInvincible(0)
+            Unknown22008(60)
     sprite('Lin392_00', 5)	# 1-5
     setInvincible(1)
     sprite('Action_189_01', 8)	# 6-13
@@ -5158,7 +5198,8 @@ def AN_CmnActChangePartnerDDExe():
     RefreshMultihit()
     sprite('Action_190_08', 4)	# 82-85	 **attackbox here**
     sprite('Action_190_09', 2)	# 86-87
-    setInvincible(0)
+    if (not SLOT_2):
+        setInvincible(0)
     sprite('Action_190_10', 2)	# 88-89
     sprite('Action_190_11', 2)	# 90-91
     sprite('Action_190_12', 2)	# 92-93
@@ -5222,6 +5263,9 @@ def AN_CmnActChangePartnerDDExe():
     RefreshMultihit()
     sprite('Action_190_29', 28)	# 166-193
     GFX_0('UltimateLightwallDDD', 0)
+    setInvincible(0)
+    Unknown22008(0)
+    clearUponHandler(78)
     sprite('Action_190_30', 2)	# 194-195
     sprite('Action_190_31', 6)	# 196-201
     sprite('Action_190_32', 3)	# 202-204
@@ -5273,6 +5317,11 @@ def AN_CmnActChangePartnerDDODExe():
         Unknown1084(1)
         Unknown30063(1)
         GFX_0('UltimateRushEffOD', 100)
+
+        def upon_78():
+            Unknown2037(1)
+            setInvincible(0)
+            Unknown22008(60)
     sprite('Lin392_00', 5)	# 1-5
     setInvincible(1)
     sprite('Action_189_01', 8)	# 6-13
@@ -5302,7 +5351,8 @@ def AN_CmnActChangePartnerDDODExe():
     RefreshMultihit()
     sprite('Action_190_08', 4)	# 82-85	 **attackbox here**
     sprite('Action_190_00', 2)	# 86-87
-    setInvincible(0)
+    if (not SLOT_2):
+        setInvincible(0)
     sprite('Action_190_01', 2)	# 88-89
     sprite('Action_190_02', 2)	# 90-91
     sprite('Action_190_03', 2)	# 92-93
@@ -5398,6 +5448,9 @@ def AN_CmnActChangePartnerDDODExe():
     RefreshMultihit()
     sprite('Action_190_29', 38)	# 218-255
     GFX_0('UltimateLightwallDDDOD', 0)
+    setInvincible(0)
+    Unknown22008(0)
+    clearUponHandler(78)
     sprite('Action_190_30', 2)	# 256-257
     sprite('Action_190_31', 6)	# 258-263
     sprite('Action_190_32', 3)	# 264-266

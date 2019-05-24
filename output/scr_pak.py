@@ -45,10 +45,6 @@ def MatchInit():
     Move_AirGround_(0x3083)
     Unknown14015(0, 250000, -100000, 150000, 1100, 30)
     Move_EndRegister()
-    Move_Register('NmlAtk4A', 0x6)
-    MoveMaxChainRepeat(3)
-    Unknown14015(0, 250000, -100000, 150000, 1100, 30)
-    Move_EndRegister()
     Move_Register('NmlAtk4A2nd', 0x6)
     MoveMaxChainRepeat(1)
     Unknown14005(1)
@@ -58,6 +54,10 @@ def MatchInit():
     MoveMaxChainRepeat(1)
     Unknown14005(1)
     Unknown14013('NmlAtk5A3rd')
+    Unknown14015(0, 250000, -100000, 150000, 1100, 30)
+    Move_EndRegister()
+    Move_Register('NmlAtk4A', 0x6)
+    MoveMaxChainRepeat(3)
     Unknown14015(0, 250000, -100000, 150000, 1100, 30)
     Move_EndRegister()
     Move_Register('NmlAtk2A', 0x4)
@@ -742,6 +742,9 @@ def DistortionSkillFlexChain():
 def DuckDoNotBeginCancel():
     if Unknown23145('Ducking'):
         Unknown30068(1)
+    if SLOT_123:
+        if Unknown23145('Ducking_BCorkHasei'):
+            Unknown30068(1)
 
 @Subroutine
 def DiveDoNotBeginCancel():
@@ -2096,7 +2099,7 @@ def CmnActChangePartnerAssistAtk_A():
             Unknown2053(1)
     sprite('ak406_00', 4)	# 1-4
     sprite('ak406_01', 4)	# 5-8
-    physicsXImpulse(10000)
+    physicsXImpulse(5000)
     Unknown3029(1)
     sprite('ak406_02', 2)	# 9-10
     Unknown1019(300)
@@ -2110,36 +2113,36 @@ def CmnActChangePartnerAssistAtk_A():
     Unknown1019(50)
     sprite('ak404_00', 2)	# 20-21
     sprite('ak404_01', 2)	# 22-23
-    sprite('ak404_02', 2)	# 24-25	 **attackbox here**
+    sprite('ak404_02', 4)	# 24-27	 **attackbox here**
     RefreshMultihit()
-    physicsXImpulse(80000)
+    physicsXImpulse(160000)
     Unknown8007(100, 1, 1)
     SFX_3('slash_blade_fast')
     GFX_0('SpecialScrewWind', 0)
     GFX_0('SpecialScrewFistAura', 0)
     GFX_0('UltimateUpperSmoke', 100)
     Unknown7007('70616b3230375f3000000000000000006400000070616b3230375f3100000000000000006400000070616b3230375f3200000000000000006400000070616b3230385f30000000000000000064000000')
-    sprite('ak404_03', 1)	# 26-26	 **attackbox here**
-    sprite('ak404_03', 1)	# 27-27	 **attackbox here**
+    sprite('ak404_03', 1)	# 28-28	 **attackbox here**
+    sprite('ak404_03', 1)	# 29-29	 **attackbox here**
     label(1)
-    sprite('ak404_04', 2)	# 28-29	 **attackbox here**
-    sprite('ak404_05', 3)	# 30-32
+    sprite('ak404_04', 2)	# 30-31	 **attackbox here**
+    sprite('ak404_05', 3)	# 32-34
     Recovery()
     Unknown1019(80)
     Unknown8006(100, 1, 1)
-    sprite('ak404_06', 3)	# 33-35
+    sprite('ak404_06', 3)	# 35-37
     Unknown1019(0)
     Unknown8006(100, 1, 1)
-    sprite('ak404_07', 3)	# 36-38
+    sprite('ak404_07', 3)	# 38-40
     Unknown8006(100, 1, 1)
-    sprite('ak404_08', 4)	# 39-42
-    sprite('ak404_09', 4)	# 43-46
-    sprite('ak404_10', 3)	# 47-49
-    sprite('ak404_11', 5)	# 50-54
-    sprite('ak404_12', 5)	# 55-59
+    sprite('ak404_08', 4)	# 41-44
+    sprite('ak404_09', 4)	# 45-48
+    sprite('ak404_10', 3)	# 49-51
+    sprite('ak404_11', 5)	# 52-56
+    sprite('ak404_12', 5)	# 57-61
     SFX_3('ak002')
-    sprite('ak404_13', 8)	# 60-67
-    sprite('ak000_00', 3)	# 68-70
+    sprite('ak404_13', 8)	# 62-69
+    sprite('ak000_00', 3)	# 70-72
 
 @State
 def CmnActChangePartnerAssistAtk_B():
@@ -2230,37 +2233,42 @@ def CmnActChangePartnerAssistAtk_D():
             Unknown2053(1)
             Unknown2015(-1)
     sprite('ak032_00', 4)	# 1-4
-    Unknown3029(1)
     sprite('ak032_01', 4)	# 5-8
-    Unknown7007('70616b3231325f3000000000000000006400000070616b3231325f3200000000000000006400000070616b3231335f3100000000000000006400000070616b3231335f32000000000000000064000000')
+    Unknown3029(1)
+    Unknown7007('70616b3231325f3000000000000000006400000070616b3231325f3100000000000000006400000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
     physicsXImpulse(60000)
     SFX_3('airbackdash_m')
     Unknown8007(100, 1, 1)
-    sprite('ak032_02', 2)	# 9-10
+    Unknown23004(0, 0)
+    sprite('ak032_01', 3)	# 9-11
+    Unknown1019(90)
     SLOT_51 = 1
-    sprite('ak032_02', 1)	# 11-11
-    sprite('ak032_03', 3)	# 12-14
+    sprite('ak032_02', 3)	# 12-14
+    Unknown1019(85)
+    sprite('ak032_03', 3)	# 15-17
+    sprite('ak032_04', 3)	# 18-20
+    Unknown8006(100, 1, 1)
     label(0)
-    sprite('ak400_00', 1)	# 15-15
+    sprite('ak400_00', 1)	# 21-21
     clearUponHandler(3)
     Unknown1019(70)
     Unknown3029(0)
     SLOT_52 = 2
     label(1)
-    sprite('ak400_00', 1)	# 16-16
-    sprite('ak400_01', 1)	# 17-17
-    sprite('ak400_02aex', 1)	# 18-18	 **attackbox here**
+    sprite('ak400_00', 1)	# 22-22
+    sprite('ak400_01', 1)	# 23-23
+    sprite('ak400_02aex', 1)	# 24-24	 **attackbox here**
     RefreshMultihit()
     Unknown1019(0)
     GFX_0('SpecialRash00', 100)
     Unknown8006(100, 1, 1)
-    sprite('ak203_01', 1)	# 19-19
+    sprite('ak203_01', 1)	# 25-25
     GFX_0('SpecialRash01', 100)
     Unknown8006(100, 1, 1)
-    sprite('ak203_02', 1)	# 20-20
+    sprite('ak203_02', 1)	# 26-26
     GFX_0('SpecialRash02', 100)
     Unknown8006(100, 1, 1)
-    sprite('ak203_03aex', 1)	# 21-21	 **attackbox here**
+    sprite('ak203_03aex', 1)	# 27-27	 **attackbox here**
     RefreshMultihit()
     AirPushbackY(0)
     SLOT_52 = (SLOT_52 + (-1))
@@ -2271,8 +2279,8 @@ def CmnActChangePartnerAssistAtk_D():
     gotoLabel(1)
     label(2)
     clearUponHandler(10)
-    sprite('ak203_04', 3)	# 22-24
-    sprite('ak203_06a', 3)	# 25-27	 **attackbox here**
+    sprite('ak203_04', 3)	# 28-30
+    sprite('ak203_06a', 3)	# 31-33	 **attackbox here**
     Unknown23054('616b3230335f303500000000000000000000000000000000000000000000000003000000')
     RefreshMultihit()
     SFX_3('hit_m_middle')
@@ -2293,15 +2301,15 @@ def CmnActChangePartnerAssistAtk_D():
     def upon_ON_HIT_OR_BLOCK():
         clearUponHandler(10)
         SFX_3('down_marble_m')
-    sprite('ak203_06a', 7)	# 28-34	 **attackbox here**
+    sprite('ak203_06a', 7)	# 34-40	 **attackbox here**
     StartMultihit()
     Recovery()
-    sprite('ak203_06a', 8)	# 35-42	 **attackbox here**
+    sprite('ak203_06a', 8)	# 41-48	 **attackbox here**
     StartMultihit()
-    sprite('ak203_07', 5)	# 43-47
-    sprite('ak203_08', 5)	# 48-52
-    sprite('ak203_09', 5)	# 53-57
-    sprite('ak000_00', 3)	# 58-60
+    sprite('ak203_07', 5)	# 49-53
+    sprite('ak203_08', 5)	# 54-58
+    sprite('ak203_09', 5)	# 59-63
+    sprite('ak000_00', 3)	# 64-66
 
 @State
 def CmnActChangePartnerDD():
@@ -2529,6 +2537,7 @@ def NmlAtk5A():
         AttackDefaults_StandingNormal()
         AttackLevel_(3)
         Damage(950)
+        AttackP2(85)
         Unknown11092(1)
         Hitstop(5)
         AirPushbackY(13000)
@@ -2544,13 +2553,13 @@ def NmlAtk5A():
         Unknown1112('')
     sprite('ak203_00', 2)	# 1-2
     sprite('ak203_01', 2)	# 3-4
-    sprite('ak203_02', 3)	# 5-7
-    sprite('ak203_03', 3)	# 8-10	 **attackbox here**
+    sprite('ak203_02', 2)	# 5-6
+    sprite('ak203_03', 3)	# 7-9	 **attackbox here**
     RefreshMultihit()
     SFX_3('hit_m_fast')
     Unknown7009(2)
-    sprite('ak203_04', 3)	# 11-13
-    sprite('ak203_06', 3)	# 14-16	 **attackbox here**
+    sprite('ak203_04', 3)	# 10-12
+    sprite('ak203_06', 3)	# 13-15	 **attackbox here**
     Unknown23054('616b3230335f303500000000000000000000000000000000000000000000000003000000')
     RefreshMultihit()
     Hitstop(13)
@@ -2558,14 +2567,14 @@ def NmlAtk5A():
 
     def upon_ON_HIT_OR_BLOCK():
         HitOrBlockCancel('NmlAtk5A2nd')
-    sprite('ak203_06', 2)	# 17-18	 **attackbox here**
+    sprite('ak203_06', 2)	# 16-17	 **attackbox here**
     StartMultihit()
     Recovery()
     Unknown2063()
-    sprite('ak203_07', 5)	# 19-23
-    sprite('ak203_07', 1)	# 24-24
-    sprite('ak203_08', 6)	# 25-30
-    sprite('ak203_09', 6)	# 31-36
+    sprite('ak203_07', 5)	# 18-22
+    sprite('ak203_07', 1)	# 23-23
+    sprite('ak203_08', 6)	# 24-29
+    sprite('ak203_09', 6)	# 30-35
 
 @State
 def NmlAtk5A2nd():
@@ -2626,6 +2635,7 @@ def NmlAtk5A3rd():
         YImpluseBeforeWallbounce(1500)
         Hitstop(5)
         JumpCancel_(0)
+        Unknown11068(1)
     sprite('ak202_00', 3)	# 1-3
     sprite('ak202_01', 2)	# 4-5
     physicsXImpulse(80000)
@@ -2718,6 +2728,7 @@ def NmlAtk5A3rd():
     AirUntechableTime(30)
     Unknown1019(0)
     Unknown2017(1)
+    Unknown11068(0)
 
     def upon_ON_HIT_OR_BLOCK():
         clearUponHandler(10)
@@ -2802,6 +2813,7 @@ def NmlAtk4A():
         AttackLevel_(2)
         Hitstop(8)
         HitOrBlockCancel('NmlAtk4A2nd')
+        HitOrBlockCancel('NmlAtk4A')
         HitOrBlockCancel('NmlAtk5A')
         HitOrBlockCancel('NmlAtk2A')
         HitOrBlockCancel('NmlAtk5B')
@@ -2811,19 +2823,19 @@ def NmlAtk4A():
         HitOrBlockCancel('NmlAtkThrow')
         HitOrBlockCancel('NmlAtkBackThrow')
         HitOrBlockJumpCancel(1)
-    sprite('ak200_02', 3)	# 1-3
-    sprite('ak200_02', 2)	# 4-5
+    sprite('ak200_02', 2)	# 1-2
+    sprite('ak200_02', 2)	# 3-4
     Unknown1051(80)
-    sprite('ak200_01', 2)	# 6-7	 **attackbox here**
+    sprite('ak200_01', 2)	# 5-6	 **attackbox here**
     Unknown23054('616b3230305f303000000000000000000000000000000000000000000000000002000000')
     RefreshMultihit()
     SFX_3('hit_l_fast')
     Unknown7009(0)
-    sprite('ak200_01', 3)	# 8-10	 **attackbox here**
+    sprite('ak200_01', 3)	# 7-9	 **attackbox here**
     StartMultihit()
     Recovery()
     Unknown2063()
-    sprite('ak200_02', 8)	# 11-18
+    sprite('ak200_02', 8)	# 10-17
 
 @State
 def NmlAtk4A2nd():
@@ -2901,11 +2913,16 @@ def NmlAtk5B():
     SFX_3('airbackdash_m')
     Unknown8007(100, 1, 1)
     Unknown23004(0, 0)
-    sprite('ak032_02', 2)	# 6-7
+    sprite('ak032_01', 3)	# 6-8
+    Unknown1019(90)
     SLOT_51 = 1
-    sprite('ak032_03', 2)	# 8-9
+    sprite('ak032_02', 3)	# 9-11
+    Unknown1019(85)
+    sprite('ak032_03', 3)	# 12-14
+    sprite('ak032_04', 3)	# 15-17
+    Unknown8006(100, 1, 1)
     label(0)
-    sprite('ak400_00', 1)	# 10-10
+    sprite('ak400_00', 1)	# 18-18
     clearUponHandler(3)
     Unknown1019(70)
     Unknown3029(0)
@@ -2917,23 +2934,23 @@ def NmlAtk5B():
         SLOT_59 = (SLOT_59 + 1)
         Unknown2037(1)
     label(1)
-    sprite('ak400_00', 1)	# 11-11
-    sprite('ak400_01', 1)	# 12-12
-    sprite('ak400_02a', 1)	# 13-13	 **attackbox here**
+    sprite('ak400_00', 1)	# 19-19
+    sprite('ak400_01', 1)	# 20-20
+    sprite('ak400_02a', 1)	# 21-21	 **attackbox here**
     RefreshMultihit()
     Unknown1019(0)
     GFX_0('SpecialRash00', 100)
     Unknown8006(100, 1, 1)
-    sprite('ak400_02a', 1)	# 14-14	 **attackbox here**
+    sprite('ak400_02a', 1)	# 22-22	 **attackbox here**
     if (not SLOT_2):
         sendToLabel(3)
-    sprite('ak203_01', 1)	# 15-15
+    sprite('ak203_01', 1)	# 23-23
     GFX_0('SpecialRash01', 100)
     Unknown8006(100, 1, 1)
-    sprite('ak203_02', 1)	# 16-16
+    sprite('ak203_02', 1)	# 24-24
     GFX_0('SpecialRash02', 100)
     Unknown8006(100, 1, 1)
-    sprite('ak203_03a', 1)	# 17-17	 **attackbox here**
+    sprite('ak203_03a', 1)	# 25-25	 **attackbox here**
     RefreshMultihit()
     AirPushbackY(0)
     SLOT_52 = (SLOT_52 + (-1))
@@ -2944,9 +2961,9 @@ def NmlAtk5B():
     gotoLabel(1)
     label(2)
     clearUponHandler(10)
-    sprite('ak203_04', 3)	# 18-20
+    sprite('ak203_04', 3)	# 26-28
     label(3)
-    sprite('ak203_06a', 3)	# 21-23	 **attackbox here**
+    sprite('ak203_06a', 3)	# 29-31	 **attackbox here**
     Unknown23054('616b3230335f303500000000000000000000000000000000000000000000000003000000')
     if SLOT_2:
         RefreshMultihit()
@@ -2972,23 +2989,23 @@ def NmlAtk5B():
         SFX_3('down_marble_m')
         JumpCancel_(1)
         callSubroutine('CycloneSkillDeriveInput')
-    sprite('ak203_06a', 1)	# 24-24	 **attackbox here**
+    sprite('ak203_06a', 1)	# 32-32	 **attackbox here**
     Unknown23183('616b3230335f3036610000000000000000000000000000000000000000000000030000000200000002000000')
     StartMultihit()
     Recovery()
     Unknown2063()
-    sprite('ak203_06a', 8)	# 25-32	 **attackbox here**
+    sprite('ak203_06a', 8)	# 33-40	 **attackbox here**
     StartMultihit()
     if SLOT_58:
         callSubroutine('CycloneSkillDeriveTiming')
     if SLOT_2:
         WhiffCancelEnable(1)
         JumpCancel_(1)
-    sprite('ak203_07', 3)	# 33-35
+    sprite('ak203_07', 3)	# 41-43
     callSubroutine('CycloneSkillDeriveClear')
     WhiffCancelEnable(0)
-    sprite('ak203_08', 5)	# 36-40
-    sprite('ak203_09', 6)	# 41-46
+    sprite('ak203_08', 5)	# 44-48
+    sprite('ak203_09', 6)	# 49-54
 
 @State
 def NmlAtk2A():
@@ -3091,7 +3108,8 @@ def NmlAtk2B():
     RefreshMultihit()
     Unknown18009(0)
     Unknown7007('70616b3130365f3000000000000000006400000070616b3130365f3100000000000000006400000070616b3130365f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('ak231_04', 3)	# 10-12	 **attackbox here**
+    sprite('ak231_04', 2)	# 10-11	 **attackbox here**
+    sprite('ak231_04', 1)	# 12-12	 **attackbox here**
     StartMultihit()
     setInvincible(0)
     Recovery()
@@ -3119,7 +3137,6 @@ def NmlAtk2C():
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
         PushbackX(15000)
-        AirPushbackX(-1000)
         AirPushbackY(12000)
     sprite('ak211_00', 2)	# 1-2
     sprite('ak211_00', 1)	# 3-3
@@ -3146,8 +3163,9 @@ def NmlAtkAIR5A():
 
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
-        AttackLevel_(2)
+        AttackLevel_(3)
         Hitstop(8)
+        AirUntechableTime(24)
         HitOrBlockCancel('NmlAtkAIR5A2nd')
         HitOrBlockCancel('NmlAtkAIR5B')
         HitOrBlockCancel('NmlAtkAIR5C')
@@ -3175,6 +3193,7 @@ def NmlAtkAIR5B():
         Damage(900)
         AirPushbackY(2000)
         AttackP2(90)
+        Unknown11092(1)
         AirUntechableTime(24)
         Hitstop(9)
         HitOrBlockCancel('NmlAtkAIR5A')
@@ -3190,7 +3209,6 @@ def NmlAtkAIR5B():
     Unknown7009(5)
     sprite('ak251_04', 3)	# 12-14
     sprite('ak251_05', 3)	# 15-17	 **attackbox here**
-    AttackLevel_(2)
     RefreshMultihit()
     AirPushbackX(10000)
     Unknown9083()
@@ -3668,43 +3686,49 @@ def NmlAtkThrow():
 def CycloneThrow():
 
     def upon_IMMEDIATE():
+        Unknown30070('4e6d6c41746b5468726f77000000000000000000000000000000000000000000')
         Unknown17011('ThrowExe', 1, 0, 0)
         Unknown11054(120000)
         callSubroutine('CycloneLvIcon')
     sprite('keep', 1)	# 1-1
+    StartMultihit()
     if Unknown23145('Ducking'):
         sendToLabel(0)
-    sprite('ak406_00', 4)	# 2-5
-    sprite('ak406_01', 4)	# 6-9
-    physicsXImpulse(5000)
+    if SLOT_123:
+        if Unknown23145('Ducking_BCorkHasei'):
+            sendToLabel(0)
+    sprite('ak406_00', 2)	# 2-3
+    sprite('ak406_01', 2)	# 4-5
+    physicsXImpulse(50000)
     Unknown3029(1)
     setInvincible(1)
     Unknown22019('0000000000000000000000000100000000000000')
-    sprite('ak406_02', 2)	# 10-11
-    Unknown1019(300)
+    sprite('ak406_02', 2)	# 6-7
+    Unknown1019(80)
     SFX_3('airbackdash_m')
     Unknown7007('70616b3231305f3000000000000000006400000070616b3231305f3100000000000000006400000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
-    sprite('ak406_03', 2)	# 12-13
-    Unknown1019(300)
-    sprite('ak406_02', 2)	# 14-15
+    sprite('ak406_03', 2)	# 8-9
+    Unknown1019(80)
+    sprite('ak406_02', 2)	# 10-11
     SLOT_59 = (SLOT_59 + 1)
-    sprite('ak406_03', 2)	# 16-17
+    sprite('ak406_03', 2)	# 12-13
+    Unknown1019(80)
+    sprite('ak406_04', 3)	# 14-16
+    Unknown1019(80)
     setInvincible(0)
-    Unknown1019(60)
-    sprite('ak406_04', 3)	# 18-20
-    Unknown1019(50)
     label(0)
-    sprite('ak310_00', 2)	# 21-22
+    sprite('ak310_00', 2)	# 17-18
     Unknown1019(10)
     Unknown8010(100, 1, 1)
-    sprite('ak310_01', 1)	# 23-23
-    sprite('ak310_02', 3)	# 24-26	 **attackbox here**
+    sprite('ak310_01', 1)	# 19-19
+    sprite('ak310_02', 3)	# 20-22	 **attackbox here**
+    RefreshMultihit()
     Unknown1084(1)
-    sprite('ak310_03', 3)	# 27-29
-    sprite('ak310_04', 10)	# 30-39
+    sprite('ak310_03', 3)	# 23-25
+    sprite('ak310_04', 10)	# 26-35
     SFX_4('pak154')
-    sprite('ak310_01', 5)	# 40-44
-    sprite('ak310_00', 5)	# 45-49
+    sprite('ak310_01', 5)	# 36-40
+    sprite('ak310_00', 5)	# 41-45
 
 @State
 def ThrowExe():
@@ -3958,43 +3982,49 @@ def NmlAtkBackThrow():
 def CycloneBackThrow():
 
     def upon_IMMEDIATE():
+        Unknown30070('4e6d6c41746b4261636b5468726f770000000000000000000000000000000000')
         Unknown17011('BackThrowExe', 1, 0, 0)
         Unknown11054(120000)
         callSubroutine('CycloneLvIcon')
     sprite('keep', 1)	# 1-1
+    StartMultihit()
     if Unknown23145('Ducking'):
         sendToLabel(0)
-    sprite('ak406_00', 4)	# 2-5
-    sprite('ak406_01', 4)	# 6-9
-    physicsXImpulse(5000)
+    if SLOT_123:
+        if Unknown23145('Ducking_BCorkHasei'):
+            sendToLabel(0)
+    sprite('ak406_00', 2)	# 2-3
+    sprite('ak406_01', 2)	# 4-5
+    physicsXImpulse(50000)
     Unknown3029(1)
     setInvincible(1)
     Unknown22019('0000000000000000000000000100000000000000')
-    sprite('ak406_02', 2)	# 10-11
-    Unknown1019(300)
+    sprite('ak406_02', 2)	# 6-7
+    Unknown1019(80)
     SFX_3('airbackdash_m')
     Unknown7007('70616b3231305f3000000000000000006400000070616b3231305f3100000000000000006400000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
-    sprite('ak406_03', 2)	# 12-13
-    Unknown1019(300)
-    sprite('ak406_02', 2)	# 14-15
+    sprite('ak406_03', 2)	# 8-9
+    Unknown1019(80)
+    sprite('ak406_02', 2)	# 10-11
     SLOT_59 = (SLOT_59 + 1)
-    sprite('ak406_03', 2)	# 16-17
+    sprite('ak406_03', 2)	# 12-13
+    Unknown1019(80)
+    sprite('ak406_04', 3)	# 14-16
+    Unknown1019(80)
     setInvincible(0)
-    Unknown1019(60)
-    sprite('ak406_04', 3)	# 18-20
-    Unknown1019(50)
     label(0)
-    sprite('ak310_00', 2)	# 21-22
+    sprite('ak310_00', 2)	# 17-18
     Unknown1019(10)
     Unknown8010(100, 1, 1)
-    sprite('ak310_01', 1)	# 23-23
-    sprite('ak310_02', 3)	# 24-26	 **attackbox here**
+    sprite('ak310_01', 1)	# 19-19
+    sprite('ak310_02', 3)	# 20-22	 **attackbox here**
+    RefreshMultihit()
     Unknown1084(1)
-    sprite('ak310_03', 3)	# 27-29
-    sprite('ak310_04', 10)	# 30-39
+    sprite('ak310_03', 3)	# 23-25
+    sprite('ak310_04', 10)	# 26-35
     SFX_4('pak154')
-    sprite('ak310_01', 5)	# 40-44
-    sprite('ak310_00', 5)	# 45-49
+    sprite('ak310_01', 5)	# 36-40
+    sprite('ak310_00', 5)	# 41-45
 
 @State
 def BackThrowExe():
@@ -4278,15 +4308,19 @@ def CmnActInvincibleAttack():
     SFX_3('ak002')
     sprite('ak404_13', 7)	# 56-62
 
+@Subroutine
+def Cyclon_int():
+    Unknown9154(19)
+    AirUntechableTime(19)
+    Unknown11028(15)
+
 @State
 def BoomerangHookA():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         AttackLevel_(3)
-        Unknown9154(19)
-        AirUntechableTime(19)
-        Unknown11028(13)
+        callSubroutine('Cyclon_int')
         AirPushbackX(15000)
         AirPushbackY(16000)
         PushbackX(15300)
@@ -4354,9 +4388,7 @@ def SonicPunchA():
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         AttackLevel_(3)
-        Unknown9154(19)
-        AirUntechableTime(19)
-        Unknown11028(13)
+        callSubroutine('Cyclon_int')
         AirPushbackX(2000)
         AirPushbackY(20000)
         PushbackX(39900)
@@ -4427,13 +4459,12 @@ def BoomerangHookB():
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         AttackLevel_(3)
-        Unknown9154(19)
-        AirUntechableTime(19)
-        Unknown11028(13)
+        callSubroutine('Cyclon_int')
         AirPushbackX(15000)
         AirPushbackY(16000)
         PushbackX(3000)
         Unknown11031(5)
+        AttackP1(90)
         callSubroutine('CycloneSkillFlexChain')
         WhiffCancel('SonicPunchA')
         WhiffCancel('SonicPunchB')
@@ -4466,6 +4497,11 @@ def BoomerangHookB():
             SLOT_59 = (SLOT_59 + 1)
     sprite('ak405_00', 3)	# 1-3
     sprite('ak405_01', 3)	# 4-6
+    setInvincible(1)
+    Unknown22019('0000000001000000000000000000000000000000')
+    Unknown22030(0)
+    GuardPoint_(1)
+    Unknown22031(-2, -1)
     sprite('ak405_02', 9)	# 7-15
     sprite('ak405_03', 3)	# 16-18
     physicsXImpulse(40000)
@@ -4479,6 +4515,7 @@ def BoomerangHookB():
     physicsXImpulse(0)
     GFX_0('SpecialBodyBlowMain', 100)
     Unknown7007('70616b3230395f3000000000000000006400000070616b3230395f3100000000000000006400000070616b3230395f320000000000000000640000000000000000000000000000000000000000000000')
+    setInvincible(0)
     sprite('ak405_06', 2)	# 24-25
     Recovery()
     sprite('ak405_07', 2)	# 26-27
@@ -4496,12 +4533,13 @@ def SonicPunchB():
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         AttackLevel_(3)
+        callSubroutine('Cyclon_int')
         Unknown9154(21)
         AirUntechableTime(21)
-        Unknown11028(13)
         AirPushbackX(4000)
         AirPushbackY(20000)
         Unknown11031(5)
+        AttackP1(90)
         callSubroutine('CycloneSkillFlexChain')
         Unknown14084('SonicPunchB')
         WhiffCancel('BoomerangHookB')
@@ -4536,7 +4574,9 @@ def SonicPunchB():
         Unknown2004(1, 0)
     sprite('ak409_00', 3)	# 1-3
     sprite('ak409_01', 3)	# 4-6
-    physicsXImpulse(4500)
+    setInvincible(1)
+    Unknown22019('0000000001000000000000000000000000000000')
+    physicsXImpulse(5000)
     GFX_0('SpecialQuakeSmoke', 100)
     SFX_0('airbackdash_m')
     SFX_0('cloth_m')
@@ -4560,6 +4600,7 @@ def SonicPunchB():
     Unknown1019(0)
     RefreshMultihit()
     GFX_1('akef_dashupper_smoke', 100)
+    setInvincible(0)
     sprite('ak409_05', 5)	# 25-29
     Recovery()
     sprite('ak409_06', 5)	# 30-34
@@ -4577,39 +4618,42 @@ def Ducking():
         if (not SLOT_59):
             Unknown23004(0, 1)
     sprite('ak406_00', 3)	# 1-3
-    sprite('ak406_00', 1)	# 4-4
-    callSubroutine('CycloneSkillDeriveInput')
-    Unknown14074('Ducking')
-    callSubroutine('SpecialSkillDeriveInput')
-    callSubroutine('DistortionSkillDeriveInput')
-    Unknown23004(0, 0)
-    sprite('ak406_01', 2)	# 5-6
-    physicsXImpulse(40000)
-    Unknown3029(1)
-    setInvincible(1)
-    Unknown22019('0000000000000000000000000100000000000000')
-    sprite('ak406_02', 2)	# 7-8
-    SFX_3('airbackdash_m')
-    Unknown7007('70616b3231305f3000000000000000006400000070616b3231305f3100000000000000006400000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
-    sprite('ak406_03', 2)	# 9-10
-    sprite('ak406_04', 2)	# 11-12
-    Unknown1019(50)
-    sprite('ak406_05', 2)	# 13-14
-    SLOT_59 = (SLOT_59 + 1)
-    Unknown1019(50)
-    callSubroutine('CycloneSkillDeriveTiming')
-    callSubroutine('SpecialSkillDeriveTiming')
-    callSubroutine('DistortionSkillDeriveTiming')
-    sprite('ak406_06', 3)	# 15-17
-    Unknown1019(50)
-    setInvincible(0)
-    sprite('ak406_07', 3)	# 18-20
-    Unknown1019(50)
-    sprite('ak406_08', 5)	# 21-25
-    Unknown1019(0)
-    callSubroutine('CycloneSkillDeriveClear')
-    callSubroutine('SpecialSkillDeriveClear')
-    callSubroutine('DistortionSkillDeriveClear')
+    if Unknown23145('CorkScrewB'):
+        setInvincible(1)
+        Unknown22019('0000000001000000000000000100000000000000')
+        if SLOT_123:
+            Unknown30070('4475636b696e675f42436f726b48617365690000000000000000000000000000')
+sprite('ak406_00', 1)	# 4-4
+callSubroutine('CycloneSkillDeriveInput')
+Unknown14074('Ducking')
+callSubroutine('SpecialSkillDeriveInput')
+callSubroutine('DistortionSkillDeriveInput')
+Unknown23004(0, 0)
+sprite('ak406_01', 2)	# 5-6
+physicsXImpulse(60000)
+Unknown3029(1)
+setInvincible(1)
+Unknown22019('0000000000000000000000000100000000000000')
+sprite('ak406_02', 2)	# 7-8
+SFX_3('airbackdash_m')
+Unknown7007('70616b3231305f3000000000000000006400000070616b3231305f3100000000000000006400000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
+sprite('ak406_03', 2)	# 9-10
+sprite('ak406_04', 2)	# 11-12
+Unknown1019(80)
+sprite('ak406_05', 2)	# 13-14
+SLOT_59 = (SLOT_59 + 1)
+Unknown1019(70)
+callSubroutine('CycloneSkillDeriveTiming')
+callSubroutine('SpecialSkillDeriveTiming')
+callSubroutine('DistortionSkillDeriveTiming')
+sprite('ak406_06', 3)	# 15-17
+Unknown1019(60)
+sprite('ak406_07', 3)	# 18-20
+Unknown1019(60)
+setInvincible(0)
+sprite('ak406_08', 5)	# 21-25
+Unknown1019(0)
+endState()
 
 @State
 def RushLegSweep():
@@ -4622,8 +4666,9 @@ def RushLegSweep():
         HitLow(2)
         AirHitstunAnimation(11)
         GroundedHitstunAnimation(11)
+        Unknown9310(1)
+        Unknown11065(1)
         PushbackX(15000)
-        AirPushbackX(-1000)
         AirPushbackY(12000)
         Unknown11058('0000000000000000010000000000000000000000')
         Unknown11031(5)
@@ -4657,13 +4702,13 @@ def RushLegSweep():
     SLOT_59 = (SLOT_59 + 1)
     physicsXImpulse(0)
     Unknown7007('70616b3130375f3000000000000000006400000070616b3130375f3100000000000000006400000070616b3130375f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('ak211_05', 5)	# 14-18	 **attackbox here**
+    sprite('ak211_05', 10)	# 14-23	 **attackbox here**
     StartMultihit()
     Recovery()
     Unknown2063()
-    sprite('ak211_07', 5)	# 19-23
-    sprite('ak211_08', 5)	# 24-28
-    sprite('ak211_09', 5)	# 29-33
+    sprite('ak211_07', 7)	# 24-30
+    sprite('ak211_08', 6)	# 31-36
+    sprite('ak211_09', 6)	# 37-42
 
 @State
 def CorkScrewA():
@@ -4675,11 +4720,11 @@ def CorkScrewA():
         Hitstop(9)
         AirUntechableTime(70)
         PushbackX(-3000)
-        AirPushbackX(80000)
+        AirPushbackX(160000)
         AirPushbackY(10000)
         YImpluseBeforeWallbounce(2200)
-        WallbounceReboundTime(20)
-        Unknown11001(0, -4, -4)
+        WallbounceReboundTime(10)
+        Unknown11001(0, -4, 5)
         Unknown11056(0)
         GroundedHitstunAnimation(12)
         AirHitstunAnimation(12)
@@ -4713,35 +4758,35 @@ def CorkScrewA():
             sendToLabel(1)
     sprite('ak404_00', 4)	# 1-4
     sprite('ak404_01', 4)	# 5-8
-    sprite('ak404_02', 2)	# 9-10	 **attackbox here**
+    sprite('ak404_02', 4)	# 9-12	 **attackbox here**
     SLOT_59 = (SLOT_59 + 1)
     RefreshMultihit()
-    physicsXImpulse(80000)
+    physicsXImpulse(100000)
     Unknown8007(100, 1, 1)
     SFX_3('slash_blade_fast')
     GFX_0('SpecialScrewWind', 0)
     GFX_0('SpecialScrewFistAura', 0)
     GFX_0('SpecialDashSmoke', 100)
     Unknown7007('70616b3230375f3000000000000000006400000070616b3230375f3100000000000000006400000070616b3230375f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('ak404_03', 2)	# 11-12	 **attackbox here**
+    sprite('ak404_03', 2)	# 13-14	 **attackbox here**
     label(1)
-    sprite('ak404_04', 2)	# 13-14	 **attackbox here**
-    sprite('ak404_05', 3)	# 15-17
+    sprite('ak404_04', 2)	# 15-16	 **attackbox here**
+    sprite('ak404_05', 3)	# 17-19
     Unknown1019(80)
     Unknown8006(100, 1, 1)
     Recovery()
-    sprite('ak404_06', 3)	# 18-20
+    sprite('ak404_06', 3)	# 20-22
     Unknown1019(0)
     Unknown8006(100, 1, 1)
-    sprite('ak404_07', 3)	# 21-23
+    sprite('ak404_07', 3)	# 23-25
     Unknown8006(100, 1, 1)
-    sprite('ak404_08', 4)	# 24-27
-    sprite('ak404_09', 4)	# 28-31
-    sprite('ak404_10', 3)	# 32-34
-    sprite('ak404_11', 5)	# 35-39
-    sprite('ak404_12', 5)	# 40-44
+    sprite('ak404_08', 4)	# 26-29
+    sprite('ak404_09', 4)	# 30-33
+    sprite('ak404_10', 3)	# 34-36
+    sprite('ak404_11', 3)	# 37-39
+    sprite('ak404_12', 3)	# 40-42
     SFX_3('ak002')
-    sprite('ak404_13', 7)	# 45-51
+    sprite('ak404_13', 5)	# 43-47
 
 @State
 def CorkScrewB():
@@ -4753,11 +4798,11 @@ def CorkScrewB():
         Hitstop(9)
         AirUntechableTime(70)
         PushbackX(20000)
-        AirPushbackX(80000)
+        AirPushbackX(160000)
         AirPushbackY(10000)
         YImpluseBeforeWallbounce(2200)
-        WallbounceReboundTime(20)
-        Unknown11001(0, -4, -4)
+        WallbounceReboundTime(10)
+        Unknown11001(0, -4, 5)
         Unknown11056(0)
         GroundedHitstunAnimation(12)
         AirHitstunAnimation(12)
@@ -4783,51 +4828,67 @@ def CorkScrewB():
         if (SLOT_59 >= 5):
             Damage(3000)
             Unknown11031(10)
-        loopRelated(17, 47)
+        loopRelated(17, 37)
 
         def upon_17():
             clearUponHandler(17)
-            sendToLabel(3)
+            SLOT_51 = 1
 
         def upon_11():
             clearUponHandler(11)
             SFX_3('down_steal_m')
             ScreenShake(10000, 5000)
             sendToLabel(2)
+
+        def upon_STATE_END():
+            SLOT_60 = SLOT_59
     sprite('ak407_00', 4)	# 1-4
+    if Unknown23145('Ducking'):
+        setInvincible(1)
+        Unknown22019('0000000001000000000000000100000000000000')
+    if SLOT_123:
+        if Unknown23145('Ducking_BCorkHasei'):
+            setInvincible(1)
+            Unknown22019('0000000001000000000000000100000000000000')
     sprite('ak407_04', 3)	# 5-7
     Unknown3029(1)
     physicsXImpulse(-20000)
     SFX_3('cloth_m')
     Unknown7007('70616b3231315f3000000000000000006400000070616b3231315f3100000000000000006400000070616b3231315f320000000000000000640000000000000000000000000000000000000000000000')
+    Unknown14070('Ducking')
+    setInvincible(1)
+    Unknown22019('0000000001000000000000000100000000000000')
     sprite('ak407_05', 1)	# 8-8
     Unknown1019(125)
     sprite('ak407_05', 2)	# 9-10
     sprite('ak407_06', 3)	# 11-13
     sendToLabelUpon(24, 1)
-    setInvincible(1)
-    Unknown22019('0000000001000000000000000000000000000000')
     sprite('ak407_08', 3)	# 14-16
     physicsXImpulse(-10000)
     sprite('ak407_09', 4)	# 17-20
     SFX_0('cloth_m')
     physicsXImpulse(0)
+    Unknown14072('Ducking')
+    SLOT_59 = (SLOT_59 + 1)
     sprite('ak407_10', 4)	# 21-24
     sprite('ak407_11', 4)	# 25-28
     sprite('ak407_12', 4)	# 29-32
     label(0)
-    sprite('ak407_01', 4)	# 33-36
-    sprite('ak407_02', 4)	# 37-40
-    sprite('ak407_03', 3)	# 41-43
+    sprite('ak407_01ex01', 4)	# 33-36
+    Unknown22019('0000000000000000000000000100000000000000')
+    sprite('ak407_02ex01', 4)	# 37-40
+    sprite('ak407_03ex01', 3)	# 41-43
     SFX_0('cloth_m')
-    sprite('ak407_04', 4)	# 44-47
-    sprite('ak407_05', 4)	# 48-51
-    sprite('ak407_06', 4)	# 52-55
-    sprite('ak407_08', 4)	# 56-59
-    sprite('ak407_09', 4)	# 60-63
-    sprite('ak407_10', 4)	# 64-67
-    sprite('ak407_11', 4)	# 68-71
-    sprite('ak407_12', 4)	# 72-75
+    sprite('ak407_04ex01', 4)	# 44-47
+    if SLOT_51:
+        sendToLabel(3)
+    sprite('ak407_05ex01', 4)	# 48-51
+    sprite('ak407_06ex01', 4)	# 52-55
+    sprite('ak407_08ex01', 4)	# 56-59
+    sprite('ak407_09ex01', 4)	# 60-63
+    sprite('ak407_10ex01', 4)	# 64-67
+    sprite('ak407_11ex01', 4)	# 68-71
+    sprite('ak407_12ex01', 4)	# 72-75
     loopRest()
     gotoLabel(0)
     label(1)
@@ -4835,41 +4896,42 @@ def CorkScrewB():
     clearUponHandler(24)
     clearUponHandler(17)
     setInvincible(0)
+    Unknown14074('Ducking')
     Unknown1019(30)
     sprite('ak404_01', 2)	# 78-79
-    sprite('ak404_02', 2)	# 80-81	 **attackbox here**
+    sprite('ak404_02', 4)	# 80-83	 **attackbox here**
     SLOT_59 = (SLOT_59 + 1)
     RefreshMultihit()
-    physicsXImpulse(80000)
+    physicsXImpulse(100000)
     Unknown8007(100, 1, 1)
     SFX_3('slash_blade_fast')
     GFX_0('SpecialScrewWind', 0)
     GFX_0('SpecialScrewFistAura', 0)
     GFX_0('UltimateUpperSmoke', 100)
     Unknown7007('70616b3230385f3000000000000000006400000070616b3230385f3100000000000000006400000070616b3230385f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('ak404_03', 1)	# 82-82	 **attackbox here**
-    sprite('ak404_03', 1)	# 83-83	 **attackbox here**
+    sprite('ak404_03', 1)	# 84-84	 **attackbox here**
+    sprite('ak404_03', 1)	# 85-85	 **attackbox here**
     label(2)
-    sprite('ak404_04', 2)	# 84-85	 **attackbox here**
-    sprite('ak404_05', 3)	# 86-88
+    sprite('ak404_04', 2)	# 86-87	 **attackbox here**
+    sprite('ak404_05', 3)	# 88-90
     Unknown1019(80)
     Unknown8006(100, 1, 1)
     Recovery()
-    sprite('ak404_06', 3)	# 89-91
+    sprite('ak404_06', 3)	# 91-93
     Unknown1019(0)
     Unknown8006(100, 1, 1)
-    sprite('ak404_07', 3)	# 92-94
+    sprite('ak404_07', 3)	# 94-96
     Unknown8006(100, 1, 1)
-    sprite('ak404_08', 4)	# 95-98
-    sprite('ak404_09', 4)	# 99-102
-    sprite('ak404_10', 3)	# 103-105
-    sprite('ak404_11', 5)	# 106-110
-    sprite('ak404_12', 5)	# 111-115
+    sprite('ak404_08', 4)	# 97-100
+    sprite('ak404_09', 4)	# 101-104
+    sprite('ak404_10', 3)	# 105-107
+    sprite('ak404_11', 3)	# 108-110
+    sprite('ak404_12', 3)	# 111-113
     SFX_3('ak002')
-    sprite('ak404_13', 7)	# 116-122
+    sprite('ak404_13', 5)	# 114-118
     ExitState()
     label(3)
-    sprite('ak404_13', 6)	# 123-128
+    sprite('ak404_13', 6)	# 119-124
     clearUponHandler(24)
     clearUponHandler(17)
     Unknown3029(0)
@@ -4885,11 +4947,11 @@ def CorkScrewEX():
         Hitstop(9)
         AirUntechableTime(70)
         PushbackX(20000)
-        AirPushbackX(80000)
+        AirPushbackX(160000)
         AirPushbackY(10000)
         YImpluseBeforeWallbounce(2200)
-        WallbounceReboundTime(20)
-        Unknown11001(0, -4, -4)
+        WallbounceReboundTime(10)
+        Unknown11001(0, -4, 5)
         Unknown11056(0)
         GroundedHitstunAnimation(12)
         AirHitstunAnimation(12)
@@ -4925,7 +4987,7 @@ def CorkScrewEX():
             sendToLabel(1)
     sprite('ak406_00', 3)	# 1-3
     sprite('ak406_01', 2)	# 4-5
-    physicsXImpulse(50000)
+    physicsXImpulse(60000)
     Unknown3029(1)
     Unknown2017(0)
     Unknown23125('')
@@ -4942,36 +5004,36 @@ def CorkScrewEX():
     Unknown2006()
     setInvincible(0)
     sprite('ak404_01', 2)	# 14-15
-    sprite('ak404_02', 2)	# 16-17	 **attackbox here**
+    sprite('ak404_02', 4)	# 16-19	 **attackbox here**
     SLOT_59 = (SLOT_59 + 1)
     RefreshMultihit()
-    physicsXImpulse(80000)
+    physicsXImpulse(100000)
     Unknown8007(100, 1, 1)
     SFX_3('slash_blade_fast')
     GFX_0('SpecialScrewWind', 0)
     GFX_0('SpecialScrewFistAura', 0)
     GFX_0('UltimateUpperSmoke', 100)
     Unknown7007('70616b3230385f3000000000000000006400000070616b3230385f3100000000000000006400000070616b3230385f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('ak404_03', 1)	# 18-18	 **attackbox here**
-    sprite('ak404_03', 1)	# 19-19	 **attackbox here**
+    sprite('ak404_03', 1)	# 20-20	 **attackbox here**
+    sprite('ak404_03', 1)	# 21-21	 **attackbox here**
     label(1)
-    sprite('ak404_04', 2)	# 20-21	 **attackbox here**
-    sprite('ak404_05', 3)	# 22-24
+    sprite('ak404_04', 2)	# 22-23	 **attackbox here**
+    sprite('ak404_05', 3)	# 24-26
     Unknown1019(80)
     Unknown8006(100, 1, 1)
     Recovery()
-    sprite('ak404_06', 3)	# 25-27
+    sprite('ak404_06', 3)	# 27-29
     Unknown1019(0)
     Unknown8006(100, 1, 1)
-    sprite('ak404_07', 3)	# 28-30
+    sprite('ak404_07', 3)	# 30-32
     Unknown8006(100, 1, 1)
-    sprite('ak404_08', 4)	# 31-34
-    sprite('ak404_09', 4)	# 35-38
-    sprite('ak404_10', 3)	# 39-41
-    sprite('ak404_11', 5)	# 42-46
-    sprite('ak404_12', 5)	# 47-51
+    sprite('ak404_08', 4)	# 33-36
+    sprite('ak404_09', 4)	# 37-40
+    sprite('ak404_10', 3)	# 41-43
+    sprite('ak404_11', 3)	# 44-46
+    sprite('ak404_12', 3)	# 47-49
     SFX_3('ak002')
-    sprite('ak404_13', 7)	# 52-58
+    sprite('ak404_13', 5)	# 50-54
 
 @State
 def AssaultDiveLandA():
@@ -4980,7 +5042,7 @@ def AssaultDiveLandA():
         AttackDefaults_StandingSpecial()
         AttackLevel_(4)
         AttackP1(80)
-        AttackP2(90)
+        AttackP2(80)
         AirUntechableTime(40)
         Unknown9310(10)
         PushbackX(0)
@@ -4989,6 +5051,7 @@ def AssaultDiveLandA():
         YImpluseBeforeWallbounce(3000)
         Unknown30056('6079feff6400000000000000')
         Unknown11031(5)
+        HitOverhead(2)
         Unknown11058('0100000000000000000000000000000000000000')
         callSubroutine('DiveDoNotBeginCancel')
         callSubroutine('CycloneLvIcon')
@@ -5020,22 +5083,22 @@ def AssaultDiveLandA():
     sprite('ak210_00', 3)	# 1-3
     sprite('ak210_01', 3)	# 4-6
     Unknown23004(0, 0)
-    sprite('ak210_02', 3)	# 7-9
-    sprite('ak210_03', 3)	# 10-12
+    sprite('ak210_02', 2)	# 7-8
+    sprite('ak210_03', 3)	# 9-11
     physicsXImpulse(8000)
     physicsYImpulse(25000)
     setGravity(2200)
-    sprite('ak210_04', 3)	# 13-15
-    sprite('ak210_05', 3)	# 16-18
+    sprite('ak210_04', 2)	# 12-13
+    sprite('ak210_05', 2)	# 14-15
     SFX_3('hit_h_slow')
-    sprite('ak210_06', 3)	# 19-21
-    sprite('ak408_01', 6)	# 22-27
+    sprite('ak210_06', 2)	# 16-17
+    sprite('ak408_01', 3)	# 18-20
     Unknown1084(1)
     sendToLabelUpon(2, 1)
-    sprite('ak408_02', 6)	# 28-33
+    sprite('ak408_02', 3)	# 21-23
     Unknown7007('70616b3231345f3000000000000000006400000070616b3231345f3100000000000000006400000070616b3231355f310000000000000000640000000000000000000000000000000000000000000000')
     SFX_3('slash_blade_fast')
-    sprite('ak408_03', 2)	# 34-35
+    sprite('ak408_03', 2)	# 24-25
     SFX_3('airdash_m')
     SFX_3('slash_blade_slow')
     physicsXImpulse(40000)
@@ -5043,28 +5106,29 @@ def AssaultDiveLandA():
     setGravity(3000)
     Unknown23118(-10198016)
     GFX_0('SpecialAirBodyAura', 100)
-    sprite('ak408_04', 2)	# 36-37	 **attackbox here**
+    sprite('ak408_04', 2)	# 26-27	 **attackbox here**
     RefreshMultihit()
     GFX_0('SpecialAirFistAura', 0)
     loopRest()
     label(0)
-    sprite('ak408_05', 2)	# 38-39	 **attackbox here**
-    sprite('ak408_04', 2)	# 40-41	 **attackbox here**
+    sprite('ak408_05', 2)	# 28-29	 **attackbox here**
+    sprite('ak408_04', 2)	# 30-31	 **attackbox here**
     loopRest()
     gotoLabel(0)
     label(1)
-    sprite('ak408_06', 4)	# 42-45	 **attackbox here**
+    sprite('ak408_06', 4)	# 32-35	 **attackbox here**
     Unknown1084(1)
     ScreenShake(5000, 20000)
     Unknown8004(100, 1, 1)
     SFX_3('damage_hit_h')
     SLOT_59 = (SLOT_59 + 1)
-    sprite('ak408_06', 2)	# 46-47	 **attackbox here**
+    sprite('ak408_06', 2)	# 36-37	 **attackbox here**
     RefreshMultihit()
     PushbackX(9800)
     AirPushbackX(0)
     Unknown11058('0000000001000000000000000000000000000000')
     Unknown9310(0)
+    HitOverhead(0)
     Unknown18009(1)
     Unknown8004(100, 1, 1)
     Unknown23119(-16777216, 18, 1)
@@ -5081,19 +5145,19 @@ def AssaultDiveLandA():
         callSubroutine('CycloneSkillDeriveInput')
         callSubroutine('SpecialSkillDeriveInput')
         Unknown2037(1)
-    sprite('ak408_07', 2)	# 48-49
+    sprite('ak408_07', 2)	# 38-39
     Recovery()
-    sprite('ak408_07', 2)	# 50-51
+    sprite('ak408_07', 2)	# 40-41
     WhiffCancelEnable(1)
     if SLOT_2:
         callSubroutine('CycloneSkillDeriveTiming')
         callSubroutine('SpecialSkillDeriveTiming')
-    sprite('ak408_08', 5)	# 52-56
-    sprite('ak408_09', 8)	# 57-64
+    sprite('ak408_08', 5)	# 42-46
+    sprite('ak408_09', 8)	# 47-54
     WhiffCancelEnable(0)
     callSubroutine('CycloneSkillDeriveClear')
     callSubroutine('SpecialSkillDeriveClear')
-    sprite('ak408_10', 5)	# 65-69
+    sprite('ak408_10', 5)	# 55-59
 
 @State
 def AssaultDiveLandB():
@@ -5110,6 +5174,7 @@ def AssaultDiveLandB():
         AirPushbackY(-30000)
         YImpluseBeforeWallbounce(4000)
         Unknown11031(5)
+        HitOverhead(2)
         Unknown11058('0100000000000000000000000000000000000000')
         callSubroutine('DiveDoNotBeginCancel')
         callSubroutine('CycloneLvIcon')
@@ -5190,6 +5255,7 @@ def AssaultDiveLandB():
     YImpluseBeforeWallbounce(0)
     Unknown9190(1)
     Unknown11065(1)
+    HitOverhead(0)
     Unknown18009(1)
     Unknown8004(100, 1, 1)
     Unknown23119(-16777216, 18, 1)
@@ -5227,7 +5293,7 @@ def AssaultDiveLandEX():
         AttackDefaults_StandingSpecial()
         AttackLevel_(4)
         AttackP1(80)
-        AttackP2(90)
+        AttackP2(80)
         AirUntechableTime(40)
         Unknown9310(10)
         PushbackX(0)
@@ -5237,6 +5303,7 @@ def AssaultDiveLandEX():
         Unknown11091(10)
         Unknown30065(0)
         Unknown11031(5)
+        HitOverhead(2)
         Unknown11058('0100000000000000000000000000000000000000')
         callSubroutine('DiveDoNotBeginCancel')
         callSubroutine('CycloneLvIcon')
@@ -5274,6 +5341,7 @@ def AssaultDiveLandEX():
     physicsXImpulse(15000)
     physicsYImpulse(30000)
     setGravity(1500)
+    Unknown23087(30000)
     sprite('ak210_04', 2)	# 10-11
     sprite('ak210_05', 2)	# 12-13
     SFX_3('hit_h_slow')
@@ -5318,6 +5386,7 @@ def AssaultDiveLandEX():
     YImpluseBeforeWallbounce(0)
     Unknown9190(1)
     Unknown11065(1)
+    HitOverhead(0)
     Unknown18009(1)
     Unknown8004(100, 1, 1)
     Unknown23119(-16777216, 18, 1)
@@ -5364,6 +5433,7 @@ def AssaultDiveAirA():
         YImpluseBeforeWallbounce(3000)
         Unknown30056('6079feff6400000000000000')
         Unknown11031(5)
+        HitOverhead(2)
         callSubroutine('CycloneLvIcon')
         if (not SLOT_59):
             Unknown23004(0, 1)
@@ -5434,6 +5504,7 @@ def AssaultDiveAirA():
     AirPushbackX(0)
     Unknown11058('0000000001000000000000000000000000000000')
     Unknown9310(0)
+    HitOverhead(0)
     Unknown18009(1)
     Unknown8004(100, 1, 1)
     Unknown23119(-16777216, 18, 1)
@@ -5480,6 +5551,7 @@ def AssaultDiveAirB():
         YImpluseBeforeWallbounce(3000)
         Unknown30056('6079feff6400000000000000')
         Unknown11031(5)
+        HitOverhead(2)
         callSubroutine('CycloneLvIcon')
         if (not SLOT_59):
             Unknown23004(0, 1)
@@ -5550,6 +5622,7 @@ def AssaultDiveAirB():
     AirPushbackX(0)
     Unknown11058('0000000001000000000000000000000000000000')
     Unknown9310(0)
+    HitOverhead(0)
     Unknown18009(1)
     Unknown8004(100, 1, 1)
     Unknown23119(-16777216, 18, 1)
@@ -5598,6 +5671,7 @@ def AssaultDiveAirEX():
         Unknown11091(10)
         Unknown30065(0)
         Unknown11031(5)
+        HitOverhead(2)
         callSubroutine('CycloneLvIcon')
         if (not SLOT_59):
             Unknown23004(0, 1)
@@ -5673,6 +5747,7 @@ def AssaultDiveAirEX():
     YImpluseBeforeWallbounce(0)
     Unknown9190(1)
     Unknown11065(1)
+    HitOverhead(0)
     Unknown18009(1)
     Unknown8004(100, 1, 1)
     Unknown26('SpecialAirBodyAura')
@@ -5709,7 +5784,8 @@ def CycloneUpper():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(5)
-        Damage(3000)
+        Damage(3500)
+        Unknown11091(32)
         AttackP2(80)
         AirUntechableTime(80)
         GroundedHitstunAnimation(1)
@@ -5832,6 +5908,7 @@ def CycloneUpper():
     Hitstop(4)
     Damage(1500)
     AttackP2(91)
+    Unknown11091(20)
     GroundedHitstunAnimation(13)
     AirHitstunAnimation(13)
     AirPushbackX(10000)
@@ -6074,8 +6151,9 @@ def CycloneUpperSP():
         AttackDefaults_StandingDD()
         Unknown23055('')
         AttackLevel_(5)
-        Damage(2500)
+        Damage(2800)
         AttackP2(90)
+        Unknown11091(30)
         AirUntechableTime(80)
         GroundedHitstunAnimation(1)
         AirPushbackX(0)
@@ -6380,6 +6458,7 @@ def CycloneUpperSP():
     RefreshMultihit()
     Damage(600)
     AttackP2(97)
+    Unknown11091(20)
     if (SLOT_59 == 4):
         Damage(670)
     Unknown8003(100, 1, 1)
@@ -6477,6 +6556,7 @@ def CycloneUpperSP():
     RefreshMultihit()
     Damage(500)
     AttackP2(97)
+    Unknown11091(20)
     Unknown8003(100, 1, 1)
     GFX_0('UltimateFirstPunch', 0)
     sprite('ak430_07', 2)	# 286-287	 **attackbox here**
@@ -6665,7 +6745,7 @@ def Mahajiodain():
     sprite('ak432_00', 3)	# 1-3
     sprite('ak432_00', 1)	# 4-4
     Unknown30080('')
-    Unknown2036(40, -1, 0)
+    Unknown2036(45, -1, 0)
     Unknown2058(-10000)
     tag_voice(1, 'pak256_0', 'pak256_1', '', '')
     sprite('ak432_01', 4)	# 5-8
@@ -6725,7 +6805,7 @@ def MahajiodainSP():
     sprite('ak432_00', 3)	# 1-3
     sprite('ak432_00', 1)	# 4-4
     Unknown30080('')
-    Unknown2036(40, -1, 0)
+    Unknown2036(45, -1, 0)
     Unknown2058(-10000)
     tag_voice(1, 'pak256_0', 'pak256_1', '', '')
     sprite('ak432_01', 4)	# 5-8

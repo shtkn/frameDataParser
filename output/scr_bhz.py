@@ -2090,6 +2090,7 @@ def CmnActChangePartnerAssistAtk_A():
     Unknown9178(1)
     WallbounceReboundTime(0)
     Unknown11023(1)
+    Unknown9310(1)
     sprite('hz405_13', 5)	# 76-80
     Unknown23027()
     sprite('hz405_14', 5)	# 81-85
@@ -2214,7 +2215,7 @@ def CmnActChangePartnerAssistAtk_D():
         AirPushbackX(24000)
         AirPushbackY(8000)
         AirUntechableTime(35)
-        Unknown9202(10)
+        Unknown9202(20)
         Hitstop(9)
         Unknown11001(5, 5, 7)
         Unknown11034(1)
@@ -2873,7 +2874,7 @@ def NmlAtk5AAA():
         AttackDefaults_StandingNormal()
         AttackLevel_(3)
         AirHitstunAnimation(18)
-        AirPushbackX(24000)
+        AirPushbackX(20000)
         AirPushbackY(8000)
         AirUntechableTime(35)
         Unknown9202(25)
@@ -3565,6 +3566,7 @@ def NmlAtkAIR5B():
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
         callSubroutine('UroborosInit')
+        Unknown2006()
     sprite('hz254_00', 4)	# 1-4
     sprite('hz254_01', 4)	# 5-8
     tag_voice(1, 'bhz108_0', 'bhz108_1', 'bhz108_2', '')
@@ -3631,6 +3633,7 @@ def NmlAtkAIR2B():
     def upon_IMMEDIATE():
         AttackDefaults_AirNormal()
         callSubroutine('UroborosInit')
+        Unknown2006()
     sprite('hz254_00', 4)	# 1-4
     sprite('hz254_01', 4)	# 5-8
     tag_voice(1, 'bhz108_0', 'bhz108_1', 'bhz108_2', '')
@@ -3782,12 +3785,17 @@ def DriveJump6():
     gotoLabel(108)
     label(109)
     sprite('hz408_10', 3)	# 41-43
+    YAccel(40)
     sprite('hz408_11', 3)	# 44-46
     sprite('hz408_12', 3)	# 47-49
     loopRest()
     gotoLabel(109)
     label(106)
     sprite('hz408_15', 3)	# 50-52
+    if Unknown23145('NmlAtk5B'):
+        Unknown1019(110)
+    else:
+        Unknown1019(70)
     sprite('hz408_16', 3)	# 53-55
     sprite('hz408_17', 3)	# 56-58
     loopRest()
@@ -3817,16 +3825,32 @@ def DriveJump6():
     label(206)
     sprite('hz408_18', 3)	# 89-91
     sprite('hz408_19', 3)	# 92-94
+    sprite('hz021_05', 2)	# 95-96
+    SLOT_54 = 0
+    setGravity(2000)
+    Unknown1019(40)
+    YAccel(30)
+    Unknown13010(1)
+    Unknown13011(1)
+    Unknown13012(1)
+    Unknown13019(1)
+    Recovery()
+    clearUponHandler(1)
+    sprite('hz021_06', 3)	# 97-99
+    label(99)
+    sprite('hz021_07', 3)	# 100-102
+    sprite('hz021_08', 3)	# 103-105
     loopRest()
+    gotoLabel(99)
     ExitState()
     label(203)
-    sprite('hz408_23', 3)	# 95-97
-    sprite('hz408_24', 3)	# 98-100
+    sprite('hz408_23', 3)	# 106-108
+    sprite('hz408_24', 3)	# 109-111
     loopRest()
     ExitState()
     label(202)
-    sprite('hz408_28', 3)	# 101-103
-    sprite('hz408_29', 3)	# 104-106
+    sprite('hz408_28', 3)	# 112-114
+    sprite('hz408_29', 3)	# 115-117
     loopRest()
     ExitState()
 
@@ -4368,8 +4392,6 @@ def CmnActInvincibleAttack():
         Unknown13024(0)
         Unknown13045(0)
         sendToLabelUpon(2, 1)
-        setInvincible(1)
-        Unknown3029(1)
         teleportRelativeX(10000)
     sprite('hz401_00', 3)	# 1-3
     SFX_3('hzse_07')
@@ -4538,9 +4560,10 @@ def MidAssaultB():
         AttackLevel_(3)
         Damage(2200)
         AttackP1(80)
-        Unknown11001(0, 5, 10)
+        Unknown11001(0, 8, 13)
         AirUntechableTime(40)
         YImpluseBeforeWallbounce(0)
+        Unknown9154(19)
         Hitstop(11)
         GroundedHitstunAnimation(0)
         AirHitstunAnimation(11)
@@ -4695,7 +4718,7 @@ def LowAssaultA():
         Hitstop(8)
     else:
         AirPushbackX(3000)
-        AirPushbackY(16000)
+        AirPushbackY(18000)
     clearUponHandler(3)
     clearUponHandler(23)
     GFX_0('EffLandAura', -1)
@@ -4731,12 +4754,12 @@ def LowAssaultA():
     setInvincible(0)
     Recovery()
     sprite('hz403_10', 3)	# 94-96
-    sprite('hz403_11', 3)	# 97-99
-    sprite('hz403_12', 3)	# 100-102
-    sprite('hz403_13', 3)	# 103-105
+    sprite('hz403_11', 2)	# 97-98
+    sprite('hz403_12', 2)	# 99-100
+    sprite('hz403_13', 2)	# 101-102
     Unknown3029(0)
-    sprite('hz403_14', 2)	# 106-107
-    sprite('hz403_15', 2)	# 108-109
+    sprite('hz403_14', 2)	# 103-104
+    sprite('hz403_15', 2)	# 105-106
 
 @State
 def LowAssaultB():
@@ -4746,7 +4769,7 @@ def LowAssaultB():
         AttackLevel_(3)
         Damage(2200)
         AttackP1(90)
-        Unknown11001(0, 5, 10)
+        Unknown11001(0, 8, 13)
         AirUntechableTime(40)
         Hitstop(8)
         PushbackX(2000)
@@ -4826,12 +4849,12 @@ def LowAssaultB():
     setInvincible(0)
     Recovery()
     sprite('hz403_10', 3)	# 70-72
-    sprite('hz403_11', 3)	# 73-75
-    sprite('hz403_12', 3)	# 76-78
-    sprite('hz403_13', 3)	# 79-81
+    sprite('hz403_11', 2)	# 73-74
+    sprite('hz403_12', 2)	# 75-76
+    sprite('hz403_13', 2)	# 77-78
     Unknown3029(0)
-    sprite('hz403_14', 2)	# 82-83
-    sprite('hz403_15', 2)	# 84-85
+    sprite('hz403_14', 2)	# 79-80
+    sprite('hz403_15', 2)	# 81-82
 
 @State
 def AntiAir():
@@ -5038,7 +5061,7 @@ def SPThrowExe():
         Damage(0)
         GroundedHitstunAnimation(4)
         AirHitstunAnimation(4)
-        AttackP2(50)
+        AttackP2(80)
         Hitstop(6)
         Unknown9154(45)
         PushbackX(8000)
@@ -5420,6 +5443,7 @@ def UltimateShot():
         Unknown30048(1)
         Unknown2004(1, 0)
         Unknown23027()
+        Unknown2006()
         Unknown1084(1)
 
         def upon_3():
@@ -5639,8 +5663,9 @@ def UltimateShot():
     ScreenShake(15000, 15000)
     Unknown11064(0)
     AttackLevel_(4)
-    Damage(3000)
+    Damage(2900)
     AttackP2(60)
+    Unknown11091(33)
     AirHitstunAnimation(9)
     GroundedHitstunAnimation(9)
     AirPushbackY(10000)
@@ -5700,6 +5725,8 @@ def UltimateShot_OD():
         Unknown11066(1)
         Unknown11064(1)
         Unknown9016(1)
+        Unknown30048(1)
+        Unknown2006()
         Unknown2004(1, 0)
         SLOT_64 = 1
 
@@ -6000,7 +6027,8 @@ def UltimateShot_OD():
     sprite('hz432_20', 2)	# 308-309	 **attackbox here**
     RefreshMultihit()
     AttackLevel_(4)
-    Damage(1250)
+    Damage(1210)
+    Unknown11091(30)
     GroundedHitstunAnimation(9)
     AirHitstunAnimation(9)
     AirPushbackX(5000)

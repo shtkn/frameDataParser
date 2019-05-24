@@ -88,6 +88,42 @@ def NmlAtk5B():
     sprite('es203_13', 5)	# 53-57
     sprite('es203_14', 4)	# 58-61
 
+@State
+def NmlAtk2B():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_CrouchingNormal()
+        AttackLevel_(3)
+        AttackP1(90)
+        AttackP2(80)
+        AirPushbackY(28000)
+        AirUntechableTime(22)
+        Unknown11058('0000000001000000000000000000000000000000')
+        Unknown9016(1)
+        HitOrBlockCancel('NmlAtk5B')
+        HitOrBlockCancel('CmnActCrushAttack')
+        HitOrBlockCancel('NmlAtk2C')
+        HitOrBlockJumpCancel(1)
+        Unknown2004(1, 0)
+    sprite('es232_00', 2)	# 1-2
+    sprite('es232_01', 2)	# 3-4
+    sprite('es232_02', 3)	# 5-7
+    SFX_0('006_swing_blade_1')
+    sprite('es232_03', 2)	# 8-9
+    Unknown7007('6265733130375f300000000000000000640000006265733130375f310000000000000000640000006265733130375f320000000000000000640000000000000000000000000000000000000000000000')
+    sprite('es232_04', 3)	# 10-12	 **attackbox here**
+    GFX_0('esef_232', -1)
+    setInvincible(1)
+    Unknown22019('0100000000000000000000000000000000000000')
+    sprite('es232_05', 4)	# 13-16
+    setInvincible(0)
+    Recovery()
+    Unknown2063()
+    sprite('es232_06', 4)	# 17-20
+    sprite('es232_07', 6)	# 21-26
+    sprite('es232_08', 6)	# 27-32
+    sprite('es232_09', 6)	# 33-38
+    sprite('es232_10', 6)	# 39-44
 
 @State
 def ShotA():
@@ -121,3 +157,43 @@ def ShotA():
     sprite('es400_11', 3)	# 39-41
     Recovery()
     sprite('es400_12', 3)	# 42-44
+
+@State
+def ShotB_2nd():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingSpecial()
+        Unknown30068(1)
+        if Unknown23145('ShotA'):
+            SLOT_51 = 1
+
+            def upon_3():
+                if Unknown46(4):
+                    if SLOT_2:
+                        Unknown59('04000000670000000600000067000000')
+                        if (SLOT_0 < 50000):
+                            clearUponHandler(3)
+                            Unknown21015('65733430305f425f326e640000000000000000000000000000000000000000007700000000000000')
+                            Unknown21015('65733430305f425f326e644200000000000000000000000000000000000000007700000000000000')
+    sprite('es400_13', 2)	# 1-2
+    sprite('es400_14', 4)	# 3-6
+    sprite('es400_15', 4)	# 7-10
+    sprite('es400_16', 2)	# 11-12
+    sprite('es400_17', 3)	# 13-15
+    GFX_0('esef_400_zanzou2', -1)
+    if Unknown23145('ShotA'):
+        GFX_0('es400_B_2nd', -1)
+    else:
+        GFX_0('es400_B_2ndB', -1)
+    Unknown38(6, 1)
+    Unknown2037(1)
+    sprite('es400_18', 4)	# 16-19
+    tag_voice(0, 'bes201_0', 'bes201_1', 'bes201_2', '')
+    sprite('es400_19', 4)	# 20-23
+    sprite('es400_20', 4)	# 24-27
+    sprite('es400_18', 3)	# 28-30
+    sprite('es400_21', 3)	# 31-33
+    sprite('es400_22', 3)	# 34-36
+    Recovery()
+    sprite('es400_23', 3)	# 37-39
+    sprite('es400_24', 3)	# 40-42

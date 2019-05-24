@@ -34,7 +34,7 @@ def MatchInit():
     Unknown14013('CmnActFDash')
     Move_EndRegister()
     Move_Register('NmlAtk5A', 0x7)
-    MoveMaxChainRepeat(3)
+    MoveMaxChainRepeat(2)
     Unknown14015(-34000, 446000, -85000, 175000, 2000, 50)
     Move_EndRegister()
     Move_Register('NmlAtk5A2nd', 0x7)
@@ -55,7 +55,7 @@ def MatchInit():
     Unknown14015(-2000, 514000, -15000, 426000, 1000, 50)
     Move_EndRegister()
     Move_Register('NmlAtk4A', 0x6)
-    MoveMaxChainRepeat(3)
+    MoveMaxChainRepeat(2)
     Unknown14015(9000, 204000, -71000, 122000, 1500, 50)
     Move_EndRegister()
     Move_Register('NmlAtk4A2nd', 0x6)
@@ -77,8 +77,7 @@ def MatchInit():
     Unknown14015(-2000, 514000, -15000, 426000, 1000, 50)
     Move_EndRegister()
     Move_Register('NmlAtk2A', 0x4)
-    Unknown14027('NmlAtk4A')
-    MoveMaxChainRepeat(3)
+    MoveMaxChainRepeat(2)
     Unknown15009()
     Unknown14015(6000, 213000, -100000, -20000, 1000, 50)
     Move_EndRegister()
@@ -1821,6 +1820,7 @@ def NmlAtk5A():
         AirPushbackY(12000)
         HitOrBlockCancel('CancelOrgiaDash')
         HitOrBlockCancel('NmlAtk5A2nd')
+        HitOrBlockCancel('NmlAtk2A')
         HitOrBlockCancel('NmlAtk5B')
         HitOrBlockCancel('NmlAtk2B')
         HitOrBlockCancel('CmnActCrushAttack')
@@ -2271,7 +2271,11 @@ def NmlAtk5B():
         Unknown1112('')
 
         def upon_ON_HIT_OR_BLOCK():
-            HitJumpCancel(1)
+            HitOrBlockJumpCancel(1)
+
+        def upon_43():
+            if (SLOT_48 == 2019):
+                HitJumpCancel(1)
     sprite('ag200_07', 3)	# 1-3
     sprite('ag201_00', 3)	# 4-6
     sprite('ag201_01', 3)	# 7-9
@@ -2295,28 +2299,28 @@ def NmlAtk5B():
     sprite('ag201_06', 2)	# 24-25
     sprite('ag201_06', 2)	# 26-27
     sprite('ag201_07', 2)	# 28-29
-    sprite('ag201_08', 4)	# 30-33	 **attackbox here**
+    sprite('ag201_08', 3)	# 30-32	 **attackbox here**
     Recovery()
     Unknown2063()
-    sprite('ag201_09', 4)	# 34-37
-    sprite('ag201_10', 4)	# 38-41
-    sprite('ag201_11', 4)	# 42-45
-    sprite('ag201_12', 4)	# 46-49
+    sprite('ag201_09', 3)	# 33-35
+    sprite('ag201_10', 3)	# 36-38
+    sprite('ag201_11', 3)	# 39-41
+    sprite('ag201_12', 3)	# 42-44
     ExitState()
     label(0)
-    sprite('ag201_04', 3)	# 50-52
+    sprite('ag201_04', 3)	# 45-47
     clearUponHandler(45)
     Unknown23027()
     Recovery()
     Unknown2063()
-    sprite('ag201_05', 3)	# 53-55
-    sprite('ag201_06', 3)	# 56-58
-    sprite('ag201_07', 2)	# 59-60
-    sprite('ag201_08', 2)	# 61-62	 **attackbox here**
-    sprite('ag201_09', 2)	# 63-64
-    sprite('ag201_10', 2)	# 65-66
-    sprite('ag201_11', 2)	# 67-68
-    sprite('ag201_12', 2)	# 69-70
+    sprite('ag201_05', 3)	# 48-50
+    sprite('ag201_06', 3)	# 51-53
+    sprite('ag201_07', 2)	# 54-55
+    sprite('ag201_08', 2)	# 56-57	 **attackbox here**
+    sprite('ag201_09', 2)	# 58-59
+    sprite('ag201_10', 2)	# 60-61
+    sprite('ag201_11', 2)	# 62-63
+    sprite('ag201_12', 2)	# 64-65
 
 @State
 def NmlAtk2A():
@@ -2370,7 +2374,11 @@ def NmlAtk2B():
         HitOrBlockCancel('NmlAtk2C')
 
         def upon_ON_HIT_OR_BLOCK():
-            HitJumpCancel(1)
+            HitOrBlockJumpCancel(1)
+
+        def upon_43():
+            if (SLOT_48 == 2318):
+                HitJumpCancel(1)
     sprite('ag231_00', 3)	# 1-3
     sprite('ag231_01', 3)	# 4-6
     sprite('ag231_02', 2)	# 7-8
@@ -2395,24 +2403,24 @@ def NmlAtk2B():
     sprite('ag231_04', 2)	# 17-18	 **attackbox here**
     sprite('ag231_05', 2)	# 19-20
     sprite('ag231_05', 2)	# 21-22
-    sprite('ag231_05', 12)	# 23-34
-    sprite('ag231_06', 4)	# 35-38
+    sprite('ag231_05', 6)	# 23-28
+    sprite('ag231_06', 4)	# 29-32
     Recovery()
     Unknown2063()
-    sprite('ag231_07', 4)	# 39-42
-    sprite('ag231_08', 4)	# 43-46
+    sprite('ag231_07', 4)	# 33-36
+    sprite('ag231_08', 4)	# 37-40
     ExitState()
     label(0)
-    sprite('ag231_04ex', 2)	# 47-48	 **attackbox here**
+    sprite('ag231_04ex', 2)	# 41-42	 **attackbox here**
     clearUponHandler(45)
     setInvincible(0)
-    sprite('ag231_05ex', 2)	# 49-50	 **attackbox here**
-    sprite('ag231_05', 6)	# 51-56
+    sprite('ag231_05ex', 2)	# 43-44	 **attackbox here**
+    sprite('ag231_05', 6)	# 45-50
     Recovery()
     Unknown2063()
-    sprite('ag231_06', 4)	# 57-60
-    sprite('ag231_07', 4)	# 61-64
-    sprite('ag231_08', 4)	# 65-68
+    sprite('ag231_06', 4)	# 51-54
+    sprite('ag231_07', 4)	# 55-58
+    sprite('ag231_08', 4)	# 59-62
 
 @State
 def NmlAtk2C():
@@ -2531,6 +2539,7 @@ def NmlAtkAIR5B():
 
         def upon_STATE_END():
             Unknown23029(11, 1022, 0)
+        Unknown4009(11)
         HitOrBlockCancel('CancelOrgiaDash')
         HitOrBlockCancel('NmlAtkAIR5C')
         HitOrBlockJumpCancel(1)
@@ -3602,6 +3611,7 @@ def MegidoFire():
         Unknown30065(0)
         Unknown11091(10)
         Unknown11064(1)
+        Unknown2073(1)
 
         def upon_78():
             clearUponHandler(78)
@@ -3688,11 +3698,11 @@ def MegidoFire():
     Unknown26('FlamethrowerD')
     Unknown8000(100, 1, 1)
     Unknown1084(1)
-    sprite('ag231_00', 4)	# 54-57
-    sprite('ag231_01', 2)	# 58-59
-    sprite('ag010_02', 2)	# 60-61
-    sprite('ag010_01', 4)	# 62-65
-    sprite('ag010_00', 4)	# 66-69
+    sprite('ag231_00', 2)	# 54-55
+    sprite('ag231_01', 2)	# 56-57
+    sprite('ag010_02', 2)	# 58-59
+    sprite('ag010_01', 2)	# 60-61
+    sprite('ag010_00', 2)	# 62-63
 
 @State
 def Pandora():
@@ -3736,7 +3746,6 @@ def Pandora():
     sprite('ag410_09', 3)	# 39-41
     sprite('ag410_08', 3)	# 42-44
     sprite('ag410_09', 3)	# 45-47
-    Unknown21015('50616e646f72615f4d61746f6d650000000000000000000000000000000000000410000000000000')
     Unknown14072('CancelOrgiaDash')
     sprite('ag410_08', 3)	# 48-50
     sprite('ag410_09', 3)	# 51-53
@@ -3744,6 +3753,7 @@ def Pandora():
     sprite('ag410_09', 3)	# 57-59
     sprite('ag410_08', 3)	# 60-62
     sprite('ag410_09', 3)	# 63-65
+    Unknown21015('50616e646f72615f4d61746f6d650000000000000000000000000000000000000410000000000000')
     sprite('ag410_08', 3)	# 66-68
     sprite('ag410_09', 3)	# 69-71
     Unknown1019(30)
@@ -3787,7 +3797,6 @@ def OrgiaDash():
             SLOT_31 = (SLOT_31 + (-1500))
         else:
             Unknown30068(1)
-            SLOT_31 = (SLOT_31 + (-1500))
             SLOT_31 = (SLOT_31 + (-1500))
     sprite('ag405_03', 3)	# 1-3
     Unknown1084(1)
@@ -3884,7 +3893,6 @@ def AthenaSurfing():
                 Unknown4020(0)
                 sendToLabel(2)
         clearUponHandler(2)
-        sendToLabelUpon(2, 9)
     sprite('ag430_00', 3)	# 1-3
     Unknown23183('61673433305f3135000000000000000000000000000000000000000000000000030000000200000002000000')
     sprite('ag430_00', 8)	# 4-11
@@ -3895,6 +3903,7 @@ def AthenaSurfing():
     Unknown2058(-10000)
     tag_voice(1, 'pag251_0', 'pag251_1', '', '')
     Unknown30080('')
+    sendToLabelUpon(2, 9)
     sprite('ag430_01', 6)	# 12-17
     teleportRelativeX(20000)
     sprite('ag430_02', 6)	# 18-23
@@ -4036,7 +4045,6 @@ def AthenaSurfingOD():
                 Unknown13024(0)
                 enterState('UltimateSpear')
         clearUponHandler(2)
-        sendToLabelUpon(2, 9)
     sprite('ag430_00', 3)	# 1-3
     Unknown23183('61673433305f3135000000000000000000000000000000000000000000000000030000000200000002000000')
     sprite('ag430_00', 8)	# 4-11
@@ -4047,6 +4055,7 @@ def AthenaSurfingOD():
     Unknown2058(-10000)
     tag_voice(1, 'pag251_0', 'pag251_1', '', '')
     Unknown30080('')
+    sendToLabelUpon(2, 9)
     sprite('ag430_01', 6)	# 12-17
     teleportRelativeX(20000)
     sprite('ag430_02', 6)	# 18-23
@@ -4183,6 +4192,11 @@ def UltimateSpear():
         if Unknown23145('AthenaSurfingDDDOD'):
             Unknown2037(1)
         Unknown30068(1)
+
+        def upon_3():
+            Unknown48('19000000020000003400000016000000020000001e000000')
+            if (not SLOT_52):
+                setInvincible(0)
     sprite('ag430_10', 2)	# 1-2
     Unknown2036(58, -1, 0)
     physicsXImpulse(50000)
@@ -4208,7 +4222,6 @@ def UltimateSpear():
     setGravity(30)
     tag_voice(0, 'pag256_0', 'pag256_1', 'pag258_0', 'pag258_1')
     sprite('ag431_04', 4)	# 63-66
-    setInvincible(0)
     sprite('ag431_05', 4)	# 67-70
     sprite('ag431_04', 4)	# 71-74
     Unknown1084(1)
@@ -4418,7 +4431,7 @@ def UltimateAirThrow_Exe():
         Unknown23056('')
         AttackLevel_(4)
         Damage(1000)
-        Unknown11091(10)
+        Unknown11091(60)
         AttackP2(60)
         Hitstop(0)
         AirHitstunAnimation(12)
@@ -4762,8 +4775,8 @@ def UltimateAirThrowOD_Exe():
         Unknown23056('')
         AttackLevel_(4)
         Damage(1000)
-        Unknown11091(10)
         AttackP2(60)
+        Unknown11091(60)
         Hitstop(0)
         AirHitstunAnimation(12)
         GroundedHitstunAnimation(12)
@@ -4784,7 +4797,8 @@ def UltimateAirThrowOD_Exe():
 
         def upon_3():
             if SLOT_2:
-                if (SLOT_25 <= 250000):
+                Unknown48('19000000020000003500000016000000020000001a000000')
+                if (SLOT_53 <= 60000):
                     clearUponHandler(3)
                     sendToLabel(2)
 
@@ -4934,6 +4948,7 @@ def UltimateAirThrowOD_Exe():
     sprite('ag321_08', 2)	# 157-158	 **attackbox here**
     RefreshMultihit()
     AttackP2(100)
+    Unknown11091(10)
     Hitstop(40)
     AirPushbackX(0)
     AirPushbackY(0)
@@ -4945,7 +4960,8 @@ def UltimateAirThrowOD_Exe():
     Unknown11050('040000000000000000000000000000000000000000000000000000000000000000000000')
     sprite('ag321_08', 2)	# 159-160	 **attackbox here**
     RefreshMultihit()
-    Damage(2000)
+    Damage(1800)
+    Unknown11091(21)
     Hitstop(1)
     Unknown9362(0)
     WallbounceReboundTime(0)
@@ -4955,6 +4971,7 @@ def UltimateAirThrowOD_Exe():
     Unknown9017(1)
     Unknown11050('020000004f72696f6e46696e697368000000000000000000000000000000000000000000')
     ScreenShake(10000, 10000)
+    Unknown9310(1)
     physicsXImpulse(-5000)
     physicsYImpulse(10000)
     setGravity(1000)
@@ -5008,260 +5025,260 @@ def AstralHeat():
                 sendToLabel(3)
             if (SLOT_48 == 7003):
                 sendToLabel(4)
-    sprite('ag450_00', 35)	# 1-35
+    sprite('ag450_00', 34)	# 1-34
     Unknown1084(1)
     Unknown2036(60, -1, 2)
     Unknown23147()
     GFX_0('P4U_Cutin_Parent', 100)
     tag_voice(1, 'pag290_0', 'pag290_1', '', '')
-    sprite('ag450_00', 5)	# 36-40
+    sprite('ag450_00', 5)	# 35-39
     GFX_0('IchigekiTobiFire', 0)
     physicsXImpulse(-48000)
     physicsYImpulse(24000)
-    sprite('ag450_01', 2)	# 41-42
+    sprite('ag450_01', 2)	# 40-41
     Unknown1019(50)
     YAccel(50)
-    sprite('ag450_02', 2)	# 43-44
+    sprite('ag450_02', 2)	# 42-43
     Unknown1019(50)
     YAccel(50)
-    sprite('ag450_03', 2)	# 45-46
+    sprite('ag450_03', 2)	# 44-45
     Unknown1019(50)
     YAccel(50)
-    sprite('ag450_04', 2)	# 47-48
+    sprite('ag450_04', 2)	# 46-47
     Unknown1019(50)
     YAccel(50)
-    sprite('ag450_05', 2)	# 49-50
+    sprite('ag450_05', 2)	# 48-49
     Unknown1019(50)
     YAccel(50)
-    sprite('ag450_06', 2)	# 51-52
+    sprite('ag450_06', 2)	# 50-51
     Unknown1084(1)
-    sprite('ag450_07', 2)	# 53-54
+    sprite('ag450_07', 2)	# 52-53
     GFX_0('IchigekiRenshaFire', 0)
     Unknown21015('4963686967656b69546f62694669726500000000000000000000000000000000711b000000000000')
-    sprite('ag450_08', 2)	# 55-56
-    sprite('ag450_09', 2)	# 57-58
-    sprite('ag450_10', 2)	# 59-60
-    sprite('ag450_09', 2)	# 61-62
-    sprite('ag450_10', 2)	# 63-64
-    sprite('ag450_09', 2)	# 65-66
+    sprite('ag450_08', 2)	# 54-55
+    sprite('ag450_09', 2)	# 56-57
+    sprite('ag450_10', 2)	# 58-59
+    sprite('ag450_09', 2)	# 60-61
+    sprite('ag450_10', 2)	# 62-63
+    sprite('ag450_09', 2)	# 64-65
     GFX_0('Ichigeki_Shot', 0)
     Unknown23029(1, 7021, 0)
     SFX_3('ag002')
-    sprite('ag450_10', 2)	# 67-68
+    sprite('ag450_10', 2)	# 66-67
     GFX_0('Ichigeki_Shot', 1)
     SFX_3('ag002')
-    sprite('ag450_09', 2)	# 69-70
+    sprite('ag450_09', 2)	# 68-69
     GFX_0('Ichigeki_Shot', 1)
     SFX_3('ag002')
-    sprite('ag450_10', 2)	# 71-72
+    sprite('ag450_10', 2)	# 70-71
     GFX_0('Ichigeki_Shot', 1)
     SFX_3('ag002')
-    sprite('ag450_09', 2)	# 73-74
+    sprite('ag450_09', 2)	# 72-73
     GFX_0('Ichigeki_Shot', 0)
     Unknown23029(1, 7021, 0)
     SFX_3('ag002')
-    sprite('ag450_10', 2)	# 75-76
+    sprite('ag450_10', 2)	# 74-75
     GFX_0('Ichigeki_Shot', 1)
     SFX_3('ag002')
-    sprite('ag450_09', 2)	# 77-78
+    sprite('ag450_09', 2)	# 76-77
     GFX_0('Ichigeki_Shot', 1)
     SFX_3('ag002')
-    sprite('ag450_10', 2)	# 79-80
+    sprite('ag450_10', 2)	# 78-79
     GFX_0('Ichigeki_Shot', 1)
     SFX_3('ag002')
-    sprite('ag450_09', 2)	# 81-82
+    sprite('ag450_09', 2)	# 80-81
     GFX_0('Ichigeki_Shot', 0)
     Unknown23029(1, 7021, 0)
     SFX_3('ag002')
-    sprite('ag450_10', 2)	# 83-84
+    sprite('ag450_10', 2)	# 82-83
     GFX_0('Ichigeki_Shot', 1)
     SFX_3('ag002')
-    sprite('ag450_09', 2)	# 85-86
+    sprite('ag450_09', 2)	# 84-85
     GFX_0('Ichigeki_Shot', 1)
     SFX_3('ag002')
-    sprite('ag450_10', 2)	# 87-88
+    sprite('ag450_10', 2)	# 86-87
     GFX_0('Ichigeki_Shot', 1)
     SFX_3('ag002')
-    sprite('ag450_09', 2)	# 89-90
+    sprite('ag450_09', 2)	# 88-89
     GFX_0('Ichigeki_Shot', 0)
     Unknown23029(1, 7021, 0)
     SFX_3('ag002')
-    sprite('ag450_10', 2)	# 91-92
+    sprite('ag450_10', 2)	# 90-91
     GFX_0('Ichigeki_Shot', 1)
     SFX_3('ag002')
-    sprite('ag450_09', 2)	# 93-94
+    sprite('ag450_09', 2)	# 92-93
     GFX_0('Ichigeki_Shot', 1)
     SFX_3('ag002')
-    sprite('ag450_10', 2)	# 95-96
+    sprite('ag450_10', 2)	# 94-95
     GFX_0('Ichigeki_Shot', 1)
     SFX_3('ag002')
-    sprite('ag450_09', 2)	# 97-98
+    sprite('ag450_09', 2)	# 96-97
     GFX_0('Ichigeki_Shot', 1)
     Unknown23029(1, 7022, 0)
     Unknown21015('4963686967656b69546f62694669726500000000000000000000000000000000711b000000000000')
     SFX_3('ag005')
-    sprite('ag450_10', 3)	# 99-101
-    sprite('ag450_09', 3)	# 102-104
-    sprite('ag450_10', 3)	# 105-107
-    sprite('ag450_09', 3)	# 108-110
-    sprite('ag450_10', 3)	# 111-113
-    sprite('ag450_09', 3)	# 114-116
-    sprite('ag450_10', 3)	# 117-119
-    sprite('ag450_09', 3)	# 120-122
-    sprite('ag450_10', 3)	# 123-125
+    sprite('ag450_10', 3)	# 98-100
+    sprite('ag450_09', 3)	# 101-103
+    sprite('ag450_10', 3)	# 104-106
+    sprite('ag450_09', 3)	# 107-109
+    sprite('ag450_10', 3)	# 110-112
+    sprite('ag450_09', 3)	# 113-115
+    sprite('ag450_10', 3)	# 116-118
+    sprite('ag450_09', 3)	# 119-121
+    sprite('ag450_10', 3)	# 122-124
     setGravity(700)
-    sprite('ag450_09', 3)	# 126-128
+    sprite('ag450_09', 3)	# 125-127
     setInvincible(0)
-    sprite('ag450_05', 3)	# 129-131
-    sprite('ag450_04', 3)	# 132-134
-    sprite('ag450_03', 3)	# 135-137
-    sprite('ag450_02', 3)	# 138-140
-    sprite('ag020_04', 3)	# 141-143
-    sprite('ag020_05', 4)	# 144-147
-    sprite('ag020_06', 2)	# 148-149
+    sprite('ag450_05', 3)	# 128-130
+    sprite('ag450_04', 3)	# 131-133
+    sprite('ag450_03', 3)	# 134-136
+    sprite('ag450_02', 3)	# 137-139
+    sprite('ag020_04', 3)	# 140-142
+    sprite('ag020_05', 4)	# 143-146
+    sprite('ag020_06', 2)	# 147-148
     label(0)
-    sprite('ag020_07', 4)	# 150-153
-    sprite('ag020_08', 4)	# 154-157
+    sprite('ag020_07', 4)	# 149-152
+    sprite('ag020_08', 4)	# 153-156
     loopRest()
     gotoLabel(0)
     ExitState()
     label(1)
-    sprite('ag450_11', 3)	# 158-160
-    sprite('ag450_12', 3)	# 161-163
-    sprite('ag450_13', 10)	# 164-173
-    sprite('ag450_14', 3)	# 174-176
-    sprite('ag450_15', 3)	# 177-179
-    sprite('ag450_16', 3)	# 180-182
-    sprite('ag450_17', 3)	# 183-185
-    sprite('ag450_16', 3)	# 186-188
-    sprite('ag450_16', 3)	# 189-191
-    sprite('ag450_17', 3)	# 192-194
+    sprite('ag450_11', 3)	# 157-159
+    sprite('ag450_12', 3)	# 160-162
+    sprite('ag450_13', 10)	# 163-172
+    sprite('ag450_14', 3)	# 173-175
+    sprite('ag450_15', 3)	# 176-178
+    sprite('ag450_16', 3)	# 179-181
+    sprite('ag450_17', 3)	# 182-184
+    sprite('ag450_16', 3)	# 185-187
+    sprite('ag450_16', 3)	# 188-190
+    sprite('ag450_17', 3)	# 191-193
     Unknown23029(11, 1080, 0)
-    sprite('ag450_17', 3)	# 195-197
-    sprite('ag450_16', 3)	# 198-200
-    sprite('ag450_17', 3)	# 201-203
-    sprite('ag450_16', 3)	# 204-206
-    sprite('ag450_17', 3)	# 207-209
-    sprite('ag450_16', 3)	# 210-212
-    sprite('ag450_17', 3)	# 213-215
-    sprite('ag450_16', 3)	# 216-218
-    sprite('ag450_17', 3)	# 219-221
-    sprite('ag450_16', 3)	# 222-224
-    sprite('ag450_17', 3)	# 225-227
-    sprite('ag450_16', 3)	# 228-230
-    sprite('ag450_17', 3)	# 231-233
-    sprite('ag450_16', 3)	# 234-236
-    sprite('ag450_05', 3)	# 237-239
+    sprite('ag450_17', 3)	# 194-196
+    sprite('ag450_16', 3)	# 197-199
+    sprite('ag450_17', 3)	# 200-202
+    sprite('ag450_16', 3)	# 203-205
+    sprite('ag450_17', 3)	# 206-208
+    sprite('ag450_16', 3)	# 209-211
+    sprite('ag450_17', 3)	# 212-214
+    sprite('ag450_16', 3)	# 215-217
+    sprite('ag450_17', 3)	# 218-220
+    sprite('ag450_16', 3)	# 221-223
+    sprite('ag450_17', 3)	# 224-226
+    sprite('ag450_16', 3)	# 227-229
+    sprite('ag450_17', 3)	# 230-232
+    sprite('ag450_16', 3)	# 233-235
+    sprite('ag450_05', 3)	# 236-238
     setGravity(700)
-    sprite('ag450_04', 3)	# 240-242
-    sprite('ag450_03', 3)	# 243-245
-    sprite('ag450_02', 3)	# 246-248
-    sprite('ag020_04', 3)	# 249-251
-    sprite('ag020_05', 4)	# 252-255
-    sprite('ag020_06', 2)	# 256-257
+    sprite('ag450_04', 3)	# 239-241
+    sprite('ag450_03', 3)	# 242-244
+    sprite('ag450_02', 3)	# 245-247
+    sprite('ag020_04', 3)	# 248-250
+    sprite('ag020_05', 4)	# 251-254
+    sprite('ag020_06', 2)	# 255-256
     label(0)
-    sprite('ag020_07', 4)	# 258-261
-    sprite('ag020_08', 4)	# 262-265
+    sprite('ag020_07', 4)	# 257-260
+    sprite('ag020_08', 4)	# 261-264
     loopRest()
     gotoLabel(0)
     ExitState()
     label(3)
-    sprite('ag450_18', 20)	# 266-285
+    sprite('ag450_18', 20)	# 265-284
     Unknown21015('4963686967656b6952656e736861466972650000000000000000000000000000711b000000000000')
     teleportRelativeY(0)
-    sprite('ag450_18', 30)	# 286-315
+    sprite('ag450_18', 30)	# 285-314
     Unknown21015('4963686967656b6943616d657261000000000000000000000000000000000000641b000000000000')
-    sprite('ag450_19', 3)	# 316-318
+    sprite('ag450_19', 3)	# 315-317
     GFX_0('IchigekiSmoke', 0)
     GFX_0('IchigekiSmoke2', 1)
     SFX_3('ag008')
-    sprite('ag450_20', 3)	# 319-321
-    sprite('ag450_21', 3)	# 322-324
-    sprite('ag450_22', 3)	# 325-327
-    sprite('ag450_21', 3)	# 328-330
+    sprite('ag450_20', 3)	# 318-320
+    sprite('ag450_21', 3)	# 321-323
+    sprite('ag450_22', 3)	# 324-326
+    sprite('ag450_21', 3)	# 327-329
     GFX_0('IchigekiThunderTame', 100)
     GFX_0('IchigekiThunderBallTame', 0)
-    sprite('ag450_22', 3)	# 331-333
-    sprite('ag450_21', 3)	# 334-336
-    sprite('ag450_22', 3)	# 337-339
+    sprite('ag450_22', 3)	# 330-332
+    sprite('ag450_21', 3)	# 333-335
+    sprite('ag450_22', 3)	# 336-338
     SFX_3('ag009')
     SFX_3('electric_l')
     tag_voice(0, 'pag291_0', 'pag291_1', '', '')
-    sprite('ag450_21', 3)	# 340-342
-    sprite('ag450_22', 3)	# 343-345
-    sprite('ag450_21', 3)	# 346-348
-    sprite('ag450_22', 3)	# 349-351
-    sprite('ag450_21', 3)	# 352-354
-    sprite('ag450_22', 3)	# 355-357
-    sprite('ag450_21', 3)	# 358-360
-    sprite('ag450_22', 3)	# 361-363
-    sprite('ag450_21', 3)	# 364-366
-    sprite('ag450_22', 3)	# 367-369
-    sprite('ag450_21', 3)	# 370-372
+    sprite('ag450_21', 3)	# 339-341
+    sprite('ag450_22', 3)	# 342-344
+    sprite('ag450_21', 3)	# 345-347
+    sprite('ag450_22', 3)	# 348-350
+    sprite('ag450_21', 3)	# 351-353
+    sprite('ag450_22', 3)	# 354-356
+    sprite('ag450_21', 3)	# 357-359
+    sprite('ag450_22', 3)	# 360-362
+    sprite('ag450_21', 3)	# 363-365
+    sprite('ag450_22', 3)	# 366-368
+    sprite('ag450_21', 3)	# 369-371
     SFX_3('electric_l')
-    sprite('ag450_22', 3)	# 373-375
-    sprite('ag450_21', 3)	# 376-378
-    sprite('ag450_22', 3)	# 379-381
-    sprite('ag450_21', 3)	# 382-384
-    sprite('ag450_22', 3)	# 385-387
-    sprite('ag450_21', 3)	# 388-390
-    sprite('ag450_22', 3)	# 391-393
-    sprite('ag450_21', 3)	# 394-396
-    sprite('ag450_22', 3)	# 397-399
-    sprite('ag450_21', 3)	# 400-402
-    sprite('ag450_22', 3)	# 403-405
-    sprite('ag450_21', 3)	# 406-408
-    sprite('ag450_22', 3)	# 409-411
-    sprite('ag450_21', 3)	# 412-414
+    sprite('ag450_22', 3)	# 372-374
+    sprite('ag450_21', 3)	# 375-377
+    sprite('ag450_22', 3)	# 378-380
+    sprite('ag450_21', 3)	# 381-383
+    sprite('ag450_22', 3)	# 384-386
+    sprite('ag450_21', 3)	# 387-389
+    sprite('ag450_22', 3)	# 390-392
+    sprite('ag450_21', 3)	# 393-395
+    sprite('ag450_22', 3)	# 396-398
+    sprite('ag450_21', 3)	# 399-401
+    sprite('ag450_22', 3)	# 402-404
+    sprite('ag450_21', 3)	# 405-407
+    sprite('ag450_22', 3)	# 408-410
+    sprite('ag450_21', 3)	# 411-413
     SFX_3('electric_l')
-    sprite('ag450_22', 3)	# 415-417
-    sprite('ag450_21', 3)	# 418-420
-    sprite('ag450_22', 3)	# 421-423
-    sprite('ag450_21', 3)	# 424-426
-    sprite('ag450_22', 3)	# 427-429
-    sprite('ag450_21', 3)	# 430-432
-    sprite('ag450_22', 3)	# 433-435
-    sprite('ag450_21', 3)	# 436-438
-    sprite('ag450_22', 3)	# 439-441
-    sprite('ag450_21', 3)	# 442-444
-    sprite('ag450_22', 3)	# 445-447
-    sprite('ag450_21', 3)	# 448-450
-    sprite('ag450_22', 3)	# 451-453
-    sprite('ag450_21', 3)	# 454-456
-    sprite('ag450_22', 3)	# 457-459
-    sprite('ag450_21', 3)	# 460-462
-    sprite('ag450_22', 3)	# 463-465
-    sprite('ag450_21', 3)	# 466-468
-    sprite('ag450_22', 3)	# 469-471
-    sprite('ag450_21', 3)	# 472-474
-    sprite('ag450_22', 3)	# 475-477
-    sprite('ag450_21', 3)	# 478-480
-    sprite('ag450_22', 70)	# 481-550
+    sprite('ag450_22', 3)	# 414-416
+    sprite('ag450_21', 3)	# 417-419
+    sprite('ag450_22', 3)	# 420-422
+    sprite('ag450_21', 3)	# 423-425
+    sprite('ag450_22', 3)	# 426-428
+    sprite('ag450_21', 3)	# 429-431
+    sprite('ag450_22', 3)	# 432-434
+    sprite('ag450_21', 3)	# 435-437
+    sprite('ag450_22', 3)	# 438-440
+    sprite('ag450_21', 3)	# 441-443
+    sprite('ag450_22', 3)	# 444-446
+    sprite('ag450_21', 3)	# 447-449
+    sprite('ag450_22', 3)	# 450-452
+    sprite('ag450_21', 3)	# 453-455
+    sprite('ag450_22', 3)	# 456-458
+    sprite('ag450_21', 3)	# 459-461
+    sprite('ag450_22', 3)	# 462-464
+    sprite('ag450_21', 3)	# 465-467
+    sprite('ag450_22', 3)	# 468-470
+    sprite('ag450_21', 3)	# 471-473
+    sprite('ag450_22', 3)	# 474-476
+    sprite('ag450_21', 3)	# 477-479
+    sprite('ag450_22', 70)	# 480-549
     GFX_0('IchigekiPicture', 100)
     tag_voice(0, 'pag292_0', 'pag292_1', '', '')
-    sprite('ag450_22', 10)	# 551-560
-    sprite('ag450_24', 2)	# 561-562	 **attackbox here**
+    sprite('ag450_22', 10)	# 550-559
+    sprite('ag450_24', 2)	# 560-561	 **attackbox here**
     GFX_0('Ichigeki_LastShot', 0)
     Unknown38(4, 1)
     GFX_0('BigYakkyo', 1)
     GFX_1('agef_yakkyoshock_la', 1)
     SFX_3('ag011')
     tag_voice(0, 'pag293_0', 'pag293_1', '', '')
-    sprite('ag450_24', 2)	# 563-564	 **attackbox here**
+    sprite('ag450_24', 2)	# 562-563	 **attackbox here**
     SFX_3('ag011')
-    sprite('ag450_24', 3)	# 565-567	 **attackbox here**
+    sprite('ag450_24', 3)	# 564-566	 **attackbox here**
     SFX_3('ag011')
-    sprite('ag450_24', 1)	# 568-568	 **attackbox here**
+    sprite('ag450_24', 1)	# 567-567	 **attackbox here**
     Unknown4004('534345465f4147527975686169596f6b6f00000000000000000000000000000064000000')
     Unknown26('IchigekiThunderBallTame')
     Unknown26('IchigekiThunderTame')
-    sprite('ag450_24', 8)	# 569-576	 **attackbox here**
+    sprite('ag450_24', 8)	# 568-575	 **attackbox here**
     GFX_1('agef_ichigekifire_la', 0)
-    sprite('ag450_24', 32767)	# 577-33343	 **attackbox here**
+    sprite('ag450_24', 32767)	# 576-33342	 **attackbox here**
     label(4)
-    sprite('ag450_24', 50)	# 33344-33393	 **attackbox here**
-    sprite('ag450_24', 10)	# 33394-33403	 **attackbox here**
-    sprite('ag450_24', 10)	# 33404-33413	 **attackbox here**
+    sprite('ag450_24', 50)	# 33343-33392	 **attackbox here**
+    sprite('ag450_24', 10)	# 33393-33402	 **attackbox here**
+    sprite('ag450_24', 10)	# 33403-33412	 **attackbox here**
     Unknown26('SCEF_AGRyuhaiYoko')
     RefreshMultihit()
     AirPushbackX(0)
@@ -5273,21 +5290,21 @@ def AstralHeat():
     Unknown3001(0)
     Unknown35()
     Unknown1000(0)
-    sprite('ag070_03', 70)	# 33414-33483
+    sprite('ag070_03', 70)	# 33413-33482
     GFX_0('IchigekiWinSmoke', 0)
     Unknown18010()
     Unknown23024(0)
-    sprite('ag070_03', 30)	# 33484-33513
+    sprite('ag070_03', 30)	# 33483-33512
     Unknown20000(1)
-    sprite('ag070_03', 30)	# 33514-33543
+    sprite('ag070_03', 30)	# 33513-33542
     tag_voice(0, 'pag294_0', 'pag294_1', '', '')
-    sprite('ag070_03', 30)	# 33544-33573
-    sprite('ag070_03', 30)	# 33574-33603
-    sprite('ag070_02', 8)	# 33604-33611
+    sprite('ag070_03', 30)	# 33543-33572
+    sprite('ag070_03', 30)	# 33573-33602
+    sprite('ag070_02', 8)	# 33603-33610
     Unknown21015('4963686967656b6957696e536d6f6b6500000000000000000000000000000000711b000000000000')
-    sprite('ag070_01', 8)	# 33612-33619
-    sprite('ag070_00', 8)	# 33620-33627
-    sprite('ag000_00', 10)	# 33628-33637
+    sprite('ag070_01', 8)	# 33611-33618
+    sprite('ag070_00', 8)	# 33619-33626
+    sprite('ag000_00', 10)	# 33627-33636
 
 @State
 def TagExitChar():
@@ -5587,7 +5604,7 @@ def CmnActChangePartnerAssistAtk_A():
     sprite('ag404_08', 3)	# 31-33
     GFX_1('agef_emptysmoke_00', 0)
     GFX_1('agef_canonshot_05', 0)
-    GFX_0('CanonShot_TAG', 0)
+    GFX_0('CanonShot_TAGMatome', 0)
     SFX_3('ag005')
     Unknown8004(100, 1, 1)
     sprite('ag404_09', 3)	# 34-36

@@ -1309,8 +1309,8 @@ def __408_dog():
         AttackLevel_(4)
         AirHitstunAnimation(13)
         GroundedHitstunAnimation(13)
-        AirUntechableTime(33)
-        AirPushbackY(20000)
+        AirUntechableTime(50)
+        AirPushbackY(25000)
         AirPushbackX(28000)
         Unknown11097(100, 100)
         Unknown11031(0)
@@ -1514,6 +1514,7 @@ def rgef408Shotsp():
     def upon_IMMEDIATE():
         Unknown2010()
         AttackLevel_(3)
+        AttackP2(90)
         AirUntechableTime(30)
         GroundedHitstunAnimation(10)
         AirHitstunAnimation(10)
@@ -1598,7 +1599,7 @@ def rgef401atk2nd():
     def upon_IMMEDIATE():
         Unknown2010()
         AttackLevel_(4)
-        AttackP2(75)
+        AttackP2(90)
         PushbackX(18000)
         Unknown11058('0000000000000000000000000100000000000000')
         Unknown4011(3)

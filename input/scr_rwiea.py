@@ -720,6 +720,31 @@ def rwief251_EX_Dummy():
     Unknown4045('72776965665f736c6173685f647573745f32360000000000000000000000000005000000')
 
 @State
+def rwi251_03_kick_damy():
+
+    def upon_IMMEDIATE():
+        Unknown2009()
+        Unknown4007(3)
+        Unknown4009(3)
+        Unknown4010(3)
+        Unknown4011(3)
+        AttackLevel_(2)
+        Unknown11034(1)
+        Unknown11033(0)
+        Unknown9015(1)
+        Unknown23078(1)
+        Unknown11058('0100000000000000000000000000000000000000')
+
+        def upon_ON_HIT_OR_BLOCK():
+            Unknown23029(3, 2511, 0)
+
+        def upon_43():
+            if (SLOT_48 == 2512):
+                Unknown23027()
+    sprite('null', 1)
+    sprite('rwi251_03_kick_damy', 6)
+
+@State
 def rwief252_slash():
 
     def upon_IMMEDIATE():
@@ -3209,7 +3234,7 @@ def InstallationMagic():
     Unknown38(4, 1)
     label(0)
     sprite('null', 5)
-    sprite('null', 10)
+    sprite('null', 30)
     GFX_0('MagicShot', -1)
     if (SLOT_2 == 1):
         Unknown23029(1, 4067, 0)
@@ -3329,6 +3354,7 @@ def MagicShot():
             if (SLOT_48 == 4068):
                 AttackP1(70)
                 Unknown11042(1)
+                sendToLabel(99)
 
         def upon_11():
             if (SLOT_13 < (-20000)):
@@ -3347,6 +3373,8 @@ def MagicShot():
             clearUponHandler(2)
             Unknown1084(1)
             sendToLabel(0)
+    sprite('null', 20)
+    label(99)
     sprite('null', 7)
     sprite('null', 3)
     Unknown1111(25000, 22)
@@ -3504,7 +3532,7 @@ def rwief407_slash():
     def upon_IMMEDIATE():
         callSubroutine('rwief_slash_func')
         sendToLabelUpon(32, 0)
-    sprite('null', 3)
+    sprite('null', 1)
     GFX_0('rwief407_slash_Flare', 0)
     sprite('vref_rwi407_00', 3)
     sprite('null', 6)
@@ -4359,6 +4387,15 @@ def rwief401_Slash_Hit():
     Unknown21012('72776965663430315f736c6173685f466c61726500000000000000000000000020000000')
 
 @State
+def rwief401_Slash_HitAssist():
+
+    def upon_IMMEDIATE():
+        pass
+    sprite('null', 1)
+    Unknown21012('72776965663430315f736c61736841737369737400000000000000000000000020000000')
+    Unknown21012('72776965663430315f736c6173685f466c61726500000000000000000000000020000000')
+
+@State
 def rwief401_Slash_PreHit():
 
     def upon_IMMEDIATE():
@@ -4417,6 +4454,37 @@ def rwief401_slash():
     sprite('null', 6)
     Unknown26('rwief_slash_dustA_loop')
     sprite('vref_rwi401_00', 6)
+    GFX_0('rwief401_slash_Speed', 100)
+    sprite('vref_rwi401_01', 5)
+    sprite('vref_rwi401_02', 3)
+    GFX_0('rwief401_EX_Dummy', 100)
+    sprite('vref_rwi401_03', 3)
+    sprite('null', 20)
+
+@State
+def rwief401_slashAssist():
+
+    def upon_IMMEDIATE():
+        callSubroutine('rwief_slash_func')
+        sendToLabelUpon(32, 0)
+        Unknown2055(120)
+    sprite('vref_rwi400_00', 2)
+    GFX_0('rwief400_slash_Model', 100)
+    GFX_0('rwief400_slash_Bloom', 100)
+    GFX_0('rwief400_EX_Dummy', 0)
+    GFX_0('rwief401_slash_FlareAssist', 0)
+    sprite('vref_rwi400_01', 1)
+    sprite('vref_rwi400_02', 1)
+    sprite('vref_rwi400_03', 2)
+    sprite('vref_rwi400_04', 2)
+    sprite('vref_rwi400_04', 2)
+    GFX_0('rwief_slash_dustA_loop', 0)
+    GFX_0('rwief_slash_dustA_loop', 0)
+    sprite('null', 32767)
+    label(0)
+    sprite('null', 5)
+    Unknown26('rwief_slash_dustA_loop')
+    sprite('vref_rwi401_00', 3)
     GFX_0('rwief401_slash_Speed', 100)
     sprite('vref_rwi401_01', 5)
     sprite('vref_rwi401_02', 3)
@@ -4492,6 +4560,44 @@ def rwief401_slash_Flare():
     Unknown1099(-120)
     Unknown1000(150000)
     teleportRelativeY(220000)
+    sprite('null', 0)
+    Unknown1099(0)
+    Unknown1096(0)
+    sprite('null', 32767)
+    Unknown1056(1400)
+    Unknown1099(0)
+    Unknown1000(264000)
+    teleportRelativeY(119000)
+    label(0)
+    sprite('null', 6)
+    Unknown1096(0)
+    Unknown1099(0)
+    sprite('null', 6)
+    Unknown1096(500)
+    Unknown1099(100)
+    Unknown1000(93000)
+    teleportRelativeY(240000)
+
+@State
+def rwief401_slash_FlareAssist():
+
+    def upon_IMMEDIATE():
+        callSubroutine('rwief_slash_func')
+        Unknown4003('72776965665f666c61726530312e4449470000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
+        Unknown4010(2)
+        Unknown23122(64)
+        sendToLabelUpon(32, 0)
+    sprite('null', 2)
+    Unknown1000(-42000)
+    teleportRelativeY(92000)
+    sprite('null', 2)
+    Unknown1000(161000)
+    teleportRelativeY(267000)
+    sprite('null', 6)
+    Unknown1099(-120)
+    Unknown1000(150000)
+    teleportRelativeY(220000)
+    Unknown4007(0)
     sprite('null', 0)
     Unknown1099(0)
     Unknown1096(0)
@@ -6382,16 +6488,15 @@ def UltimateShotMaster():
         Unknown2011()
         Unknown4011(3)
         AttackLevel_(4)
-        Damage(5000)
+        Damage(4400)
         AttackP2(60)
-        Unknown11091(30)
+        Unknown11091(28)
+        AirUntechableTime(60)
         Unknown9021(1)
         Unknown9266(9)
         Unknown12051(2)
         GroundedHitstunAnimation(1)
         AirPushbackY(25000)
-        Unknown9168(19)
-        Unknown9156(19)
         Hitstop(0)
         Unknown11001(15, 40, 40)
         Unknown3001(0)
@@ -6412,10 +6517,10 @@ def UltimateShotMaster():
                         clearUponHandler(3)
                         Unknown23029(3, 4317, 0)
 
-        def upon_12():
+        def upon_78():
             Unknown23029(3, 4314, 0)
 
-        def upon_61():
+        def upon_80():
             Unknown23029(3, 4315, 0)
     sprite('vrrwi_test_ultimateatk', 2)
     SFX_3('rwise_47')

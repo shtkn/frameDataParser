@@ -34,7 +34,7 @@ def MatchInit():
     Unknown14013('CmnActFDash')
     Move_EndRegister()
     Move_Register('NmlAtk5A', 0x7)
-    MoveMaxChainRepeat(3)
+    MoveMaxChainRepeat(2)
     Unknown14015(-34000, 446000, -85000, 175000, 2000, 50)
     Move_EndRegister()
     Move_Register('NmlAtk5A2nd', 0x7)
@@ -55,7 +55,7 @@ def MatchInit():
     Unknown14015(-2000, 514000, -15000, 426000, 1000, 50)
     Move_EndRegister()
     Move_Register('NmlAtk4A', 0x6)
-    MoveMaxChainRepeat(3)
+    MoveMaxChainRepeat(2)
     Unknown14015(9000, 204000, -71000, 122000, 1500, 50)
     Move_EndRegister()
     Move_Register('NmlAtk4A2nd', 0x6)
@@ -77,8 +77,7 @@ def MatchInit():
     Unknown14015(-2000, 514000, -15000, 426000, 1000, 50)
     Move_EndRegister()
     Move_Register('NmlAtk2A', 0x4)
-    Unknown14027('NmlAtk4A')
-    MoveMaxChainRepeat(3)
+    MoveMaxChainRepeat(2)
     Unknown15009()
     Unknown14015(6000, 213000, -100000, -20000, 1000, 50)
     Move_EndRegister()
@@ -1821,6 +1820,7 @@ def NmlAtk5A():
         AirPushbackY(12000)
         HitOrBlockCancel('CancelOrgiaDash')
         HitOrBlockCancel('NmlAtk5A2nd')
+        HitOrBlockCancel('NmlAtk2A')
         HitOrBlockCancel('NmlAtk5B')
         HitOrBlockCancel('NmlAtk2B')
         HitOrBlockCancel('CmnActCrushAttack')
@@ -2271,7 +2271,11 @@ def NmlAtk5B():
         Unknown1112('')
 
         def upon_ON_HIT_OR_BLOCK():
-            HitJumpCancel(1)
+            HitOrBlockJumpCancel(1)
+
+        def upon_43():
+            if (SLOT_48 == 2019):
+                HitJumpCancel(1)
     sprite('ag200_07', 3)
     sprite('ag201_00', 3)
     sprite('ag201_01', 3)
@@ -2295,13 +2299,13 @@ def NmlAtk5B():
     sprite('ag201_06', 2)
     sprite('ag201_06', 2)
     sprite('ag201_07', 2)
-    sprite('ag201_08', 4)
+    sprite('ag201_08', 3)
     Recovery()
     Unknown2063()
-    sprite('ag201_09', 4)
-    sprite('ag201_10', 4)
-    sprite('ag201_11', 4)
-    sprite('ag201_12', 4)
+    sprite('ag201_09', 3)
+    sprite('ag201_10', 3)
+    sprite('ag201_11', 3)
+    sprite('ag201_12', 3)
     ExitState()
     label(0)
     sprite('ag201_04', 3)
@@ -2370,7 +2374,11 @@ def NmlAtk2B():
         HitOrBlockCancel('NmlAtk2C')
 
         def upon_ON_HIT_OR_BLOCK():
-            HitJumpCancel(1)
+            HitOrBlockJumpCancel(1)
+
+        def upon_43():
+            if (SLOT_48 == 2318):
+                HitJumpCancel(1)
     sprite('ag231_00', 3)
     sprite('ag231_01', 3)
     sprite('ag231_02', 2)
@@ -2395,7 +2403,7 @@ def NmlAtk2B():
     sprite('ag231_04', 2)
     sprite('ag231_05', 2)
     sprite('ag231_05', 2)
-    sprite('ag231_05', 12)
+    sprite('ag231_05', 6)
     sprite('ag231_06', 4)
     Recovery()
     Unknown2063()
@@ -2531,6 +2539,7 @@ def NmlAtkAIR5B():
 
         def upon_STATE_END():
             Unknown23029(11, 1022, 0)
+        Unknown4009(11)
         HitOrBlockCancel('CancelOrgiaDash')
         HitOrBlockCancel('NmlAtkAIR5C')
         HitOrBlockJumpCancel(1)
@@ -3602,6 +3611,7 @@ def MegidoFire():
         Unknown30065(0)
         Unknown11091(10)
         Unknown11064(1)
+        Unknown2073(1)
 
         def upon_78():
             clearUponHandler(78)
@@ -3688,11 +3698,11 @@ def MegidoFire():
     Unknown26('FlamethrowerD')
     Unknown8000(100, 1, 1)
     Unknown1084(1)
-    sprite('ag231_00', 4)
+    sprite('ag231_00', 2)
     sprite('ag231_01', 2)
     sprite('ag010_02', 2)
-    sprite('ag010_01', 4)
-    sprite('ag010_00', 4)
+    sprite('ag010_01', 2)
+    sprite('ag010_00', 2)
 
 @State
 def Pandora():
@@ -3736,7 +3746,6 @@ def Pandora():
     sprite('ag410_09', 3)
     sprite('ag410_08', 3)
     sprite('ag410_09', 3)
-    Unknown21015('50616e646f72615f4d61746f6d650000000000000000000000000000000000000410000000000000')
     Unknown14072('CancelOrgiaDash')
     sprite('ag410_08', 3)
     sprite('ag410_09', 3)
@@ -3744,6 +3753,7 @@ def Pandora():
     sprite('ag410_09', 3)
     sprite('ag410_08', 3)
     sprite('ag410_09', 3)
+    Unknown21015('50616e646f72615f4d61746f6d650000000000000000000000000000000000000410000000000000')
     sprite('ag410_08', 3)
     sprite('ag410_09', 3)
     Unknown1019(30)
@@ -3787,7 +3797,6 @@ def OrgiaDash():
             SLOT_31 = (SLOT_31 + (-1500))
         else:
             Unknown30068(1)
-            SLOT_31 = (SLOT_31 + (-1500))
             SLOT_31 = (SLOT_31 + (-1500))
     sprite('ag405_03', 3)
     Unknown1084(1)
@@ -3884,7 +3893,6 @@ def AthenaSurfing():
                 Unknown4020(0)
                 sendToLabel(2)
         clearUponHandler(2)
-        sendToLabelUpon(2, 9)
     sprite('ag430_00', 3)
     Unknown23183('61673433305f3135000000000000000000000000000000000000000000000000030000000200000002000000')
     sprite('ag430_00', 8)
@@ -3895,6 +3903,7 @@ def AthenaSurfing():
     Unknown2058(-10000)
     tag_voice(1, 'pag251_0', 'pag251_1', '', '')
     Unknown30080('')
+    sendToLabelUpon(2, 9)
     sprite('ag430_01', 6)
     teleportRelativeX(20000)
     sprite('ag430_02', 6)
@@ -4036,7 +4045,6 @@ def AthenaSurfingOD():
                 Unknown13024(0)
                 enterState('UltimateSpear')
         clearUponHandler(2)
-        sendToLabelUpon(2, 9)
     sprite('ag430_00', 3)
     Unknown23183('61673433305f3135000000000000000000000000000000000000000000000000030000000200000002000000')
     sprite('ag430_00', 8)
@@ -4047,6 +4055,7 @@ def AthenaSurfingOD():
     Unknown2058(-10000)
     tag_voice(1, 'pag251_0', 'pag251_1', '', '')
     Unknown30080('')
+    sendToLabelUpon(2, 9)
     sprite('ag430_01', 6)
     teleportRelativeX(20000)
     sprite('ag430_02', 6)
@@ -4183,6 +4192,11 @@ def UltimateSpear():
         if Unknown23145('AthenaSurfingDDDOD'):
             Unknown2037(1)
         Unknown30068(1)
+
+        def upon_3():
+            Unknown48('19000000020000003400000016000000020000001e000000')
+            if (not SLOT_52):
+                setInvincible(0)
     sprite('ag430_10', 2)
     Unknown2036(58, -1, 0)
     physicsXImpulse(50000)
@@ -4208,7 +4222,6 @@ def UltimateSpear():
     setGravity(30)
     tag_voice(0, 'pag256_0', 'pag256_1', 'pag258_0', 'pag258_1')
     sprite('ag431_04', 4)
-    setInvincible(0)
     sprite('ag431_05', 4)
     sprite('ag431_04', 4)
     Unknown1084(1)
@@ -4418,7 +4431,7 @@ def UltimateAirThrow_Exe():
         Unknown23056('')
         AttackLevel_(4)
         Damage(1000)
-        Unknown11091(10)
+        Unknown11091(60)
         AttackP2(60)
         Hitstop(0)
         AirHitstunAnimation(12)
@@ -4762,8 +4775,8 @@ def UltimateAirThrowOD_Exe():
         Unknown23056('')
         AttackLevel_(4)
         Damage(1000)
-        Unknown11091(10)
         AttackP2(60)
+        Unknown11091(60)
         Hitstop(0)
         AirHitstunAnimation(12)
         GroundedHitstunAnimation(12)
@@ -4784,7 +4797,8 @@ def UltimateAirThrowOD_Exe():
 
         def upon_3():
             if SLOT_2:
-                if (SLOT_25 <= 250000):
+                Unknown48('19000000020000003500000016000000020000001a000000')
+                if (SLOT_53 <= 60000):
                     clearUponHandler(3)
                     sendToLabel(2)
 
@@ -4934,6 +4948,7 @@ def UltimateAirThrowOD_Exe():
     sprite('ag321_08', 2)
     RefreshMultihit()
     AttackP2(100)
+    Unknown11091(10)
     Hitstop(40)
     AirPushbackX(0)
     AirPushbackY(0)
@@ -4945,7 +4960,8 @@ def UltimateAirThrowOD_Exe():
     Unknown11050('040000000000000000000000000000000000000000000000000000000000000000000000')
     sprite('ag321_08', 2)
     RefreshMultihit()
-    Damage(2000)
+    Damage(1800)
+    Unknown11091(21)
     Hitstop(1)
     Unknown9362(0)
     WallbounceReboundTime(0)
@@ -4955,6 +4971,7 @@ def UltimateAirThrowOD_Exe():
     Unknown9017(1)
     Unknown11050('020000004f72696f6e46696e697368000000000000000000000000000000000000000000')
     ScreenShake(10000, 10000)
+    Unknown9310(1)
     physicsXImpulse(-5000)
     physicsYImpulse(10000)
     setGravity(1000)
@@ -5008,7 +5025,7 @@ def AstralHeat():
                 sendToLabel(3)
             if (SLOT_48 == 7003):
                 sendToLabel(4)
-    sprite('ag450_00', 35)
+    sprite('ag450_00', 34)
     Unknown1084(1)
     Unknown2036(60, -1, 2)
     Unknown23147()
@@ -5587,7 +5604,7 @@ def CmnActChangePartnerAssistAtk_A():
     sprite('ag404_08', 3)
     GFX_1('agef_emptysmoke_00', 0)
     GFX_1('agef_canonshot_05', 0)
-    GFX_0('CanonShot_TAG', 0)
+    GFX_0('CanonShot_TAGMatome', 0)
     SFX_3('ag005')
     Unknown8004(100, 1, 1)
     sprite('ag404_09', 3)

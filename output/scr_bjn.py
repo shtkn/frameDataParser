@@ -2681,7 +2681,8 @@ def NmlAtk5AAA():
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
         AttackLevel_(3)
-        Damage(600)
+        Damage(650)
+        AttackP2(85)
         Unknown11092(1)
         GroundedHitstunAnimation(4)
         Unknown11001(9, 0, 2)
@@ -2786,6 +2787,10 @@ def RushAssaultFinish():
             teleportRelativeY(0)
             Unknown2015(20)
             sendToLabel(0)
+        SLOT_6 = 0
+
+        def upon_82():
+            SLOT_6 = 1
 
         def upon_STATE_END():
             Unknown3038(0)
@@ -2911,6 +2916,9 @@ def NmlAtk5BB():
         HitOrBlockCancel('NmlAtk2B')
         HitOrBlockCancel('NmlAtk2C')
         HitOrBlockCancel('CmnActCrushAttack')
+
+        def upon_ON_HIT_OR_BLOCK():
+            Unknown21015('45666641746b35440000000000000000000000000000000000000000000000007117000000000000')
     sprite('jn203_00', 1)	# 1-1
     sprite('jn203_01', 1)	# 2-2
     sprite('jn203_02', 1)	# 3-3
@@ -3869,21 +3877,21 @@ def Shot():
     sprite('jn400_02', 4)	# 4-7
     Unknown7007('626a6e3230305f30000000000000000064000000626a6e3230305f31000000000000000064000000626a6e3230305f320000000000000000640000000000000000000000000000000000000000000000')
     GFX_0('ice_shot', 0)
-    sprite('jn400_03', 4)	# 8-11
-    sprite('jn400_04', 4)	# 12-15
+    sprite('jn400_03', 3)	# 8-10
+    sprite('jn400_04', 3)	# 11-13
     SFX_0('003_swing_grap_0_1')
-    sprite('jn400_05', 4)	# 16-19
-    sprite('jn400_06', 4)	# 20-23
-    sprite('jn400_07', 4)	# 24-27
-    sprite('jn400_08', 4)	# 28-31
-    sprite('jn400_09', 4)	# 32-35
-    sprite('jn400_10', 4)	# 36-39
-    sprite('jn400_11', 4)	# 40-43
-    sprite('jn400_12', 4)	# 44-47
+    sprite('jn400_05', 3)	# 14-16
+    sprite('jn400_06', 3)	# 17-19
+    sprite('jn400_07', 4)	# 20-23
+    sprite('jn400_08', 4)	# 24-27
+    sprite('jn400_09', 4)	# 28-31
+    sprite('jn400_10', 4)	# 32-35
+    sprite('jn400_11', 4)	# 36-39
+    sprite('jn400_12', 4)	# 40-43
     Recovery()
-    sprite('jn400_13', 3)	# 48-50
-    sprite('jn400_14', 2)	# 51-52
-    sprite('jn400_15', 2)	# 53-54
+    sprite('jn400_13', 3)	# 44-46
+    sprite('jn400_14', 2)	# 47-48
+    sprite('jn400_15', 2)	# 49-50
 
 @State
 def Shot_D1():
@@ -3964,7 +3972,7 @@ def AirShot():
     def upon_IMMEDIATE():
         Unknown17003()
         Unknown1084(1)
-        Unknown22004(9, 1)
+        Unknown22004(12, 1)
         callSubroutine('CheckDriveFlash')
         Unknown1045(0)
         Unknown21015('6963655f73686f74000000000000000000000000000000000000000000000000cc10000000000000')
@@ -3972,8 +3980,8 @@ def AirShot():
     sprite('jn402_00', 1)	# 1-1
     physicsXImpulse(-8000)
     Unknown1028(100)
-    physicsYImpulse(27000)
-    setGravity(1500)
+    physicsYImpulse(17000)
+    setGravity(700)
     sprite('jn402_00', 2)	# 2-3
     sprite('jn402_01', 3)	# 4-6
     Unknown7007('626a6e3230335f30000000000000000064000000626a6e3230335f31000000000000000064000000626a6e3230335f320000000000000000640000000000000000000000000000000000000000000000')
@@ -3983,10 +3991,10 @@ def AirShot():
     sprite('jn402_04', 3)	# 13-15
     SFX_0('003_swing_grap_0_1')
     sprite('jn402_05', 2)	# 16-17
-    sprite('jn402_06', 20)	# 18-37
+    sprite('jn402_06', 15)	# 18-32
     Unknown1043()
-    sprite('jn402_07', 6)	# 38-43
-    sprite('jn402_08', 6)	# 44-49
+    sprite('jn402_07', 6)	# 33-38
+    sprite('jn402_08', 6)	# 39-44
 
 @State
 def AirShot_D1():
@@ -4080,7 +4088,7 @@ def Assault():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         AttackLevel_(3)
-        AttackP1(70)
+        AttackP1(80)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
         AirPushbackY(18000)
@@ -4112,6 +4120,7 @@ def Assault():
     sprite('jn408_05', 3)	# 14-16
     SFX_0('000_airdash_0')
     physicsXImpulse(35000)
+    Unknown1028(1500)
     Unknown2016(60)
     Unknown2015(150)
     Unknown23029(4, 4001, 0)
@@ -4133,7 +4142,7 @@ def Assault():
     Unknown2015(-1)
     Unknown1019(10)
     Unknown1034(0)
-    physicsYImpulse(14000)
+    physicsYImpulse(10000)
     Unknown1043()
     Unknown14077(0)
     WhiffCancelEnable(0)
@@ -4146,7 +4155,7 @@ def Assault():
     Unknown1084(1)
     sprite('jn020_10', 2)	# 36-37
     sprite('jn020_11', 2)	# 38-39
-    sprite('jn020_13', 3)	# 40-42
+    sprite('jn020_13', 2)	# 40-41
 
 @State
 def Assault_B():
@@ -4155,7 +4164,7 @@ def Assault_B():
         AttackDefaults_StandingSpecial()
         AttackLevel_(3)
         Damage(1600)
-        AttackP1(70)
+        AttackP1(80)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
         AirPushbackY(18000)
@@ -4196,8 +4205,9 @@ def Assault_B():
     sprite('jn408_07ex', 2)	# 19-20	 **attackbox here**
     sprite('jn408_06ex', 2)	# 21-22	 **attackbox here**
     sprite('jn408_07ex', 2)	# 23-24	 **attackbox here**
+    sprite('jn408_06ex', 2)	# 25-26	 **attackbox here**
     label(0)
-    sprite('jn408_08', 5)	# 25-29
+    sprite('jn408_08', 5)	# 27-31
     clearUponHandler(10)
     clearUponHandler(1)
     sendToLabelUpon(2, 100)
@@ -4213,15 +4223,15 @@ def Assault_B():
     Unknown14077(0)
     WhiffCancelEnable(0)
     label(9)
-    sprite('jn408_09', 3)	# 30-32
-    sprite('jn408_10', 3)	# 33-35
+    sprite('jn408_09', 3)	# 32-34
+    sprite('jn408_10', 3)	# 35-37
     loopRest()
     gotoLabel(9)
     label(100)
     Unknown1084(1)
-    sprite('jn020_10', 2)	# 36-37
-    sprite('jn020_11', 2)	# 38-39
-    sprite('jn020_13', 3)	# 40-42
+    sprite('jn020_10', 2)	# 38-39
+    sprite('jn020_11', 2)	# 40-41
+    sprite('jn020_13', 3)	# 42-44
 
 @State
 def Assault_2nd():
@@ -4283,16 +4293,16 @@ def Assault_D():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         AttackLevel_(4)
-        AttackP1(70)
+        AttackP1(80)
+        AttackP2(70)
         AirHitstunAnimation(10)
         GroundedHitstunAnimation(10)
         AirPushbackY(18000)
         Unknown9154(26)
-        AirUntechableTime(40)
+        AirUntechableTime(25)
         HitLow(2)
         Unknown11058('0000000000000000010000000000000000000000')
         Unknown9016(1)
-        AirUntechableTime(25)
         Unknown9019(1)
         Unknown30065(0)
         Unknown11091(10)
@@ -4332,8 +4342,9 @@ def Assault_D():
     sprite('jn408_06ex', 2)	# 21-22	 **attackbox here**
     sprite('jn408_07ex', 2)	# 23-24	 **attackbox here**
     sprite('jn408_06ex', 2)	# 25-26	 **attackbox here**
+    sprite('jn408_07ex', 2)	# 27-28	 **attackbox here**
     label(0)
-    sprite('jn408_08', 5)	# 27-31
+    sprite('jn408_08', 5)	# 29-33
     clearUponHandler(10)
     clearUponHandler(1)
     sendToLabelUpon(2, 100)
@@ -4345,32 +4356,34 @@ def Assault_D():
     Unknown2015(-1)
     Unknown1019(10)
     Unknown1034(0)
-    physicsYImpulse(14000)
+    physicsYImpulse(10000)
     Unknown1043()
     loopRest()
     Unknown14077(0)
     WhiffCancelEnable(0)
     label(9)
-    sprite('jn408_09', 3)	# 32-34
-    sprite('jn408_10', 3)	# 35-37
+    sprite('jn408_09', 3)	# 34-36
+    sprite('jn408_10', 3)	# 37-39
     loopRest()
     gotoLabel(9)
     label(100)
     Unknown1084(1)
-    sprite('jn020_10', 2)	# 38-39
-    sprite('jn020_11', 2)	# 40-41
-    sprite('jn020_13', 3)	# 42-44
+    sprite('jn020_10', 2)	# 40-41
+    sprite('jn020_11', 2)	# 42-43
+    sprite('jn020_13', 2)	# 44-45
 
 @State
 def Assault_D_2nd():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-        AttackLevel_(4)
-        AirHitstunAnimation(11)
-        GroundedHitstunAnimation(11)
-        AirPushbackY(12000)
-        AirPushbackX(48000)
+        AttackLevel_(5)
+        AirHitstunAnimation(12)
+        GroundedHitstunAnimation(12)
+        AirPushbackY(6000)
+        AirPushbackX(96000)
+        WallbounceReboundTime(5)
+        YImpluseBeforeWallbounce(800)
         Unknown9202(15)
         AirUntechableTime(50)
         Unknown11108('03000000')
@@ -4410,17 +4423,17 @@ def Assault_D_2nd():
     sprite('jn409_08', 3)	# 20-22
     sprite('jn409_09', 32767)	# 23-32789
     label(3)
-    sprite('jn409_10', 3)	# 32790-32792
+    sprite('jn409_10', 2)	# 32790-32791
     GFX_0('EffNoutou', 0)
     Unknown8000(100, 1, 1)
     Unknown1084(1)
     Unknown23087(-1)
     Unknown3029(0)
-    sprite('jn409_11', 3)	# 32793-32795
-    sprite('jn409_12', 3)	# 32796-32798
-    sprite('jn409_13', 3)	# 32799-32801
-    sprite('jn409_14', 3)	# 32802-32804
-    sprite('jn409_15', 3)	# 32805-32807
+    sprite('jn409_11', 2)	# 32792-32793
+    sprite('jn409_12', 2)	# 32794-32795
+    sprite('jn409_13', 2)	# 32796-32797
+    sprite('jn409_14', 2)	# 32798-32799
+    sprite('jn409_15', 1)	# 32800-32800
 
 @State
 def AirAssault():
@@ -4488,7 +4501,7 @@ def AirAssaultB():
         AirPushbackY(10000)
         AirPushbackX(-3000)
         Unknown11058('0100000000000000000000000000000000000000')
-        AirUntechableTime(40)
+        AirUntechableTime(80)
         Hitstop(6)
         Unknown11046(1)
         Unknown9016(1)

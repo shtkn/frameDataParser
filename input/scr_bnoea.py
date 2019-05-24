@@ -1045,6 +1045,7 @@ def MajuShotObj():
         AttackP2(100)
         Unknown11058('0000000000000000000000000100000000000000')
         Unknown23182(3)
+        Unknown11084(1)
         AirPushbackY(10000)
         AirPushbackX(1400)
         YImpluseBeforeWallbounce(500)
@@ -1063,6 +1064,7 @@ def MajuShotObj():
             AirPushbackY(16000)
             YImpluseBeforeWallbounce(1600)
             Unknown11064(0)
+            Unknown11084(0)
             clearUponHandler(77)
             sendToLabelUpon(10, 1)
         Unknown11108('03000000')
@@ -1111,6 +1113,7 @@ def MajuShotObjOD():
         AttackP2(100)
         Unknown11058('0000000000000000000000000100000000000000')
         Unknown23182(3)
+        Unknown11084(1)
         AirPushbackY(10000)
         AirPushbackX(1400)
         YImpluseBeforeWallbounce(500)
@@ -1129,6 +1132,7 @@ def MajuShotObjOD():
             AirPushbackY(16000)
             YImpluseBeforeWallbounce(1600)
             Unknown11064(0)
+            Unknown11084(0)
             clearUponHandler(77)
             sendToLabelUpon(10, 1)
         Unknown11108('03000000')
@@ -1179,6 +1183,7 @@ def MajuShotObj_Tsuika():
         YImpluseBeforeWallbounce(300)
         Unknown11091(20)
         Unknown23182(3)
+        Unknown11084(1)
         Unknown11056(2)
         sendToLabelUpon(77, 1)
         Unknown2055(30)
@@ -1729,7 +1734,7 @@ def noef430bzk_rocket():
         Hitstop(0)
         Unknown11043(0)
         PushbackX(5000)
-        Damage(4000)
+        Damage(4200)
         AttackP1(48)
         AttackP2(100)
         Unknown11087(2, 1)
@@ -1848,7 +1853,7 @@ def noef430bzk_rocket_OD():
         Hitstop(0)
         Unknown11043(0)
         PushbackX(5000)
-        Damage(4200)
+        Damage(3800)
         AttackP1(48)
         AttackP2(100)
         Unknown11087(2, 1)
@@ -2081,9 +2086,10 @@ def GunThrowShotObj():
         YImpluseBeforeWallbounce(1200)
         Unknown11057(700)
         Unknown11087(1, 1)
-        GroundedHitstunAnimation(10)
-        AirHitstunAnimation(10)
+        GroundedHitstunAnimation(9)
+        AirHitstunAnimation(9)
         Unknown11058('0000000000000000000000000100000000000000')
+        Unknown11001(0, -1, 4)
         Unknown4007(3)
         Unknown4010(3)
         Unknown3031()
@@ -2095,10 +2101,29 @@ def GunThrowShotObj():
         Unknown1007(30000)
         physicsYImpulse(4500)
         Unknown11042(1)
+
+        def upon_3():
+            if (SLOT_51 == 1):
+                if (SLOT_19 > 100000):
+                    AirPushbackX(6000)
+                else:
+                    AirPushbackX(30000)
+            if (SLOT_51 == 2):
+                if (SLOT_19 > 100000):
+                    AirPushbackX(5000)
+                else:
+                    AirPushbackX(10000)
+            if (SLOT_51 == 3):
+                if (SLOT_19 > 100000):
+                    AirPushbackX(-25000)
+                else:
+                    AirPushbackX(-30000)
     sprite('vrnoef285_00', 3)
+    SLOT_51 = 1
     RefreshMultihit()
     PushbackX(20000)
-    AirPushbackX(12000)
+    AirPushbackX(2000)
+    AirPushbackY(8000)
     SFX_0('003_swing_grap_0_0')
     sprite('vrnoef285_00', 3)
     RefreshMultihit()
@@ -2116,6 +2141,7 @@ def GunThrowShotObj():
     AirPushbackX(2000)
     AirPushbackY(13000)
     SFX_0('003_swing_grap_0_0')
+    SLOT_51 = 2
     sprite('vrnoef285_00', 3)
     RefreshMultihit()
     SFX_0('003_swing_grap_0_0')
@@ -2127,10 +2153,11 @@ def GunThrowShotObj():
     sprite('vrnoef285_00', 3)
     Unknown1028(-3600)
     PushbackX(-39900)
-    AirPushbackX(-14000)
-    AirPushbackY(11000)
-    YImpluseBeforeWallbounce(1600)
+    AirPushbackX(-24000)
+    AirPushbackY(5000)
+    YImpluseBeforeWallbounce(2200)
     SFX_0('003_swing_grap_0_0')
+    SLOT_51 = 3
     sprite('vrnoef285_00', 3)
     RefreshMultihit()
     SFX_0('003_swing_grap_0_0')
