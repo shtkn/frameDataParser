@@ -23,6 +23,7 @@ class State:
         self.isInv = False
         self.invType = 0    # Inv or Guard
         self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
+        self.superFlash = 0
 
     def clear_values(self, is_new_move):
         self.spriteLine = ""
@@ -44,6 +45,7 @@ class State:
             self.isInv = False
             self.invType = 0
             self.invAttr = [True, True, True, True, True]
+            self.superFlash = 0
         self.disableAttackboxesThisFrame = False
 
     def is_attackbox(self):
@@ -240,9 +242,7 @@ def consolidate_frame_chunks(chunk_list):
             new_chunk_list.append(prev_chunk)
             prev_chunk = copy.copy(chunk)
     new_chunk_list.append(prev_chunk)
-    #
-    # for chunk in new_chunk_list:
-    #     print chunk
+
     return new_chunk_list
 
 
@@ -349,8 +349,8 @@ def parse_move_file(source, move_list, effect_list):
             elif "Unknown2036(" in line:
                 flash_start = line.index("(") + 1
                 flash_end = line.index(",")
-                print int(line[flash_start:flash_end])
-                pass  # superfreeze
+
+                # superfreeze
             elif "Unknown22019(" in line:
                 # set invul to which attributes
                 params = line[line.index("('") + 2: line.index("')")]
@@ -546,26 +546,27 @@ def combine_with_effects_on_block(move, effect_list):
     return new_move
 
 
-def write_file(move_list, target):
-    for moveName in move_list:
-        move = move_list[moveName]
+def write_file(moves_on_block, moves_on_whiff, target):
+    for moveName in moves_on_block:
+        move_on_block = moves_on_block[moveName]
+        move_on_whiff = moves_on_whiff[moveName]
 
         target.write(moveName + "\n")
         startup, middle, recovery, total_duration, duration_on_block, last_blockstun_frame = \
-            calc_frame_adv_for_subroutine(move.frame_chunks)
+            calc_frame_adv_for_subroutine(move_on_block.frame_chunks)
         subroutine_block_timelines = []
-        for subroutine in move.additional_chunks:
+        for subroutine in move_on_block.additional_chunks:
             result = calc_frame_adv_for_subroutine(subroutine)
             subroutine_block_timelines.append(result)
         if startup > 0:
             target.write(str(startup) + " " + middle + " " + recovery)
         else:
             target.write(recovery)
-        if move.landing_recovery > 0:
-            target.write("+" + str(move.landing_recovery) + "L")
+        if move_on_block.landing_recovery > 0:
+            target.write("+" + str(move_on_block.landing_recovery) + "L")
         target.write(". Duration: " + str(total_duration))
-        if move.landing_recovery > 0:
-            target.write("+" + str(move.landing_recovery) + "L")
+        if move_on_block.landing_recovery > 0:
+            target.write("+" + str(move_on_block.landing_recovery) + "L")
         target.write("\n")
         target.write("\tduration on block: " + str(duration_on_block))
         if len(subroutine_block_timelines) > 0:
@@ -577,7 +578,6 @@ def write_file(move_list, target):
             target.write("\nlast blockstun: " + str(last_blockstun_frame))
             target.write(" diff: " + str(last_blockstun_frame - duration_on_block))
         target.write("\n")
-    print "DONE"
 
 
 def main():
@@ -596,7 +596,7 @@ def main():
 
     hit_simulations = simulate_on_block(move_list, effect_list)
 
-    write_file(hit_simulations, char_target)
+    write_file(hit_simulations, move_list, char_target)
     print "DONE"
 
 
