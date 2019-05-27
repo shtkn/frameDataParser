@@ -164,12 +164,12 @@ class TestParseAttackMethods(unittest.TestCase):
     def test_calculate_frame_adv_1_hit(self):
         chunks = [WaitFrameChunk(4), AttackFrameChunk(1, 3, 3), WaitFrameChunk(12)]
         result = calc_values_for_subroutine(chunks)
-        self.assertItemsEqual((5, '1', '12', 17, 20, 11, []), result)
+        self.assertItemsEqual(('5', '1', '12', 17, 20, 11, []), result)
 
     def test_calculate_frame_adv_2_hit(self):
         chunks = [WaitFrameChunk(4), AttackFrameChunk(3, 3, 3), AttackFrameChunk(3, 3, 3), WaitFrameChunk(12)]
         result = calc_values_for_subroutine(chunks)
-        self.assertItemsEqual((5, '3,3', '12', 22, 28, 17, []), result)
+        self.assertItemsEqual(('5', '3,3', '12', 22, 28, 17, []), result)
 
     def test_calculate_frame_adv_2_hit_with_gap(self):
         chunks = [WaitFrameChunk(4),
@@ -179,24 +179,34 @@ class TestParseAttackMethods(unittest.TestCase):
                   WaitFrameChunk(12)
                   ]
         result = calc_values_for_subroutine(chunks)
-        self.assertItemsEqual((5, '1(3)1', '12', 21, 27, 18, []), result)
+        self.assertItemsEqual(('5', '1(3)1', '12', 21, 27, 18, []), result)
 
     def test_calculate_frame_adv_with_5_active_frames(self):
         chunks = [WaitFrameChunk(4), AttackFrameChunk(5, 3, 3), WaitFrameChunk(12)]
         result = calc_values_for_subroutine(chunks)
-        self.assertItemsEqual((5, '5', '12', 21, 24, 11, []), result)
+        self.assertItemsEqual(('5', '5', '12', 21, 24, 11, []), result)
 
     def test_calculate_frame_adv_1_hit_bonus_hitstop(self):
         chunks = [WaitFrameChunk(4), AttackFrameChunk(1, 3, 3, 10), WaitFrameChunk(12)]
         result = calc_values_for_subroutine(chunks)
-        self.assertItemsEqual((5, '1', '12', 17, 20, 21, []), result)
+        self.assertItemsEqual(('5', '1', '12', 17, 20, 21, []), result)
 
     def test_calculate_frame_adv_attr_inv(self):
         chunks = [WaitFrameChunk(4), AttackFrameChunk(3, 3, 3), WaitFrameChunk(12)]
         chunks[1].inv_type = 1
         chunks[1].inv_attr = [True, True, False, False, False]
         result = calc_values_for_subroutine(chunks)
-        self.assertItemsEqual((5, '3', '12', 19, 22, 11, [[5, 3, 1, [True, True, False, False, False]]]), result)
+        self.assertItemsEqual(('5', '3', '12', 19, 22, 11, [[5, 3, 1, [True, True, False, False, False]]]), result)
+
+    def test_calculate_startup_with_superflash(self):
+        chunks = [WaitFrameChunk(4),
+                  AttackFrameChunk(1, 3, 3),
+                  WaitFrameChunk(3),
+                  AttackFrameChunk(1, 3, 3),
+                  WaitFrameChunk(12)
+                  ]
+        result = calc_values_for_subroutine(chunks, 2, 3)
+        self.assertItemsEqual(('2+3Flash+0', '1(3)1', '12', 21, 27, 18, []), result)
 
     def test_parse_subroutine(self):
         subroutine = """@Subroutine
@@ -554,7 +564,7 @@ def NmlAtk5X():
         expected.frame_chunks[2].inv_attr = [True, False, False, False, False]
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
-        def test_attribute_inv_with_gfx_in_between(self):
+    def test_attribute_inv_with_gfx_in_between(self):
             state = """@State
     def NmlAtk5X():
 
@@ -618,10 +628,10 @@ def NmlAtk5X():
         Unknown1112('')
     sprite('es201_00', 1)	# 1-1
     sprite('es201_01', 2)	# 2-3
+    Unknown2036(2, -1, 0)
     sprite('es201_02', 2)	# 4-5
     SFX_0('006_swing_blade_0')
     sprite('es201_03', 2)	# 6-7
-    Unknown2036(30, -1, 0)
     Unknown7009(1)
     Unknown22019('0100000000000000000000000000000000000000')
     GFX_0('esef_aaaa', -1)
@@ -642,8 +652,6 @@ def NmlAtk5X():
                                  AttackFrameChunk(5, 16, 11),
                                  WaitFrameChunk(9)
                                  ]
-        expected.frame_chunks[2].inv_type = 1
-        expected.frame_chunks[2].inv_attr = [True, False, False, False, False]
-        expected.frame_chunks[3].inv_type = 1
-        expected.frame_chunks[3].inv_attr = [True, False, False, False, False]
+        expected.superflash_start = 3
+        expected.superflash_duration = 2
         self.assertEqual(expected, move_list["NmlAtk5X"])

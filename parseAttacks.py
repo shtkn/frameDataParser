@@ -23,7 +23,8 @@ class State:
         self.isInv = False
         self.invType = 0    # Inv or Guard
         self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
-        self.superFlash = 0
+        self.superflash_start = None
+        self.superflash_duration = 0
 
     def clear_values(self, is_new_move):
         self.spriteLine = ""
@@ -45,14 +46,20 @@ class State:
             self.isInv = False
             self.invType = 0
             self.invAttr = [True, True, True, True, True]
-            self.superFlash = 0
+            self.superflash_start = None
+            self.superflash_duration = 0
         self.disableAttackboxesThisFrame = False
 
     def is_attackbox(self):
         return self.isAttackBox and not (self.disableAttackboxes or self.disableAttackboxesThisFrame)
 
 
-class AbstractChunk:
+class Abstract:
+    def __init__(self):
+        pass
+
+
+class AbstractChunk(Abstract):
     def __init__(self, duration=0):
         self.duration = duration
         self.inv_type = 0    # 0 = no inv, 1 = inv, 2 = guard
@@ -121,9 +128,9 @@ class WaitFrameChunk(AbstractChunk):
         return not self.__eq__(other)
 
 
-class SubroutineCall(AbstractChunk):
+class SubroutineCall(Abstract):
     def __init__(self, name):
-        AbstractChunk.__init__(self, 0)
+        Abstract.__init__(self)
         self.name = name
 
     def __str__(self):
@@ -140,26 +147,13 @@ class SubroutineCall(AbstractChunk):
         return not self.__eq__(other)
 
 
-class SuperFlash(AbstractChunk):
-    def __init__(self, duration):
-        AbstractChunk.__init__(self, duration)
-
-    def __eq__(self, other):
-        if not isinstance(other, SuperFlash):
-            return False
-        return self.duration == other.duration
-
-    def __ne__(self, other):
-        if not isinstance(other, SuperFlash):
-            return False
-        return not self.__eq__(other)
-
-
 class Move:
     def __init__(self):
         self.frame_chunks = []
         self.additional_chunks = []
         self.landing_recovery = 0
+        self.superflash_start = None
+        self.superflash_duration = 0
 
     def __eq__(self, other):
         if not isinstance(other, Move):
@@ -179,10 +173,8 @@ class Move:
             for j in range(len(self.additional_chunks[i])):
                 if self.additional_chunks[i][j] != other.additional_chunks[i][j]:
                     return False
-        if self.landing_recovery != other.landing_recovery:
-            return False
-
-        return True
+        return self.landing_recovery == other.landing_recovery and self.superflash_start == other.superflash_start and \
+               self.superflash_duration == self.superflash_duration
 
     def __ne__(self, other):
         if not isinstance(other, Move):
@@ -289,6 +281,9 @@ def parse_move_file(source, move_list, effect_list):
                 move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
                 if state.landingRecovery > 0:
                     move_list[state.moveName].landing_recovery = state.landingRecovery
+                if state.superflash_start is not None:
+                    move_list[state.moveName].superflash_start = state.superflash_start
+                    move_list[state.moveName].superflash_duration = state.superflash_duration
             frame_chunks = []
             # print "*** NEW MOVE ***"
             # restart counters
@@ -364,7 +359,8 @@ def parse_move_file(source, move_list, effect_list):
             elif "Unknown2036(" in line:
                 flash_start = line.index("(") + 1
                 flash_end = line.index(",")
-
+                state.superflash_start = state.duration+1
+                state.superflash_duration = int(line[flash_start:flash_end])
                 # superfreeze
             elif "Unknown22019(" in line:
                 # set invul to which attributes
@@ -402,6 +398,9 @@ def parse_move_file(source, move_list, effect_list):
         move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
         if state.landingRecovery > 0:
             move_list[state.moveName].landing_recovery = state.landingRecovery
+        if state.superflash_start is not None:
+            move_list[state.moveName].superflash_start = state.superflash_start
+            move_list[state.moveName].superflash_duration = state.superflash_duration
 
     return move_list
 
@@ -487,14 +486,14 @@ def simulate_effect_on_block(name, effect_list, start_frame=0):
 
 
 def simulate_on_block(move_list, effect_list):
-    hit_simulations = {}
+    hit_simulations = OrderedDict()
     for moveName in move_list:
         move = move_list[moveName]
         hit_simulations[moveName] = combine_with_effects_on_block(move, effect_list)
     return hit_simulations
 
 
-def calc_values_for_subroutine(frame_chunks):
+def calc_values_for_subroutine(frame_chunks, superflash_start = None, superflash_duration = 0):
     startup = 0
     middle = ""
     recovery = ""
@@ -531,6 +530,16 @@ def calc_values_for_subroutine(frame_chunks):
         if value[1] != 0:
             cleaned_list.append([frame_counter, value[0], value[1], value[2]])
         frame_counter += value[0]
+
+    # account for superflash
+    if superflash_start > 0:
+        startup -= superflash_duration
+        post_flash_startup = startup-superflash_start
+        post_flash_startup = 0 if post_flash_startup < 0 else post_flash_startup
+        startup = str(superflash_start) + "+" + str(superflash_duration) + "Flash+" + str(post_flash_startup)
+    else:
+        startup = str(startup)
+
     return startup, middle, recovery, duration_on_whiff, duration_on_block, last_frame_of_blockstun, cleaned_list
 
 
@@ -568,6 +577,8 @@ def combine_with_effects_on_block(move, effect_list):
     new_move.frame_chunks = subroutine_calls[0]
     new_move.landing_recovery = override_landing_recovery \
         if override_landing_recovery is not None else move.landing_recovery
+    new_move.superflash_start = move.superflash_start
+    new_move.superflash_duration = move.superflash_duration
     if len(subroutine_calls) > 1:
         new_move.additional_chunks = subroutine_calls[1:]
     return new_move
@@ -579,7 +590,7 @@ def write_file(moves_on_block, target):
 
         target.write(moveName + "\n")
         startup, middle, recovery, total_duration, duration_on_block, last_blockstun_frame, inv_list = \
-            calc_values_for_subroutine(move_on_block.frame_chunks)
+            calc_values_for_subroutine(move_on_block.frame_chunks, move_on_block.superflash_start, move_on_block.superflash_duration)
         subroutine_block_timelines = []
         for subroutine in move_on_block.additional_chunks:
             result = calc_values_for_subroutine(subroutine)
@@ -632,13 +643,13 @@ def get_inv_attr_text(attr):
 
 def main():
     # Parse effects
-    source_dir = "."
-    entry = "testfileea"
+    source_dir = "./output"
+    entry = "scr_besea.py"
     effect_source = open(source_dir + "/" + entry, "r")
     effect_list = OrderedDict()
     effect_list = parse_move_file(effect_source, effect_list, effect_list)
     # Parse moves
-    entry = "testfile"
+    entry = "scr_bes.py"
     char_source = open(source_dir + "/" + entry, "r")
     char_target = open(entry + "_out.txt", "w")
     move_list = OrderedDict()

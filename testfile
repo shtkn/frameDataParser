@@ -197,3 +197,168 @@ def ShotB_2nd():
     Recovery()
     sprite('es400_23', 3)	# 37-39
     sprite('es400_24', 3)	# 40-42
+
+
+@State
+def UltimateAssault():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingDD()
+        AttackLevel_(4)
+        Damage(2500)
+        AttackP1(80)
+        AttackP2(100)
+        AirHitstunAnimation(0)
+        Unknown9154(60)
+        Unknown11056(0)
+        Unknown11069('UltimateAssault')
+        Unknown11064(1)
+        Unknown30048(1)
+        Unknown23055('')
+
+        def upon_12():
+            clearUponHandler(12)
+            Unknown13024(0)
+            Unknown21005(1)
+            Unknown13021(1)
+            sendToLabel(0)
+            Unknown21015('65733230335f65666641746b00000000000000000000000000000000000000006700000000000000')
+            Unknown21015('65733231335f65666641746b00000000000000000000000000000000000000006700000000000000')
+            Unknown21015('65733233335f65666641746b00000000000000000000000000000000000000006700000000000000')
+            Unknown21015('65733235335f65666641746b00000000000000000000000000000000000000006700000000000000')
+
+        def upon_STATE_END():
+            Unknown26('esef_431Camera')
+            Unknown3001(255)
+            Unknown3004(0)
+
+        def upon_3():
+            if (not SLOT_158):
+                clearUponHandler(3)
+                Unknown26('esef_431Camera')
+    sprite('es431_00', 2)	# 1-2
+    setInvincible(1)
+    sprite('es431_01', 1)	# 3-3
+    sprite('es431_01', 3)	# 4-6
+    Unknown2036(40, -1, 0)
+    Unknown2058(-10000)
+    Unknown30080('')
+    sprite('es431_02', 4)	# 7-10
+    sprite('es431_03', 16)	# 11-26
+    GFX_0('esef_431Eff', -1)
+    tag_voice(1, 'bes252_0', 'bes252_1', '', '')
+    sprite('es431_04', 6)	# 27-32
+    sprite('es431_05', 6)	# 33-38
+    sprite('es431_06', 6)	# 39-44
+    sprite('es431_07', 5)	# 45-49
+    sprite('es431_08', 3)	# 50-52
+    Unknown21015('657365665f3433314566660000000000000000000000000000000000000000006800000000000000')
+    Unknown3029(1)
+    physicsXImpulse(15000)
+    physicsYImpulse(18000)
+    SFX_3('esse_04')
+    SFX_0('000_airdash_0')
+    sprite('es431_09', 3)	# 53-55	 **attackbox here**
+    Unknown1019(700)
+    physicsYImpulse(0)
+    sprite('es431_10', 3)	# 56-58	 **attackbox here**
+    sprite('es431_09', 3)	# 59-61	 **attackbox here**
+    Unknown21015('657365665f3433314566660000000000000000000000000000000000000000006900000000000000')
+    sprite('es431_11', 4)	# 62-65
+    setInvincible(0)
+    Unknown1019(70)
+    teleportRelativeY(0)
+    sprite('es110_03ex00', 4)	# 66-69
+    Unknown1019(70)
+    sprite('es110_04ex00', 4)	# 70-73
+    Unknown1019(70)
+    sprite('es110_05ex00', 4)	# 74-77
+    Unknown1019(70)
+    sprite('es110_06ex00', 4)	# 78-81
+    Unknown1019(70)
+    sprite('es110_07ex00', 4)	# 82-85
+    Unknown1084(1)
+    Unknown3029(0)
+    ExitState()
+    label(0)
+    sprite('es431_12', 5)	# 86-90
+    Unknown21015('657365665f3433314566660000000000000000000000000000000000000000006900000000000000')
+    Unknown1019(50)
+    sprite('es431_13', 5)	# 91-95
+    Unknown1019(50)
+    sprite('es431_14', 5)	# 96-100
+    Unknown2017(0)
+    Unknown1019(50)
+    sprite('es431_15', 5)	# 101-105
+    Unknown1019(50)
+    Unknown3004(-8)
+    sprite('es431_16', 5)	# 106-110
+    sprite('es431_17', 5)	# 111-115
+    GFX_0('esef_431Eff2', -1)
+    SFX_3('esse_09')
+    SFX_3('esse_09')
+    tag_voice(0, 'bes253_0', 'bes253_1', '', '')
+    sprite('es431_18', 3)	# 116-118	 **attackbox here**
+    Unknown3029(0)
+    Unknown1019(0)
+    teleportRelativeY(0)
+    Unknown3001(0)
+    Unknown3004(0)
+    sprite('es431_18', 9)	# 119-127	 **attackbox here**
+    GFX_0('esef_431EffSlash', -1)
+    GFX_0('esef_431Camera', -1)
+    GFX_0('esef_431EffEsRay', 100)
+    Unknown2015(50)
+    physicsXImpulse(96000)
+    Unknown1028(-8000)
+    Unknown3004(42)
+    Damage(4300)
+    Unknown11091(33)
+    AttackP2(60)
+    Hitstop(0)
+    GroundedHitstunAnimation(2)
+    AirHitstunAnimation(2)
+    PushbackX(-30000)
+    Unknown9130(50)
+    Unknown9142(200)
+    Unknown9132(50)
+    Unknown9144(200)
+    Unknown9016(1)
+    Unknown11023(1)
+    Unknown11069('')
+    Unknown11064(0)
+    Unknown11066(1)
+    Unknown11084(1)
+    Unknown13024(1)
+    RefreshMultihit()
+    sprite('es431_18', 3)	# 128-130	 **attackbox here**
+    Unknown2017(1)
+    Unknown2015(-1)
+    GFX_0('esef_431EffScrew', -1)
+    Unknown3001(255)
+    Unknown3004(0)
+    Unknown1084(1)
+    sprite('es431_19', 2)	# 131-132	 **attackbox here**
+    sprite('es431_20', 2)	# 133-134	 **attackbox here**
+    sprite('es431_21', 2)	# 135-136	 **attackbox here**
+    sprite('es431_22', 2)	# 137-138	 **attackbox here**
+    sprite('es431_19', 2)	# 139-140	 **attackbox here**
+    sprite('es431_20', 2)	# 141-142	 **attackbox here**
+    sprite('es431_21', 2)	# 143-144	 **attackbox here**
+    sprite('es431_22', 2)	# 145-146	 **attackbox here**
+    sprite('es431_19', 3)	# 147-149	 **attackbox here**
+    sprite('es431_20', 3)	# 150-152	 **attackbox here**
+    sprite('es431_21', 3)	# 153-155	 **attackbox here**
+    sprite('es431_22', 3)	# 156-158	 **attackbox here**
+    sprite('es431_19', 4)	# 159-162	 **attackbox here**
+    sprite('es431_20', 4)	# 163-166	 **attackbox here**
+    sprite('es431_21', 4)	# 167-170	 **attackbox here**
+    sprite('es431_22', 4)	# 171-174	 **attackbox here**
+    sprite('es431_19', 4)	# 175-178	 **attackbox here**
+    sprite('es431_20', 4)	# 179-182	 **attackbox here**
+    sprite('es431_21', 4)	# 183-186	 **attackbox here**
+    sprite('es431_22', 3)	# 187-189	 **attackbox here**
+    sprite('es431_22', 1)	# 190-190	 **attackbox here**
+    Unknown26('esef_431Camera')
+    sprite('es431_23', 5)	# 191-195
+    sprite('es431_24', 5)	# 196-200
