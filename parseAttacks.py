@@ -140,6 +140,21 @@ class SubroutineCall(AbstractChunk):
         return not self.__eq__(other)
 
 
+class SuperFlash(AbstractChunk):
+    def __init__(self, duration):
+        AbstractChunk.__init__(self, duration)
+
+    def __eq__(self, other):
+        if not isinstance(other, SuperFlash):
+            return False
+        return self.duration == other.duration
+
+    def __ne__(self, other):
+        if not isinstance(other, SuperFlash):
+            return False
+        return not self.__eq__(other)
+
+
 class Move:
     def __init__(self):
         self.frame_chunks = []
@@ -479,13 +494,14 @@ def simulate_on_block(move_list, effect_list):
     return hit_simulations
 
 
-def calc_frame_adv_for_subroutine(frame_chunks):
+def calc_values_for_subroutine(frame_chunks):
     startup = 0
     middle = ""
     recovery = ""
     duration_on_whiff = 0
     duration_on_block = 0
     last_frame_of_blockstun = 0
+    inv_list = [[0, 0, [False, False, False, False, False]]]    # duration, type, attributes
     for idx, chunk in enumerate(frame_chunks):
         if idx == 0 and len(frame_chunks) > 1:
             startup = chunk.duration + 1
@@ -501,10 +517,21 @@ def calc_frame_adv_for_subroutine(frame_chunks):
                     middle += "(" + str(chunk.duration) + ")"
                 else:
                     recovery += str(chunk.duration)
+        if chunk.inv_type == inv_list[-1][1] and chunk.inv_attr == inv_list[-1][2]:
+            inv_list[-1][0] += chunk.duration
+        else:
+            inv_list.append([chunk.duration, chunk.inv_type, chunk.inv_attr])
         duration_on_whiff += chunk.duration
         duration_on_block += chunk.duration
 
-    return startup, middle, recovery, duration_on_whiff, duration_on_block, last_frame_of_blockstun
+    # clean up the inv array
+    cleaned_list = []
+    frame_counter = 1
+    for value in inv_list:
+        if value[1] != 0:
+            cleaned_list.append([frame_counter, value[0], value[1], value[2]])
+        frame_counter += value[0]
+    return startup, middle, recovery, duration_on_whiff, duration_on_block, last_frame_of_blockstun, cleaned_list
 
 
 def combine_with_effects_on_block(move, effect_list):
@@ -546,17 +573,16 @@ def combine_with_effects_on_block(move, effect_list):
     return new_move
 
 
-def write_file(moves_on_block, moves_on_whiff, target):
+def write_file(moves_on_block, target):
     for moveName in moves_on_block:
         move_on_block = moves_on_block[moveName]
-        move_on_whiff = moves_on_whiff[moveName]
 
         target.write(moveName + "\n")
-        startup, middle, recovery, total_duration, duration_on_block, last_blockstun_frame = \
-            calc_frame_adv_for_subroutine(move_on_block.frame_chunks)
+        startup, middle, recovery, total_duration, duration_on_block, last_blockstun_frame, inv_list = \
+            calc_values_for_subroutine(move_on_block.frame_chunks)
         subroutine_block_timelines = []
         for subroutine in move_on_block.additional_chunks:
-            result = calc_frame_adv_for_subroutine(subroutine)
+            result = calc_values_for_subroutine(subroutine)
             subroutine_block_timelines.append(result)
         if startup > 0:
             target.write(str(startup) + " " + middle + " " + recovery)
@@ -577,7 +603,31 @@ def write_file(moves_on_block, moves_on_whiff, target):
         if last_blockstun_frame != 0:
             target.write("\nlast blockstun: " + str(last_blockstun_frame))
             target.write(" diff: " + str(last_blockstun_frame - duration_on_block))
+        for inv in inv_list:
+            inv_type = "Guard" if inv[2] == 2 else ""
+            inv_attr = get_inv_attr_text(inv[3])
+
+            target.write("\n" + str(inv[0]) + "-" + str(inv[0] + inv[1] - 1) + " " + inv_type + " " + inv_attr)
+
         target.write("\n")
+
+
+def get_inv_attr_text(attr):
+    return_value = ""
+    if attr[0] and attr[1] and attr[2] and attr[3] and attr[4]:
+        return_value = "All"
+    else:
+        if attr[0]:
+            return_value += "H"
+        if attr[1]:
+            return_value += "B"
+        if attr[2]:
+            return_value += "F"
+        if attr[3]:
+            return_value += "P"
+        if attr[4]:
+            return_value += "T"
+    return return_value
 
 
 def main():
@@ -596,7 +646,7 @@ def main():
 
     hit_simulations = simulate_on_block(move_list, effect_list)
 
-    write_file(hit_simulations, move_list, char_target)
+    write_file(hit_simulations, char_target)
     print "DONE"
 
 
