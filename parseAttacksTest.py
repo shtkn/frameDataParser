@@ -652,6 +652,6 @@ def NmlAtk5X():
                                  AttackFrameChunk(5, 16, 11),
                                  WaitFrameChunk(9)
                                  ]
-        expected.superflash_start = 3
+        expected.superflash_start = 2
         expected.superflash_duration = 2
         self.assertEqual(expected, move_list["NmlAtk5X"])

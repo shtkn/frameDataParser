@@ -8,7 +8,6 @@ class State:
         self.spriteLine = ""
         self.extraLines = ""
         self.duration = 0
-        self.totalDuration = 0
         self.isAttackBox = False
         self.disableAttackboxes = False
         self.disableAttackboxesThisFrame = False
@@ -33,7 +32,6 @@ class State:
         self.isAttackBox = False
         if is_new_move:
             self.moveName = ""
-            self.totalDuration = 0
             self.disableAttackboxes = False
             self.isNewHit = True
             self.blockstun = 0
@@ -359,7 +357,10 @@ def parse_move_file(source, move_list, effect_list):
             elif "Unknown2036(" in line:
                 flash_start = line.index("(") + 1
                 flash_end = line.index(",")
-                state.superflash_start = state.duration+1
+                state.superflash_start = 1
+                for chunk in frame_chunks:
+                    if isinstance(chunk, AbstractChunk):
+                        state.superflash_start += chunk.duration
                 state.superflash_duration = int(line[flash_start:flash_end])
                 # superfreeze
             elif "Unknown22019(" in line:
@@ -376,6 +377,12 @@ def parse_move_file(source, move_list, effect_list):
             elif "ExitState()" in line:
                 # we assume all the lines above this are for the move on block/whiff. Anything after is on hit
                 state.exitState = True
+            elif "Unknown17025(" in line or "Unknown17024(" in line:   # i think this is attackDefaultsReversalAction()
+                state.invType = 0
+                state.isInv = True
+            elif "Unknown30072(" in line: # i think this is attackDefaults5C()? Basically Attack Level 3
+                state.blockstun = 16
+                state.hitstop = 11
 
     if state.isSubroutine:
         subroutine = Subroutine()
@@ -590,10 +597,14 @@ def write_file(moves_on_block, target):
 
         target.write(moveName + "\n")
         startup, middle, recovery, total_duration, duration_on_block, last_blockstun_frame, inv_list = \
-            calc_values_for_subroutine(move_on_block.frame_chunks, move_on_block.superflash_start, move_on_block.superflash_duration)
+            calc_values_for_subroutine(move_on_block.frame_chunks,
+                                       move_on_block.superflash_start,
+                                       move_on_block.superflash_duration)
         subroutine_block_timelines = []
         for subroutine in move_on_block.additional_chunks:
-            result = calc_values_for_subroutine(subroutine)
+            result = calc_values_for_subroutine(subroutine,
+                                                move_on_block.superflash_start,
+                                                move_on_block.superflash_duration)
             subroutine_block_timelines.append(result)
         if startup > 0:
             target.write(str(startup) + " " + middle + " " + recovery)
@@ -601,7 +612,11 @@ def write_file(moves_on_block, target):
             target.write(recovery)
         if move_on_block.landing_recovery > 0:
             target.write("+" + str(move_on_block.landing_recovery) + "L")
-        target.write(". Duration: " + str(total_duration))
+        duration_str = str(total_duration)
+        if move_on_block.superflash_start is not None:
+            duration_str = str(move_on_block.superflash_start) + "+" + str(move_on_block.superflash_duration) + \
+                           "Flash+" + str(total_duration - move_on_block.superflash_duration)
+        target.write(". Duration: " + duration_str)
         if move_on_block.landing_recovery > 0:
             target.write("+" + str(move_on_block.landing_recovery) + "L")
         target.write("\n")
@@ -615,10 +630,10 @@ def write_file(moves_on_block, target):
             target.write("\nlast blockstun: " + str(last_blockstun_frame))
             target.write(" diff: " + str(last_blockstun_frame - duration_on_block))
         for inv in inv_list:
-            inv_type = "Guard" if inv[2] == 2 else ""
+            inv_type = " Guard" if inv[2] == 2 else ""
             inv_attr = get_inv_attr_text(inv[3])
 
-            target.write("\n" + str(inv[0]) + "-" + str(inv[0] + inv[1] - 1) + " " + inv_type + " " + inv_attr)
+            target.write("\n" + str(inv[0]) + "-" + str(inv[0] + inv[1] - 1) + inv_type + " " + inv_attr)
 
         target.write("\n")
 
@@ -642,23 +657,24 @@ def get_inv_attr_text(attr):
 
 
 def main():
-    # Parse effects
-    source_dir = "./output"
-    entry = "scr_besea.py"
-    effect_source = open(source_dir + "/" + entry, "r")
-    effect_list = OrderedDict()
-    effect_list = parse_move_file(effect_source, effect_list, effect_list)
-    # Parse moves
-    entry = "scr_bes.py"
-    char_source = open(source_dir + "/" + entry, "r")
-    char_target = open(entry + "_out.txt", "w")
-    move_list = OrderedDict()
-    move_list = parse_move_file(char_source, move_list, effect_list)
+    file_list = ["scr_bes"]
+    # file_list = ["testfile"]
+    for file_name in file_list:
+        # Parse effects
+        source_dir = "./output"
+        effect_source = open(source_dir + "/" + file_name + "ea.py", "r")
+        effect_list = OrderedDict()
+        effect_list = parse_move_file(effect_source, effect_list, effect_list)
+        # Parse moves
+        char_source = open(source_dir + "/" + file_name + ".py", "r")
+        char_target = open(file_name + "_out.txt", "w")
+        move_list = OrderedDict()
+        move_list = parse_move_file(char_source, move_list, effect_list)
 
-    hit_simulations = simulate_on_block(move_list, effect_list)
+        hit_simulations = simulate_on_block(move_list, effect_list)
 
-    write_file(hit_simulations, char_target)
-    print "DONE"
+        write_file(hit_simulations, char_target)
+        print "DONE"
 
 
 if __name__ == "__main__":
