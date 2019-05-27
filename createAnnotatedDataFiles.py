@@ -18,7 +18,7 @@ for line in contents:
         # print line.strip()
 # print charDictionarySet.keys()
 
-outputDir = "./output/"
+outputDir = "./annotated/"
 inputDir = "./input/"
 
 fileList = os.listdir(inputDir)

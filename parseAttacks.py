@@ -1,4 +1,5 @@
 import copy
+import os
 from collections import OrderedDict
 
 
@@ -657,17 +658,31 @@ def get_inv_attr_text(attr):
 
 
 def main():
-    file_list = ["scr_bes"]
+    file_list = [
+            "scr_ahe",
+            "scr_baz", "scr_bes", "scr_bha", "scr_bhz", "scr_biz", "scr_bjb", "scr_bjn", "scr_bma", "scr_bmk",
+            "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg",
+            "scr_pag", "scr_pak", "scr_pbc", "scr_pce", "scr_pka", "scr_pku", "scr_pla", "scr_pmi", "scr_pna",
+            "scr_pyo", "scr_pyu",
+            "scr_rbl", "scr_rrb", "scr_rwi", "scr_ryn",
+            "scr_uca", "scr_ugo", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
+            "scr_uwa", "scr_uyu"]
     # file_list = ["testfile"]
     for file_name in file_list:
         # Parse effects
-        source_dir = "./output"
+        source_dir = "./annotated"
+        if not os.path.isfile(source_dir + "/" + file_name + "ea.py") or \
+                not os.path.isfile(source_dir + "/" + file_name + ".py"):
+            print "file" + source_dir + "/" + file_name + "ea.py or " + \
+                  file_name + ".py does not exist"
+            continue
         effect_source = open(source_dir + "/" + file_name + "ea.py", "r")
         effect_list = OrderedDict()
         effect_list = parse_move_file(effect_source, effect_list, effect_list)
         # Parse moves
         char_source = open(source_dir + "/" + file_name + ".py", "r")
-        char_target = open(file_name + "_out.txt", "w")
+        target_dir = "./parsedAttacks"
+        char_target = open(target_dir + "/" + file_name + "_out.txt", "w")
         move_list = OrderedDict()
         move_list = parse_move_file(char_source, move_list, effect_list)
 
