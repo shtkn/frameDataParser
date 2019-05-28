@@ -20,8 +20,12 @@ class State:
         self.landingRecovery = 0
         self.isSubroutine = False
         self.damage = 0
+        self.P1 = 100
+        self.P2 = 100
+        self.P2Once = False
+        self.minDamage = 0
         self.isInv = False
-        self.invType = 0    # Inv or Guard
+        self.invType = 0  # Inv or Guard
         self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
         self.superflash_start = None
         self.superflash_duration = 0
@@ -42,6 +46,9 @@ class State:
             self.landingRecovery = 0
             self.isSubroutine = False
             self.damage = 0
+            self.P1 = 100
+            self.P2 = 100
+            self.P2Once = False
             self.isInv = False
             self.invType = 0
             self.invAttr = [True, True, True, True, True]
@@ -60,8 +67,9 @@ class Abstract:
 
 class AbstractChunk(Abstract):
     def __init__(self, duration=0):
+        Abstract.__init__()
         self.duration = duration
-        self.inv_type = 0    # 0 = no inv, 1 = inv, 2 = guard
+        self.inv_type = 0  # 0 = no inv, 1 = inv, 2 = guard
         self.inv_attr = [False, False, False, False, False]
 
     def __str__(self):
@@ -82,15 +90,19 @@ class AttackFrameChunk(AbstractChunk):
     def __init__(self, duration=0, blockstun=0, hitstop=0, additional_hitstop_opponent=0, is_new_hit=True):
         AbstractChunk.__init__(self, duration)
         self.blockstun = blockstun
-        self.isNewHit = is_new_hit
+        self.is_new_hit = is_new_hit
         self.hitstop = hitstop
         self.additionalHitstopOpponent = additional_hitstop_opponent
         self.damage = 0
+        self.p1 = 100
+        self.p2 = 100
+        self.p2Once = False
+        self.minDamage = 0
 
     def __str__(self):
         to_return = str(self.duration)
         to_return += " Active"
-        to_return += " New Hit " + str(self.isNewHit)
+        to_return += " New Hit " + str(self.is_new_hit)
         to_return += " Blockstun " + str(self.blockstun)
         to_return += " Hitstop " + str(self.hitstop) + "/+" + str(self.additionalHitstopOpponent)
         return to_return
@@ -98,13 +110,11 @@ class AttackFrameChunk(AbstractChunk):
     def __eq__(self, other):
         if not isinstance(other, AttackFrameChunk):
             return False
-        return self.duration == other.duration and \
-            self.blockstun == other.blockstun and \
-            self.isNewHit == other.isNewHit and \
-            self.hitstop == other.hitstop and \
+        return self.duration == other.duration and self.blockstun == other.blockstun and \
+            self.is_new_hit == other.is_new_hit and self.hitstop == other.hitstop and \
             self.additionalHitstopOpponent == other.additionalHitstopOpponent and \
-            self.damage == other.damage and \
-            self.duration == other.duration and self.inv_type == other.inv_type and self.inv_attr == other.inv_attr
+            self.damage == other.damage and self.duration == other.duration and \
+            self.inv_type == other.inv_type and self.inv_attr == other.inv_attr
 
     def __ne__(self, other):
         if not isinstance(other, AttackFrameChunk):
@@ -173,7 +183,7 @@ class Move:
                 if self.additional_chunks[i][j] != other.additional_chunks[i][j]:
                     return False
         return self.landing_recovery == other.landing_recovery and self.superflash_start == other.superflash_start and \
-               self.superflash_duration == self.superflash_duration
+            self.superflash_duration == self.superflash_duration
 
     def __ne__(self, other):
         if not isinstance(other, Move):
@@ -192,7 +202,9 @@ class Subroutine:
     def __eq__(self, other):
         if not isinstance(other, Subroutine):
             return False
-        return self.damage == other.damage and self.blockstun == other.blockstun and self.hitstop == other.hitstop and \
+        return self.damage == other.damage and \
+            self.blockstun == other.blockstun and \
+            self.hitstop == other.hitstop and \
             self.additionalHitstopOpponent == other.additionalHitstopOpponent and \
             self.landingRecovery == other.landingRecovery
 
@@ -200,7 +212,7 @@ class Subroutine:
         if not isinstance(other, Subroutine):
             return False
         return not self.__eq__(other)
-    
+
 
 SPRITE_START = "    sprite('"
 SPRITE_MID = "', "
@@ -236,7 +248,7 @@ def consolidate_frame_chunks(chunk_list):
         chunk = chunk_list[i]
         if isinstance(prev_chunk, AttackFrameChunk) and isinstance(chunk, AttackFrameChunk) \
                 and has_same_inv(prev_chunk, chunk):
-            if chunk.isNewHit:
+            if chunk.is_new_hit:
                 new_chunk_list.append(prev_chunk)
                 prev_chunk = copy.copy(chunk)
             else:
@@ -273,7 +285,12 @@ def parse_move_file(source, move_list, effect_list):
                 if state.isInv:
                     chunk.inv_type = 1 if state.invType == 0 else 2
                     chunk.inv_attr = state.invAttr
-
+                if isinstance(chunk, AttackFrameChunk):
+                    chunk.damage = state.damage
+                    chunk.p1 = state.P1
+                    chunk.p2 = state.P2
+                    chunk.p2Once = state.P2Once
+                    chunk.minDamage = state.minDamage
                 frame_chunks.append(chunk)
 
                 move_list[state.moveName] = Move()
@@ -297,10 +314,14 @@ def parse_move_file(source, move_list, effect_list):
                 if state.isInv:
                     chunk.inv_type = 1 if state.invType == 0 else 2
                     chunk.inv_attr = state.invAttr
-
                 frame_chunks.append(chunk)
                 if isinstance(chunk, AttackFrameChunk):
                     state.isNewHit = False
+                    chunk.damage = state.damage
+                    chunk.p1 = state.P1
+                    chunk.p2 = state.P2
+                    chunk.p2Once = state.P2Once
+                    chunk.minDamage = state.minDamage
                 state.clear_values(False)
             state.duration = get_duration(line)
 
@@ -314,20 +335,29 @@ def parse_move_file(source, move_list, effect_list):
             elif "RefreshMultihit()" in line:  # counts as a new hit, end previous frames; start a  new one
                 state.isNewHit = True
             elif "AttackLevel_(" in line:  # get hitstun/blockstun values according to it's level
-                level = line[line.index("(")+1:line.index("(")+2]
+                level = line[line.index("(") + 1:line.index("(") + 2]
                 # print "LEVEL: " + level
                 # blockstun by level: 0: 9F, 1: 11F, 2: 13F, 3: 16F, 4: 18F, 5: 20F
                 # so blockstun = 0 * Level*2. If Level 3 or higher, blockstun + 1
-                state.blockstun = 9 + int(level)*2
+                state.blockstun = 9 + int(level) * 2
                 if int(level) >= 3:
                     state.blockstun += 1
                 # hitstop by level 0: 8F, 1: 9F, 2: 10F, 3: 11F, 4: 12F, 5: 13F
                 state.hitstop = 8 + int(level)
+                state.P2 = 65 + (int(level) * 5)
+            elif "AttackP1(" in line:
+                state.P1 = int(line[line.index("(") + 1:line.index(")")])
+            elif "AttackP2(" in line:
+                state.P2 = int(line[line.index("(") + 1:line.index(")")])
+            elif " Damage(" in line:
+                state.damage = int(line[line.index("(") + 1:line.index(")")])
+            elif "Unknown11092(" in line:
+                state.P2Once = line[line.index("(") + 1:line.index(")")] == "1"
             elif "Unknown11028(" in line:
-                state.blockstun = int(line[line.index("(")+1:line.index(")")])
+                state.blockstun = int(line[line.index("(") + 1:line.index(")")])
                 # print "Hardcoded blockstun: " + state.blockstun
             elif "Hitstop(" in line:
-                state.hitstop = int(line[line.index("(")+1:line.index(")")])
+                state.hitstop = int(line[line.index("(") + 1:line.index(")")])
                 # print "Hardcoded hitstop: " + state.hitstop
             elif "def " in line and len(state.moveName) < 1:
                 name_start = line.index("def ") + len(SPRITE_MID) + 1
@@ -371,17 +401,17 @@ def parse_move_file(source, move_list, effect_list):
             elif "setInvincible(" in line:
                 # active/deactivate invul
                 idx = line.index("(") + 1
-                state.isInv = line[idx: idx+1] == "1"
+                state.isInv = line[idx: idx + 1] == "1"
             elif "GuardPoint_(" in line:
                 idx = line.index("(") + 1
-                state.invType = int(line[idx: idx+1])
+                state.invType = int(line[idx: idx + 1])
             elif "ExitState()" in line:
                 # we assume all the lines above this are for the move on block/whiff. Anything after is on hit
                 state.exitState = True
-            elif "Unknown17025(" in line or "Unknown17024(" in line:   # i think this is attackDefaultsReversalAction()
+            elif "Unknown17025(" in line or "Unknown17024(" in line:  # i think this is attackDefaultsReversalAction()
                 state.invType = 0
                 state.isInv = True
-            elif "Unknown30072(" in line: # i think this is attackDefaults5C()? Basically Attack Level 3
+            elif "Unknown30072(" in line:  # i think this is attackDefaults5C()? Basically Attack Level 3
                 state.blockstun = 16
                 state.hitstop = 11
 
@@ -399,6 +429,12 @@ def parse_move_file(source, move_list, effect_list):
         if state.isInv:
             chunk.inv_type = 1 if state.invType == 0 else 2
             chunk.inv_attr = state.invAttr
+        if isinstance(chunk, AttackFrameChunk):
+            chunk.damage = state.damage
+            chunk.p1 = state.P1
+            chunk.p2 = state.P2
+            chunk.p2Once = state.P2Once
+            chunk.minDamage = state.minDamage
 
         frame_chunks.append(chunk)
 
@@ -501,14 +537,14 @@ def simulate_on_block(move_list, effect_list):
     return hit_simulations
 
 
-def calc_values_for_subroutine(frame_chunks, superflash_start = None, superflash_duration = 0):
+def calc_frames_for_subroutine(frame_chunks, superflash_start=None, superflash_duration=0):
     startup = 0
     middle = ""
     recovery = ""
     duration_on_whiff = 0
     duration_on_block = 0
     last_frame_of_blockstun = 0
-    inv_list = [[0, 0, [False, False, False, False, False]]]    # duration, type, attributes
+    inv_list = [[0, 0, [False, False, False, False, False]]]  # duration, type, attributes
     for idx, chunk in enumerate(frame_chunks):
         if idx == 0 and len(frame_chunks) > 1:
             startup = chunk.duration + 1
@@ -517,8 +553,11 @@ def calc_values_for_subroutine(frame_chunks, superflash_start = None, superflash
                 if len(middle) > 0 and middle[len(middle) - 1] != ")":
                     middle += ","
                 middle += str(chunk.duration)
-                last_frame_of_blockstun = duration_on_block + chunk.blockstun + chunk.hitstop + chunk.additionalHitstopOpponent + 1
+                last_frame_of_blockstun = duration_on_block + chunk.blockstun + chunk.hitstop + \
+                    chunk.additionalHitstopOpponent + 1
                 duration_on_block += chunk.hitstop
+            elif len(middle) < 1:
+                startup += chunk.duration
             else:
                 if idx < len(frame_chunks) - 1:
                     middle += "(" + str(chunk.duration) + ")"
@@ -542,13 +581,26 @@ def calc_values_for_subroutine(frame_chunks, superflash_start = None, superflash
     # account for superflash
     if superflash_start > 0:
         startup -= superflash_duration
-        post_flash_startup = startup-superflash_start
+        post_flash_startup = startup - superflash_start
         post_flash_startup = 0 if post_flash_startup < 0 else post_flash_startup
         startup = str(superflash_start) + "+" + str(superflash_duration) + "Flash+" + str(post_flash_startup)
     else:
         startup = str(startup)
 
     return startup, middle, recovery, duration_on_whiff, duration_on_block, last_frame_of_blockstun, cleaned_list
+
+
+def calc_damage_for_subroutine(move, effect_list):
+    damage_list = []
+    for chunk in move.frame_chunks:
+        if isinstance(chunk, AttackFrameChunk):
+            if chunk.is_new_hit:
+                damage_list.append([chunk.damage, chunk.p1, chunk.p2, chunk.p2Once, chunk.minDamage])
+        elif isinstance(chunk, SubroutineCall):
+            # calc_damage_for_subroutine(, effect_list)
+            damage_list.extend(calc_damage_for_subroutine(effect_list[chunk.name], effect_list))
+
+    return damage_list
 
 
 def combine_with_effects_on_block(move, effect_list):
@@ -598,12 +650,12 @@ def write_file(moves_on_block, target):
 
         target.write(moveName + "\n")
         startup, middle, recovery, total_duration, duration_on_block, last_blockstun_frame, inv_list = \
-            calc_values_for_subroutine(move_on_block.frame_chunks,
+            calc_frames_for_subroutine(move_on_block.frame_chunks,
                                        move_on_block.superflash_start,
                                        move_on_block.superflash_duration)
         subroutine_block_timelines = []
         for subroutine in move_on_block.additional_chunks:
-            result = calc_values_for_subroutine(subroutine,
+            result = calc_frames_for_subroutine(subroutine,
                                                 move_on_block.superflash_start,
                                                 move_on_block.superflash_duration)
             subroutine_block_timelines.append(result)
@@ -613,29 +665,23 @@ def write_file(moves_on_block, target):
             target.write(recovery)
         if move_on_block.landing_recovery > 0:
             target.write("+" + str(move_on_block.landing_recovery) + "L")
-        duration_str = str(total_duration)
-        if move_on_block.superflash_start is not None:
-            duration_str = str(move_on_block.superflash_start) + "+" + str(move_on_block.superflash_duration) + \
-                           "Flash+" + str(total_duration - move_on_block.superflash_duration)
-        target.write(". Duration: " + duration_str)
+        # target.write(". Duration: " + duration_str)
         if move_on_block.landing_recovery > 0:
             target.write("+" + str(move_on_block.landing_recovery) + "L")
-        target.write("\n")
-        target.write("\tduration on block: " + str(duration_on_block))
+        target.write("\n\tduration on block: " + str(duration_on_block))
         if len(subroutine_block_timelines) > 0:
             for result in subroutine_block_timelines:
                 last_blockstun_frame = result[5] if result[5] > last_blockstun_frame else last_blockstun_frame
                 target.write("\n\tstartup: " + str(result[0]))
                 target.write(" blockstun: " + str(last_blockstun_frame))
         if last_blockstun_frame != 0:
-            target.write("\nlast blockstun: " + str(last_blockstun_frame))
+            target.write("\n\tlast blockstun: " + str(last_blockstun_frame))
             target.write(" diff: " + str(last_blockstun_frame - duration_on_block))
         for inv in inv_list:
             inv_type = " Guard" if inv[2] == 2 else ""
             inv_attr = get_inv_attr_text(inv[3])
 
-            target.write("\n" + str(inv[0]) + "-" + str(inv[0] + inv[1] - 1) + inv_type + " " + inv_attr)
-
+            target.write("\n\t" + str(inv[0]) + "-" + str(inv[0] + inv[1] - 1) + inv_type + " " + inv_attr)
         target.write("\n")
 
 
@@ -659,14 +705,20 @@ def get_inv_attr_text(attr):
 
 def main():
     file_list = [
-            "scr_ahe",
-            "scr_baz", "scr_bes", "scr_bha", "scr_bhz", "scr_biz", "scr_bjb", "scr_bjn", "scr_bma", "scr_bmk",
-            "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg",
-            "scr_pag", "scr_pak", "scr_pbc", "scr_pce", "scr_pka", "scr_pku", "scr_pla", "scr_pmi", "scr_pna",
-            "scr_pyo", "scr_pyu",
-            "scr_rbl", "scr_rrb", "scr_rwi", "scr_ryn",
-            "scr_uca", "scr_ugo", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
-            "scr_uwa", "scr_uyu"]
+        # Arcana Heart
+        "scr_ahe",
+        # BlazBlue
+        "scr_baz", "scr_bes", "scr_bha", "scr_bhz", "scr_biz", "scr_bjb", "scr_bjn", "scr_bma", "scr_bmk",
+        "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg",
+        # Persona
+        "scr_pag", "scr_pak", "scr_pbc", "scr_pce", "scr_pka", "scr_pku", "scr_pla", "scr_pmi", "scr_pna",
+        "scr_pyo", "scr_pyu",
+        # RWBY
+        "scr_rbl", "scr_rrb", "scr_rwi", "scr_ryn",
+        # Under Night
+        "scr_uca", "scr_ugo", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
+        "scr_uwa", "scr_uyu"
+    ]
     # file_list = ["testfile"]
     for file_name in file_list:
         # Parse effects
