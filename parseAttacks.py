@@ -67,7 +67,7 @@ class Abstract:
 
 class AbstractChunk(Abstract):
     def __init__(self, duration=0):
-        Abstract.__init__()
+        Abstract.__init__(self)
         self.duration = duration
         self.inv_type = 0  # 0 = no inv, 1 = inv, 2 = guard
         self.inv_attr = [False, False, False, False, False]
@@ -659,10 +659,10 @@ def write_file(moves_on_block, target):
                                                 move_on_block.superflash_start,
                                                 move_on_block.superflash_duration)
             subroutine_block_timelines.append(result)
-        if startup > 0:
+        if startup is not "0":
             target.write(str(startup) + " " + middle + " " + recovery)
         else:
-            target.write(recovery)
+            target.write("Total: " + recovery)
         if move_on_block.landing_recovery > 0:
             target.write("+" + str(move_on_block.landing_recovery) + "L")
         # target.write(". Duration: " + duration_str)
