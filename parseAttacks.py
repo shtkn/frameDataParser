@@ -60,6 +60,26 @@ class State:
         return self.isAttackBox and not (self.disableAttackboxes or self.disableAttackboxesThisFrame)
 
 
+class Damage:
+    def __init__(self, damage, p1=100, p2=100, min_damage=0, p2once=False):
+        self.damage = damage
+        self.p1 = p1
+        self.p2 = p2
+        self.minDamage = min_damage
+        self.p2Once = p2once
+
+    def __eq__(self, other):
+        if not isinstance(other, Damage):
+            return False
+        return self.damage == other.damage and self.p1 == other.p1 and self.p2 == other.p2 and \
+            self.minDamage == other.minDamage and self.p2Once == other.p2Once
+
+    def __ne__(self, other):
+        if not isinstance(other, Damage):
+            return False
+        return not self.__eq__(other)
+
+
 class Abstract:
     def __init__(self):
         pass
@@ -93,11 +113,7 @@ class AttackFrameChunk(AbstractChunk):
         self.is_new_hit = is_new_hit
         self.hitstop = hitstop
         self.additionalHitstopOpponent = additional_hitstop_opponent
-        self.damage = 0
-        self.p1 = 100
-        self.p2 = 100
-        self.p2Once = False
-        self.minDamage = 0
+        self.damage = Damage(0)
 
     def __str__(self):
         to_return = str(self.duration)
@@ -317,11 +333,7 @@ def parse_move_file(source, move_list, effect_list):
                 frame_chunks.append(chunk)
                 if isinstance(chunk, AttackFrameChunk):
                     state.isNewHit = False
-                    chunk.damage = state.damage
-                    chunk.p1 = state.P1
-                    chunk.p2 = state.P2
-                    chunk.p2Once = state.P2Once
-                    chunk.minDamage = state.minDamage
+                    chunk.damage = Damage(state.damage, state.P1, state.P2, state.minDamage, state.P2Once)
                 state.clear_values(False)
             state.duration = get_duration(line)
 
@@ -430,11 +442,7 @@ def parse_move_file(source, move_list, effect_list):
             chunk.inv_type = 1 if state.invType == 0 else 2
             chunk.inv_attr = state.invAttr
         if isinstance(chunk, AttackFrameChunk):
-            chunk.damage = state.damage
-            chunk.p1 = state.P1
-            chunk.p2 = state.P2
-            chunk.p2Once = state.P2Once
-            chunk.minDamage = state.minDamage
+            chunk.damage = Damage(state.damage, state.P1, state.P2, state.minDamage, state.P2Once)
 
         frame_chunks.append(chunk)
 
@@ -595,7 +603,7 @@ def calc_damage_for_subroutine(move, effect_list):
     for chunk in move.frame_chunks:
         if isinstance(chunk, AttackFrameChunk):
             if chunk.is_new_hit:
-                damage_list.append([chunk.damage, chunk.p1, chunk.p2, chunk.p2Once, chunk.minDamage])
+                damage_list.append(chunk.damage)
         elif isinstance(chunk, SubroutineCall):
             # calc_damage_for_subroutine(, effect_list)
             damage_list.extend(calc_damage_for_subroutine(effect_list[chunk.name], effect_list))

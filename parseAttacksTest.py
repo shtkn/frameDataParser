@@ -233,7 +233,6 @@ def NmlAtk5X():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
-        AttackLevel_(3)
         AirPushbackY(10000)
         Unknown9016(1)
         HitOrBlockCancel('NmlAtk2A')
@@ -261,7 +260,7 @@ def NmlAtk5X():
         expected = Move()
         expected.frame_chunks = [WaitFrameChunk(7),
                                  SubroutineCall("esef_201"),
-                                 AttackFrameChunk(5, 16, 11),
+                                 AttackFrameChunk(5, 0, 0),
                                  WaitFrameChunk(9)
                                  ]
         self.assertEqual(move_list["NmlAtk5X"], expected)
@@ -303,7 +302,6 @@ def NmlAtk5X():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
-        AttackLevel_(3)
     sprite('es201_00', 1)	# 1-1
     sprite('es201_01', 2)	# 2-3
     sprite('es201_02', 2)	# 4-5
@@ -324,8 +322,8 @@ def NmlAtk5X():
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
         expected.frame_chunks = [WaitFrameChunk(7),
-                                 AttackFrameChunk(2, 16, 11),
-                                 AttackFrameChunk(3, 16, 11),
+                                 AttackFrameChunk(2, 0, 0),
+                                 AttackFrameChunk(3, 0, 0),
                                  WaitFrameChunk(9)
                                  ]
         self.assertEqual(move_list["NmlAtk5X"], expected)
@@ -336,7 +334,6 @@ def NmlAtk5X():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
-        AttackLevel_(3)
     sprite('es201_00', 1)	# 1-1
     sprite('es201_01', 2)	# 2-3
     sprite('es201_02', 2)	# 4-5
@@ -356,7 +353,7 @@ def NmlAtk5X():
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
         expected.frame_chunks = [WaitFrameChunk(7),
-                                 AttackFrameChunk(5, 16, 11),
+                                 AttackFrameChunk(5, 0, 0),
                                  WaitFrameChunk(9)
                                  ]
         self.assertEqual(move_list["NmlAtk5X"], expected)
@@ -367,7 +364,6 @@ def NmlAtk5X():
 
         def upon_IMMEDIATE():
             AttackDefaults_StandingNormal()
-            AttackLevel_(3)
             AirPushbackY(10000)
             Unknown9016(1)
             HitOrBlockCancel('NmlAtk2A')
@@ -394,7 +390,7 @@ def NmlAtk5X():
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
         expected.frame_chunks = [WaitFrameChunk(7),
-                                 AttackFrameChunk(5, 16, 11),
+                                 AttackFrameChunk(5, 0, 0),
                                  WaitFrameChunk(6)
                                  ]
         self.assertEqual(expected, move_list["NmlAtk5X"])
@@ -405,7 +401,6 @@ def NmlAtk5X():
 
         def upon_IMMEDIATE():
             AttackDefaults_StandingNormal()
-            AttackLevel_(3)
             AirPushbackY(10000)
             Unknown9016(1)
             HitOrBlockCancel('NmlAtk2A')
@@ -432,7 +427,6 @@ def NmlAtk5X():
 
         def upon_IMMEDIATE():
             AttackDefaults_StandingNormal()
-            AttackLevel_(3)
             AirPushbackY(10000)
             Unknown9016(1)
             HitOrBlockCancel('NmlAtk2A')
@@ -459,7 +453,7 @@ def NmlAtk5X():
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
         expected.frame_chunks = [WaitFrameChunk(7),
-                                 AttackFrameChunk(5, 16, 11),
+                                 AttackFrameChunk(5, 0, 0),
                                  WaitFrameChunk(6)
                                  ]
         self.assertEqual(move_list["NmlAtk5X"], expected)
@@ -467,7 +461,7 @@ def NmlAtk5X():
         self.assertTrue("NmlAtk6X" in move_list)
         expected = Move()
         expected.frame_chunks = [WaitFrameChunk(7),
-                                 AttackFrameChunk(5, 16, 11),
+                                 AttackFrameChunk(5, 0, 0),
                                  WaitFrameChunk(9)
                                  ]
         self.assertEqual(expected, move_list["NmlAtk6X"])
@@ -478,7 +472,6 @@ def NmlAtk5X():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
-        AttackLevel_(3)
         AirPushbackY(10000)
         Unknown9016(1)
         HitOrBlockCancel('NmlAtk2A')
@@ -509,7 +502,7 @@ def NmlAtk5X():
         expected = Move()
         expected.frame_chunks = [WaitFrameChunk(5),
                                  WaitFrameChunk(2),
-                                 AttackFrameChunk(5, 16, 11),
+                                 AttackFrameChunk(5, 0, 0),
                                  WaitFrameChunk(9)
                                  ]
         expected.frame_chunks[1].inv_type = 1
@@ -524,7 +517,6 @@ def NmlAtk5X():
 
      def upon_IMMEDIATE():
          AttackDefaults_StandingNormal()
-         AttackLevel_(3)
          AirPushbackY(10000)
          Unknown9016(1)
          HitOrBlockCancel('NmlAtk2A')
@@ -555,7 +547,7 @@ def NmlAtk5X():
         expected = Move()
         expected.frame_chunks = [WaitFrameChunk(5),
                                  WaitFrameChunk(2),
-                                 AttackFrameChunk(5, 16, 11),
+                                 AttackFrameChunk(5, 0, 0),
                                  WaitFrameChunk(9)
                                  ]
         expected.frame_chunks[1].inv_type = 1
@@ -570,7 +562,6 @@ def NmlAtk5X():
 
         def upon_IMMEDIATE():
             AttackDefaults_StandingNormal()
-            AttackLevel_(3)
             AirPushbackY(10000)
             Unknown9016(1)
             HitOrBlockCancel('NmlAtk2A')
@@ -603,7 +594,7 @@ def NmlAtk5X():
         expected.frame_chunks = [WaitFrameChunk(5),
                                  SubroutineCall("esef_aaaa"),
                                  WaitFrameChunk(2),
-                                 AttackFrameChunk(5, 16, 11),
+                                 AttackFrameChunk(5, 0, 0),
                                  WaitFrameChunk(9)
                                  ]
         expected.frame_chunks[2].inv_type = 1
@@ -618,7 +609,6 @@ def NmlAtk5X():
     
     def upon_IMMEDIATE():
         AttackDefaults_StandingNormal()
-        AttackLevel_(3)
         AirPushbackY(10000)
         Unknown9016(1)
         HitOrBlockCancel('NmlAtk2A')
@@ -649,7 +639,7 @@ def NmlAtk5X():
         expected.frame_chunks = [WaitFrameChunk(5),
                                  SubroutineCall("esef_aaaa"),
                                  WaitFrameChunk(2),
-                                 AttackFrameChunk(5, 16, 11),
+                                 AttackFrameChunk(5, 0, 0),
                                  WaitFrameChunk(9)
                                  ]
         expected.superflash_start = 2
@@ -696,10 +686,8 @@ def NmlAtk5X():
                                  AttackFrameChunk(5, 16, 11),
                                  WaitFrameChunk(9)
                                  ]
-        expected.frame_chunks[1].damage = 500
-        expected.frame_chunks[1].p2 = 80
-        expected.frame_chunks[3].damage = 1000
-        expected.frame_chunks[3].p2 = 80
+        expected.frame_chunks[1].damage = Damage(500, 100, 80, 0, False)
+        expected.frame_chunks[3].damage = Damage(1000, 100, 80, 0, False)
         expected.frame_chunks[3].is_new_hit = False
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
@@ -734,6 +722,8 @@ def NmlAtk5X():
     Damage(1000)
     sprite('es201_04', 1)	# 16-20	 **attackbox here**
     RefreshMultihit()
+    AttackP1(55)
+    AttackP2(15)
     sprite('es201_05', 3)	# 21-23
     Recovery()
     Unknown2063()
@@ -751,13 +741,9 @@ def NmlAtk5X():
                                  AttackFrameChunk(1, 16, 11),
                                  WaitFrameChunk(9)
                                  ]
-        expected.frame_chunks[1].damage = 500
-        expected.frame_chunks[1].p1 = 50
-        expected.frame_chunks[1].p2 = 75
-        expected.frame_chunks[3].damage = 1000
-        expected.frame_chunks[3].p1 = 80
-        expected.frame_chunks[4].damage = 1000
-        expected.frame_chunks[4].p1 = 80
+        expected.frame_chunks[1].damage = Damage(500, 50, 75, 0, True)
+        expected.frame_chunks[3].damage = Damage(1000, 80, 75, 0, True)
+        expected.frame_chunks[4].damage = Damage(1000, 55, 15, 0, True)
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
     def test_calc_damage(self):
@@ -768,29 +754,21 @@ def NmlAtk5X():
                              AttackFrameChunk(5, 16, 11),
                              WaitFrameChunk(9)
                              ]
-        move.frame_chunks[1].damage = 500
-        move.frame_chunks[1].p1 = 50
-        move.frame_chunks[1].p2 = 80
-        move.frame_chunks[1].p2Once = True
-        move.frame_chunks[3].damage = 1000
-        move.frame_chunks[3].p1 = 75
-        move.frame_chunks[3].p2 = 80
-        move.frame_chunks[3].p2Once = True
+        move.frame_chunks[1].damage = Damage(500, 50, 80, 0, True)
+        move.frame_chunks[3].damage = Damage(1000, 75, 80, 0, True)
         to_test = calc_damage_for_subroutine(move, {})
-        expected = [[500, 50, 80, True, 0], [1000, 75, 80, True, 0]]
+        expected = [Damage(500, 50, 80, 0, True), Damage(1000, 75, 80, 0, True)]
         self.assertEqual(expected, to_test)
 
     def test_calc_hit_projectile(self):
         chunks = [WaitFrameChunk(4), SubroutineCall("Shot"), WaitFrameChunk(12), SubroutineCall("Shot"), WaitFrameChunk(12)]
         shot = Move()
         shot.frame_chunks = [WaitFrameChunk(4), AttackFrameChunk(2)]
-        shot.frame_chunks[1].damage = 1000
-        shot.frame_chunks[1].p1 = 60
-        shot.frame_chunks[1].p2 = 80
+        shot.frame_chunks[1].damage = Damage(1000, 60, 80, 0, False)
         effect_list = {"Shot": shot}
         move = Move()
         move.frame_chunks = chunks
         # combine with ShotAnimation
         to_test = calc_damage_for_subroutine(move, effect_list)
-        expected = [[1000, 60, 80, False, 0], [1000, 60, 80, False, 0]]
+        expected = [Damage(1000, 60, 80, 0, False), Damage(1000, 60, 80, 0, False)]
         self.assertEqual(expected, to_test)
