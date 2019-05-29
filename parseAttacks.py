@@ -1,6 +1,7 @@
 import copy
 import os
 from collections import OrderedDict
+import heapq
 
 
 class State:
@@ -598,15 +599,22 @@ def calc_frames_for_subroutine(frame_chunks, superflash_start=None, superflash_d
     return startup, middle, recovery, duration_on_whiff, duration_on_block, last_frame_of_blockstun, cleaned_list
 
 
-def calc_damage_for_subroutine(move, effect_list):
+def calc_damage_for_move(move_on_block):
+    damage_at_frame = []
+
+    all_frame_chunks = [move_on_block.frame_chunks]
+    all_frame_chunks.extend(move_on_block.additional_chunks)
+    for frame_chunks in all_frame_chunks:
+        current_frame = 0
+        for chunk in frame_chunks:
+            if isinstance(chunk, AttackFrameChunk) and chunk.is_new_hit:
+                heapq.heappush(damage_at_frame, (current_frame, chunk.damage))
+                current_frame += chunk.hitstop
+            current_frame += chunk.duration
+
     damage_list = []
-    for chunk in move.frame_chunks:
-        if isinstance(chunk, AttackFrameChunk):
-            if chunk.is_new_hit:
-                damage_list.append(chunk.damage)
-        elif isinstance(chunk, SubroutineCall):
-            # calc_damage_for_subroutine(, effect_list)
-            damage_list.extend(calc_damage_for_subroutine(effect_list[chunk.name], effect_list))
+    while len(damage_at_frame) > 0:
+        damage_list.append(heapq.heappop(damage_at_frame)[1])
 
     return damage_list
 
@@ -688,8 +696,11 @@ def write_file(moves_on_block, target):
         for inv in inv_list:
             inv_type = " Guard" if inv[2] == 2 else ""
             inv_attr = get_inv_attr_text(inv[3])
-
             target.write("\n\t" + str(inv[0]) + "-" + str(inv[0] + inv[1] - 1) + inv_type + " " + inv_attr)
+
+        damage_list = calc_damage_for_move(move_on_block)
+
+
         target.write("\n")
 
 
