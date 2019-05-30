@@ -746,6 +746,47 @@ def NmlAtk5X():
         expected.frame_chunks[4].damage = Damage(1000, 55, 15, 0, True)
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
+    def test_parse_attack_with_no_damage_defined(self):
+        state = """
+@State
+def az406_dummy_5B3rd():
+
+    def upon_IMMEDIATE():
+        Unknown2009()
+        AirPushbackY(22000)
+        AirUntechableTime(40)
+        GroundedHitstunAnimation(11)
+        AirHitstunAnimation(11)
+        Unknown9015(1)
+        Unknown3038(1)
+        Unknown23078(1)
+        if SLOT_4:
+            AirPushbackX(35000)
+            AirPushbackY(1000)
+            YImpluseBeforeWallbounce(20)
+            Unknown9346(1)
+            Unknown9178(1)
+            Unknown9362(1)
+            Unknown9364(30)
+            if (SLOT_4 > 1):
+                AirUntechableTime(30)
+                AirHitstunAfterWallbounce(30)
+                GroundedHitstunAnimation(12)
+                AirHitstunAnimation(12)
+                Unknown1017()
+    sprite('null', 5)	# 1-5
+    sprite('vr_azef406_col', 3)	# 6-8	 **attackbox here**"""
+        buf = StringIO.StringIO(state)
+        move_list = parse_move_file(buf, {}, {})
+        self.assertEqual(len(move_list), 1)
+        self.assertTrue("az406_dummy_5B3rd" in move_list)
+        expected = Move()
+        expected.frame_chunks = [WaitFrameChunk(5),
+                                 AttackFrameChunk(3, 0, 0)
+                                 ]
+        expected.frame_chunks[1].damage = Damage(0, 100, 100, 0, False)
+        self.assertEqual(expected, move_list["az406_dummy_5B3rd"])
+
     def test_calc_damage_strike(self):
         move = Move()
         move.frame_chunks = [WaitFrameChunk(7),

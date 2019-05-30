@@ -303,11 +303,7 @@ def parse_move_file(source, move_list, effect_list):
                     chunk.inv_type = 1 if state.invType == 0 else 2
                     chunk.inv_attr = state.invAttr
                 if isinstance(chunk, AttackFrameChunk):
-                    chunk.damage = state.damage
-                    chunk.p1 = state.P1
-                    chunk.p2 = state.P2
-                    chunk.p2Once = state.P2Once
-                    chunk.minDamage = state.minDamage
+                    chunk.damage = Damage(state.damage, state.P1, state.P2, state.minDamage, state.P2Once)
                 frame_chunks.append(chunk)
 
                 move_list[state.moveName] = Move()
@@ -614,7 +610,10 @@ def calc_damage_for_move(move_on_block):
 
     damage_list = []
     while len(damage_at_frame) > 0:
-        damage_list.append(heapq.heappop(damage_at_frame)[1])
+        value = heapq.heappop(damage_at_frame)
+        damage_list.append(value[1])
+        if isinstance(value[1], (int, long)):
+            print value
 
     return damage_list
 
