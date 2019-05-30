@@ -746,7 +746,7 @@ def NmlAtk5X():
         expected.frame_chunks[4].damage = Damage(1000, 55, 15, 0, True)
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
-    def test_calc_damage(self):
+    def test_calc_damage_strike(self):
         move = Move()
         move.frame_chunks = [WaitFrameChunk(7),
                              AttackFrameChunk(5, 16, 11),
@@ -760,7 +760,7 @@ def NmlAtk5X():
         expected = [Damage(500, 50, 80, 0, True), Damage(1000, 75, 80, 0, True)]
         self.assertEqual(expected, to_test)
 
-    def test_calc_damage_1hit_projectile(self):
+    def test_calc_damage_1_projectile(self):
         shot = Move()
         shot.frame_chunks = [WaitFrameChunk(24)]
         shot.additional_chunks = [[WaitFrameChunk(4), AttackFrameChunk(2)]]
@@ -769,15 +769,15 @@ def NmlAtk5X():
         expected = [Damage(1000, 60, 80, 0, False)]
         self.assertEqual(expected, to_test)
 
-    def test_calc_damage_2hit_projectile(self):
+    def test_calc_damage_2_projectile(self):
         shot = Move()
         shot.frame_chunks = [WaitFrameChunk(24)]
-        shot.additional_chunks = [[WaitFrameChunk(4), AttackFrameChunk(2)], [WaitFrameChunk(5), AttackFrameChunk(2)]]
+        shot.additional_chunks = [[WaitFrameChunk(10), AttackFrameChunk(2)], [WaitFrameChunk(5), AttackFrameChunk(2)]]
         shot.additional_chunks[0][1].damage = Damage(1000, 60, 80, 0, False)
         shot.additional_chunks[1][1].damage = Damage(500, 60, 80, 0, False)
         # combine with ShotAnimation
         to_test = calc_damage_for_move(shot)
-        expected = [Damage(1000, 60, 80, 0, False), Damage(500, 60, 80, 0, False)]
+        expected = [Damage(500, 60, 80, 0, False), Damage(1000, 60, 80, 0, False)]
         self.assertEqual(expected, to_test)
 
     def test_calc_damage_strike_then_projectile(self):
