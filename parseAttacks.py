@@ -676,12 +676,9 @@ def write_file(moves_on_block, target):
                                                 move_on_block.superflash_duration)
             subroutine_block_timelines.append(result)
         if startup is not "0":
-            target.write(str(startup) + " " + middle + " " + recovery)
+            target.write("\t" + str(startup) + " " + middle + " " + recovery)
         else:
             target.write("Total: " + recovery)
-        if move_on_block.landing_recovery > 0:
-            target.write("+" + str(move_on_block.landing_recovery) + "L")
-        # target.write(". Duration: " + duration_str)
         if move_on_block.landing_recovery > 0:
             target.write("+" + str(move_on_block.landing_recovery) + "L")
         target.write("\n\tduration on block: " + str(duration_on_block))
@@ -699,8 +696,44 @@ def write_file(moves_on_block, target):
             target.write("\n\t" + str(inv[0]) + "-" + str(inv[0] + inv[1] - 1) + inv_type + " " + inv_attr)
 
         damage_list = calc_damage_for_move(move_on_block)
+        damage_str = ""
+        damage = None
+        damage_multiplier = 1
+        p1_str = ""
+        p1 = None
+        p1_multiplier = 1
+        p2 = None
+        p2_multiplier = 1
+        p2_str = ""
+        for item in damage_list:
+            if damage == item.damage:
+                damage_multiplier += 1
+            elif damage is not None:
+                damage_str += str(damage)
+                if damage_multiplier > 1:
+                    damage_str += "*" + str(damage_multiplier)
+                damage_str += ", "
+            damage = item.damage
+            if p1 == item.p1:
+                p1_multiplier += 1
+            elif p1 is not None:
+                p1_str += str(p1)
+                if p1_multiplier > 1:
+                    p1_str += "*" + str(p1_multiplier)
+                damage_str += ", "
+            p1 = item.p1
+            if p2 == item.p2:
+                p2_multiplier += 1
+            elif p2 is not None:
+                p2_str += str(p2)
+                if p2_multiplier > 1:
+                    p2_str += "*" + str(p2_multiplier)
+                damage_str += ", "
+            p2 = item.p2
 
-
+        target.write("\n\tdamage: " + damage_str)
+        target.write("\n\tP1: " + p1_str)
+        target.write("\n\tP2: " + p2_str)
         target.write("\n")
 
 
