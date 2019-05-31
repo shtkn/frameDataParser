@@ -319,6 +319,8 @@ def parse_move_file(source, move_list, effect_list):
             state.clear_values(True)
             if "@Subroutine" in line:
                 state.isSubroutine = True
+        elif line.startswith("            "):
+            pass    # skip anything not under UPON_IMMEDIATE
         elif not state.exitState and SPRITE_START in line:
             if state.duration > 0:
                 chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop,
@@ -799,26 +801,27 @@ def create_damage_text(damage_list):
 
 
 def main():
-    # source_dir = "./annotated"
-    # target_dir = "./parsedAttacks"
-    # file_list = [
-    #     # Arcana Heart
-    #     "scr_ahe",
-    #     # BlazBlue
-    #     "scr_baz", "scr_bes", "scr_bha", "scr_bhz", "scr_biz", "scr_bjb", "scr_bjn", "scr_bma", "scr_bmk",
-    #     "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg",
-    #     # Persona
-    #     "scr_pag", "scr_pak", "scr_pbc", "scr_pce", "scr_pka", "scr_pku", "scr_pla", "scr_pmi", "scr_pna",
-    #     "scr_pyo", "scr_pyu",
-    #     # RWBY
-    #     "scr_rbl", "scr_rrb", "scr_rwi", "scr_ryn",
-    #     # Under Night
-    #     "scr_uca", "scr_ugo", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
-    #     "scr_uwa", "scr_uyu"
-    # ]
-    source_dir = "."
-    target_dir = "."
-    file_list = ["testfile"]
+    source_dir = "./annotated"
+    target_dir = "./parsedAttacks"
+    file_list = [
+        # Arcana Heart
+        "scr_ahe",
+        # BlazBlue
+        "scr_baz", "scr_bes", "scr_bha", "scr_bhz", "scr_biz", "scr_bjb", "scr_bjn", "scr_bma", "scr_bmk",
+        "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg",
+        # Persona
+        "scr_pag", "scr_pak", "scr_pbc", "scr_pce", "scr_pka", "scr_pku", "scr_pla", "scr_pmi", "scr_pna",
+        "scr_pyo", "scr_pyu",
+        # RWBY
+        "scr_rbl", "scr_rrb", "scr_rwi", "scr_ryn",
+        # Under Night
+        "scr_uca", "scr_ugo", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
+        "scr_uwa", "scr_uyu"
+    ]
+
+    # source_dir = "."
+    # target_dir = "."
+    # file_list = ["testfile"]
     for file_name in file_list:
         # Parse effects
         if not os.path.isfile(source_dir + "/" + file_name + "ea.py") or \
