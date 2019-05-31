@@ -417,7 +417,7 @@ CmnActChangePartnerAssistAtk_D
 	last blockstun: 76 diff: -28
 	damage: 1000*2, 2000
 	P1: 70
-	P2: 80
+	P2: 80 (Once)
 CmnActChangePartnerDD
 	1+134Flash+0  
 	duration on block: 20
@@ -817,7 +817,7 @@ UpperRush1_A
 	last blockstun: 102 diff: -23
 	damage: 500*6, 1500
 	P1: 80
-	P2: 80
+	P2: 80 (Once)
 UpperBodyBlow
 	30 3 38
 	duration on block: 82
@@ -841,7 +841,7 @@ CreateEnergyBall
 	last blockstun: 96 diff: 52
 	damage: 700
 	P1: 100
-	P2: 75
+	P2: 75 (Once)
 PunchShot
 	46 8(6)8(6)3(6)3 18
 	duration on block: 154

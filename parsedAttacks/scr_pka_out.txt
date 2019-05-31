@@ -368,7 +368,7 @@ CmnActChangePartnerAssistAtk_A
 	last blockstun: 60 diff: -29
 	damage: 1300
 	P1: 70
-	P2: 80
+	P2: 80 (Once)
 CmnActChangePartnerAssistAtk_B
 	76  
 	duration on block: 76
@@ -391,7 +391,7 @@ ChangePartnerDD_Exe
 	1-71 All
 	damage: 500, 1500
 	P1: 100
-	P2: 100, 60
+	P2: 100, 60 (Once)
 ChangePartnerDDOD_Exe
 	69 3 48
 	duration on block: 144
@@ -400,7 +400,7 @@ ChangePartnerDDOD_Exe
 	1-71 All
 	damage: 500, 1500
 	P1: 100
-	P2: 100, 60
+	P2: 100, 60 (Once)
 CmnActChangePartnerBurst
 	123 32767 31
 	duration on block: 32920
@@ -598,42 +598,42 @@ BusterAttackA
 	last blockstun: 65584 diff: -1
 	damage: 1300
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 BusterAttackB
 	32785 32767,6 7
 	duration on block: 65582
 	last blockstun: 65588 diff: 6
 	damage: 1500
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 BusterAttackEX
 	32785 32767,6 7
 	duration on block: 65582
 	last blockstun: 65588 diff: 6
 	damage: 1700
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 AirBusterAttackA
 	32783 32767,6 17
 	duration on block: 65586
 	last blockstun: 65588 diff: 2
 	damage: 1300
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 AirBusterAttackB
 	32790 32767,6 13
 	duration on block: 65589
 	last blockstun: 65595 diff: 6
 	damage: 1500
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 AirBusterAttackEX
 	32790 32767,6 13
 	duration on block: 65589
 	last blockstun: 65595 diff: 6
 	damage: 1700
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 Oiuchi
 	65550 6 13
 	duration on block: 65575
@@ -690,7 +690,7 @@ TaetemiyagareEX_Exe
 	last blockstun: 125 diff: -43
 	damage: 4500
 	P1: 100
-	P2: 90
+	P2: 90 (Once)
 KenkaSappou
 	4+59Flash+6 3 48
 	duration on block: 144
@@ -699,7 +699,7 @@ KenkaSappou
 	1-12 All
 	damage: 1500
 	P1: 100
-	P2: 100, 60
+	P2: 100, 60 (Once)
 KenkaSappou_OD
 	4+59Flash+6 3 48
 	duration on block: 144
@@ -708,7 +708,7 @@ KenkaSappou_OD
 	1-12 All
 	damage: 1500
 	P1: 100
-	P2: 100, 60
+	P2: 100, 60 (Once)
 Kurokoge
 	6+102Flash+0 5,5 44
 	duration on block: 159

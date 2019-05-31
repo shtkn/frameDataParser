@@ -351,7 +351,7 @@ NmlAtk5A
 	last blockstun: 36 diff: -1
 	damage: 630
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 NmlAtk5A2nd
 	9 4 14
 	duration on block: 37
@@ -365,7 +365,7 @@ NmlAtk5A3rd
 	last blockstun: 44 diff: 0
 	damage: 750
 	P1: 100
-	P2: 75
+	P2: 75 (Once)
 NmlAtk4A
 	5 6 8
 	duration on block: 27
@@ -399,7 +399,7 @@ NmlAtkA4th
 	last blockstun: 40 diff: -33
 	damage: 600
 	P1: 100
-	P2: 75
+	P2: 75 (Once)
 NmlAtk2A
 	6 3 15
 	duration on block: 33
@@ -469,7 +469,7 @@ NmlAtkThrowExe
 	last blockstun: 48 diff: -11
 	damage: 1000
 	P1: 100
-	P2: 50
+	P2: 50 (Once)
 NmlAtkBackThrow
 	35 3 23
 	duration on block: 60
@@ -483,7 +483,7 @@ NmlAtkBackThrowExe
 	last blockstun: 48 diff: -11
 	damage: 1000
 	P1: 100
-	P2: 50
+	P2: 50 (Once)
 CmnActInvincibleAttack
 	46  
 	duration on block: 45
@@ -583,7 +583,7 @@ UltimateKunaiExe
 	1-202 All
 	damage: 2000, 250
 	P1: 100
-	P2: 90, 100
+	P2: 90, 100 (Once)
 UltimateKunaiODExe
 	89+46Flash+0 15 226
 	duration on block: 256
@@ -627,7 +627,7 @@ UltimateKunaiODExe
 	1-202 All
 	damage: 2000, 250
 	P1: 100
-	P2: 90, 100
+	P2: 90, 100 (Once)
 AstralHeat
 	4+78Flash+32878  
 	duration on block: 32959

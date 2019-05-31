@@ -380,7 +380,7 @@ AN_NmlAtk5A_3rd
 	last blockstun: 58 diff: -9
 	damage: 1500
 	P1: 100
-	P2: 70
+	P2: 70 (Once)
 AN_NmlAtk5A_4th
 	311 2 30
 	duration on block: 355
@@ -460,7 +460,7 @@ NmlAtkAIR5B
 	last blockstun: 46 diff: -8
 	damage: 1100
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 NmlAtkAIR5C
 	9 3 39+9L
 	duration on block: 62
@@ -468,7 +468,7 @@ NmlAtkAIR5C
 	last blockstun: 68 diff: 6
 	damage: 1000, 1700
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 CmnActCrushAttack
 	26 3 37
 	duration on block: 76
@@ -553,7 +553,7 @@ CmnActInvincibleAttack
 	1-28 All
 	damage: 680
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 CmnActInvincibleAttackAir
 	7 2,2,2,2,2,2,2(2) 50
 	duration on block: 107
@@ -561,7 +561,7 @@ CmnActInvincibleAttackAir
 	1-22 All
 	damage: 680
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 ShotA
 	46  
 	duration on block: 46
@@ -651,7 +651,7 @@ ShotEx
 	last blockstun: 54 diff: 3
 	damage: 750
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 UltimateAssault
 	1+62Flash+5 5(14) 84
 	duration on block: 183
@@ -677,7 +677,7 @@ UltimateBaleBringer
 	1-28 All
 	damage: 1700
 	P1: 100
-	P2: 100, 60
+	P2: 100, 60 (Once)
 UltimateBaleBringerOD
 	6+60Flash+3 15(5)5(2)2,2(2)2(2)2 32815
 	duration on block: 32942
@@ -685,7 +685,7 @@ UltimateBaleBringerOD
 	1-28 All
 	damage: 1700
 	P1: 100
-	P2: 100, 60
+	P2: 100, 60 (Once)
 AstralHeat
 	1+90Flash+19 6 39
 	duration on block: 167
@@ -751,7 +751,7 @@ CmnActChangePartnerAssistAtk_A
 	last blockstun: 71 diff: 18
 	damage: 1000
 	P1: 70
-	P2: 80
+	P2: 80 (Once)
 CmnActChangePartnerAssistAtk_B
 	63  
 	duration on block: 63
@@ -759,7 +759,7 @@ CmnActChangePartnerAssistAtk_B
 	last blockstun: 44 diff: -19
 	damage: 800
 	P1: 70
-	P2: 80
+	P2: 80 (Once)
 CmnActChangePartnerAssistAtk_D
 	13 8 32837
 	duration on block: 32869

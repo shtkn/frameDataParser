@@ -507,7 +507,7 @@ NmlAtk2C
 	last blockstun: 87 diff: -8
 	damage: 1300
 	P1: 90
-	P2: 75
+	P2: 75 (Once)
 NmlAtkAIR5A
 	10 2,1 27
 	duration on block: 61
@@ -594,7 +594,7 @@ ThrowExe
 	last blockstun: 92 diff: -8
 	damage: 500
 	P1: 100
-	P2: 50
+	P2: 50 (Once)
 NmlAtkBackThrow
 	40 3 23
 	duration on block: 65
@@ -608,28 +608,28 @@ BackThrowExe
 	last blockstun: 110 diff: -8
 	damage: 300*6, 200
 	P1: 100
-	P2: 50
+	P2: 50 (Once)
 RushA
 	13 2,2,2,2,2,2,2,2 19
 	duration on block: 63
 	last blockstun: 59 diff: -4
 	damage: 400
 	P1: 80
-	P2: 80
+	P2: 80 (Once)
 RushB
 	17 2,2,2,2,2,2,2,2 31
 	duration on block: 79
 	last blockstun: 63 diff: -16
 	damage: 450
 	P1: 80
-	P2: 80
+	P2: 80 (Once)
 Rush_Ex
 	13 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 25
 	duration on block: 101
 	last blockstun: 91 diff: -10
 	damage: 350
 	P1: 80
-	P2: 80
+	P2: 80 (Once)
 CaptureA
 	15 14 46
 	duration on block: 86
@@ -700,7 +700,7 @@ CmnActInvincibleAttack
 	1-20 All
 	damage: 500
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 CmnActInvincibleAttackAir
 	12 2,2,2,2,2(17)16 26
 	duration on block: 104
@@ -708,7 +708,7 @@ CmnActInvincibleAttackAir
 	1-21 All
 	damage: 800
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 UltimateCapture
 	1+24Flash+10 2,4 39
 	duration on block: 87

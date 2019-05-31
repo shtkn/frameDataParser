@@ -810,7 +810,7 @@ AN_NmlAtk5A_2nd
 	last blockstun: 48 diff: -10
 	damage: 600
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 AN_NmlAtk5A_3rd
 Total: 
 	duration on block: 50
@@ -839,7 +839,7 @@ AN_NmlAtk5B_2nd
 	last blockstun: 81 diff: -1
 	damage: 350
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 NmlAtk2A
 Total: 
 	duration on block: 35
@@ -860,14 +860,14 @@ NmlAtk2B
 	last blockstun: 47 diff: -10
 	damage: 600
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 NmlAtk2C
 	23 31 
 	duration on block: 61
 	last blockstun: 49 diff: -12
 	damage: 1100
 	P1: 90
-	P2: 75
+	P2: 75 (Once)
 NmlAtkAIR5A
 Total: 
 	duration on block: 43
@@ -888,14 +888,14 @@ NmlAtkAIR5B
 	last blockstun: 65 diff: 11
 	damage: 500
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 NmlAtkAIR5C
 	20 2,2,2,2,4,22 
 	duration on block: 77
 	last blockstun: 72 diff: -5
 	damage: 750
 	P1: 80
-	P2: 70
+	P2: 70 (Once)
 CmnActCrushAttack
 Total: 
 	duration on block: 76
@@ -1030,7 +1030,7 @@ Total:
 	last blockstun: 146 diff: 81
 	damage: 0, 900
 	P1: 100
-	P2: 100
+	P2: 100 (Once)
 AirShotA
 Total: +4L
 	duration on block: 51
@@ -1054,7 +1054,7 @@ Total: +4L
 	last blockstun: 118 diff: 42
 	damage: 0, 900
 	P1: 100
-	P2: 100
+	P2: 100 (Once)
 CmnActInvincibleAttack
 	9 3,2,1,1,1,3,47 
 	duration on block: 101
@@ -1062,7 +1062,7 @@ CmnActInvincibleAttack
 	1-19 All
 	damage: 800
 	P1: 80
-	P2: 60
+	P2: 60 (Once)
 AntiAir2nd
 Total: 
 	duration on block: 77
@@ -1093,7 +1093,7 @@ UltimateAssault
 	1-20 All
 	damage: 950
 	P1: 100
-	P2: 60
+	P2: 60 (Once)
 UltimateAssault_OD
 	4+40Flash+5 6,2,2,2,16,4,4,4,4,4,4,11,6,2,2,2,2,18,56 
 	duration on block: 303
@@ -1101,7 +1101,7 @@ UltimateAssault_OD
 	1-20 All
 	damage: 950*18, 2600
 	P1: 100
-	P2: 60
+	P2: 60 (Once)
 AirUltimateShot
 	4+51Flash+61 45 
 	duration on block: 160
@@ -1206,7 +1206,7 @@ Total:
 	last blockstun: 154 diff: 81
 	damage: 0, 900
 	P1: 100
-	P2: 100
+	P2: 100 (Once)
 CmnActChangePartnerAssistAtk_B
 	29 36 
 	duration on block: 64
@@ -1221,7 +1221,7 @@ CmnActChangePartnerAssistAtk_D
 	last blockstun: 71 diff: -7
 	damage: 500
 	P1: 70
-	P2: 85
+	P2: 85 (Once)
 CmnActChangePartnerDD
 	1+92Flash+0 8 10
 	duration on block: 20

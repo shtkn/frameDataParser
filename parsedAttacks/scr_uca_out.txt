@@ -505,7 +505,7 @@ ChangePartnerDD_Exe
 	1-88 All
 	damage: 0, 500, 2000
 	P1: 100, 80
-	P2: 100*2, 60
+	P2: 100*2, 60 (Once)
 ChangePartnerDDOD_Exe
 	49 12(28) 49
 	duration on block: 137
@@ -515,7 +515,7 @@ ChangePartnerDDOD_Exe
 	1-88 All
 	damage: 0, 500, 2000
 	P1: 100, 80
-	P2: 100*2, 60
+	P2: 100*2, 60 (Once)
 CmnActChangePartnerBurst
 	143 32769 32
 	duration on block: 32943
@@ -612,7 +612,7 @@ NmlAtkAIR5A
 	last blockstun: 51 diff: -3
 	damage: 1000
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 NmlAtkAIR5A2nd
 	7 3 18
 	duration on block: 38
@@ -640,9 +640,9 @@ NmlAtkAIR5C
 	startup: 63 blockstun: 63
 	startup: 29 blockstun: 63
 	last blockstun: 63 diff: -2
-	damage: 1000, 0, 1000, 0, 1000*2, 0
-	P1: 100*2, 80*2, 100*2, 80*3, 100
-	P2: 100*2, 80*2, 100*2, 80*3, 100
+	damage: 1000, 0*2, 1000*4, 0
+	P1: 100*3, 80*5, 100
+	P2: 100*3, 80*5, 100
 CmnActCrushAttack
 	24 5 26
 	duration on block: 65
@@ -724,7 +724,7 @@ CmnActInvincibleAttack
 	1-22 All
 	damage: 500
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 RotationShotA
 	37  
 	duration on block: 37
@@ -738,7 +738,7 @@ RotationShotEX
 	last blockstun: 61 diff: 28
 	damage: 600
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 AirRotationShotA
 	40  
 	duration on block: 40
@@ -752,7 +752,7 @@ AirRotationShotEX
 	last blockstun: 64 diff: 27
 	damage: 600
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 PushUpShotA
 	46  
 	duration on block: 46
@@ -771,7 +771,7 @@ UltimateShot
 	1-29 All
 	damage: 0, 500, 2000
 	P1: 100, 80
-	P2: 100*2, 60
+	P2: 100*2, 60 (Once)
 UltimateShot_OD
 	4+59Flash+0 12(28) 67
 	duration on block: 155
@@ -781,7 +781,7 @@ UltimateShot_OD
 	1-29 All
 	damage: 0, 500, 2000
 	P1: 100, 80
-	P2: 100*2, 60
+	P2: 100*2, 60 (Once)
 PushUpShotDD
 	12+37Flash+0 3(25) 37
 	duration on block: 106
@@ -790,7 +790,7 @@ PushUpShotDD
 	1-32 All
 	damage: 0, 3000
 	P1: 100, 60
-	P2: 100, 80
+	P2: 100, 80 (Once)
 PushUpShotDD_OD
 	12+37Flash+0 3(25) 37
 	duration on block: 106
@@ -799,7 +799,7 @@ PushUpShotDD_OD
 	1-32 All
 	damage: 0, 4000
 	P1: 100, 60
-	P2: 100, 80
+	P2: 100, 80 (Once)
 AstralHeat
 	1+80Flash+0 3(38) 137
 	duration on block: 244

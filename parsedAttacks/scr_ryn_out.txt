@@ -427,7 +427,7 @@ CmnActChangePartnerAssistAtk_D
 	last blockstun: 43 diff: -12
 	damage: 1000
 	P1: 70
-	P2: 80
+	P2: 80 (Once)
 CmnActChangePartnerDD
 	1+77Flash+0  
 	duration on block: 18
@@ -602,7 +602,7 @@ ThrowExe
 	last blockstun: 85 diff: 1
 	damage: 500*2, 1000
 	P1: 100
-	P2: 50*2, 85
+	P2: 50*2, 85 (Once)
 NmlAtkBackThrow
 	33 3 23
 	duration on block: 58
@@ -616,7 +616,7 @@ BackThrowExe
 	last blockstun: 91 diff: 1
 	damage: 500*2, 1000
 	P1: 100
-	P2: 50*2, 85
+	P2: 50*2, 85 (Once)
 CmnActInvincibleAttack
 	13 3,7 40
 	duration on block: 86

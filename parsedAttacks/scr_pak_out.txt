@@ -384,7 +384,7 @@ CmnActChangePartnerAssistAtk_D
 	last blockstun: 58 diff: -17
 	damage: 500
 	P1: 70
-	P2: 85
+	P2: 85 (Once)
 CmnActChangePartnerDD
 	1+85Flash+0  
 	duration on block: 20
@@ -413,21 +413,21 @@ NmlAtk5A
 	last blockstun: 47 diff: -6
 	damage: 950
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 NmlAtk5A2nd
 	8 5(3)2 19
 	duration on block: 56
 	last blockstun: 52 diff: -4
 	damage: 950
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 NmlAtk5A3rd
 	10 2(10)2 20
 	duration on block: 53
 	last blockstun: 48 diff: -5
 	damage: 700
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 NmlAtk5A4th
 	41  
 	duration on block: 41
@@ -451,7 +451,7 @@ NmlAtk5B
 	last blockstun: 45 diff: -11
 	damage: 500
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 NmlAtk2A
 	6 2 11
 	duration on block: 25
@@ -490,7 +490,7 @@ NmlAtkAIR5B
 	last blockstun: 49 diff: -1
 	damage: 900
 	P1: 100
-	P2: 90
+	P2: 90 (Once)
 NmlAtkAIR5C
 	59  +4L
 	duration on block: 59
@@ -582,7 +582,7 @@ CmnActInvincibleAttack
 	1-19 All
 	damage: 1700
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 BoomerangHookA
 	13 3 18
 	duration on block: 44

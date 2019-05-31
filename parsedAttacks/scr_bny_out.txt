@@ -759,7 +759,7 @@ CmnActInvincibleAttack
 	1-27 All
 	damage: 550
 	P1: 100
-	P2: 100
+	P2: 100 (Once)
 CmnActInvincibleAttackAir
 	9 1,1,1,1,1,1,1,48 
 	duration on block: 79
@@ -767,7 +767,7 @@ CmnActInvincibleAttackAir
 	1-12 All
 	damage: 550
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 SpecialDashF
 	41  
 	duration on block: 41
@@ -807,7 +807,7 @@ LowShotC
 	last blockstun: 39 diff: -15
 	damage: 0, 1250
 	P1: 100
-	P2: 100, 75
+	P2: 100, 75 (Once)
 LargeShot_matome
 	155  
 	duration on block: 155
@@ -914,7 +914,7 @@ UltimateMultiSword
 	1-19 All
 	damage: 360
 	P1: 80
-	P2: 60
+	P2: 60 (Once)
 UltimateMultiSwordOD
 	16+41Flash+42  
 	duration on block: 98
@@ -948,7 +948,7 @@ UltimateMultiSwordOD
 	1-19 All
 	damage: 360
 	P1: 80
-	P2: 60
+	P2: 60 (Once)
 UltimateLargeSwordLand
 	10+52Flash+75  
 	duration on block: 136

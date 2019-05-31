@@ -520,7 +520,7 @@ NmlAtk5AAA
 	last blockstun: 60 diff: -16
 	damage: 1100
 	P1: 90, 100
-	P2: 85
+	P2: 85 (Once)
 NmlAtk5AAAA
 	52  
 	duration on block: 52
@@ -715,7 +715,7 @@ CmnActInvincibleAttack
 	1-16 All
 	damage: 1000
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 CmnActInvincibleAttackAir
 	7 5,2,6 57
 	duration on block: 112
@@ -723,7 +723,7 @@ CmnActInvincibleAttackAir
 	1-13 All
 	damage: 1000
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 AntiAir2nd
 	14 3 51
 	duration on block: 79
@@ -794,7 +794,7 @@ AirAssault
 	last blockstun: 72 diff: -5
 	damage: 900
 	P1: 80
-	P2: 80
+	P2: 80 (Once)
 AirAssault2nd
 	12 3 33
 	duration on block: 63
@@ -824,7 +824,7 @@ UltimateAssault
 	1-22 All
 	damage: 3000
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 UltimateAssault_OD
 	9+42Flash+10 2(5) 31
 	duration on block: 110
@@ -832,7 +832,7 @@ UltimateAssault_OD
 	1-25 All
 	damage: 3000
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 BloodWeaponFinish
 	13+30Flash+12 3 55
 	duration on block: 122

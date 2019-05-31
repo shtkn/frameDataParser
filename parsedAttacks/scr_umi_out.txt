@@ -450,7 +450,7 @@ NmlAtkAIR5AA
 	last blockstun: 57 diff: -10
 	damage: 500
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 NmlAtkAIR5B
 	14 6 29
 	duration on block: 59
@@ -550,7 +550,7 @@ CmnActInvincibleAttack
 	1-18 All
 	damage: 1200
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 CmnActInvincibleAttackAir
 	10 4,6,14 31
 	duration on block: 70
@@ -558,7 +558,7 @@ CmnActInvincibleAttackAir
 	1-13 All
 	damage: 1200
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 AssaultA
 	16 20 12
 	duration on block: 47
@@ -770,7 +770,7 @@ UltimateAssaultOD_catch
 	startup: 32770 blockstun: 1
 	last blockstun: 1 diff: -4
 	1-5 All
-	damage: 180, 0
+	damage: 0, 180
 	P1: 100
 	P2: 100
 UltimateAssaultOD_exe_1
@@ -779,7 +779,7 @@ UltimateAssaultOD_exe_1
 	startup: 0 blockstun: 29
 	last blockstun: 29 diff: -31
 	1-60 All
-	damage: 180, 0, 180
+	damage: 0, 180
 	P1: 100
 	P2: 100
 UltimateAssaultOD_exe_1_ranbu
@@ -809,7 +809,7 @@ UltimateAssaultOD_exe_2
 	startup: 0 blockstun: 155
 	last blockstun: 155 diff: -6
 	1-136 All
-	damage: 180, 0, 180, 3000
+	damage: 0, 180*2, 3000
 	P1: 100*3, 80
 	P2: 100*3, 60
 UltimateThrow
@@ -875,7 +875,7 @@ UltimateThrowODExe_3
 	1-135 All
 	damage: 1300
 	P1: 100
-	P2: 50
+	P2: 50 (Once)
 AstralHeat
 	1+95Flash+32810  
 	duration on block: 32905
@@ -1027,7 +1027,7 @@ UltimateAssaultDDDOD_catch
 	startup: 32770 blockstun: 1
 	last blockstun: 1 diff: -4
 	1-5 All
-	damage: 100, 0
+	damage: 0, 100
 	P1: 100
 	P2: 100
 UltimateAssaultDDDOD_exe_1
@@ -1036,7 +1036,7 @@ UltimateAssaultDDDOD_exe_1
 	startup: 0 blockstun: 29
 	last blockstun: 29 diff: -31
 	1-60 All
-	damage: 100, 0, 100
+	damage: 0, 100
 	P1: 100
 	P2: 100
 UltimateAssaultDDDOD_exe_1_ranb
@@ -1066,7 +1066,7 @@ UltimateAssaultDDDOD_exe_2
 	startup: 0 blockstun: 155
 	last blockstun: 155 diff: -6
 	1-136 All
-	damage: 100, 0, 100, 800
+	damage: 0, 100*2, 800
 	P1: 100
 	P2: 100
 CmnActChangePartnerBurst

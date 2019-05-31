@@ -587,28 +587,28 @@ BanditRevolverB
 	last blockstun: 74 diff: -65525
 	damage: 1000
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 AirBanditRevolverA
 	9 3(12)6 32783
 	duration on block: 32836
 	last blockstun: 66 diff: -32770
 	damage: 1000
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 AirBanditRevolverB
 	13 6(12)6 65541
 	duration on block: 65601
 	last blockstun: 73 diff: -65528
 	damage: 1000
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 AirBanditRevolverEX
 	9 6(12)6 32780
 	duration on block: 32836
 	last blockstun: 69 diff: -32767
 	damage: 1300
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 WalkingShotEX
 	74  
 	duration on block: 74

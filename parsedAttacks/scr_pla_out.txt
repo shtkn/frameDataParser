@@ -638,21 +638,21 @@ AxeAttackAirA
 	last blockstun: 46 diff: -29
 	damage: 1000
 	P1: 80
-	P2: 80
+	P2: 80 (Once)
 AxeAttackAirB
 	23 3(6)12 34
 	duration on block: 89
 	last blockstun: 62 diff: -27
 	damage: 1100
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 AxeAttackAirAB
 	12 2(4)12 30
 	duration on block: 71
 	last blockstun: 50 diff: -21
 	damage: 1200
 	P1: 80
-	P2: 90
+	P2: 90 (Once)
 UltimateTackle
 	4+55Flash+36 6,9 112
 	duration on block: 261
@@ -660,7 +660,7 @@ UltimateTackle
 	1-54 All
 	damage: 2500
 	P1: 100
-	P2: 60
+	P2: 60 (Once)
 UltimateTackleOD
 	4+55Flash+32 6,3,3,3 112
 	duration on block: 232
@@ -668,7 +668,7 @@ UltimateTackleOD
 	1-50 All
 	damage: 1150
 	P1: 100
-	P2: 60
+	P2: 60 (Once)
 UltimateFullswing
 	22+58Flash+3 6 76
 	duration on block: 194

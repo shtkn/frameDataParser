@@ -457,7 +457,7 @@ NmlAtk5A
 	last blockstun: 51 diff: -3
 	damage: 800
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 NmlAtk4A
 	6 3 11
 	duration on block: 28
@@ -479,7 +479,7 @@ NmlAtk5AAA
 	last blockstun: 48 diff: -4
 	damage: 650
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 RushAssaultFinish
 	17 10 76
 	duration on block: 102
@@ -715,14 +715,14 @@ AirAssaultB
 	last blockstun: 61 diff: -21
 	damage: 1000, 1800
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 AirAssault_D
 	9 1(7)3 22+5L
 	duration on block: 59
 	last blockstun: 53 diff: -6
 	damage: 1000, 2000
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 CmnActInvincibleAttack
 	13 3 49
 	duration on block: 76
@@ -740,7 +740,7 @@ UltimateShot
 	1-8 All
 	damage: 1650
 	P1: 80
-	P2: 60
+	P2: 60 (Once)
 UltimateShot_OD
 	1+30Flash+44  
 	duration on block: 74
@@ -749,7 +749,7 @@ UltimateShot_OD
 	1-8 All
 	damage: 1700
 	P1: 80
-	P2: 60
+	P2: 60 (Once)
 UltimateShotAddAttack
 	225  
 	duration on block: 225

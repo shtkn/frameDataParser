@@ -468,7 +468,7 @@ NmlAtk2B
 	5-32775 F
 	damage: 700
 	P1: 90
-	P2: 85
+	P2: 85 (Once)
 NmlAtk2C
 	17 3 32
 	duration on block: 54
@@ -482,7 +482,7 @@ NmlAtkAIR5A
 	last blockstun: 41 diff: -1
 	damage: 620
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 NmlAtkAIR5A_2nd
 	9 3 24
 	duration on block: 47
@@ -496,14 +496,14 @@ NmlAtkAIR5B
 	last blockstun: 43 diff: -32792
 	damage: 800
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 NmlAtkAIR5C
 	10 3,3,3,2,2 14+7L
 	duration on block: 51
 	last blockstun: 54 diff: 3
 	damage: 370
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 NmlAtkAIR5C_2nd
 	9 3 36
 	duration on block: 59
@@ -524,7 +524,7 @@ ThrowExe
 	last blockstun: 55 diff: -104
 	damage: 1300, 700
 	P1: 100
-	P2: 50, 80
+	P2: 50, 80 (Once)
 NmlAtkBackThrow
 	44 3 23
 	duration on block: 69
@@ -538,7 +538,7 @@ BackThrowExe
 	last blockstun: 57 diff: -99
 	damage: 1300, 700
 	P1: 100
-	P2: 50, 80
+	P2: 50, 80 (Once)
 CmnActCrushAttack
 	22 3 24
 	duration on block: 59
@@ -593,21 +593,21 @@ con5A_2nd
 	last blockstun: 46 diff: -6
 	damage: 800
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 con5A_3rd
 	13 2(2)2 25
 	duration on block: 49
 	last blockstun: 41 diff: -8
 	damage: 900
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 con5A_4th
 	18 2(2)2 33
 	duration on block: 62
 	last blockstun: 51 diff: -11
 	damage: 1000
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 con5B_Middle
 	33 4 27
 	duration on block: 66
@@ -623,7 +623,7 @@ con2B_Low
 	3-32798 F
 	damage: 500
 	P1: 90
-	P2: 75
+	P2: 75 (Once)
 con5C_Middle
 	16 3 27
 	duration on block: 56
@@ -645,7 +645,7 @@ con_Finish
 	last blockstun: 56 diff: -16
 	damage: 1000, 1700
 	P1: 100
-	P2: 90
+	P2: 90 (Once)
 Reload
 	16  
 	duration on block: 16
@@ -697,7 +697,7 @@ FlashHaider
 	last blockstun: 32 diff: -4
 	damage: 230
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 FlashHaider_Finish
 	5 4 26
 	duration on block: 40
@@ -711,7 +711,7 @@ BloomTrigger
 	last blockstun: 64 diff: -4
 	damage: 900
 	P1: 80
-	P2: 90
+	P2: 90 (Once)
 AssaultThrough
 	31 9 16
 	duration on block: 68
@@ -884,21 +884,21 @@ CmnActChangePartnerAssistAtk_A
 	last blockstun: 204 diff: 114
 	damage: 450
 	P1: 70
-	P2: 85
+	P2: 85 (Once)
 CmnActChangePartnerAssistAtk_B
 	12 2 38
 	duration on block: 51
 	last blockstun: 30 diff: -21
 	damage: 1100
 	P1: 70
-	P2: 85
+	P2: 85 (Once)
 CmnActChangePartnerAssistAtk_D
 	13 3(2)3 33
 	duration on block: 59
 	last blockstun: 47 diff: -12
 	damage: 700
 	P1: 70
-	P2: 85
+	P2: 85 (Once)
 CmnActChangePartnerDD
 	1+49Flash+0  
 	duration on block: 20
@@ -910,7 +910,7 @@ UltimateShotDDD
 	1-29 All
 	damage: 300
 	P1: 100
-	P2: 100
+	P2: 100 (Once)
 UltimateShotDDDOD
 	25 5,6 20
 	duration on block: 81
@@ -918,7 +918,7 @@ UltimateShotDDDOD
 	1-29 All
 	damage: 300
 	P1: 100
-	P2: 100
+	P2: 100 (Once)
 CmnActChangeRequest
 	32852  
 	duration on block: 32852

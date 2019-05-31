@@ -461,7 +461,7 @@ CmnActChangePartnerAssistAtk_B
 	last blockstun: 66 diff: -18
 	damage: 1700
 	P1: 70
-	P2: 85
+	P2: 85 (Once)
 CmnActChangePartnerAssistAtk_D
 	15 2 21
 	duration on block: 46
@@ -498,7 +498,7 @@ NmlAtk5A
 	last blockstun: 40 diff: -8
 	damage: 950
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 NmlAtk5AA
 	13 3 21
 	duration on block: 48

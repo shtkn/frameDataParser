@@ -402,7 +402,7 @@ NmlAtk2B
 	5-9 H
 	damage: 1100
 	P1: 90
-	P2: 80
+	P2: 80 (Once)
 NmlAtk2C
 	13 3 20
 	duration on block: 47
@@ -461,7 +461,7 @@ NmlAtkAIR5A
 	last blockstun: 44 diff: -6
 	damage: 1000
 	P1: 100
-	P2: 75
+	P2: 75 (Once)
 NmlAtkAIR5A2nd
 	7 3 15
 	duration on block: 35
@@ -514,7 +514,7 @@ CmnActInvincibleAttack
 	1-22 All
 	damage: 1700
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 CmnActInvincibleAttackAir
 	4 3,3 41
 	duration on block: 74
@@ -522,7 +522,7 @@ CmnActInvincibleAttackAir
 	1-9 All
 	damage: 1700
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 LowAssaultA
 	42  
 	duration on block: 42

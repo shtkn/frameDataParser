@@ -629,7 +629,7 @@ CmnActInvincibleAttack
 	21-29 H
 	damage: 1800
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 Assault
 	22 6 26
 	duration on block: 64

@@ -413,14 +413,14 @@ NmlAtk5A2nd
 	last blockstun: 41 diff: -3
 	damage: 950
 	P1: 100
-	P2: 75
+	P2: 75 (Once)
 NmlAtk5A3rd
 	10 2(12)3(32775)3 19
 	duration on block: 32850
 	last blockstun: 32847 diff: -3
 	damage: 750
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 NmlAtk4A
 	5 3 11
 	duration on block: 27
@@ -434,14 +434,14 @@ NmlAtk4A2nd
 	last blockstun: 58 diff: -9
 	damage: 400
 	P1: 100
-	P2: 75
+	P2: 75 (Once)
 NmlAtk4A3rd
 	6 3,3 15
 	duration on block: 48
 	last blockstun: 47 diff: -1
 	damage: 1000
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 NmlAtkKokutengeki
 	48  
 	duration on block: 48
@@ -566,14 +566,14 @@ CmnActInvincibleAttackAir
 	1-7 All
 	damage: 1100
 	P1: 100
-	P2: 85
+	P2: 85 (Once)
 AbaremakuriLandA
 	11 2 35
 	duration on block: 51
 	last blockstun: 31 diff: -20
 	damage: 800
 	P1: 80
-	P2: 80
+	P2: 80 (Once)
 DragonKickLandB
 	18 12 44
 	duration on block: 82
@@ -617,7 +617,7 @@ AbaremakuriAirA
 	last blockstun: 26 diff: -20
 	damage: 550
 	P1: 80
-	P2: 80
+	P2: 80 (Once)
 DragonKickAirB
 	14 12 44
 	duration on block: 78
@@ -639,7 +639,7 @@ NoutenotoshiA
 	last blockstun: 59 diff: -4
 	damage: 1200
 	P1: 80
-	P2: 85
+	P2: 85 (Once)
 DragonKickLand_NoutenHasei
 	18 12 44
 	duration on block: 82

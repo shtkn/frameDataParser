@@ -548,14 +548,14 @@ CmnActChangePartnerAssistAtk_B
 	last blockstun: 37 diff: -5
 	damage: 1000
 	P1: 70
-	P2: 75
+	P2: 75 (Once)
 CmnActChangePartnerAssistAtk_D
 	13 3,3,3,3,3,3,3,3,3,3,3,3,3,3 30+9L
 	duration on block: 98
 	last blockstun: 82 diff: -16
 	damage: 400
 	P1: 70
-	P2: 80
+	P2: 80 (Once)
 CmnActChangePartnerDD
 	1+71Flash+0  
 	duration on block: 20
@@ -571,7 +571,7 @@ LightningLandB_DDD
 	1-52 All
 	damage: 1100
 	P1: 100
-	P2: 60
+	P2: 60 (Once)
 LightningLandB_DDDOD
 	167  
 	duration on block: 166
@@ -583,9 +583,9 @@ LightningLandB_DDDOD
 	startup: 47 blockstun: 127
 	last blockstun: 127 diff: -39
 	1-52 All
-	damage: 0*2, 1370*8, 330
+	damage: 1370, 0*2, 1370*7, 330
 	P1: 100
-	P2: 100*2, 60
+	P2: 60, 100*2, 60 (Once)
 CmnActChangeRequest
 	78  
 	duration on block: 78
@@ -626,7 +626,7 @@ NmlAtk5AAA
 	last blockstun: 90 diff: -8
 	damage: 180
 	P1: 100
-	P2: 80
+	P2: 80 (Once)
 NmlAtk5AAAA
 	30  +9L
 	duration on block: 30
@@ -672,7 +672,7 @@ NmlAtk2C
 	last blockstun: 106 diff: -2
 	damage: 600
 	P1: 90
-	P2: 70
+	P2: 70 (Once)
 NmlAtkAIR5A
 	8 6 12
 	duration on block: 35
@@ -796,7 +796,7 @@ ShotFlogLand
 	last blockstun: 429 diff: 385
 	damage: 0, 400
 	P1: 100
-	P2: 100, 80
+	P2: 100, 80 (Once)
 ShotFlogAir
 	9 3(9)12 12
 	duration on block: 44
@@ -804,7 +804,7 @@ ShotFlogAir
 	last blockstun: 428 diff: 384
 	damage: 0, 400
 	P1: 100
-	P2: 100, 80
+	P2: 100, 80 (Once)
 LightningMini
 	40  
 	duration on block: 40
@@ -828,7 +828,7 @@ LightningLandB
 	1-19 All
 	damage: 1100
 	P1: 100
-	P2: 60
+	P2: 60 (Once)
 LightningAirB
 	13+30Flash+106  
 	duration on block: 148
@@ -840,7 +840,7 @@ LightningAirB
 	1-20 All
 	damage: 1100
 	P1: 100
-	P2: 60
+	P2: 60 (Once)
 LightningLandB_OD
 	10+33Flash+108  
 	duration on block: 150
@@ -852,9 +852,9 @@ LightningLandB_OD
 	startup: 10+33Flash+4 blockstun: 127
 	last blockstun: 127 diff: -23
 	1-19 All
-	damage: 0*2, 1370*8, 330
+	damage: 1370, 0*2, 1370*7, 330
 	P1: 100
-	P2: 100*2, 60
+	P2: 60, 100*2, 60 (Once)
 LightningAirB_OD
 	13+30Flash+74  
 	duration on block: 116
@@ -866,9 +866,9 @@ LightningAirB_OD
 	startup: 13+30Flash+2 blockstun: 125
 	last blockstun: 125 diff: 9
 	1-20 All
-	damage: 0*2, 1370*8, 330
+	damage: 1370, 0*2, 1370*7, 330
 	P1: 100
-	P2: 100*2, 60
+	P2: 60, 100*2, 60 (Once)
 UltimateStorm
 	10+34Flash+65  
 	duration on block: 108
