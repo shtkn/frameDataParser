@@ -115,6 +115,7 @@ class AttackFrameChunk(AbstractChunk):
         self.hitstop = hitstop
         self.additionalHitstopOpponent = additional_hitstop_opponent
         self.damage = Damage(0)
+        self.minDamage = 0
 
     def __str__(self):
         to_return = str(self.duration)
@@ -131,7 +132,8 @@ class AttackFrameChunk(AbstractChunk):
             self.is_new_hit == other.is_new_hit and self.hitstop == other.hitstop and \
             self.additionalHitstopOpponent == other.additionalHitstopOpponent and \
             self.damage == other.damage and self.duration == other.duration and \
-            self.inv_type == other.inv_type and self.inv_attr == other.inv_attr
+            self.inv_type == other.inv_type and self.inv_attr == other.inv_attr and \
+            self.minDamage == other.minDamage
 
     def __ne__(self, other):
         if not isinstance(other, AttackFrameChunk):
@@ -215,11 +217,16 @@ class Subroutine:
         self.hitstop = 0
         self.additionalHitstopOpponent = 0
         self.landingRecovery = 0
+        self.p1 = 100
+        self.p2 = 100
+        self.p2Once = False
+        self.minDamage = 0
 
     def __eq__(self, other):
         if not isinstance(other, Subroutine):
             return False
-        return self.damage == other.damage and \
+        return self.damage == other.damage and self.p1 == other.p1 and self.p2 == other.p2 and\
+            self.p2Once == other.p2Once and self.minDamage == other.minDamage and \
             self.blockstun == other.blockstun and \
             self.hitstop == other.hitstop and \
             self.additionalHitstopOpponent == other.additionalHitstopOpponent and \
@@ -236,7 +243,7 @@ SPRITE_MID = "', "
 SPRITE_END = ")"
 HAS_HITBOX = "**attackbox here**"
 GFX_START = "GFX_0('"
-CALL_SUBROUTINE_START = "callSubroutine('"
+CALL_SUBROUTINE_START = "CallSubroutine('"
 
 
 def get_duration(sprite_str):
@@ -474,16 +481,21 @@ def parse_subroutine(name, move_list, effect_list, start_frame=0):
     override_blockstun = None
     override_hitstop = None
     override_additional_hitstop = None
+    override_damage = None
     if duration > 0:
         first_subroutine.append(WaitFrameChunk(duration))
     for chunk in move_list[name].frame_chunks:
         if isinstance(chunk, SubroutineCall):
             from_children = []
             if chunk.name in effect_list and isinstance(effect_list[chunk.name], Subroutine):
+                subroutine = effect_list[chunk.name]
                 # print "SUBROUTINE " + effect_list[chunk.name]
-                override_blockstun = effect_list[chunk.name].blockstun
-                override_hitstop = effect_list[chunk.name].hitstop
-                override_additional_hitstop = effect_list[chunk.name].additionalHitstopOpponent
+                override_blockstun = subroutine.blockstun
+                override_hitstop = subroutine.hitstop
+                override_additional_hitstop = subroutine.additionalHitstopOpponent
+                override_damage = Damage(subroutine.damage, subroutine.p1, subroutine.p2,
+                                         subroutine.minDamage, subroutine.p2Once)
+                # damage, p1=100, p2=100, min_damage=0, p2once=False
             else:
                 from_children = parse_subroutine(chunk.name, effect_list, effect_list, duration)
             for one_subroutine in from_children:
@@ -493,6 +505,7 @@ def parse_subroutine(name, move_list, effect_list, start_frame=0):
                 chunk.blockstun = override_blockstun
                 chunk.hitstop = override_hitstop
                 chunk.additionalHitstopOpponent = override_additional_hitstop
+                chunk.damage = override_damage
 
             first_subroutine.append(chunk)
             duration += chunk.duration
@@ -513,16 +526,20 @@ def simulate_effect_on_block(name, effect_list, start_frame=0):
     override_blockstun = None
     override_hitstop = None
     override_additional_hitstop = None
+    override_damage = None
     if duration > 0:
         first_subroutine.append(WaitFrameChunk(duration))
     for chunk in effect_list[name].frame_chunks:
         if isinstance(chunk, SubroutineCall):
             from_children = []
             if chunk.name in effect_list and isinstance(effect_list[chunk.name], Subroutine):
+                subroutine = effect_list[chunk.name]
                 # print "SUBROUTINE " + effect_list[chunk.name]
-                override_blockstun = effect_list[chunk.name].blockstun
-                override_hitstop = effect_list[chunk.name].hitstop
-                override_additional_hitstop = effect_list[chunk.name].additionalHitstopOpponent
+                override_blockstun = subroutine.blockstun
+                override_hitstop = subroutine.hitstop
+                override_additional_hitstop = subroutine.additionalHitstopOpponent
+                override_damage = Damage(subroutine.damage, subroutine.p1, subroutine.p2,
+                                         subroutine.minDamage, subroutine.p2Once)
             else:
                 from_children = parse_subroutine(chunk.name, effect_list, effect_list, duration)
             for one_subroutine in from_children:
@@ -532,6 +549,7 @@ def simulate_effect_on_block(name, effect_list, start_frame=0):
                 chunk.blockstun = override_blockstun
                 chunk.hitstop = override_hitstop
                 chunk.additionalHitstopOpponent = override_additional_hitstop
+                chunk.damage = override_damage
 
             first_subroutine.append(chunk)
             duration += chunk.duration
@@ -634,6 +652,7 @@ def combine_with_effects_on_block(move, effect_list):
     override_hitstop = None
     override_additional_hitstop = None
     override_landing_recovery = None
+    override_damage = None
     current_frame = 0
     subroutine_calls = []
     main_subroutine = []
@@ -641,11 +660,14 @@ def combine_with_effects_on_block(move, effect_list):
     for idx, chunk in enumerate(move.frame_chunks):
         if isinstance(chunk, SubroutineCall):
             if chunk.name in effect_list and isinstance(effect_list[chunk.name], Subroutine):
+                subroutine = effect_list[chunk.name]
                 # print "SUBROUTINE " + effect_list[chunk.name]
-                override_blockstun = effect_list[chunk.name].blockstun
-                override_hitstop = effect_list[chunk.name].hitstop
-                override_additional_hitstop = effect_list[chunk.name].additionalHitstopOpponent
-                override_landing_recovery = effect_list[chunk.name].landingRecovery
+                override_blockstun = subroutine.blockstun
+                override_hitstop = subroutine.hitstop
+                override_additional_hitstop = subroutine.additionalHitstopOpponent
+                override_damage = Damage(subroutine.damage, subroutine.p1, subroutine.p2,
+                                         subroutine.minDamage, subroutine.p2Once)
+
             else:
                 subroutine_calls.extend(simulate_effect_on_block(chunk.name, effect_list, start_frame=current_frame))
         else:
@@ -653,6 +675,7 @@ def combine_with_effects_on_block(move, effect_list):
                 chunk.blockstun = override_blockstun
                 chunk.hitstop = override_hitstop
                 chunk.additionalHitstopOpponent = override_additional_hitstop
+                chunk.damage = override_damage
 
             main_subroutine.append(chunk)
             current_frame += chunk.duration
@@ -841,7 +864,6 @@ def main():
         for key in move_list.keys():
             if key.startswith("Act") or key.startswith("Event"):
                 del move_list[key]
-
 
         hit_simulations = simulate_on_block(move_list, effect_list)
 
