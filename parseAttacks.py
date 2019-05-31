@@ -344,21 +344,30 @@ def parse_move_file(source, move_list, effect_list):
             elif "RefreshMultihit()" in line:  # counts as a new hit, end previous frames; start a  new one
                 state.isNewHit = True
             elif "AttackLevel_(" in line:  # get hitstun/blockstun values according to it's level
-                level = line[line.index("(") + 1:line.index("(") + 2]
+                level = int(line[line.index("(") + 1:line.index(")")])
                 # print "LEVEL: " + level
                 # blockstun by level: 0: 9F, 1: 11F, 2: 13F, 3: 16F, 4: 18F, 5: 20F
                 # so blockstun = 0 * Level*2. If Level 3 or higher, blockstun + 1
-                state.blockstun = 9 + int(level) * 2
-                if int(level) >= 3:
+                state.blockstun = 9 + level * 2
+                if level >= 3:
                     state.blockstun += 1
                 # hitstop by level 0: 8F, 1: 9F, 2: 10F, 3: 11F, 4: 12F, 5: 13F
-                state.hitstop = 8 + int(level)
-                state.P2 = 65 + (int(level) * 5)
+                state.hitstop = 8 + level
+                state.P2 = 65 + (level * 5)
+                if level == 0 or level == 1 or level == 2:
+                    state.damage = 1000
+                elif level == 3:
+                    state.damage = 1500
+                elif level == 4:
+                    state.damage = 1700
+                elif level == 5:
+                    state.damage = 2000
+
             elif "AttackP1(" in line:
                 state.P1 = int(line[line.index("(") + 1:line.index(")")])
             elif "AttackP2(" in line:
                 state.P2 = int(line[line.index("(") + 1:line.index(")")])
-            elif " Damage(" in line:
+            elif " Damage(" in line or "\tDamage(" in line:
                 state.damage = int(line[line.index("(") + 1:line.index(")")])
             elif "Unknown11092(" in line:
                 state.P2Once = line[line.index("(") + 1:line.index(")")] == "1"
@@ -690,50 +699,30 @@ def write_file(moves_on_block, target):
             target.write("\n\tlast blockstun: " + str(last_blockstun_frame))
             target.write(" diff: " + str(last_blockstun_frame - duration_on_block))
         for inv in inv_list:
-            inv_type = " Guard" if inv[2] == 2 else ""
-            inv_attr = get_inv_attr_text(inv[3])
-            target.write("\n\t" + str(inv[0]) + "-" + str(inv[0] + inv[1] - 1) + inv_type + " " + inv_attr)
+            inv_text = get_inv_text(inv[0], inv[1], inv[2], inv[3],
+                                    move_on_block.superflash_start,
+                                    move_on_block.superflash_duration
+                                    )
+            target.write("\n\t" + inv_text)
 
         damage_list = calc_damage_for_move(move_on_block)
-        damage_str = ""
-        damage = None
-        damage_multiplier = 1
-        p1_str = ""
-        p1 = None
-        p1_multiplier = 1
-        p2 = None
-        p2_multiplier = 1
-        p2_str = ""
-        for item in damage_list:
-            if damage == item.damage:
-                damage_multiplier += 1
-            elif damage is not None:
-                damage_str += str(damage)
-                if damage_multiplier > 1:
-                    damage_str += "*" + str(damage_multiplier)
-                damage_str += ", "
-            damage = item.damage
-            if p1 == item.p1:
-                p1_multiplier += 1
-            elif p1 is not None:
-                p1_str += str(p1)
-                if p1_multiplier > 1:
-                    p1_str += "*" + str(p1_multiplier)
-                damage_str += ", "
-            p1 = item.p1
-            if p2 == item.p2:
-                p2_multiplier += 1
-            elif p2 is not None:
-                p2_str += str(p2)
-                if p2_multiplier > 1:
-                    p2_str += "*" + str(p2_multiplier)
-                damage_str += ", "
-            p2 = item.p2
-
-        target.write("\n\tdamage: " + damage_str)
-        target.write("\n\tP1: " + p1_str)
-        target.write("\n\tP2: " + p2_str)
+        damage_str = create_damage_text(damage_list)
+        target.write(damage_str)
         target.write("\n")
+
+
+def get_inv_text(inv_start, inv_duration, inv_type, inv_attr, superflash_start, superflash_duration):
+    inv_type = " Guard" if inv_type == 2 else ""
+    inv_attr = get_inv_attr_text(inv_attr)
+
+    inv_end = inv_start + inv_duration - 1
+    if superflash_start is not None:
+        if inv_start > superflash_start:
+            inv_start -= superflash_duration
+
+        if inv_end > superflash_start:
+            inv_end -= superflash_duration
+    return str(inv_start) + "-" + str(inv_end) + inv_type + " " + inv_attr + inv_type
 
 
 def get_inv_attr_text(attr):
@@ -754,26 +743,84 @@ def get_inv_attr_text(attr):
     return return_value
 
 
+def create_damage_text(damage_list):
+    if len(damage_list) == 0:
+        return ""
+
+    damage_str = ""
+    damage = None
+    damage_multiplier = 1
+    p1_str = ""
+    p1 = None
+    p1_multiplier = 1
+    p2 = None
+    p2_multiplier = 1
+    p2_str = ""
+    for item in damage_list:
+        if damage == item.damage:
+            damage_multiplier += 1
+        elif damage is not None:
+            damage_str += str(damage)
+            if damage_multiplier > 1:
+                damage_str += "*" + str(damage_multiplier)
+            damage_str += ", "
+        damage = item.damage
+        if p1 == item.p1:
+            p1_multiplier += 1
+        elif p1 is not None:
+            p1_str += str(p1)
+            if p1_multiplier > 1:
+                p1_str += "*" + str(p1_multiplier)
+            p1_str += ", "
+        p1 = item.p1
+        if p2 == item.p2:
+            p2_multiplier += 1
+        elif p2 is not None:
+            p2_str += str(p2)
+            if p2_multiplier > 1:
+                p2_str += "*" + str(p2_multiplier)
+            p2_str += ", "
+        p2 = item.p2
+
+    if damage is not None:
+        damage_str += str(damage)
+        if damage_multiplier > 1 and damage_str == "":
+            damage_str += "*" + str(damage_multiplier)
+    if p1 is not None:
+        p1_str += str(p1)
+        if p1_multiplier > 1 and p1_str == "":
+            p1_str += "*" + str(p1_multiplier)
+    if p2 is not None:
+        p2_str += str(p2)
+        if p2_multiplier > 1 and p2_str == "":
+            p2_str += "*" + str(p2_multiplier)
+
+    return "\n\tdamage: " + damage_str + "\n\tP1: " + p1_str + "\n\tP2: " + p2_str
+
+
 def main():
-    file_list = [
-        # Arcana Heart
-        "scr_ahe",
-        # BlazBlue
-        "scr_baz", "scr_bes", "scr_bha", "scr_bhz", "scr_biz", "scr_bjb", "scr_bjn", "scr_bma", "scr_bmk",
-        "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg",
-        # Persona
-        "scr_pag", "scr_pak", "scr_pbc", "scr_pce", "scr_pka", "scr_pku", "scr_pla", "scr_pmi", "scr_pna",
-        "scr_pyo", "scr_pyu",
-        # RWBY
-        "scr_rbl", "scr_rrb", "scr_rwi", "scr_ryn",
-        # Under Night
-        "scr_uca", "scr_ugo", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
-        "scr_uwa", "scr_uyu"
-    ]
-    # file_list = ["testfile"]
+    # source_dir = "./annotated"
+    # target_dir = "./parsedAttacks"
+    # file_list = [
+    #     # Arcana Heart
+    #     "scr_ahe",
+    #     # BlazBlue
+    #     "scr_baz", "scr_bes", "scr_bha", "scr_bhz", "scr_biz", "scr_bjb", "scr_bjn", "scr_bma", "scr_bmk",
+    #     "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg",
+    #     # Persona
+    #     "scr_pag", "scr_pak", "scr_pbc", "scr_pce", "scr_pka", "scr_pku", "scr_pla", "scr_pmi", "scr_pna",
+    #     "scr_pyo", "scr_pyu",
+    #     # RWBY
+    #     "scr_rbl", "scr_rrb", "scr_rwi", "scr_ryn",
+    #     # Under Night
+    #     "scr_uca", "scr_ugo", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
+    #     "scr_uwa", "scr_uyu"
+    # ]
+    source_dir = "."
+    target_dir = "."
+    file_list = ["testfile"]
     for file_name in file_list:
         # Parse effects
-        source_dir = "./annotated"
         if not os.path.isfile(source_dir + "/" + file_name + "ea.py") or \
                 not os.path.isfile(source_dir + "/" + file_name + ".py"):
             print "file" + source_dir + "/" + file_name + "ea.py or " + \
@@ -784,10 +831,11 @@ def main():
         effect_list = parse_move_file(effect_source, effect_list, effect_list)
         # Parse moves
         char_source = open(source_dir + "/" + file_name + ".py", "r")
-        target_dir = "./parsedAttacks"
         char_target = open(target_dir + "/" + file_name + "_out.txt", "w")
         move_list = OrderedDict()
         move_list = parse_move_file(char_source, move_list, effect_list)
+        # TODO: remove moves we don't care about, like all the Act stuff
+
 
         hit_simulations = simulate_on_block(move_list, effect_list)
 

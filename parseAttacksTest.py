@@ -844,3 +844,7 @@ def az406_dummy_5B3rd():
         to_test = calc_damage_for_move(shot)
         expected = [Damage(500, 60, 80, 0, False), Damage(1000, 100, 100, 0, False), Damage(600, 60, 70, 5, False)]
         self.assertEqual(expected, to_test)
+
+    # def test_damage_text_simple_attack(self):
+    #     damage_str = create_damage_text([Damage(500, 60, 80)])
+    #     self.assertEqual("", damage_str)
