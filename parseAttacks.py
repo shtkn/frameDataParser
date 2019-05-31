@@ -837,7 +837,10 @@ def main():
         char_target = open(target_dir + "/" + file_name + "_out.txt", "w")
         move_list = OrderedDict()
         move_list = parse_move_file(char_source, move_list, effect_list)
-        # TODO: remove moves we don't care about, like all the Act stuff
+        # remove moves we don't care about, like all the Act* and Event* stuff
+        for key in move_list.keys():
+            if key.startswith("Act") or key.startswith("Event"):
+                del move_list[key]
 
 
         hit_simulations = simulate_on_block(move_list, effect_list)

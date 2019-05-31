@@ -713,7 +713,7 @@ UltimateAssault_catch
 	startup: 32770 blockstun: 1
 	last blockstun: 1 diff: -4
 	1-5 All
-	damage: 0, 150
+	damage: 150, 0
 	P1: 100
 	P2: 100
 UltimateAssault_exe_1
@@ -722,7 +722,7 @@ UltimateAssault_exe_1
 	startup: 0 blockstun: 29
 	last blockstun: 29 diff: -46
 	1-75 All
-	damage: 0, 150
+	damage: 150, 0, 150
 	P1: 100
 	P2: 100
 UltimateAssault_catch_2
@@ -760,8 +760,8 @@ AirUltimateAssaultOD
 	startup: 6+60Flash+87 blockstun: 157
 	last blockstun: 157 diff: -60
 	1-13 All
-	damage: 0, 2200*2, 0
-	P1: 100, 80*2, 100
+	damage: 2200, 0, 2200, 0
+	P1: 80, 100, 80, 100
 	P2: 100*2, 60*2, 100
 UltimateAssaultOD_catch
 	6  
@@ -809,7 +809,7 @@ UltimateAssaultOD_exe_2
 	startup: 0 blockstun: 155
 	last blockstun: 155 diff: -6
 	1-136 All
-	damage: 0, 180*2, 3000
+	damage: 180, 0, 180, 3000
 	P1: 100*3, 80
 	P2: 100*3, 60
 UltimateThrow
@@ -971,7 +971,7 @@ UltimateAssaultDDD
 	startup: 131 blockstun: 157
 	last blockstun: 157 diff: -46
 	1-73 All
-	damage: 0, 100, 1900, 0
+	damage: 100, 0, 1900, 0
 	P1: 100
 	P2: 100*2, 60*2, 100
 UltimateAssaultDDD_catch
@@ -981,7 +981,7 @@ UltimateAssaultDDD_catch
 	startup: 32770 blockstun: 1
 	last blockstun: 1 diff: -4
 	1-5 All
-	damage: 0, 100
+	damage: 100, 0
 	P1: 100
 	P2: 100
 UltimateAssaultDDD_exe_1
@@ -990,7 +990,7 @@ UltimateAssaultDDD_exe_1
 	startup: 0 blockstun: 29
 	last blockstun: 29 diff: -46
 	1-75 All
-	damage: 0, 100
+	damage: 100, 0, 100
 	P1: 100
 	P2: 100
 UltimateAssaultDDD_catch_2
@@ -1007,7 +1007,7 @@ UltimateAssaultDDD_exe_2
 	startup: 0 blockstun: 155
 	last blockstun: 155 diff: -6
 	1-136 All
-	damage: 0, 100*2, 700
+	damage: 100, 0, 100, 700
 	P1: 100
 	P2: 100
 UltimateAssaultDDDOD
@@ -1027,7 +1027,7 @@ UltimateAssaultDDDOD_catch
 	startup: 32770 blockstun: 1
 	last blockstun: 1 diff: -4
 	1-5 All
-	damage: 0, 100
+	damage: 100, 0
 	P1: 100
 	P2: 100
 UltimateAssaultDDDOD_exe_1
@@ -1036,7 +1036,7 @@ UltimateAssaultDDDOD_exe_1
 	startup: 0 blockstun: 29
 	last blockstun: 29 diff: -31
 	1-60 All
-	damage: 0, 100
+	damage: 100, 0, 100
 	P1: 100
 	P2: 100
 UltimateAssaultDDDOD_exe_1_ranb

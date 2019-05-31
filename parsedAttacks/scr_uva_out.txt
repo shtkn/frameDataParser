@@ -823,9 +823,9 @@ AN_NmlAtk5A_4th
 	duration on block: 82
 	startup: 52 blockstun: 70
 	last blockstun: 70 diff: -12
-	damage: 800*5, 0*5, 800
+	damage: 800*6, 0
 	P1: 100
-	P2: 85*5, 100*5, 85
+	P2: 85*6, 100
 NmlAtk5B
 Total: 
 	duration on block: 45

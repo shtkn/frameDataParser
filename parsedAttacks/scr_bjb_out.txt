@@ -432,9 +432,9 @@ CmnActChangePartnerAssistAtk_A
 	startup: 30 blockstun: 57
 	startup: 30 blockstun: 57
 	last blockstun: 57 diff: 4
-	damage: 0, 1800, 0
-	P1: 100, 70, 100
-	P2: 100, 80, 100
+	damage: 0*2, 1800
+	P1: 100*2, 70
+	P2: 100*2, 80
 CmnActChangePartnerAssistAtk_B
 	15 3 32800
 	duration on block: 32837
@@ -448,8 +448,8 @@ CmnActChangePartnerAssistAtk_D
 	startup: 13 blockstun: 47
 	startup: 26 blockstun: 47
 	last blockstun: 47 diff: -9
-	damage: 1000, 0*2, 1000
-	P1: 70, 100*2, 70
+	damage: 1000, 0, 1000, 0
+	P1: 70, 100, 70, 100
 	P2: 100
 CmnActChangePartnerDD
 	1+77Flash+0  
@@ -573,9 +573,9 @@ NmlAtk5B5th
 	startup: 9 blockstun: 39
 	startup: 9 blockstun: 39
 	last blockstun: 39 diff: -19
-	damage: 1700, 0
+	damage: 0*2, 1700
 	P1: 100
-	P2: 85, 100
+	P2: 100*2, 85
 NmlAtk2A
 	9 3 15
 	duration on block: 37
@@ -627,9 +627,9 @@ NmlAtkAIR5B3rd
 	startup: 9 blockstun: 39
 	startup: 9 blockstun: 39
 	last blockstun: 39 diff: -19
-	damage: 0*2, 1700
+	damage: 1700, 0
 	P1: 100
-	P2: 100*2, 85
+	P2: 85, 100
 NmlAtkAIR5C
 	16 32767 80
 	duration on block: 32862
@@ -696,9 +696,9 @@ ThrowExe
 	duration on block: 50
 	startup: 28 blockstun: 54
 	last blockstun: 54 diff: 4
-	damage: 0*2, 2000
+	damage: 0, 2000, 0
 	P1: 100
-	P2: 100*2, 50
+	P2: 100, 50, 100
 NmlAtkBackThrow
 	35 3 23
 	duration on block: 60
@@ -722,9 +722,9 @@ CmnActInvincibleAttack
 	startup: 40 blockstun: 70
 	last blockstun: 70 diff: -37
 	1-15 All
-	damage: 0, 1700, 0*2, 1700
+	damage: 1700, 0*3, 1700
 	P1: 100
-	P2: 100, 85, 100*2, 85
+	P2: 85, 100*3, 85
 CmnActInvincibleAttackAir
 	12 4(12)3 53
 	duration on block: 107
@@ -964,76 +964,3 @@ CmnActMatchWin
 CmnActLose
 	32817  
 	duration on block: 32817
-EventDefEntryWait
-Total: 
-	duration on block: 70
-	last blockstun: 1 diff: -69
-	damage: 0
-	P1: 100
-	P2: 100
-EventDefChouhatsu
-	71  
-	duration on block: 71
-EventDefChouhatsu2
-	32791  
-	duration on block: 32791
-EventDefChouhatsuEnd
-	24  
-	duration on block: 24
-EventEntry0_PrepareForBattle
-	129  
-	duration on block: 129
-EventWarpIn
-	27  
-	duration on block: 27
-EventWarpOut
-	32793  
-	duration on block: 32793
-Act3Event_Udekumi
-	38  
-	duration on block: 38
-Act3Event_UdekumiEnd
-	18  
-	duration on block: 18
-Act3Event_Think
-	32783  
-	duration on block: 32783
-	startup: 64 blockstun: 0
-Act3Event_ThinkEnd
-	16  
-	duration on block: 16
-Act3Event_jbvsrg_00
-	8 11 30
-	duration on block: 48
-	last blockstun: 8 diff: -40
-	damage: 0
-	P1: 100
-	P2: 100
-Act3Event_Reaction
-	116  
-	duration on block: 116
-Act3Event_Sword
-	69  
-	duration on block: 69
-Act3Event_SwordLoop
-	21  
-	duration on block: 21
-Act3Event_SwordEnd
-	23  
-	duration on block: 23
-Act3Event_Tameiki
-	32819  
-	duration on block: 32819
-Act3Event_TameikiEnd
-	14  
-	duration on block: 14
-Act3Event_Miageru
-	32801  
-	duration on block: 32801
-Act3Event_MiageruEnd
-	24  
-	duration on block: 24
-Act3Event_Kansyo
-	22  
-	duration on block: 22
-	startup: 120 blockstun: 0
