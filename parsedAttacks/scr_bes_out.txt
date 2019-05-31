@@ -365,17 +365,17 @@ CmnActChangePartnerAssistAdmiss
 CmnActChangePartnerAssistAtk_A
 	69  
 	duration on block: 69
-	startup: 27 blockstun: 48
-	startup: 40 blockstun: 48
-	last blockstun: 48 diff: -21
+	startup: 27 blockstun: 27
+	startup: 40 blockstun: 67
+	last blockstun: 67 diff: -2
 	damage: 0, 2000
 	P1: 100, 70
 	P2: 100, 80
 CmnActChangePartnerAssistAtk_B
 	17 4 32789
 	duration on block: 32821
-	startup: 32 blockstun: 49
-	last blockstun: 49 diff: -32772
+	startup: 32 blockstun: 47
+	last blockstun: 47 diff: -32774
 	damage: 1700, 0
 	P1: 70, 100
 	P2: 85, 100
@@ -461,8 +461,8 @@ NmlAtk2A
 NmlAtk5B
 	24 5 33
 	duration on block: 73
-	startup: 48 blockstun: 65
-	last blockstun: 65 diff: -8
+	startup: 48 blockstun: 54
+	last blockstun: 54 diff: -19
 	damage: 1700, 0
 	P1: 100
 	P2: 85, 100
@@ -513,8 +513,8 @@ NmlAtkAIR5B
 NmlAtkAIR5C
 	23 5 23+8L
 	duration on block: 62
-	startup: 46 blockstun: 63
-	last blockstun: 63 diff: 1
+	startup: 46 blockstun: 53
+	last blockstun: 53 diff: -9
 	damage: 1700, 0
 	P1: 80, 100
 	P2: 85, 100
@@ -582,87 +582,87 @@ BackThrowExe
 ShotA
 	44  
 	duration on block: 44
-	startup: 15 blockstun: 36
-	last blockstun: 36 diff: -8
+	startup: 15 blockstun: 15
+	last blockstun: 15 diff: -29
 	damage: 0
 	P1: 100
 	P2: 100
 ShotB
 	48  
 	duration on block: 48
-	startup: 27 blockstun: 48
-	last blockstun: 48 diff: 0
+	startup: 27 blockstun: 27
+	last blockstun: 27 diff: -21
 	damage: 0
 	P1: 100
 	P2: 100
 ShotEX
 	50  
 	duration on block: 50
-	startup: 15 blockstun: 36
-	startup: 20 blockstun: 36
-	last blockstun: 36 diff: -14
+	startup: 15 blockstun: 15
+	startup: 20 blockstun: 47
+	last blockstun: 47 diff: -3
 	damage: 0, 2500
 	P1: 100, 80
 	P2: 100, 70
 ShotA_2nd
 	42  
 	duration on block: 42
-	startup: 13 blockstun: 13
-	startup: 13 blockstun: 34
-	startup: 13 blockstun: 34
-	last blockstun: 34 diff: -8
+	startup: 13 blockstun: 40
+	startup: 13 blockstun: 40
+	startup: 13 blockstun: 40
+	last blockstun: 40 diff: -2
 	damage: 0*2, 2500
 	P1: 100*2, 80
 	P2: 100*2, 80
 ShotB_2nd
 	42  
 	duration on block: 42
-	startup: 13 blockstun: 34
-	startup: 13 blockstun: 34
-	last blockstun: 34 diff: -8
+	startup: 13 blockstun: 13
+	startup: 13 blockstun: 13
+	last blockstun: 13 diff: -29
 	damage: 0
 	P1: 100
 	P2: 100
 AirShotA
 	47  +9L
 	duration on block: 47
-	startup: 17 blockstun: 38
-	last blockstun: 38 diff: -9
+	startup: 17 blockstun: 17
+	last blockstun: 17 diff: -30
 	damage: 0
 	P1: 100
 	P2: 100
 AirShotB
 	47  +9L
 	duration on block: 47
-	startup: 26 blockstun: 47
-	last blockstun: 47 diff: 0
+	startup: 26 blockstun: 26
+	last blockstun: 26 diff: -21
 	damage: 0
 	P1: 100
 	P2: 100
 AirShotEX
 	38  
 	duration on block: 38
-	startup: 12 blockstun: 33
-	startup: 24 blockstun: 45
-	last blockstun: 45 diff: 7
+	startup: 12 blockstun: 12
+	startup: 24 blockstun: 24
+	last blockstun: 24 diff: -14
 	damage: 0
 	P1: 100
 	P2: 100
 AirShotA_2nd
 	39  +9L
 	duration on block: 39
-	startup: 13 blockstun: 34
-	startup: 13 blockstun: 34
-	last blockstun: 34 diff: -5
+	startup: 13 blockstun: 13
+	startup: 13 blockstun: 13
+	last blockstun: 13 diff: -26
 	damage: 0
 	P1: 100
 	P2: 100
 AirShotB_2nd
 	39  +9L
 	duration on block: 39
-	startup: 13 blockstun: 34
-	startup: 13 blockstun: 34
-	last blockstun: 34 diff: -5
+	startup: 13 blockstun: 13
+	startup: 13 blockstun: 13
+	last blockstun: 13 diff: -26
 	damage: 0
 	P1: 100
 	P2: 100
@@ -683,8 +683,8 @@ SpecialThrowExe
 MidAssault
 	27 4 19
 	duration on block: 61
-	startup: 44 blockstun: 61
-	last blockstun: 61 diff: 0
+	startup: 44 blockstun: 57
+	last blockstun: 57 diff: -4
 	9-30 FT
 	damage: 1700, 0
 	P1: 80, 100
@@ -710,9 +710,9 @@ CmnActInvincibleAttack
 	startup: 53 blockstun: 70
 	last blockstun: 70 diff: -43
 	1-15 All
-	damage: 1400, 0, 1400, 0
-	P1: 80, 100, 80, 100
-	P2: 60, 100, 60, 100
+	damage: 1400*2, 0
+	P1: 80*2, 100
+	P2: 60*2, 100
 AntiAir2nd
 	65  
 	duration on block: 65
@@ -728,9 +728,9 @@ CmnActInvincibleAttackAir
 	startup: 50 blockstun: 67
 	last blockstun: 67 diff: -43
 	1-12 All
-	damage: 1400, 0, 1400, 0
-	P1: 80, 100, 80, 100
-	P2: 60, 100, 60, 100
+	damage: 1400*2, 0
+	P1: 80*2, 100
+	P2: 60*2, 100
 AirAntiAir2nd
 	65  
 	duration on block: 65

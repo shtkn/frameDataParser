@@ -411,9 +411,9 @@ CmnActChangePartnerAssistAtk_A
 	duration on block: 72
 CmnActChangePartnerAssistAtk_B
 	10 3 38
-	duration on block: 50
-	startup: 13 blockstun: 13
-	last blockstun: 13 diff: -37
+	duration on block: 66
+	startup: 13 blockstun: 44
+	last blockstun: 44 diff: -22
 	damage: 1700, 0
 	P1: 70, 100
 	P2: 85, 100
@@ -476,18 +476,17 @@ NmlAtk5AA
 NmlAtk5AAA
 	8 2(3)2(3)2(3)2 28
 	duration on block: 52
-	last blockstun: 23 diff: -29
+	last blockstun: 48 diff: -4
 	damage: 650
 	P1: 100
 	P2: 85
 RushAssaultFinish
 	17 10 76
 	duration on block: 102
-	startup: 74 blockstun: 74
-	last blockstun: 74 diff: -28
-	damage: 500, 1700
+	last blockstun: 35 diff: -67
+	damage: 500
 	P1: 100
-	P2: 100, 85
+	P2: 100
 NmlAtk5B
 	10 4 19
 	duration on block: 43
@@ -554,9 +553,9 @@ NmlAtkAIR5B
 	P1: 100
 	P2: 85
 NmlAtkAIR5C
-	14 3 29
-	duration on block: 45
-	last blockstun: 14 diff: -31
+	14 3 29+5L
+	duration on block: 58
+	last blockstun: 47 diff: -11
 	damage: 2000
 	P1: 100
 	P2: 90
@@ -655,7 +654,7 @@ Shot_D2
 	52  
 	duration on block: 52
 AirShot
-	44  
+	44  +11L
 	duration on block: 44
 	startup: 8 blockstun: 32
 	last blockstun: 32 diff: -12
@@ -670,15 +669,15 @@ AirShot_D2
 	duration on block: 40
 Assault
 	17 8 17
-	duration on block: 41
-	last blockstun: 17 diff: -24
+	duration on block: 52
+	last blockstun: 44 diff: -8
 	damage: 1500
 	P1: 80
 	P2: 80
 Assault_B
 	17 10 18
-	duration on block: 44
-	last blockstun: 17 diff: -27
+	duration on block: 55
+	last blockstun: 44 diff: -11
 	damage: 1600
 	P1: 80
 	P2: 80
@@ -704,9 +703,9 @@ Assault_D_2nd
 	P1: 100
 	P2: 90
 AirAssault
-	13 3 37
-	duration on block: 52
-	last blockstun: 13 diff: -39
+	13 3 37+7L
+	duration on block: 63
+	last blockstun: 40 diff: -23
 	damage: 1800
 	P1: 80
 	P2: 80
@@ -726,9 +725,9 @@ AirAssault_D
 	P2: 85
 CmnActInvincibleAttack
 	13 3 49
-	duration on block: 64
-	startup: 15 blockstun: 15
-	last blockstun: 15 diff: -49
+	duration on block: 76
+	startup: 15 blockstun: 43
+	last blockstun: 43 diff: -33
 	1-15 All
 	damage: 2300, 0
 	P1: 100

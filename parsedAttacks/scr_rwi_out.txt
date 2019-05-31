@@ -618,49 +618,49 @@ CmnActInvincibleAttack
 	P2: 85
 AssaultA
 	25 3 18
-	duration on block: 45
-	startup: 131069 blockstun: 25
-	last blockstun: 25 diff: -20
+	duration on block: 56
+	startup: 131069 blockstun: 52
+	last blockstun: 52 diff: -4
 	damage: 1800
 	P1: 80
 	P2: 80
 AssaultB
 	33 3 16
-	duration on block: 51
-	startup: 131091 blockstun: 33
-	last blockstun: 33 diff: -18
+	duration on block: 62
+	startup: 131091 blockstun: 60
+	last blockstun: 60 diff: -2
 	damage: 1800
 	P1: 80
 	P2: 80
 AssaultC
 	25 3(12)3(9)3 30
-	duration on block: 84
-	startup: 131069 blockstun: 52
-	last blockstun: 52 diff: -32
+	duration on block: 102
+	startup: 131069 blockstun: 88
+	last blockstun: 88 diff: -14
 	damage: 1450
 	P1: 80
 	P2: 75
 AirAssaultA
 	28 3 18
-	duration on block: 48
-	startup: 131079 blockstun: 28
-	last blockstun: 28 diff: -20
+	duration on block: 59
+	startup: 131079 blockstun: 55
+	last blockstun: 55 diff: -4
 	damage: 1500
 	P1: 80
 	P2: 80
 AirAssaultB
 	34 3 24
-	duration on block: 60
-	startup: 131099 blockstun: 34
-	last blockstun: 34 diff: -26
+	duration on block: 71
+	startup: 131099 blockstun: 61
+	last blockstun: 61 diff: -10
 	damage: 1700
 	P1: 80
 	P2: 80
 AirAssaultC
 	28 3 47
-	duration on block: 77
-	startup: 131105 blockstun: 28
-	last blockstun: 28 diff: -49
+	duration on block: 89
+	startup: 131105 blockstun: 58
+	last blockstun: 58 diff: -31
 	damage: 1500
 	P1: 80
 	P2: 85
@@ -702,49 +702,49 @@ SetMagicC
 	duration on block: 37
 ExLandAssaultA
 	19 5 15
-	duration on block: 38
-	last blockstun: 19 diff: -19
+	duration on block: 50
+	last blockstun: 49 diff: -1
 	damage: 1750
 	P1: 80
 	P2: 85
 ExAirAssaultA
 	20 5 24
-	duration on block: 48
-	startup: 63 blockstun: 20
-	last blockstun: 20 diff: -28
+	duration on block: 60
+	startup: 63 blockstun: 50
+	last blockstun: 50 diff: -10
 	damage: 1900
 	P1: 80
 	P2: 85
 ExLandAssaultB
 	34 3,9 12
-	duration on block: 57
-	startup: 63 blockstun: 37
-	last blockstun: 37 diff: -20
+	duration on block: 81
+	startup: 63 blockstun: 79
+	last blockstun: 79 diff: -2
 	11-36 B
 	damage: 2200
 	P1: 80
 	P2: 75
 ExAirAssaultB
 	22 3,9 17
-	duration on block: 50
-	startup: 63 blockstun: 25
-	last blockstun: 25 diff: -25
+	duration on block: 74
+	startup: 63 blockstun: 67
+	last blockstun: 67 diff: -7
 	1-24 B
 	damage: 2350
 	P1: 80
 	P2: 75
 ExLandAssaultC
 	18 3(6)3 17
-	duration on block: 46
-	last blockstun: 27 diff: -19
+	duration on block: 64
+	last blockstun: 63 diff: -1
 	damage: 1300
 	P1: 90
 	P2: 85
 ExAirAssaultC
 	18 3(6)3 17
-	duration on block: 46
-	startup: 63 blockstun: 27
-	last blockstun: 27 diff: -19
+	duration on block: 64
+	startup: 63 blockstun: 63
+	last blockstun: 63 diff: -1
 	damage: 1400
 	P1: 90
 	P2: 85

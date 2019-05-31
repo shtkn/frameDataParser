@@ -419,16 +419,16 @@ AirBackdash
 	P2: 80
 NmlAtk5A
 	10 2,3 24
-	duration on block: 38
-	last blockstun: 12 diff: -26
+	duration on block: 60
+	last blockstun: 50 diff: -10
 	7-11 H
 	damage: 1500
 	P1: 90
 	P2: 80
 AN_NmlAtk5A_2nd
 	8 4 20
-	duration on block: 31
-	last blockstun: 8 diff: -23
+	duration on block: 42
+	last blockstun: 35 diff: -7
 	damage: 1500
 	P1: 100
 	P2: 80
@@ -461,43 +461,43 @@ AN_NmlAtk5A_4th
 	P2: 90
 NmlAtk5B
 	13 2 22
-	duration on block: 36
-	last blockstun: 13 diff: -23
+	duration on block: 47
+	last blockstun: 40 diff: -7
 	damage: 1500
 	P1: 100
 	P2: 80
 AN_NmlAtk5B_2nd
 	15 5 23
-	duration on block: 42
-	last blockstun: 15 diff: -27
+	duration on block: 53
+	last blockstun: 42 diff: -11
 	damage: 1500
 	P1: 100
 	P2: 80
 AN_NmlAtk5B_3rd
 	17 2 29
-	duration on block: 47
-	last blockstun: 17 diff: -30
+	duration on block: 59
+	last blockstun: 47 diff: -12
 	damage: 1700
 	P1: 100
 	P2: 85
 NmlAtk2A
 	7 3(6)2 14
-	duration on block: 31
-	last blockstun: 16 diff: -15
+	duration on block: 51
+	last blockstun: 49 diff: -2
 	damage: 1000
 	P1: 100
 	P2: 75
 NmlAtk2A_Renda
 	6 3(6)2 14
-	duration on block: 30
-	last blockstun: 15 diff: -15
+	duration on block: 50
+	last blockstun: 48 diff: -2
 	damage: 1000
 	P1: 100
 	P2: 75
 NmlAtk2B
 	13 2(6)4 16
-	duration on block: 40
-	last blockstun: 21 diff: -19
+	duration on block: 62
+	last blockstun: 59 diff: -3
 	damage: 1500
 	P1: 90
 	P2: 80

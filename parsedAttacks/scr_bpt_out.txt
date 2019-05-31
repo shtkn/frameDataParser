@@ -396,8 +396,8 @@ CmnActChangePartnerAssistAtk_A
 	duration on block: 49
 CmnActChangePartnerAssistAtk_B
 	30 21,4 26
-	duration on block: 80
-	last blockstun: 51 diff: -29
+	duration on block: 106
+	last blockstun: 97 diff: -9
 	damage: 1500
 	P1: 70
 	P2: 80
@@ -537,7 +537,7 @@ NmlAtkAIR5B
 	P1: 100
 	P2: 80
 NmlAtkAIR5C
-	14 4 25
+	14 4 25+11L
 	duration on block: 57
 	last blockstun: 45 diff: -12
 	damage: 1800
@@ -615,16 +615,16 @@ BackThrowExeAdd
 	P2: 100
 CmnActInvincibleAttack
 	11 1,3(9)11 23
-	duration on block: 101
-	last blockstun: 68 diff: -33
+	duration on block: 123
+	last blockstun: 106 diff: -17
 	1-11 All
 	damage: 2000
 	P1: 100
 	P2: 80
 CmnActInvincibleAttackAir
 	11 1,7(29)10 61
-	duration on block: 162
-	last blockstun: 92 diff: -70
+	duration on block: 184
+	last blockstun: 130 diff: -54
 	1-11 All
 	damage: 2000
 	P1: 100
@@ -667,7 +667,7 @@ DriveShot_B
 	P1: 80
 	P2: 90
 AirDriveShot_A
-	48  
+	48  +9L
 	duration on block: 48
 	startup: 19 blockstun: 31
 	last blockstun: 31 diff: -17
@@ -675,7 +675,7 @@ AirDriveShot_A
 	P1: 80
 	P2: 90
 AirDriveShot_B
-	48  
+	48  +9L
 	duration on block: 48
 	startup: 19 blockstun: 31
 	last blockstun: 31 diff: -17
@@ -683,23 +683,23 @@ AirDriveShot_B
 	P1: 80
 	P2: 90
 HoppingPlus_A
-	6 6 32778
-	duration on block: 32800
-	last blockstun: 33 diff: -32767
+	6 6 32778+7L
+	duration on block: 32789
+	last blockstun: 6 diff: -32783
 	damage: 0
 	P1: 100
 	P2: 100
 HoppingPlus_B
-	6 6 41
-	duration on block: 63
-	last blockstun: 33 diff: -30
+	6 6 41+7L
+	duration on block: 52
+	last blockstun: 6 diff: -46
 	damage: 0
 	P1: 100
 	P2: 100
 HoppingPlus_C
-	6 6 32778
-	duration on block: 32800
-	last blockstun: 33 diff: -32767
+	6 6 32778+7L
+	duration on block: 32789
+	last blockstun: 6 diff: -32783
 	damage: 0
 	P1: 100
 	P2: 100
@@ -732,7 +732,7 @@ DriveShot_Ex
 	P1: 80
 	P2: 90
 AirDriveShot_Ex
-	57  
+	57  +9L
 	duration on block: 57
 	startup: 23 blockstun: 35
 	startup: 26 blockstun: 38

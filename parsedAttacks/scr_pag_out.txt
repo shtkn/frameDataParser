@@ -358,8 +358,8 @@ NmlAtk5A3rd
 	duration on block: 53
 NmlAtk5A4th
 	24 6 35
-	duration on block: 64
-	last blockstun: 24 diff: -40
+	duration on block: 77
+	last blockstun: 57 diff: -20
 	damage: 2000
 	P1: 100
 	P2: 90
@@ -378,7 +378,7 @@ NmlAtk4A2nd
 	P1: 100
 	P2: 80
 NmlAtk4A3rd
-	8 2 19
+	8 2 19+9L
 	duration on block: 39
 	last blockstun: 35 diff: -4
 	damage: 1500
@@ -386,8 +386,8 @@ NmlAtk4A3rd
 	P2: 70
 NmlAtk4A4th
 	14 6 35
-	duration on block: 54
-	last blockstun: 14 diff: -40
+	duration on block: 67
+	last blockstun: 47 diff: -20
 	damage: 2000
 	P1: 100
 	P2: 90
@@ -534,7 +534,7 @@ MachineGunB
 	P1: 100, 80
 	P2: 100, 90
 AirMachineGunA
-	61  
+	61  +5L
 	duration on block: 61
 AirMachineGunB
 	107  
@@ -542,32 +542,32 @@ AirMachineGunB
 CannonA
 	60  
 	duration on block: 60
-	startup: 25 blockstun: 40
-	last blockstun: 40 diff: -20
+	startup: 25 blockstun: 39
+	last blockstun: 39 diff: -21
 	damage: 0
 	P1: 100
 	P2: 100
 CannonB
 	57  
 	duration on block: 57
-	startup: 37 blockstun: 52
-	last blockstun: 52 diff: -5
+	startup: 37 blockstun: 51
+	last blockstun: 51 diff: -6
 	damage: 0
 	P1: 100
 	P2: 100
 AirCannonA
-	52  
+	52  +5L
 	duration on block: 52
-	startup: 21 blockstun: 59
-	last blockstun: 59 diff: 7
+	startup: 21 blockstun: 58
+	last blockstun: 58 diff: 6
 	damage: 0
 	P1: 100
 	P2: 100
 AirCannonB
-	52  
+	52  +5L
 	duration on block: 52
-	startup: 21 blockstun: 59
-	last blockstun: 59 diff: 7
+	startup: 21 blockstun: 58
+	last blockstun: 58 diff: 6
 	damage: 0
 	P1: 100
 	P2: 100
@@ -717,9 +717,9 @@ CmnActChangePartnerAssistAdmiss
 CmnActChangePartnerAssistAtk_A
 	51  
 	duration on block: 51
-	startup: 31 blockstun: 46
-	startup: 34 blockstun: 49
-	last blockstun: 49 diff: -2
+	startup: 31 blockstun: 45
+	startup: 34 blockstun: 48
+	last blockstun: 48 diff: -3
 	damage: 0
 	P1: 70
 	P2: 80

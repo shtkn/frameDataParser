@@ -421,9 +421,6 @@ ChangePartnerDD_Exe
 	damage: 0
 	P1: 100
 	P2: 100
-ChangePartnerDD_Exe2
-	1  
-	duration on block: 1
 ChangePartnerDDOD_Exe
 	55 5 34
 	duration on block: 93
@@ -432,9 +429,6 @@ ChangePartnerDDOD_Exe
 	damage: 0
 	P1: 100
 	P2: 100
-ChangePartnerDDOD_Exe2
-	1  
-	duration on block: 1
 CmnActChangeRequest
 	85  
 	duration on block: 85
@@ -543,9 +537,6 @@ Total:
 	damage: 1000
 	P1: 100
 	P2: 100
-NmlAtk2BB_Exe2
-	1  
-	duration on block: 1
 NmlAtk2BB_Exe3
 	31 1 17
 	duration on block: 60
@@ -675,9 +666,6 @@ CmnActInvincibleAttack_Exe
 CmnActInvincibleAttack_Exe2
 	52  
 	duration on block: 52
-CmnActInvincibleAttack_Exe3
-	1  
-	duration on block: 1
 CmnActInvincibleAttack_Exe4
 	79  
 	duration on block: 79
@@ -712,13 +700,10 @@ CommandThrowA
 CommandThrowA_Exe
 	24  
 	duration on block: 24
-CommandThrowA_Exe2
-	1  
-	duration on block: 1
 CommandThrowA_Exe3
 	55 3(18)6 15
-	duration on block: 136
-	last blockstun: 134 diff: -2
+	duration on block: 96
+	last blockstun: 76 diff: -20
 	damage: 3000
 	P1: 100
 	P2: 50
@@ -732,13 +717,10 @@ CommandThrowB
 CommandThrowB_Exe
 	42  
 	duration on block: 42
-CommandThrowB_Exe2
-	1  
-	duration on block: 1
 CommandThrowB_Exe3
 	55 3(18)6 15
-	duration on block: 136
-	last blockstun: 134 diff: -2
+	duration on block: 96
+	last blockstun: 76 diff: -20
 	damage: 3500
 	P1: 100
 	P2: 50
@@ -752,35 +734,23 @@ CommandThrowC
 CommandThrowC_Exe
 	42  
 	duration on block: 42
-CommandThrowC_Exe2
-	1  
-	duration on block: 1
 CommandThrowC_Exe3
 	25  
 	duration on block: 25
-CommandThrowC_Exe4
-	1  
-	duration on block: 1
 CommandThrowC_Exe5
 	39 3 
-	duration on block: 41
-	last blockstun: 39 diff: -2
+	duration on block: 49
+	last blockstun: 47 diff: -2
 	damage: 500
 	P1: 100
 	P2: 100
-CommandThrowC_Exe6
-	1  
-	duration on block: 1
 CommandThrowC_Exe7
 	35 3 
-	duration on block: 37
-	last blockstun: 35 diff: -2
+	duration on block: 49
+	last blockstun: 47 diff: -2
 	damage: 1000
 	P1: 100
 	P2: 100
-CommandThrowC_Exe8
-	1  
-	duration on block: 1
 CommandThrowC_Exe9
 	51 3(18)6 15
 	duration on block: 92
@@ -789,7 +759,7 @@ CommandThrowC_Exe9
 	P1: 100
 	P2: 50
 AirCommandThrowA
-	7 29 4
+	7 29 4+9L
 	duration on block: 39
 	last blockstun: 7 diff: -32
 	damage: 0
@@ -797,14 +767,14 @@ AirCommandThrowA
 	P2: 100
 AirCommandThrowA_Exe
 	32779 28 4
-	duration on block: 32822
-	startup: 12 blockstun: 32809
-	last blockstun: 32809 diff: -13
+	duration on block: 32830
+	startup: 12 blockstun: 32799
+	last blockstun: 32799 diff: -31
 	damage: 2300
 	P1: 100
 	P2: 100
 AirCommandThrowB
-	10 29 4
+	10 29 4+9L
 	duration on block: 42
 	last blockstun: 10 diff: -32
 	damage: 0
@@ -812,14 +782,14 @@ AirCommandThrowB
 	P2: 100
 AirCommandThrowB_Exe
 	32779 30 4
-	duration on block: 32824
-	startup: 12 blockstun: 32809
-	last blockstun: 32809 diff: -15
+	duration on block: 32832
+	startup: 12 blockstun: 32799
+	last blockstun: 32799 diff: -33
 	damage: 2700
 	P1: 100
 	P2: 100
 AirCommandThrowC
-	7 17 4
+	7 17 4+9L
 	duration on block: 27
 	last blockstun: 7 diff: -20
 	damage: 0
@@ -829,9 +799,6 @@ AirCommandThrowC_Exe
 	32779  
 	duration on block: 32779
 	startup: 12 blockstun: 0
-AirCommandThrowC_Exe2
-	1  
-	duration on block: 1
 AirCommandThrowC_Exe3
 	81  
 	duration on block: 81
@@ -859,9 +826,6 @@ Total:
 	damage: 2000
 	P1: 100
 	P2: 100
-UltimateThrowExe2
-	1  
-	duration on block: 1
 UltimateThrowExe3
 	14 42,1 
 	duration on block: 56
@@ -893,21 +857,12 @@ UltimateThrowOD_TRUE
 UltimateThrowODExe
 	42  
 	duration on block: 42
-UltimateThrowODExe2
-	1  
-	duration on block: 1
 UltimateThrowODExe3
 	25  
 	duration on block: 25
-UltimateThrowODExe4
-	1  
-	duration on block: 1
 UltimateThrowODExe5
 	25  
 	duration on block: 25
-UltimateThrowODExe6
-	1  
-	duration on block: 1
 UltimateThrowODExe7
 Total: 
 	duration on block: 52
@@ -916,9 +871,6 @@ Total:
 	damage: 2000
 	P1: 100
 	P2: 100
-UltimateThrowODExe8
-	1  
-	duration on block: 1
 UltimateThrowODExe9
 	14 42,1 
 	duration on block: 56
@@ -940,18 +892,15 @@ UltimateRunningThrow
 	P2: 100
 UltimateRunningThrow_Exe
 	11 3 8
-	duration on block: 33
-	last blockstun: 41 diff: 8
+	duration on block: 21
+	last blockstun: 11 diff: -10
 	damage: 0
 	P1: 100
 	P2: 100
-UltimateRunningThrow_Exe2
-	1  
-	duration on block: 1
 UltimateRunningThrow_Exe3
 	11 3 8
-	duration on block: 33
-	last blockstun: 41 diff: 8
+	duration on block: 51
+	last blockstun: 41 diff: -10
 	damage: 5900
 	P1: 100
 	P2: 60
@@ -967,28 +916,22 @@ UltimateRunningThrowOD
 	P2: 100
 UltimateRunningThrowOD_Exe
 	11 3 8
-	duration on block: 33
-	last blockstun: 41 diff: 8
+	duration on block: 21
+	last blockstun: 11 diff: -10
 	damage: 0
 	P1: 100
 	P2: 100
-UltimateRunningThrowOD_Exe2
-	1  
-	duration on block: 1
 UltimateRunningThrowOD_Exe3
 	11 3 8
-	duration on block: 33
-	last blockstun: 41 diff: 8
+	duration on block: 21
+	last blockstun: 11 diff: -10
 	damage: 0
 	P1: 100
 	P2: 100
-UltimateRunningThrowOD_Exe4
-	1  
-	duration on block: 1
 UltimateRunningThrowOD_Exe5
 	11 3 8
-	duration on block: 33
-	last blockstun: 41 diff: 8
+	duration on block: 51
+	last blockstun: 41 diff: -10
 	damage: 5500
 	P1: 100
 	P2: 60

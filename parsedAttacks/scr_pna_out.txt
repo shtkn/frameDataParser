@@ -583,8 +583,8 @@ KamaeEX
 	4-22 P
 BanditRevolverB
 	14 6(12)3 65541
-	duration on block: 65587
-	last blockstun: 44 diff: -65543
+	duration on block: 65599
+	last blockstun: 74 diff: -65525
 	damage: 1000
 	P1: 80
 	P2: 85
@@ -597,15 +597,15 @@ AirBanditRevolverA
 	P2: 85
 AirBanditRevolverB
 	13 6(12)6 65541
-	duration on block: 65589
-	last blockstun: 43 diff: -65546
+	duration on block: 65601
+	last blockstun: 73 diff: -65528
 	damage: 1000
 	P1: 80
 	P2: 85
 AirBanditRevolverEX
 	9 6(12)6 32780
-	duration on block: 32824
-	last blockstun: 39 diff: -32785
+	duration on block: 32836
+	last blockstun: 69 diff: -32767
 	damage: 1300
 	P1: 80
 	P2: 85
@@ -630,13 +630,13 @@ TrapEX
 	34  
 	duration on block: 34
 AirTrapA
-	28  
+	28  +4L
 	duration on block: 28
 AirTrapB
-	28  
+	28  +4L
 	duration on block: 28
 AirTrapEX
-	17  
+	17  +4L
 	duration on block: 17
 CmnActInvincibleAttack
 	46  

@@ -344,22 +344,22 @@ CmnActAirCrossChangeEnd
 	duration on block: 12
 NmlAtk5A
 	9 4 20
-	duration on block: 32
-	last blockstun: 9 diff: -23
+	duration on block: 43
+	last blockstun: 36 diff: -7
 	damage: 1500
 	P1: 100
 	P2: 80
 AN_NmlAtk5A_2nd
 	10 2 16
-	duration on block: 27
-	last blockstun: 10 diff: -17
+	duration on block: 38
+	last blockstun: 37 diff: -1
 	damage: 1500
 	P1: 100
 	P2: 80
 AN_NmlAtk5A_3rd
 	13 12 22
-	duration on block: 46
-	last blockstun: 13 diff: -33
+	duration on block: 58
+	last blockstun: 43 diff: -15
 	damage: 1700
 	P1: 100
 	P2: 75
@@ -373,9 +373,9 @@ AN_NmlAtk5A_4th
 	P2: 100, 85
 NmlAtk5B
 	5 14,2 42
-	duration on block: 62
-	startup: 25 blockstun: 19
-	last blockstun: 19 diff: -43
+	duration on block: 86
+	startup: 25 blockstun: 61
+	last blockstun: 61 diff: -25
 	damage: 1700
 	P1: 100
 	P2: 85
@@ -384,8 +384,8 @@ NmlAtk5B_2nd
 	duration on block: 39
 NmlAtk5B_2nd_Add
 	9 2 33
-	duration on block: 43
-	last blockstun: 9 diff: -34
+	duration on block: 58
+	last blockstun: 42 diff: -16
 	damage: 900
 	P1: 75
 	P2: 100
@@ -407,22 +407,22 @@ NmlAtk5B_3rd_Exe
 	P2: 100
 NmlAtk2A
 	8 2 19
-	duration on block: 28
-	last blockstun: 8 diff: -20
+	duration on block: 38
+	last blockstun: 31 diff: -7
 	damage: 1000
 	P1: 100
 	P2: 75
 NmlAtk2A_Renda
 	8 2 19
-	duration on block: 28
-	last blockstun: 8 diff: -20
+	duration on block: 38
+	last blockstun: 31 diff: -7
 	damage: 1000
 	P1: 100
 	P2: 75
 NmlAtk2B
 	7 2,6(2)6 33
-	duration on block: 55
-	last blockstun: 17 diff: -38
+	duration on block: 91
+	last blockstun: 71 diff: -20
 	7-16 H
 	damage: 1100
 	P1: 90
@@ -579,15 +579,15 @@ CmnActInvincibleAttackAir
 	P2: 60, 80, 60
 AssaultA
 	15 14,3 26
-	duration on block: 70
-	last blockstun: 42 diff: -28
+	duration on block: 57
+	last blockstun: 29 diff: -28
 	damage: 0
 	P1: 100
 	P2: 100
 AssaultB
 	19 14,8,15,3 32
-	duration on block: 105
-	last blockstun: 71 diff: -34
+	duration on block: 90
+	last blockstun: 56 diff: -34
 	damage: 0
 	P1: 100
 	P2: 100
@@ -680,8 +680,8 @@ Scratch
 	P2: 100, 85
 AssaultEx
 	13 9,6,15,6,15,3 29
-	duration on block: 112
-	last blockstun: 81 diff: -31
+	duration on block: 95
+	last blockstun: 64 diff: -31
 	damage: 0
 	P1: 100
 	P2: 100

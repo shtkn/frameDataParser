@@ -379,22 +379,22 @@ IaiJumpDown_ToLand
 	duration on block: 27
 NmlAtk5A
 	10 3 22
-	duration on block: 34
-	last blockstun: 10 diff: -24
+	duration on block: 45
+	last blockstun: 37 diff: -8
 	damage: 1500
 	P1: 100
 	P2: 80
 AN_NmlAtk5A_2nd
 	12 4 24
-	duration on block: 39
-	last blockstun: 12 diff: -27
+	duration on block: 50
+	last blockstun: 39 diff: -11
 	damage: 1500
 	P1: 100
 	P2: 80
 AN_NmlAtk5A_3rd
 	10 3,3,4,5 17
-	duration on block: 41
-	last blockstun: 20 diff: -21
+	duration on block: 61
+	last blockstun: 56 diff: -5
 	damage: 350
 	P1: 100
 	P2: 80
@@ -407,29 +407,29 @@ AN_NmlAtk5A_4th
 	P2: 85
 NmlAtk2A
 	8 3 16
-	duration on block: 26
-	last blockstun: 8 diff: -18
+	duration on block: 36
+	last blockstun: 31 diff: -5
 	damage: 1000
 	P1: 90
 	P2: 75
 NmlAtk5B
 	13 2 31
-	duration on block: 45
-	last blockstun: 13 diff: -32
+	duration on block: 53
+	last blockstun: 37 diff: -16
 	damage: 1600
 	P1: 90
 	P2: 80
 AtkB_2nd
 	7 2 31
-	duration on block: 39
-	last blockstun: 7 diff: -32
+	duration on block: 47
+	last blockstun: 31 diff: -16
 	damage: 1600
 	P1: 100
 	P2: 80
 NmlAtk2B
 	13 2 31
-	duration on block: 45
-	last blockstun: 13 diff: -32
+	duration on block: 53
+	last blockstun: 37 diff: -16
 	damage: 1600
 	P1: 90
 	P2: 80
@@ -443,8 +443,8 @@ AtkB_Finish
 	P2: 100, 90
 NmlAtk2C
 	12 8,2 28
-	duration on block: 49
-	last blockstun: 20 diff: -29
+	duration on block: 63
+	last blockstun: 52 diff: -11
 	damage: 1000
 	P1: 90
 	P2: 75
@@ -475,9 +475,9 @@ AN_NmlAtkAIR5B_2nd
 	duration on block: 39
 	startup: 7 blockstun: 31
 	last blockstun: 31 diff: -8
-	damage: 0, 1600
+	damage: 1600, 0
 	P1: 100
-	P2: 100, 80
+	P2: 80, 100
 AN_NmlAtkAIR5B_3rd
 	12 10 46
 	duration on block: 69
@@ -604,8 +604,8 @@ SlashB
 SlashC
 	17 2 39
 	duration on block: 57
-	startup: 15 blockstun: 17
-	last blockstun: 17 diff: -40
+	startup: 15 blockstun: 25
+	last blockstun: 25 diff: -32
 	damage: 0, 2200
 	P1: 100
 	P2: 100
@@ -619,31 +619,31 @@ SlashFinish
 	P2: 100
 SlashFinishSP
 	17 10(36) 27
-	duration on block: 89
-	startup: 31 blockstun: 60
-	last blockstun: 60 diff: -29
+	duration on block: 99
+	startup: 41 blockstun: 70
+	last blockstun: 70 diff: -29
 	1-62 All
 	damage: 1700, 850
 	P1: 100, 80
 	P2: 90
 AirSlashA
 	13 6 46
-	duration on block: 65
-	last blockstun: 41 diff: -24
+	duration on block: 64
+	last blockstun: 13 diff: -51
 	damage: 0
 	P1: 100
 	P2: 100
 AirSlashB
 	13 6 46
-	duration on block: 65
-	last blockstun: 41 diff: -24
+	duration on block: 64
+	last blockstun: 13 diff: -51
 	damage: 0
 	P1: 100
 	P2: 100
 AirSlashC
 	13 6 46
-	duration on block: 65
-	last blockstun: 41 diff: -24
+	duration on block: 64
+	last blockstun: 21 diff: -43
 	damage: 2200
 	P1: 100
 	P2: 100
@@ -657,9 +657,9 @@ AirSlashFinish
 	P2: 100
 AirSlashFinishSP
 	17 10(36) 27
-	duration on block: 89
-	startup: 31 blockstun: 60
-	last blockstun: 60 diff: -29
+	duration on block: 99
+	startup: 41 blockstun: 70
+	last blockstun: 70 diff: -29
 	1-62 All
 	damage: 1700, 850
 	P1: 100, 80
@@ -706,8 +706,8 @@ Shukuchi_End_BackAir
 	startup: 7 blockstun: 0
 UltimateSlash
 	16+20Flash+19 3(3)(3)8(6)2 106
-	duration on block: 185
-	last blockstun: 78 diff: -107
+	duration on block: 212
+	last blockstun: 135 diff: -77
 	1-40 All
 	damage: 2000
 	P1: 80
@@ -723,8 +723,8 @@ UltimateSlashExe
 	P2: 100
 UltimateSlashOD
 	16+20Flash+19 3(6)8(6)2 102
-	duration on block: 181
-	last blockstun: 78 diff: -103
+	duration on block: 208
+	last blockstun: 135 diff: -73
 	1-161 All
 	damage: 2000
 	P1: 80
@@ -740,63 +740,63 @@ UltimateSlashODExe
 	P2: 100
 UltimateRush
 	54+35Flash+4 1,1,1(1)1(2)1,1(1)1(2)1,1(1)1(2)1,1(1)1(2)1,1(1)1(2)2(6)18 30
-	duration on block: 179
-	startup: 54+35Flash+4 blockstun: 132
-	startup: 54+35Flash+13 blockstun: 132
-	startup: 54+35Flash+25 blockstun: 132
-	startup: 54+35Flash+32 blockstun: 132
-	startup: 54+35Flash+37 blockstun: 132
-	last blockstun: 132 diff: -47
+	duration on block: 201
+	startup: 54+35Flash+4 blockstun: 174
+	startup: 54+35Flash+17 blockstun: 174
+	startup: 54+35Flash+35 blockstun: 174
+	startup: 54+35Flash+46 blockstun: 174
+	startup: 54+35Flash+53 blockstun: 174
+	last blockstun: 174 diff: -27
 	1-61 All
-	damage: 590, 0, 590*4, 0*4, 590*7, 0*7, 590*8, 0*8, 590*8, 0
-	P1: 80, 100, 80*4, 100*4, 80*7, 100*7, 80*8, 100*8, 80*8, 100
-	P2: 96, 100, 96*4, 100*4, 96*7, 100*7, 96*8, 100*8, 96*8, 100
+	damage: 590, 0, 590*4, 0*4, 590*7, 0*7, 590*9, 0
+	P1: 80, 100, 80*4, 100*4, 80*7, 100*7, 80*9, 100
+	P2: 96, 100, 96*4, 100*4, 96*7, 100*7, 96*9, 100
 UltimateRushOD
 	54+35Flash+4 1,1,1(1)1(2)1,1(1)1(2)1,1(1)1(2)1,1(1)1(2)1,1(1)1(2)1,1(1)1(2)1,1(1)1(2)1,1(1)1(2)1,1(1)1(26)3,3,3,3(6)16 29
-	duration on block: 234
-	startup: 54+35Flash+4 blockstun: 190
-	startup: 54+35Flash+13 blockstun: 190
-	startup: 54+35Flash+25 blockstun: 190
-	startup: 54+35Flash+32 blockstun: 190
-	startup: 54+35Flash+43 blockstun: 190
-	startup: 54+35Flash+50 blockstun: 190
-	startup: 54+35Flash+56 blockstun: 190
-	startup: 54+35Flash+83 blockstun: 190
-	startup: 54+35Flash+91 blockstun: 190
-	last blockstun: 190 diff: -44
+	duration on block: 275
+	startup: 54+35Flash+4 blockstun: 255
+	startup: 54+35Flash+17 blockstun: 255
+	startup: 54+35Flash+35 blockstun: 255
+	startup: 54+35Flash+46 blockstun: 255
+	startup: 54+35Flash+62 blockstun: 255
+	startup: 54+35Flash+73 blockstun: 255
+	startup: 54+35Flash+82 blockstun: 255
+	startup: 54+35Flash+111 blockstun: 255
+	startup: 54+35Flash+124 blockstun: 255
+	last blockstun: 255 diff: -20
 	1-61 All
-	damage: 370, 0, 370*4, 0*4, 370*7, 0*7, 370*8, 0*8, 370*11, 0*11, 370*12, 0*12, 370*13, 0*13, 900*13, 0*13, 900*14, 0*14, 900
-	P1: 80, 100, 80*4, 100*4, 80*7, 100*7, 80*8, 100*8, 80*11, 100*11, 80*12, 100*12, 80*13, 100*13, 80*13, 100*13, 80*14, 100*14, 80
-	P2: 98, 100, 98*4, 100*4, 98*7, 100*7, 98*8, 100*8, 98*11, 100*11, 98*12, 100*12, 98*13, 100*13, 98*13, 100*13, 98*14, 100*14, 98
+	damage: 370, 0, 370*4, 0*4, 370*7, 0*7, 370*9, 0*9, 370*12, 0*12, 370*14, 0*15, 900*16, 0*16, 900*17, 0
+	P1: 80, 100, 80*4, 100*4, 80*7, 100*7, 80*9, 100*9, 80*12, 100*12, 80*14, 100*15, 80*16, 100*16, 80*17, 100
+	P2: 98, 100, 98*4, 100*4, 98*7, 100*7, 98*9, 100*9, 98*12, 100*12, 98*14, 100*15, 98*16, 100*16, 98*17, 100
 UltimateAirRush
 	54+36Flash+0 2(40)5,1,1,1(1)(1)2,1,1(2)2,1,1(2)2,1,1(2)2,1,1(2)2,2(11)17(33)14 61
-	duration on block: 261
-	startup: 54+36Flash+12 blockstun: 187
-	startup: 54+36Flash+24 blockstun: 187
-	startup: 54+36Flash+31 blockstun: 187
-	startup: 54+36Flash+36 blockstun: 187
-	last blockstun: 187 diff: -74
+	duration on block: 288
+	startup: 54+36Flash+18 blockstun: 234
+	startup: 54+36Flash+36 blockstun: 234
+	startup: 54+36Flash+47 blockstun: 234
+	startup: 54+36Flash+54 blockstun: 234
+	last blockstun: 234 diff: -54
 	1-60 All
-	damage: 590*6, 0*6, 590*9, 0*9, 590*10, 0*10, 590*10, 0
-	P1: 80*6, 100*6, 80*9, 100*9, 80*10, 100*10, 80*10, 100
-	P2: 96*6, 100*6, 96*9, 100*9, 96*10, 100*10, 96*10, 100
+	damage: 590*6, 0*6, 590*9, 0*9, 590*11, 0
+	P1: 80*6, 100*6, 80*9, 100*9, 80*11, 100
+	P2: 96*6, 100*6, 96*9, 100*9, 96*11, 100
 UltimateAirRushOD
 	54+36Flash+0 2(40)5,1,1,1(1)(1)2,1,1(2)2,1,1(2)2,1,1(2)2,1,1(2)2,1,1(2)2,1,1(2)2,1,1(2)2,1,1(2)6(15)4,3,3,3,3(6)16(24)18 38
-	duration on block: 284
-	startup: 54+36Flash+12 blockstun: 229
-	startup: 54+36Flash+24 blockstun: 229
-	startup: 54+36Flash+31 blockstun: 229
-	startup: 54+36Flash+37 blockstun: 229
-	startup: 54+36Flash+43 blockstun: 229
-	startup: 54+36Flash+49 blockstun: 229
-	startup: 54+36Flash+55 blockstun: 229
-	startup: 54+36Flash+81 blockstun: 229
-	startup: 54+36Flash+89 blockstun: 229
-	last blockstun: 229 diff: -55
+	duration on block: 330
+	startup: 54+36Flash+18 blockstun: 299
+	startup: 54+36Flash+36 blockstun: 299
+	startup: 54+36Flash+47 blockstun: 299
+	startup: 54+36Flash+56 blockstun: 299
+	startup: 54+36Flash+65 blockstun: 299
+	startup: 54+36Flash+74 blockstun: 299
+	startup: 54+36Flash+83 blockstun: 299
+	startup: 54+36Flash+113 blockstun: 299
+	startup: 54+36Flash+126 blockstun: 299
+	last blockstun: 299 diff: -31
 	1-60 All
-	damage: 370*6, 0*6, 370*9, 0*9, 370*10, 0*10, 370*11, 0*11, 370*12, 0*12, 370*13, 0*13, 370*14, 0*15, 900*17, 0*17, 900
-	P1: 80*6, 100*6, 80*9, 100*9, 80*10, 100*10, 80*11, 100*11, 80*12, 100*12, 80*13, 100*13, 80*14, 100*15, 80*17, 100*17, 80
-	P2: 98*6, 100*6, 98*9, 100*9, 98*10, 100*10, 98*11, 100*11, 98*12, 100*12, 98*13, 100*13, 98*14, 100*15, 98*17, 100*17, 98
+	damage: 370*6, 0*6, 370*9, 0*9, 370*11, 0*11, 370*13, 0*13, 370*14, 0*14, 370*15, 0*16, 900*17, 0*17, 900*18, 0
+	P1: 80*6, 100*6, 80*9, 100*9, 80*11, 100*11, 80*13, 100*13, 80*14, 100*14, 80*15, 100*16, 80*17, 100*17, 80*18, 100
+	P2: 98*6, 100*6, 98*9, 100*9, 98*11, 100*11, 98*13, 100*13, 98*14, 100*14, 98*15, 100*16, 98*17, 100*17, 98*18, 100
 AstralHeat
 	1+75Flash+0 30(55)6 70
 	duration on block: 173

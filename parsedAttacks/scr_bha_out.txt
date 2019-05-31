@@ -653,36 +653,36 @@ BackThrowExe
 	P2: 100, 50
 Guren
 	14 3 20
-	duration on block: 36
-	last blockstun: 14 diff: -22
+	duration on block: 48
+	last blockstun: 44 diff: -4
 	damage: 1500
 	P1: 80
 	P2: 75
 GurenB
 	19 3 25
-	duration on block: 46
-	last blockstun: 19 diff: -27
+	duration on block: 58
+	last blockstun: 49 diff: -9
 	damage: 1700
 	P1: 80
 	P2: 85
 Renka
 	9 3(10)3 20
-	duration on block: 44
-	last blockstun: 22 diff: -22
+	duration on block: 71
+	last blockstun: 67 diff: -4
 	damage: 1300
 	P1: 90
 	P2: 85
 RenkaEx
 	9 3(12)3 21
-	duration on block: 47
-	last blockstun: 24 diff: -23
+	duration on block: 74
+	last blockstun: 69 diff: -5
 	damage: 1400
 	P1: 90
 	P2: 85
 Zantetu
 	22 3(14)3 26
-	duration on block: 67
-	last blockstun: 39 diff: -28
+	duration on block: 95
+	last blockstun: 83 diff: -12
 	damage: 2500, 1500
 	P1: 80
 	P2: 80

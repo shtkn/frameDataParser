@@ -535,9 +535,9 @@ CmnActChangeReturnAppeal
 CmnActChangePartnerAssistAtk_A
 	58  
 	duration on block: 57
-	startup: 20 blockstun: 47
-	startup: 25 blockstun: 52
-	last blockstun: 52 diff: -5
+	startup: 20 blockstun: 20
+	startup: 25 blockstun: 25
+	last blockstun: 25 diff: -32
 	damage: 0
 	P1: 100, 60
 	P2: 100
@@ -621,9 +621,9 @@ NmlAtk5AA
 	P1: 100
 	P2: 80
 NmlAtk5AAA
-	7 3,3,3,3,3,3,3,3,3,3,3,3,3,3 22
-	duration on block: 70
-	last blockstun: 46 diff: -24
+	7 3,3,3,3,3,3,3,3,3,3,3,3,3,3 22+4L
+	duration on block: 98
+	last blockstun: 90 diff: -8
 	damage: 180
 	P1: 100
 	P2: 80
@@ -668,36 +668,36 @@ NmlAtk2B
 	P2: 80
 NmlAtk2C
 	10 4,4,4,4,4,4,2 17
-	duration on block: 52
-	last blockstun: 34 diff: -18
+	duration on block: 108
+	last blockstun: 106 diff: -2
 	damage: 600
 	P1: 90
 	P2: 70
 NmlAtkAIR5A
 	8 6 12
-	duration on block: 25
-	last blockstun: 8 diff: -17
+	duration on block: 35
+	last blockstun: 31 diff: -4
 	damage: 1000
 	P1: 100
 	P2: 75
 NmlAtkAIR5AA
 	6 6 12
-	duration on block: 23
-	last blockstun: 6 diff: -17
+	duration on block: 33
+	last blockstun: 29 diff: -4
 	damage: 1000
 	P1: 100
 	P2: 75
 NmlAtkAIR5B
 	5 9 20
-	duration on block: 33
-	last blockstun: 5 diff: -28
+	duration on block: 45
+	last blockstun: 35 diff: -10
 	damage: 1700
 	P1: 100
 	P2: 75
 NmlAtkAIR5C
 	13 10 31
-	duration on block: 53
-	last blockstun: 13 diff: -40
+	duration on block: 64
+	last blockstun: 40 diff: -24
 	damage: 1500
 	P1: 100
 	P2: 80
@@ -740,68 +740,68 @@ CmnActInvincibleAttack
 ShotLandA
 	43  
 	duration on block: 42
-	startup: 11 blockstun: 38
-	last blockstun: 38 diff: -4
+	startup: 11 blockstun: 11
+	last blockstun: 11 diff: -31
 	damage: 0
 	P1: 100
 	P2: 100
 ShotLandB
 	45  
 	duration on block: 44
-	startup: 17 blockstun: 44
-	last blockstun: 44 diff: 0
+	startup: 17 blockstun: 17
+	last blockstun: 17 diff: -27
 	damage: 0
 	P1: 100
 	P2: 100
 ShotLandC
 	58  
 	duration on block: 57
-	startup: 20 blockstun: 47
-	startup: 25 blockstun: 52
-	startup: 30 blockstun: 57
-	last blockstun: 57 diff: 0
+	startup: 20 blockstun: 20
+	startup: 25 blockstun: 25
+	startup: 30 blockstun: 30
+	last blockstun: 30 diff: -27
 	damage: 0
 	P1: 100
 	P2: 100
 ShotAirA
-	53  
+	53  +9L
 	duration on block: 53
-	startup: 9 blockstun: 36
-	last blockstun: 36 diff: -17
+	startup: 9 blockstun: 9
+	last blockstun: 9 diff: -44
 	damage: 0
 	P1: 100
 	P2: 100
 ShotAirB
-	56  
+	56  +9L
 	duration on block: 55
-	startup: 22 blockstun: 49
-	last blockstun: 49 diff: -6
+	startup: 22 blockstun: 22
+	last blockstun: 22 diff: -33
 	damage: 0
 	P1: 100
 	P2: 100
 ShotAirC
-	56  
+	56  +9L
 	duration on block: 55
-	startup: 22 blockstun: 49
-	startup: 24 blockstun: 51
-	startup: 26 blockstun: 53
-	last blockstun: 53 diff: -2
+	startup: 22 blockstun: 22
+	startup: 24 blockstun: 24
+	startup: 26 blockstun: 26
+	last blockstun: 26 diff: -29
 	damage: 0
 	P1: 100
 	P2: 100
 ShotFlogLand
 	10 3(6)18 8
 	duration on block: 44
-	startup: 25 blockstun: 379
-	last blockstun: 379 diff: 335
+	startup: 25 blockstun: 429
+	last blockstun: 429 diff: 385
 	damage: 0, 400
 	P1: 100
 	P2: 100, 80
 ShotFlogAir
 	9 3(9)12 12
 	duration on block: 44
-	startup: 24 blockstun: 378
-	last blockstun: 378 diff: 334
+	startup: 24 blockstun: 428
+	last blockstun: 428 diff: 384
 	damage: 0, 400
 	P1: 100
 	P2: 100, 80
@@ -872,17 +872,17 @@ LightningAirB_OD
 UltimateStorm
 	10+34Flash+65  
 	duration on block: 108
-	startup: 10+34Flash+12 blockstun: 99
-	startup: 10+34Flash+17 blockstun: 104
-	startup: 10+34Flash+22 blockstun: 109
-	startup: 10+34Flash+27 blockstun: 114
-	startup: 10+34Flash+32 blockstun: 119
-	startup: 10+34Flash+37 blockstun: 124
-	startup: 10+34Flash+42 blockstun: 129
-	startup: 10+34Flash+47 blockstun: 134
-	startup: 10+34Flash+52 blockstun: 32909
-	startup: 10+34Flash+67 blockstun: 32936
-	last blockstun: 32936 diff: 32828
+	startup: 10+34Flash+12 blockstun: 61
+	startup: 10+34Flash+17 blockstun: 66
+	startup: 10+34Flash+22 blockstun: 71
+	startup: 10+34Flash+27 blockstun: 76
+	startup: 10+34Flash+32 blockstun: 81
+	startup: 10+34Flash+37 blockstun: 86
+	startup: 10+34Flash+42 blockstun: 91
+	startup: 10+34Flash+47 blockstun: 96
+	startup: 10+34Flash+52 blockstun: 32890
+	startup: 10+34Flash+67 blockstun: 32924
+	last blockstun: 32924 diff: 32816
 	1-9 P
 	10-0 All
 	1-27 P
@@ -892,21 +892,21 @@ UltimateStorm
 UltimateStorm_OD
 	10+34Flash+65  
 	duration on block: 108
-	startup: 10+34Flash+12 blockstun: 99
-	startup: 10+34Flash+16 blockstun: 103
-	startup: 10+34Flash+20 blockstun: 107
-	startup: 10+34Flash+24 blockstun: 111
-	startup: 10+34Flash+28 blockstun: 115
-	startup: 10+34Flash+32 blockstun: 119
-	startup: 10+34Flash+36 blockstun: 123
-	startup: 10+34Flash+40 blockstun: 127
-	startup: 10+34Flash+44 blockstun: 131
-	startup: 10+34Flash+48 blockstun: 135
-	startup: 10+34Flash+52 blockstun: 139
-	startup: 10+34Flash+57 blockstun: 32914
-	startup: 10+34Flash+62 blockstun: 32919
-	startup: 10+34Flash+67 blockstun: 32936
-	last blockstun: 32936 diff: 32828
+	startup: 10+34Flash+12 blockstun: 61
+	startup: 10+34Flash+16 blockstun: 65
+	startup: 10+34Flash+20 blockstun: 69
+	startup: 10+34Flash+24 blockstun: 73
+	startup: 10+34Flash+28 blockstun: 77
+	startup: 10+34Flash+32 blockstun: 81
+	startup: 10+34Flash+36 blockstun: 85
+	startup: 10+34Flash+40 blockstun: 89
+	startup: 10+34Flash+44 blockstun: 93
+	startup: 10+34Flash+48 blockstun: 97
+	startup: 10+34Flash+52 blockstun: 101
+	startup: 10+34Flash+57 blockstun: 32895
+	startup: 10+34Flash+62 blockstun: 32900
+	startup: 10+34Flash+67 blockstun: 32924
+	last blockstun: 32924 diff: 32816
 	1-9 P
 	10-0 All
 	1-27 P

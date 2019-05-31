@@ -450,8 +450,8 @@ NmlAtkAIR5B
 	duration on block: 40
 NmlAtkAIR5C
 	36 7 25
-	duration on block: 67
-	last blockstun: 36 diff: -31
+	duration on block: 71
+	last blockstun: 58 diff: -13
 	7-31 All
 	damage: 1700
 	P1: 100
@@ -497,46 +497,40 @@ KakeagariB
 KakeagariEX
 	41  
 	duration on block: 41
-MoonsaltMove_Hasei
-	1  
-	duration on block: 1
 MoonsaltMoveR
-	57  
+	57  +9L
 	duration on block: 56
 	4-11 All
 MoonsaltMoveL
-	57  
+	57  +9L
 	duration on block: 56
 	4-11 All
 MoonsaltMove_Ex
 	20 8 39
-	duration on block: 66
-	last blockstun: 20 diff: -46
+	duration on block: 74
+	last blockstun: 46 diff: -28
 	4-10 All
 	damage: 2000
 	P1: 80
 	P2: 85
 MoonsaltSlash
 	5 8 36
-	duration on block: 48
-	last blockstun: 5 diff: -43
+	duration on block: 56
+	last blockstun: 31 diff: -25
 	damage: 1700
 	P1: 80
 	P2: 85
-VSlash_Hasei
-	1  
-	duration on block: 1
 VSlash_R
 	13 19(10)5 25
-	duration on block: 71
-	last blockstun: 42 diff: -29
+	duration on block: 83
+	last blockstun: 72 diff: -11
 	damage: 1200
 	P1: 80
 	P2: 85
 VSlash_L
 	13 19(10)5 25
-	duration on block: 71
-	last blockstun: 42 diff: -29
+	duration on block: 83
+	last blockstun: 72 diff: -11
 	damage: 1200
 	P1: 80
 	P2: 85

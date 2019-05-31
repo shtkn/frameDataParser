@@ -823,9 +823,9 @@ AN_NmlAtk5A_4th
 	duration on block: 82
 	startup: 52 blockstun: 70
 	last blockstun: 70 diff: -12
-	damage: 800*6, 0
+	damage: 800*5, 0*5, 800
 	P1: 100
-	P2: 85*6, 100
+	P2: 85*5, 100*5, 85
 NmlAtk5B
 Total: 
 	duration on block: 45
@@ -962,96 +962,96 @@ BackThrowExe
 BeamA
 	35 32 
 	duration on block: 66
-	startup: 13 blockstun: 55
-	last blockstun: 55 diff: -11
+	startup: 13 blockstun: 35
+	last blockstun: 35 diff: -31
 	damage: 0
 	P1: 100
 	P2: 100
 BeamB
 	29 32 
 	duration on block: 60
-	startup: 13 blockstun: 55
-	last blockstun: 55 diff: -5
+	startup: 13 blockstun: 29
+	last blockstun: 29 diff: -31
 	damage: 0
 	P1: 100
 	P2: 100
 Beam_Ex
 	29 15 
 	duration on block: 43
-	startup: 13 blockstun: 55
-	last blockstun: 55 diff: 12
+	startup: 13 blockstun: 29
+	last blockstun: 29 diff: -14
 	damage: 0, 2500
 	P1: 100
 	P2: 100
 AirBeamA
 	26 33 +4L
 	duration on block: 58
-	startup: 10 blockstun: 52
-	last blockstun: 52 diff: -6
+	startup: 10 blockstun: 26
+	last blockstun: 26 diff: -32
 	damage: 0
 	P1: 100
 	P2: 100
 AirBeamB
 	26 33 +4L
 	duration on block: 58
-	startup: 10 blockstun: 52
-	last blockstun: 52 diff: -6
+	startup: 10 blockstun: 26
+	last blockstun: 26 diff: -32
 	damage: 0
 	P1: 100
 	P2: 100
 AirBeam_Ex
 	20 23 +4L
 	duration on block: 42
-	startup: 10 blockstun: 52
-	last blockstun: 52 diff: 10
+	startup: 10 blockstun: 20
+	last blockstun: 20 diff: -22
 	damage: 0, 2500
 	P1: 100
 	P2: 100
 ShotA
 Total: 
 	duration on block: 49
-	startup: 15 blockstun: 42
-	last blockstun: 42 diff: -7
+	startup: 15 blockstun: 15
+	last blockstun: 15 diff: -34
 	damage: 0
 	P1: 100
 	P2: 100
 ShotB
 Total: 
 	duration on block: 58
-	startup: 15 blockstun: 42
-	last blockstun: 42 diff: -16
+	startup: 15 blockstun: 15
+	last blockstun: 15 diff: -43
 	damage: 0
 	P1: 100
 	P2: 100
 BigShot
 Total: 
 	duration on block: 65
-	startup: 31 blockstun: 234
-	last blockstun: 234 diff: 169
+	startup: 31 blockstun: 146
+	last blockstun: 146 diff: 81
 	damage: 0, 900
 	P1: 100
 	P2: 100
 AirShotA
 Total: +4L
 	duration on block: 51
-	startup: 13 blockstun: 40
-	last blockstun: 40 diff: -11
+	startup: 13 blockstun: 13
+	last blockstun: 13 diff: -38
 	damage: 0
 	P1: 100
 	P2: 100
 AirShotB
 Total: +4L
 	duration on block: 51
-	startup: 13 blockstun: 40
-	last blockstun: 40 diff: -11
+	startup: 13 blockstun: 13
+	last blockstun: 13 diff: -38
 	damage: 0
 	P1: 100
 	P2: 100
 AirBigShot
 Total: +4L
 	duration on block: 76
-	startup: 38 blockstun: 170
-	last blockstun: 170 diff: 94
+	startup: 38 blockstun: 118
+	last blockstun: 118 diff: 42
 	damage: 0, 900
 	P1: 100
 	P2: 100
@@ -1202,16 +1202,16 @@ CmnActChangePartnerAssistAdmiss
 CmnActChangePartnerAssistAtk_A
 Total: 
 	duration on block: 73
-	startup: 39 blockstun: 242
-	last blockstun: 242 diff: 169
+	startup: 39 blockstun: 154
+	last blockstun: 154 diff: 81
 	damage: 0, 900
 	P1: 100
 	P2: 100
 CmnActChangePartnerAssistAtk_B
 	29 36 
 	duration on block: 64
-	startup: 13 blockstun: 55
-	last blockstun: 55 diff: -9
+	startup: 13 blockstun: 29
+	last blockstun: 29 diff: -35
 	damage: 0
 	P1: 100, 70
 	P2: 100
