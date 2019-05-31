@@ -780,6 +780,7 @@ def create_damage_text(damage_list):
     p1_multiplier = 1
     p2 = None
     p2_multiplier = 1
+    p2Once = None
     p2_str = ""
     for item in damage_list:
         if damage == item.damage:
@@ -806,6 +807,7 @@ def create_damage_text(damage_list):
                 p2_str += "*" + str(p2_multiplier)
             p2_str += ", "
         p2 = item.p2
+        p2Once = item.p2Once
 
     if damage is not None:
         damage_str += str(damage)
@@ -819,6 +821,8 @@ def create_damage_text(damage_list):
         p2_str += str(p2)
         if p2_multiplier > 1 and p2_str == "":
             p2_str += "*" + str(p2_multiplier)
+        if p2Once:
+            p2_str += " (Once)"
 
     return "\n\tdamage: " + damage_str + "\n\tP1: " + p1_str + "\n\tP2: " + p2_str
 
