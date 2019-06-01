@@ -114,16 +114,21 @@ class TestParseAttackMethods(unittest.TestCase):
         init.blockstun = 2
         init.additionalHitstopOpponent = 3
         init.landingRecovery = 4
+        init.damage = 500
+        init.p1 = 50
+        init.p2 = 60
+        init.minDamage = 15
         effect_list = {"InitValues": init}
         move = Move()
         move.frame_chunks = chunks
-        move.landing_recovery = 100
+        move.landing_recovery = 4
         result = combine_with_effects_on_block(move, effect_list)
         # expect hitstop, blockstun, landing recovery etc to be replaced by values from InitValues
         self.assertEqual(0, len(result.additional_chunks))
         expected_frame_chunks = [WaitFrameChunk(4),
                                  AttackFrameChunk(1, init.blockstun, init.hitstop, init.additionalHitstopOpponent),
                                  WaitFrameChunk(4)]
+        expected_frame_chunks[1].damage = Damage(500, 50, 60, 15)
         self.assertItemsEqual(expected_frame_chunks, result.frame_chunks)
         self.assertEqual(init.landingRecovery, result.landing_recovery)
 
@@ -786,6 +791,58 @@ def az406_dummy_5B3rd():
                                  ]
         expected.frame_chunks[1].damage = Damage(0, 100, 100, 0, False)
         self.assertEqual(expected, move_list["az406_dummy_5B3rd"])
+
+    def test_parse_attack_with_call_subroutine(self):
+        state = """@Subroutine
+def Init_AtkData():
+    AttackLevel_(1)
+    AttackP1(70)
+    AttackP2(90)
+    Damage(500)
+    Hitstop(6)
+    Unknown9154(17)
+    AirUntechableTime(21)
+    Unknown11028(11)
+    Unknown9016(1)
+@State
+def NmlAtk5X():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingNormal()
+        AirPushbackY(10000)
+        Unknown9016(1)
+        HitOrBlockCancel('NmlAtk2A')
+        HitOrBlockCancel('NmlAtk5B')
+        HitOrBlockCancel('NmlAtk2B')
+        HitJumpCancel(1)
+        Unknown1112('')
+        CallSubroutine('Init_AtkData')
+    sprite('es201_00', 1)	# 1-1
+    sprite('es201_01', 2)	# 2-3
+    sprite('es201_02', 2)	# 4-5
+    SFX_0('006_swing_blade_0')
+    sprite('es201_03', 2)	# 6-7
+    Unknown7009(1)
+    sprite('es201_04', 5)	# 8-12	 **attackbox here**
+    sprite('es201_05', 3)	# 13-15
+    Recovery()
+    Unknown2063()
+    sprite('es201_06', 3)	# 16-18
+    sprite('es201_07', 3)	# 19-21"""
+        buf = StringIO.StringIO(state)
+        effect_list = OrderedDict()
+        move_list = OrderedDict()
+        move_list = parse_move_file(buf, move_list, effect_list)
+
+        self.assertEqual(len(move_list), 1)
+        self.assertTrue("NmlAtk5X" in move_list)
+        expected = Move()
+        expected.frame_chunks = [SubroutineCall("Init_AtkData"),
+                                 WaitFrameChunk(7),
+                                 AttackFrameChunk(5),
+                                 WaitFrameChunk(9)
+                                 ]
+        self.assertEqual(expected, move_list["NmlAtk5X"])
 
     def test_calc_damage_strike(self):
         move = Move()
