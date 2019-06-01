@@ -230,9 +230,7 @@ CmnActLockReject
 	9 3 18
 	duration on block: 29
 	last blockstun: 9 diff: -20
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActAirLockWait
 	7  
 	duration on block: 7
@@ -240,9 +238,7 @@ CmnActAirLockReject
 	16 8 6
 	duration on block: 29
 	last blockstun: 16 diff: -13
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActLandSpin
 	18  
 	duration on block: 18
@@ -343,9 +339,7 @@ CmnActChangePartnerBurst
 	121 9 31
 	duration on block: 160
 	last blockstun: 121 diff: -39
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActChangeReturnAppealBurst
 	60  
 	duration on block: 60
@@ -353,9 +347,7 @@ CmnActChangePartnerIn
 	26 12 22
 	duration on block: 59
 	last blockstun: 26 diff: -33
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActChangePartnerAssistAdmiss
 	112  
 	duration on block: 112
@@ -366,16 +358,12 @@ CmnActChangePartnerAssistAtk_B
 	11 3 27
 	duration on block: 40
 	last blockstun: 11 diff: -29
-	damage: 1700
-	P1: 70
-	P2: 85
+	damage: 1700	P1: 70	P2: 85
 CmnActChangePartnerAssistAtk_D
 	21 2 33
 	duration on block: 55
 	last blockstun: 21 diff: -34
-	damage: 1700
-	P1: 70
-	P2: 85
+	damage: 1700	P1: 70	P2: 85
 CmnActChangePartnerDD
 	1+90Flash+0  
 	duration on block: 20
@@ -385,73 +373,53 @@ UltimateFullswingDDD
 	duration on block: 159
 	last blockstun: 116 diff: -43
 	1-71 All
-	damage: 2000
-	P1: 100
-	P2: 100
+	damage: 2000	P1: 100	P2: 100
 UltimateFullswingDDDOD
 	66 6 58
 	duration on block: 179
 	last blockstun: 136 diff: -43
 	1-71 All
-	damage: 2500
-	P1: 100
-	P2: 100
+	damage: 2500	P1: 100	P2: 100
 NmlAtk5A
 	10 2 23
 	duration on block: 34
 	last blockstun: 10 diff: -24
-	damage: 1500
-	P1: 100
-	P2: 80
+	damage: 1500	P1: 100	P2: 80
 NmlAtk5A2nd
 	10 6 16
 	duration on block: 31
 	last blockstun: 10 diff: -21
-	damage: 1500
-	P1: 100
-	P2: 80
+	damage: 1500	P1: 100	P2: 80
 NmlAtk5A3rd
 	16 4 23
 	duration on block: 42
 	last blockstun: 16 diff: -26
-	damage: 1700
-	P1: 100
-	P2: 85
+	damage: 1700	P1: 100	P2: 85
 NmlAtk5A4th
 	12 3(6)3(32770)6 24
 	duration on block: 32823
 	last blockstun: 32794 diff: -29
-	damage: 1000
-	P1: 100
-	P2: 85
+	damage: 1000*3	P1: 100	P2: 85
 NmlAtk4A
 	7 6 16
 	duration on block: 28
 	last blockstun: 7 diff: -21
-	damage: 1200
-	P1: 100
-	P2: 75
+	damage: 1200	P1: 100	P2: 75
 NmlAtk4A2nd
 	11 3 22
 	duration on block: 35
 	last blockstun: 11 diff: -24
-	damage: 1500
-	P1: 100
-	P2: 80
+	damage: 1500	P1: 100	P2: 80
 NmlAtk4A3rd
 	12 4 25
 	duration on block: 40
 	last blockstun: 12 diff: -28
-	damage: 1700
-	P1: 100
-	P2: 75
+	damage: 1700	P1: 100	P2: 75
 NmlAtk2A
 	8 2 14
 	duration on block: 33
 	last blockstun: 31 diff: -2
-	damage: 1000
-	P1: 90
-	P2: 75
+	damage: 1000	P1: 90	P2: 75
 NmlAtk5B
 	64  
 	duration on block: 64
@@ -469,30 +437,22 @@ NmlAtk2C
 	15 3 24
 	duration on block: 41
 	last blockstun: 15 diff: -26
-	damage: 1700
-	P1: 90
-	P2: 85
+	damage: 1700	P1: 90	P2: 85
 NmlAtkAIR5A
 	9 6 16
 	duration on block: 40
 	last blockstun: 32 diff: -8
-	damage: 1200
-	P1: 100
-	P2: 75
+	damage: 1200	P1: 100	P2: 75
 NmlAtkAIR5A2nd
 	9 5 22
 	duration on block: 35
 	last blockstun: 9 diff: -26
-	damage: 1500
-	P1: 100
-	P2: 80
+	damage: 1500	P1: 100	P2: 80
 NmlAtkAIR5B
 	16 4 14
 	duration on block: 33
 	last blockstun: 16 diff: -17
-	damage: 1500
-	P1: 100
-	P2: 80
+	damage: 1500	P1: 100	P2: 80
 NmlAtkAIR5C
 	63  
 	duration on block: 63
@@ -500,9 +460,7 @@ CmnActCrushAttack
 	22 3 24
 	duration on block: 48
 	last blockstun: 22 diff: -26
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackChase1st
 	194  
 	duration on block: 194
@@ -510,23 +468,17 @@ CmnActCrushAttackChase2nd
 	15 6 160
 	duration on block: 180
 	last blockstun: 15 diff: -165
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackFinish
 	20 4(6)4(8)4 20
 	duration on block: 65
 	last blockstun: 42 diff: -23
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackAssistChase1st
 	42 4 89
 	duration on block: 134
 	last blockstun: 42 diff: -92
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackAssistChase2nd
 	112  
 	duration on block: 112
@@ -534,67 +486,49 @@ CmnActCrushAttackAssistFinish
 	20 4(6)4(8)4 20
 	duration on block: 65
 	last blockstun: 42 diff: -23
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 NmlAtkThrow
 	38 3 23
 	duration on block: 63
 	last blockstun: 38 diff: -25
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 NmlAtkThrowExe
 	31 3 24
 	duration on block: 57
 	last blockstun: 31 diff: -26
-	damage: 2000
-	P1: 100
-	P2: 85
+	damage: 2000	P1: 100	P2: 85
 NmlAtkBackThrow
 	38 3 23
 	duration on block: 63
 	last blockstun: 38 diff: -25
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 NmlAtkBackThrowExe
 	31 3 24
 	duration on block: 57
 	last blockstun: 31 diff: -26
-	damage: 2000
-	P1: 100
-	P2: 85
+	damage: 2000	P1: 100	P2: 85
 CmnActInvincibleAttack
 	24 4 48
 	duration on block: 75
 	last blockstun: 24 diff: -51
 	1-27 Guard All Guard
-	damage: 2500
-	P1: 100
-	P2: 85
+	damage: 2500	P1: 100	P2: 85
 RocketPunchA
 	17 5 50
 	duration on block: 71
 	last blockstun: 17 diff: -54
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 RocketPunchB
 	25 7 69
 	duration on block: 100
 	last blockstun: 25 diff: -75
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 RocketPunchAB
 	17 7(53) 16
 	duration on block: 92
 	last blockstun: 17 diff: -75
 	4-76 P
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 RokepanDash
 	72  
 	duration on block: 72
@@ -602,23 +536,17 @@ RokepanHaseiA
 	32780 6 34
 	duration on block: 32819
 	last blockstun: 32780 diff: -39
-	damage: 1700
-	P1: 80
-	P2: 85
+	damage: 1700	P1: 80	P2: 85
 RokepanHaseiB
 	12 3 20
 	duration on block: 34
 	last blockstun: 12 diff: -22
-	damage: 1700
-	P1: 90
-	P2: 85
+	damage: 1700	P1: 90	P2: 85
 RokepanHaseiAB
 	11 4 21
 	duration on block: 35
 	last blockstun: 11 diff: -24
-	damage: 2000
-	P1: 80
-	P2: 80
+	damage: 2000	P1: 80	P2: 80
 AxeAttackA
 	53  
 	duration on block: 53
@@ -629,62 +557,46 @@ AxeAttackAB
 	11 4(8)5 21
 	duration on block: 48
 	last blockstun: 23 diff: -25
-	damage: 500, 3000
-	P1: 100, 80
-	P2: 90
+	damage: 500, 3000	P1: 100, 80	P2: 90*2
 AxeAttackAirA
 	12 2(4)12 34
 	duration on block: 63
 	last blockstun: 18 diff: -45
-	damage: 1000
-	P1: 80
-	P2: 80
+	damage: 1000*2	P1: 80	P2: 80
 AxeAttackAirB
 	23 3(6)12 34
 	duration on block: 77
 	last blockstun: 32 diff: -45
-	damage: 1100
-	P1: 80
-	P2: 85
+	damage: 1100*2	P1: 80	P2: 85
 AxeAttackAirAB
 	12 2(4)12 30
 	duration on block: 59
 	last blockstun: 18 diff: -41
-	damage: 1200
-	P1: 80
-	P2: 90
+	damage: 1200*2	P1: 80	P2: 90
 UltimateTackle
 	4+55Flash+36 6,9 112
 	duration on block: 261
 	last blockstun: 161 diff: -100
 	1-54 All
-	damage: 2500
-	P1: 100
-	P2: 60
+	damage: 2500*2	P1: 100	P2: 60
 UltimateTackleOD
 	4+55Flash+32 6,3,3,3 112
 	duration on block: 232
 	last blockstun: 138 diff: -94
 	1-50 All
-	damage: 1150
-	P1: 100
-	P2: 60
+	damage: 1150*4	P1: 100	P2: 60
 UltimateFullswing
 	22+58Flash+3 6 76
 	duration on block: 194
 	last blockstun: 133 diff: -61
 	1-30 Guard HBFP Guard
-	damage: 6000
-	P1: 100
-	P2: 90
+	damage: 6000	P1: 100	P2: 90
 UltimateFullswingOD
 	22+82Flash+3 6 76
 	duration on block: 238
 	last blockstun: 177 diff: -61
 	1-30 Guard HBFP Guard
-	damage: 7000
-	P1: 100
-	P2: 90
+	damage: 7000	P1: 100	P2: 90
 AstralHeat
 	7+68Flash+106  
 	duration on block: 180
