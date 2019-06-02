@@ -789,6 +789,7 @@ def create_damage_text(damage_list):
             damage_str += str(damage)
             if damage_multiplier > 1:
                 damage_str += "*" + str(damage_multiplier)
+                damage_multiplier = 1   # reset multiplier
             damage_str += ", "
         damage = item.damage
         if p1 == item.p1:
@@ -797,6 +798,7 @@ def create_damage_text(damage_list):
             p1_str += str(p1)
             if p1_multiplier > 1:
                 p1_str += "*" + str(p1_multiplier)
+                p1_multiplier = 1   # reset multiplier
             p1_str += ", "
         p1 = item.p1
         if p2 == item.p2:
@@ -805,26 +807,27 @@ def create_damage_text(damage_list):
             p2_str += str(p2)
             if p2_multiplier > 1:
                 p2_str += "*" + str(p2_multiplier)
+                p2_multiplier = 1   # reset multiplier
             p2_str += ", "
         p2 = item.p2
         p2Once = item.p2Once
 
     if damage is not None:
         damage_str += str(damage)
-        if damage_multiplier > 1 and damage_str == "":
+        if damage_multiplier > 1:
             damage_str += "*" + str(damage_multiplier)
     if p1 is not None:
         p1_str += str(p1)
-        if p1_multiplier > 1 and p1_str == "":
+        if p1_multiplier > 1 and p1_str != (str(p1)):
             p1_str += "*" + str(p1_multiplier)
     if p2 is not None:
         p2_str += str(p2)
-        if p2_multiplier > 1 and p2_str == "":
+        if p2_multiplier > 1 and p1_str != (str(p1)):
             p2_str += "*" + str(p2_multiplier)
         if p2Once:
             p2_str += " (Once)"
 
-    return "\n\tdamage: " + damage_str + "\n\tP1: " + p1_str + "\n\tP2: " + p2_str
+    return "\n\tdamage: " + damage_str + "\tP1: " + p1_str + "\tP2: " + p2_str
 
 
 def main():

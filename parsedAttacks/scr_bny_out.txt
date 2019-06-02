@@ -20,9 +20,7 @@ CmnActJumpPre
 Total: 
 	duration on block: 4
 	last blockstun: 1 diff: -3
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActJumpUpper
 	6  
 	duration on block: 6
@@ -63,9 +61,7 @@ CmnActAirFDash
 	15 6 
 	duration on block: 20
 	last blockstun: 15 diff: -5
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActAirBDash
 	16  
 	duration on block: 16
@@ -235,37 +231,27 @@ CmnActCrouchGuardPre
 Total: 
 	duration on block: 6
 	last blockstun: 1 diff: -5
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrouchGuardLoop
 Total: 
 	duration on block: 6
 	last blockstun: 1 diff: -5
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrouchGuardEnd
 Total: 
 	duration on block: 6
 	last blockstun: 1 diff: -5
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrouchHeavyGuardLoop
 Total: 
 	duration on block: 8
 	last blockstun: 1 diff: -7
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrouchHeavyGuardEnd
 Total: 
 	duration on block: 6
 	last blockstun: 1 diff: -5
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActAirGuardPre
 	6  
 	duration on block: 6
@@ -300,9 +286,7 @@ CmnActLockReject
 	7 8 15
 	duration on block: 29
 	last blockstun: 7 diff: -22
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActAirLockWait
 	7  
 	duration on block: 7
@@ -310,9 +294,7 @@ CmnActAirLockReject
 	7 8 15
 	duration on block: 29
 	last blockstun: 7 diff: -22
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActLandSpin
 	23  
 	duration on block: 23
@@ -413,9 +395,7 @@ CmnActChangePartnerAppeal
 Total: 
 	duration on block: 50
 	last blockstun: 1 diff: -49
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActChangePartnerAppealAir
 	28  
 	duration on block: 28
@@ -423,9 +403,7 @@ CmnActChangePartnerIn
 	14 2(20)9 30
 	duration on block: 74
 	last blockstun: 36 diff: -38
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActChangePartnerOut
 	56  
 	duration on block: 56
@@ -433,23 +411,17 @@ CmnActChangeReturnAppeal
 Total: 
 	duration on block: 80
 	last blockstun: 1 diff: -79
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActChangeRequest
 Total: 
 	duration on block: 84
 	last blockstun: 1 diff: -83
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActChangePartnerBurst
 	122 2(24)9 32
 	duration on block: 188
 	last blockstun: 148 diff: -40
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActChangeReturnAppealBurst
 	90  
 	duration on block: 90
@@ -465,26 +437,20 @@ CmnActChangePartnerAssistAdmiss
 CmnActChangePartnerAssistAtk_A
 	99  
 	duration on block: 99
-	startup: 67 blockstun: 67
-	last blockstun: 67 diff: -32
-	damage: 0
-	P1: 70
-	P2: 100
+	startup: 67 blockstun: 102
+	last blockstun: 102 diff: 3
+	damage: 0	P1: 70	P2: 100
 CmnActChangePartnerAssistAtk_B
 	13 3 39
 	duration on block: 66
 	last blockstun: 43 diff: -23
-	damage: 1700
-	P1: 70
-	P2: 85
+	damage: 1700	P1: 70	P2: 85
 CmnActChangePartnerAssistAtk_D
 	45  
 	duration on block: 45
 	startup: 16 blockstun: 46
 	last blockstun: 46 diff: 1
-	damage: 1700
-	P1: 70
-	P2: 85
+	damage: 1700	P1: 70	P2: 85
 CmnActChangePartnerDD
 	1+92Flash+0  
 	duration on block: 37
@@ -495,9 +461,7 @@ UltimateLargeSwordDDD
 	startup: 68 blockstun: 98
 	last blockstun: 98 diff: -38
 	1-76 All
-	damage: 2000
-	P1: 100
-	P2: 100
+	damage: 2000	P1: 100	P2: 100
 UltimateLargeSwordDDDOD
 	174  
 	duration on block: 173
@@ -507,24 +471,18 @@ UltimateLargeSwordDDDOD
 	startup: 113 blockstun: 143
 	last blockstun: 143 diff: -30
 	1-68 All
-	damage: 2000
-	P1: 100
-	P2: 100
+	damage: 2000*4	P1: 100	P2: 100
 NmlAtk4A
 	11 1,5 17
 	duration on block: 55
 	last blockstun: 50 diff: -5
 	5-11 H
-	damage: 1500
-	P1: 90
-	P2: 80
+	damage: 1500	P1: 90	P2: 80
 NmlAtk5A
 	9 5 15
 	duration on block: 39
 	last blockstun: 36 diff: -3
-	damage: 1500
-	P1: 100
-	P2: 80
+	damage: 1500	P1: 100	P2: 80
 NmlAtk5A_2nd
 	71  
 	duration on block: 71
@@ -535,21 +493,17 @@ NmlAtk5A_3rd
 NmlAtk5A_4th
 	56  
 	duration on block: 56
-	startup: 79 blockstun: 109
-	startup: 99 blockstun: 129
-	startup: 119 blockstun: 149
-	last blockstun: 149 diff: 93
-	damage: 1700
-	P1: 80
-	P2: 85
+	startup: 79 blockstun: 79
+	startup: 99 blockstun: 99
+	startup: 119 blockstun: 119
+	last blockstun: 119 diff: 63
+	damage: 1700*3	P1: 80	P2: 85
 NmlAtk5B
 	41  
 	duration on block: 41
-	startup: 13 blockstun: 13
-	last blockstun: 13 diff: -28
-	damage: 0
-	P1: 100
-	P2: 100
+	startup: 13 blockstun: 40
+	last blockstun: 40 diff: -1
+	damage: 0	P1: 100	P2: 100
 NmlAtk5B_2nd
 	46  
 	duration on block: 46
@@ -569,17 +523,13 @@ NmlAtk2A
 	9 4 12
 	duration on block: 34
 	last blockstun: 32 diff: -2
-	damage: 1000
-	P1: 90
-	P2: 75
+	damage: 1000	P1: 90	P2: 75
 NmlAtk2B
 	38  
 	duration on block: 38
-	startup: 9 blockstun: 9
-	last blockstun: 9 diff: -29
-	damage: 0
-	P1: 100
-	P2: 100
+	startup: 9 blockstun: 36
+	last blockstun: 36 diff: -2
+	damage: 0	P1: 100	P2: 100
 NmlAtk2B_2nd
 	46  
 	duration on block: 46
@@ -598,13 +548,11 @@ NmlAtk2B_4thEx
 NmlAtk5B_5th
 	51  
 	duration on block: 51
-	startup: 75 blockstun: 105
-	startup: 95 blockstun: 125
-	startup: 115 blockstun: 145
-	last blockstun: 145 diff: 94
-	damage: 1700
-	P1: 80
-	P2: 85
+	startup: 75 blockstun: 75
+	startup: 95 blockstun: 95
+	startup: 115 blockstun: 115
+	last blockstun: 115 diff: 64
+	damage: 1700*3	P1: 80	P2: 85
 NmlAtk2C
 	40  
 	duration on block: 40
@@ -615,55 +563,49 @@ NmlAtkAIR5A_2nd
 	26  
 	duration on block: 26
 NmlAtkAIR5B
-	59  +5L
+	59  
 	duration on block: 59
-	startup: 11 blockstun: 11
-	last blockstun: 11 diff: -48
-	damage: 0
-	P1: 100
-	P2: 100
+	startup: 11 blockstun: 38
+	last blockstun: 38 diff: -21
+	damage: 0	P1: 100	P2: 100
 NmlAtkAIR5B_2nd
 	38  
 	duration on block: 38
 NmlAtkAIR5B_3rd
-	43  +5L
+	43  
 	duration on block: 43
 NmlAtkAIR5B_4th
 	31  
 	duration on block: 31
 NmlAtkAIR5B_5th
-	50  +5L
+	50  
 	duration on block: 50
-	startup: 54 blockstun: 77
-	last blockstun: 77 diff: 27
-	damage: 1700
-	P1: 100
-	P2: 85
+	startup: 54 blockstun: 54
+	last blockstun: 54 diff: 4
+	damage: 1700	P1: 100	P2: 85
 NmlAtkAIR5B_3rdEx
-	43  +5L
+	43  
 	duration on block: 43
 NmlAtkAIR5B_4thEx
 	31  
 	duration on block: 31
 NmlAtkAIR2B
-	59  +5L
+	59  
 	duration on block: 59
-	startup: 11 blockstun: 11
-	last blockstun: 11 diff: -48
-	damage: 0
-	P1: 100
-	P2: 100
+	startup: 11 blockstun: 38
+	last blockstun: 38 diff: -21
+	damage: 0	P1: 100	P2: 100
 NmlAtkAIR2B_2nd
 	36  
 	duration on block: 36
 NmlAtkAIR2B_3rd
-	43  +5L
+	43  
 	duration on block: 43
 NmlAtkAIR2B_4th
 	33  
 	duration on block: 33
 NmlAtkAIR2B_3rdEx
-	43  +5L
+	43  
 	duration on block: 43
 NmlAtkAIR2B_4thEx
 	33  
@@ -673,23 +615,17 @@ NmlAtkAIR5C
 	duration on block: 57
 	startup: 16 blockstun: 49
 	last blockstun: 49 diff: -8
-	damage: 2000
-	P1: 100
-	P2: 90
+	damage: 2000	P1: 100	P2: 90
 CmnActCrushAttack
 	7 18(4)7 13
 	duration on block: 70
 	last blockstun: 67 diff: -3
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackChase1st
 	2 5(23)5 137
 	duration on block: 171
 	last blockstun: 30 diff: -141
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackChase2nd
 	55  
 	duration on block: 55
@@ -698,76 +634,56 @@ CmnActCrushAttackFinish
 	duration on block: 61
 	startup: 20 blockstun: 20
 	last blockstun: 20 diff: -41
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackAssistChase1st
 	32 16 78
 	duration on block: 125
 	last blockstun: 32 diff: -93
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackAssistChase2nd
 	43  
 	duration on block: 43
 	startup: 11 blockstun: 11
 	last blockstun: 11 diff: -32
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackAssistFinish
 	61  
 	duration on block: 61
 	startup: 20 blockstun: 20
 	last blockstun: 20 diff: -41
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 NmlAtkThrow
 	26 3 23
 	duration on block: 51
 	last blockstun: 26 diff: -25
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 ThrowExe
 	5 59 
 	duration on block: 75
 	last blockstun: 35 diff: -40
-	damage: 2000
-	P1: 100
-	P2: 50
+	damage: 2000	P1: 100	P2: 50
 NmlAtkBackThrow
 	26 3 23
 	duration on block: 51
 	last blockstun: 26 diff: -25
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 BackThrowExe
 	5 59 
 	duration on block: 75
 	last blockstun: 35 diff: -40
-	damage: 2000
-	P1: 100
-	P2: 50
+	damage: 2000	P1: 100	P2: 50
 CmnActInvincibleAttack
 	20 1,1,1,1,1,1,1,1,32811 
 	duration on block: 32856
 	last blockstun: 46 diff: -32810
 	1-27 All
-	damage: 550
-	P1: 100
-	P2: 100 (Once)
+	damage: 550*9	P1: 100	P2: 100
 CmnActInvincibleAttackAir
 	9 1,1,1,1,1,1,1,48 
 	duration on block: 79
 	last blockstun: 48 diff: -31
 	1-12 All
-	damage: 550
-	P1: 100
-	P2: 80 (Once)
+	damage: 550*9	P1: 100	P2: 80
 SpecialDashF
 	41  
 	duration on block: 41
@@ -778,9 +694,7 @@ SpecialDashAirF
 	17 3 18
 	duration on block: 37
 	last blockstun: 17 diff: -20
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 SpecialDashAirB
 	33  
 	duration on block: 33
@@ -789,98 +703,74 @@ LowShotA
 	duration on block: 54
 	startup: 13 blockstun: 43
 	last blockstun: 43 diff: -11
-	damage: 0, 1700
-	P1: 100
-	P2: 100, 75
+	damage: 0, 1700	P1: 100	P2: 100, 75
 LowShotB
 	55  
 	duration on block: 54
 	startup: 19 blockstun: 49
 	last blockstun: 49 diff: -5
-	damage: 0, 1700
-	P1: 100
-	P2: 100, 75
+	damage: 0, 1700	P1: 100	P2: 100, 75
 LowShotC
 	55  
 	duration on block: 54
 	startup: 13 blockstun: 39
 	last blockstun: 39 diff: -15
-	damage: 0, 1250
-	P1: 100
-	P2: 100, 75 (Once)
+	damage: 0, 1250	P1: 100	P2: 100, 75
 LargeShot_matome
 	155  
 	duration on block: 155
 LargeShotA
 	79  
 	duration on block: 79
-	startup: 32 blockstun: 32
-	last blockstun: 32 diff: -47
-	damage: 0
-	P1: 100
-	P2: 100
+	startup: 32 blockstun: 67
+	last blockstun: 67 diff: -12
+	damage: 0	P1: 100	P2: 100
 LargeShotB
 	99  
 	duration on block: 99
-	startup: 67 blockstun: 67
-	last blockstun: 67 diff: -32
-	damage: 0
-	P1: 100
-	P2: 100
+	startup: 67 blockstun: 102
+	last blockstun: 102 diff: 3
+	damage: 0	P1: 100	P2: 100
 LargeShotC
 	64  
 	duration on block: 64
-	startup: 32 blockstun: 32
-	last blockstun: 32 diff: -32
-	damage: 2600
-	P1: 100
-	P2: 100
+	startup: 32 blockstun: 67
+	last blockstun: 67 diff: 3
+	damage: 2600	P1: 100	P2: 100
 SlowFieldA
 	13 3 27
 	duration on block: 42
 	last blockstun: 13 diff: -29
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 SlowFieldB
 	13 3 27
 	duration on block: 42
 	last blockstun: 13 diff: -29
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 SlowFieldC
 	13 3 27
 	duration on block: 42
 	last blockstun: 13 diff: -29
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 AirShotA
 	59  +9L
 	duration on block: 59
 	startup: 18 blockstun: 51
 	last blockstun: 51 diff: -8
-	damage: 2000
-	P1: 100
-	P2: 90
+	damage: 2000	P1: 100	P2: 90
 AirShotB
 	55  +9L
 	duration on block: 55
 	startup: 18 blockstun: 51
 	startup: 35 blockstun: 68
 	last blockstun: 68 diff: 13
-	damage: 2000
-	P1: 100
-	P2: 90
+	damage: 2000*2	P1: 100	P2: 90
 AirShotC
 	59  +9L
 	duration on block: 59
 	startup: 18 blockstun: 51
 	last blockstun: 51 diff: -8
-	damage: 2000
-	P1: 100
-	P2: 90
+	damage: 2000	P1: 100	P2: 90
 UltimateMultiSword
 	16+41Flash+54  
 	duration on block: 110
@@ -912,9 +802,7 @@ UltimateMultiSword
 	startup: 16+41Flash+89 blockstun: 164
 	last blockstun: 164 diff: 54
 	1-19 All
-	damage: 360
-	P1: 80
-	P2: 60 (Once)
+	damage: 360*26	P1: 80	P2: 60
 UltimateMultiSwordOD
 	16+41Flash+42  
 	duration on block: 98
@@ -946,18 +834,14 @@ UltimateMultiSwordOD
 	startup: 16+41Flash+89 blockstun: 164
 	last blockstun: 164 diff: 66
 	1-19 All
-	damage: 360
-	P1: 80
-	P2: 60 (Once)
+	damage: 360*26	P1: 80	P2: 60
 UltimateLargeSwordLand
 	10+52Flash+75  
 	duration on block: 136
 	startup: 10+52Flash+1 blockstun: 93
 	last blockstun: 93 diff: -43
 	1-11 All
-	damage: 5500
-	P1: 80
-	P2: 60
+	damage: 5500	P1: 80	P2: 60
 UltimateLargeSwordLandOD
 	10+52Flash+107  
 	duration on block: 168
@@ -967,18 +851,14 @@ UltimateLargeSwordLandOD
 	startup: 10+52Flash+46 blockstun: 138
 	last blockstun: 138 diff: -30
 	1-11 All
-	damage: 5500
-	P1: 80
-	P2: 60
+	damage: 5500*4	P1: 80	P2: 60
 UltimateLargeSwordAir
 	8+42Flash+76  +5L
 	duration on block: 125
 	startup: 8+42Flash+5 blockstun: 85
 	last blockstun: 85 diff: -40
 	1-7 All
-	damage: 5500
-	P1: 80
-	P2: 60
+	damage: 5500	P1: 80	P2: 60
 UltimateLargeSwordAirOD
 	8+42Flash+91  +9L
 	duration on block: 140
@@ -988,44 +868,356 @@ UltimateLargeSwordAirOD
 	startup: 8+42Flash+50 blockstun: 130
 	last blockstun: 130 diff: -10
 	1-7 All
-	damage: 5500
-	P1: 80
-	P2: 60
+	damage: 5500*4	P1: 80	P2: 60
 AstralHeat
 	13+101Flash+7 9 25
 	duration on block: 154
 	last blockstun: 141 diff: -13
 	1-12 
 	13-28 All
-	damage: 0
-	P1: 100
-	P2: 90
+	damage: 0	P1: 100	P2: 90
 AstralHeatCatch
 	10 9 16
 	duration on block: 42
 	last blockstun: 27 diff: -15
 	1-9 All
-	damage: 0
-	P1: 100
-	P2: 65
+	damage: 0	P1: 100	P2: 65
 AstralHeatExe
 	33671  
 	duration on block: 33671
 	startup: 416 blockstun: 416
 	last blockstun: 416 diff: -33255
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActEntry
 	2 235 60
 	duration on block: 296
 	last blockstun: 2 diff: -294
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActMatchWin
 	97  
 	duration on block: 97
 CmnActLose
 	56  
 	duration on block: 56
+EventDefEntryWait
+	60  
+	duration on block: 60
+EventDefLose
+	2  
+	duration on block: 2
+EventDown
+	32803  
+	duration on block: 32803
+EventEntryFall
+	154  
+	duration on block: 154
+EventEntryBootMurakumo
+	108  
+	duration on block: 108
+	startup: 60 blockstun: 0
+EventGoStand
+	45  
+	duration on block: 45
+EventChouhatu
+Total: 
+	duration on block: 147
+	last blockstun: 1 diff: -146
+	damage: 0	P1: 100	P2: 100
+EventWarpOutSimple
+	32794  
+	duration on block: 32794
+EventCrouch
+	60  
+	duration on block: 60
+EventCrouchToStand
+	8  
+	duration on block: 8
+EventWarpIn
+	60  
+	duration on block: 60
+EventWarpInToStand
+	18  
+	duration on block: 18
+EventWarpOut
+	186  
+	duration on block: 186
+EventLoseDown2WorpWait
+	114  
+	duration on block: 114
+EventLoseWorpout
+	32792  
+	duration on block: 32792
+EventRGVsNY_FallSword
+	1  
+	duration on block: 1
+EventRGVsNY_Transform
+	60  
+	duration on block: 60
+EventRGVsNY_Attack
+	66 13(101)14 18
+	duration on block: 235
+	last blockstun: 222 diff: -13
+	1-211 All
+	damage: 1700*2	P1: 100	P2: 85
+EventNYAttack5D
+	72  
+	duration on block: 72
+EventNYStanding
+	30  
+	duration on block: 30
+EventNYStandingEnd
+	12  
+	duration on block: 12
+EventChouhatuLoop
+Total: 
+	duration on block: 60
+	last blockstun: 1 diff: -59
+	damage: 0	P1: 100	P2: 100
+EventChouhatuLoopEnd
+Total: 
+	duration on block: 67
+	last blockstun: 1 diff: -66
+	damage: 0	P1: 100	P2: 100
+EventDashScreenOut
+	100  
+	duration on block: 100
+EventLargeSwordLand
+	10+52Flash+42  
+	duration on block: 104
+EventLoseDown
+	114  
+	duration on block: 114
+Act2Event_Chouhatsu
+Total: 
+	duration on block: 60
+	last blockstun: 1 diff: -59
+	damage: 0	P1: 100	P2: 100
+Act2Event_ChouhatsuEnd
+Total: 
+	duration on block: 67
+	last blockstun: 1 diff: -66
+	damage: 0	P1: 100	P2: 100
+Act2Event_Chouhatsu2
+Total: 
+	duration on block: 80
+	last blockstun: 1 diff: -79
+	damage: 0	P1: 100	P2: 100
+Act2Event_Chouhatsu2End
+Total: 
+	duration on block: 65
+	last blockstun: 1 diff: -64
+	damage: 0	P1: 100	P2: 100
+Act2Event_Damage
+	32790  
+	duration on block: 32790
+Act2Event_DamageEnd
+	20  
+	duration on block: 20
+Act2Event_TimeUp
+	143  
+	duration on block: 143
+Act2Event_Warp
+	32938  
+	duration on block: 32938
+Act2Event_RoundWin
+Total: 
+	duration on block: 116
+	last blockstun: 1 diff: -115
+	damage: 0	P1: 100	P2: 100
+Act2Event_RoundWinEnd
+	3 54 
+	duration on block: 56
+	last blockstun: 3 diff: -53
+	damage: 0	P1: 100	P2: 100
+Act2Event_OverDrive
+	32785  
+	duration on block: 32785
+Act2Event_OverDriveActivate
+	51  
+	duration on block: 51
+Act2Event_OverDriveEnd
+	12  
+	duration on block: 12
+Act2Event_5D
+	60  
+	duration on block: 60
+Act2Event_rlvsny_01
+	24  
+	duration on block: 24
+Act2Event_bnvsny_00
+	61  
+	duration on block: 61
+Act2Event_bnvsny_01
+	11  
+	duration on block: 11
+Act2Event_rmvsny_00
+	3 21 142
+	duration on block: 165
+	last blockstun: 3 diff: -162
+	damage: 0	P1: 100	P2: 100
+Act2Event_rmvsny_01
+	51  
+	duration on block: 51
+Act2Event_rmvsny_02
+	32790  
+	duration on block: 32790
+Act2Event_rmvsny_03
+	115  
+	duration on block: 115
+Act2Event_rmvsny_04
+	32825  
+	duration on block: 32825
+Act2Event_rmvsny_05
+	32837  
+	duration on block: 32837
+Act2Event_azvsny_00
+	60  
+	duration on block: 60
+Act2Event_azvsny_01
+	11  
+	duration on block: 11
+Act2Event_azvsny_02
+	28 3 91
+	duration on block: 121
+	last blockstun: 28 diff: -93
+	damage: 0	P1: 100	P2: 100
+Act2Event_azvsny_03
+	106  
+	duration on block: 106
+Act2Event_CameraCreate
+	1  
+	duration on block: 1
+Act2Event_Legacy
+	63  
+	duration on block: 63
+Act2EventWait_azvsny
+	2  
+	duration on block: 2
+Act2Event_azvsny00
+	93  
+	duration on block: 93
+Act2Event_azvsny01
+	96  
+	duration on block: 96
+Event_Act2EntryFall
+	154  
+	duration on block: 154
+EventAct2EntryBootMurakumo
+	108  
+	duration on block: 108
+	startup: 60 blockstun: 0
+Act2EventARvsNY
+	32772  
+	duration on block: 32772
+Act2Event_ny_bn
+	13 3(15)3 27
+	duration on block: 60
+	last blockstun: 31 diff: -29
+	damage: 0	P1: 100	P2: 100
+Act2Event_Shake_nyvsbn
+	3 54 60
+	duration on block: 116
+	last blockstun: 3 diff: -113
+	damage: 0	P1: 100	P2: 100
+Act2EventNYvsCA00
+Total: 
+	duration on block: 152
+	last blockstun: 1 diff: -151
+	damage: 0	P1: 100	P2: 100
+Act2EventNYvsCA00End
+Total: 
+	duration on block: 8
+	last blockstun: 1 diff: -7
+	damage: 0	P1: 100	P2: 100
+Act2EventNYvsCA03
+	60  
+	duration on block: 60
+Act2Event_RoundWinEnd2
+Total: 
+	duration on block: 30
+	last blockstun: 1 diff: -29
+	damage: 0	P1: 100	P2: 100
+Act2Event_BDash
+	32796  
+	duration on block: 32796
+Act2Event_Down
+	32810  
+	duration on block: 32810
+Act3Event_novsny_00
+	32821  
+	duration on block: 32821
+Act3Event_novsny_01
+	30  
+	duration on block: 30
+Act3Event_novsny_02
+	32799  
+	duration on block: 32799
+Act3Event_novsny_03
+	32785  
+	duration on block: 32785
+Act3Event_novsny_04
+	74  
+	duration on block: 74
+Act3Event_havsny_00
+	32791  
+	duration on block: 32791
+Act3Event_havsny_01
+	32785  
+	duration on block: 32785
+Act3Event_havsny_02
+	32800  
+	duration on block: 32800
+Act3Event_nyvsha_00
+	310  
+	duration on block: 310
+Act3Event_nyvsha_01
+	62  
+	duration on block: 62
+Act3Event_nyvsrm_00
+Total: 
+	duration on block: 32787
+	last blockstun: 1 diff: -32786
+	damage: 0	P1: 100	P2: 100
+Act3Event_nyvsrm_01
+	3 24 
+	duration on block: 26
+	last blockstun: 3 diff: -23
+	damage: 0	P1: 100	P2: 100
+Act3Event_nyvsrm_02
+	84  
+	duration on block: 84
+Act3Event_nyvsrm_03
+	75  
+	duration on block: 75
+Act3Event_nyvsrm_04
+Total: 
+	duration on block: 140
+	last blockstun: 1 diff: -139
+	damage: 0	P1: 100	P2: 100
+Act3Event_nyvsrc_01
+	32785  
+	duration on block: 32785
+Act3Event_nyvsmu_00
+	7 27 15
+	duration on block: 48
+	last blockstun: 7 diff: -41
+	damage: 0	P1: 100	P2: 100
+Act3Event_nyvsmu_01
+	30  
+	duration on block: 30
+Act3Event_cevsny_00
+Total: 
+	duration on block: 65
+	last blockstun: 1 diff: -64
+	damage: 0	P1: 100	P2: 100
+Act3Event_cevsny_01
+	60  
+	duration on block: 60
+Act3Event_cevsny_02
+	32794  
+	duration on block: 32794
+Act3Event_cevsny_03
+Total: 
+	duration on block: 140
+	last blockstun: 1 diff: -139
+	damage: 0	P1: 100	P2: 100
