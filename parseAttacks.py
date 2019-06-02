@@ -896,16 +896,16 @@ def main():
         char_target = open(target_dir + "/" + file_name + "_out.txt", "w")
         move_list = OrderedDict()
         move_list = parse_move_file(char_source, move_list, effect_list)
+
+        # get list of registered moves
+        char_source.seek(0, 0)
+        registered_moves = find_registered_moves(char_source)
+        # remove all non-registered moves, like all the Act* and Event* stuff
         #
-        # # get list of registered moves
-        # char_source.seek(0, 0)
-        # registered_moves = find_registered_moves(char_source)
-        # # remove all non-registered moves, like all the Act* and Event* stuff
-        # #
-        # for move_name in move_list.keys():
-        #     if move_name not in registered_moves:
-        #         del move_list[move_name]
-        #         print "removed " + move_name
+        for move_name in move_list.keys():
+            if move_name not in registered_moves and "Exe" not in move_name and "ChangePartnerDD" not in move_name:
+                del move_list[move_name]
+                print "removed " + move_name
 
         hit_simulations = simulate_on_block(move_list, effect_list)
 
