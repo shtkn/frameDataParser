@@ -2,98 +2,98 @@ CmnActChangePartnerQuickOut
 Total: 21
 	duration on block: 21
 NmlAtk5A
-	9 5 18
+	8 5 18
 	duration on block: 41
 	last blockstun: 35 diff: -6
 	damage: 1500	P1: 100	P2: 80
 NmlAtk5AA
-	13 3 18
+	12 3 18
 	duration on block: 43
 	last blockstun: 39 diff: -4
 	damage: 1500	P1: 100	P2: 80
 NmlAtk5AAA
-	16 2 26
+	15 2 26
 	duration on block: 54
 	last blockstun: 45 diff: -9
 	damage: 1700	P1: 100	P2: 85
 NmlAtk5AAAA
-	22 4 32797
+	21 4 32797
 	duration on block: 32836
 	last blockstun: 56 diff: -32780
 	damage: 2500	P1: 100	P2: 90
 NmlAtk4A
-	7 3 12
+	6 3 12
 	duration on block: 29
 	last blockstun: 26 diff: -3
 	damage: 1000	P1: 100	P2: 70
 NmlAtk5B
-	36 5 38
+	35 5 38
 	duration on block: 97
 	last blockstun: 78 diff: -19
 	damage: 2100	P1: 100	P2: 85
 NmlAtk5BB
-	16 24(1)9 32
+	13 24(1)9 32
 	duration on block: 108
 	last blockstun: 86 diff: -22
 	damage: 1800	P1: 100	P2: 85
 NmlAtk2A
-	10 2(6)2 14
+	7 2(6)2 14
 	duration on block: 50
 	last blockstun: 48 diff: -2
 	damage: 1000	P1: 90	P2: 75
 NmlAtk2B
-	12 6 22
+	11 6 22
 	duration on block: 49
 	last blockstun: 38 diff: -11
 	5-16 H
 	damage: 1500	P1: 90	P2: 80
 NmlAtk2C
-	12 4 17
+	11 4 17
 	duration on block: 43
 	last blockstun: 41 diff: -2
 	damage: 1700	P1: 90	P2: 85
 NmlAtkAIR5A
-	12 6 13
+	11 6 13
 	duration on block: 40
 	last blockstun: 38 diff: -2
 	damage: 1500	P1: 100	P2: 80
 NmlAtkAIR5AA
-	10 6 12
+	9 6 12
 	duration on block: 37
 	last blockstun: 36 diff: -1
 	damage: 1500	P1: 100	P2: 80
 NmlAtkAIR5B
-	41 5 33+11L
+	40 5 33+11L
 	duration on block: 97
 	last blockstun: 83 diff: -14
 	damage: 2100	P1: 100	P2: 85
 NmlAtkAIR5C
-	14 6 14
+	13 6 14
 	duration on block: 44
 	last blockstun: 43 diff: -1
 	damage: 1700	P1: 100	P2: 85
 CmnActCrushAttack
-	23 3 24
+	22 3 24
 	duration on block: 59
 	last blockstun: 49 diff: -10
 	damage: 0	P1: 100	P2: 100
 NmlAtkThrow
-	33 3 23
+	32 3 23
 	duration on block: 57
 	last blockstun: 32 diff: -25
 	damage: 0	P1: 100	P2: 100
 ThrowExe
-	17 8 32785
+	16 8 32785
 	duration on block: 32820
 	last blockstun: 46 diff: -32774
 	damage: 2000	P1: 100	P2: 50
 NmlAtkBackThrow
-	33 3 23
+	32 3 23
 	duration on block: 57
 	last blockstun: 32 diff: -25
 	damage: 0	P1: 100	P2: 100
 BackThrowExe
-	7 5(19)2 16
+	4 5(19)2 16
 	duration on block: 65
 	last blockstun: 66 diff: 1
 	damage: 0, 2000	P1: 100	P2: 50, 85 (Once)
@@ -101,124 +101,124 @@ ShortDash
 Total: 20
 	duration on block: 20
 CmnActInvincibleAttack
-	15 3,3,3,2,2 43
+	10 3,3,3,2,2 43
 	duration on block: 65
 	last blockstun: 21 diff: -44
 	1-18 All
 	damage: 0*5	P1: 100	P2: 100
 AN_CmnActInvincibleAttack_cance
-	12 3,10 43
+	10 3,10 43
 	duration on block: 89
 	last blockstun: 55 diff: -34
 	1-18 All
 	damage: 1200*2	P1: 100	P2: 85 (Once)
 CmnActInvincibleAttackAir
-	12 2,2,2,2,2 43
+	7 2,2,2,2,2 43
 	duration on block: 59
 	last blockstun: 15 diff: -44
 	1-12 All
 	damage: 0*5	P1: 100	P2: 100
 AN_CmnActInvincibleAttackAir_ca
-	9 4,6 43
+	7 4,6 43
 	duration on block: 83
 	last blockstun: 53 diff: -30
 	1-12 All
 	damage: 1200*2	P1: 100	P2: 85 (Once)
 AntiAir2nd
-	12 6 18
+	11 6 18
 	duration on block: 46
 	last blockstun: 41 diff: -5
 	damage: 1300	P1: 48	P2: 100
 Assault_A
-	13 3 17
+	12 3 17
 	duration on block: 31
 	9 16 0 blockstun: 12
 	last blockstun: 12 diff: -19
 	damage: 0*2	P1: 100	P2: 100
 Assault_cancel_A
-	13 3 17
+	12 3 17
 	duration on block: 46
 	9 16 0 blockstun: 43
 	last blockstun: 43 diff: -3
 	damage: 0, 1100	P1: 100, 80	P2: 100, 80
 Assault_2nd_A
-	32775 6 18
+	32774 6 18
 	duration on block: 32812
-	32775 10 2 blockstun: 32805
+	32774 10 2 blockstun: 32805
 	last blockstun: 32805 diff: -7
-	damage: 0, 1100	P1: 100, 64	P2: 100*2
+	damage: 1100, 0	P1: 64, 100	P2: 100*2
 Assault_3rdYoko
-	15 7 22
+	14 7 22
 	duration on block: 54
-	12 12 2 blockstun: 44
+	11 12 2 blockstun: 44
 	last blockstun: 44 diff: -10
 	damage: 0, 1700	P1: 100, 80	P2: 100, 85
 Assault_B
-	19 3 17
+	18 3 17
 	duration on block: 37
 	15 16 0 blockstun: 18
 	last blockstun: 18 diff: -19
 	damage: 0*2	P1: 100	P2: 100
 Assault_cancel_B
-	19 3 17
+	18 3 17
 	duration on block: 52
 	15 16 0 blockstun: 49
 	last blockstun: 49 diff: -3
 	damage: 0, 1100	P1: 100, 80	P2: 100, 80
 Assault_2nd_B
-	32775 6 18
+	32774 6 18
 	duration on block: 32812
-	32775 10 2 blockstun: 32805
+	32774 10 2 blockstun: 32805
 	last blockstun: 32805 diff: -7
-	damage: 0, 1100	P1: 100, 64	P2: 100*2
+	damage: 1100, 0	P1: 64, 100	P2: 100*2
 Assault_3rdTate
-	15 8 30
+	14 8 30
 	duration on block: 69
 	12 15 0 blockstun: 50
 	last blockstun: 50 diff: -19
 	damage: 0, 1700	P1: 100, 80	P2: 100, 75
 Assault_cancel_EX
-	13 3 17
+	12 3 17
 	duration on block: 31
 	9 16 0 blockstun: 12
 	last blockstun: 12 diff: -19
 	damage: 0*2	P1: 100	P2: 100
 Assault_EX
-	13 3 17
+	12 3 17
 	duration on block: 31
 	9 16 0 blockstun: 12
 	last blockstun: 12 diff: -19
 	damage: 0*2	P1: 100	P2: 100
 Assault_2nd_EX
-	32775 6 18
+	32774 6 18
 	duration on block: 32797
-	32775 10 2 blockstun: 32774
+	32774 10 2 blockstun: 32774
 	last blockstun: 32774 diff: -23
 	damage: 0*2	P1: 100	P2: 100
 Assault_3rdYoko_EX
-	15 7 22
+	14 7 22
 	duration on block: 42
-	12 12 2 blockstun: 14
+	11 12 2 blockstun: 14
 	last blockstun: 14 diff: -28
 	damage: 0*2	P1: 100	P2: 100
 Assault_3rdTate_EX
-	15 8 30
+	14 8 30
 	duration on block: 51
 	12 15 0 blockstun: 14
 	last blockstun: 14 diff: -37
 	damage: 0*2	P1: 100	P2: 100
 EdgeAssault_cancel
-	14 3 23
+	13 3 23
 	duration on block: 45
 	last blockstun: 37 diff: -8
 	damage: 1800	P1: 100	P2: 80
 EdgeAssault
-	21 3 16
+	20 3 16
 	duration on block: 38
 	last blockstun: 20 diff: -18
 	damage: 0	P1: 100	P2: 100
 EdgeAssault_EX
-	14 3 16
+	13 3 16
 	duration on block: 31
 	last blockstun: 13 diff: -18
 	damage: 0	P1: 100	P2: 100
@@ -231,100 +231,100 @@ Total: 37
 	duration on block: 37
 	5-26 HP
 DodgeThrow
-	16 5 28
+	15 5 28
 	duration on block: 47
 	last blockstun: 15 diff: -32
 	1-19 HP
 	damage: 0	P1: 100	P2: 100
 DodgeThrowExe
-	5 3(9)3 32788
+	2 3(9)3 32788
 	duration on block: 32828
 	last blockstun: 56 diff: -32772
 	damage: 1800*2	P1: 100	P2: 100, 75
 UltimateAssault_cancel
-	5+50Flash+3 10 31
+	5+50Flash+2 10 31
 	duration on block: 109
 	last blockstun: 87 diff: -22
 	1-14 All
 	damage: 4300	P1: 100	P2: 85
 UltimateAssault
-	5+50Flash+3 10 31
+	5+50Flash+2 10 31
 	duration on block: 97
 	last blockstun: 57 diff: -40
 	1-14 All
 	damage: 0	P1: 100	P2: 100
 UltimateAssaultOD_cancel
-	5+50Flash+3 10 39
+	5+50Flash+2 10 39
 	duration on block: 117
 	last blockstun: 87 diff: -30
 	1-14 All
 	damage: 4300	P1: 100	P2: 85
 UltimateAssaultOD
-	5+50Flash+3 10 39
+	5+50Flash+2 10 39
 	duration on block: 105
 	last blockstun: 57 diff: -48
 	1-14 All
 	damage: 0	P1: 100	P2: 100
 UltimateAirAssault
-	5+40Flash+8 8 25
+	5+40Flash+7 8 25
 	duration on block: 84
 	last blockstun: 52 diff: -32
 	1-19 All
 	damage: 0	P1: 100	P2: 100
 UltimateAirAssault_cancel
-	5+40Flash+8 8 25
+	5+40Flash+7 8 25
 	duration on block: 104
 	last blockstun: 90 diff: -14
 	1-19 All
 	damage: 4200	P1: 100	P2: 85
 UltimateAirAssaultOD
-	5+40Flash+8 8 25
+	5+40Flash+7 8 25
 	duration on block: 84
 	last blockstun: 52 diff: -32
 	1-19 All
 	damage: 0	P1: 100	P2: 100
 UltimateAirAssaultOD_cancel
-	5+40Flash+8 8 25
+	5+40Flash+7 8 25
 	duration on block: 104
 	last blockstun: 90 diff: -14
 	1-19 All
 	damage: 4300	P1: 100	P2: 85
 UltimateEdgeAssault_cancel
-	4+40Flash+10 1 48
+	4+40Flash+9 1 48
 	duration on block: 104
 	last blockstun: 74 diff: -30
 	1-27 All
 	damage: 2200	P1: 100	P2: 85
 UltimateEdgeAssault
-	4+40Flash+10 1 48
+	4+40Flash+9 1 48
 	duration on block: 101
 	last blockstun: 53 diff: -48
 	1-27 All
 	damage: 0	P1: 100	P2: 100
 UltimateEdgeAssault_Exe
-	65 6 87
+	64 6 87
 	duration on block: 169
 	last blockstun: 97 diff: -72
 	damage: 7200	P1: 48	P2: 100
 UltimateEdgeAssaultOD_cancel
-	4+40Flash+10 1 48
+	4+40Flash+9 1 48
 	duration on block: 104
 	last blockstun: 74 diff: -30
 	1-27 All
 	damage: 2200	P1: 100	P2: 85
 UltimateEdgeAssaultOD
-	4+40Flash+10 1 48
+	4+40Flash+9 1 48
 	duration on block: 101
 	last blockstun: 53 diff: -48
 	1-27 All
 	damage: 0	P1: 100	P2: 100
 UltimateEdgeAssault_Exe_OD
-	57 2 82
+	56 2 82
 	duration on block: 184
 	last blockstun: 121 diff: -63
 	damage: 5500	P1: 48	P2: 100
 AstralHeat
-	4+54Flash+12 6 28
+	4+54Flash+11 6 28
 	duration on block: 115
 	last blockstun: 102 diff: -13
 	1-20 All
@@ -334,13 +334,13 @@ Total: 1+71Flash+0
 	duration on block: 20
 	1--51 All
 AN_CmnActChangePartnerDDExe
-	51 3(56)2,3 75
+	47 3(56)2,3 75
 	duration on block: 214
 	last blockstun: 154 diff: -60
 	1-49 All
 	damage: 400, 800*2	P1: 100	P2: 100
 AN_CmnActChangePartnerDDODExe
-	55 3(56)2,6,6,6,6,27 75
+	47 3(56)2,6,6,6,6,27 75
 	duration on block: 262
 	last blockstun: 199 diff: -63
 	1-49 All

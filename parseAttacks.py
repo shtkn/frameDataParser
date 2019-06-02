@@ -616,11 +616,11 @@ def calc_frames_for_subroutine(frame_chunks, superflash_start=None, superflash_d
             else:
                 recovery += chunk.duration
 
-        if len(middle) > 0:
-            startup += 1
         duration_on_whiff += chunk.duration
         duration_on_block += chunk.duration
 
+    if len(middle) > 0:
+        startup += 1
     # determine inv
     inv_list = [[0, 0, [False, False, False, False, False]]]  # duration, type, attributes
     for chunk in frame_chunks:
