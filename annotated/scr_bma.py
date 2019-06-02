@@ -5222,7 +5222,7 @@ def CmnActInvincibleAttack():
     sprite('ma401_01', 2)	# 5-6
     sprite('ma401_02', 2)	# 7-8
     sprite('ma401_03', 2)	# 9-10
-    sprite('ma401_13ex_01', 2)	# 11-12
+    sprite('ma401_13ex_01', 2)	# 11-12	 **attackbox here**
     Unknown14070('AntiAir2nd')
     GFX_0('maef_401C', 0)
     SFX_3('mase_06')

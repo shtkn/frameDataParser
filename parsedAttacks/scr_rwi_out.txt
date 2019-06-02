@@ -1,828 +1,724 @@
 CmnActStand
-	144  
+Total: 144
 	duration on block: 144
 CmnActStandTurn
-	9  
+Total: 9
 	duration on block: 9
 CmnActStand2Crouch
-	8  
+Total: 8
 	duration on block: 8
 CmnActCrouch
-	60  
+Total: 60
 	duration on block: 60
 CmnActCrouchTurn
-	9  
+Total: 9
 	duration on block: 9
 CmnActCrouch2Stand
-	8  
+Total: 8
 	duration on block: 8
 CmnActJumpUpper
-	12  
+Total: 12
 	duration on block: 12
 CmnActJumpUpperEnd
-	9  
+Total: 9
 	duration on block: 9
 CmnActJumpDown
-	12  
+Total: 12
 	duration on block: 12
 CmnActJumpLanding
-	4  
+Total: 4
 	duration on block: 4
 CmnActLandingStiffLoop
-	32771  
+Total: 32771
 	duration on block: 32771
 CmnActLandingStiffEnd
-	6  
+Total: 6
 	duration on block: 6
 CmnActFWalk
-	77  
+Total: 77
 	duration on block: 77
 CmnActBWalk
-	70  
+Total: 70
 	duration on block: 70
 CmnActFDash
-	38  
+Total: 38
 	duration on block: 38
 CmnActFDashStop
-	15  
+Total: 15
 	duration on block: 15
 CmnActBDash
-	16  
+Total: 16
 	duration on block: 16
 CmnActBDashLanding
-	8  
+Total: 8
 	duration on block: 8
 CmnActAirFDash
-	11  
+Total: 11
 	duration on block: 11
 CmnActAirBDash
-	9  
+Total: 9
 	duration on block: 9
 CmnActHitStandLv1
-	4  
+Total: 4
 	duration on block: 4
 CmnActHitStandLv2
-	6  
+Total: 6
 	duration on block: 6
 CmnActHitStandLv3
-	8  
+Total: 8
 	duration on block: 8
 CmnActHitStandLv4
-	10  
+Total: 10
 	duration on block: 10
 CmnActHitStandLv5
-	12  
+Total: 12
 	duration on block: 12
 CmnActHitStandLowLv1
-	4  
+Total: 4
 	duration on block: 4
 CmnActHitStandLowLv2
-	6  
+Total: 6
 	duration on block: 6
 CmnActHitStandLowLv3
-	8  
+Total: 8
 	duration on block: 8
 CmnActHitStandLowLv4
-	10  
+Total: 10
 	duration on block: 10
 CmnActHitStandLowLv5
-	12  
+Total: 12
 	duration on block: 12
 CmnActHitCrouchLv1
-	4  
+Total: 4
 	duration on block: 4
 CmnActHitCrouchLv2
-	6  
+Total: 6
 	duration on block: 6
 CmnActHitCrouchLv3
-	8  
+Total: 8
 	duration on block: 8
 CmnActHitCrouchLv4
-	10  
+Total: 10
 	duration on block: 10
 CmnActHitCrouchLv5
-	12  
+Total: 12
 	duration on block: 12
 CmnActBDownUpper
-	9  
+Total: 9
 	duration on block: 9
 CmnActBDownUpperEnd
-	4  
+Total: 4
 	duration on block: 4
 CmnActBDownDown
-	12  
+Total: 12
 	duration on block: 12
 CmnActBDownCrash
-	4  
+Total: 4
 	duration on block: 4
 CmnActBDownBound
-	12  
+Total: 12
 	duration on block: 12
 CmnActBDown2Stand
-	28  
+Total: 28
 	duration on block: 28
 CmnActFDownDown
-	6  
+Total: 6
 	duration on block: 6
 CmnActFDownCrash
-	6  
+Total: 6
 	duration on block: 6
 CmnActFDownBound
-	13  
+Total: 13
 	duration on block: 13
 CmnActFDown2Stand
-	20  
+Total: 20
 	duration on block: 20
 CmnActVDownUpper
-	9  
+Total: 9
 	duration on block: 9
 CmnActVDownUpperEnd
-	4  
+Total: 4
 	duration on block: 4
 CmnActVDownDown
-	12  
+Total: 12
 	duration on block: 12
 CmnActVDownCrash
-	6  
+Total: 6
 	duration on block: 6
 CmnActBlowoff
-	9  
+Total: 9
 	duration on block: 9
 CmnActKirimomiUpper
-	12  
+Total: 12
 	duration on block: 12
 CmnActSkeleton
-	4  
+Total: 4
 	duration on block: 4
 CmnActWallBound
-	6  
+Total: 6
 	duration on block: 6
 CmnActWallBoundDown
-	12  
+Total: 12
 	duration on block: 12
 CmnActStaggerLoop
-	11  
+Total: 11
 	duration on block: 11
 CmnActStaggerDown
-	24  
+Total: 24
 	duration on block: 24
 CmnActUkemiStagger
-	8  
+Total: 8
 	duration on block: 8
 CmnActUkemiAirF
-	15  
+Total: 15
 	duration on block: 15
 CmnActUkemiAirB
-	15  
+Total: 15
 	duration on block: 15
 CmnActUkemiAirN
-	15  
+Total: 15
 	duration on block: 15
 CmnActUkemiLandF
-	222  
+Total: 222
 	duration on block: 222
 CmnActUkemiLandB
-	224  
+Total: 224
 	duration on block: 224
 CmnActUkemiLandN
-	26  
+Total: 26
 	duration on block: 26
 CmnActUkemiLandNLanding
-	15  
+Total: 15
 	duration on block: 15
 CmnActMidGuardPre
-	6  
+Total: 6
 	duration on block: 6
 CmnActMidGuardLoop
-	9  
+Total: 9
 	duration on block: 9
 CmnActMidGuardEnd
-	6  
+Total: 6
 	duration on block: 6
 CmnActMidHeavyGuardLoop
-	9  
+Total: 9
 	duration on block: 9
 CmnActMidHeavyGuardEnd
-	6  
+Total: 6
 	duration on block: 6
 CmnActHighGuardPre
-	6  
+Total: 6
 	duration on block: 6
 CmnActHighGuardLoop
-	9  
+Total: 9
 	duration on block: 9
 CmnActHighGuardEnd
-	6  
+Total: 6
 	duration on block: 6
 CmnActHighHeavyGuardLoop
-	9  
+Total: 9
 	duration on block: 9
 CmnActHighHeavyGuardEnd
-	6  
+Total: 6
 	duration on block: 6
 CmnActCrouchGuardPre
-	6  
+Total: 6
 	duration on block: 6
 CmnActCrouchGuardLoop
-	9  
+Total: 9
 	duration on block: 9
 CmnActCrouchGuardEnd
-	6  
+Total: 6
 	duration on block: 6
 CmnActCrouchHeavyGuardLoop
-	9  
+Total: 9
 	duration on block: 9
 CmnActCrouchHeavyGuardEnd
-	6  
+Total: 6
 	duration on block: 6
 CmnActAirGuardPre
-	6  
+Total: 6
 	duration on block: 6
 CmnActAirGuardLoop
-	9  
+Total: 9
 	duration on block: 9
 CmnActAirGuardEnd
-	6  
+Total: 6
 	duration on block: 6
 CmnActAirHeavyGuardLoop
-	9  
+Total: 9
 	duration on block: 9
 CmnActAirHeavyGuardEnd
-	6  
+Total: 6
 	duration on block: 6
 CmnActGuardBreakStand
-	17  
+Total: 17
 	duration on block: 17
 CmnActGuardBreakCrouch
-	17  
+Total: 17
 	duration on block: 17
 CmnActGuardBreakAir
-	17  
+Total: 17
 	duration on block: 17
 CmnActAirTurn
-	12  
+Total: 12
 	duration on block: 12
 CmnActLockReject
-	8 4 14
+	9 4 14
 	duration on block: 25
-	startup: 20 blockstun: 8
+	  20 blockstun: 8
 	last blockstun: 8 diff: -17
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActAirLockWait
-	7  
+Total: 7
 	duration on block: 7
 CmnActLandSpin
-	23  
+Total: 23
 	duration on block: 23
 CmnActLandSpinDown
-	16  
+Total: 16
 	duration on block: 16
 CmnActVertSpin
-	14  
+Total: 14
 	duration on block: 14
 CmnActSlideAir
-	16  
+Total: 16
 	duration on block: 16
 CmnActSlideKeep
-	10  
+Total: 10
 	duration on block: 10
 CmnActSlideEnd
-	9  
+Total: 9
 	duration on block: 9
 CmnActAomukeSlideKeep
-	6  
+Total: 6
 	duration on block: 6
 CmnActAomukeSlideEnd
-	9  
+Total: 9
 	duration on block: 9
 CmnActBurstBegin
-	11  
+Total: 11
 	duration on block: 11
 CmnActBurstLoop
-	11  
+Total: 11
 	duration on block: 11
 CmnActBurstEnd
-	6  
+Total: 6
 	duration on block: 6
 CmnActAirBurstBegin
-	11  
+Total: 11
 	duration on block: 11
 CmnActAirBurstLoop
-	11  
+Total: 11
 	duration on block: 11
 CmnActAirBurstEnd
-	23  
+Total: 23
 	duration on block: 23
 CmnActOverDriveBegin
-	32770  
+Total: 32770
 	duration on block: 32770
 CmnActOverDriveLoop
-	12  
+Total: 12
 	duration on block: 12
 CmnActOverDriveEnd
-	12  
+Total: 12
 	duration on block: 12
 CmnActAirOverDriveBegin
-	32770  
+Total: 32770
 	duration on block: 32770
 CmnActAirOverDriveLoop
-	12  
+Total: 12
 	duration on block: 12
 CmnActAirOverDriveEnd
-	27  
+Total: 27
 	duration on block: 27
 CmnActCrossRushBegin
-	32770  
+Total: 32770
 	duration on block: 32770
 CmnActCrossRushLoop
-	12  
+Total: 12
 	duration on block: 12
 CmnActCrossRushEnd
-	12  
+Total: 12
 	duration on block: 12
 CmnActAirCrossRushBegin
-	32770  
+Total: 32770
 	duration on block: 32770
 CmnActAirCrossRushLoop
-	12  
+Total: 12
 	duration on block: 12
 CmnActAirCrossRushEnd
-	27  
+Total: 27
 	duration on block: 27
 CmnActCrossChangeBegin
-	32770  
+Total: 32770
 	duration on block: 32770
 CmnActCrossChangeLoop
-	12  
+Total: 12
 	duration on block: 12
 CmnActCrossChangeEnd
-	6  
+Total: 6
 	duration on block: 6
 CmnActAirCrossChangeBegin
-	32770  
+Total: 32770
 	duration on block: 32770
 CmnActAirCrossChangeLoop
-	12  
+Total: 12
 	duration on block: 12
 CmnActAirCrossChangeEnd
-	21  
+Total: 21
 	duration on block: 21
 CmnActChangePartnerIn
-	57  
+Total: 57
 	duration on block: 57
 CmnActChangePartnerOut
-	60  
+Total: 60
 	duration on block: 60
 CmnActChangeReturnAppeal
-	77  
+Total: 77
 	duration on block: 77
 CmnActChangePartnerBurst
-	132 18 28
+	133 18 28
 	duration on block: 177
 	last blockstun: 132 diff: -45
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActChangeReturnAppealBurst
-	109  
+Total: 109
 	duration on block: 109
 CmnActChangePartnerQuickIn
-	29  
+Total: 29
 	duration on block: 29
 CmnActChangePartnerQuickOut
-	21  
+Total: 21
 	duration on block: 21
 CmnActChangePartnerAssistAdmiss
-	112  
+Total: 112
 	duration on block: 112
 CmnActChangePartnerAssistAtk_A
-	59  
+Total: 59
 	duration on block: 59
 CmnActChangePartnerAssistAtk_B
-	27 12 22
+	28 12 22
 	duration on block: 66
-	startup: 131091 blockstun: 57
+	  131091 blockstun: 57
 	last blockstun: 57 diff: -9
-	damage: 1750
-	P1: 70
-	P2: 80
+	damage: 1750	P1: 70	P2: 80
 CmnActChangePartnerAssistAtk_D
-	27 3 24
+	28 3 24
 	duration on block: 64
-	startup: 131069 blockstun: 54
+	  131069 blockstun: 54
 	last blockstun: 54 diff: -10
-	damage: 1000
-	P1: 70
-	P2: 80 (Once)
+	damage: 1000	P1: 70	P2: 80 (Once)
 CmnActChangePartnerDD
-	1+93Flash+0  
+Total: 1+93Flash+0
 	duration on block: 18
 	1--75 All
 UltimateDUO
-	44 3 61
+	45 3 61
 	duration on block: 107
-	startup: 105 blockstun: 84
+	  105 blockstun: 84
 	last blockstun: 84 diff: -23
 	1-46 All
-	damage: 2000
-	P1: 100
-	P2: 100
+	damage: 2000	P1: 100	P2: 100
 UltimateDUOSP
-	44 3 61
+	45 3 61
 	duration on block: 107
-	startup: 105 blockstun: 84
+	  105 blockstun: 84
 	last blockstun: 84 diff: -23
 	1-46 All
-	damage: 2500
-	P1: 100
-	P2: 100
+	damage: 2500	P1: 100	P2: 100
 NmlAtk4A
-	7 3 12
+	8 3 12
 	duration on block: 31
 	last blockstun: 30 diff: -1
-	damage: 1000
-	P1: 100
-	P2: 75
+	damage: 1000	P1: 100	P2: 75
 NmlAtk5A
-	8 3 19
+	9 3 19
 	duration on block: 40
 	last blockstun: 35 diff: -5
-	damage: 1500
-	P1: 100
-	P2: 80
+	damage: 1500	P1: 100	P2: 80
 NmlAtk5AA
-	12 6(32769)5 16
+	15 6(32769)5 16
 	duration on block: 32821
 	last blockstun: 32817 diff: -4
-	damage: 800, 1500
-	P1: 100
-	P2: 80 (Once)
+	damage: 800, 1500	P1: 100	P2: 80 (Once)
 NmlAtk5AAA
-	14 3 23
+	15 3 23
 	duration on block: 51
 	last blockstun: 44 diff: -7
-	damage: 1700
-	P1: 100
-	P2: 85
+	damage: 1700	P1: 100	P2: 85
 NmlAtk5AAAA
-	42  
+Total: 42
 	duration on block: 42
 NmlAtk5B
-	14 3 21
+	15 3 21
 	duration on block: 49
 	last blockstun: 44 diff: -5
 	4-16 H
-	damage: 1700
-	P1: 90
-	P2: 85
+	damage: 1700	P1: 90	P2: 85
 NmlAtk5BB
-	13 3 27
+	14 3 27
 	duration on block: 54
 	last blockstun: 43 diff: -11
-	damage: 1700
-	P1: 100
-	P2: 75
+	damage: 1700	P1: 100	P2: 75
 NmlAtk2A
-	7 3 13
+	8 3 13
 	duration on block: 31
 	last blockstun: 27 diff: -4
-	damage: 1000
-	P1: 90
-	P2: 70
+	damage: 1000	P1: 90	P2: 70
 NmlAtk2B
-	12 3 18
+	13 3 18
 	duration on block: 43
 	last blockstun: 39 diff: -4
-	damage: 1500
-	P1: 90
-	P2: 80
+	damage: 1500	P1: 90	P2: 80
 NmlAtk2C
-	16 3 27
+	17 3 27
 	duration on block: 57
 	last blockstun: 46 diff: -11
-	damage: 1700
-	P1: 90
-	P2: 85
+	damage: 1700	P1: 90	P2: 85
 NmlAtkAIR4A
-	7 3 15
+	8 3 15
 	duration on block: 33
 	last blockstun: 27 diff: -6
-	damage: 1000
-	P1: 100
-	P2: 70
+	damage: 1000	P1: 100	P2: 70
 NmlAtkAIR5A
-	9 7 20
+	10 7 20
 	duration on block: 45
-	startup: 10 blockstun: 33
+	10 6 0 blockstun: 33
 	last blockstun: 33 diff: -12
-	damage: 1000
-	P1: 100
-	P2: 75
+	damage: 1000*2	P1: 100	P2: 75
 NmlAtkAIR5B
-	11 3 28
+	12 3 28
 	duration on block: 52
 	last blockstun: 38 diff: -14
-	damage: 1500
-	P1: 100
-	P2: 80
+	damage: 1500	P1: 100	P2: 80
 NmlAtkAIR5C
-	13 3 33
+	14 3 33
 	duration on block: 60
 	last blockstun: 43 diff: -17
-	damage: 1700
-	P1: 100
-	P2: 85
+	damage: 1700	P1: 100	P2: 85
 CmnActCrushAttack
-	22 3 26
+	23 3 26
 	duration on block: 61
 	last blockstun: 49 diff: -12
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackChase1st
-	61 3 166
+	62 3 166
 	duration on block: 229
 	last blockstun: 61 diff: -168
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackChase2nd
-	15 3 94
+	16 3 94
 	duration on block: 111
 	last blockstun: 15 diff: -96
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackFinish
-	20 3 38
+	21 3 38
 	duration on block: 60
 	last blockstun: 20 diff: -40
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackAssistChase1st
-	44 3 88
+	45 3 88
 	duration on block: 134
 	last blockstun: 44 diff: -90
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackAssistChase2nd
-	12 3 94
+	13 3 94
 	duration on block: 108
 	last blockstun: 12 diff: -96
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 CmnActCrushAttackAssistFinish
-	20 3 38
+	21 3 38
 	duration on block: 60
 	last blockstun: 20 diff: -40
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 NmlAtkThrow
-	42 3 23
+	43 3 23
 	duration on block: 67
 	last blockstun: 42 diff: -25
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 ThrowExe
-	22 3 30
+	23 3 30
 	duration on block: 65
-	startup: 37 blockstun: 70
+	37 6 0 blockstun: 70
 	last blockstun: 70 diff: 5
-	damage: 1000
-	P1: 100
-	P2: 50, 100
+	damage: 1000*2	P1: 100	P2: 50, 100
 NmlAtkBackThrow
-	42 3 23
+	43 3 23
 	duration on block: 67
 	last blockstun: 42 diff: -25
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 BackThrowExe
-	63  
+Total: 63
 	duration on block: 63
-	startup: 46 blockstun: 79
+	46 6 0 blockstun: 79
 	last blockstun: 79 diff: 16
-	damage: 1000
-	P1: 100
-	P2: 100
+	damage: 1000	P1: 100	P2: 100
 CmnActInvincibleAttack
-	14 3 48
+	15 3 48
 	duration on block: 76
 	last blockstun: 44 diff: -32
 	1-16 All
-	damage: 2100
-	P1: 100
-	P2: 85
+	damage: 2100	P1: 100	P2: 85
 AssaultA
-	25 3 18
-	duration on block: 56
-	startup: 131069 blockstun: 52
-	last blockstun: 52 diff: -4
-	damage: 1800
-	P1: 80
-	P2: 80
+	26 3 18
+	duration on block: 45
+	  131069 blockstun: 25
+	last blockstun: 25 diff: -20
+	damage: 0	P1: 100	P2: 100
 AssaultB
-	33 3 16
-	duration on block: 62
-	startup: 131091 blockstun: 60
-	last blockstun: 60 diff: -2
-	damage: 1800
-	P1: 80
-	P2: 80 (Once)
+	34 3 16
+	duration on block: 51
+	  131091 blockstun: 33
+	last blockstun: 33 diff: -18
+	damage: 0	P1: 100	P2: 100
 AssaultC
-	25 3(12)3(9)3 30
-	duration on block: 102
-	startup: 131069 blockstun: 88
-	last blockstun: 88 diff: -14
-	damage: 1450
-	P1: 80
-	P2: 75 (Once)
+	30 3(12)3(9)3 30
+	duration on block: 84
+	  131069 blockstun: 52
+	last blockstun: 52 diff: -32
+	damage: 0*3	P1: 100	P2: 100
 AirAssaultA
-	28 3 18
-	duration on block: 59
-	startup: 131079 blockstun: 55
-	last blockstun: 55 diff: -4
-	damage: 1500
-	P1: 80
-	P2: 80
+	29 3 18
+	duration on block: 48
+	  131079 blockstun: 28
+	last blockstun: 28 diff: -20
+	damage: 0	P1: 100	P2: 100
 AirAssaultB
-	34 3 24
-	duration on block: 71
-	startup: 131099 blockstun: 61
-	last blockstun: 61 diff: -10
-	damage: 1700
-	P1: 80
-	P2: 80
+	35 3 24
+	duration on block: 60
+	  131099 blockstun: 34
+	last blockstun: 34 diff: -26
+	damage: 0	P1: 100	P2: 100
 AirAssaultC
-	28 3(15)2,2,2,2 24
-	duration on block: 101
-	startup: 131105 blockstun: 94
-	last blockstun: 94 diff: -7
-	damage: 1500, 500
-	P1: 80
-	P2: 85 (Once)
+	34 3(15)2,2,2,2 24
+	duration on block: 77
+	  131105 blockstun: 52
+	last blockstun: 52 diff: -25
+	damage: 0*5	P1: 100	P2: 100
 IceShieldA
-	42  
+Total: 42
 	duration on block: 42
-	startup: 13 blockstun: 13
+	13 132 0 blockstun: 13
 	last blockstun: 13 diff: -29
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 IceShieldB
-	57  
+Total: 57
 	duration on block: 57
-	startup: 19 blockstun: 19
+	19 132 0 blockstun: 19
 	last blockstun: 19 diff: -38
-	damage: 0
-	P1: 100
-	P2: 100
+	damage: 0	P1: 100	P2: 100
 IceShieldC
-	45  
+Total: 45
 	duration on block: 45
 IceShieldCounter
-	14 5 21
+	15 5 21
 	duration on block: 51
 	last blockstun: 44 diff: -7
 	1-39 All
-	damage: 1850
-	P1: 80
-	P2: 75
+	damage: 1850	P1: 80	P2: 75
 SetMagicA
-	37  
+Total: 37
 	duration on block: 37
 SetMagicB
-	37  
+Total: 37
 	duration on block: 37
 SetMagicC
-	37  
+Total: 37
 	duration on block: 37
 ExLandAssaultA
-	19 5 15
-	duration on block: 50
-	last blockstun: 49 diff: -1
-	damage: 1750
-	P1: 80
-	P2: 85
+	20 5 15
+	duration on block: 38
+	last blockstun: 19 diff: -19
+	damage: 0	P1: 100	P2: 100
 ExAirAssaultA
-	20 5 24
-	duration on block: 60
-	startup: 63 blockstun: 50
-	last blockstun: 50 diff: -10
-	damage: 1900
-	P1: 80
-	P2: 85
+	21 5 24
+	duration on block: 48
+	  63 blockstun: 20
+	last blockstun: 20 diff: -28
+	damage: 0	P1: 100	P2: 100
 ExLandAssaultB
-	34 3,9 12
-	duration on block: 81
-	startup: 63 blockstun: 79
-	last blockstun: 79 diff: -2
+	35 12 12
+	duration on block: 57
+	  63 blockstun: 34
+	last blockstun: 34 diff: -23
 	11-36 B
-	damage: 2200
-	P1: 80
-	P2: 75
+	damage: 0	P1: 100	P2: 100
 ExAirAssaultB
-	22 3,9 17
-	duration on block: 74
-	startup: 63 blockstun: 67
-	last blockstun: 67 diff: -7
+	23 12 17
+	duration on block: 50
+	  63 blockstun: 22
+	last blockstun: 22 diff: -28
 	1-24 B
-	damage: 2350
-	P1: 80
-	P2: 75
+	damage: 0	P1: 100	P2: 100
 ExLandAssaultC
-	18 3(6)3 17
-	duration on block: 64
-	last blockstun: 63 diff: -1
-	damage: 1300
-	P1: 90
-	P2: 85 (Once)
+	21 3(6)3 17
+	duration on block: 46
+	last blockstun: 27 diff: -19
+	damage: 0*2	P1: 100	P2: 100
 ExAirAssaultC
-	18 3(6)3 17
-	duration on block: 64
-	startup: 63 blockstun: 63
-	last blockstun: 63 diff: -1
-	damage: 1400
-	P1: 90
-	P2: 85 (Once)
+	21 3(6)3 17
+	duration on block: 46
+	  63 blockstun: 27
+	last blockstun: 27 diff: -19
+	damage: 0*2	P1: 100	P2: 100
 UltimateShot
-	1+43Flash+76  
+Total: 1+43Flash+75
 	duration on block: 119
-	startup: 1+43Flash+6 blockstun: 83
+	1+43Flash+7 6 30 blockstun: 83
 	last blockstun: 83 diff: -36
 	1-9 All
-	damage: 4400
-	P1: 100
-	P2: 60
+	damage: 4400	P1: 100	P2: 60
 UltimateShotSP
-	1+43Flash+76  
+Total: 1+43Flash+75
 	duration on block: 119
-	startup: 1+43Flash+6 blockstun: 83
+	1+43Flash+7 6 30 blockstun: 83
 	last blockstun: 83 diff: -36
 	1-9 All
-	damage: 4400
-	P1: 100
-	P2: 60
+	damage: 4400	P1: 100	P2: 60
 UltimateShotSP_Add
 	1+67Flash+0 3 61
 	duration on block: 110
 	last blockstun: 87 diff: -23
 	1--18 All
-	damage: 2700
-	P1: 100
-	P2: 100
+	damage: 2700	P1: 100	P2: 100
 UltimateRush
-	1+70Flash+14 9 33
+	1+70Flash+15 9 33
 	duration on block: 138
 	last blockstun: 115 diff: -23
 	1-23 All
-	damage: 2000
-	P1: 100
-	P2: 100
+	damage: 2000	P1: 100	P2: 100
 UltimateRushChase
-	80  
+Total: 80
 	duration on block: 80
 	1-80 All
 UltimateRushSP
-	1+70Flash+14 9 33
+	1+70Flash+15 9 33
 	duration on block: 138
 	last blockstun: 115 diff: -23
 	1-23 All
-	damage: 2000
-	P1: 100
-	P2: 100
+	damage: 2000	P1: 100	P2: 100
 UltimateRushSPChase
-	32881  
+Total: 32881
 	duration on block: 32881
 	1-32881 All
 AstralHeat
-	1+60Flash+12  
+Total: 1+60Flash+11
 	duration on block: 72
 	1--22 All
 AstralHeatExe
-	187 12 51
+	4 36(150)12 51
 	duration on block: 249
-	startup: 301 blockstun: 507
-	startup: 286 blockstun: 507
+	  301 blockstun: 507
+	286 3 0 blockstun: 507
 	last blockstun: 507 diff: 258
 	1-249 All
-	damage: 4500, 11700
-	P1: 100
-	P2: 90
+	damage: 4500, 11700	P1: 100	P2: 90
 CmnActEntry
-	205  
+Total: 205
 	duration on block: 205
 CmnActMatchWin
-	559174  
+Total: 559174
 	duration on block: 559174
 CmnActLose
-	32797  
+Total: 32797
 	duration on block: 32797

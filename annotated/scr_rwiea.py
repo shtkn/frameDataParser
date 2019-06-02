@@ -742,7 +742,7 @@ def rwi251_03_kick_damy():
             if (SLOT_48 == 2512):
                 Unknown23027()
     sprite('null', 1)	# 1-1
-    sprite('rwi251_03_kick_damy', 6)	# 2-7
+    sprite('rwi251_03_kick_damy', 6)	# 2-7	 **attackbox here**
 
 @State
 def rwief252_slash():

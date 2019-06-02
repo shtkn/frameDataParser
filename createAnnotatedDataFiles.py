@@ -28,6 +28,8 @@ pattern = "*.py"
 #         print entry
 #         print entry[entry.index("_")+1:entry.__len__()-3]
 
+fileList.remove("scr_ahe.py")   # some strange characters in Heart's files, skipping for now
+fileList.remove("scr_aheea.py")
 for entry in fileList:
     source = open(inputDir + entry, "r")
     target = open(outputDir + entry, "w")

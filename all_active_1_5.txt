@@ -2077,6 +2077,10 @@ es321_03
 es321_11
 es322_03
 es340_07
+es400eff_atk1
+es400eff_atk2
+es400eff_airatk1
+es400eff_airatk2
 es400eff_largeatk1
 es400eff_largeatk2
 es402_05
@@ -2104,6 +2108,8 @@ es409_10
 es409_11
 es409_12
 es409_19
+es430_LandAtk1
+es430_LandAtk2
 es431_09
 es431_10
 es431_18

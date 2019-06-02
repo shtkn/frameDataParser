@@ -3730,9 +3730,9 @@ def esef_430EffStartODhikari():
         GFX_0('esef_430EffAdd', -1)
         SFX_3('esse_04')
         SFX_3('esse_04')
-        sprite('es430_LandAtk1', 3)	# 5-7	 **attackbox here**
+        sprite('es430_LandAtk1', 3)	# 5-7
         physicsXImpulse(70000)
-        sprite('es430_LandAtk2', 60)	# 8-67	 **attackbox here**
+        sprite('es430_LandAtk2', 60)	# 8-67
         label(580)
         sprite('null', 60)	# 68-127
         clearUponHandler(54)
@@ -3839,10 +3839,10 @@ def esef_430EffStartODhikari():
         GFX_0('esef_430EffAdd', -1)
         SFX_3('esse_04')
         SFX_3('esse_04')
-        sprite('es430_LandAtk1', 2)	# 5-6	 **attackbox here**
+        sprite('es430_LandAtk1', 2)	# 5-6
         physicsXImpulse(70000)
         label(0)
-        sprite('es430_LandAtk1', 2)	# 7-8	 **attackbox here**
+        sprite('es430_LandAtk1', 2)	# 7-8
         loopRest()
         gotoLabel(0)
         label(580)
@@ -3921,9 +3921,9 @@ def esef_430EffStartODhikari():
         GFX_0('esef_430EffAdd', -1)
         SFX_3('esse_04')
         SFX_3('esse_04')
-        sprite('es430_LandAtk1', 3)	# 5-7	 **attackbox here**
+        sprite('es430_LandAtk1', 3)	# 5-7
         physicsXImpulse(70000)
-        sprite('es430_LandAtk2', 60)	# 8-67	 **attackbox here**
+        sprite('es430_LandAtk2', 60)	# 8-67
         label(580)
         sprite('null', 60)	# 68-127
         clearUponHandler(54)
@@ -4014,10 +4014,10 @@ def esef_430EffStartODhikari():
         GFX_0('esef_430EffAdd', -1)
         SFX_3('esse_04')
         SFX_3('esse_04')
-        sprite('es430_LandAtk1', 2)	# 5-6	 **attackbox here**
+        sprite('es430_LandAtk1', 2)	# 5-6
         physicsXImpulse(70000)
         label(0)
-        sprite('es430_LandAtk1', 2)	# 7-8	 **attackbox here**
+        sprite('es430_LandAtk1', 2)	# 7-8
         loopRest()
         gotoLabel(0)
         label(580)

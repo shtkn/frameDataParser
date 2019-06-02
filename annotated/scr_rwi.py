@@ -1972,15 +1972,15 @@ def CmnActChangePartnerAssistAtk_B():
     Unknown1084(1)
     tag_voice(1, 'rwi202_0', 'rwi202_1', 'rwi202_2', '')
     SFX_3('rwise_03')
-    sprite('rwi401_04_ex', 3)	# 27-29
+    sprite('rwi401_04_ex', 3)	# 27-29	 **attackbox here**
     physicsXImpulse(10000)
     physicsYImpulse(40000)
     Unknown1043()
     Unknown28(2, '_NEUTRAL')
-    sprite('rwi401_05_ex', 3)	# 30-32
-    sprite('rwi401_04_ex', 3)	# 33-35
+    sprite('rwi401_05_ex', 3)	# 30-32	 **attackbox here**
+    sprite('rwi401_04_ex', 3)	# 33-35	 **attackbox here**
     YAccel(50)
-    sprite('rwi401_05_ex', 3)	# 36-38
+    sprite('rwi401_05_ex', 3)	# 36-38	 **attackbox here**
     sprite('rwi401_06', 3)	# 39-41
     Recovery()
     Unknown1043()
@@ -2418,7 +2418,7 @@ def NmlAtk5AA():
     Unknown7009(1)
     SFX_0('004_swing_grap_1_0')
     sprite('rwi270_04', 3)	# 12-14	 **attackbox here**
-    sprite('rwi270_05', 3)	# 15-17
+    sprite('rwi270_05', 3)	# 15-17	 **attackbox here**
     Unknown2016(-1)
     sprite('rwi270_06', 32767)	# 18-32784
     label(1)
@@ -3679,7 +3679,7 @@ def AssaultB():
     sprite('rwi401_03', 3)	# 61-63
     Unknown1084(1)
     tag_voice(0, 'rwi202_0', 'rwi202_1', 'rwi202_2', '')
-    sprite('rwi401_04_ex', 3)	# 64-66
+    sprite('rwi401_04_ex', 3)	# 64-66	 **attackbox here**
     RefreshMultihit()
     Damage(1200)
     AirUntechableTime(45)
@@ -3694,10 +3694,10 @@ def AssaultB():
     def upon_12():
         GFX_0('rwief401_Hit', 103)
     Unknown28(2, '_NEUTRAL')
-    sprite('rwi401_05_ex', 3)	# 67-69
-    sprite('rwi401_04_ex', 3)	# 70-72
+    sprite('rwi401_05_ex', 3)	# 67-69	 **attackbox here**
+    sprite('rwi401_04_ex', 3)	# 70-72	 **attackbox here**
     YAccel(50)
-    sprite('rwi401_05_ex', 3)	# 73-75
+    sprite('rwi401_05_ex', 3)	# 73-75	 **attackbox here**
     sprite('rwi401_06', 4)	# 76-79
     Recovery()
     Unknown1043()
@@ -4053,7 +4053,7 @@ def AirAssaultC():
     sprite('rwi401_03', 3)	# 43-45
     Unknown1019(50)
     SFX_3('rwise_10')
-    sprite('rwi401_04_ex', 2)	# 46-47
+    sprite('rwi401_04_ex', 2)	# 46-47	 **attackbox here**
     tag_voice(0, 'rwi205_0', 'rwi205_1', 'rwi205_2', '')
     physicsXImpulse(5000)
     physicsYImpulse(30000)
@@ -4068,11 +4068,11 @@ def AirAssaultC():
     def upon_12():
         GFX_0('rwief401_Hit', 103)
         clearUponHandler(12)
-    sprite('rwi401_05_ex', 2)	# 48-49
+    sprite('rwi401_05_ex', 2)	# 48-49	 **attackbox here**
     RefreshMultihit()
-    sprite('rwi401_04_ex', 2)	# 50-51
+    sprite('rwi401_04_ex', 2)	# 50-51	 **attackbox here**
     RefreshMultihit()
-    sprite('rwi401_05_ex', 2)	# 52-53
+    sprite('rwi401_05_ex', 2)	# 52-53	 **attackbox here**
     RefreshMultihit()
     sprite('rwi401_06', 3)	# 54-56
     Recovery()

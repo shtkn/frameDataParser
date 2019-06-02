@@ -555,13 +555,13 @@ def UHY_Request_ShotExplodeASS():
     Unknown1084(1)
     SFX_3('VanishDiscBall')
     sprite('Action_172_01', 6)	# 8-13
-    sprite('Action_172_02ex01', 3)	# 14-16
+    sprite('Action_172_02ex01', 3)	# 14-16	 **attackbox here**
     RefreshMultihit()
-    sprite('Action_172_03ex01', 3)	# 17-19
+    sprite('Action_172_03ex01', 3)	# 17-19	 **attackbox here**
     GFX_0('UHY_Request_ExplodeBlackEffect', 100)
     SFX_3('SE220')
     RefreshMultihit()
-    sprite('Action_172_04ex01', 3)	# 20-22
+    sprite('Action_172_04ex01', 3)	# 20-22	 **attackbox here**
     RefreshMultihit()
     sprite('Action_172_05', 5)	# 23-27	 **attackbox here**
     sprite('Action_172_06', 4)	# 28-31

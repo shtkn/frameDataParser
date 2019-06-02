@@ -37,7 +37,7 @@ class TestParseAttackMethods(unittest.TestCase):
         self.assertItemsEqual(expected, result)
 
     def test_do_not_combine_wait_frames_with_diff_inv(self):
-        chunks = [AttackFrameChunk(2, is_new_hit=True), AttackFrameChunk(2, is_new_hit=True)]
+        chunks = [WaitFrameChunk(2), WaitFrameChunk(2)]
         chunks[0].inv_type = 1
         chunks[0].inv_attr = [False, True, True, True, False]
         chunks[1].inv_type = 1
@@ -45,6 +45,17 @@ class TestParseAttackMethods(unittest.TestCase):
         result = consolidate_frame_chunks(chunks)
         expected = chunks
         self.assertItemsEqual(result, expected)
+
+    def test_do_combine_wait_frames_with_diff_inv(self):
+        chunks = [WaitFrameChunk(2), WaitFrameChunk(2)]
+        chunks[0].inv_type = 1
+        chunks[0].inv_attr = [False, True, True, True, False]
+        chunks[1].inv_type = 1
+        chunks[1].inv_attr = [True, False, False, False, False]
+        result = consolidate_frame_chunks(chunks, True)
+        expected = [WaitFrameChunk(4)]
+        self.assertEqual(len(expected), len(result))
+        self.assertEqual(expected[0].duration, result[0].duration)  # inv for this combined chunk is undefined behavior
 
     def test_do_not_combine_active_frame_types_with_same_inv(self):
         chunks = [AttackFrameChunk(2, is_new_hit=True), AttackFrameChunk(2, is_new_hit=True)]
@@ -223,6 +234,7 @@ def Monsho_AtkData():
     Unknown9154(17)
     AirUntechableTime(21)
     Unknown11028(11)
+    Damage(900)
     Unknown9016(1)"""
         buf = StringIO.StringIO(subroutine)
         effect_list = {}
@@ -230,6 +242,9 @@ def Monsho_AtkData():
         subroutine = Subroutine()
         subroutine.hitstop = 6
         subroutine.blockstun = 11
+        subroutine.damage = 900
+        subroutine.p1 = 70
+        subroutine.p2 = 90
         self.assertEquals(effect_list["Monsho_AtkData"], subroutine)
 
     def test_parse_attack_with_subroutine(self):

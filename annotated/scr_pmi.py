@@ -1763,16 +1763,16 @@ def CmnActChangePartnerAssistAtk_D():
     sprite('mi401_04', 1)	# 11-11
     Unknown3029(1)
     sprite('mi401_04', 1)	# 12-12
-    sprite('mi401_05ex', 2)	# 13-14
+    sprite('mi401_05ex', 2)	# 13-14	 **attackbox here**
     GFX_1('mief_401smoke_04', 0)
     GFX_0('mief_401', 1)
     RefreshMultihit()
     physicsXImpulse(50000)
     Unknown2015(220)
     SFX_3('airdash_m')
-    sprite('mi401_06ex', 2)	# 15-16
+    sprite('mi401_06ex', 2)	# 15-16	 **attackbox here**
     SFX_3('slash_blade_fast')
-    sprite('mi401_05ex', 2)	# 17-18
+    sprite('mi401_05ex', 2)	# 17-18	 **attackbox here**
     SFX_3('slash_rapier_fast')
     sprite('mi401_06', 2)	# 19-20	 **attackbox here**
     sprite('mi401_05', 2)	# 21-22	 **attackbox here**

@@ -21,9 +21,9 @@ class State:
         self.landingRecovery = 0
         self.isSubroutine = False
         self.damage = 0
-        self.P1 = 100
-        self.P2 = 100
-        self.P2Once = False
+        self.p1 = 100
+        self.p2 = 100
+        self.p2Once = False
         self.minDamage = 0
         self.isInv = False
         self.invType = 0  # Inv or Guard
@@ -47,9 +47,9 @@ class State:
             self.landingRecovery = 0
             self.isSubroutine = False
             self.damage = 0
-            self.P1 = 100
-            self.P2 = 100
-            self.P2Once = False
+            self.p1 = 100
+            self.p2 = 100
+            self.p2Once = False
             self.isInv = False
             self.invType = 0
             self.invAttr = [True, True, True, True, True]
@@ -243,7 +243,8 @@ SPRITE_MID = "', "
 SPRITE_END = ")"
 HAS_HITBOX = "**attackbox here**"
 GFX_START = "GFX_0('"
-CALL_SUBROUTINE_START = "CallSubroutine('"
+CALL_SUBROUTINE_STARTC = "callSubroutine('"
+CALL_SUBROUTINE_STARTc = "CallSubroutine('"
 
 
 def get_duration(sprite_str):
@@ -265,20 +266,20 @@ def has_same_inv(chunk1, chunk2):
     return chunk1.inv_type == chunk2.inv_type and chunk1.inv_attr == chunk2.inv_attr
 
 
-def consolidate_frame_chunks(chunk_list):
+def consolidate_frame_chunks(chunk_list, ignore_inv=False):
     new_chunk_list = []
     prev_chunk = copy.copy(chunk_list[0])
     for i in range(1, len(chunk_list)):
         chunk = chunk_list[i]
         if isinstance(prev_chunk, AttackFrameChunk) and isinstance(chunk, AttackFrameChunk) \
-                and has_same_inv(prev_chunk, chunk):
+                and (has_same_inv(prev_chunk, chunk) or ignore_inv):
             if chunk.is_new_hit:
                 new_chunk_list.append(prev_chunk)
                 prev_chunk = copy.copy(chunk)
             else:
                 prev_chunk.duration += chunk.duration
         elif isinstance(prev_chunk, WaitFrameChunk) and isinstance(chunk, WaitFrameChunk) \
-                and has_same_inv(prev_chunk, chunk):
+                and (has_same_inv(prev_chunk, chunk) or ignore_inv):
             prev_chunk.duration += chunk.duration
         else:
             new_chunk_list.append(prev_chunk)
@@ -300,6 +301,10 @@ def parse_move_file(source, move_list, effect_list):
                 subroutine.blockstun = state.blockstun
                 subroutine.hitstop = state.hitstop
                 subroutine.additionalHitstopOpponent = state.additionalHitstopOpponent
+                subroutine.damage = state.damage
+                subroutine.p1 = state.p1
+                subroutine.p2 = state.p2
+                subroutine.p2Once = state.p2Once
                 effect_list[state.moveName] = subroutine
 
             elif frame_chunks is not None and len(frame_chunks) > 0:
@@ -310,7 +315,7 @@ def parse_move_file(source, move_list, effect_list):
                     chunk.inv_type = 1 if state.invType == 0 else 2
                     chunk.inv_attr = state.invAttr
                 if isinstance(chunk, AttackFrameChunk):
-                    chunk.damage = Damage(state.damage, state.P1, state.P2, state.minDamage, state.P2Once)
+                    chunk.damage = Damage(state.damage, state.p1, state.p2, state.minDamage, state.p2Once)
                 frame_chunks.append(chunk)
 
                 move_list[state.moveName] = Move()
@@ -339,7 +344,7 @@ def parse_move_file(source, move_list, effect_list):
                 frame_chunks.append(chunk)
                 if isinstance(chunk, AttackFrameChunk):
                     state.isNewHit = False
-                    chunk.damage = Damage(state.damage, state.P1, state.P2, state.minDamage, state.P2Once)
+                    chunk.damage = Damage(state.damage, state.p1, state.p2, state.minDamage, state.p2Once)
                 state.clear_values(False)
             state.duration = get_duration(line)
 
@@ -362,7 +367,7 @@ def parse_move_file(source, move_list, effect_list):
                     state.blockstun += 1
                 # hitstop by level 0: 8F, 1: 9F, 2: 10F, 3: 11F, 4: 12F, 5: 13F
                 state.hitstop = 8 + level
-                state.P2 = 65 + (level * 5)
+                state.p2 = 65 + (level * 5)
                 if level == 0 or level == 1 or level == 2:
                     state.damage = 1000
                 elif level == 3:
@@ -373,13 +378,13 @@ def parse_move_file(source, move_list, effect_list):
                     state.damage = 2000
 
             elif "AttackP1(" in line:
-                state.P1 = int(line[line.index("(") + 1:line.index(")")])
+                state.p1 = int(line[line.index("(") + 1:line.index(")")])
             elif "AttackP2(" in line:
-                state.P2 = int(line[line.index("(") + 1:line.index(")")])
+                state.p2 = int(line[line.index("(") + 1:line.index(")")])
             elif " Damage(" in line or "\tDamage(" in line:
                 state.damage = int(line[line.index("(") + 1:line.index(")")])
             elif "Unknown11092(" in line:
-                state.P2Once = line[line.index("(") + 1:line.index(")")] == "1"
+                state.p2Once = line[line.index("(") + 1:line.index(")")] == "1"
             elif "Unknown11028(" in line:
                 state.blockstun = int(line[line.index("(") + 1:line.index(")")])
                 # print "Hardcoded blockstun: " + state.blockstun
@@ -406,7 +411,7 @@ def parse_move_file(source, move_list, effect_list):
                 # print "GFX " + line[name_start:name_end]
                 frame_chunks.append(SubroutineCall(line[name_start:name_end]))
                 # run the command on line[name_start:name_end] starting at current_frame-1
-            elif CALL_SUBROUTINE_START in line:
+            elif CALL_SUBROUTINE_STARTC in line or CALL_SUBROUTINE_STARTc in line:
                 name_start = line.index("('") + 2
                 name_end = line.index("')")
                 # run the command on line[name_start:name_end] starting at current_frame-1
@@ -447,6 +452,10 @@ def parse_move_file(source, move_list, effect_list):
         subroutine.blockstun = state.blockstun
         subroutine.hitstop = state.hitstop
         subroutine.additionalHitstopOpponent = state.additionalHitstopOpponent
+        subroutine.damage = state.damage
+        subroutine.p1 = state.p1
+        subroutine.p2 = state.p2
+        subroutine.p2Once = state.p2Once
         effect_list[state.moveName] = subroutine
 
     elif state.duration > 0:
@@ -457,7 +466,7 @@ def parse_move_file(source, move_list, effect_list):
             chunk.inv_type = 1 if state.invType == 0 else 2
             chunk.inv_attr = state.invAttr
         if isinstance(chunk, AttackFrameChunk):
-            chunk.damage = Damage(state.damage, state.P1, state.P2, state.minDamage, state.P2Once)
+            chunk.damage = Damage(state.damage, state.p1, state.p2, state.minDamage, state.p2Once)
 
         frame_chunks.append(chunk)
 
@@ -470,6 +479,18 @@ def parse_move_file(source, move_list, effect_list):
             move_list[state.moveName].superflash_duration = state.superflash_duration
 
     return move_list
+
+
+def find_registered_moves(source):
+    registered_moves = []
+    for line in source.readlines():
+        if "Move_Register(" in line:
+            name_start = line.index("('") + 2
+            name_end = line.index("',")
+            name = line[name_start:name_end]
+            registered_moves.append(name)
+
+    return registered_moves
 
 
 def parse_subroutine(name, move_list, effect_list, start_frame=0):
@@ -495,7 +516,6 @@ def parse_subroutine(name, move_list, effect_list, start_frame=0):
                 override_additional_hitstop = subroutine.additionalHitstopOpponent
                 override_damage = Damage(subroutine.damage, subroutine.p1, subroutine.p2,
                                          subroutine.minDamage, subroutine.p2Once)
-                # damage, p1=100, p2=100, min_damage=0, p2once=False
             else:
                 from_children = parse_subroutine(chunk.name, effect_list, effect_list, duration)
             for one_subroutine in from_children:
@@ -574,36 +594,40 @@ def simulate_on_block(move_list, effect_list):
 def calc_frames_for_subroutine(frame_chunks, superflash_start=None, superflash_duration=0):
     startup = 0
     middle = ""
-    recovery = ""
+    recovery = 0
     duration_on_whiff = 0
     duration_on_block = 0
     last_frame_of_blockstun = 0
-    inv_list = [[0, 0, [False, False, False, False, False]]]  # duration, type, attributes
-    for idx, chunk in enumerate(frame_chunks):
-        if idx == 0 and len(frame_chunks) > 1:
-            startup = chunk.duration + 1
+
+    combine_inv_frame_chunks = consolidate_frame_chunks(frame_chunks, True)
+    for idx, chunk in enumerate(combine_inv_frame_chunks):
+        if isinstance(chunk, AttackFrameChunk):
+            if len(middle) > 0 and middle[len(middle) - 1] != ")":
+                middle += ","
+            middle += str(chunk.duration)
+            last_frame_of_blockstun = duration_on_block + chunk.blockstun + chunk.hitstop + \
+                chunk.additionalHitstopOpponent + 1
+            duration_on_block += chunk.hitstop
+        elif middle == "":
+            startup += chunk.duration
         else:
-            if isinstance(chunk, AttackFrameChunk):
-                if len(middle) > 0 and middle[len(middle) - 1] != ")":
-                    middle += ","
-                middle += str(chunk.duration)
-                last_frame_of_blockstun = duration_on_block + chunk.blockstun + chunk.hitstop + \
-                    chunk.additionalHitstopOpponent + 1
-                duration_on_block += chunk.hitstop
-            elif len(middle) < 1:
-                startup += chunk.duration
+            if idx < len(combine_inv_frame_chunks) - 1:
+                middle += "(" + str(chunk.duration) + ")"
             else:
-                if idx < len(frame_chunks) - 1:
-                    middle += "(" + str(chunk.duration) + ")"
-                else:
-                    recovery += str(chunk.duration)
+                recovery += chunk.duration
+
+        if len(middle) > 0:
+            startup += 1
+        duration_on_whiff += chunk.duration
+        duration_on_block += chunk.duration
+
+    # determine inv
+    inv_list = [[0, 0, [False, False, False, False, False]]]  # duration, type, attributes
+    for chunk in frame_chunks:
         if chunk.inv_type == inv_list[-1][1] and chunk.inv_attr == inv_list[-1][2]:
             inv_list[-1][0] += chunk.duration
         else:
             inv_list.append([chunk.duration, chunk.inv_type, chunk.inv_attr])
-        duration_on_whiff += chunk.duration
-        duration_on_block += chunk.duration
-
     # clean up the inv array
     cleaned_list = []
     frame_counter = 1
@@ -621,7 +645,11 @@ def calc_frames_for_subroutine(frame_chunks, superflash_start=None, superflash_d
     else:
         startup = str(startup)
 
-    return startup, middle, recovery, duration_on_whiff, duration_on_block, last_frame_of_blockstun, cleaned_list
+    if middle == "" and recovery == 0:
+        recovery = startup
+        startup = ""
+        pass
+    return startup, middle, str(recovery), duration_on_whiff, duration_on_block, last_frame_of_blockstun, cleaned_list
 
 
 def calc_damage_for_move(move_on_block):
@@ -708,17 +736,18 @@ def write_file(moves_on_block, target):
                                                 move_on_block.superflash_start,
                                                 move_on_block.superflash_duration)
             subroutine_block_timelines.append(result)
-        if startup is not "0":
-            target.write("\t" + str(startup) + " " + middle + " " + recovery)
+        if startup is not "":
+            target.write("\t" + str(startup) + " " + middle + " " + str(recovery))
         else:
-            target.write("Total: " + recovery)
+            target.write("Total: " + str(recovery))
         if move_on_block.landing_recovery > 0:
             target.write("+" + str(move_on_block.landing_recovery) + "L")
         target.write("\n\tduration on block: " + str(duration_on_block))
         if len(subroutine_block_timelines) > 0:
             for result in subroutine_block_timelines:
                 last_blockstun_frame = result[5] if result[5] > last_blockstun_frame else last_blockstun_frame
-                target.write("\n\tstartup: " + str(result[0]))
+                # target.write("\n\tstartup: " + str(result[0]))
+                target.write("\n\t" + str(result[0]) + " " + result[1] + " " + str(result[2]))
                 target.write(" blockstun: " + str(last_blockstun_frame))
         if last_blockstun_frame != 0:
             target.write("\n\tlast blockstun: " + str(last_blockstun_frame))
@@ -867,10 +896,16 @@ def main():
         char_target = open(target_dir + "/" + file_name + "_out.txt", "w")
         move_list = OrderedDict()
         move_list = parse_move_file(char_source, move_list, effect_list)
-        # remove moves we don't care about, like all the Act* and Event* stuff
-        for key in move_list.keys():
-            if key.startswith("Act") or key.startswith("Event"):
-                del move_list[key]
+        #
+        # # get list of registered moves
+        # char_source.seek(0, 0)
+        # registered_moves = find_registered_moves(char_source)
+        # # remove all non-registered moves, like all the Act* and Event* stuff
+        # #
+        # for move_name in move_list.keys():
+        #     if move_name not in registered_moves:
+        #         del move_list[move_name]
+        #         print "removed " + move_name
 
         hit_simulations = simulate_on_block(move_list, effect_list)
 
