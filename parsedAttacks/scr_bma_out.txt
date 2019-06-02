@@ -704,9 +704,9 @@ Backflip_C
 	P1: 100
 	P2: 100
 CmnActInvincibleAttack
-	13 6 56
+	11 8 56
 	duration on block: 82
-	last blockstun: 39 diff: -43
+	last blockstun: 37 diff: -45
 	1-18 All
 	damage: 2000
 	P1: 100

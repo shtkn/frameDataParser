@@ -401,9 +401,13 @@ CmnActChangePartnerAssistAtk_A
 	59  
 	duration on block: 59
 CmnActChangePartnerAssistAtk_B
-	60  
-	duration on block: 60
-	startup: 131091 blockstun: 0
+	27 12 22
+	duration on block: 66
+	startup: 131091 blockstun: 57
+	last blockstun: 57 diff: -9
+	damage: 1750
+	P1: 70
+	P2: 80
 CmnActChangePartnerAssistAtk_D
 	27 3 24
 	duration on block: 64
@@ -449,7 +453,7 @@ NmlAtk5A
 	P1: 100
 	P2: 80
 NmlAtk5AA
-	12 3(32772)5 16
+	12 6(32769)5 16
 	duration on block: 32821
 	last blockstun: 32817 diff: -4
 	damage: 800, 1500
@@ -511,7 +515,8 @@ NmlAtkAIR4A
 NmlAtkAIR5A
 	9 7 20
 	duration on block: 45
-	last blockstun: 32 diff: -13
+	startup: 10 blockstun: 33
+	last blockstun: 33 diff: -12
 	damage: 1000
 	P1: 100
 	P2: 75
@@ -657,11 +662,11 @@ AirAssaultB
 	P1: 80
 	P2: 80
 AirAssaultC
-	28 3 47
-	duration on block: 89
-	startup: 131105 blockstun: 58
-	last blockstun: 58 diff: -31
-	damage: 1500
+	28 3(15)2,2,2,2 24
+	duration on block: 101
+	startup: 131105 blockstun: 94
+	last blockstun: 94 diff: -7
+	damage: 1500, 500
 	P1: 80
 	P2: 85 (Once)
 IceShieldA

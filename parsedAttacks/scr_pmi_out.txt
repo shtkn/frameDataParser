@@ -368,9 +368,9 @@ CmnActChangePartnerAssistAtk_B
 	46  
 	duration on block: 46
 CmnActChangePartnerAssistAtk_D
-	19 4 21
+	13 10 21
 	duration on block: 55
-	last blockstun: 49 diff: -6
+	last blockstun: 43 diff: -12
 	damage: 1700
 	P1: 70
 	P2: 85

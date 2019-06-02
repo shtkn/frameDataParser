@@ -755,8 +755,8 @@ CmnActChangePartnerAssistAtk_A
 CmnActChangePartnerAssistAtk_B
 	63  
 	duration on block: 63
-	startup: 26 blockstun: 44
-	last blockstun: 44 diff: -19
+	startup: 17 blockstun: 45
+	last blockstun: 45 diff: -18
 	damage: 800
 	P1: 70
 	P2: 80 (Once)

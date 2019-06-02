@@ -365,12 +365,11 @@ CmnActChangePartnerAssistAdmiss
 CmnActChangePartnerAssistAtk_A
 	69  
 	duration on block: 69
-	startup: 27 blockstun: 27
 	startup: 40 blockstun: 67
 	last blockstun: 67 diff: -2
-	damage: 0, 2000
-	P1: 100, 70
-	P2: 100, 80
+	damage: 2000
+	P1: 70
+	P2: 80
 CmnActChangePartnerAssistAtk_B
 	17 4 32789
 	duration on block: 32821
@@ -582,90 +581,43 @@ BackThrowExe
 ShotA
 	44  
 	duration on block: 44
-	startup: 15 blockstun: 15
-	last blockstun: 15 diff: -29
-	damage: 0
-	P1: 100
-	P2: 100
 ShotB
 	48  
 	duration on block: 48
-	startup: 27 blockstun: 27
-	last blockstun: 27 diff: -21
-	damage: 0
-	P1: 100
-	P2: 100
 ShotEX
 	50  
 	duration on block: 50
-	startup: 15 blockstun: 15
 	startup: 20 blockstun: 47
 	last blockstun: 47 diff: -3
-	damage: 0, 2500
-	P1: 100, 80
-	P2: 100, 70
+	damage: 2500
+	P1: 80
+	P2: 70
 ShotA_2nd
 	42  
 	duration on block: 42
 	startup: 13 blockstun: 40
-	startup: 13 blockstun: 40
-	startup: 13 blockstun: 40
 	last blockstun: 40 diff: -2
-	damage: 0*2, 2500
-	P1: 100*2, 80
-	P2: 100*2, 80
+	damage: 2500
+	P1: 80
+	P2: 80
 ShotB_2nd
 	42  
 	duration on block: 42
-	startup: 13 blockstun: 13
-	startup: 13 blockstun: 13
-	last blockstun: 13 diff: -29
-	damage: 0
-	P1: 100
-	P2: 100
 AirShotA
 	47  +9L
 	duration on block: 47
-	startup: 17 blockstun: 17
-	last blockstun: 17 diff: -30
-	damage: 0
-	P1: 100
-	P2: 100
 AirShotB
 	47  +9L
 	duration on block: 47
-	startup: 26 blockstun: 26
-	last blockstun: 26 diff: -21
-	damage: 0
-	P1: 100
-	P2: 100
 AirShotEX
 	38  
 	duration on block: 38
-	startup: 12 blockstun: 12
-	startup: 24 blockstun: 24
-	last blockstun: 24 diff: -14
-	damage: 0
-	P1: 100
-	P2: 100
 AirShotA_2nd
 	39  +9L
 	duration on block: 39
-	startup: 13 blockstun: 13
-	startup: 13 blockstun: 13
-	last blockstun: 13 diff: -26
-	damage: 0
-	P1: 100
-	P2: 100
 AirShotB_2nd
 	39  +9L
 	duration on block: 39
-	startup: 13 blockstun: 13
-	startup: 13 blockstun: 13
-	last blockstun: 13 diff: -26
-	damage: 0
-	P1: 100
-	P2: 100
 SpecialThrow
 	26 9 32807
 	duration on block: 32841
@@ -710,9 +662,9 @@ CmnActInvincibleAttack
 	startup: 53 blockstun: 70
 	last blockstun: 70 diff: -43
 	1-15 All
-	damage: 1400*2, 0
-	P1: 80*2, 100
-	P2: 60*2, 100
+	damage: 1400, 0, 1400, 0
+	P1: 80, 100, 80, 100
+	P2: 60, 100, 60, 100
 AntiAir2nd
 	65  
 	duration on block: 65
@@ -728,9 +680,9 @@ CmnActInvincibleAttackAir
 	startup: 50 blockstun: 67
 	last blockstun: 67 diff: -43
 	1-12 All
-	damage: 1400*2, 0
-	P1: 80*2, 100
-	P2: 60*2, 100
+	damage: 1400, 0, 1400, 0
+	P1: 80, 100, 80, 100
+	P2: 60, 100, 60, 100
 AirAntiAir2nd
 	65  
 	duration on block: 65
@@ -742,21 +694,11 @@ AirAntiAir2nd
 UltimateShot_LandA
 	3+50Flash+138  
 	duration on block: 190
-	startup: 3+50Flash+6 blockstun: 59
-	last blockstun: 59 diff: -131
 	1-12 All
-	damage: 0
-	P1: 100
-	P2: 100
 UltimateShot_LandAOD
 	3+50Flash+138  
 	duration on block: 190
-	startup: 3+50Flash+6 blockstun: 59
-	last blockstun: 59 diff: -131
 	1-12 All
-	damage: 0
-	P1: 100
-	P2: 100
 UltimateAssault
 	4+40Flash+9 9 24
 	duration on block: 97
@@ -777,22 +719,12 @@ UltimateShot_AirA
 	3+50Flash+65  
 	duration on block: 117
 	startup: 3+50Flash+32729 blockstun: 0
-	startup: 3+50Flash+6 blockstun: 59
-	last blockstun: 59 diff: -58
 	1-12 All
-	damage: 0
-	P1: 100
-	P2: 100
 UltimateShot_AirAOD
 	3+50Flash+65  
 	duration on block: 117
 	startup: 3+50Flash+32729 blockstun: 0
-	startup: 3+50Flash+6 blockstun: 59
-	last blockstun: 59 diff: -58
 	1-12 All
-	damage: 0
-	P1: 100
-	P2: 100
 AstralHeat
 	4+55Flash+12 3 68
 	duration on block: 141
