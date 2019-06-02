@@ -1,12 +1,12 @@
 import os
 
-attackHitboxFile = open("all_active.txt", "r")
+attackHitboxFile = open("all_active_1_5.txt", "r")
 contents = attackHitboxFile.readlines()
 charDictionarySet = {}
 currentChar = ''
 currentSet = None
 for line in contents:
-    if line.endswith(" starts here\n"):
+    if line.strip().endswith(" starts here!"):
         char = line.split(" ")[0]
         # print char
         currentSet = set()
