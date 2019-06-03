@@ -30,7 +30,7 @@ Total: 56
 	99 32767 12 blockstun: 99
 	119 32767 12 blockstun: 119
 	last blockstun: 119 diff: 63
-	damage: 0*3	P1: 100	P2: 100
+	damage: 1700*3	P1: 80	P2: 85
 NmlAtk5B
 Total: 41
 	duration on block: 41
@@ -85,7 +85,7 @@ Total: 51
 	95 32767 12 blockstun: 95
 	115 32767 12 blockstun: 115
 	last blockstun: 115 diff: 64
-	damage: 0*3	P1: 100	P2: 100
+	damage: 1700*3	P1: 80	P2: 85
 NmlAtk2C
 Total: 40
 	duration on block: 40
@@ -115,7 +115,7 @@ Total: 50+5L
 	duration on block: 50
 	54 32767 12 blockstun: 54
 	last blockstun: 54 diff: 4
-	damage: 0	P1: 100	P2: 100
+	damage: 1700	P1: 100	P2: 85
 NmlAtkAIR5B_3rdEx
 Total: 43+5L
 	duration on block: 43

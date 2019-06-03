@@ -18,12 +18,12 @@ NmlAtk5A
 	duration on block: 38
 	last blockstun: 10 diff: -28
 	7-11 H
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 90	P2: 80
 AN_NmlAtk5A_2nd
 	1 4(3)4 20
 	duration on block: 31
 	last blockstun: 8 diff: -23
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 100	P2: 80
 AN_NmlAtk5A_3rd
 	8 3 29
 	duration on block: 50
@@ -43,32 +43,32 @@ NmlAtk5B
 	1 8(4)2 22
 	duration on block: 36
 	last blockstun: 13 diff: -23
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 100	P2: 80
 AN_NmlAtk5B_2nd
 	15 5 23
 	duration on block: 42
 	last blockstun: 15 diff: -27
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 100	P2: 80
 AN_NmlAtk5B_3rd
 	1 3(13)2 29
 	duration on block: 47
 	last blockstun: 17 diff: -30
-	damage: 0	P1: 100	P2: 100
+	damage: 1700	P1: 100	P2: 85
 NmlAtk2A
 	7 3(6)2 14
 	duration on block: 31
 	last blockstun: 16 diff: -15
-	damage: 0*2	P1: 100	P2: 100
+	damage: 1000*2	P1: 100	P2: 75
 NmlAtk2A_Renda
 	6 3(6)2 14
 	duration on block: 30
 	last blockstun: 15 diff: -15
-	damage: 0*2	P1: 100	P2: 100
+	damage: 1000*2	P1: 100	P2: 75
 NmlAtk2B
 	13 2(6)4 16
 	duration on block: 40
 	last blockstun: 21 diff: -19
-	damage: 0*2	P1: 100	P2: 100
+	damage: 1500*2	P1: 90	P2: 80
 NmlAtk2C
 	12 7(12)2,3 24
 	duration on block: 95

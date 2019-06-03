@@ -25,17 +25,17 @@ NmlAtk5A
 	9 3 25
 	duration on block: 36
 	last blockstun: 9 diff: -27
-	damage: 0	P1: 100	P2: 100
+	damage: 1100	P1: 100	P2: 85
 NmlAtk5A2nd
 	14 7 16
 	duration on block: 36
 	last blockstun: 14 diff: -22
-	damage: 0	P1: 100	P2: 100
+	damage: 1100	P1: 100	P2: 85
 NmlAtk5A3rd
 	15 3 30
 	duration on block: 47
 	last blockstun: 15 diff: -32
-	damage: 0	P1: 100	P2: 100
+	damage: 1300	P1: 100	P2: 90
 NmlAtk5A4th
 	12 2 32
 	duration on block: 48
@@ -56,23 +56,23 @@ NmlAtk2A
 	7 5 13
 	duration on block: 24
 	last blockstun: 7 diff: -17
-	damage: 0	P1: 100	P2: 100
+	damage: 800	P1: 90	P2: 80
 NmlAtk2A_Renda
 	7 5 13
 	duration on block: 24
 	last blockstun: 7 diff: -17
-	damage: 0	P1: 100	P2: 100
+	damage: 800	P1: 90	P2: 80
 NmlAtk2B
 	8 2 30
 	duration on block: 39
 	last blockstun: 8 diff: -31
 	5-9 H
-	damage: 0	P1: 100	P2: 100
+	damage: 1100	P1: 90	P2: 85
 NmlAtk2C
 	11 2 29
 	duration on block: 41
 	last blockstun: 11 diff: -30
-	damage: 0	P1: 100	P2: 100
+	damage: 1300	P1: 90	P2: 80
 NmlAtkAIR5A
 	9 4,2 18
 	duration on block: 54
@@ -116,7 +116,7 @@ ThrowExe
 	23 7 21
 	duration on block: 50
 	last blockstun: 23 diff: -27
-	damage: 0	P1: 100	P2: 100
+	damage: 2000	P1: 100	P2: 50
 NmlAtkBackThrow
 	36 3 23
 	duration on block: 61
@@ -126,7 +126,7 @@ BackThrowExe
 	23 7 21
 	duration on block: 50
 	last blockstun: 23 diff: -27
-	damage: 0	P1: 100	P2: 100
+	damage: 2000	P1: 100	P2: 50
 CmnActInvincibleAttack
 	12 1,1,1,1,1,1,1,1,1,1,1 43
 	duration on block: 95

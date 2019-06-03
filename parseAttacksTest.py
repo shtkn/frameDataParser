@@ -245,6 +245,8 @@ def Monsho_AtkData():
         subroutine.damage = 900
         subroutine.p1 = 70
         subroutine.p2 = 90
+        subroutine.p2Once = False
+        subroutine.additionalHitstopOpponent = 0
         self.assertEquals(effect_list["Monsho_AtkData"], subroutine)
 
     def test_parse_attack_with_subroutine(self):
@@ -858,6 +860,40 @@ def NmlAtk5X():
                                  WaitFrameChunk(9)
                                  ]
         self.assertEqual(expected, move_list["NmlAtk5X"])
+
+    def test_parse_move_with_attack_level_defaults(self):
+        state = """@State
+def NmlAtk5A():
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingNormal()
+        AttackLevel_(2)
+    sprite('Action_001_00', 3)	# 1-3
+    sprite('Action_001_01', 3)	# 4-6
+    Unknown7009(0)
+    sprite('Action_001_02', 2)	# 7-8	 **attackbox here**
+    RefreshMultihit()
+    sprite('Action_001_03', 4)	# 9-12
+    Unknown23027()
+    Recovery()
+    Unknown2063()
+    sprite('Action_001_04', 8)	# 13-20
+    sprite('Action_001_05', 4)	# 21-24
+    sprite('Action_001_06', 3)	# 25-27
+        """
+        buf = StringIO.StringIO(state)
+        effect_list = OrderedDict()
+        move_list = OrderedDict()
+        move_list = parse_move_file(buf, move_list, effect_list)
+
+        self.assertEqual(len(move_list), 1)
+        self.assertTrue("NmlAtk5A" in move_list)
+        expected = Move()
+        expected.frame_chunks = [WaitFrameChunk(6),
+                                 AttackFrameChunk(2, 13, 10, 0),
+                                 WaitFrameChunk(19)
+                                 ]
+        expected.frame_chunks[1].damage = Damage(1000, 100, 75)
+        self.assertEqual(expected, move_list["NmlAtk5A"])
 
     def test_calc_damage_strike(self):
         move = Move()

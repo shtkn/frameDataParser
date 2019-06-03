@@ -99,32 +99,32 @@ SpDash_Front
 	9 3 23
 	duration on block: 34
 	last blockstun: 9 diff: -25
-	damage: 0	P1: 100	P2: 100
+	damage: 0	P1: 80	P2: 100
 SpDash_Back
 	9 3 32789
 	duration on block: 32800
 	last blockstun: 9 diff: -32791
-	damage: 0	P1: 100	P2: 100
+	damage: 0	P1: 80	P2: 100
 SpDash_AntiAir
 	8 3 20
 	duration on block: 30
 	last blockstun: 8 diff: -22
-	damage: 0	P1: 100	P2: 100
+	damage: 0	P1: 80	P2: 100
 AirSpDash_Front
 	9 3 20
 	duration on block: 31
 	last blockstun: 9 diff: -22
-	damage: 0	P1: 100	P2: 100
+	damage: 0	P1: 80	P2: 100
 AirSpDash_Back
 	7 3 26
 	duration on block: 35
 	last blockstun: 7 diff: -28
-	damage: 0	P1: 100	P2: 100
+	damage: 0	P1: 80	P2: 100
 AirSpDash_AntiLand
 	10 3 21
 	duration on block: 33
 	last blockstun: 10 diff: -23
-	damage: 0	P1: 100	P2: 100
+	damage: 0	P1: 80	P2: 100
 AttackAndShotA
 	13 4 51
 	duration on block: 79
@@ -137,7 +137,7 @@ AttackAndShotB
 	37 60 0 blockstun: 67
 	58 60 0 blockstun: 88
 	last blockstun: 88 diff: -11
-	damage: 0, 1500*2	P1: 100	P2: 100, 85
+	damage: 1000, 1500*2	P1: 100	P2: 85
 AttackAndShotEx
 	13 4 114
 	duration on block: 142
@@ -151,18 +151,18 @@ AirRolling_A
 	16 4,4,4,4 32803
 	duration on block: 32840
 	last blockstun: 34 diff: -32806
-	damage: 200*3, 0	P1: 80*3, 100	P2: 80*3, 100
+	damage: 200*3, 1300	P1: 80	P2: 80
 AirRolling_B
 	16 4,4,4,4 32803
 	duration on block: 32840
 	last blockstun: 34 diff: -32806
-	damage: 220*3, 0	P1: 80*3, 100	P2: 80*3, 100
+	damage: 220*3, 1300	P1: 80	P2: 80
 AirRolling_Ex
 	16 4,4,4,4 32803
 	duration on block: 32840
 	50 64 0 blockstun: 80
 	last blockstun: 80 diff: -32760
-	damage: 280*3, 0, 1000	P1: 80*3, 100*2	P2: 80*3, 100, 85
+	damage: 280*3, 1300, 1000	P1: 80*4, 100	P2: 80*4, 85
 Shot
 Total: 54
 	duration on block: 54
@@ -173,7 +173,7 @@ MultiAssault
 	7 4(8)3(18)2,2,2,2 32791
 	duration on block: 32838
 	last blockstun: 46 diff: -32792
-	damage: 0*6	P1: 100	P2: 100
+	damage: 800*2, 400*4	P1: 80	P2: 85
 UltimateAssault
 Total: 5+72Flash+69
 	duration on block: 146

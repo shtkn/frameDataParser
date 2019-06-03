@@ -91,7 +91,7 @@ NmlAtkAIR5C
 	duration on block: 67
 	last blockstun: 36 diff: -31
 	7-31 All
-	damage: 0	P1: 100	P2: 100
+	damage: 1700	P1: 100	P2: 85
 NmlAtkThrow
 	35 3 23
 	duration on block: 60
@@ -141,12 +141,12 @@ MoonsaltMove_Ex
 	duration on block: 66
 	last blockstun: 20 diff: -46
 	4-10 All
-	damage: 0	P1: 100	P2: 100
+	damage: 2000	P1: 80	P2: 85
 MoonsaltSlash
 	5 8 36
 	duration on block: 48
 	last blockstun: 5 diff: -43
-	damage: 0	P1: 100	P2: 100
+	damage: 1700	P1: 80	P2: 85
 VSlash_Hasei
 Total: 1
 	duration on block: 1
@@ -154,12 +154,12 @@ VSlash_R
 	13 19(10)5 25
 	duration on block: 71
 	last blockstun: 42 diff: -29
-	damage: 0*2	P1: 100	P2: 100
+	damage: 1200*2	P1: 80	P2: 85
 VSlash_L
 	13 19(10)5 25
 	duration on block: 71
 	last blockstun: 42 diff: -29
-	damage: 0*2	P1: 100	P2: 100
+	damage: 1200*2	P1: 80	P2: 85
 UltimateTatsumaki
 Total: 9+53Flash+218
 	duration on block: 280

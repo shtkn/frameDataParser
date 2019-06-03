@@ -21,43 +21,43 @@ NmlAtk5A
 	7 7 10
 	duration on block: 23
 	last blockstun: 7 diff: -16
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 100	P2: 80
 NmlAtk5A2nd
 	11 3 15
 	duration on block: 28
 	last blockstun: 11 diff: -17
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 100	P2: 80
 NmlAtk5A3rd
 	15 9 14
 	duration on block: 37
 	last blockstun: 15 diff: -22
-	damage: 0	P1: 100	P2: 100
+	damage: 1700	P1: 100	P2: 85
 NmlAtk5A4th
 	21 3 20
 	duration on block: 43
 	last blockstun: 21 diff: -22
-	damage: 0	P1: 100	P2: 100
+	damage: 1700	P1: 80	P2: 85
 NmlAtk4A
 	6 6 9
 	duration on block: 20
 	last blockstun: 6 diff: -14
-	damage: 0	P1: 100	P2: 100
+	damage: 1000	P1: 100	P2: 75
 NmlAtk5B
 	13 6 16
 	duration on block: 34
 	last blockstun: 13 diff: -21
-	damage: 0	P1: 100	P2: 100
+	damage: 1700	P1: 100	P2: 85
 NmlAtk5B2nd
 	15 6 23
 	duration on block: 43
 	last blockstun: 15 diff: -28
 	11-20 F
-	damage: 0	P1: 100	P2: 100
+	damage: 1700	P1: 90	P2: 85
 NmlAtk2A
 	15 3 15
 	duration on block: 32
 	last blockstun: 15 diff: -17
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 90	P2: 80
 NmlAtk2B
 	13 4 32
 	duration on block: 59
@@ -68,27 +68,27 @@ NmlAtk2C
 	24 6 15
 	duration on block: 44
 	last blockstun: 24 diff: -20
-	damage: 0	P1: 100	P2: 100
+	damage: 1700	P1: 90	P2: 85
 NmlAtkAIR5A
 	9 3(2)3 12
 	duration on block: 28
 	last blockstun: 14 diff: -14
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 100	P2: 80
 NmlAtkAIR5A2nd
 	10 6 15
 	duration on block: 30
 	last blockstun: 10 diff: -20
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 100	P2: 80
 NmlAtkAIR5B
 	19 5 16
 	duration on block: 39
 	last blockstun: 19 diff: -20
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 100	P2: 80
 NmlAtkAIR5C
 	22 8 10
 	duration on block: 39
 	last blockstun: 22 diff: -17
-	damage: 0	P1: 100	P2: 100
+	damage: 1800	P1: 100	P2: 80
 CmnActCrushAttack
 	26 3 18
 	duration on block: 57
@@ -120,17 +120,17 @@ CmnActInvincibleAttack
 	last blockstun: 46 diff: -45
 	1-20 All
 	21-29 H
-	damage: 0*2	P1: 100	P2: 100
+	damage: 1800*2	P1: 100	P2: 85
 Assault
 	22 6 26
 	duration on block: 53
 	last blockstun: 22 diff: -31
-	damage: 0	P1: 100	P2: 100
+	damage: 1800	P1: 80	P2: 80
 AZcombo1
 	15 3 18
 	duration on block: 35
 	last blockstun: 15 diff: -20
-	damage: 0	P1: 100	P2: 100
+	damage: 1800	P1: 100	P2: 80
 AZcombo2
 	10 5 18
 	duration on block: 43
@@ -140,14 +140,14 @@ AZcombo3
 	16 3 30
 	duration on block: 48
 	last blockstun: 16 diff: -32
-	damage: 0	P1: 100	P2: 100
+	damage: 2100	P1: 100	P2: 85
 ShotAtemi
 	7 5 142
 	duration on block: 153
 	last blockstun: 7 diff: -146
 	1-126 Guard P Guard
 	127-142 P
-	damage: 0	P1: 100	P2: 100
+	damage: 1800	P1: 90	P2: 80
 Shinkyaku
 Total: 65568
 	duration on block: 65568
@@ -159,7 +159,7 @@ VanishingAttack
 	duration on block: 100
 	last blockstun: 54 diff: -46
 	11-50 Guard HBFP Guard
-	damage: 0	P1: 100	P2: 100
+	damage: 1900	P1: 80	P2: 85
 BoostDash
 Total: 101
 	duration on block: 101
@@ -168,7 +168,7 @@ DustAttack
 	duration on block: 85
 	last blockstun: 54 diff: -31
 	9-45 Guard HBFP Guard
-	damage: 0	P1: 100	P2: 100
+	damage: 1900	P1: 90	P2: 85
 HomingJump
 Total: 142
 	duration on block: 142

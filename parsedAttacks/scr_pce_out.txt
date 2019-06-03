@@ -17,32 +17,32 @@ NmlAtk5A
 	6 4 18
 	duration on block: 27
 	last blockstun: 6 diff: -21
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 100	P2: 80
 NmlAtk5A2nd
 	7 3(3)6 11
 	duration on block: 29
 	last blockstun: 13 diff: -16
-	damage: 0*2	P1: 100	P2: 100
+	damage: 950*2	P1: 100	P2: 75
 NmlAtk5A3rd
 	10 2(12)3(32775)3 19
 	duration on block: 32823
 	last blockstun: 32802 diff: -21
-	damage: 0*3	P1: 100	P2: 100
+	damage: 750*3	P1: 100	P2: 85
 NmlAtk4A
 	5 3 11
 	duration on block: 18
 	last blockstun: 5 diff: -13
-	damage: 0	P1: 100	P2: 100
+	damage: 1000	P1: 100	P2: 70
 NmlAtk4A2nd
 	9 2(4)2(4)2(4)2(4)2(4)2 21
 	duration on block: 61
 	last blockstun: 39 diff: -22
-	damage: 0*6	P1: 100	P2: 100
+	damage: 400*6	P1: 100	P2: 75
 NmlAtk4A3rd
 	6 3,3 15
 	duration on block: 26
 	last blockstun: 9 diff: -17
-	damage: 0*2	P1: 100	P2: 100
+	damage: 1000*2	P1: 100	P2: 80
 NmlAtkKokutengeki
 Total: 48
 	duration on block: 48
@@ -56,28 +56,28 @@ NmlAtk2A
 	6 2 12
 	duration on block: 19
 	last blockstun: 6 diff: -13
-	damage: 0	P1: 100	P2: 100
+	damage: 1000	P1: 90	P2: 70
 NmlAtk2B
 	10 2 30
 	duration on block: 41
 	last blockstun: 10 diff: -31
 	8-11 H
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 90	P2: 80
 NmlAtk2C
 	9 3 20
 	duration on block: 31
 	last blockstun: 9 diff: -22
-	damage: 0	P1: 100	P2: 100
+	damage: 1700	P1: 90	P2: 85
 NmlAtkAIR5A
 	8 3 13
 	duration on block: 23
 	last blockstun: 8 diff: -15
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 100	P2: 80
 NmlAtkAIR5A2nd
 	7 5 14
 	duration on block: 25
 	last blockstun: 7 diff: -18
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 100	P2: 80
 NmlAtkAIR5B
 Total: 27
 	duration on block: 27
@@ -120,48 +120,48 @@ CmnActInvincibleAttackAir
 	duration on block: 61
 	last blockstun: 30 diff: -31
 	1-7 All
-	damage: 0*4	P1: 100	P2: 100
+	damage: 1100*4	P1: 100	P2: 85
 AbaremakuriLandA
 	11 2 35
 	duration on block: 47
 	last blockstun: 11 diff: -36
-	damage: 0	P1: 100	P2: 100
+	damage: 800	P1: 80	P2: 80
 DragonKickLandB
 	18 12 44
 	duration on block: 73
 	last blockstun: 18 diff: -55
-	damage: 0	P1: 100	P2: 100
+	damage: 3000	P1: 100	P2: 90
 DragonKickLandEX
 	30 12 43
 	duration on block: 84
 	last blockstun: 30 diff: -54
-	damage: 0	P1: 100	P2: 100
+	damage: 4500	P1: 100	P2: 90
 AbaremakuriAirA
 	6 2 35
 	duration on block: 42
 	last blockstun: 6 diff: -36
-	damage: 0	P1: 100	P2: 100
+	damage: 550	P1: 80	P2: 80
 DragonKickAirB
 	14 12 44
 	duration on block: 69
 	last blockstun: 14 diff: -55
-	damage: 0	P1: 100	P2: 100
+	damage: 3000	P1: 100	P2: 90
 DragonKickAirEX
 	13 12 43
 	duration on block: 67
 	last blockstun: 13 diff: -54
-	damage: 0	P1: 100	P2: 100
+	damage: 4500	P1: 100	P2: 90
 NoutenotoshiA
 	6 2(9)3 20
 	duration on block: 39
 	  14 blockstun: 17
 	last blockstun: 17 diff: -22
-	damage: 0*2	P1: 100	P2: 100
+	damage: 1200*2	P1: 80	P2: 85
 DragonKickLand_NoutenHasei
 	18 12 44
 	duration on block: 73
 	last blockstun: 18 diff: -55
-	damage: 0	P1: 100	P2: 100
+	damage: 3000	P1: 100	P2: 90
 DashCancel
 Total: 20
 	duration on block: 20

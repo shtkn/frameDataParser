@@ -142,27 +142,27 @@ Guren
 	14 3 20
 	duration on block: 36
 	last blockstun: 14 diff: -22
-	damage: 0	P1: 100	P2: 100
+	damage: 1500	P1: 80	P2: 100
 GurenB
 	19 3 25
 	duration on block: 46
 	last blockstun: 19 diff: -27
-	damage: 0	P1: 100	P2: 100
+	damage: 1700	P1: 80	P2: 100
 Renka
 	9 3(10)3 20
 	duration on block: 44
 	last blockstun: 22 diff: -22
-	damage: 0*2	P1: 100	P2: 100
+	damage: 1300*2	P1: 90	P2: 100
 RenkaEx
 	9 3(12)3 21
 	duration on block: 47
 	last blockstun: 24 diff: -23
-	damage: 0*2	P1: 100	P2: 100
+	damage: 1400*2	P1: 90	P2: 100
 Zantetu
 	22 3(14)3 26
 	duration on block: 67
 	last blockstun: 39 diff: -28
-	damage: 0*2	P1: 100	P2: 100
+	damage: 2500, 1500	P1: 80	P2: 100
 Agito
 Total: 36
 	duration on block: 36

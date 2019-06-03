@@ -20,9 +20,9 @@ class State:
         self.exitState = False
         self.landingRecovery = 0
         self.isSubroutine = False
-        self.damage = 0
-        self.p1 = 100
-        self.p2 = 100
+        self.damage = None
+        self.p1 = None
+        self.p2 = None
         self.p2Once = False
         self.minDamage = 0
         self.isInv = False
@@ -46,9 +46,9 @@ class State:
             self.exitState = False
             self.landingRecovery = 0
             self.isSubroutine = False
-            self.damage = 0
-            self.p1 = 100
-            self.p2 = 100
+            self.damage = None
+            self.p1 = None
+            self.p2 = None
             self.p2Once = False
             self.isInv = False
             self.invType = 0
@@ -80,6 +80,17 @@ class Damage:
             return False
         return not self.__eq__(other)
 
+    def override_values(self, other):
+        if other.damage is not None:
+            self.damage = other.damage
+        if other.p1 is not None:
+            self.p1 = other.p1
+        if other.p2 is not None:
+            self.p2 = other.p2
+        if other.p2Once is not None:
+            self.p2Once = other.p2Once
+        if other.minDamage is not None:
+            self.minDamage = other.minDamage
 
 class Abstract:
     def __init__(self):
@@ -108,14 +119,14 @@ class AbstractChunk(Abstract):
 
 
 class AttackFrameChunk(AbstractChunk):
-    def __init__(self, duration=0, blockstun=0, hitstop=0, additional_hitstop_opponent=0, is_new_hit=True):
+    def __init__(self, duration=0, blockstun=0, hitstop=0, additional_hitstop_opponent=0, is_new_hit=True,
+                 damage=Damage(0)):
         AbstractChunk.__init__(self, duration)
         self.blockstun = blockstun
         self.is_new_hit = is_new_hit
         self.hitstop = hitstop
         self.additionalHitstopOpponent = additional_hitstop_opponent
-        self.damage = Damage(0)
-        self.minDamage = 0
+        self.damage = damage
 
     def __str__(self):
         to_return = str(self.duration)
@@ -132,8 +143,7 @@ class AttackFrameChunk(AbstractChunk):
             self.is_new_hit == other.is_new_hit and self.hitstop == other.hitstop and \
             self.additionalHitstopOpponent == other.additionalHitstopOpponent and \
             self.damage == other.damage and self.duration == other.duration and \
-            self.inv_type == other.inv_type and self.inv_attr == other.inv_attr and \
-            self.minDamage == other.minDamage
+            self.inv_type == other.inv_type and self.inv_attr == other.inv_attr
 
     def __ne__(self, other):
         if not isinstance(other, AttackFrameChunk):
@@ -212,15 +222,15 @@ class Move:
 
 class Subroutine:
     def __init__(self):
-        self.damage = 0
-        self.blockstun = 0
-        self.hitstop = 0
-        self.additionalHitstopOpponent = 0
-        self.landingRecovery = 0
-        self.p1 = 100
-        self.p2 = 100
+        self.damage = None
+        self.blockstun = None
+        self.hitstop = None
+        self.additionalHitstopOpponent = None
+        self.landingRecovery = None
+        self.p1 = None
+        self.p2 = None
         self.p2Once = False
-        self.minDamage = 0
+        self.minDamage = None
 
     def __eq__(self, other):
         if not isinstance(other, Subroutine):
@@ -288,6 +298,14 @@ def consolidate_frame_chunks(chunk_list, ignore_inv=False):
 
     return new_chunk_list
 
+def createDamageValuesIntoFromState(state):
+    damage = 0 if state.damage is None else state.damage
+    p1 = 100 if state.p1 is None else state.p1
+    p2 = 100 if state.p2 is None else state.p2
+    p2Once = False if state.p2Once is None else state.p2Once
+    minDamage = 0 if state.minDamage is None else state.minDamage
+    return Damage(damage, p1, p2, minDamage, p2Once)
+
 
 def parse_move_file(source, move_list, effect_list):
     state = State()
@@ -315,7 +333,7 @@ def parse_move_file(source, move_list, effect_list):
                     chunk.inv_type = 1 if state.invType == 0 else 2
                     chunk.inv_attr = state.invAttr
                 if isinstance(chunk, AttackFrameChunk):
-                    chunk.damage = Damage(state.damage, state.p1, state.p2, state.minDamage, state.p2Once)
+                    chunk.damage = createDamageValuesIntoFromState(state)
                 frame_chunks.append(chunk)
 
                 move_list[state.moveName] = Move()
@@ -344,7 +362,7 @@ def parse_move_file(source, move_list, effect_list):
                 frame_chunks.append(chunk)
                 if isinstance(chunk, AttackFrameChunk):
                     state.isNewHit = False
-                    chunk.damage = Damage(state.damage, state.p1, state.p2, state.minDamage, state.p2Once)
+                    chunk.damage = createDamageValuesIntoFromState(state)
                 state.clear_values(False)
             state.duration = get_duration(line)
 
@@ -466,7 +484,7 @@ def parse_move_file(source, move_list, effect_list):
             chunk.inv_type = 1 if state.invType == 0 else 2
             chunk.inv_attr = state.invAttr
         if isinstance(chunk, AttackFrameChunk):
-            chunk.damage = Damage(state.damage, state.p1, state.p2, state.minDamage, state.p2Once)
+            chunk.damage = createDamageValuesIntoFromState(state)
 
         frame_chunks.append(chunk)
 
@@ -521,11 +539,15 @@ def parse_subroutine(name, move_list, effect_list, start_frame=0):
             for one_subroutine in from_children:
                 subroutine_calls.append(one_subroutine)
         else:
-            if isinstance(chunk, AttackFrameChunk) and override_blockstun is not None:
-                chunk.blockstun = override_blockstun
-                chunk.hitstop = override_hitstop
-                chunk.additionalHitstopOpponent = override_additional_hitstop
-                chunk.damage = override_damage
+            if isinstance(chunk, AttackFrameChunk):
+                if override_blockstun is not None:
+                    chunk.blockstun = override_blockstun
+                if override_additional_hitstop is not None:
+                    chunk.additionalHitstopOpponent = override_additional_hitstop
+                if override_hitstop is not None:
+                    chunk.hitstop = override_hitstop
+                if override_damage is not None:
+                    chunk.damage.override_values(override_damage)
 
             first_subroutine.append(chunk)
             duration += chunk.duration
@@ -565,11 +587,15 @@ def simulate_effect_on_block(name, effect_list, start_frame=0):
             for one_subroutine in from_children:
                 subroutine_calls.append(one_subroutine)
         else:
-            if isinstance(chunk, AttackFrameChunk) and override_blockstun is not None:
-                chunk.blockstun = override_blockstun
-                chunk.hitstop = override_hitstop
-                chunk.additionalHitstopOpponent = override_additional_hitstop
-                chunk.damage = override_damage
+            if isinstance(chunk, AttackFrameChunk):
+                if override_blockstun is not None:
+                    chunk.blockstun = override_blockstun
+                if override_additional_hitstop is not None:
+                    chunk.additionalHitstopOpponent = override_additional_hitstop
+                if override_hitstop is not None:
+                    chunk.hitstop = override_hitstop
+                if override_damage is not None:
+                    chunk.damage.override_values(override_damage)
 
             first_subroutine.append(chunk)
             duration += chunk.duration
@@ -699,11 +725,15 @@ def combine_with_effects_on_block(move, effect_list):
             else:
                 subroutine_calls.extend(simulate_effect_on_block(chunk.name, effect_list, start_frame=current_frame))
         else:
-            if isinstance(chunk, AttackFrameChunk) and override_blockstun is not None:
-                chunk.blockstun = override_blockstun
-                chunk.hitstop = override_hitstop
-                chunk.additionalHitstopOpponent = override_additional_hitstop
-                chunk.damage = override_damage
+            if isinstance(chunk, AttackFrameChunk):
+                if override_blockstun is not None:
+                    chunk.blockstun = override_blockstun
+                if override_additional_hitstop is not None:
+                    chunk.additionalHitstopOpponent = override_additional_hitstop
+                if override_hitstop is not None:
+                    chunk.hitstop = override_hitstop
+                if override_damage is not None:
+                    chunk.damage.override_values(override_damage)
 
             main_subroutine.append(chunk)
             current_frame += chunk.duration
@@ -905,7 +935,6 @@ def main():
         for move_name in move_list.keys():
             if move_name not in registered_moves and "Exe" not in move_name and "ChangePartnerDD" not in move_name:
                 del move_list[move_name]
-                print "removed " + move_name
 
         hit_simulations = simulate_on_block(move_list, effect_list)
 

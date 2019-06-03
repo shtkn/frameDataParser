@@ -13,7 +13,7 @@ NmlAtk5A4th
 	24 6 35
 	duration on block: 64
 	last blockstun: 24 diff: -40
-	damage: 0	P1: 100	P2: 100
+	damage: 2000	P1: 100	P2: 90
 NmlAtk4A
 	6 3 16
 	duration on block: 34
@@ -33,7 +33,7 @@ NmlAtk4A4th
 	14 6 35
 	duration on block: 54
 	last blockstun: 14 diff: -40
-	damage: 0	P1: 100	P2: 100
+	damage: 2000	P1: 100	P2: 90
 NmlAtk5B
 	10 6 29
 	duration on block: 53
@@ -179,7 +179,7 @@ UltimateAirThrow
 	duration on block: 177
 	last blockstun: 110 diff: -67
 	1-112 All
-	damage: 0	P1: 100	P2: 100
+	damage: 0	P1: 80	P2: 100
 UltimateAirThrow_Exe
 Total: 150
 	duration on block: 150
@@ -200,7 +200,7 @@ UltimateAirThrowOD
 	duration on block: 178
 	last blockstun: 111 diff: -67
 	1-113 All
-	damage: 0	P1: 100	P2: 100
+	damage: 0	P1: 80	P2: 100
 UltimateAirThrowOD_Exe
 Total: 215
 	duration on block: 215
