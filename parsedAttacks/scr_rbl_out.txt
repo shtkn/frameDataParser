@@ -151,34 +151,34 @@ Total: 61
 	damage: 1000, 1500	P1: 100	P2: 85 (Once)
 AssaultA
 	16 6 45
-	duration on block: 66
-	last blockstun: 16 diff: -50
+	duration on block: 77
+	last blockstun: 43 diff: -34
 	damage: 1400	P1: 80	P2: 80
 AssaultB
 	13 2,2,2,2,2 36
-	duration on block: 60
-	last blockstun: 23 diff: -37
+	duration on block: 70
+	last blockstun: 49 diff: -21
 	damage: 650*5	P1: 80	P2: 80
 AssaultC
 	13 5 20
-	duration on block: 37
-	last blockstun: 13 diff: -24
+	duration on block: 49
+	last blockstun: 43 diff: -6
 	4-17 H
 	damage: 1800	P1: 90	P2: 85
 ChainAssaultA
 	12 9 38
-	duration on block: 58
-	last blockstun: 12 diff: -46
+	duration on block: 70
+	last blockstun: 36 diff: -34
 	damage: 1400	P1: 80	P2: 85
 ChainAssaultB
 	15 3 33
-	duration on block: 50
-	last blockstun: 15 diff: -35
+	duration on block: 62
+	last blockstun: 45 diff: -17
 	damage: 1100	P1: 80	P2: 85
 ChainAssaultC
 	22 3 30
-	duration on block: 54
-	last blockstun: 22 diff: -32
+	duration on block: 66
+	last blockstun: 52 diff: -14
 	damage: 1800	P1: 80	P2: 85
 LandShadowCreateA
 Total: 32803

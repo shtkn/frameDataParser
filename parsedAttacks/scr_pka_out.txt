@@ -137,13 +137,13 @@ BusterAttackA
 	damage: 1300*2	P1: 80	P2: 85 (Once)
 BusterAttackB
 	32785 32767,6 7
-	duration on block: 65564
-	last blockstun: 65552 diff: -12
+	duration on block: 65582
+	last blockstun: 65588 diff: 6
 	damage: 1500*2	P1: 80	P2: 85
 BusterAttackEX
 	32785 32767,6 7
-	duration on block: 65564
-	last blockstun: 65552 diff: -12
+	duration on block: 65582
+	last blockstun: 65588 diff: 6
 	damage: 1700*2	P1: 80	P2: 85
 AirBusterAttackA
 	32783 32767,6 17
@@ -202,8 +202,8 @@ Total: 40
 	duration on block: 40
 TaetemiyagareEX_Exe
 	92 13 51
-	duration on block: 155
-	last blockstun: 92 diff: -63
+	duration on block: 168
+	last blockstun: 125 diff: -43
 	damage: 4500	P1: 100	P2: 90
 KenkaSappou
 	4+59Flash+6 3 48

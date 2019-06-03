@@ -110,39 +110,39 @@ CmnActInvincibleAttack
 	damage: 2100	P1: 100	P2: 85
 AssaultA
 	25 3 18
-	duration on block: 45
-	  131069 blockstun: 25
-	last blockstun: 25 diff: -20
+	duration on block: 56
+	  131069 blockstun: 52
+	last blockstun: 52 diff: -4
 	damage: 1800	P1: 80	P2: 80
 AssaultB
 	33 3 16
-	duration on block: 51
-	  131091 blockstun: 33
-	last blockstun: 33 diff: -18
+	duration on block: 62
+	  131091 blockstun: 60
+	last blockstun: 60 diff: -2
 	damage: 1800	P1: 80	P2: 80
 AssaultC
 	25 3(12)3(9)3 30
-	duration on block: 84
-	  131069 blockstun: 52
-	last blockstun: 52 diff: -32
+	duration on block: 102
+	  131069 blockstun: 88
+	last blockstun: 88 diff: -14
 	damage: 1450*3	P1: 80	P2: 75
 AirAssaultA
 	28 3 18
-	duration on block: 48
-	  131079 blockstun: 28
-	last blockstun: 28 diff: -20
+	duration on block: 59
+	  131079 blockstun: 55
+	last blockstun: 55 diff: -4
 	damage: 1500	P1: 80	P2: 80
 AirAssaultB
 	34 3 24
-	duration on block: 60
-	  131099 blockstun: 34
-	last blockstun: 34 diff: -26
+	duration on block: 71
+	  131099 blockstun: 61
+	last blockstun: 61 diff: -10
 	damage: 1700	P1: 80	P2: 80
 AirAssaultC
 	28 3(15)2,2,2,2 24
-	duration on block: 77
-	  131105 blockstun: 52
-	last blockstun: 52 diff: -25
+	duration on block: 101
+	  131105 blockstun: 94
+	last blockstun: 94 diff: -7
 	damage: 1500, 500*4	P1: 80	P2: 85
 IceShieldA
 Total: 42
@@ -170,39 +170,39 @@ Total: 37
 	duration on block: 37
 ExLandAssaultA
 	19 5 15
-	duration on block: 38
-	last blockstun: 19 diff: -19
+	duration on block: 50
+	last blockstun: 49 diff: -1
 	damage: 1750	P1: 80	P2: 85
 ExAirAssaultA
 	20 5 24
-	duration on block: 48
-	  63 blockstun: 20
-	last blockstun: 20 diff: -28
+	duration on block: 60
+	  63 blockstun: 50
+	last blockstun: 50 diff: -10
 	damage: 1900	P1: 80	P2: 85
 ExLandAssaultB
 	34 12 12
-	duration on block: 57
-	  63 blockstun: 34
-	last blockstun: 34 diff: -23
+	duration on block: 69
+	  63 blockstun: 64
+	last blockstun: 64 diff: -5
 	11-36 B
 	damage: 2200	P1: 80	P2: 75
 ExAirAssaultB
 	22 12 17
-	duration on block: 50
-	  63 blockstun: 22
-	last blockstun: 22 diff: -28
+	duration on block: 62
+	  63 blockstun: 52
+	last blockstun: 52 diff: -10
 	1-24 B
 	damage: 2350	P1: 80	P2: 75
 ExLandAssaultC
 	18 3(6)3 17
-	duration on block: 46
-	last blockstun: 27 diff: -19
+	duration on block: 64
+	last blockstun: 63 diff: -1
 	damage: 1300*2	P1: 90	P2: 85
 ExAirAssaultC
 	18 3(6)3 17
-	duration on block: 46
-	  63 blockstun: 27
-	last blockstun: 27 diff: -19
+	duration on block: 64
+	  63 blockstun: 63
+	last blockstun: 63 diff: -1
 	damage: 1400*2	P1: 90	P2: 85
 UltimateShot
 Total: 1+43Flash+75

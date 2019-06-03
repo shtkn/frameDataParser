@@ -24,14 +24,14 @@ NmlAtk5A
 	damage: 1700	P1: 100	P2: 80
 NmlAtk5A2nd
 	5 54 27
-	duration on block: 85
-	last blockstun: 5 diff: -80
+	duration on block: 97
+	last blockstun: 35 diff: -62
 	16-58 Guard HBP Guard
 	damage: 1700	P1: 90	P2: 80
 NmlAtk5A3rd
 	15 14 30
-	duration on block: 58
-	last blockstun: 15 diff: -43
+	duration on block: 71
+	last blockstun: 48 diff: -23
 	damage: 2000	P1: 100	P2: 85
 NmlAtk5A4th
 	24 2 33
@@ -50,8 +50,8 @@ NmlAtk4A2nd
 	damage: 1000	P1: 90	P2: 75
 NmlAtk4A3rd
 	5 12 19
-	duration on block: 35
-	last blockstun: 5 diff: -30
+	duration on block: 46
+	last blockstun: 37 diff: -9
 	damage: 1500	P1: 100	P2: 80
 NmlAtk2A
 	13 2 29
@@ -83,8 +83,8 @@ NmlAtk5B2nd
 	damage: 1700, 0	P1: 90, 100	P2: 85, 100
 NmlAtk2B
 	20 12 22
-	duration on block: 53
-	last blockstun: 20 diff: -33
+	duration on block: 68
+	last blockstun: 55 diff: -13
 	damage: 2000	P1: 80	P2: 90
 NmlAtk2C
 	13 3 22
@@ -103,8 +103,8 @@ NmlAtkAIR5A2nd
 	damage: 1700	P1: 100	P2: 85
 NmlAtkAIR5B
 	10 16 18+7L
-	duration on block: 43
-	last blockstun: 10 diff: -33
+	duration on block: 58
+	last blockstun: 45 diff: -13
 	damage: 2000	P1: 100	P2: 90
 NmlAtkAIR5C
 	15 3 16+3L
@@ -182,7 +182,7 @@ Shot
 	4 10 0 blockstun: 12
 	12 4 1 blockstun: 46
 	last blockstun: 46 diff: -1
-	damage: 0*2, 1700	P1: 100	P2: 100*2, 85
+	damage: 0, 1700, 0	P1: 100	P2: 100, 85, 100
 CommandThrow
 	6 2 33
 	duration on block: 40

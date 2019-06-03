@@ -22,36 +22,36 @@ Total: 1+128Flash+0
 	1--110 All
 NmlAtk5A
 	8 6 12
-	duration on block: 25
-	last blockstun: 8 diff: -17
+	duration on block: 35
+	last blockstun: 31 diff: -4
 	damage: 1200	P1: 100	P2: 75
 NmlAtk5AA
 	12 3 22
-	duration on block: 36
-	last blockstun: 12 diff: -24
+	duration on block: 47
+	last blockstun: 39 diff: -8
 	damage: 1500	P1: 100	P2: 80
 NmlAtk5AAA
 	9 3 23
-	duration on block: 34
-	last blockstun: 9 diff: -25
+	duration on block: 45
+	last blockstun: 36 diff: -9
 	damage: 1500	P1: 100	P2: 80
 NmlAtk5AAAA_Lv1
 Total: 44
 	duration on block: 44
-	10 3 0 blockstun: 10
-	last blockstun: 10 diff: -34
+	10 3 0 blockstun: 37
+	last blockstun: 37 diff: -7
 	damage: 2000	P1: 100	P2: 80
 NmlAtk5AAAA_Lv2
 Total: 44
 	duration on block: 44
-	10 3 0 blockstun: 10
-	last blockstun: 10 diff: -34
+	10 3 0 blockstun: 40
+	last blockstun: 40 diff: -4
 	damage: 2500	P1: 100	P2: 85
 NmlAtk5AAAA_Lv3
 Total: 44
 	duration on block: 44
-	10 3 0 blockstun: 10
-	last blockstun: 10 diff: -34
+	10 3 0 blockstun: 43
+	last blockstun: 43 diff: -1
 	damage: 3000	P1: 100	P2: 90
 NmlAtk5AAAAA_Lv1
 	16 6 24
@@ -70,93 +70,93 @@ NmlAtk5AAAAA_Lv3
 	duration on block: 45
 	16 6 20 blockstun: 46
 	last blockstun: 46 diff: 1
-	damage: 0, 2400	P1: 100, 80	P2: 100, 85
+	damage: 2400, 0	P1: 80, 100	P2: 85, 100
 NmlAtk4A
 	11 4 23
-	duration on block: 37
-	last blockstun: 11 diff: -26
+	duration on block: 49
+	last blockstun: 41 diff: -8
 	7-14 H
 	damage: 1700	P1: 90	P2: 75
 NmlAtk4AA
 	13 4 25
-	duration on block: 41
-	last blockstun: 13 diff: -28
+	duration on block: 53
+	last blockstun: 43 diff: -10
 	damage: 1700	P1: 100	P2: 85
 NmlAtk4AAA_Lv1
 Total: 43
 	duration on block: 43
-	13 3 0 blockstun: 13
-	last blockstun: 13 diff: -30
+	13 3 0 blockstun: 40
+	last blockstun: 40 diff: -3
 	damage: 1600	P1: 100	P2: 80
 NmlAtk4AAA_Lv2
 Total: 43
 	duration on block: 43
-	13 3 0 blockstun: 13
-	last blockstun: 13 diff: -30
+	13 3 0 blockstun: 43
+	last blockstun: 43 diff: 0
 	damage: 1800	P1: 100	P2: 85
 NmlAtk4AAA_Lv3
 Total: 43
 	duration on block: 43
-	13 3 0 blockstun: 13
-	last blockstun: 13 diff: -30
+	13 3 0 blockstun: 46
+	last blockstun: 46 diff: 3
 	damage: 2000	P1: 100	P2: 90
 NmlAtk5B
 	12 6 21
-	duration on block: 38
-	last blockstun: 12 diff: -26
+	duration on block: 50
+	last blockstun: 42 diff: -8
 	damage: 1700	P1: 100	P2: 85
 NmlAtk5BB_Lv1
 Total: 45
 	duration on block: 45
-	13 9 0 blockstun: 13
-	last blockstun: 13 diff: -32
+	13 9 0 blockstun: 40
+	last blockstun: 40 diff: -5
 	damage: 1500	P1: 100	P2: 80 (Once)
 NmlAtk5BB_Lv2
 Total: 45
 	duration on block: 45
-	13 6,3 0 blockstun: 19
-	last blockstun: 19 diff: -26
+	13 6,3 0 blockstun: 53
+	last blockstun: 53 diff: 8
 	damage: 800, 1200	P1: 100	P2: 85 (Once)
 NmlAtk5BB_Lv3
 Total: 45
 	duration on block: 45
-	13 3,3,3 0 blockstun: 19
-	last blockstun: 19 diff: -26
+	13 3,3,3 0 blockstun: 56
+	last blockstun: 56 diff: 11
 	damage: 300, 600, 1500	P1: 100	P2: 90 (Once)
 NmlAtk2A
 	10 3 20
-	duration on block: 32
-	last blockstun: 10 diff: -22
+	duration on block: 42
+	last blockstun: 33 diff: -9
 	damage: 1000	P1: 90	P2: 75
 NmlAtk2B
 	11 6 21
-	duration on block: 37
-	last blockstun: 11 diff: -26
+	duration on block: 48
+	last blockstun: 38 diff: -10
 	damage: 1500	P1: 90	P2: 80
 NmlAtk2C
 	13 5 25
-	duration on block: 42
-	last blockstun: 13 diff: -29
+	duration on block: 54
+	last blockstun: 43 diff: -11
 	damage: 1700	P1: 90	P2: 85
 NmlAtkAIR5A
 	8 5 30
-	duration on block: 42
-	last blockstun: 8 diff: -34
+	duration on block: 53
+	last blockstun: 35 diff: -18
 	damage: 1500	P1: 80	P2: 80
 NmlAtkAIR5AA
 	11 3 25
-	duration on block: 38
-	last blockstun: 11 diff: -27
+	duration on block: 49
+	last blockstun: 38 diff: -11
 	damage: 1500	P1: 80	P2: 80
 NmlAtkAIR5B
 	13 3 35
-	duration on block: 50
-	last blockstun: 13 diff: -37
+	duration on block: 62
+	last blockstun: 43 diff: -19
 	damage: 1700	P1: 80	P2: 85
 NmlAtkAIR5BB
 	10 6 27
-	duration on block: 42
-	last blockstun: 10 diff: -32
+	duration on block: 54
+	last blockstun: 40 diff: -14
 	damage: 1700	P1: 80	P2: 85
 NmlAtkAIR5C
 Total: 57
@@ -216,35 +216,35 @@ Total: 60
 MagicActivateA_Lv1
 Total: 43
 	duration on block: 43
-	16 14,14 10 blockstun: 30
-	last blockstun: 30 diff: -13
+	16 14,14 10 blockstun: 59
+	last blockstun: 59 diff: 16
 	damage: 1800*2	P1: 80	P2: 75
 MagicActivateA_Lv2
 Total: 79
 	duration on block: 79
-	13 169 0 blockstun: 13
+	13 169 0 blockstun: 40
 	122 4 65 blockstun: 144
 	last blockstun: 144 diff: 65
 	damage: 400, 250	P1: 100	P2: 80 (Once)
 MagicActivateA_Lv3
 Total: 32
 	duration on block: 32
-	90 120 10 blockstun: 90
-	148 120 10 blockstun: 148
-	206 120 10 blockstun: 206
-	last blockstun: 206 diff: 174
+	90 120 10 blockstun: 113
+	148 120 10 blockstun: 171
+	206 120 10 blockstun: 229
+	last blockstun: 229 diff: 197
 	damage: 1500*3	P1: 80	P2: 75
 MagicActivateB_Lv1
 Total: 43
 	duration on block: 43
-	17 103 10 blockstun: 17
-	last blockstun: 17 diff: -26
+	17 103 10 blockstun: 40
+	last blockstun: 40 diff: -3
 	damage: 1500	P1: 80	P2: 75
 MagicActivateB_Lv2
 Total: 40
 	duration on block: 40
-	19 65534(25)10(13)10 20 blockstun: 65601
-	last blockstun: 65601 diff: 65561
+	19 65534(25)10(13)10 20 blockstun: 65633
+	last blockstun: 65633 diff: 65593
 	damage: 400, 1500*2	P1: 100, 80*2	P2: 80, 90*2
 MagicActivateB_Lv3
 Total: 32
@@ -274,20 +274,20 @@ Total: 32
 MagicActivateEX_Lv1
 Total: 36
 	duration on block: 36
-	687 1,1,1,1,36 0 blockstun: 691
-	last blockstun: 691 diff: 655
+	687 1,1,1,1,36 0 blockstun: 701
+	last blockstun: 701 diff: 665
 	damage: 0*5	P1: 80	P2: 100
 MagicActivateEX_Lv2
 Total: 36
 	duration on block: 36
-	687 1,1,1,1,36 0 blockstun: 691
-	last blockstun: 691 diff: 655
+	687 1,1,1,1,36 0 blockstun: 701
+	last blockstun: 701 diff: 665
 	damage: 0*5	P1: 80	P2: 100
 MagicActivateEX_Lv3
 Total: 36
 	duration on block: 36
-	687 1,1,1,1,36 0 blockstun: 691
-	last blockstun: 691 diff: 655
+	687 1,1,1,1,36 0 blockstun: 701
+	last blockstun: 701 diff: 665
 	damage: 0*5	P1: 80	P2: 100
 MagicActivateEX_Special
 Total: 55

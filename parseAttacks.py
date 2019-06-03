@@ -14,9 +14,9 @@ class State:
         self.disableAttackboxes = False
         self.disableAttackboxesThisFrame = False
         self.isNewHit = True
-        self.blockstun = 0
-        self.hitstop = 0
-        self.additionalHitstopOpponent = 0
+        self.blockstun = None
+        self.hitstop = None
+        self.additionalHitstopOpponent = None
         self.exitState = False
         self.landingRecovery = 0
         self.isSubroutine = False
@@ -36,13 +36,14 @@ class State:
         self.extraLines = ""
         self.duration = 0
         self.isAttackBox = False
+        self.disableAttackboxesThisFrame = False
         if is_new_move:
             self.moveName = ""
             self.disableAttackboxes = False
             self.isNewHit = True
-            self.blockstun = 0
-            self.hitstop = 0
-            self.additionalHitstopOpponent = 0
+            self.blockstun = None
+            self.hitstop = None
+            self.additionalHitstopOpponent = None
             self.exitState = False
             self.landingRecovery = 0
             self.isSubroutine = False
@@ -50,12 +51,12 @@ class State:
             self.p1 = None
             self.p2 = None
             self.p2Once = False
+            self.minDamage = 0
             self.isInv = False
-            self.invType = 0
-            self.invAttr = [True, True, True, True, True]
+            self.invType = 0  # Inv or Guard
+            self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
             self.superflash_start = None
             self.superflash_duration = 0
-        self.disableAttackboxesThisFrame = False
 
     def is_attackbox(self):
         return self.isAttackBox and not (self.disableAttackboxes or self.disableAttackboxesThisFrame)
@@ -91,6 +92,7 @@ class Damage:
             self.p2Once = other.p2Once
         if other.minDamage is not None:
             self.minDamage = other.minDamage
+
 
 class Abstract:
     def __init__(self):
@@ -298,7 +300,8 @@ def consolidate_frame_chunks(chunk_list, ignore_inv=False):
 
     return new_chunk_list
 
-def createDamageValuesIntoFromState(state):
+
+def create_damage_values_fom_state(state):
     damage = 0 if state.damage is None else state.damage
     p1 = 100 if state.p1 is None else state.p1
     p2 = 100 if state.p2 is None else state.p2
@@ -326,14 +329,17 @@ def parse_move_file(source, move_list, effect_list):
                 effect_list[state.moveName] = subroutine
 
             elif frame_chunks is not None and len(frame_chunks) > 0:
-                chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop,
-                                         state.additionalHitstopOpponent, state.isNewHit) \
+                blockstun = 0 if state.blockstun is None else state.blockstun
+                hitstop = 0 if state.hitstop is None else state.hitstop
+                additionalHitstopOpponent = 0 if state.additionalHitstopOpponent is None else state.additionalHitstopOpponent
+                chunk = AttackFrameChunk(state.duration, blockstun, hitstop,
+                                         additionalHitstopOpponent, state.isNewHit) \
                     if state.is_attackbox() else WaitFrameChunk(state.duration)
                 if state.isInv:
                     chunk.inv_type = 1 if state.invType == 0 else 2
                     chunk.inv_attr = state.invAttr
                 if isinstance(chunk, AttackFrameChunk):
-                    chunk.damage = createDamageValuesIntoFromState(state)
+                    chunk.damage = create_damage_values_fom_state(state)
                 frame_chunks.append(chunk)
 
                 move_list[state.moveName] = Move()
@@ -353,8 +359,11 @@ def parse_move_file(source, move_list, effect_list):
             pass    # skip anything not under UPON_IMMEDIATE
         elif not state.exitState and SPRITE_START in line:
             if state.duration > 0:
-                chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop,
-                                         state.additionalHitstopOpponent, state.isNewHit) \
+                blockstun = 0 if state.blockstun is None else state.blockstun
+                hitstop = 0 if state.hitstop is None else state.hitstop
+                additionalHitstopOpponent = 0 if state.additionalHitstopOpponent is None else state.additionalHitstopOpponent
+                chunk = AttackFrameChunk(state.duration, blockstun, hitstop,
+                                         additionalHitstopOpponent, state.isNewHit) \
                     if state.is_attackbox() else WaitFrameChunk(state.duration)
                 if state.isInv:
                     chunk.inv_type = 1 if state.invType == 0 else 2
@@ -362,7 +371,7 @@ def parse_move_file(source, move_list, effect_list):
                 frame_chunks.append(chunk)
                 if isinstance(chunk, AttackFrameChunk):
                     state.isNewHit = False
-                    chunk.damage = createDamageValuesIntoFromState(state)
+                    chunk.damage = create_damage_values_fom_state(state)
                 state.clear_values(False)
             state.duration = get_duration(line)
 
@@ -477,14 +486,17 @@ def parse_move_file(source, move_list, effect_list):
         effect_list[state.moveName] = subroutine
 
     elif state.duration > 0:
-        chunk = AttackFrameChunk(state.duration, state.blockstun, state.hitstop, state.additionalHitstopOpponent,
+        blockstun = 0 if state.blockstun is None else state.blockstun
+        hitstop = 0 if state.hitstop is None else state.hitstop
+        additionalHitstopOpponent = 0 if state.additionalHitstopOpponent is None else state.additionalHitstopOpponent
+        chunk = AttackFrameChunk(state.duration, blockstun, hitstop, additionalHitstopOpponent,
                                  state.isNewHit) \
             if state.is_attackbox() else WaitFrameChunk(state.duration)
         if state.isInv:
             chunk.inv_type = 1 if state.invType == 0 else 2
             chunk.inv_attr = state.invAttr
         if isinstance(chunk, AttackFrameChunk):
-            chunk.damage = createDamageValuesIntoFromState(state)
+            chunk.damage = create_damage_values_fom_state(state)
 
         frame_chunks.append(chunk)
 
@@ -931,7 +943,6 @@ def main():
         char_source.seek(0, 0)
         registered_moves = find_registered_moves(char_source)
         # remove all non-registered moves, like all the Act* and Event* stuff
-        #
         for move_name in move_list.keys():
             if move_name not in registered_moves and "Exe" not in move_name and "ChangePartnerDD" not in move_name:
                 del move_list[move_name]

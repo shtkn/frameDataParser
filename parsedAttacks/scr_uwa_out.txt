@@ -236,16 +236,16 @@ Total: 1
 	duration on block: 1
 CommandThrowC_Exe5
 	1 9(29)3 0
-	duration on block: 41
-	last blockstun: 39 diff: -2
+	duration on block: 57
+	last blockstun: 55 diff: -2
 	damage: 500*2	P1: 100	P2: 100
 CommandThrowC_Exe6
 Total: 1
 	duration on block: 1
 CommandThrowC_Exe7
 	1 5(29)3 0
-	duration on block: 37
-	last blockstun: 35 diff: -2
+	duration on block: 61
+	last blockstun: 59 diff: -2
 	damage: 1000*2	P1: 100	P2: 100
 CommandThrowC_Exe8
 Total: 1

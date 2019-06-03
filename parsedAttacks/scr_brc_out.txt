@@ -22,8 +22,8 @@ NmlAtk5AA
 	damage: 1200	P1: 100	P2: 80
 NmlAtk5AAA
 	7 3,3,3,3,3,3,3,3,3,3,3,3,3,3 22+4L
-	duration on block: 70
-	last blockstun: 46 diff: -24
+	duration on block: 98
+	last blockstun: 90 diff: -8
 	damage: 180*14	P1: 100	P2: 80
 NmlAtk5AAAA
 Total: 30+9L
@@ -41,8 +41,8 @@ NmlAtk5BB
 	damage: 1500, 0	P1: 100	P2: 80, 100
 NmlAtk5BBB
 	1 18 18
-	duration on block: 36
-	last blockstun: 1 diff: -35
+	duration on block: 48
+	last blockstun: 31 diff: -17
 	damage: 1700	P1: 100	P2: 85
 NmlAtk2A
 	10 6 18
@@ -57,28 +57,28 @@ NmlAtk2B
 	damage: 2000	P1: 80	P2: 80
 NmlAtk2C
 	10 4,4,4,4,4,4,2 17
-	duration on block: 52
-	last blockstun: 34 diff: -18
+	duration on block: 108
+	last blockstun: 106 diff: -2
 	damage: 600*7	P1: 90	P2: 70
 NmlAtkAIR5A
 	8 6 12
-	duration on block: 25
-	last blockstun: 8 diff: -17
+	duration on block: 35
+	last blockstun: 31 diff: -4
 	damage: 1000	P1: 100	P2: 75
 NmlAtkAIR5AA
 	6 6 12
-	duration on block: 23
-	last blockstun: 6 diff: -17
+	duration on block: 33
+	last blockstun: 29 diff: -4
 	damage: 1000	P1: 100	P2: 75
 NmlAtkAIR5B
 	5 9 20
-	duration on block: 33
-	last blockstun: 5 diff: -28
+	duration on block: 45
+	last blockstun: 35 diff: -10
 	damage: 1700	P1: 100	P2: 75
 NmlAtkAIR5C
 	13 10 31
-	duration on block: 53
-	last blockstun: 13 diff: -40
+	duration on block: 64
+	last blockstun: 40 diff: -24
 	damage: 1500	P1: 100	P2: 80
 NmlAtkThrow
 	40 3 23
@@ -149,14 +149,14 @@ ShotAirC
 ShotFlogLand
 	10 3(6)18 8
 	duration on block: 44
-	25 12(8)2(120)82(31)11(31)24,3,3,3,3,3,3,3,3,3,3,3,166 0 blockstun: 379
-	last blockstun: 379 diff: 335
+	25 12(8)2(120)82(31)11(31)24,3,3,3,3,3,3,3,3,3,3,3,166 0 blockstun: 429
+	last blockstun: 429 diff: 385
 	damage: 0, 400*13	P1: 100	P2: 100, 80
 ShotFlogAir
 	9 3(9)12 12
 	duration on block: 44
-	24 12(8)2(120)82(31)11(31)24,3,3,3,3,3,3,3,3,3,3,3,166 0 blockstun: 378
-	last blockstun: 378 diff: 334
+	24 12(8)2(120)82(31)11(31)24,3,3,3,3,3,3,3,3,3,3,3,166 0 blockstun: 428
+	last blockstun: 428 diff: 384
 	damage: 0, 400*13	P1: 100	P2: 100, 80
 LightningMini
 Total: 40
@@ -201,7 +201,7 @@ Total: 10+33Flash+107
 	10+33Flash+4 48 4 blockstun: 127
 	last blockstun: 127 diff: -23
 	1-19 All
-	damage: 0*2, 1370*7, 330	P1: 100	P2: 100*2, 60 (Once)
+	damage: 1370, 0*2, 1370*6, 330	P1: 100	P2: 60, 100*2, 60 (Once)
 LightningAirB_OD
 Total: 13+30Flash+73
 	duration on block: 116
@@ -213,7 +213,7 @@ Total: 13+30Flash+73
 	13+30Flash+2 48 4 blockstun: 125
 	last blockstun: 125 diff: 9
 	1-20 All
-	damage: 0*2, 1370*7, 330	P1: 100	P2: 100*2, 60 (Once)
+	damage: 1370, 0*2, 1370*6, 330	P1: 100	P2: 60, 100*2, 60 (Once)
 UltimateStorm
 Total: 10+34Flash+64
 	duration on block: 108

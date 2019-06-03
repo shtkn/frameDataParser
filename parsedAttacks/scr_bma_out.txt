@@ -171,7 +171,7 @@ Backflip_A
 Backflip_A_EX
 	21 12,2 18
 	duration on block: 76
-	last blockstun: 75 diff: -1
+	last blockstun: 79 diff: 3
 	damage: 2000*2	P1: 80	P2: 85
 Backflip_B
 	11 12 20
@@ -181,12 +181,12 @@ Backflip_B
 Backflip_B_EX
 	21 12,2 18
 	duration on block: 76
-	last blockstun: 75 diff: -1
+	last blockstun: 79 diff: 3
 	damage: 2000*2	P1: 80	P2: 85
 Backflip_C
 	11 12,2 16
 	duration on block: 64
-	last blockstun: 65 diff: 1
+	last blockstun: 71 diff: 7
 	damage: 2000*2	P1: 80	P2: 85
 CmnActInvincibleAttack
 	11 8 56

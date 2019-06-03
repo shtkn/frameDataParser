@@ -24,13 +24,13 @@ Total: 50
 NmlAtk5AAA
 	8 2(3)2(3)2(3)2 28
 	duration on block: 52
-	last blockstun: 23 diff: -29
+	last blockstun: 48 diff: -4
 	damage: 650*4	P1: 100	P2: 85
 RushAssaultFinish
 	17 10 76
 	duration on block: 102
-	74 3 0 blockstun: 74
-	last blockstun: 74 diff: -28
+	74 3 0 blockstun: 92
+	last blockstun: 92 diff: -10
 	damage: 500, 1700	P1: 100	P2: 100, 85
 NmlAtk5B
 	10 4 19
@@ -81,8 +81,8 @@ NmlAtkAIR5B
 	damage: 1700	P1: 100	P2: 85
 NmlAtkAIR5C
 	14 3 29+5L
-	duration on block: 45
-	last blockstun: 14 diff: -31
+	duration on block: 58
+	last blockstun: 47 diff: -11
 	damage: 2000	P1: 100	P2: 90
 CmnActCrushAttack
 	22 3 24
@@ -137,13 +137,13 @@ Total: 40+8L
 	duration on block: 40
 Assault
 	17 8 17
-	duration on block: 41
-	last blockstun: 17 diff: -24
+	duration on block: 52
+	last blockstun: 44 diff: -8
 	damage: 1500	P1: 80	P2: 80
 Assault_B
 	17 10 18
-	duration on block: 44
-	last blockstun: 17 diff: -27
+	duration on block: 55
+	last blockstun: 44 diff: -11
 	damage: 1600	P1: 80	P2: 80
 Assault_2nd
 	14 4 32789
@@ -162,8 +162,8 @@ Assault_D_2nd
 	damage: 2000	P1: 100	P2: 90
 AirAssault
 	13 3 37+7L
-	duration on block: 52
-	last blockstun: 13 diff: -39
+	duration on block: 63
+	last blockstun: 40 diff: -23
 	damage: 1800	P1: 80	P2: 80
 AirAssaultB
 	15 1(9)3 37+7L
@@ -177,9 +177,9 @@ AirAssault_D
 	damage: 1000, 2000	P1: 80	P2: 85 (Once)
 CmnActInvincibleAttack
 	13 3 49
-	duration on block: 64
-	15 14 6 blockstun: 15
-	last blockstun: 15 diff: -49
+	duration on block: 76
+	15 14 6 blockstun: 43
+	last blockstun: 43 diff: -33
 	1-15 All
 	damage: 2300, 0	P1: 100	P2: 85, 100
 UltimateShot

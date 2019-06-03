@@ -69,8 +69,8 @@ Total: 45
 	duration on block: 45
 NmlAtkAIR5C
 	16 13 28
-	duration on block: 56
-	last blockstun: 16 diff: -40
+	duration on block: 69
+	last blockstun: 49 diff: -20
 	damage: 2000	P1: 80	P2: 80
 NmlAtkThrow
 	51 3 23

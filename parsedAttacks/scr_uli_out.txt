@@ -1,17 +1,17 @@
 NmlAtk5A
 	8 4 14
-	duration on block: 25
-	last blockstun: 8 diff: -17
+	duration on block: 35
+	last blockstun: 31 diff: -4
 	damage: 1000	P1: 100	P2: 75
 AN_NmlAtk5A_2nd
 	7 2 18
-	duration on block: 26
-	last blockstun: 7 diff: -19
+	duration on block: 37
+	last blockstun: 34 diff: -3
 	damage: 1300	P1: 100	P2: 80
 AN_NmlAtk5A_3rd
 	12 2,4 21
-	duration on block: 38
-	last blockstun: 14 diff: -24
+	duration on block: 52
+	last blockstun: 44 diff: -8
 	damage: 950*2	P1: 100	P2: 80
 AN_NmlAtk5A_4th
 Total: 49
@@ -22,52 +22,52 @@ Total: 49
 	damage: 0*2	P1: 100	P2: 100
 NmlAtk4A
 	6 1(6)4 12
-	duration on block: 34
-	last blockstun: 19 diff: -15
+	duration on block: 44
+	last blockstun: 42 diff: -2
 	damage: 700*2	P1: 100	P2: 75
 AN_NmlAtk4A_2nd
 	7 1(6)4 16
-	duration on block: 39
-	last blockstun: 20 diff: -19
+	duration on block: 49
+	last blockstun: 43 diff: -6
 	damage: 800*2	P1: 100	P2: 75
 AN_NmlAtk4A_3rd
 	7 4(10)2 23
-	duration on block: 51
-	last blockstun: 27 diff: -24
+	duration on block: 64
+	last blockstun: 56 diff: -8
 	damage: 1000*2	P1: 100	P2: 70
 NmlAtk5B
 	13 6 26
-	duration on block: 44
-	last blockstun: 13 diff: -31
+	duration on block: 55
+	last blockstun: 40 diff: -15
 	11-18 H
 	damage: 1500	P1: 90	P2: 80
 AN_NmlAtk5B_2nd
 	13 4 22
-	duration on block: 38
-	last blockstun: 13 diff: -25
+	duration on block: 49
+	last blockstun: 40 diff: -9
 	damage: 1500	P1: 100	P2: 80
 AN_NmlAtk5B_3rd
 	21 5 25
-	duration on block: 50
-	last blockstun: 21 diff: -29
+	duration on block: 62
+	last blockstun: 51 diff: -11
 	damage: 1700	P1: 100	P2: 85
 NmlAtk2A
 	7 2 13
-	duration on block: 21
-	last blockstun: 7 diff: -14
+	duration on block: 30
+	last blockstun: 27 diff: -3
 	damage: 1000	P1: 100	P2: 70
 NmlAtk2A_Renda
 	7 2 13
-	duration on block: 21
-	last blockstun: 7 diff: -14
+	duration on block: 30
+	last blockstun: 27 diff: -3
 	damage: 1000	P1: 100	P2: 70
 NmlAtk2B
 Total: 29
 	duration on block: 29
 NmlAtk2C
 	12 6 24
-	duration on block: 41
-	last blockstun: 12 diff: -29
+	duration on block: 53
+	last blockstun: 42 diff: -11
 	damage: 1700	P1: 90	P2: 75
 NmlAtkAIR5A
 	11 4 15
