@@ -165,10 +165,6 @@ vrrgef400b_07
 vrrgef400b_08
 vrrgef400b_09
 vrrgef401atk_04ex
-vrrgef406atk_00
-vrrgef406atk_01
-vrrgef406atk_02
-vrrgef406atk_03
 vrrgef408_02
 vrrgef408_03
 vrrgef408_shot01
