@@ -803,7 +803,7 @@ def write_file(moves_on_block, target):
                                                 move_on_block.superflash_duration)
             subroutine_block_timelines.append(result)
         if startup is not "":
-            target.write("\t" + str(startup) + " " + middle + " " + str(recovery))
+            target.write("\t" + str(startup) + "|" + middle + "|" + str(recovery))
         else:
             target.write("Total: " + str(recovery))
         if move_on_block.landing_recovery > 0:
@@ -813,7 +813,7 @@ def write_file(moves_on_block, target):
             for result in subroutine_block_timelines:
                 last_blockstun_frame = result[5] if result[5] > last_blockstun_frame else last_blockstun_frame
                 # target.write("\n\tstartup: " + str(result[0]))
-                target.write("\n\t" + str(result[0]) + " " + result[1] + " " + str(result[2]))
+                target.write("\n\t" + str(result[0]) + "|" + result[1] + "|" + str(result[2]))
                 target.write(" blockstun: " + str(last_blockstun_frame))
         if last_blockstun_frame != 0:
             target.write("\n\tlast blockstun: " + str(last_blockstun_frame))
@@ -968,7 +968,9 @@ def main():
         registered_moves = find_registered_moves(char_source)
         # remove all non-registered moves, like all the Act* and Event* stuff
         for move_name in move_list.keys():
-            if move_name not in registered_moves and "Exe" not in move_name and "ChangePartnerDD" not in move_name:
+            if move_name not in registered_moves and "Exe" not in move_name and \
+                    "ChangePartner" not in move_name and \
+                    "CmnActChangePartner" not in move_name:
                 del move_list[move_name]
 
         hit_simulations = simulate_on_block(move_list, effect_list)

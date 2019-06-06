@@ -1,126 +1,159 @@
+CmnActChangePartnerIn
+Total: 63
+	duration on block: 63
+CmnActChangePartnerOut
+Total: 60
+	duration on block: 60
+CmnActChangePartnerBurst
+	149|3|30
+	duration on block: 181
+	last blockstun: 149 diff: -32
+	damage: 0	P1: 100	P2: 100
+CmnActChangePartnerQuickIn
+Total: 29
+	duration on block: 29
 CmnActChangePartnerQuickOut
 Total: 21
 	duration on block: 21
+CmnActChangePartnerAssistAdmiss
+Total: 112
+	duration on block: 112
+CmnActChangePartnerAssistAtk_A
+Total: 73
+	duration on block: 73
+	28|32775,5|4 blockstun: 32833
+	last blockstun: 32833 diff: 32760
+	damage: 1000, 1500	P1: 100	P2: 85 (Once)
+CmnActChangePartnerAssistAtk_B
+	13|5|51
+	duration on block: 79
+	last blockstun: 40 diff: -39
+	damage: 1600	P1: 70	P2: 80
+CmnActChangePartnerAssistAtk_D
+	16|9|58
+	duration on block: 88
+	last blockstun: 40 diff: -48
+	damage: 1350	P1: 70	P2: 85
 CmnActChangePartnerDD
 Total: 1+113Flash+0
 	duration on block: 18
 	1--95 All
 NmlAtk4A
-	6 3 10
+	6|3|10
 	duration on block: 27
 	last blockstun: 26 diff: -1
 	damage: 1000	P1: 100	P2: 70
 NmlAtk5A
-	9 4 17
+	9|4|17
 	duration on block: 39
 	last blockstun: 32 diff: -7
 	damage: 1200	P1: 100	P2: 80
 NmlAtk5AA
-	8 3 13
+	8|3|13
 	duration on block: 29
 	last blockstun: 27 diff: -2
 	damage: 1000	P1: 100	P2: 80
 NmlAtk5AAA
-	10 3 12
+	10|3|12
 	duration on block: 34
 	last blockstun: 33 diff: -1
 	damage: 1000	P1: 100	P2: 80
 NmlAtk5AAAA
-	9 2(8)3 27
+	9|2(8)3|27
 	duration on block: 62
 	last blockstun: 49 diff: -13
 	damage: 1400*2	P1: 100	P2: 80 (Once)
 NmlAtk5AAAAA
-	16 3 21
+	16|3|21
 	duration on block: 51
 	last blockstun: 46 diff: -5
 	damage: 1800	P1: 100	P2: 85
 NmlAtk5B
-	15 6 21
+	15|6|21
 	duration on block: 53
-	16 2(1)2 0 blockstun: 48
+	16|2(1)2|0 blockstun: 48
 	last blockstun: 48 diff: -5
 	damage: 1500, 1000	P1: 90	P2: 85, 70
 NmlAtk5BB
-	1 3(8)5(2)5(2)6 20
+	1|3(8)5(2)5(2)6|20
 	duration on block: 62
 	last blockstun: 53 diff: -9
 	damage: 400*4	P1: 100	P2: 80 (Once)
 NmlAtk2A
-	7 3 13
+	7|3|13
 	duration on block: 31
 	last blockstun: 27 diff: -4
 	damage: 1000	P1: 100	P2: 70
 NmlAtk2B
-	17 3 28
+	17|3|28
 	duration on block: 59
-	18 2 0 blockstun: 47
+	18|2|0 blockstun: 47
 	last blockstun: 47 diff: -12
 	damage: 1500, 1000	P1: 80	P2: 85, 70
 NmlAtk2C
-	10 3 20
+	10|3|20
 	duration on block: 44
 	last blockstun: 40 diff: -4
 	damage: 1400	P1: 90	P2: 85
 NmlAtkAIR5A
-	7 3 9
+	7|3|9
 	duration on block: 28
 	last blockstun: 30 diff: 2
 	damage: 1000	P1: 100	P2: 80
 NmlAtkAIR5AA
-	8 3 15
+	8|3|15
 	duration on block: 36
 	last blockstun: 35 diff: -1
 	damage: 1200	P1: 100	P2: 80
 NmlAtkAIR5AAA
-	11 3 25
+	11|3|25
 	duration on block: 49
 	last blockstun: 38 diff: -11
 	damage: 1500	P1: 100	P2: 85
 NmlAtkAIR2A
-	10 3 20
+	10|3|20
 	duration on block: 43
 	last blockstun: 37 diff: -6
 	damage: 1300	P1: 100	P2: 80
 NmlAtkAIR5B
-	18 3 28
+	18|3|28
 	duration on block: 60
 	last blockstun: 48 diff: -12
 	damage: 1500	P1: 100	P2: 85
 NmlAtkAIR5C
-	21 3 28
+	21|3|28
 	duration on block: 63
 	last blockstun: 51 diff: -12
 	damage: 1450	P1: 100	P2: 85
 CmnActCrushAttack
-	23 3 18
+	23|3|18
 	duration on block: 54
 	last blockstun: 50 diff: -4
 	damage: 0	P1: 100	P2: 100
 NmlAtkThrow
-	34 3 23
+	34|3|23
 	duration on block: 59
 	last blockstun: 34 diff: -25
 	damage: 0	P1: 100	P2: 100
 ThrowExe
-	10 3(9)3(6)3 12
+	10|3(9)3(6)3|12
 	duration on block: 81
-	49 4 14 blockstun: 85
+	49|4|14 blockstun: 85
 	last blockstun: 85 diff: 4
 	damage: 500*2, 0, 1000	P1: 100	P2: 50, 100
 NmlAtkBackThrow
-	34 3 23
+	34|3|23
 	duration on block: 59
 	last blockstun: 34 diff: -25
 	damage: 0	P1: 100	P2: 100
 BackThrowExe
-	10 3(9)3(9)3 11
+	10|3(9)3(9)3|11
 	duration on block: 83
-	49 4 14 blockstun: 88
+	49|4|14 blockstun: 88
 	last blockstun: 88 diff: 5
 	damage: 500*2, 0, 1000	P1: 100	P2: 50, 100
 CmnActInvincibleAttack
-	11 3 55
+	11|3|55
 	duration on block: 80
 	last blockstun: 41 diff: -39
 	1-13 All
@@ -131,63 +164,63 @@ Total: 21
 LandShotA
 Total: 57
 	duration on block: 57
-	17 3 9 blockstun: 44
-	31 3 9 blockstun: 58
+	17|3|9 blockstun: 44
+	31|3|9 blockstun: 58
 	last blockstun: 58 diff: 1
 	damage: 1000*2	P1: 100	P2: 85
 LandShotB
 Total: 79
 	duration on block: 79
-	27 3 9 blockstun: 54
-	41 3 9 blockstun: 68
-	55 3 9 blockstun: 82
+	27|3|9 blockstun: 54
+	41|3|9 blockstun: 68
+	55|3|9 blockstun: 82
 	last blockstun: 82 diff: 3
 	damage: 1000*3	P1: 100	P2: 85
 LandShotC
 Total: 61
 	duration on block: 61
-	16 32775,5 4 blockstun: 32821
+	16|32775,5|4 blockstun: 32821
 	last blockstun: 32821 diff: 32760
 	damage: 1000, 1500	P1: 100	P2: 85 (Once)
 AssaultA
-	16 6 45
+	16|6|45
 	duration on block: 77
 	last blockstun: 43 diff: -34
 	damage: 1400	P1: 80	P2: 80
 AssaultB
-	13 2,2,2,2,2 36
+	13|2,2,2,2,2|36
 	duration on block: 70
 	last blockstun: 49 diff: -21
 	damage: 650*5	P1: 80	P2: 80
 AssaultC
-	13 5 20
+	13|5|20
 	duration on block: 49
 	last blockstun: 43 diff: -6
 	4-17 H
 	damage: 1800	P1: 90	P2: 85
 ChainAssaultA
-	12 9 38
+	12|9|38
 	duration on block: 70
 	last blockstun: 36 diff: -34
 	damage: 1400	P1: 80	P2: 85
 ChainAssaultB
-	15 3 33
+	15|3|33
 	duration on block: 62
 	last blockstun: 45 diff: -17
 	damage: 1100	P1: 80	P2: 85
 ChainAssaultC
-	22 3 30
+	22|3|30
 	duration on block: 66
 	last blockstun: 52 diff: -14
 	damage: 1800	P1: 80	P2: 85
 LandShadowCreateA
 Total: 32803
 	duration on block: 32803
-	  338 blockstun: 0
+	||338 blockstun: 0
 AirShadowCreateA
 Total: 24
 	duration on block: 24
-	  338 blockstun: 0
+	||338 blockstun: 0
 LandShadowCreateB
 Total: 32803
 	duration on block: 32803
@@ -197,50 +230,50 @@ Total: 24
 LandShadowCreateC
 Total: 32803
 	duration on block: 32803
-	333 8 8 blockstun: 365
+	333|8|8 blockstun: 365
 	last blockstun: 365 diff: -32438
 	damage: 2200	P1: 100	P2: 90
 AirShadowCreateC
 Total: 24
 	duration on block: 24
-	273 8 8 blockstun: 305
+	273|8|8 blockstun: 305
 	last blockstun: 305 diff: 281
 	damage: 2200	P1: 100	P2: 90
 UltimateShot
 Total: 1+76Flash+25
 	duration on block: 102
-	1+76Flash+0 12 0 blockstun: 73
+	1+76Flash+0|12|0 blockstun: 73
 	last blockstun: 73 diff: -29
 	1--22 All
 	damage: 4400	P1: 100	P2: 60 (Once)
 UltimateShotSP
 Total: 1+76Flash+46
 	duration on block: 123
-	1+76Flash+0 12 0 blockstun: 73
-	1+76Flash+0 12 0 blockstun: 92
+	1+76Flash+0|12|0 blockstun: 73
+	1+76Flash+0|12|0 blockstun: 92
 	last blockstun: 92 diff: -31
 	1--3 All
 	damage: 4400*2	P1: 100	P2: 60 (Once)
 UltimateRush
-	1+63Flash+0 6 30
+	1+63Flash+0|6|30
 	duration on block: 71
 	last blockstun: 54 diff: -17
 	1--34 All
 	damage: 1700	P1: 100	P2: 85
 UltimateRushSP
-	1+63Flash+0 6 30
+	1+63Flash+0|6|30
 	duration on block: 71
 	last blockstun: 54 diff: -17
 	1--34 All
 	damage: 1700	P1: 100	P2: 85
 AstralHeat
-	1+85Flash+0 6 42
+	1+85Flash+0|6|42
 	duration on block: 99
 	last blockstun: 70 diff: -29
 	1--34 All
 	damage: 0	P1: 100	P2: 85
 AstralHeatExe
-	28 2(8)3(21)6 45
+	28|2(8)3(21)6|45
 	duration on block: 145
 	last blockstun: 111 diff: -34
 	1-67 All

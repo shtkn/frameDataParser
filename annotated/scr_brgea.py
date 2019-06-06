@@ -966,22 +966,22 @@ def rgef406atk():
     def upon_IMMEDIATE():
         Unknown3001(255)
         Unknown3004(-20)
-    sprite('vrrgef406atk_00', 3)	# 1-3	 **attackbox here**
+    sprite('vrrgef406atk_00', 3)	# 1-3
     GFX_1('rgef02', 1)
-    sprite('vrrgef406atk_01', 3)	# 4-6	 **attackbox here**
+    sprite('vrrgef406atk_01', 3)	# 4-6
     GFX_1('rgef02', 2)
-    sprite('vrrgef406atk_02', 3)	# 7-9	 **attackbox here**
+    sprite('vrrgef406atk_02', 3)	# 7-9
     GFX_1('rgef02', 1)
-    sprite('vrrgef406atk_03', 3)	# 10-12	 **attackbox here**
+    sprite('vrrgef406atk_03', 3)	# 10-12
     GFX_1('rgef02', 0)
     GFX_1('rgef02', 1)
     GFX_1('rgef02', 2)
-    sprite('vrrgef406atk_00', 3)	# 13-15	 **attackbox here**
+    sprite('vrrgef406atk_00', 3)	# 13-15
     GFX_1('rgef02', 1)
-    sprite('vrrgef406atk_01', 3)	# 16-18	 **attackbox here**
+    sprite('vrrgef406atk_01', 3)	# 16-18
     GFX_1('rgef02', 2)
-    sprite('vrrgef406atk_02', 3)	# 19-21	 **attackbox here**
-    sprite('vrrgef406atk_03', 3)	# 22-24	 **attackbox here**
+    sprite('vrrgef406atk_02', 3)	# 19-21
+    sprite('vrrgef406atk_03', 3)	# 22-24
 
 @State
 def rgef406batk():
