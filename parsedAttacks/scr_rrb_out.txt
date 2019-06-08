@@ -1,265 +1,212 @@
 NmlAtk5A
-	6|3|14
-	duration on block: 32
-	last blockstun: 29 diff: -3
-	damage: 1200	P1: 100	P2: 75
+|startup=6|active=3|recovery=14|frameAdv=-3
+|damage=1200|p1=100|p2=75
+|hitstun=14|airHitstun=14|level=2
 AN_NmlAtk5A_2nd
-	11|3|18
-	duration on block: 42
-	last blockstun: 38 diff: -4
-	damage: 1500	P1: 100	P2: 80
+|startup=11|active=3|recovery=18|frameAdv=-4
+|damage=1500|p1=100|p2=80
+|hitstun=17|airHitstun=17|level=3
 AN_NmlAtk5A_3rd
-	15|6|30
-	duration on block: 62
-	last blockstun: 45 diff: -17
-	damage: 1700	P1: 100	P2: 85
+|startup=15|active=6|recovery=30|frameAdv=-17
+|damage=1700|p1=100|p2=85
+|hitstun=19|airHitstun=19|level=4
 AN_NmlAtk5A_4th
-	13|18|28
-	duration on block: 58
-	last blockstun: 31 diff: -27
-	damage: 1700	P1: 100	P2: 85
+|startup=13|active=18|recovery=28|frameAdv=-27
+|damage=1700|p1=100|p2=85
+|hitstun=19|airHitstun=40|level=4
 NmlAtk5B
-	10|6|18
-	duration on block: 44
-	last blockstun: 37 diff: -7
-	damage: 1500	P1: 100	P2: 80
+|startup=10|active=6|recovery=18|frameAdv=-7
+|damage=1500|p1=100|p2=80
+|hitstun=17|airHitstun=17|level=3
 AN_NmlAtk5B_2nd
-	13|4|24
-	duration on block: 52
-	last blockstun: 43 diff: -9
-	damage: 1700	P1: 100	P2: 85
+|startup=13|active=4|recovery=24|frameAdv=-9
+|damage=1700|p1=100|p2=85
+|hitstun=19|airHitstun=19|level=4
 AN_NmlAtk5B_3rd
-	15|3|39
-	duration on block: 68
-	last blockstun: 45 diff: -23
-	damage: 1700	P1: 100	P2: 75
+|startup=15|active=3|recovery=39|frameAdv=-23
+|damage=1700|p1=100|p2=75
+|hitstun=19|airHitstun=24|level=4
 NmlAtk2A
-	7|2|12
-	duration on block: 29
-	last blockstun: 27 diff: -2
-	damage: 1000	P1: 90	P2: 70
+|startup=7|active=2|recovery=12|frameAdv=-2
+|damage=1000|p1=90|p2=70
+|hitstun=12|airHitstun=12|level=1
 NmlAtk2B
-	11|4|25
-	duration on block: 50
-	last blockstun: 38 diff: -12
+|startup=11|active=4|recovery=25|frameAdv=-12
 	8-14 H
-	damage: 1500	P1: 90	P2: 80
+|damage=1500|p1=90|p2=80
+|hitstun=17|airHitstun=17|level=3
 NmlAtk2C
-	13|3|18
-	duration on block: 45
-	last blockstun: 43 diff: -2
-	damage: 1700	P1: 90	P2: 85
+|startup=13|active=3|recovery=18|frameAdv=-2
+|damage=1700|p1=90|p2=85
+|hitstun=19|airHitstun=30|level=4
 NmlAtkAIR5A
-	9|3|15
-	duration on block: 37
-	last blockstun: 36 diff: -1
-	damage: 1500	P1: 100	P2: 80
+|startup=9|active=3|recovery=15|frameAdv=-1
+|damage=1500|p1=100|p2=80
+|hitstun=17|airHitstun=19|level=3
 NmlAtkAIR2A
-	7|2(5)2|13
-	duration on block: 48
-	last blockstun: 47 diff: -1
-	damage: 1000*2	P1: 100	P2: 75
+|startup=7|active=2(5)2|recovery=13|frameAdv=-1
+|damage=1000*2|p1=100|p2=75
+|hitstun=14|airHitstun=14|level=2
 NmlAtkAIR5B
-	11|5|18
-	duration on block: 44
-	last blockstun: 38 diff: -6
-	damage: 1500	P1: 100	P2: 80
+|startup=11|active=5|recovery=18|frameAdv=-6
+|damage=1500|p1=100|p2=80
+|hitstun=17|airHitstun=19|level=3
 NmlAtkAIR5C
-	18|3|34
-	duration on block: 66
-	last blockstun: 48 diff: -18
-	damage: 1700	P1: 100	P2: 85
+|startup=18|active=3|recovery=34|frameAdv=-18
+|damage=1700|p1=100|p2=85
+|hitstun=19|airHitstun=60|level=4
 NmlAtkThrow
-	49|3|23
-	duration on block: 74
-	last blockstun: 49 diff: -25
-	damage: 0	P1: 100	P2: 100
+|startup=49|active=3|recovery=23|frameAdv=-25
+|damage=0|p1=100|p2=100
+|hitstun=0|airHitstun=0|level=0
 ThrowExe
-	32|4|32791
-	duration on block: 32838
-	last blockstun: 62 diff: -32776
-	damage: 2000	P1: 100	P2: 50
+|startup=32|active=4|recovery=32791|frameAdv=-32776
+|damage=2000|p1=100|p2=50
+|hitstun=19|airHitstun=60|level=4
 NmlAtkBackThrow
-	49|3|23
-	duration on block: 74
-	last blockstun: 49 diff: -25
-	damage: 0	P1: 100	P2: 100
+|startup=49|active=3|recovery=23|frameAdv=-25
+|damage=0|p1=100|p2=100
+|hitstun=0|airHitstun=0|level=0
 BackThrowExe
-	4|1(28)4|32791
-	duration on block: 32843
-	last blockstun: 67 diff: -32776
-	damage: 0, 2000	P1: 100	P2: 50, 85 (Once)
+|startup=4|active=1(28)4|recovery=32791|frameAdv=-32776
+|damage=0, 2000|p1=100|p2=50, 85 (Once)
+|hitstun=60, 19|airHitstun=60, , 19|level=04
 CmnActInvincibleAttack
-	13|2,2,2|47
-	duration on block: 77
-	last blockstun: 47 diff: -30
+|startup=13|active=2,2,2|recovery=47|frameAdv=-30
 	1-18 All
-	damage: 1250*3	P1: 100	P2: 85 (Once)
+|damage=1250*3|p1=100|p2=85 (Once)
+|hitstun=19|airHitstun=60|level=4
 SpDash_Front
-	9|3|23
-	duration on block: 34
-	last blockstun: 9 diff: -25
-	damage: 0	P1: 80	P2: 100
+|startup=9|active=3|recovery=23|frameAdv=-25
+|damage=0|p1=80|p2=100
+|hitstun=0|airHitstun=0|level=0
 SpDash_Back
-	9|3|32789
-	duration on block: 32800
-	last blockstun: 9 diff: -32791
-	damage: 0	P1: 80	P2: 100
+|startup=9|active=3|recovery=32789|frameAdv=-32791
+|damage=0|p1=80|p2=100
+|hitstun=0|airHitstun=0|level=0
 SpDash_AntiAir
-	8|3|20
-	duration on block: 30
-	last blockstun: 8 diff: -22
-	damage: 0	P1: 80	P2: 100
+|startup=8|active=3|recovery=20|frameAdv=-22
+|damage=0|p1=80|p2=100
+|hitstun=0|airHitstun=0|level=0
 AirSpDash_Front
-	9|3|20
-	duration on block: 31
-	last blockstun: 9 diff: -22
-	damage: 0	P1: 80	P2: 100
+|startup=9|active=3|recovery=20|frameAdv=-22
+|damage=0|p1=80|p2=100
+|hitstun=0|airHitstun=0|level=0
 AirSpDash_Back
-	7|3|26
-	duration on block: 35
-	last blockstun: 7 diff: -28
-	damage: 0	P1: 80	P2: 100
+|startup=7|active=3|recovery=26|frameAdv=-28
+|damage=0|p1=80|p2=100
+|hitstun=0|airHitstun=0|level=0
 AirSpDash_AntiLand
-	10|3|21
-	duration on block: 33
-	last blockstun: 10 diff: -23
-	damage: 0	P1: 80	P2: 100
+|startup=10|active=3|recovery=21|frameAdv=-23
+|damage=0|p1=80|p2=100
+|hitstun=0|airHitstun=0|level=0
 AttackAndShotA
-	13|4|51
-	duration on block: 79
-	41|60|0 blockstun: 71
-	last blockstun: 71 diff: -8
-	damage: 1700, 1500	P1: 100	P2: 85
+|startup=13|active=4|recovery=51
+|startup=41|active=60|recovery=0|blockstun=71|frameAdv=-8
+|damage=1700, 1500|p1=100|p2=85
+|hitstun=19|airHitstun=30|level=4
 AttackAndShotB
-	13|6|81
-	duration on block: 111
-	49|60|0 blockstun: 79
-	70|60|0 blockstun: 100
-	last blockstun: 100 diff: -11
-	damage: 1000, 1500*2	P1: 100	P2: 85
+|startup=13|active=6|recovery=81
+|startup=49|active=60|recovery=0|blockstun=79
+|startup=70|active=60|recovery=0|blockstun=100|frameAdv=-11
+|damage=1000, 1500*2|p1=100|p2=85
+|hitstun=19|airHitstun=0, , 30*2|level=04*2
 AttackAndShotEx
-	13|4|114
-	duration on block: 142
-	41|60|0 blockstun: 71
-	62|60|0 blockstun: 92
-	83|60|0 blockstun: 113
-	104|60|0 blockstun: 134
-	last blockstun: 134 diff: -8
-	damage: 1700, 1500*4	P1: 100	P2: 85
+|startup=13|active=4|recovery=114
+|startup=41|active=60|recovery=0|blockstun=71
+|startup=62|active=60|recovery=0|blockstun=92
+|startup=83|active=60|recovery=0|blockstun=113
+|startup=104|active=60|recovery=0|blockstun=134|frameAdv=-8
+|damage=1700, 1500*4|p1=100|p2=85
+|hitstun=19|airHitstun=30|level=4
 AirRolling_A
-	16|4,4,4,4|32803
-	duration on block: 32852
-	last blockstun: 64 diff: -32788
-	damage: 200*3, 1300	P1: 80*3, 100	P2: 80*4
+|startup=16|active=4,4,4,4|recovery=32803|frameAdv=-32788
+|damage=200*3, 1300|p1=80*3, 100|p2=80*4
+|hitstun=17*3, 19|airHitstun=30*3, , 0|level=3*30
 AirRolling_B
-	16|4,4,4,4|32803
-	duration on block: 32852
-	last blockstun: 64 diff: -32788
-	damage: 220*3, 1300	P1: 80*3, 100	P2: 80*4
+|startup=16|active=4,4,4,4|recovery=32803|frameAdv=-32788
+|damage=220*3, 1300|p1=80*3, 100|p2=80*4
+|hitstun=17*3, 19|airHitstun=30*3, , 0|level=3*30
 AirRolling_Ex
-	16|4,4,4,4|32803
-	duration on block: 32852
-	62|64|0 blockstun: 92
-	last blockstun: 92 diff: -32760
-	damage: 280*3, 1300, 1000	P1: 80*3, 100*2	P2: 80*4, 85
+|startup=16|active=4,4,4,4|recovery=32803
+|startup=62|active=64|recovery=0|blockstun=92|frameAdv=-32760
+|damage=280*3, 1300, 1000|p1=80*3, 100*2|p2=80*4, 85
+|hitstun=17*3, 19*2|airHitstun=30*3, , 0, , 36|level=3*304
 Shot
-Total: 54
-	duration on block: 54
-	11|60|0 blockstun: 38
-	last blockstun: 38 diff: -16
-	damage: 1500	P1: 100	P2: 80
+|recovery=Total: 54
+|startup=11|active=60|recovery=0|blockstun=38|frameAdv=-16
+|damage=1500|p1=100|p2=80
+|hitstun=17|airHitstun=30|level=3
 MultiAssault
-	7|4(8)3(18)2,2,2,2|32791
-	duration on block: 32864
-	last blockstun: 95 diff: -32769
-	damage: 800*2, 400*4	P1: 80	P2: 85
+|startup=7|active=4(8)3(18)2,2,2,2|recovery=32791|frameAdv=-32769
+|damage=800*2, 400*4|p1=80|p2=85
+|hitstun=19|airHitstun=0|level=0
 UltimateAssault
-Total: 5+72Flash+69
-	duration on block: 146
+|recovery=Total: 5+72Flash+69
 	1-28 All
 UltimateAssaultOD
-Total: 5+72Flash+69
-	duration on block: 146
+|recovery=Total: 5+72Flash+69
 	1-28 All
 UltimateDance
-	13+60Flash+2|6(3)3(6)3(7)3(7)3(7)3(20)5|30
-	duration on block: 232
-	last blockstun: 216 diff: -16
+|startup=13+60Flash+2|active=6(3)3(6)3(7)3(7)3(7)3(20)5|recovery=30|frameAdv=-16
 	1-20 All
 	63-120 All
-	damage: 1200*6, 2000	P1: 100	P2: 60 (Once)
+|damage=1200*6, 2000|p1=100|p2=60 (Once)
+|hitstun=19|airHitstun=90|level=4
 UltimateDanceOD
-	13+60Flash+2|6(3)3(6)3(7)3(7)3(7)3(7)3(7)3(7)3(7)3(7)3(7)3(20)5|30
-	duration on block: 304
-	last blockstun: 288 diff: -16
+|startup=13+60Flash+2|active=6(3)3(6)3(7)3(7)3(7)3(7)3(7)3(7)3(7)3(7)3(7)3(20)5|recovery=30|frameAdv=-16
 	1-20 All
 	123-180 All
-	damage: 1200*2, 800*10, 2000	P1: 100	P2: 60 (Once)
+|damage=1200*2, 800*10, 2000|p1=100|p2=60 (Once)
+|hitstun=19|airHitstun=90|level=4
 AstralHeat
-	1+60Flash+15|32767|72
-	duration on block: 32927
-	last blockstun: 109 diff: -32818
+|startup=1+60Flash+15|active=32767|recovery=72|frameAdv=-32818
 	1-32782 All
-	damage: 2000	P1: 100	P2: 90
+|damage=2000|p1=100|p2=90
+|hitstun=21|airHitstun=9999|level=5
 CmnActChangePartnerAppeal
-Total: 68
-	duration on block: 68
+|recovery=Total: 68
 CmnActChangePartnerAppealAir
-Total: 25
-	duration on block: 25
+|recovery=Total: 25
 CmnActChangePartnerOut
-Total: 60
-	duration on block: 60
+|recovery=Total: 60
 CmnActChangePartnerIn
-	35|32767|25
-	duration on block: 32826
-	last blockstun: 35 diff: -32791
-	damage: 0	P1: 100	P2: 100
+|startup=35|active=32767|recovery=25|frameAdv=-32791
+|damage=0|p1=100|p2=100
+|hitstun=0|airHitstun=0|level=0
 CmnActChangePartnerQuickIn
-Total: 29
-	duration on block: 29
+|recovery=Total: 29
 CmnActChangePartnerQuickOut
-Total: 21
-	duration on block: 21
+|recovery=Total: 21
 CmnActChangePartnerAssistAdmiss
-Total: 112
-	duration on block: 112
+|recovery=Total: 112
 CmnActChangePartnerAssistAtk_A
-Total: 54
-	duration on block: 54
-	11|60|0 blockstun: 38
-	last blockstun: 38 diff: -16
-	damage: 1500	P1: 70	P2: 80
+|recovery=Total: 54
+|startup=11|active=60|recovery=0|blockstun=38|frameAdv=-16
+|damage=1500|p1=70|p2=80
+|hitstun=17|airHitstun=30|level=3
 CmnActChangePartnerAssistAtk_B
-	10|3|39
-	duration on block: 63
-	last blockstun: 40 diff: -23
-	damage: 1700	P1: 70	P2: 85
+|startup=10|active=3|recovery=39|frameAdv=-23
+|damage=1700|p1=70|p2=85
+|hitstun=19|airHitstun=50|level=4
 CmnActChangePartnerAssistAtk_D
-	13|18|28
-	duration on block: 58
-	last blockstun: 31 diff: -27
-	damage: 1700	P1: 70	P2: 85
+|startup=13|active=18|recovery=28|frameAdv=-27
+|damage=1700|p1=70|p2=85
+|hitstun=19|airHitstun=60|level=4
 CmnActChangePartnerDD
-Total: 1+109Flash+0
-	duration on block: 20
+|recovery=Total: 1+109Flash+0
 	1--89 All
 AN_CmnActChangePartnerDDExe
-Total: 132
-	duration on block: 132
+|recovery=Total: 132
 	1-96 All
 AN_CmnActChangePartnerDDODExe
-Total: 132
-	duration on block: 132
+|recovery=Total: 132
 	1-96 All
 CmnActChangePartnerBurst
-	149|3|38
-	duration on block: 189
-	last blockstun: 149 diff: -40
-	damage: 0	P1: 100	P2: 100
+|startup=149|active=3|recovery=38|frameAdv=-40
+|damage=0|p1=100|p2=100
+|hitstun=0|airHitstun=0|level=0
 CmnActCrushAttack
-	26|3|29
-	duration on block: 68
-	last blockstun: 53 diff: -15
-	damage: 0	P1: 100	P2: 100
+|startup=26|active=3|recovery=29|frameAdv=-15
+|damage=0|p1=100|p2=100
+|hitstun=0|airHitstun=0|level=0

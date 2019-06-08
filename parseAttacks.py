@@ -428,7 +428,7 @@ def parse_move_file(source, move_list, effect_list):
                 state.p1 = int(line[line.index("(") + 1:line.index(")")])
             elif "AttackP2(" in line:
                 state.p2 = int(line[line.index("(") + 1:line.index(")")])
-            elif "hitstun(" in line:
+            elif "Unknown9154(" in line:
                 state.hitstun = int(line[line.index("(") + 1:line.index(")")])
             elif "AirUntechableTime(" in line:
                 state.untech = int(line[line.index("(") + 1:line.index(")")])
@@ -803,21 +803,21 @@ def write_file(moves_on_block, target):
                                                 move_on_block.superflash_duration)
             subroutine_block_timelines.append(result)
         if startup is not "":
-            target.write("\t" + str(startup) + "|" + middle + "|" + str(recovery))
+            target.write("|startup=" + str(startup) + "|active=" + middle + "|recovery=" + str(recovery))
         else:
-            target.write("Total: " + str(recovery))
+            target.write("|recovery=Total: " + str(recovery))
         if move_on_block.landing_recovery > 0:
             target.write("+" + str(move_on_block.landing_recovery) + "L")
-        target.write("\n\tduration on block: " + str(duration_on_block))
+        # target.write("\n\tduration on block: " + str(duration_on_block))
         if len(subroutine_block_timelines) > 0:
             for result in subroutine_block_timelines:
                 last_blockstun_frame = result[5] if result[5] > last_blockstun_frame else last_blockstun_frame
                 # target.write("\n\tstartup: " + str(result[0]))
-                target.write("\n\t" + str(result[0]) + "|" + result[1] + "|" + str(result[2]))
-                target.write(" blockstun: " + str(last_blockstun_frame))
+                target.write("\n|startup=" + str(result[0]) + "|active=" + result[1] + "|recovery=" + str(result[2]))
+                target.write("|blockstun=" + str(last_blockstun_frame))
         if last_blockstun_frame != 0:
-            target.write("\n\tlast blockstun: " + str(last_blockstun_frame))
-            target.write(" diff: " + str(last_blockstun_frame - duration_on_block))
+            # target.write("\n\tlast blockstun: " + str(last_blockstun_frame))
+            target.write("|frameAdv=" + str(last_blockstun_frame - duration_on_block))
         for inv in inv_list:
             inv_text = get_inv_text(inv[0], inv[1], inv[2], inv[3],
                                     move_on_block.superflash_start,
@@ -877,6 +877,16 @@ def create_damage_text(damage_list):
     p2_multiplier = 1
     p2Once = None
     p2_str = ""
+    hitstun = None
+    hitstun_str = ""
+    hitstun_multiplier = 1
+    untech = None
+    untech_str = ""
+    untech_multiplier = 1
+    level = None
+    level_str = ""
+    level_multiplier = 1
+
     for item in damage_list:
         if damage == item.damage:
             damage_multiplier += 1
@@ -905,6 +915,33 @@ def create_damage_text(damage_list):
                 p2_multiplier = 1   # reset multiplier
             p2_str += ", "
         p2 = item.p2
+        if hitstun == item.hitstun:
+            hitstun_multiplier += 1
+        elif hitstun is not None:
+            hitstun_str += str(hitstun)
+            if hitstun_multiplier > 1:
+                hitstun_str += "*" + str(hitstun_multiplier)
+                hitstun_multiplier = 1   # reset multiplier
+            hitstun_str += ", "
+        hitstun = item.hitstun
+        if untech == item.untech:
+            untech_multiplier += 1
+        elif untech is not None:
+            untech_str += str(untech)
+            if untech_multiplier > 1:
+                untech_str += "*" + str(untech_multiplier)
+                untech_multiplier = 1   # reset multiplier
+            untech_str += ", "
+        untech = item.untech
+        if level == item.attackLevel:
+            level_multiplier += 1
+        elif level is not None:
+            level_str += str(level)
+            if level_multiplier > 1:
+                level_str += "*" + str(level_multiplier)
+                level_multiplier = 1   # reset multiplier
+            untech_str += ", "
+        level = item.attackLevel
         p2Once = item.p2Once
 
     if damage is not None:
@@ -921,8 +958,21 @@ def create_damage_text(damage_list):
             p2_str += "*" + str(p2_multiplier)
         if p2Once:
             p2_str += " (Once)"
+    if hitstun is not None:
+        hitstun_str += str(hitstun)
+        if hitstun_multiplier > 1 and hitstun_str != (str(hitstun)):
+            hitstun_str += "*" + str(hitstun_multiplier)
+    if untech is not None:
+        untech_str += str(untech)
+        if untech_multiplier > 1 and untech_str != (str(untech)):
+            untech_str += "*" + str(untech_multiplier)
+    if level is not None:
+        level_str += str(level)
+        if level_multiplier > 1 and level_str != (str(level)):
+            level_str += "*" + str(level_multiplier)
 
-    return "\n\tdamage: " + damage_str + "\tP1: " + p1_str + "\tP2: " + p2_str
+    return "\n|damage=" + damage_str + "|p1=" + p1_str + "|p2=" + p2_str + \
+        "\n|hitstun=" + hitstun_str + "|airHitstun=" + untech_str + "|level=" + level_str
 
 
 def main():
