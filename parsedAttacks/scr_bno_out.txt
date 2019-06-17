@@ -1,300 +1,454 @@
+
 NmlAtk5A
-|startup=8|active=3|recovery=26|frameAdv=-12
-	6-8 H
+|startup=8|active=3|recovery=26|frameAdv=-9
 |damage=1500|p1=90|p2=80
-|hitstun=17|airHitstun=24|level=3
+|level=3|attribute=B|inv=6-8 H
+|hitstun=17|airHitstun=24|blockstun=11|hitstop=16
+}}
+
 AN_NmlAtk5A_2nd
-|startup=9|active=3|recovery=19|frameAdv=-5
+|startup=9|active=3|recovery=19|frameAdv=-2
 |damage=1500|p1=100|p2=80
-|hitstun=17|airHitstun=17|level=3
+|level=3|attribute=B|inv=
+|hitstun=17|airHitstun=17|blockstun=11|hitstop=16
+}}
+
 AN_NmlAtk5A_3rd
-|startup=12|active=2|recovery=19|frameAdv=-2
+|startup=12|active=2|recovery=19|frameAdv=2
 |damage=1700|p1=100|p2=85
-|hitstun=19|airHitstun=19|level=4
+|level=4|attribute=B|inv=
+|hitstun=19|airHitstun=19|blockstun=12|hitstop=18
+}}
+
 AN_NmlAtk5A_4th
-|startup=15|active=6|recovery=23|frameAdv=-8
+|startup=15|active=6|recovery=23|frameAdv=-3
 |damage=2000|p1=100|p2=90
-|hitstun=21|airHitstun=40|level=5
+|level=5|attribute=B|inv=
+|hitstun=21|airHitstun=40|blockstun=13|hitstop=20
+}}
+
 NmlAtk5B
-|startup=23|active=4|recovery=23|frameAdv=-8
+|startup=23|active=4|recovery=23|frameAdv=-4
 |damage=1700|p1=100|p2=85
-|hitstun=30|airHitstun=0|level=0
+|level=4|attribute=B|inv=
+|hitstun=30|airHitstun=30|blockstun=12|hitstop=18
+}}
+
 NmlAtk4A
-|startup=6|active=3|recovery=12|frameAdv=-3
+|startup=6|active=3|recovery=12|frameAdv=-2
 |damage=1000|p1=100|p2=70
-|hitstun=12|airHitstun=12|level=1
+|level=1|attribute=B|inv=
+|hitstun=12|airHitstun=12|blockstun=9|hitstop=11
+}}
+
 NmlAtk4B
-|startup=25|active=8|recovery=23|frameAdv=-16
-	5-32 BP
+|startup=25|active=8|recovery=23|frameAdv=-11
 |damage=1500|p1=80|p2=80
-|hitstun=17|airHitstun=0|level=0
+|level=3|attribute=P|inv=5-32 BP
+|hitstun=17|airHitstun=40|blockstun=6|hitstop=16
+}}
+
 NmlAtk2A
-|startup=7|active=2|recovery=12|frameAdv=-2
+|startup=7|active=2|recovery=12|frameAdv=-1
 |damage=1000|p1=90|p2=70
-|hitstun=12|airHitstun=12|level=1
+|level=1|attribute=F|inv=
+|hitstun=12|airHitstun=12|blockstun=9|hitstop=11
+}}
+
 NmlAtk2B
-|startup=32776|active=4,4,5|recovery=28|frameAdv=-14
-	5-32775 F
-|damage=700*3|p1=90|p2=85
-|hitstun=27|airHitstun=0|level=0
+|startup=32776|active=4,4,5|recovery=28|frameAdv=-10
+|damage=700*3|p1=90*3|p2=85*3
+|level=4*3|attribute=H*3|inv=5-32775 F
+|hitstun=27*3|airHitstun=30*3|blockstun=2*3|hitstop=18*3
+}}
+
 NmlAtk2C
-|startup=17|active=3|recovery=32|frameAdv=-18
+|startup=17|active=3|recovery=32|frameAdv=-15
 |damage=1500|p1=90|p2=80
-|hitstun=17|airHitstun=26|level=3
+|level=3|attribute=F|inv=
+|hitstun=17|airHitstun=26|blockstun=3|hitstop=16
+}}
+
 NmlAtkAIR5A
-|startup=10|active=2,2,2|recovery=16|frameAdv=-1
-|damage=620*3|p1=100|p2=80 (Once)
-|hitstun=17|airHitstun=17|level=3
+|startup=10|active=2,2,2|recovery=16|frameAdv=2
+|damage=620*3|p1=100*3|p2=80*3
+|level=3*3|attribute=H*3|inv=
+|hitstun=17*3|airHitstun=17*3|blockstun=3*2, 5|hitstop=16*3
+}}
+
 NmlAtkAIR5A_2nd
-|startup=9|active=3|recovery=24|frameAdv=-8
+|startup=9|active=3|recovery=24|frameAdv=-4
 |damage=1700|p1=100|p2=85
-|hitstun=19|airHitstun=19|level=4
+|level=4|attribute=H|inv=
+|hitstun=19|airHitstun=19|blockstun=12|hitstop=18
+}}
+
 NmlAtkAIR5B
-|startup=21|active=4,5|recovery=32806|frameAdv=-32792
-|damage=800*2|p1=100|p2=85
-|hitstun=19|airHitstun=0|level=0
+|startup=21|active=4,5|recovery=32806|frameAdv=-32788
+|damage=800*2|p1=100*2|p2=85*2
+|level=4*2|attribute=H*2|inv=
+|hitstun=19*2|airHitstun=35*2|blockstun=0*2|hitstop=18*2
+}}
+
 NmlAtkAIR5C
-|startup=10|active=3,3,3,2,2|recovery=14+7L|frameAdv=3
-|damage=370*5|p1=100|p2=85 (Once)
-|hitstun=22|airHitstun=22|level=4
+|startup=10|active=3,3,3,2,2|recovery=14+7L|frameAdv=7
+|damage=370*5|p1=100*5|p2=85*5
+|level=4*5|attribute=H*5|inv=
+|hitstun=22*5|airHitstun=22*5|blockstun=3*5|hitstop=18*5
+}}
+
 NmlAtkAIR5C_2nd
-|startup=9|active=3|recovery=36|frameAdv=-20
+|startup=9|active=3|recovery=36|frameAdv=-16
 |damage=1700|p1=100|p2=85
-|hitstun=19|airHitstun=40|level=4
+|level=4|attribute=H|inv=
+|hitstun=19|airHitstun=40|blockstun=12|hitstop=18
+}}
+
 NmlAtkThrow
 |startup=44|active=3|recovery=23|frameAdv=-25
 |damage=0|p1=100|p2=100
-|hitstun=0|airHitstun=0|level=0
+|level=0|attribute=|inv=
+|hitstun=0|airHitstun=0|blockstun=0|hitstop=0
+}}
+
 ThrowExe
-|startup=10|active=4(14)2|recovery=119|frameAdv=-104
-|damage=1300, 700|p1=100|p2=50, 80 (Once)
-|hitstun=17|airHitstun=17, 35|level=3
+|startup=10|active=4(14)2|recovery=119|frameAdv=-101
+|damage=1300, 700|p1=100*2|p2=50, 80
+|level=3*2|attribute=*2|inv=
+|hitstun=17*2|airHitstun=17, 35|blockstun=0, 11|hitstop=16*2
+}}
+
 NmlAtkBackThrow
 |startup=44|active=3|recovery=23|frameAdv=-25
 |damage=0|p1=100|p2=100
-|hitstun=0|airHitstun=0|level=0
+|level=0|attribute=|inv=
+|hitstun=0|airHitstun=0|blockstun=0|hitstop=0
+}}
+
 BackThrowExe
-|startup=10|active=4(16)2|recovery=114|frameAdv=-99
-|damage=1300, 700|p1=100|p2=50, 80 (Once)
-|hitstun=17|airHitstun=17, 35|level=3
+|startup=10|active=4(16)2|recovery=114|frameAdv=-96
+|damage=1300, 700|p1=100*2|p2=50, 80
+|level=3*2|attribute=*2|inv=
+|hitstun=17*2|airHitstun=17, 35|blockstun=0, 11|hitstop=16*2
+}}
+
 CmnActCrushAttack
-|startup=22|active=3|recovery=24|frameAdv=-10
+|startup=22|active=3|recovery=24|frameAdv=-7
 |damage=0|p1=100|p2=100
-|hitstun=0|airHitstun=0|level=0
+|level=3|attribute=|inv=
+|hitstun=0|airHitstun=0|blockstun=11|hitstop=16
+}}
+
 con5A_1st
-|startup=10|active=4|recovery=20|frameAdv=-10
+|startup=10|active=4|recovery=20|frameAdv=-8
 |damage=1000|p1=100|p2=85
-|hitstun=21|airHitstun=0|level=0
+|level=2|attribute=B|inv=
+|hitstun=21|airHitstun=31|blockstun=3|hitstop=13
+}}
+
 con5A_2nd
-|startup=9|active=2(2)2|recovery=23|frameAdv=-6
-|damage=800*2|p1=100|p2=85
-|hitstun=30|airHitstun=0|level=0
+|startup=9|active=2(2)2|recovery=23|frameAdv=-2
+|damage=800*2|p1=100*2|p2=85*2
+|level=4*2|attribute=B*2|inv=
+|hitstun=30*2|airHitstun=40*2|blockstun=12, 3|hitstop=18*2
+}}
+
 con5A_3rd
-|startup=13|active=2(2)2|recovery=25|frameAdv=-8
-|damage=900*2|p1=100|p2=85
-|hitstun=19|airHitstun=0|level=0
+|startup=13|active=2(2)2|recovery=25|frameAdv=-4
+|damage=900*2|p1=100*2|p2=85*2
+|level=4*2|attribute=B*2|inv=
+|hitstun=19*2|airHitstun=35*2|blockstun=3*2|hitstop=18*2
+}}
+
 con5A_4th
-|startup=18|active=2(2)2|recovery=33|frameAdv=-11
-|damage=1000*2|p1=100|p2=85
-|hitstun=23|airHitstun=0|level=0
+|startup=18|active=2(2)2|recovery=33|frameAdv=-12
+|damage=1000*2|p1=100*2|p2=85*2
+|level=4*2|attribute=B*2|inv=
+|hitstun=23*2|airHitstun=25*2|blockstun=3*2|hitstop=18*2
+}}
+
 con5B_Middle
-|startup=33|active=4|recovery=27|frameAdv=-12
-	3-36 BP
+|startup=33|active=4|recovery=27|frameAdv=-8
 |damage=1700|p1=90|p2=75
-|hitstun=19|airHitstun=0|level=0
+|level=4|attribute=F|inv=3-36 BP
+|hitstun=19|airHitstun=45|blockstun=3|hitstop=18
+}}
+
 con2B_Low
-|startup=23|active=3,3,3|recovery=32790|frameAdv=-32774
-	3-32798 F
-|damage=500*3|p1=90|p2=75
-|hitstun=27|airHitstun=0|level=0
+|startup=23|active=3,3,3|recovery=32790|frameAdv=-32770
+|damage=500*3|p1=90*3|p2=75*3
+|level=4*3|attribute=H*3|inv=3-32798 F
+|hitstun=27*3|airHitstun=32*3|blockstun=2*3|hitstop=18*3
+}}
+
 con5C_Middle
-|startup=16|active=3|recovery=27|frameAdv=-13
+|startup=16|active=3|recovery=27|frameAdv=-10
 |damage=1200|p1=90|p2=75
-|hitstun=17|airHitstun=0|level=0
+|level=3|attribute=B|inv=
+|hitstun=17|airHitstun=40|blockstun=11|hitstop=16
+}}
+
 con2C_Low
-|startup=22|active=7|recovery=25|frameAdv=-15
-	13-33 B
+|startup=22|active=7|recovery=25|frameAdv=-12
 |damage=1200|p1=90|p2=75
-|hitstun=17|airHitstun=0|level=0
+|level=3|attribute=F|inv=13-33 B
+|hitstun=17|airHitstun=34|blockstun=11|hitstop=16
+}}
+
 con_Finish
-|startup=11|active=2(7)4|recovery=33|frameAdv=-16
-|damage=1000, 1700|p1=100|p2=90
-|hitstun=21|airHitstun=0|level=0
+|startup=11|active=2(7)4|recovery=33|frameAdv=-11
+|damage=1000, 1700|p1=100*2|p2=90*2
+|level=5*2|attribute=B*2|inv=
+|hitstun=21*2|airHitstun=21, 50|blockstun=16, 0|hitstop=20*2
+}}
+
 CmnActInvincibleAttack
-|startup=10|active=7|recovery=124|frameAdv=-112
-	1-12 All
+|startup=10|active=7|recovery=124|frameAdv=-108
 |damage=2250|p1=100|p2=85
-|hitstun=19|airHitstun=0|level=0
+|level=4|attribute=|inv=1-12 All
+|hitstun=19|airHitstun=60|blockstun=12|hitstop=18
+}}
+
 Special236A
-|recovery=Total: 54
-|startup=18|active=20|recovery=0|blockstun=42
-|startup=18|active=14|recovery=0|blockstun=42
-|startup=28|active=14|recovery=0|blockstun=42|frameAdv=-12
+
+|startup=18|active=20|recovery=0last blockstun frame: 45
+|startup=18|active=14|recovery=0last blockstun frame: 45
+|startup=28|active=14|recovery=0last blockstun frame: 45|startup=|active=|recovery=Total: 54|frameAdv=-9
 |damage=1500, 0*2|p1=80, 100*2|p2=80, 100*2
-|hitstun=17, 0*2|airHitstun=0|level=0
+|level=3, 0*2|attribute=*3|inv=
+|hitstun=17, 0*2|airHitstun=38, 0*2|blockstun=8, 0*2|hitstop=16, 0*2
+}}
+
 Special236B
-|recovery=Total: 54
-|startup=14|active=20|recovery=0|blockstun=38
-|startup=14|active=14|recovery=0|blockstun=38
-|startup=24|active=14|recovery=0|blockstun=38|frameAdv=-16
-|damage=0, 1500, 0|p1=100, 80, 100|p2=100, 80, 100
-|hitstun=0, 17, 0|airHitstun=0|level=0
+
+|startup=14|active=20|recovery=0last blockstun frame: 41
+|startup=14|active=14|recovery=0last blockstun frame: 41
+|startup=24|active=14|recovery=0last blockstun frame: 41|startup=|active=|recovery=Total: 54|frameAdv=-13
+|damage=1500, 0*2|p1=80, 100*2|p2=80, 100*2
+|level=3, 0*2|attribute=*3|inv=
+|hitstun=17, 0*2|airHitstun=38, 0*2|blockstun=8, 0*2|hitstop=16, 0*2
+}}
+
 SpecialThrow
 |startup=29|active=6|recovery=22|frameAdv=-27
 |damage=0|p1=100|p2=100
-|hitstun=0|airHitstun=0|level=0
+|level=0|attribute=H|inv=
+|hitstun=0|airHitstun=0|blockstun=0|hitstop=0
+}}
+
 SpecialThrowExe
 |startup=25|active=14|recovery=22|frameAdv=-26
 |damage=2500|p1=100|p2=80
-|hitstun=10|airHitstun=12|level=0
+|level=0|attribute=|inv=
+|hitstun=10|airHitstun=12|blockstun=0|hitstop=9
+}}
+
 FlashHaider
-|startup=14|active=2|recovery=21|frameAdv=-4
+|startup=14|active=2|recovery=21|frameAdv=0
 |damage=230|p1=100|p2=85
-|hitstun=19|airHitstun=0|level=0
+|level=4|attribute=F|inv=
+|hitstun=19|airHitstun=19|blockstun=0|hitstop=18
+}}
+
 BloomTrigger
-|startup=9|active=2(7)2,2,2,2|recovery=23|frameAdv=-4
-|damage=900*5|p1=80|p2=90
-|hitstun=21|airHitstun=0|level=0
+|startup=9|active=2(7)2,2,2,2|recovery=23|frameAdv=1
+|damage=900*5|p1=80*5|p2=90*5
+|level=5*5|attribute=B*5|inv=
+|hitstun=21*5|airHitstun=21, 50*4|blockstun=16, 1*4|hitstop=20*5
+}}
+
 AssaultThrough
-|startup=31|active=9|recovery=16|frameAdv=-4
-	7-18 All
+|startup=31|active=9|recovery=16|frameAdv=1
 |damage=2000|p1=80|p2=80
-|hitstun=21|airHitstun=0|level=0
+|level=5|attribute=B|inv=7-18 All
+|hitstun=21|airHitstun=27|blockstun=13|hitstop=20
+}}
+
 UltimateShot
-|startup=1+28Flash+5|active=5|recovery=138
-|startup=1+28Flash+38|active=2|recovery=15|blockstun=87
-|startup=1+28Flash+41|active=2|recovery=15|blockstun=90
-|startup=1+28Flash+44|active=2|recovery=15|blockstun=93
-|startup=1+28Flash+47|active=2|recovery=15|blockstun=96
-|startup=1+28Flash+50|active=2|recovery=15|blockstun=99
-|startup=1+28Flash+53|active=2|recovery=15|blockstun=102
-|startup=1+28Flash+56|active=2|recovery=15|blockstun=105
-|startup=1+28Flash+59|active=2|recovery=15|blockstun=108
-|startup=1+28Flash+62|active=2|recovery=15|blockstun=111
-|startup=1+28Flash+65|active=2|recovery=15|blockstun=114
-|startup=1+28Flash+68|active=2|recovery=15|blockstun=117
-|startup=1+28Flash+71|active=2|recovery=15|blockstun=120
-|startup=1+28Flash+74|active=2|recovery=15|blockstun=123
-|startup=1+28Flash+77|active=2|recovery=15|blockstun=126
-|startup=1+28Flash+80|active=2|recovery=15|blockstun=129
-|startup=1+28Flash+83|active=2|recovery=15|blockstun=132
-|startup=1+28Flash+86|active=2|recovery=15|blockstun=135
-|startup=1+28Flash+89|active=2|recovery=15|blockstun=138
-|startup=1+28Flash+92|active=2|recovery=15|blockstun=141
-|startup=1+28Flash+95|active=2|recovery=15|blockstun=144
-|startup=1+28Flash+98|active=2|recovery=15|blockstun=147
-|startup=1+28Flash+101|active=2|recovery=15|blockstun=150
-|startup=1+28Flash+104|active=2|recovery=15|blockstun=153
-|startup=1+28Flash+107|active=2|recovery=15|blockstun=156|frameAdv=-33
-	1-10 Guard All Guard
-|damage=2000, 100*24|p1=80|p2=100
-|hitstun=21|airHitstun=0, , 80*24|level=04*24
+
+|startup=1+28Flash+38|active=2|recovery=15last blockstun frame: 91
+|startup=1+28Flash+41|active=2|recovery=15last blockstun frame: 94
+|startup=1+28Flash+44|active=2|recovery=15last blockstun frame: 97
+|startup=1+28Flash+47|active=2|recovery=15last blockstun frame: 100
+|startup=1+28Flash+50|active=2|recovery=15last blockstun frame: 103
+|startup=1+28Flash+53|active=2|recovery=15last blockstun frame: 106
+|startup=1+28Flash+56|active=2|recovery=15last blockstun frame: 109
+|startup=1+28Flash+59|active=2|recovery=15last blockstun frame: 112
+|startup=1+28Flash+62|active=2|recovery=15last blockstun frame: 115
+|startup=1+28Flash+65|active=2|recovery=15last blockstun frame: 118
+|startup=1+28Flash+68|active=2|recovery=15last blockstun frame: 121
+|startup=1+28Flash+71|active=2|recovery=15last blockstun frame: 124
+|startup=1+28Flash+74|active=2|recovery=15last blockstun frame: 127
+|startup=1+28Flash+77|active=2|recovery=15last blockstun frame: 130
+|startup=1+28Flash+80|active=2|recovery=15last blockstun frame: 133
+|startup=1+28Flash+83|active=2|recovery=15last blockstun frame: 136
+|startup=1+28Flash+86|active=2|recovery=15last blockstun frame: 139
+|startup=1+28Flash+89|active=2|recovery=15last blockstun frame: 142
+|startup=1+28Flash+92|active=2|recovery=15last blockstun frame: 145
+|startup=1+28Flash+95|active=2|recovery=15last blockstun frame: 148
+|startup=1+28Flash+98|active=2|recovery=15last blockstun frame: 151
+|startup=1+28Flash+101|active=2|recovery=15last blockstun frame: 154
+|startup=1+28Flash+104|active=2|recovery=15last blockstun frame: 157
+|startup=1+28Flash+107|active=2|recovery=15last blockstun frame: 160|startup=1+28Flash+5|active=5|recovery=138|frameAdv=-29
+|damage=2000, 100*24|p1=80*25|p2=100*25
+|level=5, 4*24|attribute=, P*24|inv=1-10 Guard All Guard
+|hitstun=21*25|airHitstun=50, 80*24|blockstun=13, 0*24|hitstop=20*25
+}}
+
 UltimateShotOD
-|startup=1+28Flash+5|active=5|recovery=138
-|startup=1+28Flash+38|active=2|recovery=15|blockstun=87
-|startup=1+28Flash+41|active=2|recovery=15|blockstun=90
-|startup=1+28Flash+44|active=2|recovery=15|blockstun=93
-|startup=1+28Flash+47|active=2|recovery=15|blockstun=96
-|startup=1+28Flash+50|active=2|recovery=15|blockstun=99
-|startup=1+28Flash+53|active=2|recovery=15|blockstun=102
-|startup=1+28Flash+56|active=2|recovery=15|blockstun=105
-|startup=1+28Flash+59|active=2|recovery=15|blockstun=108
-|startup=1+28Flash+62|active=2|recovery=15|blockstun=111
-|startup=1+28Flash+65|active=2|recovery=15|blockstun=114
-|startup=1+28Flash+68|active=2|recovery=15|blockstun=117
-|startup=1+28Flash+71|active=2|recovery=15|blockstun=120
-|startup=1+28Flash+74|active=2|recovery=15|blockstun=123
-|startup=1+28Flash+77|active=2|recovery=15|blockstun=126
-|startup=1+28Flash+80|active=2|recovery=15|blockstun=129
-|startup=1+28Flash+83|active=2|recovery=15|blockstun=132
-|startup=1+28Flash+86|active=2|recovery=15|blockstun=135
-|startup=1+28Flash+89|active=2|recovery=15|blockstun=138
-|startup=1+28Flash+92|active=2|recovery=15|blockstun=141
-|startup=1+28Flash+95|active=2|recovery=15|blockstun=144
-|startup=1+28Flash+98|active=2|recovery=15|blockstun=147
-|startup=1+28Flash+101|active=2|recovery=15|blockstun=150
-|startup=1+28Flash+104|active=2|recovery=15|blockstun=153
-|startup=1+28Flash+107|active=2|recovery=15|blockstun=156|frameAdv=-33
-	1-10 Guard All Guard
-|damage=2000, 100*24|p1=80|p2=100
-|hitstun=21|airHitstun=0, , 70*24|level=04*24
+
+|startup=1+28Flash+38|active=2|recovery=15last blockstun frame: 91
+|startup=1+28Flash+41|active=2|recovery=15last blockstun frame: 94
+|startup=1+28Flash+44|active=2|recovery=15last blockstun frame: 97
+|startup=1+28Flash+47|active=2|recovery=15last blockstun frame: 100
+|startup=1+28Flash+50|active=2|recovery=15last blockstun frame: 103
+|startup=1+28Flash+53|active=2|recovery=15last blockstun frame: 106
+|startup=1+28Flash+56|active=2|recovery=15last blockstun frame: 109
+|startup=1+28Flash+59|active=2|recovery=15last blockstun frame: 112
+|startup=1+28Flash+62|active=2|recovery=15last blockstun frame: 115
+|startup=1+28Flash+65|active=2|recovery=15last blockstun frame: 118
+|startup=1+28Flash+68|active=2|recovery=15last blockstun frame: 121
+|startup=1+28Flash+71|active=2|recovery=15last blockstun frame: 124
+|startup=1+28Flash+74|active=2|recovery=15last blockstun frame: 127
+|startup=1+28Flash+77|active=2|recovery=15last blockstun frame: 130
+|startup=1+28Flash+80|active=2|recovery=15last blockstun frame: 133
+|startup=1+28Flash+83|active=2|recovery=15last blockstun frame: 136
+|startup=1+28Flash+86|active=2|recovery=15last blockstun frame: 139
+|startup=1+28Flash+89|active=2|recovery=15last blockstun frame: 142
+|startup=1+28Flash+92|active=2|recovery=15last blockstun frame: 145
+|startup=1+28Flash+95|active=2|recovery=15last blockstun frame: 148
+|startup=1+28Flash+98|active=2|recovery=15last blockstun frame: 151
+|startup=1+28Flash+101|active=2|recovery=15last blockstun frame: 154
+|startup=1+28Flash+104|active=2|recovery=15last blockstun frame: 157
+|startup=1+28Flash+107|active=2|recovery=15last blockstun frame: 160|startup=1+28Flash+5|active=5|recovery=138|frameAdv=-29
+|damage=2000, 100*24|p1=80*25|p2=100*25
+|level=5, 4*24|attribute=, P*24|inv=1-10 Guard All Guard
+|hitstun=21*25|airHitstun=50, 70*24|blockstun=13, 0*24|hitstop=20*25
+}}
+
 UltimateAirShot
-|recovery=Total: 4+21Flash+157
-|startup=4+21Flash+6|active=2|recovery=28|blockstun=51
-|startup=4+21Flash+10|active=2|recovery=28|blockstun=55
-|startup=4+21Flash+14|active=2|recovery=28|blockstun=59
-|startup=4+21Flash+18|active=2|recovery=28|blockstun=63
-|startup=4+21Flash+22|active=2|recovery=28|blockstun=67
-|startup=4+21Flash+26|active=2|recovery=28|blockstun=71
-|startup=4+21Flash+30|active=2|recovery=28|blockstun=75
-|startup=4+21Flash+34|active=2|recovery=28|blockstun=79
-|startup=4+21Flash+38|active=2|recovery=28|blockstun=83
-|startup=4+21Flash+42|active=2|recovery=28|blockstun=87
-|startup=4+21Flash+83|active=46|recovery=14|blockstun=128|frameAdv=-54
-	1--3 All
+
+|startup=4+21Flash+6|active=2|recovery=28last blockstun frame: 55
+|startup=4+21Flash+10|active=2|recovery=28last blockstun frame: 59
+|startup=4+21Flash+14|active=2|recovery=28last blockstun frame: 63
+|startup=4+21Flash+18|active=2|recovery=28last blockstun frame: 67
+|startup=4+21Flash+22|active=2|recovery=28last blockstun frame: 71
+|startup=4+21Flash+26|active=2|recovery=28last blockstun frame: 75
+|startup=4+21Flash+30|active=2|recovery=28last blockstun frame: 79
+|startup=4+21Flash+34|active=2|recovery=28last blockstun frame: 83
+|startup=4+21Flash+38|active=2|recovery=28last blockstun frame: 87
+|startup=4+21Flash+42|active=2|recovery=28last blockstun frame: 91
+|startup=4+21Flash+83|active=46|recovery=14last blockstun frame: 132|startup=|active=|recovery=Total: 4+21Flash+157|frameAdv=-50
 |damage=630*10, 4200|p1=80*10, 48|p2=60*10, 100
-|hitstun=19|airHitstun=150*10, 60|level=4
+|level=4*11|attribute=P*11|inv=1--3 All
+|hitstun=19*11|airHitstun=150*10, 60|blockstun=0*11|hitstop=20*11
+}}
+
 UltimateAirShotOD
-|recovery=Total: 4+21Flash+174
-|startup=4+21Flash+6|active=2|recovery=28|blockstun=51
-|startup=4+21Flash+10|active=2|recovery=28|blockstun=55
-|startup=4+21Flash+14|active=2|recovery=28|blockstun=59
-|startup=4+21Flash+18|active=2|recovery=28|blockstun=63
-|startup=4+21Flash+22|active=2|recovery=28|blockstun=67
-|startup=4+21Flash+26|active=2|recovery=28|blockstun=71
-|startup=4+21Flash+30|active=2|recovery=28|blockstun=75
-|startup=4+21Flash+34|active=2|recovery=28|blockstun=79
-|startup=4+21Flash+38|active=2|recovery=28|blockstun=83
-|startup=4+21Flash+42|active=2|recovery=28|blockstun=87
-|startup=4+21Flash+46|active=2|recovery=28|blockstun=91
-|startup=4+21Flash+50|active=2|recovery=28|blockstun=95
-|startup=4+21Flash+54|active=2|recovery=28|blockstun=99
-|startup=4+21Flash+58|active=2|recovery=28|blockstun=103
-|startup=4+21Flash+62|active=2|recovery=28|blockstun=107
-|startup=4+21Flash+103|active=46|recovery=14|blockstun=148|frameAdv=-51
-	1--3 All
+
+|startup=4+21Flash+6|active=2|recovery=28last blockstun frame: 55
+|startup=4+21Flash+10|active=2|recovery=28last blockstun frame: 59
+|startup=4+21Flash+14|active=2|recovery=28last blockstun frame: 63
+|startup=4+21Flash+18|active=2|recovery=28last blockstun frame: 67
+|startup=4+21Flash+22|active=2|recovery=28last blockstun frame: 71
+|startup=4+21Flash+26|active=2|recovery=28last blockstun frame: 75
+|startup=4+21Flash+30|active=2|recovery=28last blockstun frame: 79
+|startup=4+21Flash+34|active=2|recovery=28last blockstun frame: 83
+|startup=4+21Flash+38|active=2|recovery=28last blockstun frame: 87
+|startup=4+21Flash+42|active=2|recovery=28last blockstun frame: 91
+|startup=4+21Flash+46|active=2|recovery=28last blockstun frame: 95
+|startup=4+21Flash+50|active=2|recovery=28last blockstun frame: 99
+|startup=4+21Flash+54|active=2|recovery=28last blockstun frame: 103
+|startup=4+21Flash+58|active=2|recovery=28last blockstun frame: 107
+|startup=4+21Flash+62|active=2|recovery=28last blockstun frame: 111
+|startup=4+21Flash+103|active=46|recovery=14last blockstun frame: 152|startup=|active=|recovery=Total: 4+21Flash+174|frameAdv=-47
 |damage=630*15, 3800|p1=80*15, 48|p2=60*15, 100
-|hitstun=19|airHitstun=150*15, 60|level=4
+|level=4*16|attribute=P*16|inv=1--3 All
+|hitstun=19*16|airHitstun=150*15, 60|blockstun=0*16|hitstop=20*16
+}}
+
 AstralHeat
-|startup=8+74Flash+10|active=4|recovery=25|frameAdv=-10
-	1-31 All
+|startup=8+74Flash+10|active=4|recovery=25|frameAdv=-6
 |damage=0|p1=100|p2=85
-|hitstun=600|airHitstun=19|level=4
+|level=4|attribute=B|inv=1-31 All
+|hitstun=600|airHitstun=19|blockstun=0|hitstop=18
+}}
+
 AstralHeatExe
-|startup=1|active=180,20,20,20,18,18,18,16,14,14,14,29(197)5(30)5|recovery=225
-|startup=|active=|recovery=90|blockstun=632|frameAdv=-211
-	1-843 All
-|damage=800*12, 17520|p1=100|p2=70*12, 85
-|hitstun=10*12, 19|airHitstun=600*12, , 270|level=0*124
+
+|startup=|active=|recovery=90last blockstun frame: 636|startup=1|active=180,20,20,20,18,18,18,16,14,14,14,29(197)5(30)5|recovery=225|frameAdv=-207
+|damage=800*12, 17520|p1=100*13|p2=70*12, 85
+|level=0*12, 4|attribute=*13|inv=1-843 All
+|hitstun=10*12, 19|airHitstun=600*12, 270|blockstun=0*13|hitstop=9*12, 18
+}}
+
 CmnActChangePartnerIn
 |startup=36|active=3|recovery=32809|frameAdv=-32811
 |damage=0|p1=100|p2=100
-|hitstun=0|airHitstun=0|level=0
+|level=0|attribute=|inv=
+|hitstun=0|airHitstun=0|blockstun=0|hitstop=0
+}}
+
 CmnActChangePartnerQuickIn
-|recovery=Total: 29
+|startup=|active=|recovery=Total: 29|frameAdv=
+|damage=|p1=|p2=
+|level=|attribute=|inv=
+|hitstun=|airHitstun=|blockstun=|hitstop=
+}}
+
 CmnActChangePartnerOut
-|recovery=Total: 60
+|startup=|active=|recovery=Total: 60|frameAdv=
+|damage=|p1=|p2=
+|level=|attribute=|inv=
+|hitstun=|airHitstun=|blockstun=|hitstop=
+}}
+
 CmnActChangePartnerQuickOut
-|recovery=Total: 21
+|startup=|active=|recovery=Total: 21|frameAdv=
+|damage=|p1=|p2=
+|level=|attribute=|inv=
+|hitstun=|airHitstun=|blockstun=|hitstop=
+}}
+
 CmnActChangePartnerAssistAdmiss
-|recovery=Total: 112
+|startup=|active=|recovery=Total: 112|frameAdv=
+|damage=|p1=|p2=
+|level=|attribute=|inv=
+|hitstun=|airHitstun=|blockstun=|hitstop=
+}}
+
 CmnActChangePartnerAssistAtk_A
-|recovery=Total: 90
-|startup=30|active=3,3,6,6,6,6,6,6,5|recovery=0|blockstun=204|frameAdv=114
-|damage=450*9|p1=70|p2=85 (Once)
-|hitstun=18|airHitstun=45|level=4
+
+|startup=30|active=3,3,6,6,6,6,6,6,5|recovery=0last blockstun frame: 208|startup=|active=|recovery=Total: 90|frameAdv=118
+|damage=450*9|p1=70*9|p2=85*9
+|level=4*9|attribute=P*9|inv=
+|hitstun=18*9|airHitstun=45*9|blockstun=12*9|hitstop=24*9
+}}
+
 CmnActChangePartnerAssistAtk_B
-|startup=12|active=2|recovery=38|frameAdv=-21
-|damage=1100|p1=70|p2=85 (Once)
-|hitstun=19|airHitstun=19|level=4
+|startup=12|active=2|recovery=38|frameAdv=-17
+|damage=1100|p1=70|p2=85
+|level=4|attribute=F|inv=
+|hitstun=19|airHitstun=19|blockstun=0|hitstop=18
+}}
+
 CmnActChangePartnerAssistAtk_D
-|startup=13|active=3(2)3|recovery=33|frameAdv=-12
-|damage=700*2|p1=70|p2=85
-|hitstun=23|airHitstun=0|level=0
+|startup=13|active=3(2)3|recovery=33|frameAdv=-13
+|damage=700*2|p1=70*2|p2=85*2
+|level=4*2|attribute=B*2|inv=
+|hitstun=23*2|airHitstun=40*2|blockstun=3*2|hitstop=18*2
+}}
+
 CmnActChangePartnerDD
-|recovery=Total: 1+49Flash+0
-	1--29 All
+|startup=|active=|recovery=Total: 1+49Flash+0|frameAdv=
+|damage=|p1=|p2=
+|level=|attribute=|inv=1--29 All
+|hitstun=|airHitstun=|blockstun=|hitstop=
+}}
+
 CmnActChangePartnerBurst
 |startup=149|active=3|recovery=32817|frameAdv=-32819
 |damage=0|p1=100|p2=100
-|hitstun=0|airHitstun=0|level=0
+|level=0|attribute=|inv=
+|hitstun=0|airHitstun=0|blockstun=0|hitstop=0
+}}
