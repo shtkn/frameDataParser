@@ -36,7 +36,7 @@ CmnActChangePartnerAssistAdmiss
 
 CmnActChangePartnerAssistAtk_A
 
-|startup=42|active=300|recovery=0last blockstun frame: 66|startup=|active=|recovery=Total: 32822|frameAdv=-32756
+|startup=42|active=300|recovery=0last blockstun frame: 63|startup=|active=|recovery=Total: 32822|frameAdv=-32759
 |damage=1500|p1=70|p2=90
 |level=3|attribute=|inv=
 |hitstun=17|airHitstun=17|blockstun=16|hitstop=5
@@ -71,14 +71,14 @@ CmnActChangePartnerBurst
 }}
 
 NmlAtk5A
-|startup=9|active=4|recovery=16|frameAdv=0
+|startup=9|active=4|recovery=16|frameAdv=-3
 |damage=1500|p1=100|p2=80
 |level=3|attribute=B|inv=
 |hitstun=17|airHitstun=17|blockstun=16|hitstop=11
 }}
 
 NmlAtk5A2nd
-|startup=9|active=2|recovery=16|frameAdv=-2
+|startup=9|active=2|recovery=16|frameAdv=-4
 |damage=1300|p1=90|p2=75
 |level=2|attribute=F|inv=
 |hitstun=14|airHitstun=14|blockstun=13|hitstop=10
@@ -93,7 +93,7 @@ NmlAtk5A3rd
 
 NmlAtk5A4th
 
-|startup=7|active=22|recovery=0last blockstun frame: 37|startup=|active=|recovery=Total: 45|frameAdv=-8
+|startup=7|active=22|recovery=0last blockstun frame: 34|startup=|active=|recovery=Total: 45|frameAdv=-11
 |damage=1800|p1=100|p2=80
 |level=3|attribute=|inv=
 |hitstun=17|airHitstun=40|blockstun=16|hitstop=11
@@ -114,28 +114,28 @@ NmlAtk5B2nd
 }}
 
 NmlAtk4A
-|startup=6|active=3|recovery=15|frameAdv=-2
+|startup=6|active=3|recovery=15|frameAdv=-4
 |damage=1000|p1=100|p2=75
 |level=2|attribute=B|inv=
 |hitstun=14|airHitstun=14|blockstun=13|hitstop=10
 }}
 
 NmlAtk4A2nd
-|startup=8|active=3|recovery=20|frameAdv=-3
+|startup=8|active=3|recovery=20|frameAdv=-6
 |damage=1500|p1=100|p2=80
 |level=3|attribute=B|inv=
 |hitstun=17|airHitstun=17|blockstun=16|hitstop=11
 }}
 
 NmlAtk4A3rd
-|startup=14|active=4|recovery=32783|frameAdv=-32767
+|startup=14|active=4|recovery=32783|frameAdv=-32770
 |damage=1500|p1=100|p2=70
 |level=3|attribute=B|inv=
 |hitstun=17|airHitstun=30|blockstun=16|hitstop=11
 }}
 
 NmlAtk2A
-|startup=7|active=3|recovery=11|frameAdv=-1
+|startup=7|active=3|recovery=11|frameAdv=-2
 |damage=1000|p1=90|p2=70
 |level=1|attribute=F|inv=
 |hitstun=12|airHitstun=12|blockstun=11|hitstop=9
@@ -149,14 +149,14 @@ NmlAtk2B
 }}
 
 NmlAtk2C
-|startup=10|active=3|recovery=18|frameAdv=-1
+|startup=10|active=3|recovery=18|frameAdv=-4
 |damage=1500|p1=90|p2=80
 |level=3|attribute=F|inv=
 |hitstun=17|airHitstun=22|blockstun=16|hitstop=11
 }}
 
 NmlAtkAIR5A2nd
-|startup=6|active=4|recovery=12|frameAdv=4
+|startup=6|active=4|recovery=12|frameAdv=1
 |damage=1500|p1=100|p2=80
 |level=3|attribute=H|inv=
 |hitstun=17|airHitstun=20|blockstun=16|hitstop=11
@@ -170,7 +170,7 @@ NmlAtkAIR5C
 }}
 
 CmnActCrushAttack
-|startup=22|active=3|recovery=24|frameAdv=-7
+|startup=22|active=3|recovery=24|frameAdv=-10
 |damage=0|p1=100|p2=100
 |level=3|attribute=|inv=
 |hitstun=0|airHitstun=0|blockstun=16|hitstop=11
@@ -184,7 +184,7 @@ NmlAtkThrow
 }}
 
 NmlAtkThrowExe
-|startup=8|active=7|recovery=41|frameAdv=-35
+|startup=8|active=7|recovery=41|frameAdv=-36
 |damage=0|p1=100|p2=100
 |level=1|attribute=|inv=
 |hitstun=70|airHitstun=70|blockstun=11|hitstop=0
@@ -198,7 +198,7 @@ NmlAtkBackThrow
 }}
 
 NmlAtkBackThrowExe
-|startup=8|active=10(6)1|recovery=41|frameAdv=-29
+|startup=8|active=10(6)1|recovery=41|frameAdv=-30
 |damage=0|p1=100|p2=100
 |level=1|attribute=|inv=
 |hitstun=70|airHitstun=70|blockstun=11|hitstop=0
@@ -213,7 +213,7 @@ KamaeA
 
 ShagekiA
 
-|startup=22|active=300|recovery=0last blockstun frame: 46|startup=|active=|recovery=Total: 32802|frameAdv=-32756
+|startup=22|active=300|recovery=0last blockstun frame: 43|startup=|active=|recovery=Total: 32802|frameAdv=-32759
 |damage=1500|p1=80|p2=90
 |level=3|attribute=|inv=
 |hitstun=17|airHitstun=17|blockstun=16|hitstop=5
@@ -221,7 +221,7 @@ ShagekiA
 
 ShagekiB
 
-|startup=22|active=300|recovery=0last blockstun frame: 46|startup=3|active=2(2)4(4)4(7)32777|recovery=0|frameAdv=-32756
+|startup=22|active=300|recovery=0last blockstun frame: 43|startup=3|active=2(2)4(4)4(7)32777|recovery=0|frameAdv=-32759
 |damage=0, 1500|p1=100, 80|p2=100, 90
 |level=0, 3|attribute=B, |inv=
 |hitstun=0, 17|airHitstun=0, 17|blockstun=0, 16|hitstop=0, 5
@@ -229,7 +229,7 @@ ShagekiB
 
 ShagekiC
 
-|startup=22|active=300|recovery=0last blockstun frame: 46|startup=|active=|recovery=Total: 32802|frameAdv=-32756
+|startup=22|active=300|recovery=0last blockstun frame: 43|startup=|active=|recovery=Total: 32802|frameAdv=-32759
 |damage=1500|p1=80|p2=90
 |level=3|attribute=|inv=
 |hitstun=17|airHitstun=17|blockstun=16|hitstop=5
@@ -250,28 +250,28 @@ KamaeEX
 }}
 
 BanditRevolverB
-|startup=14|active=6(12)3|recovery=65541|frameAdv=-65521
+|startup=14|active=6(12)3|recovery=65541|frameAdv=-65525
 |damage=1000*2|p1=80*2|p2=85*2
 |level=4*2|attribute=B, H|inv=
 |hitstun=19*2|airHitstun=30*2|blockstun=18*2|hitstop=12*2
 }}
 
 AirBanditRevolverA
-|startup=9|active=3(12)6|recovery=32783|frameAdv=-32766
+|startup=9|active=3(12)6|recovery=32783|frameAdv=-32770
 |damage=1000*2|p1=80*2|p2=85*2 (Once)
 |level=4*2|attribute=H*2|inv=
 |hitstun=19*2|airHitstun=30*2|blockstun=18*2|hitstop=12*2
 }}
 
 AirBanditRevolverB
-|startup=13|active=6(12)6|recovery=65541|frameAdv=-65524
+|startup=13|active=6(12)6|recovery=65541|frameAdv=-65528
 |damage=1000*2|p1=80*2|p2=85*2
 |level=4*2|attribute=H*2|inv=
 |hitstun=19*2|airHitstun=30*2|blockstun=18*2|hitstop=12*2
 }}
 
 AirBanditRevolverEX
-|startup=9|active=6(12)6|recovery=32780|frameAdv=-32763
+|startup=9|active=6(12)6|recovery=32780|frameAdv=-32767
 |damage=1300*2|p1=80*2|p2=85*2
 |level=4*2|attribute=H*2|inv=
 |hitstun=19*2|airHitstun=30*2|blockstun=18*2|hitstop=12*2
@@ -285,7 +285,7 @@ WalkingShotEX
 }}
 
 WalkingShotKickEX
-|startup=11|active=2|recovery=35|frameAdv=-11
+|startup=11|active=2|recovery=35|frameAdv=-16
 |damage=2500|p1=80|p2=80
 |level=5|attribute=B|inv=1-12 All
 |hitstun=21|airHitstun=70|blockstun=20|hitstop=30

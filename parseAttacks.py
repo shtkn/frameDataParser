@@ -349,9 +349,10 @@ def create_damage_info_from_state(state):
     untech = 0 if state.untech is None else state.untech
     blockstun = 0 if state.blockstun is None else state.blockstun
     hitstop = 0 if state.hitstop is None else state.hitstop
+    bonus_hitstop = 0 if state.bonus_hitstop is None else state.bonus_hitstop
     attackLevel = 0 if state.attackLevel is None else state.attackLevel
 
-    return AttackInfo(damage, p1, p2, minDamage, p2Once, hitstun, untech, blockstun, hitstop, attackLevel,
+    return AttackInfo(damage, p1, p2, minDamage, p2Once, hitstun, untech, blockstun, hitstop, bonus_hitstop=bonus_hitstop,
                       attribute=state.attr, attackLevel=attackLevel)
 
 
