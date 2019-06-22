@@ -45,7 +45,7 @@ CmnActChangePartnerAssistAtk_B
 |startup=30|active=21,4|recovery=26|frameAdv=-4
 |damage=1500*2|p1=100*2|p2=80*2
 |level=5*2|attribute=H*2|inv=
-|hitstun=21*2|airHitstun=30*2|blockstun=13*2|hitstop=20*2
+|hitstun=21*2|airHitstun=30*2|blockstun=20*2|hitstop=13*2
 }}
 
 CmnActChangePartnerAssistAtk_D
@@ -73,21 +73,21 @@ NmlAtk4A
 |startup=6|active=2|recovery=27|frameAdv=-16
 |damage=1000|p1=100|p2=70
 |level=1|attribute=B|inv=
-|hitstun=12|airHitstun=12|blockstun=9|hitstop=11
+|hitstun=12|airHitstun=12|blockstun=11|hitstop=9
 }}
 
 NmlAtk5A
 |startup=11|active=6|recovery=15|frameAdv=-1
 |damage=1500|p1=100|p2=80
 |level=3|attribute=B|inv=
-|hitstun=17|airHitstun=17|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=17|blockstun=16|hitstop=11
 }}
 
 NmlAtk5AA
 |startup=4|active=3(4)8|recovery=41|frameAdv=-26
 |damage=1700|p1=100|p2=75
 |level=4|attribute=B|inv=
-|hitstun=19|airHitstun=60|blockstun=12|hitstop=18
+|hitstun=19|airHitstun=60|blockstun=18|hitstop=12
 }}
 
 NmlAtk5AAA
@@ -101,84 +101,84 @@ NmlAtk5AAAA
 |startup=6|active=16|recovery=30|frameAdv=-23
 |damage=1700|p1=100|p2=85
 |level=4|attribute=B|inv=
-|hitstun=19|airHitstun=60|blockstun=12|hitstop=18
+|hitstun=19|airHitstun=60|blockstun=18|hitstop=12
 }}
 
 NmlAtk5B
 |startup=12|active=4|recovery=22|frameAdv=-6
 |damage=1500|p1=90|p2=80
 |level=3|attribute=B|inv=6-15 H
-|hitstun=17|airHitstun=24|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=24|blockstun=16|hitstop=11
 }}
 
 NmlAtk5BB
 |startup=9|active=6|recovery=19|frameAdv=-5
 |damage=1500|p1=100|p2=80
 |level=3|attribute=B|inv=
-|hitstun=17|airHitstun=20|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=20|blockstun=16|hitstop=11
 }}
 
 NmlAtk5BBB
 |startup=10|active=6|recovery=37|frameAdv=-20
 |damage=1700|p1=100|p2=75
 |level=4|attribute=B|inv=
-|hitstun=19|airHitstun=40|blockstun=15|hitstop=18
+|hitstun=19|airHitstun=40|blockstun=18|hitstop=15
 }}
 
 NmlAtk2A
 |startup=8|active=3|recovery=10|frameAdv=0
 |damage=1000|p1=90|p2=70
 |level=1|attribute=F|inv=
-|hitstun=12|airHitstun=12|blockstun=9|hitstop=11
+|hitstun=12|airHitstun=12|blockstun=11|hitstop=9
 }}
 
 NmlAtk2B
 |startup=10|active=3|recovery=21|frameAdv=-4
 |damage=1500|p1=90|p2=80
 |level=3|attribute=F|inv=
-|hitstun=17|airHitstun=17|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=17|blockstun=16|hitstop=11
 }}
 
 NmlAtk2C
 |startup=12|active=3|recovery=24|frameAdv=-4
 |damage=1700|p1=90|p2=85
 |level=4|attribute=F|inv=
-|hitstun=19|airHitstun=30|blockstun=12|hitstop=18
+|hitstun=19|airHitstun=30|blockstun=18|hitstop=12
 }}
 
 NmlAtkAIR5A
 |startup=12|active=4|recovery=13|frameAdv=6
 |damage=1700|p1=100|p2=85
 |level=4|attribute=H|inv=
-|hitstun=19|airHitstun=19|blockstun=12|hitstop=18
+|hitstun=19|airHitstun=19|blockstun=18|hitstop=12
 }}
 
 NmlAtkAIR5AA
 |startup=8|active=6|recovery=9|frameAdv=5
 |damage=1500|p1=100|p2=80
 |level=3|attribute=H|inv=
-|hitstun=17|airHitstun=19|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=19|blockstun=16|hitstop=11
 }}
 
 NmlAtkAIR5B
 |startup=9|active=4,4,4,2|recovery=24+2L|frameAdv=-6
-|damage=600*4|p1=100*4|p2=80*4
+|damage=600*4|p1=100*4|p2=80*4 (Once)
 |level=3*4|attribute=H*4|inv=
-|hitstun=17*4|airHitstun=17*4|blockstun=4*4|hitstop=16*4
+|hitstun=17*4|airHitstun=17*4|blockstun=16*4|hitstop=4*4
 }}
 
 NmlAtkAIR5C
 |startup=14|active=4|recovery=25+11L|frameAdv=-9
 |damage=1800|p1=80|p2=70
 |level=3|attribute=H|inv=
-|hitstun=17|airHitstun=50|blockstun=15|hitstop=16
+|hitstun=17|airHitstun=50|blockstun=16|hitstop=15
 }}
 
 CmnActCrushAttack
 |startup=10|active=4(8)12|recovery=15|frameAdv=-7
 |damage=0*2|p1=100*2|p2=100*2
 |level=3*2|attribute=*2|inv=
-|hitstun=0*2|airHitstun=0*2|blockstun=11*2|hitstop=16*2
+|hitstun=0*2|airHitstun=0*2|blockstun=16*2|hitstop=11*2
 }}
 
 NmlAtkThrow
@@ -193,7 +193,7 @@ ThrowExe
 |startup=51|active=32767|recovery=0last blockstun frame: 97|startup=1|active=3(31)16|recovery=23|frameAdv=-16
 |damage=2000, 0|p1=100*2|p2=50, 100
 |level=4, 0|attribute=*2|inv=
-|hitstun=19, 0|airHitstun=60, 0|blockstun=20, 0|hitstop=18, 0
+|hitstun=19, 0|airHitstun=60, 0|blockstun=18, 0|hitstop=20, 0
 }}
 
 NmlAtkBackThrow
@@ -222,35 +222,35 @@ CmnActInvincibleAttack
 |startup=11|active=4(9)11|recovery=23|frameAdv=-14
 |damage=2000|p1=100|p2=80
 |level=3|attribute=|inv=1-11 All
-|hitstun=17|airHitstun=60|blockstun=22|hitstop=16
+|hitstun=17|airHitstun=60|blockstun=16|hitstop=22
 }}
 
 CmnActInvincibleAttackAir
 |startup=11|active=8(29)10|recovery=61|frameAdv=-51
 |damage=2000|p1=100|p2=80
 |level=3|attribute=|inv=1-11 All
-|hitstun=17|airHitstun=40|blockstun=22|hitstop=16
+|hitstun=17|airHitstun=40|blockstun=16|hitstop=22
 }}
 
 Surfing_A
 |startup=13|active=15|recovery=32791|frameAdv=-32780
 |damage=2000|p1=80|p2=90
 |level=5|attribute=F|inv=
-|hitstun=21|airHitstun=26|blockstun=13|hitstop=20
+|hitstun=21|airHitstun=26|blockstun=20|hitstop=13
 }}
 
 Surfing_B
 |startup=20|active=32777|recovery=32789|frameAdv=-65540
 |damage=2000|p1=80|p2=90
 |level=5|attribute=H|inv=
-|hitstun=21|airHitstun=60|blockstun=13|hitstop=20
+|hitstun=21|airHitstun=60|blockstun=20|hitstop=13
 }}
 
 Surfing_Ex
 |startup=18|active=32779|recovery=32792|frameAdv=-65545
 |damage=2400|p1=80|p2=80
 |level=5|attribute=H|inv=
-|hitstun=21|airHitstun=60|blockstun=13|hitstop=20
+|hitstun=21|airHitstun=60|blockstun=20|hitstop=13
 }}
 
 DriveShot_A
@@ -258,7 +258,7 @@ DriveShot_A
 |startup=22|active=150|recovery=0last blockstun frame: 42|startup=|active=|recovery=Total: 48|frameAdv=-6
 |damage=650|p1=80|p2=90
 |level=3|attribute=|inv=
-|hitstun=17|airHitstun=17|blockstun=1|hitstop=16
+|hitstun=17|airHitstun=17|blockstun=16|hitstop=1
 }}
 
 DriveShot_B
@@ -266,7 +266,7 @@ DriveShot_B
 |startup=22|active=180|recovery=0last blockstun frame: 42|startup=|active=|recovery=Total: 48|frameAdv=-6
 |damage=650|p1=80|p2=90
 |level=3|attribute=|inv=
-|hitstun=17|airHitstun=17|blockstun=1|hitstop=16
+|hitstun=17|airHitstun=17|blockstun=16|hitstop=1
 }}
 
 AirDriveShot_A
@@ -274,7 +274,7 @@ AirDriveShot_A
 |startup=19|active=32773|recovery=13last blockstun frame: 32|startup=|active=|recovery=Total: 48+9L|frameAdv=-16
 |damage=650|p1=80|p2=90
 |level=1|attribute=|inv=
-|hitstun=12|airHitstun=12|blockstun=1|hitstop=11
+|hitstun=12|airHitstun=12|blockstun=11|hitstop=1
 }}
 
 AirDriveShot_B
@@ -282,28 +282,28 @@ AirDriveShot_B
 |startup=19|active=32773|recovery=13last blockstun frame: 32|startup=|active=|recovery=Total: 48+9L|frameAdv=-16
 |damage=650|p1=80|p2=90
 |level=1|attribute=|inv=
-|hitstun=12|airHitstun=12|blockstun=1|hitstop=11
+|hitstun=12|airHitstun=12|blockstun=11|hitstop=1
 }}
 
 HoppingPlus_A
 |startup=6|active=6|recovery=32778+7L|frameAdv=-32767
 |damage=1200|p1=64|p2=100
 |level=3|attribute=H|inv=
-|hitstun=17|airHitstun=17|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=17|blockstun=16|hitstop=11
 }}
 
 HoppingPlus_B
 |startup=6|active=6|recovery=41+7L|frameAdv=-30
 |damage=1200|p1=64|p2=100
 |level=3|attribute=H|inv=
-|hitstun=17|airHitstun=17|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=17|blockstun=16|hitstop=11
 }}
 
 HoppingPlus_C
 |startup=6|active=6|recovery=32778+7L|frameAdv=-32767
 |damage=1200|p1=64|p2=100
 |level=3|attribute=H|inv=
-|hitstun=17|airHitstun=17|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=17|blockstun=16|hitstop=11
 }}
 
 AirSlide
@@ -327,7 +327,7 @@ DriveShot_Ex
 |startup=27|active=150|recovery=0last blockstun frame: 47|startup=|active=|recovery=Total: 47|frameAdv=0
 |damage=650*3|p1=80*3|p2=90*3
 |level=3*3|attribute=*3|inv=
-|hitstun=17*3|airHitstun=17*3|blockstun=1*3|hitstop=16*3
+|hitstun=17*3|airHitstun=17*3|blockstun=16*3|hitstop=1*3
 }}
 
 AirDriveShot_Ex
@@ -337,7 +337,7 @@ AirDriveShot_Ex
 |startup=29|active=32773|recovery=13last blockstun frame: 42|startup=|active=|recovery=Total: 57+9L|frameAdv=-15
 |damage=650*3|p1=80*3|p2=90*3
 |level=1*3|attribute=*3|inv=
-|hitstun=12*3|airHitstun=12*3|blockstun=1*3|hitstop=11*3
+|hitstun=12*3|airHitstun=12*3|blockstun=11*3|hitstop=1*3
 }}
 
 HiWeapon
@@ -356,21 +356,21 @@ HiWeapon_OD
 
 UltimateAssault
 |startup=11+76Flash+3|active=4(12)4(9)6,9,9,9,9,9,9,9,9,9,9,5|recovery=53|frameAdv=-35
-|damage=990*13|p1=80*13|p2=60*13
+|damage=990*13|p1=80*13|p2=60*13 (Once)
 |level=4*13|attribute=*13|inv=1-29 All
-|hitstun=100*13|airHitstun=100*12, 150|blockstun=12*3, 0*10|hitstop=18*13
+|hitstun=100*13|airHitstun=100*12, 150|blockstun=18*13|hitstop=12*3, 0*10
 }}
 
 UltimateAssault_OD
 |startup=11+76Flash+3|active=4(12)4(9)6,7,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,4|recovery=53|frameAdv=-34
-|damage=800*3, 670*20|p1=80*23|p2=60*23
+|damage=800*3, 670*20|p1=80*23|p2=60*23 (Once)
 |level=4*23|attribute=*23|inv=1-29 All
-|hitstun=100*23|airHitstun=100*22, 150|blockstun=12*3, 0*20|hitstop=18*23
+|hitstun=100*23|airHitstun=100*22, 150|blockstun=18*23|hitstop=12*3, 0*20
 }}
 
 AstralHeat
 |startup=10+69Flash+15|active=3|recovery=9|frameAdv=14
 |damage=0|p1=100|p2=90
 |level=5|attribute=P|inv=1-27 All
-|hitstun=21|airHitstun=21|blockstun=13|hitstop=20
+|hitstun=21|airHitstun=21|blockstun=20|hitstop=13
 }}

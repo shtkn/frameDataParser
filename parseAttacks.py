@@ -853,7 +853,7 @@ def write_file(moves_on_block, target):
             # target.write("\n\tlast blockstun: " + str(last_blockstun_frame))
             # target.write("|frameAdv=" + str(last_blockstun_frame - duration_on_block))
         damage_list = calc_damage_for_move(move_on_block)
-        damage, p1, p2, hitstun, untech, level, attribute, blockstun, hitstop = create_damage_text(damage_list)
+        damage, p1, p2, hitstun, untech, level, attribute, hitstop, blockstun = create_damage_text(damage_list)
 
         target.write("|startup=" + str(startup) + "|active=" + middle + "|recovery=" + recovery + "|frameAdv=" + frame_adv)
         target.write("\n|damage=" + damage + "|p1=" + p1 + "|p2=" + p2)
@@ -921,6 +921,9 @@ def create_damage_text(damage_list):
             value_str[i] = value_str[i] + str(value[i])
             if value_multiplier[i] > 1:
                 value_str[i] = value_str[i] + "*" + str(value_multiplier[i])
+
+    if p2Once:
+        value_str[2] = value_str[2] + " (Once)"
 
     return value_str[0], value_str[1], value_str[2], value_str[3], value_str[4], value_str[5], value_str[6], \
            value_str[7], value_str[8]

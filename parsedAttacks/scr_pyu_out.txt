@@ -115,28 +115,28 @@ NmlAtk4A
 |startup=10|active=4|recovery=15|frameAdv=1
 |damage=1000|p1=100|p2=80
 |level=3|attribute=B|inv=
-|hitstun=17|airHitstun=17|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=17|blockstun=16|hitstop=11
 }}
 
 NmlAtk4A2nd
 |startup=10|active=3|recovery=14|frameAdv=3
 |damage=1000|p1=100|p2=80
 |level=3|attribute=B|inv=
-|hitstun=17|airHitstun=17|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=17|blockstun=16|hitstop=11
 }}
 
 NmlAtk4A3nd
 |startup=12|active=6|recovery=23|frameAdv=-6
 |damage=1200|p1=100|p2=85
 |level=4|attribute=B|inv=
-|hitstun=19|airHitstun=30|blockstun=12|hitstop=18
+|hitstun=19|airHitstun=30|blockstun=18|hitstop=12
 }}
 
 NmlAtk2A
 |startup=8|active=2|recovery=14|frameAdv=0
 |damage=1000|p1=90|p2=75
 |level=2|attribute=F|inv=
-|hitstun=14|airHitstun=14|blockstun=10|hitstop=13
+|hitstun=14|airHitstun=14|blockstun=13|hitstop=10
 }}
 
 NmlAtk5B
@@ -192,7 +192,7 @@ NmlAtk2B
 |startup=14|active=18|recovery=1last blockstun frame: 35|startup=|active=|recovery=Total: 42|frameAdv=-7
 |damage=1000|p1=100|p2=75
 |level=2|attribute=|inv=10-16 H
-|hitstun=14|airHitstun=14|blockstun=0|hitstop=11
+|hitstun=14|airHitstun=14|blockstun=11|hitstop=0
 }}
 
 NmlAtk3B
@@ -200,7 +200,7 @@ NmlAtk3B
 |startup=14|active=18|recovery=1last blockstun frame: 35|startup=|active=|recovery=Total: 42|frameAdv=-7
 |damage=1000|p1=100|p2=75
 |level=2|attribute=|inv=10-16 H
-|hitstun=14|airHitstun=14|blockstun=0|hitstop=11
+|hitstun=14|airHitstun=14|blockstun=11|hitstop=0
 }}
 
 NmlAtk1B
@@ -208,28 +208,28 @@ NmlAtk1B
 |startup=14|active=18|recovery=1last blockstun frame: 35|startup=|active=|recovery=Total: 42|frameAdv=-7
 |damage=1000|p1=100|p2=75
 |level=2|attribute=|inv=10-16 H
-|hitstun=14|airHitstun=14|blockstun=0|hitstop=11
+|hitstun=14|airHitstun=14|blockstun=11|hitstop=0
 }}
 
 NmlAtk2C
 |startup=10|active=5|recovery=15|frameAdv=0
 |damage=1500|p1=90|p2=80
 |level=3|attribute=F|inv=
-|hitstun=17|airHitstun=30|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=30|blockstun=16|hitstop=11
 }}
 
 NmlAtkAIR5A
 |startup=10|active=3|recovery=13|frameAdv=4
 |damage=1000|p1=100|p2=80
 |level=3|attribute=H|inv=
-|hitstun=17|airHitstun=21|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=21|blockstun=16|hitstop=11
 }}
 
 NmlAtkAIR5A2nd
 |startup=7|active=3|recovery=13|frameAdv=4
 |damage=1000|p1=100|p2=80
 |level=3|attribute=H|inv=
-|hitstun=17|airHitstun=21|blockstun=11|hitstop=16
+|hitstun=17|airHitstun=21|blockstun=16|hitstop=11
 }}
 
 NmlAtkAIR5B
@@ -237,7 +237,7 @@ NmlAtkAIR5B
 |startup=12|active=15,15,15,15,23|recovery=0last blockstun frame: 93|startup=|active=|recovery=Total: 34+5L|frameAdv=59
 |damage=1000*5|p1=100*5|p2=75*5
 |level=2*5|attribute=*5|inv=
-|hitstun=14*5|airHitstun=14*5|blockstun=0*5|hitstop=11*5
+|hitstun=14*5|airHitstun=14*5|blockstun=11*5|hitstop=0*5
 }}
 
 NmlAtkAIR6B
@@ -245,7 +245,7 @@ NmlAtkAIR6B
 |startup=12|active=15,15,15,15,23|recovery=0last blockstun frame: 93|startup=|active=|recovery=Total: 34+7L|frameAdv=59
 |damage=1000*5|p1=100*5|p2=75*5
 |level=2*5|attribute=*5|inv=
-|hitstun=14*5|airHitstun=14*5|blockstun=0*5|hitstop=11*5
+|hitstun=14*5|airHitstun=14*5|blockstun=11*5|hitstop=0*5
 }}
 
 NmlAtkAIR4B
@@ -253,7 +253,7 @@ NmlAtkAIR4B
 |startup=12|active=15,15,15,15,23|recovery=0last blockstun frame: 93|startup=|active=|recovery=Total: 34|frameAdv=59
 |damage=1000*5|p1=100*5|p2=75*5
 |level=2*5|attribute=*5|inv=
-|hitstun=14*5|airHitstun=14*5|blockstun=0*5|hitstop=11*5
+|hitstun=14*5|airHitstun=14*5|blockstun=11*5|hitstop=0*5
 }}
 
 NmlAtkAIR5C
@@ -267,7 +267,7 @@ CmnActCrushAttack
 |startup=26|active=7|recovery=14|frameAdv=-1
 |damage=0|p1=100|p2=100
 |level=3|attribute=|inv=
-|hitstun=0|airHitstun=0|blockstun=11|hitstop=16
+|hitstun=0|airHitstun=0|blockstun=16|hitstop=11
 }}
 
 NmlAtkThrow
@@ -281,7 +281,7 @@ ThrowExe
 |startup=18|active=3|recovery=26|frameAdv=-6
 |damage=2000|p1=100|p2=50
 |level=4|attribute=|inv=
-|hitstun=25|airHitstun=19|blockstun=7|hitstop=18
+|hitstun=25|airHitstun=19|blockstun=18|hitstop=7
 }}
 
 NmlAtkBackThrow
@@ -295,7 +295,7 @@ BackThrowExe
 |startup=18|active=3|recovery=26|frameAdv=-6
 |damage=2000|p1=100|p2=50
 |level=4|attribute=|inv=
-|hitstun=25|airHitstun=19|blockstun=7|hitstop=18
+|hitstun=25|airHitstun=19|blockstun=18|hitstop=7
 }}
 
 AgiA
@@ -422,5 +422,5 @@ Ichigeki
 |startup=13+86Flash+185|active=154|recovery=0last blockstun frame: 674|startup=13+86Flash+550|active=150|recovery=0|frameAdv=-124
 |damage=0, 100000|p1=100*2|p2=100, 90
 |level=0, 5|attribute=*2|inv=1-712 All
-|hitstun=0, 21|airHitstun=0, 21|blockstun=0*2|hitstop=0, 20
+|hitstun=0, 21|airHitstun=0, 21|blockstun=0, 20|hitstop=0*2
 }}
