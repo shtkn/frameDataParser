@@ -94,6 +94,15 @@ class AttackInfo:
         self.bonus_hitstop = bonus_hitstop    # for additional hitstop the opponent experiences on top of regular hitstop
         self.attribute = copy.copy(attribute)
 
+    def __str__(self):
+        toReturn = "damage=" + str(self.damage) + "p1=" + str(self.p1) + "p2=" + str(self.p2)
+        if self.p2Once:
+            toReturn = toReturn + "(once)"
+        toReturn = toReturn + "minDamage=" + str(self.minDamage) + "attackLv=" + str(self.attackLevel) + \
+                   "attr=" + str(self.attribute) + "blockstun=" + str(self.blockstun) + "hitstun=" + str(self.hitstun) + \
+                   "untech=" + str(self.untech) + "hitstop=" + str(self.hitstop) + "bonusHitstop=" + str(self.bonus_hitstop)
+        return toReturn
+
     def __eq__(self, other):
         if not isinstance(other, AttackInfo):
             return False
@@ -470,9 +479,9 @@ def parse_move_file(source, move_list, effect_list):
                 name_end = line.index("()")
                 state.moveName = line[name_start:name_end]
             elif "Unknown11001(" in line:
-                name_start = line.index("(") + 1
-                name_end = line.index(")")
-                numbers = [x.strip() for x in line[name_start:name_end].split(',')]
+                numbers_start = line.index("(") + 1
+                numbers_end = line.index(")")
+                numbers = [x.strip() for x in line[numbers_start:numbers_end].split(',')]
                 state.bonus_hitstop = int(numbers[0])
             elif "Unknown22004(" in line:
                 number_start = line.index("(") + 1
@@ -507,7 +516,6 @@ def parse_move_file(source, move_list, effect_list):
             elif "Unknown11058(" in line:
                 params = line[line.index("('") + 2: line.index("')")]
                 state.attr = parse_attributes(params)
-                pass
             elif "setInvincible(" in line:
                 # active/deactivate invul
                 idx = line.index("(") + 1
@@ -737,7 +745,6 @@ def calc_frames_for_subroutine(frame_chunks, superflash_start=None, superflash_d
     if middle == "" and recovery == 0:
         recovery = startup
         startup = ""
-        pass
     return startup, middle, str(recovery), duration_on_whiff, duration_on_block, last_frame_of_blockstun, cleaned_list
 
 
@@ -942,6 +949,11 @@ def fill_str(new_value, index, current_value, value_str, multiplier):
     current_value[index] = new_value
 
 
+def fill_hitstop():
+
+    pass
+
+
 def main():
     source_dir = "./annotated"
     target_dir = "./parsedAttacks"
@@ -961,9 +973,9 @@ def main():
         "scr_uwa", "scr_uyu"
     ]
 
-    # source_dir = "."
-    # target_dir = "."
-    # file_list = ["testfile"]
+    source_dir = "."
+    target_dir = "."
+    file_list = ["testfile"]
     for file_name in file_list:
         # Parse effects
         if not os.path.isfile(source_dir + "/" + file_name + "ea.py") or \

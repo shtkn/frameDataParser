@@ -246,6 +246,7 @@ def Monsho_AtkData():
         subroutine.damage = 900
         subroutine.p1 = 70
         subroutine.p2 = 90
+        subroutine.attackLevel = 1
         subroutine.p2Once = False
         self.assertEquals(effect_list["Monsho_AtkData"], subroutine)
 
@@ -285,6 +286,7 @@ def NmlAtk5X():
                                  ActiveFrames(5),
                                  WaitFrames(9)
                                  ]
+        expected.frame_chunks[2].info.attribute = [False, True, False, False, False]
         self.assertEqual(move_list["NmlAtk5X"], expected)
 
     def test_parse_attack_with_custom_blockstun_hitstop(self):
@@ -316,6 +318,7 @@ def NmlAtk5X():
                                  ActiveFrames(5, info=AttackInfo(0, blockstun=10, hitstop=10)),
                                  WaitFrames(9)
                                  ]
+        expected.frame_chunks[1].info.attribute = [False, True, False, False, False]
         self.assertEqual(move_list["NmlAtk5X"], expected)
 
     def test_parse_attack_with_refreshMultihit(self):
@@ -348,6 +351,8 @@ def NmlAtk5X():
                                  ActiveFrames(3),
                                  WaitFrames(9)
                                  ]
+        expected.frame_chunks[1].info.attribute = [False, True, False, False, False]
+        expected.frame_chunks[2].info.attribute = [False, True, False, False, False]
         self.assertEqual(move_list["NmlAtk5X"], expected)
 
     def test_parse_attack_with_no_refreshMultihit(self):
@@ -378,6 +383,7 @@ def NmlAtk5X():
                                  ActiveFrames(5),
                                  WaitFrames(9)
                                  ]
+        expected.frame_chunks[1].info.attribute = [False, True, False, False, False]
         self.assertEqual(move_list["NmlAtk5X"], expected)
 
     def test_early_exitState(self):
@@ -602,7 +608,6 @@ def NmlAtk5X():
     SFX_0('006_swing_blade_0')
     sprite('es201_03', 2)	# 6-7
     Unknown7009(1)
-    Unknown22019('0100000000000000000000000000000000000000')
     GFX_0('esef_aaaa', -1)
     sprite('es201_04', 5)	# 8-12	 **attackbox here**
     sprite('es201_05', 3)	# 13-15
@@ -623,6 +628,7 @@ def NmlAtk5X():
                                  ]
         expected.superflash_start = 2
         expected.superflash_duration = 2
+        expected.frame_chunks[3].info.attribute = [False, True, False, False, False]
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
     def test_parse_damage(self):
@@ -660,13 +666,13 @@ def NmlAtk5X():
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
         expected.frame_chunks = [WaitFrames(7),
-                                 ActiveFrames(5, info=AttackInfo(0, blockstun=16, hitstop=11)),
+                                 ActiveFrames(5, info=AttackInfo(500, 100, 80, 0, False, 17, 17, 16, 11, 0, 3)),
                                  WaitFrames(3),
-                                 ActiveFrames(5, info=AttackInfo(0, blockstun=16, hitstop=11)),
+                                 ActiveFrames(5, info=AttackInfo(1000, 100, 80, 0, False, 17, 17, 16, 11, 0, 3)),
                                  WaitFrames(9)
                                  ]
-        expected.frame_chunks[1].info = AttackInfo(500, 100, 80, 0, False, 17, 17, 16, 11, 3)
-        expected.frame_chunks[3].info = AttackInfo(1000, 100, 80, 0, False, 17, 17, 16, 11, 3)
+        expected.frame_chunks[1].info.attribute = [False, True, False, False, False]
+        expected.frame_chunks[3].info.attribute = [False, True, False, False, False]
         expected.frame_chunks[3].is_new_hit = False
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
@@ -720,9 +726,12 @@ def NmlAtk5X():
                                  ActiveFrames(1, info=AttackInfo(0, blockstun=16, hitstop=11)),
                                  WaitFrames(9)
                                  ]
-        expected.frame_chunks[1].info = AttackInfo(500, 50, 75, 0, True, 17, 17, 16, 11, 3)
-        expected.frame_chunks[3].info = AttackInfo(1000, 80, 75, 0, True, 17, 17, 16, 11, 3)
-        expected.frame_chunks[4].info = AttackInfo(1000, 55, 15, 0, True, 17, 17, 16, 11, 3)
+        expected.frame_chunks[1].info = AttackInfo(500, 50, 75, 0, True, 17, 17, 16, 11, 0,  3)
+        expected.frame_chunks[1].info.attribute = [False, True, False, False, False]
+        expected.frame_chunks[3].info = AttackInfo(1000, 80, 75, 0, True, 17, 17, 16, 11, 0, 3)
+        expected.frame_chunks[3].info.attribute = [False, True, False, False, False]
+        expected.frame_chunks[4].info = AttackInfo(1000, 55, 15, 0, True, 17, 17, 16, 11, 0, 3)
+        expected.frame_chunks[4].info.attribute = [False, True, False, False, False]
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
     def test_parse_attack_with_no_damage_defined(self):
@@ -817,6 +826,7 @@ def NmlAtk5X():
                                  ActiveFrames(5),
                                  WaitFrames(9)
                                  ]
+        expected.frame_chunks[2].info.attribute = [False, True, False, False, False]
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
     def test_parse_move_with_attack_level_defaults(self):
@@ -850,7 +860,8 @@ def NmlAtk5A():
                                  ActiveFrames(2, info=AttackInfo(0, blockstun=13, hitstop=10)),
                                  WaitFrames(19)
                                  ]
-        expected.frame_chunks[1].info = AttackInfo(1000, 100, 75, 0, False, 14, 14, 13, 10, 2)
+        expected.frame_chunks[1].info = AttackInfo(1000, 100, 75, 0, False, 14, 14, 13, 10, 0, 2)
+        expected.frame_chunks[1].info.attribute = [False, True, False, False, False]
         self.assertEqual(expected, move_list["NmlAtk5A"])
 
     def test_calc_damage_strike(self):
@@ -935,3 +946,12 @@ def NmlAtk5A():
     # def test_damage_text_simple_attack(self):
     #     damage_str = create_damage_text([Damage(500, 60, 80)])
     #     self.assertEqual("", damage_str)
+
+
+    def test_hitstop_text(self):
+        test = [AttackInfo(500, 60, 80, 0, False, hitstop=10, bonus_hitstop=5),
+                AttackInfo(1000, 100, 100, 0, False, hitstop=10, bonus_hitstop=5),
+                AttackInfo(600, 60, 70, 5, False, hitstop=10, bonus_hitstop=5)
+                ]
+        damage, p1, p2, hitstun, untech, level, attribute, hitstop, blockstun = create_damage_text(test)
+        print hitstop
