@@ -123,7 +123,7 @@ class TestParseAttackMethods(unittest.TestCase):
         init = Subroutine()
         init.hitstop = 1
         init.blockstun = 2
-        init.bonus_hitstop = 3
+        init.bonus_blockstop = 3
         init.landingRecovery = 4
         init.damage = 500
         init.p1 = 50
@@ -149,7 +149,7 @@ class TestParseAttackMethods(unittest.TestCase):
         shot_init = Subroutine()
         shot_init.hitstop = 1
         shot_init.blockstun = 2
-        shot_init.bonus_hitstop = 3
+        shot_init.bonus_blockstop = 3
         shot_init.minDamage = 15
         effect_list = {"Shot": shot,
                        "ShotInit": shot_init}
@@ -203,7 +203,7 @@ class TestParseAttackMethods(unittest.TestCase):
 
     def test_calculate_frame_adv_1_hit_bonus_hitstop(self):
         chunks = [WaitFrames(4),
-                  ActiveFrames(1, info=AttackInfo(0, blockstun=3, hitstop=3, bonus_hitstop=10)),
+                  ActiveFrames(1, info=AttackInfo(0, blockstun=3, hitstop=3, bonus_blockstop=10)),
                   WaitFrames(12)]
         result = calc_frames_for_subroutine(chunks)
         self.assertItemsEqual(('5', '1', '12', 17, 20, 21, []), result)
@@ -934,12 +934,12 @@ def NmlAtk5A():
         move = Move()
         move.frame_chunks = [SubroutineCall("init"),
                              WaitFrames(5),
-                             ActiveFrames(2, info=AttackInfo(0, blockstun=10, hitstop=20, bonus_hitstop=0, p2once=True)),
+                             ActiveFrames(2, info=AttackInfo(0, blockstun=10, hitstop=20, bonus_blockstop=0, p2once=True)),
                              WaitFrames(5)]
         result = combine_with_effects_on_block(move, effect_list)
         expected = Move()
         expected.frame_chunks = [WaitFrames(5),
-                                 ActiveFrames(2, info=AttackInfo(subroutine.damage, p1=50, p2=75, blockstun=10, hitstop=20, bonus_hitstop=0)),
+                                 ActiveFrames(2, info=AttackInfo(subroutine.damage, p1=50, p2=75, blockstun=10, hitstop=20, bonus_blockstop=0)),
                                  WaitFrames(5)
                                  ]
         self.assertEqual(expected, result)
@@ -949,8 +949,9 @@ def NmlAtk5A():
 
 
     def test_hitstop_text(self):
-        test = [AttackInfo(500, 60, 80, 0, False, hitstop=10, bonus_hitstop=5),
-                AttackInfo(1000, 100, 100, 0, False, hitstop=10, bonus_hitstop=5),
+        test = [AttackInfo(500, 60, 80, 0, False, hitstop=10),
+                AttackInfo(1000, 100, 100, 0, False, hitstop=10, bonus_blockstop=5, bonus_hitstop=1),
+                AttackInfo(600, 60, 70, 5, False, hitstop=10, bonus_blockstop=5),
                 AttackInfo(600, 60, 70, 5, False, hitstop=10, bonus_hitstop=5)
                 ]
         damage, p1, p2, hitstun, untech, level, attribute, hitstop, blockstun = create_damage_text(test)
