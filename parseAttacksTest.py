@@ -95,19 +95,25 @@ class TestParseAttackMethods(unittest.TestCase):
         self.assertEqual(15, get_duration("    sprite('null', 15)"))
 
     def test_simulate_hit_basic_normal(self):
-        chunks = [WaitFrames(4), ActiveFrames(1, info=AttackInfo(0, blockstun=4, hitstop=4)), WaitFrames(12),
+        chunks = [WaitFrames(4), ActiveFrames(1, info=AttackInfo(0, blockstun=4, hitstop=4, attackLevel=2)), WaitFrames(12),
+                  ActiveFrames(1, info=AttackInfo(0, blockstun=4, hitstop=4)), WaitFrames(12)]
+        toTestChunks = [WaitFrames(4), ActiveFrames(1, info=AttackInfo(0, blockstun=4, hitstop=4, attackLevel=2)),
+                  WaitFrames(12),
                   ActiveFrames(1, info=AttackInfo(0, blockstun=4, hitstop=4)), WaitFrames(12)]
         expected = Move()
         expected.frame_chunks = chunks
+        toTest = Move()
+        toTest.frame_chunks = toTestChunks
         # no effects to combine, just expect teh same chunks back
-        result = combine_with_effects_on_block(expected, {})
+        result = combine_with_effects_on_block(toTest, {})
         self.assertEqual(0, len(result.additional_chunks))
-        self.assertItemsEqual(expected.frame_chunks, chunks)
+        self.assertItemsEqual(expected.frame_chunks, result.frame_chunks)
 
     def test_simulate_hit_projectile(self):
         chunks = [WaitFrames(4), SubroutineCall("Shot"), WaitFrames(12)]
         shot = Move()
-        shot.frame_chunks = [WaitFrames(4), ActiveFrames(2)]
+        shot.frame_chunks = [WaitFrames(4), ActiveFrames(2, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0, 0, 0,
+                                                    0, 3, [False, True, False, False, False]))]
         effect_list = {"Shot": shot}
         move = Move()
         move.frame_chunks = chunks
@@ -116,18 +122,28 @@ class TestParseAttackMethods(unittest.TestCase):
         self.assertEqual(1, len(result.additional_chunks))
         self.assertItemsEqual([WaitFrames(16)], result.frame_chunks)
         # basically increasing the startup of hte shot by 4
-        self.assertItemsEqual([WaitFrames(8), ActiveFrames(2)], result.additional_chunks[0])
+        expected = [WaitFrames(8),
+                    ActiveFrames(2, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0, 0, 0,
+                                                    0, 3, [False, True, False, False, False])),
+                    ]
+        self.assertItemsEqual(expected, result.additional_chunks[0])
 
     def test_simulate_hit_use_subroutine(self):
         chunks = [WaitFrames(4), SubroutineCall("InitValues"), ActiveFrames(1, info=AttackInfo(0)), WaitFrames(4)]
         init = Subroutine()
+        init.attackLevel = 0
+        init.blockstun = 0
+        init.hitstun = 90
+        init.untech = 91
         init.hitstop = 1
+        init.bonus_blockstop = 10
+        init.bonus_hitstop = 11
         init.blockstun = 2
-        init.bonus_blockstop = 3
         init.landingRecovery = 4
         init.damage = 500
         init.p1 = 50
         init.p2 = 60
+        init.p2Once = False
         init.minDamage = 99
         effect_list = {"InitValues": init}
         move = Move()
@@ -137,7 +153,7 @@ class TestParseAttackMethods(unittest.TestCase):
         # expect hitstop, blockstun, landing recovery etc to be replaced by values from InitValues
         self.assertEqual(0, len(result.additional_chunks))
         expected_frame_chunks = [WaitFrames(4),
-                                 ActiveFrames(1, info=AttackInfo(500, 50, 60, 99, False, 0, 0, 2, 1, 3)),
+                                 ActiveFrames(1, info=AttackInfo(500, 50, 60, 99, False, 90, 91, 2, 1, 10, 11, 0)),
                                  WaitFrames(4)]
         self.assertItemsEqual(expected_frame_chunks, result.frame_chunks)
         self.assertEqual(init.landingRecovery, result.landing_recovery)
@@ -145,11 +161,14 @@ class TestParseAttackMethods(unittest.TestCase):
     def test_simulate_projectile_using_subroutine(self):
         chunks = [WaitFrames(4), SubroutineCall("Shot"), WaitFrames(12)]
         shot = Move()
-        shot.frame_chunks = [SubroutineCall("ShotInit"), WaitFrames(4), ActiveFrames(2, info=AttackInfo(500, 50, 60))]
+        shot.frame_chunks = [SubroutineCall("ShotInit"), WaitFrames(4), ActiveFrames(2, info=AttackInfo(500, 50, 60, 0, False))]
         shot_init = Subroutine()
+        shot_init.hitstun = 0
+        shot_init.untech = 0
         shot_init.hitstop = 1
         shot_init.blockstun = 2
         shot_init.bonus_blockstop = 3
+        shot_init.bonus_hitstop = 4
         shot_init.minDamage = 15
         effect_list = {"Shot": shot,
                        "ShotInit": shot_init}
@@ -161,7 +180,7 @@ class TestParseAttackMethods(unittest.TestCase):
         self.assertItemsEqual(result.frame_chunks, [WaitFrames(16)])
         # basically increasing the startup of hte shot by 4
         expected_frame_chunks = [WaitFrames(8),
-                                 ActiveFrames(2, info=AttackInfo(500, 50, 60, 15, False, 0, 0, 2, 1, 3))
+                                 ActiveFrames(2, info=AttackInfo(500, 50, 60, 15, False, 0, 0, 2, 1, 3, 4))
                                  ]
         self.assertItemsEqual(result.additional_chunks[0], expected_frame_chunks)
 
@@ -283,10 +302,10 @@ def NmlAtk5X():
         expected = Move()
         expected.frame_chunks = [WaitFrames(7),
                                  SubroutineCall("esef_201"),
-                                 ActiveFrames(5),
+                                 ActiveFrames(5, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0, 0, 0,
+                                              0, 0, [False, True, False, False, False])),
                                  WaitFrames(9)
                                  ]
-        expected.frame_chunks[2].info.attribute = [False, True, False, False, False]
         self.assertEqual(move_list["NmlAtk5X"], expected)
 
     def test_parse_attack_with_custom_blockstun_hitstop(self):
@@ -315,7 +334,8 @@ def NmlAtk5X():
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
         expected.frame_chunks = [WaitFrames(7),
-                                 ActiveFrames(5, info=AttackInfo(0, blockstun=10, hitstop=10)),
+                                 ActiveFrames(5, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 10, 10,
+                                                                 0, 0, 0, [False, True, False, False, False])),
                                  WaitFrames(9)
                                  ]
         expected.frame_chunks[1].info.attribute = [False, True, False, False, False]
@@ -347,12 +367,12 @@ def NmlAtk5X():
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
         expected.frame_chunks = [WaitFrames(7),
-                                 ActiveFrames(2),
-                                 ActiveFrames(3),
+                                 ActiveFrames(2, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0, 0, 0,
+                                              0, 0, [False, True, False, False, False])),
+                                 ActiveFrames(3, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0, 0, 0,
+                                              0, 0, [False, True, False, False, False])),
                                  WaitFrames(9)
                                  ]
-        expected.frame_chunks[1].info.attribute = [False, True, False, False, False]
-        expected.frame_chunks[2].info.attribute = [False, True, False, False, False]
         self.assertEqual(move_list["NmlAtk5X"], expected)
 
     def test_parse_attack_with_no_refreshMultihit(self):
@@ -380,10 +400,10 @@ def NmlAtk5X():
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
         expected.frame_chunks = [WaitFrames(7),
-                                 ActiveFrames(5),
+                                 ActiveFrames(5, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0, 0, 0,
+                                              0, 0, [False, True, False, False, False])),
                                  WaitFrames(9)
                                  ]
-        expected.frame_chunks[1].info.attribute = [False, True, False, False, False]
         self.assertEqual(move_list["NmlAtk5X"], expected)
 
     def test_early_exitState(self):
@@ -416,12 +436,13 @@ def NmlAtk5X():
         move_list = parse_move_file(buf, {}, {})
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5X" in move_list)
-        expected = Move()
-        expected.frame_chunks = [WaitFrames(7),
-                                 ActiveFrames(5),
-                                 WaitFrames(6)
-                                 ]
-        self.assertEqual(expected, move_list["NmlAtk5X"])
+
+        self.assertEqual(7, move_list["NmlAtk5X"].frame_chunks[0].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5X"].frame_chunks[0], WaitFrames))
+        self.assertEqual(5, move_list["NmlAtk5X"].frame_chunks[1].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5X"].frame_chunks[1], ActiveFrames))
+        self.assertEqual(6, move_list["NmlAtk5X"].frame_chunks[2].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5X"].frame_chunks[2], WaitFrames))
 
     def test_early_exitState_and_second_move(self):
         state = """@State
@@ -479,20 +500,20 @@ def NmlAtk5X():
         move_list = parse_move_file(buf, {}, {})
         self.assertEqual(len(move_list), 2)
         self.assertTrue("NmlAtk5X" in move_list)
-        expected = Move()
-        expected.frame_chunks = [WaitFrames(7),
-                                 ActiveFrames(5),
-                                 WaitFrames(6)
-                                 ]
-        self.assertEqual(move_list["NmlAtk5X"], expected)
+        self.assertEqual(7, move_list["NmlAtk5X"].frame_chunks[0].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5X"].frame_chunks[0], WaitFrames))
+        self.assertEqual(5, move_list["NmlAtk5X"].frame_chunks[1].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5X"].frame_chunks[1], ActiveFrames))
+        self.assertEqual(6, move_list["NmlAtk5X"].frame_chunks[2].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5X"].frame_chunks[2], WaitFrames))
 
         self.assertTrue("NmlAtk6X" in move_list)
-        expected = Move()
-        expected.frame_chunks = [WaitFrames(7),
-                                 ActiveFrames(5),
-                                 WaitFrames(9)
-                                 ]
-        self.assertEqual(expected, move_list["NmlAtk6X"])
+        self.assertEqual(7, move_list["NmlAtk6X"].frame_chunks[0].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk6X"].frame_chunks[0], WaitFrames))
+        self.assertEqual(5, move_list["NmlAtk6X"].frame_chunks[1].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk6X"].frame_chunks[1], ActiveFrames))
+        self.assertEqual(9, move_list["NmlAtk6X"].frame_chunks[2].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk6X"].frame_chunks[2], WaitFrames))
 
     def test_attribute_inv(self):
         state = """@State
@@ -539,7 +560,11 @@ def NmlAtk5X():
         expected.frame_chunks[2].inv_type = 1
         expected.frame_chunks[2].inv_attr = [True, False, False, False, False]
         expected.frame_chunks[2].info.attribute = [False, True, False, False, False]
-        self.assertEqual(expected, move_list["NmlAtk5X"])
+        self.assertEqual(expected.frame_chunks[1].inv_type, move_list["NmlAtk5X"].frame_chunks[1].inv_type)
+        self.assertEqual(expected.frame_chunks[1].inv_attr, move_list["NmlAtk5X"].frame_chunks[1].inv_attr)
+        self.assertEqual(expected.frame_chunks[2].inv_type, move_list["NmlAtk5X"].frame_chunks[2].inv_type)
+        self.assertEqual(expected.frame_chunks[2].inv_attr, move_list["NmlAtk5X"].frame_chunks[2].inv_attr)
+        self.assertEqual(expected.frame_chunks[2].info.attribute, move_list["NmlAtk5X"].frame_chunks[2].info.attribute)
 
     def test_attribute_inv_with_gfx_in_between(self):
         state = """@State
@@ -586,7 +611,10 @@ def NmlAtk5X():
         expected.frame_chunks[2].inv_attr = [True, False, False, False, False]
         expected.frame_chunks[3].inv_type = 1
         expected.frame_chunks[3].inv_attr = [True, False, False, False, False]
-        self.assertEqual(expected, move_list["NmlAtk5X"])
+        self.assertEqual(expected.frame_chunks[2].inv_type, move_list["NmlAtk5X"].frame_chunks[2].inv_type)
+        self.assertEqual(expected.frame_chunks[2].inv_attr, move_list["NmlAtk5X"].frame_chunks[2].inv_attr)
+        self.assertEqual(expected.frame_chunks[3].inv_type, move_list["NmlAtk5X"].frame_chunks[3].inv_type)
+        self.assertEqual(expected.frame_chunks[3].inv_attr, move_list["NmlAtk5X"].frame_chunks[3].inv_attr)
 
     def test_move_with_superflash(self):
         state = """@State
@@ -603,7 +631,7 @@ def NmlAtk5X():
         Unknown1112('')
     sprite('es201_00', 1)	# 1-1
     sprite('es201_01', 2)	# 2-3
-    Unknown2036(2, -1, 0)
+    Unknown2036(5, -1, 0)
     sprite('es201_02', 2)	# 4-5
     SFX_0('006_swing_blade_0')
     sprite('es201_03', 2)	# 6-7
@@ -619,17 +647,8 @@ def NmlAtk5X():
         move_list = parse_move_file(buf, {}, {})
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5X" in move_list)
-        expected = Move()
-        expected.frame_chunks = [WaitFrames(5),
-                                 SubroutineCall("esef_aaaa"),
-                                 WaitFrames(2),
-                                 ActiveFrames(5),
-                                 WaitFrames(9)
-                                 ]
-        expected.superflash_start = 2
-        expected.superflash_duration = 2
-        expected.frame_chunks[3].info.attribute = [False, True, False, False, False]
-        self.assertEqual(expected, move_list["NmlAtk5X"])
+        self.assertEqual(2, move_list["NmlAtk5X"].superflash_start)
+        self.assertEqual(5, move_list["NmlAtk5X"].superflash_duration)
 
     def test_parse_damage(self):
         state = """@State
@@ -666,13 +685,14 @@ def NmlAtk5X():
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
         expected.frame_chunks = [WaitFrames(7),
-                                 ActiveFrames(5, info=AttackInfo(500, 100, 80, 0, False, 17, 17, 16, 11, 0, 3)),
+                                 ActiveFrames(5, info=AttackInfo(500, 100, 80, 0, False, 17, 17, 16, 11, 0,
+                                                                 0, 3, [False, True, False, False, False])),
                                  WaitFrames(3),
-                                 ActiveFrames(5, info=AttackInfo(1000, 100, 80, 0, False, 17, 17, 16, 11, 0, 3)),
+                                 ActiveFrames(5, info=AttackInfo(1000, 100, 80, 0, False, 17, 17, 16, 11, 0,
+                                                                 0, 3, [False, True, False, False, False])),
                                  WaitFrames(9)
                                  ]
-        expected.frame_chunks[1].info.attribute = [False, True, False, False, False]
-        expected.frame_chunks[3].info.attribute = [False, True, False, False, False]
+        expected.frame_chunks[1].is_new_hit = True
         expected.frame_chunks[3].is_new_hit = False
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
@@ -720,18 +740,15 @@ def NmlAtk5X():
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
         expected.frame_chunks = [WaitFrames(7),
-                                 ActiveFrames(5, info=AttackInfo(0, blockstun=16, hitstop=11)),
+                                 ActiveFrames(5, info=AttackInfo(500, 50, 75, 0, True, 17, 17, 16, 11, 0,
+                                                                 0, 3, [False, True, False, False, False])),
                                  WaitFrames(3),
-                                 ActiveFrames(5, info=AttackInfo(0, blockstun=16, hitstop=11)),
-                                 ActiveFrames(1, info=AttackInfo(0, blockstun=16, hitstop=11)),
+                                 ActiveFrames(5, info=AttackInfo(1000, 80, 75, 0, True, 17, 17, 16, 11, 0,
+                                                                 0, 3, [False, True, False, False, False])),
+                                 ActiveFrames(1, info=AttackInfo(1000, 55, 15, 0, True, 17, 17, 16, 11, 0,
+                                                                 0, 3, [False, True, False, False, False])),
                                  WaitFrames(9)
                                  ]
-        expected.frame_chunks[1].info = AttackInfo(500, 50, 75, 0, True, 17, 17, 16, 11, 0,  3)
-        expected.frame_chunks[1].info.attribute = [False, True, False, False, False]
-        expected.frame_chunks[3].info = AttackInfo(1000, 80, 75, 0, True, 17, 17, 16, 11, 0, 3)
-        expected.frame_chunks[3].info.attribute = [False, True, False, False, False]
-        expected.frame_chunks[4].info = AttackInfo(1000, 55, 15, 0, True, 17, 17, 16, 11, 0, 3)
-        expected.frame_chunks[4].info.attribute = [False, True, False, False, False]
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
     def test_parse_attack_with_no_damage_defined(self):
@@ -772,7 +789,8 @@ def az406_dummy_5B3rd():
         expected.frame_chunks = [WaitFrames(5),
                                  ActiveFrames(3),
                                  ]
-        expected.frame_chunks[1].info = AttackInfo(0, 100, 100, 0, False, 0, 40)
+        expected.frame_chunks[1].info = AttackInfo(0, 100, 100, 0, False, 0, 40, 0, 0, 0,
+                                                   0, 0, [False, False, False, False, False])
         expected.frame_chunks[1].info.hitstop = 0
         self.assertEqual(expected, move_list["az406_dummy_5B3rd"])
 
@@ -823,10 +841,10 @@ def NmlAtk5X():
         expected = Move()
         expected.frame_chunks = [SubroutineCall("Init_AtkData"),
                                  WaitFrames(7),
-                                 ActiveFrames(5),
+                                 ActiveFrames(5, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0, 0,
+                                                                 0, 0, 0, [False, True, False, False, False])),
                                  WaitFrames(9)
                                  ]
-        expected.frame_chunks[2].info.attribute = [False, True, False, False, False]
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
     def test_parse_move_with_attack_level_defaults(self):
@@ -860,8 +878,9 @@ def NmlAtk5A():
                                  ActiveFrames(2, info=AttackInfo(0, blockstun=13, hitstop=10)),
                                  WaitFrames(19)
                                  ]
-        expected.frame_chunks[1].info = AttackInfo(1000, 100, 75, 0, False, 14, 14, 13, 10, 0, 2)
-        expected.frame_chunks[1].info.attribute = [False, True, False, False, False]
+
+        expected.frame_chunks[1].info = AttackInfo(1000, 100, 75, 0, False, 14, 14, 13, 10, 0,
+                                                   0, 2, [False, True, False, False, False])
         self.assertEqual(expected, move_list["NmlAtk5A"])
 
     def test_calc_damage_strike(self):
@@ -872,56 +891,58 @@ def NmlAtk5A():
                              ActiveFrames(5, info=AttackInfo(0, blockstun=16, hitstop=11)),
                              WaitFrames(9)
                              ]
-        move.frame_chunks[1].info = AttackInfo(500, 50, 80, 0, True)
-        move.frame_chunks[3].info = AttackInfo(1000, 75, 80, 0, True)
+        move.frame_chunks[1].info = AttackInfo(500, 50, 80, 0, True, 10, 11, 12, 13)
+        move.frame_chunks[3].info = AttackInfo(1000, 75, 80, 0, True, 10, 11, 12, 13)
         to_test = calc_damage_for_move(move)
-        expected = [AttackInfo(500, 50, 80, 0, True), AttackInfo(1000, 75, 80, 0, True)]
+        expected = [AttackInfo(500, 50, 80, 0, True, 10, 11, 12, 13),
+                    AttackInfo(1000, 75, 80, 0, True, 10, 11, 12, 13)]
         self.assertEqual(expected, to_test)
 
     def test_calc_damage_1_projectile(self):
         shot = Move()
         shot.frame_chunks = [WaitFrames(24)]
         shot.additional_chunks = [[WaitFrames(4), ActiveFrames(2)]]
-        shot.additional_chunks[0][1].info = AttackInfo(1000, 60, 80, 0, False)
+        shot.additional_chunks[0][1].info = AttackInfo(1000, 60, 80, 0, False, 10, 11, 12, 13)
         to_test = calc_damage_for_move(shot)
-        expected = [AttackInfo(1000, 60, 80, 0, False)]
+        expected = [AttackInfo(1000, 60, 80, 0, False, 10, 11, 12, 13)]
         self.assertEqual(expected, to_test)
 
     def test_calc_damage_2_projectile(self):
         shot = Move()
         shot.frame_chunks = [WaitFrames(24)]
         shot.additional_chunks = [[WaitFrames(10), ActiveFrames(2)], [WaitFrames(5), ActiveFrames(2)]]
-        shot.additional_chunks[0][1].info = AttackInfo(1000, 60, 80, 0, False)
-        shot.additional_chunks[1][1].info = AttackInfo(500, 60, 80, 0, False)
+        shot.additional_chunks[0][1].info = AttackInfo(1000, 60, 80, 0, False, 10, 11, 12, 13)
+        shot.additional_chunks[1][1].info = AttackInfo(500, 60, 80, 0, False, 10, 11, 12, 13)
         # combine with ShotAnimation
         to_test = calc_damage_for_move(shot)
-        expected = [AttackInfo(500, 60, 80, 0, False), AttackInfo(1000, 60, 80, 0, False)]
+        expected = [AttackInfo(500, 60, 80, 0, False, 10, 11, 12, 13),
+                    AttackInfo(1000, 60, 80, 0, False, 10, 11, 12, 13)]
         self.assertEqual(expected, to_test)
 
     def test_calc_damage_strike_then_projectile(self):
         shot = Move()
         shot.frame_chunks = [WaitFrames(24), ActiveFrames(1)]
-        shot.frame_chunks[1].info = AttackInfo(500, 60, 80, 0, False)
+        shot.frame_chunks[1].info = AttackInfo(500, 60, 80, 0, False, 10, 11, 12, 13)
         shot.additional_chunks = [[WaitFrames(30), ActiveFrames(2)]]
-        shot.additional_chunks[0][1].info = AttackInfo(1000, 60, 80, 0, False)
+        shot.additional_chunks[0][1].info = AttackInfo(1000, 60, 80, 0, False, 10, 11, 12, 13)
         # combine with ShotAnimation
         to_test = calc_damage_for_move(shot)
-        expected = [AttackInfo(500, 60, 80, 0, False), AttackInfo(1000, 60, 80, 0, False)]
+        expected = [AttackInfo(500, 60, 80, 0, False, 10, 11, 12, 13),
+                    AttackInfo(1000, 60, 80, 0, False, 10, 11, 12, 13)]
         self.assertEqual(expected, to_test)
 
     def test_calc_damage_strike_delays_2ndhit_projectile_hits_first(self):
         shot = Move()
         shot.frame_chunks = [WaitFrames(24), ActiveFrames(1), WaitFrames(2), ActiveFrames(1)]
-        shot.frame_chunks[1].info = AttackInfo(500, 60, 80, 0, False)
-        shot.frame_chunks[1].info.hitstop = 10
-        shot.frame_chunks[3].info = AttackInfo(600, 60, 70, 5, False)
+        shot.frame_chunks[1].info = AttackInfo(500, 60, 80, 0, False, 10, 11, 12, 10)
+        shot.frame_chunks[3].info = AttackInfo(600, 60, 70, 5, False, 10, 11, 12, 13)
         shot.additional_chunks = [[WaitFrames(30), ActiveFrames(2)]]
-        shot.additional_chunks[0][1].info = AttackInfo(1000, 100, 100, 0, False)
+        shot.additional_chunks[0][1].info = AttackInfo(1000, 100, 100, 0, False, 10, 11, 12, 13)
         # combine with ShotAnimation
         to_test = calc_damage_for_move(shot)
-        expected = [AttackInfo(500, 60, 80, 0, False, hitstop=10),
-                    AttackInfo(1000, 100, 100, 0, False),
-                    AttackInfo(600, 60, 70, 5, False)
+        expected = [AttackInfo(500, 60, 80, 0, False, 10, 11, 12, 10),
+                    AttackInfo(1000, 100, 100, 0, False, 10, 11, 12, 13),
+                    AttackInfo(600, 60, 70, 5, False, 10, 11, 12, 13)
                     ]
         self.assertEqual(expected, to_test)
 
@@ -939,14 +960,10 @@ def NmlAtk5A():
         result = combine_with_effects_on_block(move, effect_list)
         expected = Move()
         expected.frame_chunks = [WaitFrames(5),
-                                 ActiveFrames(2, info=AttackInfo(subroutine.damage, p1=50, p2=75, blockstun=10, hitstop=20, bonus_blockstop=0)),
+                                 ActiveFrames(2, info=AttackInfo(subroutine.damage, p1=50, p2=75, blockstun=10, hitstop=20, bonus_blockstop=0, p2once=True)),
                                  WaitFrames(5)
                                  ]
         self.assertEqual(expected, result)
-    # def test_damage_text_simple_attack(self):
-    #     damage_str = create_damage_text([Damage(500, 60, 80)])
-    #     self.assertEqual("", damage_str)
-
 
     def test_hitstop_text(self):
         test = [AttackInfo(500, 60, 80, 0, False, hitstop=10),

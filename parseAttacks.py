@@ -77,12 +77,12 @@ class State:
             self.attackLevel = None
 
     def is_attackbox(self):
-        return self.isAttackBox and not (self.disableAttackboxes or self.disableAttackboxesThisFrame)
+        return self.isAttackBox and (self.isNewHit or not (self.disableAttackboxes or self.disableAttackboxesThisFrame))
 
 
 class AttackInfo:
-    def __init__(self, damage, p1=100, p2=100, min_damage=0, p2once=False, hitstun=0, untech=0, blockstun=0,
-                 hitstop=0, bonus_blockstop=0, bonus_hitstop=0, attackLevel=0, attribute=[False, False, False, False, False]):
+    def __init__(self, damage, p1=None, p2=None, min_damage=None, p2once=None, hitstun=None, untech=None, blockstun=None,
+                 hitstop=None, bonus_blockstop=None, bonus_hitstop=None, attackLevel=None, attribute=None):
         self.damage = damage
         self.p1 = p1
         self.p2 = p2
@@ -280,7 +280,7 @@ class Subroutine:
         self.landingRecovery = None
         self.p1 = None
         self.p2 = None
-        self.p2Once = False
+        self.p2Once = None
         self.minDamage = None
         self.attackLevel = None
         self.hitstun = None
@@ -449,7 +449,7 @@ def parse_move_file(source, move_list, effect_list):
             if HAS_HITBOX in line:
                 state.isAttackBox = HAS_HITBOX in line
         elif not state.exitState:
-            if "Recovery()" in line or "Unknown23027()" in line:  # disables active frames for rest of move
+            if "Recovery()" in line or "Unknown23027()" in line:  # disables active frames until a refreshMultihit
                 state.disableAttackboxes = True
             elif "StartMultihit()" in line:  # turns off these active frames
                 state.disableAttackboxesThisFrame = True
@@ -609,7 +609,7 @@ def parse_subroutine(name, move_list, effect_list, start_frame=0):
     subroutine_calls = [[]]
     first_subroutine = subroutine_calls[0]
     duration = start_frame
-    override_info = AttackInfo(None, None, None, None, None, None, None, None, None, None, None)
+    override_info = AttackInfo()
     if duration > 0:
         first_subroutine.append(WaitFrames(duration))
     for chunk in move_list[name].frame_chunks:
@@ -654,7 +654,7 @@ def simulate_effect_on_block(name, effect_list, start_frame=0):
     subroutine_calls = [[]]
     first_subroutine = subroutine_calls[0]
     duration = start_frame
-    override_info = AttackInfo(None, None, None, None, None, None, None, None, None, None, None)
+    override_info = AttackInfo(None)
     if duration > 0:
         first_subroutine.append(WaitFrames(duration))
     for chunk in effect_list[name].frame_chunks:
@@ -686,7 +686,7 @@ def simulate_effect_on_block(name, effect_list, start_frame=0):
             first_subroutine.append(chunk)
             duration += chunk.duration
             if isinstance(chunk, ActiveFrames):
-                duration += chunk.info.hitstop
+                duration += chunk.info.hitstop if chunk.info.hitstop is not None else 0
 
     subroutine_calls[0] = consolidate_frame_chunks(first_subroutine)
     # delete any subroutines that don't add anything
@@ -717,9 +717,12 @@ def calc_frames_for_subroutine(frame_chunks, superflash_start=None, superflash_d
             if len(middle) > 0 and middle[len(middle) - 1] != ")":
                 middle += ","
             middle += str(chunk.duration)
-            last_frame_of_blockstun = duration_on_block + chunk.info.blockstun + chunk.info.hitstop + \
-                                      chunk.info.bonus_blockstop + 1
-            duration_on_block += chunk.info.hitstop
+            blockstun = 0 if chunk.info.blockstun is None else chunk.info.blockstun
+            hitstop = 0 if chunk.info.hitstop is None else chunk.info.hitstop
+            bonus_blockstop = 0 if chunk.info.bonus_blockstop is None else chunk.info.bonus_blockstop
+            last_frame_of_blockstun = duration_on_block + blockstun + hitstop + \
+                                      bonus_blockstop + 1
+            duration_on_block += hitstop
         elif middle == "":
             startup += chunk.duration
         else:
@@ -787,7 +790,7 @@ def calc_damage_for_move(move_on_block):
 
 
 def combine_with_effects_on_block(move, effect_list):
-    override_info = AttackInfo(None, None, None, None, None, None, None, None, None, None, None)
+    override_info = AttackInfo(None)
     override_landing_recovery = None
     current_frame = 0
     subroutine_calls = []
@@ -903,6 +906,8 @@ def get_inv_text(inv_start, inv_duration, inv_type, inv_attr, superflash_start, 
 
 def get_inv_attr_text(attr):
     return_value = ""
+    if attr is None:
+        return return_value
     if attr[0] and attr[1] and attr[2] and attr[3] and attr[4]:
         return_value = "All"
     else:
