@@ -26,6 +26,11 @@ class State:
         self.hitstun = None
         self.untech = None
         self.hitstop = None
+        self.groundHitAnimation = None
+        self.airHitAnimation = None
+        self.disableEmergencyTech = None
+        self.groundSlideTime = None
+        self.knockdownTime = None
         self.bonus_blockstop = None
         self.bonus_hitstop = None
         self.exitState = False
@@ -42,7 +47,7 @@ class State:
         self.superflash_start = None
         self.superflash_duration = 0
         self.attackLevel = None
-        self.attr = [False, False, False, False, False]
+        self.attr = None
 
     def clear_values(self, is_new_move):
         self.spriteLine = ""
@@ -71,10 +76,15 @@ class State:
             self.isInv = False
             self.invType = 0  # Inv or Guard
             self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
-            self.attr = [False, False, False, False, False]
+            self.attr = None
             self.superflash_start = None
             self.superflash_duration = 0
             self.attackLevel = None
+            self.groundHitAnimation = None
+            self.airHitAnimation = None
+            self.disableEmergencyTech = None
+            self.groundSlideTime = None
+            self.knockdownTime = None
 
     def is_attackbox(self):
         return self.isAttackBox and (self.isNewHit or not (self.disableAttackboxes or self.disableAttackboxesThisFrame))
@@ -145,6 +155,8 @@ class AttackInfo:
             self.bonus_blockstop = other.bonus_blockstop
         if other.bonus_hitstop is not None:
             self.bonus_hitstop = other.bonus_hitstop
+        if other.attribute is not None:
+            self.attribute = other.attribute
 
 
 
@@ -285,6 +297,7 @@ class Subroutine:
         self.attackLevel = None
         self.hitstun = None
         self.untech = None
+        self.attribute = None
 
     def __eq__(self, other):
         if not isinstance(other, Subroutine):
@@ -298,7 +311,8 @@ class Subroutine:
                self.landingRecovery == other.landingRecovery and \
                self.attackLevel == other.attackLevel and \
                self.hitstun == other.hitstun and \
-               self.untech == other.untech
+               self.untech == other.untech and \
+               self.attribute == other.attribute
 
     def __ne__(self, other):
         if not isinstance(other, Subroutine):
@@ -377,7 +391,7 @@ def create_damage_info_from_state(state):
 
 def parse_move_file(source, move_list, effect_list):
     state = State()
-    frame_chunks = None
+    frame_chunks = []
     for line in source.readlines():
         # new move, finish parsing existing move, then restart frame counters
         if "@State" in line or "@Subroutine" in line:
@@ -401,9 +415,10 @@ def parse_move_file(source, move_list, effect_list):
                 subroutine.p1 = state.p1 if state.p1 is not None else subroutine.p1
                 subroutine.p2 = state.p2 if state.p2 is not None else subroutine.p2
                 subroutine.p2Once = state.p2Once if state.p2Once is not None else subroutine.p2Once
+                subroutine.attribute = state.attr if state.attr is not None else subroutine.attribute
                 effect_list[state.moveName] = subroutine
 
-            elif frame_chunks is not None and len(frame_chunks) > 0:
+            elif len(frame_chunks) > 0:
                 blockstun = 0 if state.blockstun is None else state.blockstun
                 hitstop = 0 if state.hitstop is None else state.hitstop
                 bonus_blockstop = 0 if state.bonus_blockstop is None else state.bonus_blockstop
@@ -455,6 +470,7 @@ def parse_move_file(source, move_list, effect_list):
                 state.disableAttackboxesThisFrame = True
             elif "RefreshMultihit()" in line:  # counts as a new hit, end previous frames; start a  new one
                 state.isNewHit = True
+                state.disableAttackboxes = False
             elif "AttackLevel_(" in line:  # get hitstun/blockstun values according to it's level
                 level = int(line[line.index("(") + 1:line.index(")")])
                 # print "LEVEL: " + level
@@ -549,6 +565,7 @@ def parse_move_file(source, move_list, effect_list):
             elif "AttackDefaults_CrouchingNormal(" in line:
                 state.attr = [False, False, True, False, False]
             elif "AttackDefaults_AirNormal(" in line:
+                state.p1 = 80
                 state.attr = [True, False, False, False, False]
             elif "Unknown17003(" in line: # attack defaults air special?
                 state.attr = [True, False, False, False, False]
@@ -563,6 +580,7 @@ def parse_move_file(source, move_list, effect_list):
         subroutine.p2 = state.p2
         subroutine.p2Once = state.p2Once
         subroutine.attackLevel = state.attackLevel
+        subroutine.attribute = state.attr
         effect_list[state.moveName] = subroutine
 
     elif state.duration > 0:
@@ -630,6 +648,7 @@ def parse_subroutine(name, move_list, effect_list, start_frame=0):
                 override_info.bonus_blockstop = subroutine.bonus_blockstop
                 override_info.bonus_hitstop = subroutine.bonus_hitstop
                 override_info.attackLevel = subroutine.attackLevel
+                override_info.attribute = subroutine.attribute
             else:
                 from_children = parse_subroutine(chunk.name, effect_list, effect_list, duration)
             for one_subroutine in from_children:
@@ -813,6 +832,7 @@ def combine_with_effects_on_block(move, effect_list):
                 override_info.bonus_blockstop = subroutine.bonus_blockstop
                 override_info.bonus_hitstop = subroutine.bonus_hitstop
                 override_info.attackLevel = subroutine.attackLevel
+                override_info.attribute = subroutine.attribute
 
             else:
                 subroutine_calls.extend(simulate_effect_on_block(chunk.name, effect_list, start_frame=current_frame))
@@ -882,11 +902,11 @@ def write_file(moves_on_block, target):
         damage_list = calc_damage_for_move(move_on_block)
         damage, p1, p2, hitstun, untech, level, attribute, hitstop, blockstun = create_damage_text(damage_list)
 
-        target.write("|startup=" + str(startup) + "|active=" + middle + "|recovery=" + recovery + "|frameAdv=" + frame_adv)
-        target.write("\n|damage=" + damage + "|p1=" + p1 + "|p2=" + p2)
-        target.write("\n|level=" + level + "|attribute=" + attribute + "|guard=")
-        target.write("\n|blockstun=" + blockstun + "|groundHit=" + hitstun + "|airHit=" + untech + "|hitstop=" + hitstop)
-        target.write("\n|inv=" + inv_text + "|hitbox=")
+        target.write("\n |damage=" + damage + "|p1=" + p1 + "|p2=" + p2)
+        target.write("\n |level=" + level + "|attribute=" + attribute + "|guard=")
+        target.write("\n |startup=" + str(startup) + "|active=" + middle + "|recovery=" + recovery + "|frameAdv=" + frame_adv)
+        target.write("\n |blockstun=" + blockstun + "|groundHit=" + hitstun + "|airHit=" + untech + "|hitstop=" + hitstop)
+        target.write("\n |invul=" + inv_text + "|hitbox=")
         target.write("\n}}\n")
 
 
@@ -990,8 +1010,8 @@ def fill_hitstop(info_list):
             multiplier = multiplier + 1
         else:
             if len(toReturn) > 0:
-                toReturn = toReturn + ","
-            toReturn = toReturn + " " + str(current_hitstop)
+                toReturn = toReturn + ", "
+            toReturn = toReturn + str(current_hitstop)
             if current_bonus_blockstop is not None and (current_bonus_hitstop != 0 or current_bonus_blockstop != 0):
                 toReturn = toReturn + "/+" + str(current_bonus_blockstop)
             if current_bonus_hitstop is not None and current_bonus_hitstop != 0:
@@ -1002,8 +1022,8 @@ def fill_hitstop(info_list):
             multiplier = 1
 
     if len(toReturn) > 0:
-        toReturn = toReturn + ","
-    toReturn = toReturn + " " + str(current_hitstop)
+        toReturn = toReturn + ", "
+    toReturn = toReturn + str(current_hitstop)
     if current_bonus_blockstop is not None and (current_bonus_hitstop != 0 or current_bonus_blockstop != 0):
         toReturn = toReturn + "/+" + str(current_bonus_blockstop)
     if current_bonus_hitstop is not None and current_bonus_hitstop != 0:
@@ -1031,9 +1051,9 @@ def main():
         "scr_uwa", "scr_uyu"
     ]
 
-    source_dir = "."
-    target_dir = "."
-    file_list = ["testfile"]
+    # source_dir = "."
+    # target_dir = "."
+    # file_list = ["testfile"]
     for file_name in file_list:
         # Parse effects
         if not os.path.isfile(source_dir + "/" + file_name + "ea.py") or \

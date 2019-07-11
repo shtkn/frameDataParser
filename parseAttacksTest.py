@@ -794,6 +794,55 @@ def az406_dummy_5B3rd():
         expected.frame_chunks[1].info.hitstop = 0
         self.assertEqual(expected, move_list["az406_dummy_5B3rd"])
 
+    def test_parse_attack_with_activeframes_that_are_only_one_hit(self):
+        state = """
+def UltimateShot_DDD():
+
+    def upon_IMMEDIATE():
+        AttackDefaults_StandingDD()
+        Unknown23056('')
+        AttackLevel_(1)
+        Damage(100)
+        AttackP1(100)
+        AttackP2(100)
+        Unknown11091(100)
+        GroundedHitstunAnimation(1)
+        AirUntechableTime(100)
+        AirPushbackY(0)
+        AirPushbackX(0)
+        Hitstop(1)
+        Unknown11066(1)
+        Unknown11064(1)
+        Unknown9016(1)
+        Unknown2004(1, 0)
+        Unknown23027()
+        Unknown30063(1)
+        Unknown1084(1)
+
+        def upon_STATE_END():
+            Unknown2017(1)
+            Unknown2053(1)
+            Unknown2034(1)
+        Unknown13024(0)
+        Unknown11069('UltimateShot_DDD')
+    sprite('hz431_06', 3)	# 1-3
+    sprite('hz431_22ex', 1)	# 4-5	 **attackbox here**
+    RefreshMultihit()
+    sprite('hz431_23ex', 1)	# 6-7	 **attackbox here**
+    sprite('null', 1)	# 8-9
+    """
+        buf = StringIO.StringIO(state)
+        effect_list = OrderedDict()
+        move_list = OrderedDict()
+        move_list = parse_move_file(buf, move_list, effect_list)
+        self.assertEqual(3, move_list["UltimateShot_DDD"].frame_chunks[0].duration)
+        self.assertTrue(isinstance(move_list["UltimateShot_DDD"].frame_chunks[0], WaitFrames))
+        self.assertEqual(2, move_list["UltimateShot_DDD"].frame_chunks[1].duration)
+        self.assertTrue(isinstance(move_list["UltimateShot_DDD"].frame_chunks[1], ActiveFrames))
+        self.assertEqual(1, move_list["UltimateShot_DDD"].frame_chunks[2].duration)
+        self.assertTrue(isinstance(move_list["UltimateShot_DDD"].frame_chunks[2], WaitFrames))
+
+
     def test_parse_attack_with_call_subroutine(self):
         state = """@Subroutine
 def Init_AtkData():

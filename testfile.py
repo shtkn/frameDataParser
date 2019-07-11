@@ -1,78 +1,57 @@
 
 def init():
-    Move_Register('GurenA', 34)
-    Move_Register('NmlAtk5A', 24)
+    Move_Register('Assault_Low', 24)
 
 @Subroutine
-def SkillInit():
-    HitOrBlockCancel('Guren_Hasei')
-    HitOrBlockCancel('GurenB_Hasei')
-    HitOrBlockCancel('Yanagi_Hasei')
-    HitOrBlockCancel('Renka_Hasei')
-    HitOrBlockCancel('Zantetu_Hasei')
-    HitOrBlockCancel('RenkaEx_Hasei')
-    if (not SLOT_59):
-        Unknown30068(1)
-        SFX_3('hase_25')
-        GFX_0('ha_power_circle', -1)
-        GFX_0('ha_power_light', -1)
-        GFX_0('ha_power_bluelight', -1)
-        if Unknown23148('RenkaEx'):
-            GFX_0('ha_power_2', -1)
-        elif Unknown23148('Yanagi'):
-            GFX_0('ha_power_2', -1)
-        else:
-            GFX_0('ha_power_1', -1)
-        Unknown2058(-5000)
-        AttackP2(100)
-    SLOT_59 = 0
+def Assault_Low_Atk():
+    AttackLevel_(4)
+    Damage(2000)
+    AttackP1(90)
+    GroundedHitstunAnimation(11)
+    AirHitstunAnimation(11)
+    AirPushbackY(25000)
+    AirPushbackX(2000)
+    YImpluseBeforeWallbounce(3000)
+    AirUntechableTime(60)
+    HitLow(2)
+    Unknown9016(1)
+    Unknown11058('0000000000000000010000000000000000000000')
 
-    def upon_85():
-        SLOT_59 = 1
+    def upon_12():
+        clearUponHandler(12)
+        Hitstop(20)
+        ScreenShake(5000, 3000)
 
 @State
-def GurenA():
-
+def Assault_Low():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-        AttackLevel_(4)
-        Damage(1500)
-        AttackP1(80)
-        AttackP2(75)
-        AirUntechableTime(60)
-        AirPushbackX(16000)
-        AirPushbackY(16000)
-        Unknown9154(26)
-        PushbackX(12000)
-        Unknown11056(0)
-        Unknown9015(1)
-        Unknown1084(0)
-        Unknown3029(1)
-        Unknown3069(0)
-        callSubroutine('SkillInit')
-    sprite('ha400_00', 2)	# 1-2
-    sprite('ha400_01', 1)	# 3-3
-    SFX_0('005_swing_grap_2_1')
-    sprite('ha400_01', 1)	# 4-4
-    Unknown7007('6268613230305f300000000000000000640000006268613230305f310000000000000000640000006268613230305f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('ha400_02', 2)	# 5-6
-    SFX_0('004_swing_grap_1_2')
-    SFX_0('005_swing_grap_2_1')
-    sprite('ha400_03', 4)	# 7-10
-    physicsXImpulse(55000)
-    Unknown2015(150)
-    sprite('ha400_04', 3)	# 11-13
-    sprite('ha400_05', 3)	# 14-16	 **attackbox here**
-    physicsXImpulse(0)
-    setGravity(0)
-    sprite('ha400_06', 4)	# 17-20
-    SFX_0('208_brake_normal')
+        callSubroutine('Assault_Low_Atk')
+
+    sprite('jb403_13', 2)  # 1-2
+    Unknown1045(30000)
+    Unknown8007(100, 1, 0)
+    sprite('jb403_14', 2)  # 3-4
+    sprite('jb403_01', 2)  # 5-6
+    sprite('jb403_02', 2)  # 7-8
+    sprite('jb403_03', 2)  # 9-10
+    Unknown1051(50)
+    Unknown8006(100, 1, 0)
+    SFX_3('jbse_03')
+    SFX_0('010_swing_sword_2')
+    sprite('jb403_04', 2)  # 11-12
+    Unknown7007(
+        '626a623230345f30000000000000000064000000626a623230345f31000000000000000064000000626a623230345f320000000000000000640000000000000000000000000000000000000000000000')
+    sprite('jb403_05', 2)  # 13-14	 **attackbox here**
+    Unknown1084(1)
+    GFX_0('jbef403_zanzou', 100)
+    GFX_0('jbef403_zanzou2', 100)
+    sprite('jb403_06', 2)  # 15-16
     Recovery()
     Unknown2063()
-    Unknown2015(-1)
-    sprite('ha400_07', 4)	# 21-24
-    sprite('ha400_08', 4)	# 25-28
-    Unknown3029(0)
-    sprite('ha400_09', 4)	# 29-32
-    sprite('ha400_10', 4)	# 33-36
-    SFX_3('hase_22')
+    sprite('jb403_07', 4)  # 17-20
+    sprite('jb403_08', 3)  # 21-23
+    sprite('jb403_09', 3)  # 24-26
+    sprite('jb403_10', 3)  # 27-29
+    sprite('jb403_11', 3)  # 30-32
+    sprite('jb403_12', 3)  # 33-35
