@@ -2432,11 +2432,11 @@ def NmlAtk5A2nd():
             clearUponHandler(23)
     sprite('tg210_00', 2)	# 1-2
     sprite('tg210_01', 2)	# 3-4
-    sprite('tg210_02', 3)	# 5-7
+    sprite('tg210_02', 3)	# 5-7	 **attackbox here**
     GFX_0('tgef210_ShotDeleteex1', -1)
     SFX_0('014_electric_s')
     Unknown21003(1500, 650)
-    sprite('tg210_02', 2)	# 8-9
+    sprite('tg210_02', 2)	# 8-9	 **attackbox here**
     GFX_0('tgef210_ShotDeleteex2', -1)
     SFX_0('014_electric_s')
     loopRest()
@@ -2444,10 +2444,10 @@ def NmlAtk5A2nd():
     def upon_3():
         if SLOT_52:
             sendToLabel(0)
-    sprite('tg210_02', 2)	# 10-11
-    sprite('tg210_02', 2)	# 12-13
-    sprite('tg210_02', 2)	# 14-15
-    sprite('tg210_02', 2)	# 16-17
+    sprite('tg210_02', 2)	# 10-11	 **attackbox here**
+    sprite('tg210_02', 2)	# 12-13	 **attackbox here**
+    sprite('tg210_02', 2)	# 14-15	 **attackbox here**
+    sprite('tg210_02', 2)	# 16-17	 **attackbox here**
     setInvincible(1)
     Unknown22019('0100000001000000000000000100000000000000')
     Unknown22030(0)
@@ -2456,19 +2456,19 @@ def NmlAtk5A2nd():
     Unknown22031(15, -1)
     Unknown8004(100, 1, 1)
     Unknown21003(2300, 650)
-    sprite('tg210_02', 2)	# 18-19
-    sprite('tg210_02', 2)	# 20-21
-    sprite('tg210_02', 2)	# 22-23
-    sprite('tg210_02', 2)	# 24-25
-    sprite('tg210_02', 2)	# 26-27
-    sprite('tg210_02', 2)	# 28-29
-    sprite('tg210_02', 2)	# 30-31
-    sprite('tg210_02', 2)	# 32-33
-    sprite('tg210_02', 2)	# 34-35
-    sprite('tg210_02', 2)	# 36-37
-    sprite('tg210_02', 2)	# 38-39
-    sprite('tg210_02', 1)	# 40-40
-    sprite('tg210_02', 1)	# 41-41
+    sprite('tg210_02', 2)	# 18-19	 **attackbox here**
+    sprite('tg210_02', 2)	# 20-21	 **attackbox here**
+    sprite('tg210_02', 2)	# 22-23	 **attackbox here**
+    sprite('tg210_02', 2)	# 24-25	 **attackbox here**
+    sprite('tg210_02', 2)	# 26-27	 **attackbox here**
+    sprite('tg210_02', 2)	# 28-29	 **attackbox here**
+    sprite('tg210_02', 2)	# 30-31	 **attackbox here**
+    sprite('tg210_02', 2)	# 32-33	 **attackbox here**
+    sprite('tg210_02', 2)	# 34-35	 **attackbox here**
+    sprite('tg210_02', 2)	# 36-37	 **attackbox here**
+    sprite('tg210_02', 2)	# 38-39	 **attackbox here**
+    sprite('tg210_02', 1)	# 40-40	 **attackbox here**
+    sprite('tg210_02', 1)	# 41-41	 **attackbox here**
     Damage(2500)
     GroundedHitstunAnimation(5)
     AirHitstunAnimation(11)
@@ -2479,19 +2479,19 @@ def NmlAtk5A2nd():
     label(0)
     clearUponHandler(23)
     clearUponHandler(3)
-    sprite('tg210_02', 3)	# 42-44
+    sprite('tg210_02', 3)	# 42-44	 **attackbox here**
     GFX_0('tgef210_ShotDelete', -1)
     SFX_0('014_electric_s')
-    sprite('tg210_03', 3)	# 45-47
+    sprite('tg210_03', 3)	# 45-47	 **attackbox here**
     SFX_0('014_electric_s')
     SFX_0('014_electric_l')
-    sprite('tg210_04', 2)	# 48-49
+    sprite('tg210_04', 2)	# 48-49	 **attackbox here**
     Unknown7009(1)
     SFX_0('005_swing_grap_2_2')
     SFX_0('014_electric_s')
     SFX_0('014_electric_l')
     SFX_3('tgse_20')
-    sprite('tg210_05', 2)	# 50-51
+    sprite('tg210_05', 2)	# 50-51	 **attackbox here**
     Unknown21003(0, 0)
     SFX_0('014_electric_s')
     SFX_0('014_electric_l')
@@ -2549,12 +2549,12 @@ def NmlAtk5A3rd():
     SFX_0('014_electric_m')
     Unknown23118(0)
     Unknown23119(16744448, 12, 2)
-    sprite('tg203_04', 3)	# 15-17
+    sprite('tg203_04', 3)	# 15-17	 **attackbox here**
     Unknown21003(4000, 3600)
     GFX_0('StayMagneticB', 0)
     SFX_0('005_swing_grap_2_2')
     SFX_0('014_electric_m')
-    sprite('tg203_05', 2)	# 18-19
+    sprite('tg203_05', 2)	# 18-19	 **attackbox here**
     GFX_1('tgef_side_shockA', 3)
     sprite('tg203_06', 3)	# 20-22	 **attackbox here**
     SFX_3('tgse_26')
@@ -2574,7 +2574,7 @@ def NmlAtk5A3rd():
     Unknown4045('746765665f73746561410000000000000000000000000000000000000000000000000000')
     Unknown4048(250000)
     Unknown4045('746765665f73746561410000000000000000000000000000000000000000000001000000')
-    sprite('tg203_08', 6)	# 29-34
+    sprite('tg203_08', 6)	# 29-34	 **attackbox here**
     Recovery()
     Unknown2063()
     sprite('tg203_09', 6)	# 35-40
@@ -2727,16 +2727,16 @@ def NmlAtk4A3rd():
     sprite('tg213_01', 2)	# 3-4
     Unknown23118(0)
     Unknown23119(16744448, 12, 2)
-    sprite('tg213_02', 1)	# 5-5
+    sprite('tg213_02', 1)	# 5-5	 **attackbox here**
     GFX_0('StayMagneticB', 0)
     GFX_0('StayMagneticB', 1)
     GFX_0('StayMagneticB', 2)
     SFX_0('014_electric_sl')
     SFX_0('014_electric_m')
     SFX_3('tgse_00')
-    sprite('tg213_02', 3)	# 6-8
+    sprite('tg213_02', 3)	# 6-8	 **attackbox here**
     Unknown7007('6274673130345f300000000000000000640000006274673130345f310000000000000000640000006274673130345f320000000000000000640000000000000000000000000000000000000000000000')
-    sprite('tg213_03', 4)	# 9-12
+    sprite('tg213_03', 4)	# 9-12	 **attackbox here**
     GFX_0('StayMagneticB', 0)
     ScreenShake(0, 5000)
     Unknown21003(6000, 3000)
@@ -3110,8 +3110,8 @@ def NmlAtk2B():
     Unknown23119(16744448, 12, 2)
     sprite('tg233_03', 4)	# 16-19
     SFX_0('014_electric_m')
-    sprite('tg233_06', 3)	# 20-22
-    sprite('tg233_08', 3)	# 23-25
+    sprite('tg233_06', 3)	# 20-22	 **attackbox here**
+    sprite('tg233_08', 3)	# 23-25	 **attackbox here**
     SFX_0('005_swing_grap_2_2')
     physicsXImpulse(40000)
     Unknown7007('6274673130355f300000000000000000640000006274673130355f310000000000000000640000006274673130355f320000000000000000640000000000000000000000000000000000000000000000')
@@ -3131,7 +3131,7 @@ def NmlAtk2B():
     SFX_3('tgse_26')
     loopRest()
     label(9)
-    sprite('tg233_11', 3)	# 36-38
+    sprite('tg233_11', 3)	# 36-38	 **attackbox here**
     Unknown1019(20)
     Unknown21003(0, 0)
     GFX_0('StayMagneticB', 0)
@@ -3140,7 +3140,7 @@ def NmlAtk2B():
     SFX_0('014_electric_m')
     Recovery()
     Unknown2063()
-    sprite('tg233_12', 3)	# 39-41
+    sprite('tg233_12', 3)	# 39-41	 **attackbox here**
     sprite('tg233_14', 3)	# 42-44
     Unknown1019(0)
     sprite('tg233_15', 3)	# 45-47

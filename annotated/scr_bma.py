@@ -5904,32 +5904,32 @@ def UltimateAssault():
     Unknown30080('')
     SFX_3('mase_09')
     sprite('ma430_02', 4)	# 7-10
-    sprite('ma430_06', 3)	# 11-13	 **attackbox here**
+    sprite('ma430_06', 3)	# 11-13
     tag_voice(1, 'bma250_0', 'bma250_1', '', '')
     Unknown1051(50)
     sendToLabelUpon(2, 9)
-    sprite('ma430_07', 3)	# 14-16	 **attackbox here**
-    sprite('ma430_08', 3)	# 17-19	 **attackbox here**
-    sprite('ma402_01ex01', 2)	# 20-21	 **attackbox here**
+    sprite('ma430_07', 3)	# 14-16
+    sprite('ma430_08', 3)	# 17-19
+    sprite('ma402_01ex01', 2)	# 20-21
     GFX_0('maef430_ex', 0)
     GFX_0('maef430_ex', 1)
     Unknown1084(1)
-    sprite('ma402_02ex01', 4)	# 22-25	 **attackbox here**
+    sprite('ma402_02ex01', 4)	# 22-25
     GFX_0('maef430_ex', 0)
     GFX_0('maef430_ex', 1)
     physicsXImpulse(-12000)
     physicsYImpulse(20000)
     setGravity(2000)
-    sprite('ma402_03ex01', 4)	# 26-29	 **attackbox here**
+    sprite('ma402_03ex01', 4)	# 26-29
     GFX_0('maef430_ex', 0)
-    sprite('ma402_04ex01', 4)	# 30-33	 **attackbox here**
+    sprite('ma402_04ex01', 4)	# 30-33
     GFX_0('maef430_ex', 0)
-    sprite('ma402_05ex01', 4)	# 34-37	 **attackbox here**
+    sprite('ma402_05ex01', 4)	# 34-37
     GFX_0('maef430_ex', 0)
-    sprite('ma402_06ex01', 4)	# 38-41	 **attackbox here**
-    sprite('ma430_09', 40)	# 42-81	 **attackbox here**
+    sprite('ma402_06ex01', 4)	# 38-41
+    sprite('ma430_09', 40)	# 42-81
     label(9)
-    sprite('ma430_10', 2)	# 82-83	 **attackbox here**
+    sprite('ma430_10', 2)	# 82-83
     Unknown1019(30)
     GFX_0('maef430', -1)
     sprite('ma430_11', 2)	# 84-85
@@ -6014,31 +6014,31 @@ def UltimateAssault_OD():
     Unknown30080('')
     sprite('ma430_02', 3)	# 7-9
     sprite('ma430_02', 1)	# 10-10
-    sprite('ma430_06', 3)	# 11-13	 **attackbox here**
+    sprite('ma430_06', 3)	# 11-13
     tag_voice(1, 'bma250_0', 'bma250_1', '', '')
     Unknown1051(50)
     sendToLabelUpon(2, 9)
-    sprite('ma430_07', 3)	# 14-16	 **attackbox here**
-    sprite('ma430_08', 3)	# 17-19	 **attackbox here**
-    sprite('ma402_01ex01', 2)	# 20-21	 **attackbox here**
+    sprite('ma430_07', 3)	# 14-16
+    sprite('ma430_08', 3)	# 17-19
+    sprite('ma402_01ex01', 2)	# 20-21
     GFX_0('maef430_ex', 0)
     Unknown1084(1)
-    sprite('ma402_02ex01', 4)	# 22-25	 **attackbox here**
+    sprite('ma402_02ex01', 4)	# 22-25
     GFX_0('maef430_ex', 0)
     GFX_0('maef430_ex', 1)
     physicsXImpulse(-12000)
     physicsYImpulse(20000)
     setGravity(2000)
-    sprite('ma402_03ex01', 4)	# 26-29	 **attackbox here**
+    sprite('ma402_03ex01', 4)	# 26-29
     GFX_0('maef430_ex', 0)
-    sprite('ma402_04ex01', 4)	# 30-33	 **attackbox here**
+    sprite('ma402_04ex01', 4)	# 30-33
     GFX_0('maef430_ex', 0)
-    sprite('ma402_05ex01', 4)	# 34-37	 **attackbox here**
+    sprite('ma402_05ex01', 4)	# 34-37
     GFX_0('maef430_ex', 0)
-    sprite('ma402_06ex01', 4)	# 38-41	 **attackbox here**
-    sprite('ma430_09', 40)	# 42-81	 **attackbox here**
+    sprite('ma402_06ex01', 4)	# 38-41
+    sprite('ma430_09', 40)	# 42-81
     label(9)
-    sprite('ma430_10', 2)	# 82-83	 **attackbox here**
+    sprite('ma430_10', 2)	# 82-83
     Unknown1019(30)
     GFX_0('maef430', -1)
     sprite('ma430_11', 2)	# 84-85

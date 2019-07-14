@@ -5,7 +5,7 @@ CmnActChangePartnerIn
  |level=0|attribute=|guard=
  |startup=26|active=16|recovery=21|frameAdv=-36
  |blockstun=0|groundHit=0|airHit=0|hitstop=0
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 CmnActChangePartnerQuickIn
@@ -14,7 +14,7 @@ CmnActChangePartnerQuickIn
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 29|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 CmnActChangePartnerOut
@@ -23,7 +23,7 @@ CmnActChangePartnerOut
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 57|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 CmnActChangePartnerQuickOut
@@ -32,7 +32,7 @@ CmnActChangePartnerQuickOut
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 21|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 CmnActChangePartnerAssistAdmiss
@@ -41,7 +41,7 @@ CmnActChangePartnerAssistAdmiss
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 112|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 CmnActChangePartnerAssistAtk_A
@@ -50,7 +50,7 @@ CmnActChangePartnerAssistAtk_A
  |level=5*2|attribute=B*2|guard=
  |startup=22|active=3(16)3|recovery=33|frameAdv=0
  |blockstun=35*2|groundHit=21*2|airHit=60*2|hitstop=20
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 CmnActChangePartnerAssistAtk_B
@@ -59,7 +59,7 @@ CmnActChangePartnerAssistAtk_B
  |level=3*2|attribute=B*2|guard=
  |startup=46|active=1(2)5|recovery=114|frameAdv=-102
  |blockstun=16*2|groundHit=17*2|airHit=45*2|hitstop=11
- |inv=137-167 P|hitbox=
+ |invul=137-167 P|hitbox=
 }}
 
 CmnActChangePartnerAssistAtk_D
@@ -68,7 +68,7 @@ CmnActChangePartnerAssistAtk_D
  |level=4|attribute=H|guard=
  |startup=15|active=8|recovery=32788|frameAdv=-32777
  |blockstun=18|groundHit=19|airHit=60|hitstop=12
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 CmnActChangePartnerDD
@@ -77,7 +77,7 @@ CmnActChangePartnerDD
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 1+157Flash+0|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |inv=1--137 All|hitbox=
+ |invul=1--137 All|hitbox=
 }}
 
 ChangePartnerDD_Exe
@@ -86,7 +86,7 @@ ChangePartnerDD_Exe
  |level=4|attribute=|guard=
  |startup=133|active=3|recovery=54|frameAdv=-38
  |blockstun=18|groundHit=19|airHit=60|hitstop=20
- |inv=1-135 All|hitbox=
+ |invul=1-135 All|hitbox=
 }}
 
 ChangePartnerDDOD_Exe
@@ -95,7 +95,7 @@ ChangePartnerDDOD_Exe
  |level=4|attribute=|guard=
  |startup=133|active=3|recovery=54|frameAdv=-38
  |blockstun=18|groundHit=19|airHit=60|hitstop=20
- |inv=1-135 All|hitbox=
+ |invul=1-135 All|hitbox=
 }}
 
 CmnActChangePartnerBurst
@@ -104,7 +104,7 @@ CmnActChangePartnerBurst
  |level=0|attribute=|guard=
  |startup=121|active=12|recovery=31|frameAdv=-42
  |blockstun=0|groundHit=0|airHit=0|hitstop=0
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtk5A
@@ -113,7 +113,7 @@ NmlAtk5A
  |level=3|attribute=B|guard=
  |startup=7|active=7|recovery=10|frameAdv=1
  |blockstun=17|groundHit=22|airHit=19|hitstop=11
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtk5A2nd
@@ -122,7 +122,7 @@ NmlAtk5A2nd
  |level=3|attribute=B|guard=
  |startup=11|active=3|recovery=15|frameAdv=0
  |blockstun=17|groundHit=23|airHit=22|hitstop=11
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtk5A3rd
@@ -131,7 +131,7 @@ NmlAtk5A3rd
  |level=4|attribute=B|guard=
  |startup=15|active=9|recovery=14|frameAdv=-4
  |blockstun=18|groundHit=23|airHit=23|hitstop=12
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtk5A4th
@@ -140,7 +140,7 @@ NmlAtk5A4th
  |level=4|attribute=B|guard=
  |startup=21|active=3|recovery=20|frameAdv=-4
  |blockstun=18|groundHit=23|airHit=19|hitstop=12
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtk4A
@@ -149,7 +149,7 @@ NmlAtk4A
  |level=2|attribute=B|guard=
  |startup=6|active=6|recovery=9|frameAdv=-1
  |blockstun=13|groundHit=17|airHit=17|hitstop=10
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtk5B
@@ -158,7 +158,7 @@ NmlAtk5B
  |level=4|attribute=B|guard=
  |startup=13|active=6|recovery=16|frameAdv=-3
  |blockstun=18|groundHit=22|airHit=22|hitstop=12
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtk5B2nd
@@ -167,7 +167,7 @@ NmlAtk5B2nd
  |level=4|attribute=F|guard=
  |startup=15|active=6|recovery=23|frameAdv=-10
  |blockstun=18|groundHit=19|airHit=42|hitstop=12
- |inv=11-20 F|hitbox=
+ |invul=11-20 F|hitbox=
 }}
 
 NmlAtk2A
@@ -176,7 +176,7 @@ NmlAtk2A
  |level=3|attribute=F|guard=
  |startup=15|active=3|recovery=15|frameAdv=-1
  |blockstun=16|groundHit=17|airHit=25|hitstop=11
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtk2B
@@ -185,7 +185,7 @@ NmlAtk2B
  |level=3|attribute=B|guard=
  |startup=13|active=4|recovery=32|frameAdv=-19
  |blockstun=16|groundHit=22|airHit=30|hitstop=11
- |inv=7-16 H|hitbox=
+ |invul=7-16 H|hitbox=
 }}
 
 NmlAtk2C
@@ -194,7 +194,7 @@ NmlAtk2C
  |level=4|attribute=F|guard=
  |startup=24|active=6|recovery=15|frameAdv=-2
  |blockstun=18|groundHit=19|airHit=40|hitstop=12
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtkAIR5A
@@ -203,7 +203,7 @@ NmlAtkAIR5A
  |level=3|attribute=H|guard=
  |startup=9|active=3(2)3|recovery=12|frameAdv=2
  |blockstun=16|groundHit=17|airHit=19|hitstop=11
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtkAIR5A2nd
@@ -212,7 +212,7 @@ NmlAtkAIR5A2nd
  |level=3|attribute=H|guard=
  |startup=10|active=6|recovery=15|frameAdv=-4
  |blockstun=16|groundHit=17|airHit=25|hitstop=11
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtkAIR5B
@@ -221,7 +221,7 @@ NmlAtkAIR5B
  |level=3|attribute=H|guard=
  |startup=19|active=5|recovery=16|frameAdv=-4
  |blockstun=16|groundHit=17|airHit=30|hitstop=11
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtkAIR5C
@@ -230,7 +230,7 @@ NmlAtkAIR5C
  |level=3|attribute=H|guard=
  |startup=22|active=8|recovery=10|frameAdv=-1
  |blockstun=16|groundHit=17|airHit=17|hitstop=11
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 CmnActCrushAttack
@@ -239,7 +239,7 @@ CmnActCrushAttack
  |level=3|attribute=|guard=
  |startup=26|active=3|recovery=18|frameAdv=-4
  |blockstun=16|groundHit=0|airHit=0|hitstop=11
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtkThrow
@@ -248,7 +248,7 @@ NmlAtkThrow
  |level=0|attribute=|guard=
  |startup=108|active=3|recovery=23|frameAdv=-25
  |blockstun=0|groundHit=0|airHit=0|hitstop=0
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 ThrowExe
@@ -257,7 +257,7 @@ ThrowExe
  |level=4*2|attribute=*2|guard=
  |startup=1|active=3(28)10|recovery=15|frameAdv=-6
  |blockstun=18*2|groundHit=19*2|airHit=60*2|hitstop=12
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 NmlAtkBackThrow
@@ -266,7 +266,7 @@ NmlAtkBackThrow
  |level=0|attribute=|guard=
  |startup=108|active=3|recovery=23|frameAdv=-25
  |blockstun=0|groundHit=0|airHit=0|hitstop=0
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 BackThrowExe
@@ -275,7 +275,7 @@ BackThrowExe
  |level=4|attribute=|guard=
  |startup=1|active=3(51)3|recovery=21|frameAdv=-5
  |blockstun=18|groundHit=19|airHit=40|hitstop=12
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 CmnActInvincibleAttack
@@ -284,7 +284,7 @@ CmnActInvincibleAttack
  |level=4*2|attribute=, H|guard=
  |startup=18|active=12(16)16|recovery=30|frameAdv=-27
  |blockstun=18*2|groundHit=19*2|airHit=60*2|hitstop=14
- |inv=21-29 H|hitbox=
+ |invul=21-29 H|hitbox=
 }}
 
 Assault
@@ -293,7 +293,7 @@ Assault
  |level=3|attribute=B|guard=
  |startup=21|active=7|recovery=26|frameAdv=-2
  |blockstun=30|groundHit=33|airHit=24|hitstop=11
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 AZcombo1
@@ -302,7 +302,7 @@ AZcombo1
  |level=3|attribute=B|guard=
  |startup=15|active=3|recovery=18|frameAdv=-4
  |blockstun=16|groundHit=17|airHit=17|hitstop=11
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 AZcombo2
@@ -311,7 +311,7 @@ AZcombo2
  |level=3|attribute=B|guard=
  |startup=10|active=5|recovery=18|frameAdv=-6
  |blockstun=16|groundHit=23|airHit=36|hitstop=11
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 AZcombo3
@@ -320,7 +320,7 @@ AZcombo3
  |level=4|attribute=B|guard=
  |startup=16|active=3|recovery=30|frameAdv=-14
  |blockstun=18|groundHit=19|airHit=60|hitstop=20
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 ShotAtemi
@@ -329,7 +329,7 @@ ShotAtemi
  |level=3*2|attribute=B*2|guard=
  |startup=4|active=1(2)5|recovery=142|frameAdv=-130
  |blockstun=16*2|groundHit=17*2|airHit=45*2|hitstop=11
- |inv=127-142 P|hitbox=
+ |invul=127-142 P|hitbox=
 }}
 
 Shinkyaku
@@ -340,7 +340,7 @@ Additional Hit (projectile?)
  |level=3|attribute=|guard=
  |startup=|active=|recovery=Total: 65568|frameAdv=8
  |blockstun=16|groundHit=17|airHit=40|hitstop=3
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 VanishingAttack
@@ -349,7 +349,7 @@ VanishingAttack
  |level=4|attribute=B|guard=
  |startup=54|active=9|recovery=38|frameAdv=-28
  |blockstun=18|groundHit=19|airHit=60|hitstop=12
- |inv=11-50 Guard HBFP Guard|hitbox=
+ |invul=11-50 Guard HBFP Guard|hitbox=
 }}
 
 BoostDash
@@ -358,7 +358,7 @@ BoostDash
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 101|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 DustAttack
@@ -367,7 +367,7 @@ DustAttack
  |level=4|attribute=F|guard=
  |startup=52|active=10|recovery=24|frameAdv=-15
  |blockstun=18|groundHit=19|airHit=60|hitstop=12
- |inv=9-45 Guard HBFP Guard|hitbox=
+ |invul=9-45 Guard HBFP Guard|hitbox=
 }}
 
 HomingJump
@@ -376,7 +376,7 @@ HomingJump
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 142|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 SuperPunch
@@ -385,7 +385,7 @@ SuperPunch
  |level=4|attribute=|guard=
  |startup=7+122Flash+4|active=3|recovery=54|frameAdv=-38
  |blockstun=18|groundHit=19|airHit=60|hitstop=20
- |inv=1-13 Guard All Guard|hitbox=
+ |invul=1-13 Guard All Guard|hitbox=
 }}
 
 SuperPunch_OD
@@ -394,7 +394,7 @@ SuperPunch_OD
  |level=4|attribute=|guard=
  |startup=7+149Flash+4|active=3|recovery=54|frameAdv=-38
  |blockstun=18|groundHit=19|airHit=60|hitstop=20
- |inv=1-13 Guard All Guard|hitbox=
+ |invul=1-13 Guard All Guard|hitbox=
 }}
 
 Spartan
@@ -403,7 +403,7 @@ Spartan
  |level=4|attribute=|guard=
  |startup=7+77Flash+0|active=4(63)5|recovery=44|frameAdv=-22
  |blockstun=26|groundHit=19|airHit=19|hitstop=20
- |inv=1-12 All|hitbox=
+ |invul=1-12 All|hitbox=
 }}
 
 SpartanExe
@@ -412,7 +412,7 @@ SpartanExe
  |level=5*3|attribute=*3|guard=
  |startup=1|active=2(25)3(29)3(40)3|recovery=82|frameAdv=-64
  |blockstun=20*3|groundHit=21*3|airHit=60, 21, 360|hitstop=13, 30
- |inv=1-187 All|hitbox=
+ |invul=1-187 All|hitbox=
 }}
 
 Spartan_OD
@@ -421,7 +421,7 @@ Spartan_OD
  |level=4|attribute=|guard=
  |startup=7+77Flash+0|active=4(63)5|recovery=44|frameAdv=-22
  |blockstun=26|groundHit=19|airHit=19|hitstop=20
- |inv=1-12 All|hitbox=
+ |invul=1-12 All|hitbox=
 }}
 
 SpartanExe_OD
@@ -430,7 +430,7 @@ SpartanExe_OD
  |level=5*3|attribute=*3|guard=
  |startup=1|active=2(25)3(29)3(52)3|recovery=82|frameAdv=-64
  |blockstun=20*3|groundHit=21*3|airHit=60, 21, 360|hitstop=13, 40
- |inv=1-199 All|hitbox=
+ |invul=1-199 All|hitbox=
 }}
 
 AstralHeat
@@ -449,7 +449,7 @@ Additional Hit (projectile?)
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 1+55Flash+0|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |inv=|hitbox=
+ |invul=|hitbox=
 }}
 
 AstralHeatExe
@@ -458,5 +458,5 @@ AstralHeatExe
  |level=0|attribute=|guard=
  |startup=1|active=5|recovery=33584|frameAdv=-33588
  |blockstun=0|groundHit=0|airHit=0|hitstop=0
- |inv=|hitbox=
+ |invul=|hitbox=
 }}

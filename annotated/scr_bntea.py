@@ -1017,10 +1017,10 @@ def ntef_431():
     sprite('vr_nt431_00', 3)	# 4-6
     Unknown1097(300)
     physicsXImpulse(6000)
-    sprite('vr_nt431_01', 3)	# 7-9
+    sprite('vr_nt431_01', 3)	# 7-9	 **attackbox here**
     Unknown4009(0)
     physicsXImpulse(4000)
-    sprite('vr_nt431_01', 3)	# 10-12
+    sprite('vr_nt431_01', 3)	# 10-12	 **attackbox here**
     RefreshMultihit()
     Unknown1097(300)
     physicsXImpulse(3000)
@@ -1031,7 +1031,7 @@ def ntef_431():
     Unknown1007(30000)
     teleportRelativeX(-250000)
     Unknown35()
-    sprite('vr_nt431_02', 6)	# 13-18
+    sprite('vr_nt431_02', 6)	# 13-18	 **attackbox here**
     RefreshMultihit()
     physicsXImpulse(0)
     sprite('vr_nt431_03', 4)	# 19-22
@@ -1121,10 +1121,10 @@ def ntef_431_OD():
     sprite('vr_nt431_00', 3)	# 4-6
     Unknown1097(300)
     physicsXImpulse(6000)
-    sprite('vr_nt431_01', 3)	# 7-9
+    sprite('vr_nt431_01', 3)	# 7-9	 **attackbox here**
     Unknown4009(0)
     physicsXImpulse(4000)
-    sprite('vr_nt431_01', 3)	# 10-12
+    sprite('vr_nt431_01', 3)	# 10-12	 **attackbox here**
     RefreshMultihit()
     Unknown1097(300)
     physicsXImpulse(3000)
@@ -1135,7 +1135,7 @@ def ntef_431_OD():
     Unknown1007(30000)
     teleportRelativeX(-250000)
     Unknown35()
-    sprite('vr_nt431_02', 6)	# 13-18
+    sprite('vr_nt431_02', 6)	# 13-18	 **attackbox here**
     RefreshMultihit()
     physicsXImpulse(0)
     sprite('vr_nt431_03', 4)	# 19-22

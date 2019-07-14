@@ -1175,19 +1175,19 @@ def ice_shot():
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
     sprite('vrjnef400_01', 1)	# 2-2
-    sprite('vrjnef400_02', 1)	# 3-3	 **attackbox here**
+    sprite('vrjnef400_02', 1)	# 3-3
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_03', 1)	# 4-4	 **attackbox here**
-    sprite('vrjnef400_04', 1)	# 5-5	 **attackbox here**
+    sprite('vrjnef400_03', 1)	# 4-4
+    sprite('vrjnef400_04', 1)	# 5-5
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_05', 1)	# 6-6	 **attackbox here**
-    sprite('vrjnef400_06', 1)	# 7-7	 **attackbox here**
+    sprite('vrjnef400_05', 1)	# 6-6
+    sprite('vrjnef400_06', 1)	# 7-7
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_07', 1)	# 8-8	 **attackbox here**
-    sprite('vrjnef400_08', 1)	# 9-9	 **attackbox here**
+    sprite('vrjnef400_07', 1)	# 8-8
+    sprite('vrjnef400_08', 1)	# 9-9
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_1')
     Unknown1028(3200)
@@ -1255,19 +1255,19 @@ def ice_shot_Assist():
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
     sprite('vrjnef400_01', 1)	# 2-2
-    sprite('vrjnef400_02', 1)	# 3-3	 **attackbox here**
+    sprite('vrjnef400_02', 1)	# 3-3
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_03', 1)	# 4-4	 **attackbox here**
-    sprite('vrjnef400_04', 1)	# 5-5	 **attackbox here**
+    sprite('vrjnef400_03', 1)	# 4-4
+    sprite('vrjnef400_04', 1)	# 5-5
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_05', 1)	# 6-6	 **attackbox here**
-    sprite('vrjnef400_06', 1)	# 7-7	 **attackbox here**
+    sprite('vrjnef400_05', 1)	# 6-6
+    sprite('vrjnef400_06', 1)	# 7-7
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_07', 1)	# 8-8	 **attackbox here**
-    sprite('vrjnef400_08', 1)	# 9-9	 **attackbox here**
+    sprite('vrjnef400_07', 1)	# 8-8
+    sprite('vrjnef400_08', 1)	# 9-9
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_1')
     Unknown1028(3200)
@@ -1336,18 +1336,18 @@ def air_ice_shot():
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
     sprite('vrjnef400_01', 2)	# 3-4
-    sprite('vrjnef400_02', 2)	# 5-6	 **attackbox here**
+    sprite('vrjnef400_02', 2)	# 5-6
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_03', 2)	# 7-8	 **attackbox here**
+    sprite('vrjnef400_03', 2)	# 7-8
     GFX_0('IceMakePtc', 0)
-    sprite('vrjnef400_04', 1)	# 9-9	 **attackbox here**
+    sprite('vrjnef400_04', 1)	# 9-9
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_05', 2)	# 10-11	 **attackbox here**
-    sprite('vrjnef400_06', 1)	# 12-12	 **attackbox here**
+    sprite('vrjnef400_05', 2)	# 10-11
+    sprite('vrjnef400_06', 1)	# 12-12
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_07', 2)	# 13-14	 **attackbox here**
-    sprite('vrjnef400_08', 2)	# 15-16	 **attackbox here**
+    sprite('vrjnef400_07', 2)	# 13-14
+    sprite('vrjnef400_08', 2)	# 15-16
     SFX_0('017_freeze_1')
     Unknown1108(0)
     physicsXImpulse(20000)
@@ -1424,19 +1424,19 @@ def ice_shot_ex():
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
     sprite('vrjnef400_01', 1)	# 2-2
-    sprite('vrjnef400_02', 1)	# 3-3	 **attackbox here**
+    sprite('vrjnef400_02', 1)	# 3-3
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_03', 1)	# 4-4	 **attackbox here**
-    sprite('vrjnef400_04', 1)	# 5-5	 **attackbox here**
+    sprite('vrjnef400_03', 1)	# 4-4
+    sprite('vrjnef400_04', 1)	# 5-5
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_05', 1)	# 6-6	 **attackbox here**
-    sprite('vrjnef400_06', 1)	# 7-7	 **attackbox here**
+    sprite('vrjnef400_05', 1)	# 6-6
+    sprite('vrjnef400_06', 1)	# 7-7
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_07', 1)	# 8-8	 **attackbox here**
-    sprite('vrjnef400_08', 1)	# 9-9	 **attackbox here**
+    sprite('vrjnef400_07', 1)	# 8-8
+    sprite('vrjnef400_08', 1)	# 9-9
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_1')
     physicsXImpulse(500)
@@ -1518,19 +1518,19 @@ def ice_shot_ex_Assist():
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
     sprite('vrjnef400_01', 1)	# 2-2
-    sprite('vrjnef400_02', 1)	# 3-3	 **attackbox here**
+    sprite('vrjnef400_02', 1)	# 3-3
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_03', 1)	# 4-4	 **attackbox here**
-    sprite('vrjnef400_04', 1)	# 5-5	 **attackbox here**
+    sprite('vrjnef400_03', 1)	# 4-4
+    sprite('vrjnef400_04', 1)	# 5-5
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_05', 1)	# 6-6	 **attackbox here**
-    sprite('vrjnef400_06', 1)	# 7-7	 **attackbox here**
+    sprite('vrjnef400_05', 1)	# 6-6
+    sprite('vrjnef400_06', 1)	# 7-7
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_07', 1)	# 8-8	 **attackbox here**
-    sprite('vrjnef400_08', 1)	# 9-9	 **attackbox here**
+    sprite('vrjnef400_07', 1)	# 8-8
+    sprite('vrjnef400_08', 1)	# 9-9
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_1')
     physicsXImpulse(500)
@@ -1609,19 +1609,19 @@ def air_ice_shot_ex():
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
     sprite('vrjnef400_01', 1)	# 2-2
-    sprite('vrjnef400_02', 1)	# 3-3	 **attackbox here**
+    sprite('vrjnef400_02', 1)	# 3-3
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_03', 1)	# 4-4	 **attackbox here**
-    sprite('vrjnef400_04', 1)	# 5-5	 **attackbox here**
+    sprite('vrjnef400_03', 1)	# 4-4
+    sprite('vrjnef400_04', 1)	# 5-5
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_05', 1)	# 6-6	 **attackbox here**
-    sprite('vrjnef400_06', 1)	# 7-7	 **attackbox here**
+    sprite('vrjnef400_05', 1)	# 6-6
+    sprite('vrjnef400_06', 1)	# 7-7
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_0')
-    sprite('vrjnef400_07', 1)	# 8-8	 **attackbox here**
-    sprite('vrjnef400_08', 1)	# 9-9	 **attackbox here**
+    sprite('vrjnef400_07', 1)	# 8-8
+    sprite('vrjnef400_08', 1)	# 9-9
     GFX_0('IceMakePtc', 0)
     SFX_0('017_freeze_1')
     physicsXImpulse(500)
