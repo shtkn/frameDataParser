@@ -149,10 +149,10 @@ NmlAtk5B
 
 Additional Hit (projectile?)
 |startup=15|active=3(1)2|recovery=0last blockstun frame: 48
- |damage=1000, 1500|p1=90*2|p2=70, 85
- |level=1, 4|attribute=B*2|guard=
+ |damage=1500, 1000|p1=90*2|p2=85, 70
+ |level=4, 1|attribute=B*2|guard=
  |startup=15|active=6|recovery=21|frameAdv=-5
- |blockstun=11, 18|groundHit=12, 19|airHit=14, 25|hitstop=9, 12
+ |blockstun=18, 11|groundHit=19, 12|airHit=25, 14|hitstop=12, 9
  |invul=|hitbox=
 }}
 
@@ -178,10 +178,10 @@ NmlAtk2B
 
 Additional Hit (projectile?)
 |startup=17|active=3|recovery=0last blockstun frame: 47
- |damage=1000, 1500|p1=80*2|p2=70, 85
- |level=1, 4|attribute=F*2|guard=
+ |damage=1500, 1000|p1=80*2|p2=85, 70
+ |level=4, 1|attribute=F*2|guard=
  |startup=17|active=3|recovery=28|frameAdv=-12
- |blockstun=11, 18|groundHit=12, 19|airHit=12, 30|hitstop=9, 12
+ |blockstun=18, 11|groundHit=19, 12|airHit=30, 12|hitstop=12, 9
  |invul=|hitbox=
 }}
 

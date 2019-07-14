@@ -942,9 +942,9 @@ Additional Hit (projectile?)
 |startup=|active=|recovery=18last blockstun frame: 463
 Additional Hit (projectile?)
 |startup=109|active=336|recovery=0last blockstun frame: 463
- |damage=20000*2, 0, 37000|p1=100*4|p2=90*2, 100, 90
- |level=5*2, 0, 5|attribute=*4|guard=
+ |damage=20000, 0, 20000, 37000|p1=100*4|p2=90, 100, 90*2
+ |level=5, 0, 5*2|attribute=*4|guard=
  |startup=1|active=8(87)308,1|recovery=171|frameAdv=-151
- |blockstun=20*2, 0, 20|groundHit=21*2, 0, 21|airHit=21*2, 0, 9999|hitstop=13, 0, 13
+ |blockstun=20, 0, 20*2|groundHit=21, 0, 21*2|airHit=21, 0, 21, 9999|hitstop=13, 0, 13
  |invul=1-575 All|hitbox=
 }}

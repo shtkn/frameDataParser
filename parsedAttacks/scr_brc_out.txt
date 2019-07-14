@@ -475,10 +475,10 @@ Additional Hit (projectile?)
 |startup=10+33Flash+4|active=48|recovery=4last blockstun frame: 127
 Additional Hit (projectile?)
 |startup=10+33Flash+4|active=48|recovery=4last blockstun frame: 127
- |damage=0*2, 1370*7, 330|p1=100*10|p2=100*2, 60*8 (Once)
- |level=0*2, 4*8|attribute=*2, P*8|guard=
+ |damage=1370, 0*2, 1370*6, 330|p1=100*10|p2=60, 100*2, 60*7 (Once)
+ |level=4, 0*2, 4*7|attribute=P, *2, P*7|guard=
  |startup=|active=|recovery=Total: 10+33Flash+107|frameAdv=-23
- |blockstun=0*2, 18*8|groundHit=0*2, 19*8|airHit=0*2, 100*8|hitstop=0, 6/+0/+14
+ |blockstun=18, 0*2, 18*7|groundHit=19, 0*2, 19*7|airHit=100, 0*2, 100*7|hitstop=6/+0/+14, 0, 6/+0/+14
  |invul=1-19 All|hitbox=
 }}
 
@@ -496,10 +496,10 @@ Additional Hit (projectile?)
 |startup=13+30Flash+2|active=48|recovery=4last blockstun frame: 125
 Additional Hit (projectile?)
 |startup=13+30Flash+2|active=48|recovery=4last blockstun frame: 125
- |damage=0*2, 1370*7, 330|p1=100*10|p2=100*2, 60*8 (Once)
- |level=0*2, 4*8|attribute=*2, P*8|guard=
+ |damage=1370, 0*2, 1370*6, 330|p1=100*10|p2=60, 100*2, 60*7 (Once)
+ |level=4, 0*2, 4*7|attribute=P, *2, P*7|guard=
  |startup=|active=|recovery=Total: 13+30Flash+73|frameAdv=9
- |blockstun=0*2, 18*8|groundHit=0*2, 19*8|airHit=0*2, 100*8|hitstop=0, 6/+0/+14
+ |blockstun=18, 0*2, 18*7|groundHit=19, 0*2, 19*7|airHit=100, 0*2, 100*7|hitstop=6/+0/+14, 0, 6/+0/+14
  |invul=1-20 All|hitbox=
 }}
 

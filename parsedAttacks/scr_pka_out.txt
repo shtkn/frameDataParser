@@ -88,10 +88,10 @@ Additional Hit (projectile?)
 |startup=97|active=3(20)32767|recovery=0last blockstun frame: 148
 Additional Hit (projectile?)
 |startup=97|active=5(23)32767|recovery=0last blockstun frame: 158
- |damage=500, 1500*4|p1=100*5|p2=100, 80, 60, 80*2 (Once)
+ |damage=500, 1500*4|p1=100*5|p2=100, 60, 80*3 (Once)
  |level=5, 3*4|attribute=*5|guard=
  |startup=69|active=3|recovery=48|frameAdv=14
- |blockstun=20, 16*4|groundHit=41, 17*4|airHit=81, 77*4|hitstop=25, 6, 11, 6
+ |blockstun=20, 16*4|groundHit=41, 17*4|airHit=81, 77*4|hitstop=25, 11, 6
  |invul=1-71 All|hitbox=
 }}
 
@@ -101,10 +101,10 @@ Additional Hit (projectile?)
 |startup=97|active=3(20)32767|recovery=0last blockstun frame: 148
 Additional Hit (projectile?)
 |startup=97|active=5(23)32767|recovery=0last blockstun frame: 158
- |damage=500, 1500*4|p1=100*5|p2=100, 80, 60, 80*2 (Once)
+ |damage=500, 1500*4|p1=100*5|p2=100, 60, 80*3 (Once)
  |level=5, 3*4|attribute=*5|guard=
  |startup=69|active=3|recovery=48|frameAdv=14
- |blockstun=20, 16*4|groundHit=41, 17*4|airHit=81, 77*4|hitstop=25, 6, 11, 6
+ |blockstun=20, 16*4|groundHit=41, 17*4|airHit=81, 77*4|hitstop=25, 11, 6
  |invul=1-71 All|hitbox=
 }}
 
@@ -492,10 +492,10 @@ Additional Hit (projectile?)
 |startup=4+59Flash+34|active=3(20)32767|recovery=0last blockstun frame: 148
 Additional Hit (projectile?)
 |startup=4+59Flash+34|active=5(23)32767|recovery=0last blockstun frame: 158
- |damage=1500*5|p1=100*5|p2=100, 80, 60, 80*2 (Once)
+ |damage=1500*5|p1=100*5|p2=100, 60, 80*3 (Once)
  |level=5, 3*4|attribute=*5|guard=
  |startup=4+59Flash+6|active=3|recovery=48|frameAdv=14
- |blockstun=20, 16*4|groundHit=41, 17*4|airHit=81, 77*4|hitstop=25, 6, 11, 6
+ |blockstun=20, 16*4|groundHit=41, 17*4|airHit=81, 77*4|hitstop=25, 11, 6
  |invul=1-12 All|hitbox=
 }}
 
@@ -505,10 +505,10 @@ Additional Hit (projectile?)
 |startup=4+59Flash+34|active=3(20)32767|recovery=0last blockstun frame: 148
 Additional Hit (projectile?)
 |startup=4+59Flash+34|active=5(23)32767|recovery=0last blockstun frame: 158
- |damage=1500*5|p1=100*5|p2=100, 80, 60, 80*2 (Once)
+ |damage=1500*5|p1=100*5|p2=100, 60, 80*3 (Once)
  |level=5, 3*4|attribute=*5|guard=
  |startup=4+59Flash+6|active=3|recovery=48|frameAdv=14
- |blockstun=20, 16*4|groundHit=41, 17*4|airHit=81, 77*4|hitstop=25, 6, 11, 6
+ |blockstun=20, 16*4|groundHit=41, 17*4|airHit=81, 77*4|hitstop=25, 11, 6
  |invul=1-12 All|hitbox=
 }}
 

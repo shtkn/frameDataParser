@@ -214,10 +214,10 @@ Additional Hit (projectile?)
 |startup=|active=|recovery=15last blockstun frame: 49
 Additional Hit (projectile?)
 |startup=19|active=1|recovery=32last blockstun frame: 49
- |damage=1700, 0|p1=90, 100|p2=85, 100
- |level=4, 0|attribute=B, |guard=
+ |damage=0, 1700|p1=100, 90|p2=100, 85
+ |level=0, 4|attribute=, B|guard=
  |startup=19|active=6|recovery=30|frameAdv=-17
- |blockstun=18, 0|groundHit=19, 0|airHit=19, 0|hitstop=12, 0
+ |blockstun=0, 18|groundHit=0, 19|airHit=0, 19|hitstop=0, 12
  |invul=1-18 Guard HBP Guard|hitbox=
 }}
 
