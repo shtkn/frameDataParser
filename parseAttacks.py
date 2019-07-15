@@ -494,7 +494,7 @@ def parse_move_file(source, move_list, effect_list):
                 state.damage = int(line[line.index("(") + 1:line.index(")")])
             elif "Unknown11092(" in line:
                 state.p2Once = line[line.index("(") + 1:line.index(")")] == "1"
-            elif "Unknown11028(" in line:
+            elif "Unknown11028(" in line or "blockstun(" in line:
                 state.blockstun = int(line[line.index("(") + 1:line.index(")")])
                 # print "Hardcoded blockstun: " + state.blockstun
             elif "Hitstop(" in line:

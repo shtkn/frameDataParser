@@ -932,6 +932,60 @@ def NmlAtk5A():
                                                    0, 2, [False, True, False, False, False])
         self.assertEqual(expected, move_list["NmlAtk5A"])
 
+    def test_parse_move_with_gfx_before_refresh_multihit(self):
+        state = """@State
+    def NmlAtk5A():
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingNormal()
+            AttackLevel_(2)
+        sprite('Action_001_00', 3)	# 1-3
+        sprite('Action_001_01', 3)	# 4-6
+        Unknown7009(0)
+        sprite('Action_001_02', 2)	# 7-8	 **attackbox here**
+        GFX_0('esef_201', -1)
+        RefreshMultihit()
+        sprite('Action_001_02', 2)	# 7-8	 **attackbox here**
+        sprite('Action_001_03', 4)	# 9-12
+        Unknown23027()
+        Recovery()
+        Unknown2063()
+        sprite('Action_001_04', 8)	# 13-20
+        sprite('Action_001_05', 4)	# 21-24
+        sprite('Action_001_06', 3)	# 25-27
+            """
+        buf = StringIO.StringIO(state)
+        effect_list = OrderedDict()
+        move_list = OrderedDict()
+        move_list = parse_move_file(buf, move_list, effect_list)
+
+
+    def test_parse_move_with_subroutine_in_upon_immediate(self):
+        subroutine = """@Subroutine
+def Init_AtkData():
+    Damage(900)"""
+        buf = StringIO.StringIO(subroutine)
+        effect_list = {}
+        effect_list = parse_move_file(buf, effect_list, effect_list)
+        state = """@State
+    def NmlAtk5A():
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingNormal()
+            Damage(500)
+            AttackLevel_(1)
+            CallSubroutine('Init_AtkData')
+        sprite('Action_001_00', 3)	# 1-3
+        sprite('Action_001_01', 3)	# 4-6
+        sprite('Action_001_02', 2)	# 7-8	 **attackbox here**
+        RefreshMultihit()
+        sprite('Action_001_04', 8)	# 13-20
+        sprite('Action_001_05', 4)	# 21-24
+        sprite('Action_001_06', 3)	# 25-27
+            """
+        buf = StringIO.StringIO(state)
+        effect_list = OrderedDict()
+        move_list = OrderedDict()
+        move_list = parse_move_file(buf, move_list, effect_list)
+
     def test_calc_damage_strike(self):
         move = Move()
         move.frame_chunks = [WaitFrames(7),
