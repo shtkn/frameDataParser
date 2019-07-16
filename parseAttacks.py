@@ -87,7 +87,7 @@ class State:
             self.knockdownTime = None
 
     def is_attackbox(self):
-        return self.isAttackBox and (self.isNewHit or not (self.disableAttackboxes or self.disableAttackboxesThisFrame))
+        return self.isAttackBox and (self.isNewHit or not self.disableAttackboxes) and not self.disableAttackboxesThisFrame
 
 
 class AttackInfo:
@@ -464,8 +464,9 @@ def parse_move_file(source, move_list, effect_list):
             if HAS_HITBOX in line:
                 state.isAttackBox = HAS_HITBOX in line
         elif not state.exitState:
-            if "Recovery()" in line or "Unknown23027()" in line:  # disables active frames until a refreshMultihit
+            if "Recovery()" in line or "Unknown23027()" in line or "Unknown1084(1)" in line:  # disables active frames until a refreshMultihit
                 state.disableAttackboxes = True
+                state.isNewHit = False
             elif "StartMultihit()" in line:  # turns off these active frames
                 state.disableAttackboxesThisFrame = True
             elif "RefreshMultihit()" in line:  # counts as a new hit, end previous frames; start a  new one
@@ -560,6 +561,8 @@ def parse_move_file(source, move_list, effect_list):
                 state.attackLevel = 3
                 state.blockstun = 16
                 state.hitstop = 11
+                state.bonus_hitstop = 0
+                state.bonus_blockstop = 0
             elif "AttackDefaults_StandingNormal(" in line or "AttackDefaults_StandingSpecial(" in line:
                 state.attr = [False, True, False, False, False]
             elif "AttackDefaults_CrouchingNormal(" in line:
@@ -902,7 +905,7 @@ def write_file(moves_on_block, target):
         damage_list = calc_damage_for_move(move_on_block)
         damage, p1, p2, hitstun, untech, level, attribute, hitstop, blockstun = create_damage_text(damage_list)
 
-        target.write("\n |damage=" + damage + "|p1=" + p1 + "|p2=" + p2)
+        target.write("\n |damage=" + damage + "|cancel=" + "|p1=" + p1 + "|p2=" + p2)
         target.write("\n |level=" + level + "|attribute=" + attribute + "|guard=")
         target.write("\n |startup=" + str(startup) + "|active=" + middle + "|recovery=" + recovery + "|frameAdv=" + frame_adv)
         target.write("\n |blockstun=" + blockstun + "|groundHit=" + hitstun + "|airHit=" + untech + "|hitstop=" + hitstop)

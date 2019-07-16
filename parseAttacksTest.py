@@ -751,49 +751,6 @@ def NmlAtk5X():
                                  ]
         self.assertEqual(expected, move_list["NmlAtk5X"])
 
-    def test_parse_attack_with_no_damage_defined(self):
-        state = """
-@State
-def az406_dummy_5B3rd():
-
-    def upon_IMMEDIATE():
-        Unknown2009()
-        AirPushbackY(22000)
-        AirUntechableTime(40)
-        GroundedHitstunAnimation(11)
-        AirHitstunAnimation(11)
-        Unknown9015(1)
-        Unknown3038(1)
-        Unknown23078(1)
-        if SLOT_4:
-            AirPushbackX(35000)
-            AirPushbackY(1000)
-            YImpluseBeforeWallbounce(20)
-            Unknown9346(1)
-            Unknown9178(1)
-            Unknown9362(1)
-            Unknown9364(30)
-            if (SLOT_4 > 1):
-                AirUntechableTime(30)
-                AirHitstunAfterWallbounce(30)
-                GroundedHitstunAnimation(12)
-                AirHitstunAnimation(12)
-                Unknown1017()
-    sprite('null', 5)	# 1-5
-    sprite('vr_azef406_col', 3)	# 6-8	 **attackbox here**"""
-        buf = StringIO.StringIO(state)
-        move_list = parse_move_file(buf, {}, {})
-        self.assertEqual(len(move_list), 1)
-        self.assertTrue("az406_dummy_5B3rd" in move_list)
-        expected = Move()
-        expected.frame_chunks = [WaitFrames(5),
-                                 ActiveFrames(3),
-                                 ]
-        expected.frame_chunks[1].info = AttackInfo(0, 100, 100, 0, False, 0, 40, 0, 0, 0,
-                                                   0, 0, [False, False, False, False, False])
-        expected.frame_chunks[1].info.hitstop = 0
-        self.assertEqual(expected, move_list["az406_dummy_5B3rd"])
-
     def test_parse_attack_with_activeframes_that_are_only_one_hit(self):
         state = """
 def UltimateShot_DDD():
@@ -944,10 +901,43 @@ def NmlAtk5A():
         sprite('Action_001_02', 2)	# 7-8	 **attackbox here**
         GFX_0('esef_201', -1)
         RefreshMultihit()
-        sprite('Action_001_02', 2)	# 7-8	 **attackbox here**
-        sprite('Action_001_03', 4)	# 9-12
+        sprite('Action_001_02', 2)	# 9-10	 **attackbox here**
+        sprite('Action_001_03', 4)	# 11-14
         Unknown23027()
         Recovery()
+        Unknown2063()
+        sprite('Action_001_04', 8)	# 15-22
+        sprite('Action_001_05', 4)	# 23-26
+        sprite('Action_001_06', 3)	# 27-29
+            """
+        buf = StringIO.StringIO(state)
+        effect_list = OrderedDict()
+        move_list = OrderedDict()
+        move_list = parse_move_file(buf, move_list, effect_list)
+
+        self.assertEqual(6, move_list["NmlAtk5A"].frame_chunks[0].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[0], WaitFrames))
+        self.assertEqual("esef_201", move_list["NmlAtk5A"].frame_chunks[1].name)
+        self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[1], SubroutineCall))
+        self.assertEqual(4, move_list["NmlAtk5A"].frame_chunks[2].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[2], ActiveFrames))
+        self.assertEqual(19, move_list["NmlAtk5A"].frame_chunks[3].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[3], WaitFrames))
+
+    def test_parse_move_with_start_multihit(self):
+        state = """@State
+    def NmlAtk5A():
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingNormal()
+            AttackLevel_(2)
+        sprite('Action_001_00', 3)	# 1-3
+        sprite('Action_001_01', 3)	# 4-6
+        Unknown7009(0)
+        sprite('Action_001_02', 2)	# 7-8	 **attackbox here**
+        StartMultihit()
+        sprite('Action_001_02', 2)	# 9-10	 **attackbox here**
+        sprite('Action_001_02', 2)	# 11-12	 **attackbox here**
+        StartMultihit()
         Unknown2063()
         sprite('Action_001_04', 8)	# 13-20
         sprite('Action_001_05', 4)	# 21-24
@@ -957,25 +947,25 @@ def NmlAtk5A():
         effect_list = OrderedDict()
         move_list = OrderedDict()
         move_list = parse_move_file(buf, move_list, effect_list)
+        self.assertEqual(8, move_list["NmlAtk5A"].frame_chunks[0].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[0], WaitFrames))
+        self.assertEqual(2, move_list["NmlAtk5A"].frame_chunks[1].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[1], ActiveFrames))
+        self.assertEqual(17, move_list["NmlAtk5A"].frame_chunks[2].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[2], WaitFrames))
 
-
-    def test_parse_move_with_subroutine_in_upon_immediate(self):
-        subroutine = """@Subroutine
-def Init_AtkData():
-    Damage(900)"""
-        buf = StringIO.StringIO(subroutine)
-        effect_list = {}
-        effect_list = parse_move_file(buf, effect_list, effect_list)
+    def test_parse_move_with_disable_hitboxes_but_refresh_multithit_called(self):
         state = """@State
     def NmlAtk5A():
         def upon_IMMEDIATE():
             AttackDefaults_StandingNormal()
-            Damage(500)
-            AttackLevel_(1)
-            CallSubroutine('Init_AtkData')
+            AttackLevel_(2)
         sprite('Action_001_00', 3)	# 1-3
+        Unknown23027()
         sprite('Action_001_01', 3)	# 4-6
         sprite('Action_001_02', 2)	# 7-8	 **attackbox here**
+        sprite('Action_001_02', 2)	# 9-10	 **attackbox here**
+        sprite('Action_001_02', 2)	# 11-12	 **attackbox here**
         RefreshMultihit()
         sprite('Action_001_04', 8)	# 13-20
         sprite('Action_001_05', 4)	# 21-24
@@ -985,6 +975,40 @@ def Init_AtkData():
         effect_list = OrderedDict()
         move_list = OrderedDict()
         move_list = parse_move_file(buf, move_list, effect_list)
+        self.assertEqual(10, move_list["NmlAtk5A"].frame_chunks[0].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[0], WaitFrames))
+        self.assertEqual(2, move_list["NmlAtk5A"].frame_chunks[1].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[1], ActiveFrames))
+        self.assertEqual(15, move_list["NmlAtk5A"].frame_chunks[2].duration)
+        self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[2], WaitFrames))
+
+    def test_parse_move_with_subroutine_in_upon_immediate(self):
+        subroutine = """@Subroutine
+def Init_AtkData():
+    Damage(900)"""
+        buf = StringIO.StringIO(subroutine)
+        effect_list = OrderedDict()
+        effect_list = parse_move_file(buf, effect_list, effect_list)
+        state = """@State
+    def NmlAtk5A():
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingNormal()
+            AttackLevel_(1)
+            Damage(500)
+            CallSubroutine('Init_AtkData')
+        sprite('Action_001_00', 3)	# 1-3
+        sprite('Action_001_01', 3)	# 4-6
+        sprite('Action_001_02', 2)	# 7-8	 **attackbox here**
+        sprite('Action_001_04', 8)	# 13-20
+        sprite('Action_001_05', 4)	# 21-24
+        sprite('Action_001_06', 3)	# 25-27
+            """
+        buf = StringIO.StringIO(state)
+        move_list = OrderedDict()
+        move_list = parse_move_file(buf, move_list, effect_list)
+        hit_simulations = simulate_on_block(move_list, effect_list)
+        expected = AttackInfo(500)
+        self.assertEqual(expected, hit_simulations["NmlAtk5A"].frame_chunks[1].info)
 
     def test_calc_damage_strike(self):
         move = Move()
