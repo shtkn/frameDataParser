@@ -14,6 +14,8 @@ ATTACK_LEVEL = {"blockstun": [9, 11, 13, 16, 18, 20],
 
 class State:
     def __init__(self):
+        self.inUponImmediate = False
+        self.uponImmediateIndent = ""
         self.moveName = ""
         self.spriteLine = ""
         self.extraLines = ""
@@ -55,6 +57,8 @@ class State:
         self.duration = 0
         self.isAttackBox = False
         self.disableAttackboxesThisFrame = False
+        self.inUponImmediate = False
+        self.uponImmediateIndent = ""
         if is_new_move:
             self.moveName = ""
             self.disableAttackboxes = False
@@ -393,6 +397,9 @@ def parse_move_file(source, move_list, effect_list):
     state = State()
     frame_chunks = []
     for line in source.readlines():
+        if state.inUponImmediate and not line.startswith(state.uponImmediateIndent):
+            state.inUponImmediate = False
+
         # new move, finish parsing existing move, then restart frame counters
         if "@State" in line or "@Subroutine" in line:
 
@@ -409,6 +416,8 @@ def parse_move_file(source, move_list, effect_list):
                     subroutine.untech = ATTACK_LEVEL["untech"][state.attackLevel]
 
                 subroutine.blockstun = state.blockstun if state.blockstun is not None else subroutine.blockstun
+                subroutine.hitstun = state.hitstun if state.hitstun is not None else subroutine.hitstun
+                subroutine.untech = state.untech if state.untech is not None else subroutine.untech
                 subroutine.hitstop = state.hitstop if state.hitstop is not None else subroutine.hitstop
                 subroutine.bonus_blockstop = state.bonus_blockstop if state.bonus_blockstop is not None else subroutine.bonus_blockstop
                 subroutine.damage = state.damage if state.damage is not None else subroutine.damage
@@ -442,7 +451,7 @@ def parse_move_file(source, move_list, effect_list):
             state.clear_values(True)
             if "@Subroutine" in line:
                 state.isSubroutine = True
-        elif line.startswith("            "):
+        elif state.inUponImmediate and line.startswith(state.uponImmediateIndent + "    "):
             pass    # skip anything not under UPON_IMMEDIATE
         elif not state.exitState and SPRITE_START in line:
             if state.duration > 0:
@@ -527,7 +536,37 @@ def parse_move_file(source, move_list, effect_list):
                 name_end = line.index("')")
                 # run the command on line[name_start:name_end] starting at current_frame-1
                 # print "SUBROUTINE" + line[name_start:name_end]
-                frame_chunks.append(SubroutineCall(line[name_start:name_end]))
+                if state.inUponImmediate:
+                    if line[name_start:name_end] in effect_list:
+                        subroutine = effect_list[line[name_start:name_end]]
+                        if subroutine.damage is not None:
+                            state.damage = subroutine.damage
+                        if subroutine.p1 is not None:
+                            state.p1 = subroutine.p1
+                        if subroutine.p2 is not None:
+                            state.p2 = subroutine.p2
+                        if subroutine.p2Once is not None:
+                            state.p2Once = subroutine.p2Once
+                        if subroutine.minDamage is not None:
+                            state.minDamage = subroutine.minDamage
+                        if subroutine.hitstun is not None:
+                            state.hitstun = subroutine.hitstun
+                        if subroutine.untech is not None:
+                            state.untech = subroutine.untech
+                        if subroutine.blockstun is not None:
+                            state.blockstun = subroutine.blockstun
+                        if subroutine.attackLevel is not None:
+                            state.attackLevel = subroutine.attackLevel
+                        if subroutine.hitstop is not None:
+                            state.hitstop = subroutine.hitstop
+                        if subroutine.bonus_blockstop is not None:
+                            state.bonus_blockstop = subroutine.bonus_blockstop
+                        if subroutine.bonus_hitstop is not None:
+                            state.bonus_hitstop = subroutine.bonus_hitstop
+                        if subroutine.attribute is not None:
+                            state.attribute = subroutine.attribute
+                else:
+                    frame_chunks.append(SubroutineCall(line[name_start:name_end]))
             elif "Unknown2036(" in line:
                 flash_start = line.index("(") + 1
                 flash_end = line.index(",")
@@ -563,7 +602,10 @@ def parse_move_file(source, move_list, effect_list):
                 state.hitstop = 11
                 state.bonus_hitstop = 0
                 state.bonus_blockstop = 0
-            elif "AttackDefaults_StandingNormal(" in line or "AttackDefaults_StandingSpecial(" in line:
+            elif "AttackDefaults_StandingNormal(" in line:
+                state.attr = [False, True, False, False, False]
+            elif "AttackDefaults_StandingSpecial(" in line:
+                state.p1 = 80
                 state.attr = [False, True, False, False, False]
             elif "AttackDefaults_CrouchingNormal(" in line:
                 state.attr = [False, False, True, False, False]
@@ -571,7 +613,15 @@ def parse_move_file(source, move_list, effect_list):
                 state.p1 = 80
                 state.attr = [True, False, False, False, False]
             elif "Unknown17003(" in line: # attack defaults air special?
+                state.p1 = 80
                 state.attr = [True, False, False, False, False]
+            elif "Unknown17024(" in line: # attack defaults reversal action
+                state.p1 = 80
+                state.p2 = 60
+                state.attr = [True, False, False, False, False]
+            elif "def upon_IMMEDIATE():" in line:
+                state.inUponImmediate = True
+                state.uponImmediateIndent = line[0:line.index("def")] + "    "
     if state.isSubroutine:
         subroutine = Subroutine()
         subroutine.blockstun = state.blockstun
@@ -1054,9 +1104,9 @@ def main():
         "scr_uwa", "scr_uyu"
     ]
 
-    # source_dir = "."
-    # target_dir = "."
-    # file_list = ["testfile"]
+    source_dir = "."
+    target_dir = "."
+    file_list = ["testfile"]
     for file_name in file_list:
         # Parse effects
         if not os.path.isfile(source_dir + "/" + file_name + "ea.py") or \
