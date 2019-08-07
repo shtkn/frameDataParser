@@ -3429,6 +3429,13 @@ vr_lp205atkcol
 vr_lp206atkcol
 vr_lp206atkcol_ex
 vr_lp206atkcol_ex2
+vr_lp232atkcol00
+vr_lp232atkcol01
+vr_lp232atkcol02
+vr_lp232atkcol04
+vr_lp254atkcol
+vr_la405atkcol
+vr_la407_atkcol
 pak starts here!	
 ak200_00
 ak200_01

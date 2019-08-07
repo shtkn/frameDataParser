@@ -397,7 +397,7 @@ def parse_move_file(source, move_list, effect_list):
     state = State()
     frame_chunks = []
     for line in source.readlines():
-        if state.inUponImmediate and not line.startswith(state.uponImmediateIndent):
+        if state.inUponImmediate and line != '\n' and not line.startswith(state.uponImmediateIndent):
             state.inUponImmediate = False
 
         # new move, finish parsing existing move, then restart frame counters

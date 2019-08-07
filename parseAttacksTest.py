@@ -1065,17 +1065,105 @@ def NmlAtk5A():
         print hitstop
 
     def test_parse_function_with_one_sprite_line(self):
-        state = """@State
-    def NmlAtk5A():
-        def upon_IMMEDIATE():
-            AttackDefaults_StandingNormal()
-            AttackLevel_(1)
-            Damage(500)
-        sprite('Action_001_02', 2)	# 1-2	 **attackbox here**
-                    """
+        state = """def vr_lp206atk_04():
+    def upon_IMMEDIATE():
+        Unknown2009()
+        callSubroutine('vr_lp206atk')
+        teleportRelativeX(100000)
+        Unknown1007(50000)
+        physicsXImpulse(50000)
+        setGravity(-2000)
+    sprite('vr_lp206atkcol_ex', 11)	# 1-11	 **attackbox here**"""
         buf = StringIO.StringIO(state)
         effect_list = OrderedDict()
         move_list = OrderedDict()
         move_list = parse_move_file(buf, move_list, effect_list)
-        self.assertEqual(2, move_list["NmlAtk5A"].frame_chunks[0].duration)
-        self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[0], ActiveFrames))
+        self.assertEqual(11, move_list["vr_lp206atk_04"].frame_chunks[0].duration)
+        self.assertTrue(isinstance(move_list["vr_lp206atk_04"].frame_chunks[0], ActiveFrames))
+
+
+    def test_parse_bug(self):
+        state = """
+@State
+def PLA_PersonaTackle():
+
+    def upon_IMMEDIATE():
+        Unknown23023()
+        Unknown23184('0300000064000000803801000000000080380100000000008038010000000000')
+        callSubroutine('PLA_DDAttackInit')
+        callSubroutine('PLA_ForceWarp')
+        Unknown4007(3)
+        Unknown2011()
+        AttackLevel_(5)
+        Damage(1000)
+        AttackP2(60)
+        Unknown11092(1)
+        Unknown23182(3)
+        AirUntechableTime(100)
+        AirHitstunAnimation(9)
+        GroundedHitstunAnimation(9)
+        AirPushbackY(50000)
+        AirPushbackX(25000)
+        PushbackX(20000)
+        Hitstop(20)
+        Unknown11084(1)
+        Unknown2017(0)
+        Unknown11072(1, 200000, 0)
+        Unknown11001(0, 0, 0)
+
+        def upon_43():
+            if (SLOT_48 == 401):
+                sendToLabel(1)
+            if (SLOT_48 == 404):
+                sendToLabel(3)
+            if (SLOT_48 == 402):
+                Unknown23027()
+                Unknown4007(0)
+                Unknown4009(0)
+                physicsXImpulse(60000)
+            if (SLOT_48 == 406):
+                Hitstop(45)
+                AirPushbackX(50000)
+                Unknown23182(3)
+                AttackP2(60)
+                Unknown11092(1)
+        GFX_0('430Ptackle_start', 100)
+
+        def upon_11():
+            Unknown23029(3, 405, 0)
+
+        def upon_78():
+            Unknown23027()
+            Unknown23029(3, 408, 0)
+        setInvincible(1)
+        Unknown23078(1)
+    label(0)
+    sprite('lp430_00', 4)	# 1-4
+    SFX_3('la000')
+    sprite('lp430_01', 4)	# 5-8
+    sprite('lp430_02', 4)	# 9-12
+    loopRest()
+    gotoLabel(0)
+    label(1)
+    sprite('lp430_03', 4)	# 13-16
+    SFX_3('la006')
+    GuardPoint_(1)
+    sprite('lp430_04', 4)	# 17-20
+    sprite('lp430_05', 4)	# 21-24
+    sprite('lp430_06', 3)	# 25-27	 **attackbox here**
+    GFX_0('430tackleatk', 100)
+    SFX_3('slash_blade_slow')
+    label(9)
+    sprite('lp430_07', 3)	# 28-30	 **attackbox here**
+    sprite('lp430_08', 3)	# 31-33	 **attackbox here**
+    sprite('lp430_06', 3)	# 34-36	 **attackbox here**
+    loopRest()
+    gotoLabel(9)
+    label(3)
+    sprite('keep', 32767)	# 37-32803
+    enterState('PersonaDeleteAndIdling')"""
+        buf = StringIO.StringIO(state)
+        effect_list = OrderedDict()
+        move_list = OrderedDict()
+        move_list = parse_move_file(buf, effect_list, effect_list)
+        self.assertTrue(False)
