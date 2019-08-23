@@ -2991,6 +2991,8 @@ yo432_03
 yo432_04
 yo432_06
 yo432_07
+vr_dmy_tatsumaki
+dmy_atk01
 pyu starts here!	
 ichigeki
 ichigekidds
@@ -3063,6 +3065,7 @@ yu450_17
 yu450_18
 yu450_19
 yu450_20
+vr_ko430_DUO_col
 pka starts here!	
 ka200_02
 ka200_03
@@ -3212,6 +3215,7 @@ vr_impact2_Ex
 vr_su450_dmy
 vr_trap_airexp
 vr_trap_landexp
+vr_dmy_hamaon
 pag starts here!	
 ag200_02
 ag200_03
@@ -5227,6 +5231,7 @@ Action_100_03
 Action_100_04
 Action_100_05
 Action_100_06ex01
+Action_100_atkcol
 Action_100_15
 Action_100_16
 Action_101_02
@@ -5276,6 +5281,7 @@ Action_121_06
 Action_121_07ex01
 Action_121_08
 Action_121_09
+Action_122_atkcol
 Action_175_01
 Action_175_07
 Action_175_08
@@ -5323,7 +5329,6 @@ Action_403_04
 Action_403_05
 Action_403_06
 Action_403_07
-Action_403_08
 Action_403_09
 Action_403_10
 Action_403_11
@@ -5707,8 +5712,6 @@ Action_041_11
 Action_041_12
 Action_041_13
 Action_041_14
-Action_045_00
-Action_045_01
 Action_045_02
 Action_045_03
 Action_045_03ex
@@ -6905,11 +6908,6 @@ Action_403_06ex
 Action_403_07
 Action_403_07ex
 Action_403_08
-Action_404_00
-Action_404_01
-Action_404_02
-Action_404_03
-Action_404_04
 Action_412_00
 Action_412_01
 Action_412_02
@@ -8132,8 +8130,6 @@ Action_137_14ex01
 Action_211_01
 Action_211_02
 Action_215_05
-Action_215_07
-Action_215_08
 Action_215_11
 Action_215_12
 Action_215_14ex01
@@ -8276,7 +8272,6 @@ Action_438_14
 Action_438_15
 Action_438_16
 Action_439_08
-Action_439_11
 Action_439_12
 Action_439_13
 Action_439_21
@@ -8320,8 +8315,6 @@ Action_477_09
 Action_477_11
 Action_477_12
 Action_477_13
-Action_478_04
-Action_478_05
 Action_478_07
 Action_478_07ex01
 Action_478_07ex02
@@ -8345,11 +8338,6 @@ Action_479_17
 Action_482_00
 Action_482_01
 Action_482_02
-Action_535_01
-Action_535_02
-Action_535_03
-Action_535_04
-Action_535_05
 Action_535_11
 Action_535_12
 Action_535_13
@@ -9110,8 +9098,6 @@ Action_362_04
 Action_362_05
 Action_362_06
 Action_362_07
-Action_363_02
-Action_363_03
 Action_363_04
 Action_363_05
 Action_363_06

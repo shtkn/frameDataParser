@@ -473,7 +473,7 @@ def parse_move_file(source, move_list, effect_list):
             if HAS_HITBOX in line:
                 state.isAttackBox = HAS_HITBOX in line
         elif not state.exitState:
-            if "Recovery()" in line or "Unknown23027()" in line or "Unknown1084(1)" in line:  # disables active frames until a refreshMultihit
+            if "Recovery()" in line or "Unknown23027()" in line or  "DisableAttackRestOfMove()" in line:  # disables active frames until a refreshMultihit
                 state.disableAttackboxes = True
                 state.isNewHit = False
             elif "StartMultihit()" in line:  # turns off these active frames
@@ -496,7 +496,7 @@ def parse_move_file(source, move_list, effect_list):
                 state.p1 = int(line[line.index("(") + 1:line.index(")")])
             elif "AttackP2(" in line:
                 state.p2 = int(line[line.index("(") + 1:line.index(")")])
-            elif "Unknown9154(" in line:
+            elif "Unknown9154(" in line or "hitstun(" in line:
                 state.hitstun = int(line[line.index("(") + 1:line.index(")")])
             elif "AirUntechableTime(" in line:
                 state.untech = int(line[line.index("(") + 1:line.index(")")])
@@ -974,7 +974,9 @@ def get_inv_text(inv_start, inv_duration, inv_type, inv_attr, superflash_start, 
 
         if inv_end > superflash_start:
             inv_end -= superflash_duration
-    return str(inv_start) + "-" + str(inv_end) + inv_type + " " + inv_attr + inv_type
+        if inv_end < inv_start:
+            inv_end = superflash_start
+    return str(inv_start) + "-" + str(inv_end) + " " + inv_attr + inv_type
 
 
 def get_inv_attr_text(attr):
@@ -1066,9 +1068,15 @@ def fill_hitstop(info_list):
                 toReturn = toReturn + ", "
             toReturn = toReturn + str(current_hitstop)
             if current_bonus_blockstop is not None and (current_bonus_hitstop != 0 or current_bonus_blockstop != 0):
-                toReturn = toReturn + "/+" + str(current_bonus_blockstop)
+                toReturn = toReturn + "/"
+                if current_bonus_blockstop > -1:
+                    toReturn = toReturn + "+"
+                toReturn = toReturn + str(current_bonus_blockstop)
             if current_bonus_hitstop is not None and current_bonus_hitstop != 0:
-                toReturn = toReturn + "/+" + str(current_bonus_hitstop)
+                toReturn = toReturn + "/"
+                if current_bonus_hitstop > -1:
+                    toReturn = toReturn + "+"
+                toReturn = toReturn + str(current_bonus_hitstop)
             current_hitstop = info.hitstop
             current_bonus_blockstop = info.bonus_blockstop
             current_bonus_hitstop = info.bonus_hitstop
@@ -1078,9 +1086,15 @@ def fill_hitstop(info_list):
         toReturn = toReturn + ", "
     toReturn = toReturn + str(current_hitstop)
     if current_bonus_blockstop is not None and (current_bonus_hitstop != 0 or current_bonus_blockstop != 0):
-        toReturn = toReturn + "/+" + str(current_bonus_blockstop)
+        toReturn = toReturn + "/"
+        if current_bonus_blockstop > -1:
+            toReturn = toReturn + "+"
+        toReturn = toReturn + str(current_bonus_blockstop)
     if current_bonus_hitstop is not None and current_bonus_hitstop != 0:
-        toReturn = toReturn + "/+" + str(current_bonus_hitstop)
+        toReturn = toReturn + "/"
+        if current_bonus_hitstop > -1:
+            toReturn = toReturn + "+"
+        toReturn = toReturn + str(current_bonus_hitstop)
 
     return toReturn
 
@@ -1104,9 +1118,9 @@ def main():
         "scr_uwa", "scr_uyu"
     ]
 
-    source_dir = "."
-    target_dir = "."
-    file_list = ["testfile"]
+    # source_dir = "."
+    # target_dir = "."
+    # file_list = ["testfile"]
     for file_name in file_list:
         # Parse effects
         if not os.path.isfile(source_dir + "/" + file_name + "ea.py") or \

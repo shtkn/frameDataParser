@@ -113,8 +113,32 @@ class TestParseAttackMethods(unittest.TestCase):
         chunks = [WaitFrames(4), SubroutineCall("Shot"), WaitFrames(12)]
         shot = Move()
         shot.frame_chunks = [WaitFrames(4), ActiveFrames(2, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0, 0, 0,
-                                                    0, 3, [False, True, False, False, False]))]
+                                                                            0, 3, [False, True, False, False, False]))]
         effect_list = {"Shot": shot}
+        move = Move()
+        move.frame_chunks = chunks
+        # combine with ShotAnimation
+        result = combine_with_effects_on_block(move, effect_list)
+        self.assertEqual(1, len(result.additional_chunks))
+        self.assertItemsEqual([WaitFrames(16)], result.frame_chunks)
+        # basically increasing the startup of hte shot by 4
+        expected = [WaitFrames(8),
+                    ActiveFrames(2, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0, 0, 0,
+                                                    0, 3, [False, True, False, False, False])),
+                    ]
+        self.assertItemsEqual(expected, result.additional_chunks[0])
+
+    def test_simulate_hit_projectile_spawned_by_other_subroutine(self):
+        chunks = [WaitFrames(4), SubroutineCall("ShotGenerator1"), WaitFrames(12)]
+        shotGenerator1 = Move()
+        shotGenerator1.frame_chunks = [SubroutineCall("ShotGenerator2")]
+        shotGenerator2 = Move()
+        shotGenerator2.frame_chunks = [SubroutineCall("Shot")]
+
+        shot = Move()
+        shot.frame_chunks = [WaitFrames(4), ActiveFrames(2, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0, 0, 0,
+                                                    0, 3, [False, True, False, False, False]))]
+        effect_list = {"Shot": shot, "ShotGenerator1": shotGenerator1, "ShotGenerator1": shotGenerator2}
         move = Move()
         move.frame_chunks = chunks
         # combine with ShotAnimation
@@ -1080,90 +1104,3 @@ def NmlAtk5A():
         move_list = parse_move_file(buf, move_list, effect_list)
         self.assertEqual(11, move_list["vr_lp206atk_04"].frame_chunks[0].duration)
         self.assertTrue(isinstance(move_list["vr_lp206atk_04"].frame_chunks[0], ActiveFrames))
-
-
-    def test_parse_bug(self):
-        state = """
-@State
-def PLA_PersonaTackle():
-
-    def upon_IMMEDIATE():
-        Unknown23023()
-        Unknown23184('0300000064000000803801000000000080380100000000008038010000000000')
-        callSubroutine('PLA_DDAttackInit')
-        callSubroutine('PLA_ForceWarp')
-        Unknown4007(3)
-        Unknown2011()
-        AttackLevel_(5)
-        Damage(1000)
-        AttackP2(60)
-        Unknown11092(1)
-        Unknown23182(3)
-        AirUntechableTime(100)
-        AirHitstunAnimation(9)
-        GroundedHitstunAnimation(9)
-        AirPushbackY(50000)
-        AirPushbackX(25000)
-        PushbackX(20000)
-        Hitstop(20)
-        Unknown11084(1)
-        Unknown2017(0)
-        Unknown11072(1, 200000, 0)
-        Unknown11001(0, 0, 0)
-
-        def upon_43():
-            if (SLOT_48 == 401):
-                sendToLabel(1)
-            if (SLOT_48 == 404):
-                sendToLabel(3)
-            if (SLOT_48 == 402):
-                Unknown23027()
-                Unknown4007(0)
-                Unknown4009(0)
-                physicsXImpulse(60000)
-            if (SLOT_48 == 406):
-                Hitstop(45)
-                AirPushbackX(50000)
-                Unknown23182(3)
-                AttackP2(60)
-                Unknown11092(1)
-        GFX_0('430Ptackle_start', 100)
-
-        def upon_11():
-            Unknown23029(3, 405, 0)
-
-        def upon_78():
-            Unknown23027()
-            Unknown23029(3, 408, 0)
-        setInvincible(1)
-        Unknown23078(1)
-    label(0)
-    sprite('lp430_00', 4)	# 1-4
-    SFX_3('la000')
-    sprite('lp430_01', 4)	# 5-8
-    sprite('lp430_02', 4)	# 9-12
-    loopRest()
-    gotoLabel(0)
-    label(1)
-    sprite('lp430_03', 4)	# 13-16
-    SFX_3('la006')
-    GuardPoint_(1)
-    sprite('lp430_04', 4)	# 17-20
-    sprite('lp430_05', 4)	# 21-24
-    sprite('lp430_06', 3)	# 25-27	 **attackbox here**
-    GFX_0('430tackleatk', 100)
-    SFX_3('slash_blade_slow')
-    label(9)
-    sprite('lp430_07', 3)	# 28-30	 **attackbox here**
-    sprite('lp430_08', 3)	# 31-33	 **attackbox here**
-    sprite('lp430_06', 3)	# 34-36	 **attackbox here**
-    loopRest()
-    gotoLabel(9)
-    label(3)
-    sprite('keep', 32767)	# 37-32803
-    enterState('PersonaDeleteAndIdling')"""
-        buf = StringIO.StringIO(state)
-        effect_list = OrderedDict()
-        move_list = OrderedDict()
-        move_list = parse_move_file(buf, effect_list, effect_list)
-        self.assertTrue(False)
