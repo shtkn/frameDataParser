@@ -95,7 +95,7 @@ class State:
 
 
 class AttackInfo:
-    def __init__(self, damage, p1=None, p2=None, min_damage=None, p2once=None, hitstun=None, untech=None, blockstun=None,
+    def __init__(self, damage, p1=None, p2=None, min_damage=0, p2once=None, hitstun=None, untech=None, blockstun=None,
                  hitstop=None, bonus_blockstop=None, bonus_hitstop=None, attackLevel=None, attribute=None):
         self.damage = damage
         self.p1 = p1
@@ -116,8 +116,9 @@ class AttackInfo:
         if self.p2Once:
             toReturn = toReturn + "(once)"
         toReturn = toReturn + "minDamage=" + str(self.minDamage) + "attackLv=" + str(self.attackLevel) + \
-                   "attr=" + str(self.attribute) + "blockstun=" + str(self.blockstun) + "hitstun=" + str(self.hitstun) + \
-                   "untech=" + str(self.untech) + "hitstop=" + str(self.hitstop) + "bonusHitstop=" + str(self.bonus_blockstop)
+                   "attr=" + str(self.attribute) + "blockstun=" + str(self.getBlockstun()) + "hitstun=" + str(self.getHitstun()) + \
+                   "untech=" + str(self.getUntech()) + "hitstop=" + str(self.getHitstop()) + "bonusBlockstop=" + str(self.bonus_blockstop) + \
+                   "bonusHitstop=" + str(self.bonus_hitstop)
         return toReturn
 
     def __eq__(self, other):
@@ -133,6 +134,62 @@ class AttackInfo:
         if not isinstance(other, AttackInfo):
             return False
         return not self.__eq__(other)
+
+    def getBlockstun(self):
+        if self.blockstun is None:
+            if self.attackLevel is None:
+                return None
+            else:
+                return ATTACK_LEVEL["blockstun"][self.attackLevel]
+        return self.blockstun
+
+    def getHitstun(self):
+        if self.hitstun is None:
+            if self.attackLevel is None:
+                return None
+            else:
+                return ATTACK_LEVEL["hitstun"][self.attackLevel]
+        return self.hitstun
+
+    def getHitstop(self):
+        if self.hitstop is None:
+            if self.attackLevel is None:
+                return None
+            else:
+                return ATTACK_LEVEL["hitstop"][self.attackLevel]
+        return self.hitstop
+
+    def getUntech(self):
+        if self.untech is None:
+            if self.attackLevel is None:
+                return None
+            else:
+                return ATTACK_LEVEL["untech"][self.attackLevel]
+        return self.untech
+
+    def getP1(self):
+        if self.p1 is None:
+            if self.attackLevel is None:
+                return None
+            else:
+                return ATTACK_LEVEL["p1"][self.attackLevel]
+        return self.p1
+
+    def getP2(self):
+        if self.p2 is None:
+            if self.attackLevel is None:
+                return None
+            else:
+                return ATTACK_LEVEL["p2"][self.attackLevel]
+        return self.p2
+
+    def getDamage(self):
+        if self.damage is None:
+            if self.attackLevel is None:
+                return None
+            else:
+                return ATTACK_LEVEL["damage"][self.attackLevel]
+        return self.damage
 
     def override_values(self, other):
         if other.damage is not None:
@@ -200,8 +257,8 @@ class ActiveFrames(AbstractFrames):
         to_return = str(self.duration)
         to_return += " Active"
         to_return += " New Hit " + str(self.is_new_hit)
-        to_return += " Blockstun " + str(self.info.blockstun)
-        to_return += " Hitstop " + str(self.info.hitstop) + "/+" + str(self.info.bonus_blockstop) + "/+" + str(self.info.bonus_hitstop)
+        to_return += " Blockstun " + str(self.info.getBlockstun())
+        to_return += " Hitstop " + str(self.info.getHitstop()) + "/+" + str(self.info.bonus_blockstop) + "/+" + str(self.info.bonus_hitstop)
         return to_return
 
     def __eq__(self, other):
@@ -376,20 +433,14 @@ def consolidate_frame_chunks(chunk_list, ignore_inv=False):
 
 
 def create_damage_info_from_state(state):
-    damage = 0 if state.damage is None else state.damage
-    p1 = 100 if state.p1 is None else state.p1
-    p2 = 100 if state.p2 is None else state.p2
     p2Once = False if state.p2Once is None else state.p2Once
     minDamage = 0 if state.minDamage is None else state.minDamage
-    hitstun = 0 if state.hitstun is None else state.hitstun
-    untech = 0 if state.untech is None else state.untech
-    blockstun = 0 if state.blockstun is None else state.blockstun
-    hitstop = 0 if state.hitstop is None else state.hitstop
     bonus_blockstop = 0 if state.bonus_blockstop is None else state.bonus_blockstop
     bonus_hitstop = 0 if state.bonus_hitstop is None else state.bonus_hitstop
     attackLevel = 0 if state.attackLevel is None else state.attackLevel
 
-    return AttackInfo(damage, p1, p2, minDamage, p2Once, hitstun, untech, blockstun, hitstop, bonus_blockstop=bonus_blockstop,
+    return AttackInfo(state.damage, state.p1, state.p2, state.minDamage, p2Once, state.hitstun, state.untech,
+                      state.blockstun, state.hitstop, bonus_blockstop=bonus_blockstop,
                       bonus_hitstop=bonus_hitstop, attribute=state.attr, attackLevel=attackLevel)
 
 
@@ -484,13 +535,6 @@ def parse_move_file(source, move_list, effect_list):
             elif "AttackLevel_(" in line:  # get hitstun/blockstun values according to it's level
                 level = int(line[line.index("(") + 1:line.index(")")])
                 # print "LEVEL: " + level
-                state.blockstun = ATTACK_LEVEL["blockstun"][level]
-                state.hitstop = ATTACK_LEVEL["hitstop"][level]
-                state.p1 = ATTACK_LEVEL["p1"][level]
-                state.p2 = ATTACK_LEVEL["p2"][level]
-                state.damage = ATTACK_LEVEL["damage"][level]
-                state.hitstun = ATTACK_LEVEL["hitstun"][level]
-                state.untech = ATTACK_LEVEL["untech"][level]
                 state.attackLevel = level
             elif "AttackP1(" in line:
                 state.p1 = int(line[line.index("(") + 1:line.index(")")])
@@ -598,8 +642,6 @@ def parse_move_file(source, move_list, effect_list):
                 state.isInv = True
             elif "Unknown30072(" in line:  # i think this is attackDefaults5C()? Basically Attack Level 3
                 state.attackLevel = 3
-                state.blockstun = 16
-                state.hitstop = 11
                 state.bonus_hitstop = 0
                 state.bonus_blockstop = 0
             elif "AttackDefaults_StandingNormal(" in line:
@@ -758,7 +800,7 @@ def simulate_effect_on_block(name, effect_list, start_frame=0):
             first_subroutine.append(chunk)
             duration += chunk.duration
             if isinstance(chunk, ActiveFrames):
-                duration += chunk.info.hitstop if chunk.info.hitstop is not None else 0
+                duration += chunk.info.getHitstop() if chunk.info.getHitstop() is not None else 0
 
     subroutine_calls[0] = consolidate_frame_chunks(first_subroutine)
     # delete any subroutines that don't add anything
@@ -789,8 +831,8 @@ def calc_frames_for_subroutine(frame_chunks, superflash_start=None, superflash_d
             if len(middle) > 0 and middle[len(middle) - 1] != ")":
                 middle += ","
             middle += str(chunk.duration)
-            blockstun = 0 if chunk.info.blockstun is None else chunk.info.blockstun
-            hitstop = 0 if chunk.info.hitstop is None else chunk.info.hitstop
+            blockstun = 0 if chunk.info.getBlockstun() is None else chunk.info.getBlockstun()
+            hitstop = 0 if chunk.info.getHitstop() is None else chunk.info.getHitstop()
             bonus_blockstop = 0 if chunk.info.bonus_blockstop is None else chunk.info.bonus_blockstop
             last_frame_of_blockstun = duration_on_block + blockstun + hitstop + \
                                       bonus_blockstop + 1
@@ -848,7 +890,7 @@ def calc_damage_for_move(move_on_block):
         for chunk in frame_chunks:
             if isinstance(chunk, ActiveFrames) and chunk.is_new_hit:
                 heapq.heappush(damage_at_frame, (current_frame, chunk.info))
-                current_frame += chunk.info.hitstop
+                current_frame += chunk.info.getHitstop()
             current_frame += chunk.duration
 
     damage_list = []
@@ -896,7 +938,7 @@ def combine_with_effects_on_block(move, effect_list):
             main_subroutine.append(chunk)
             current_frame += chunk.duration
             if isinstance(chunk, ActiveFrames):
-                current_frame += chunk.info.hitstop
+                current_frame += chunk.info.getHitstop()
     subroutine_calls[0] = consolidate_frame_chunks(main_subroutine)
     new_move = Move()
     new_move.frame_chunks = subroutine_calls[0]
@@ -1011,14 +1053,14 @@ def create_damage_text(damage_list):
         return value_str
 
     for item in damage_list:
-        fill_str(item.damage, 0, value, value_str, value_multiplier)
-        fill_str(item.p1, 1, value, value_str, value_multiplier)
-        fill_str(item.p2, 2, value, value_str, value_multiplier)
-        fill_str(item.hitstun, 3, value, value_str, value_multiplier)
-        fill_str(item.untech, 4, value, value_str, value_multiplier)
+        fill_str(item.getDamage(), 0, value, value_str, value_multiplier)
+        fill_str(item.getP1(), 1, value, value_str, value_multiplier)
+        fill_str(item.getP2(), 2, value, value_str, value_multiplier)
+        fill_str(item.getHitstun(), 3, value, value_str, value_multiplier)
+        fill_str(item.getUntech(), 4, value, value_str, value_multiplier)
         fill_str(item.attackLevel, 5, value, value_str, value_multiplier)
         fill_str(get_inv_attr_text(item.attribute), 6, value, value_str, value_multiplier)
-        fill_str(item.blockstun, 7, value, value_str, value_multiplier)
+        fill_str(item.getBlockstun(), 7, value, value_str, value_multiplier)
         p2Once = item.p2Once
 
     for i in range(len(value_str)):
