@@ -24,25 +24,10 @@ class State:
         self.disableAttackboxes = False
         self.disableAttackboxesThisFrame = False
         self.isNewHit = True
-        self.blockstun = None
-        self.hitstun = None
-        self.untech = None
-        self.hitstop = None
-        self.groundHitAnimation = None
-        self.airHitAnimation = None
-        self.disableEmergencyTech = None
-        self.groundSlideTime = None
-        self.knockdownTime = None
-        self.bonus_blockstop = None
-        self.bonus_hitstop = None
+        self.attackInfo = AttackInfo()
         self.exitState = False
         self.landingRecovery = 0
         self.isSubroutine = False
-        self.damage = None
-        self.p1 = None
-        self.p2 = None
-        self.p2Once = False
-        self.minDamage = 0
         self.isInv = False
         self.invType = 0  # Inv or Guard
         self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
@@ -63,40 +48,31 @@ class State:
             self.moveName = ""
             self.disableAttackboxes = False
             self.isNewHit = True
-            self.blockstun = None
-            self.hitstun = None
-            self.untech = None
-            self.hitstop = None
-            self.bonus_blockstop = None
-            self.bonus_hitstop = None
             self.exitState = False
-            self.landingRecovery = 0
+            self.landingRecovery = None
             self.isSubroutine = False
-            self.damage = None
-            self.p1 = None
-            self.p2 = None
-            self.p2Once = False
-            self.minDamage = 0
+            self.attackInfo = AttackInfo()
             self.isInv = False
             self.invType = 0  # Inv or Guard
             self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
             self.attr = None
             self.superflash_start = None
             self.superflash_duration = 0
-            self.attackLevel = None
-            self.groundHitAnimation = None
-            self.airHitAnimation = None
-            self.disableEmergencyTech = None
-            self.groundSlideTime = None
-            self.knockdownTime = None
 
     def is_attackbox(self):
         return self.isAttackBox and (self.isNewHit or not self.disableAttackboxes) and not self.disableAttackboxesThisFrame
 
+    def set_values_from_subroutine(self, subroutine):
+        if subroutine is None:
+            return
+        self.landingRecovery = subroutine.landingRecovery
+        self.attackInfo = subroutine.attackInfo
+
 
 class AttackInfo:
-    def __init__(self, damage, p1=None, p2=None, min_damage=0, p2once=None, hitstun=None, untech=None, blockstun=None,
-                 hitstop=None, bonus_blockstop=None, bonus_hitstop=None, attackLevel=None, attribute=None):
+    def __init__(self, damage=None, p1=None, p2=None, min_damage=0, p2once=None, hitstun=None, untech=None, blockstun=None,
+                 hitstop=None, bonus_blockstop=None, bonus_hitstop=None, attackLevel=None, attribute=None, groundHitAni=None,
+                 airHitAni=None):
         self.damage = damage
         self.p1 = p1
         self.p2 = p2
@@ -110,14 +86,33 @@ class AttackInfo:
         self.bonus_blockstop = bonus_blockstop    # for additional hitstop the opponent experiences on block
         self.bonus_hitstop = bonus_hitstop       # for additonoal hitstop the opponent experiences on hit
         self.attribute = copy.copy(attribute)
+        self.groundHitAni = groundHitAni
+        self.airHitAni = airHitAni
+
+    def copy_non_none_values(self, other):
+        self.damage = other.damage if other.damage is not None else self.damage
+        self.p1 = other.p1 if other.p1 is not None else self.p1
+        self.p2 = other.p2 if other.p2 is not None else self.p2
+        self.minDamage = other.minDamage if other.minDamage is not None else self.minDamage
+        self.p2Once = other.p2Once if other.p2Once is not None else self.p2Once
+        self.hitstun = other.hitstun if other.hitstun is not None else self.hitstun
+        self.untech = other.untech if other.untech is not None else self.untech
+        self.blockstun = other.blockstun if other.blockstun is not None else self.blockstun
+        self.attackLevel = other.attackLevel if other.attackLevel is not None else self.attackLevel
+        self.hitstop = other.hitstop if other.hitstop is not None else self.hitstop
+        self.bonus_blockstop = other.bonus_blockstop if other.bonus_blockstop is not None else self.bonus_blockstop
+        self.bonus_hitstop = other.bonus_hitstop if other.bonus_hitstop is not None else self.bonus_hitstop
+        self.attribute = copy.copy(other.attribute) if other.attribute is not None else self.attribute
+        self.groundHitAni = other.groundHitAni if other.groundHitAni is not None else self.groundHitAni
+        self.airHitAni = other.airHitAni if other.airHitAni is not None else self.airHitAni
 
     def __str__(self):
         toReturn = "damage=" + str(self.damage) + "p1=" + str(self.p1) + "p2=" + str(self.p2)
         if self.p2Once:
             toReturn = toReturn + "(once)"
         toReturn = toReturn + "minDamage=" + str(self.minDamage) + "attackLv=" + str(self.attackLevel) + \
-                   "attr=" + str(self.attribute) + "blockstun=" + str(self.getBlockstun()) + "hitstun=" + str(self.getHitstun()) + \
-                   "untech=" + str(self.getUntech()) + "hitstop=" + str(self.getHitstop()) + "bonusBlockstop=" + str(self.bonus_blockstop) + \
+                   "attr=" + str(self.attribute) + "blockstun=" + str(self.get_blockstun()) + "hitstun=" + str(self.get_hitstun()) + \
+                   "untech=" + str(self.get_untech()) + "hitstop=" + str(self.get_hitstop()) + "bonusBlockstop=" + str(self.bonus_blockstop) + \
                    "bonusHitstop=" + str(self.bonus_hitstop)
         return toReturn
 
@@ -128,14 +123,15 @@ class AttackInfo:
                self.minDamage == other.minDamage and self.p2Once == other.p2Once and self.blockstun == other.blockstun and \
                self.hitstun == other.hitstun and self.untech == other.untech and self.attackLevel == other.attackLevel and \
                self.hitstop == other.hitstop and self.bonus_blockstop == other.bonus_blockstop and \
-               self.bonus_hitstop == other.bonus_hitstop and self.attribute == other.attribute
+               self.bonus_hitstop == other.bonus_hitstop and self.attribute == other.attribute and \
+               self.groundHitAni == other.groundHitAni and self.airHitAni == self.airHitAni
 
     def __ne__(self, other):
         if not isinstance(other, AttackInfo):
             return False
         return not self.__eq__(other)
 
-    def getBlockstun(self):
+    def get_blockstun(self):
         if self.blockstun is None:
             if self.attackLevel is None:
                 return None
@@ -143,7 +139,7 @@ class AttackInfo:
                 return ATTACK_LEVEL["blockstun"][self.attackLevel]
         return self.blockstun
 
-    def getHitstun(self):
+    def get_hitstun(self):
         if self.hitstun is None:
             if self.attackLevel is None:
                 return None
@@ -151,7 +147,7 @@ class AttackInfo:
                 return ATTACK_LEVEL["hitstun"][self.attackLevel]
         return self.hitstun
 
-    def getHitstop(self):
+    def get_hitstop(self):
         if self.hitstop is None:
             if self.attackLevel is None:
                 return None
@@ -159,7 +155,7 @@ class AttackInfo:
                 return ATTACK_LEVEL["hitstop"][self.attackLevel]
         return self.hitstop
 
-    def getUntech(self):
+    def get_untech(self):
         if self.untech is None:
             if self.attackLevel is None:
                 return None
@@ -167,7 +163,7 @@ class AttackInfo:
                 return ATTACK_LEVEL["untech"][self.attackLevel]
         return self.untech
 
-    def getP1(self):
+    def get_p1(self):
         if self.p1 is None:
             if self.attackLevel is None:
                 return None
@@ -175,7 +171,7 @@ class AttackInfo:
                 return ATTACK_LEVEL["p1"][self.attackLevel]
         return self.p1
 
-    def getP2(self):
+    def get_p2(self):
         if self.p2 is None:
             if self.attackLevel is None:
                 return None
@@ -183,7 +179,7 @@ class AttackInfo:
                 return ATTACK_LEVEL["p2"][self.attackLevel]
         return self.p2
 
-    def getDamage(self):
+    def get_damage(self):
         if self.damage is None:
             if self.attackLevel is None:
                 return None
@@ -191,7 +187,7 @@ class AttackInfo:
                 return ATTACK_LEVEL["damage"][self.attackLevel]
         return self.damage
 
-    def override_values(self, other):
+    def override_non_none_values(self, other):
         if other.damage is not None:
             self.damage = other.damage
         if other.p1 is not None:
@@ -218,7 +214,10 @@ class AttackInfo:
             self.bonus_hitstop = other.bonus_hitstop
         if other.attribute is not None:
             self.attribute = other.attribute
-
+        if other.groundHitAni is not None:
+            self.groundHitAni = other.groundHitAni
+        if other.airHitAni is not None:
+            self.airHitAni = other.airHitAni
 
 
 class Abstract:
@@ -257,8 +256,8 @@ class ActiveFrames(AbstractFrames):
         to_return = str(self.duration)
         to_return += " Active"
         to_return += " New Hit " + str(self.is_new_hit)
-        to_return += " Blockstun " + str(self.info.getBlockstun())
-        to_return += " Hitstop " + str(self.info.getHitstop()) + "/+" + str(self.info.bonus_blockstop) + "/+" + str(self.info.bonus_hitstop)
+        to_return += " Blockstun " + str(self.info.get_blockstun())
+        to_return += " Hitstop " + str(self.info.get_hitstop()) + "/+" + str(self.info.bonus_blockstop) + "/+" + str(self.info.bonus_hitstop)
         return to_return
 
     def __eq__(self, other):
@@ -344,36 +343,19 @@ class Move:
 
 
 class Subroutine:
-    def __init__(self):
-        self.damage = None
-        self.blockstun = None
-        self.hitstop = None
-        self.bonus_blockstop = None
-        self.bonus_hitstop = None
-        self.landingRecovery = None
-        self.p1 = None
-        self.p2 = None
-        self.p2Once = None
-        self.minDamage = None
-        self.attackLevel = None
-        self.hitstun = None
-        self.untech = None
-        self.attribute = None
+    def __init__(self, state=None):
+        if state is not None:
+            self.landingRecovery = state.landingRecovery
+            self.attackInfo = AttackInfo()
+            self.attackInfo.copy_non_none_values(state.attackInfo)
+        else:
+            self.landingRecovery = None
+            self.attackInfo = AttackInfo()
 
     def __eq__(self, other):
         if not isinstance(other, Subroutine):
             return False
-        return self.damage == other.damage and self.p1 == other.p1 and self.p2 == other.p2 and \
-               self.p2Once == other.p2Once and self.minDamage == other.minDamage and \
-               self.blockstun == other.blockstun and \
-               self.hitstop == other.hitstop and \
-               self.bonus_blockstop == other.bonus_blockstop and \
-               self.bonus_hitstop == other.bonus_hitstop and \
-               self.landingRecovery == other.landingRecovery and \
-               self.attackLevel == other.attackLevel and \
-               self.hitstun == other.hitstun and \
-               self.untech == other.untech and \
-               self.attribute == other.attribute
+        return self.attackInfo == other.attackInfo and self.landingRecovery == other.landingRecovery
 
     def __ne__(self, other):
         if not isinstance(other, Subroutine):
@@ -432,18 +414,6 @@ def consolidate_frame_chunks(chunk_list, ignore_inv=False):
     return new_chunk_list
 
 
-def create_damage_info_from_state(state):
-    p2Once = False if state.p2Once is None else state.p2Once
-    minDamage = 0 if state.minDamage is None else state.minDamage
-    bonus_blockstop = 0 if state.bonus_blockstop is None else state.bonus_blockstop
-    bonus_hitstop = 0 if state.bonus_hitstop is None else state.bonus_hitstop
-    attackLevel = 0 if state.attackLevel is None else state.attackLevel
-
-    return AttackInfo(state.damage, state.p1, state.p2, state.minDamage, p2Once, state.hitstun, state.untech,
-                      state.blockstun, state.hitstop, bonus_blockstop=bonus_blockstop,
-                      bonus_hitstop=bonus_hitstop, attribute=state.attr, attackLevel=attackLevel)
-
-
 def parse_move_file(source, move_list, effect_list):
     state = State()
     frame_chunks = []
@@ -456,33 +426,12 @@ def parse_move_file(source, move_list, effect_list):
 
             if state.isSubroutine:
                 subroutine = Subroutine()
-                subroutine.attackLevel = state.attackLevel
-                if state.attackLevel is not None:
-                    subroutine.blockstun = ATTACK_LEVEL["blockstun"][state.attackLevel]
-                    subroutine.hitstop = ATTACK_LEVEL["hitstop"][state.attackLevel]
-                    subroutine.p1 = ATTACK_LEVEL["p1"][state.attackLevel]
-                    subroutine.p2 = ATTACK_LEVEL["p2"][state.attackLevel]
-                    subroutine.damage = ATTACK_LEVEL["damage"][state.attackLevel]
-                    subroutine.hitstun = ATTACK_LEVEL["hitstun"][state.attackLevel]
-                    subroutine.untech = ATTACK_LEVEL["untech"][state.attackLevel]
-
-                subroutine.blockstun = state.blockstun if state.blockstun is not None else subroutine.blockstun
-                subroutine.hitstun = state.hitstun if state.hitstun is not None else subroutine.hitstun
-                subroutine.untech = state.untech if state.untech is not None else subroutine.untech
-                subroutine.hitstop = state.hitstop if state.hitstop is not None else subroutine.hitstop
-                subroutine.bonus_blockstop = state.bonus_blockstop if state.bonus_blockstop is not None else subroutine.bonus_blockstop
-                subroutine.damage = state.damage if state.damage is not None else subroutine.damage
-                subroutine.p1 = state.p1 if state.p1 is not None else subroutine.p1
-                subroutine.p2 = state.p2 if state.p2 is not None else subroutine.p2
-                subroutine.p2Once = state.p2Once if state.p2Once is not None else subroutine.p2Once
-                subroutine.attribute = state.attr if state.attr is not None else subroutine.attribute
+                subroutine.attackInfo.copy_non_none_values(state.attackInfo)
+                subroutine.landingRecovery = state.landingRecovery
                 effect_list[state.moveName] = subroutine
 
             elif len(frame_chunks) > 0:
-                blockstun = 0 if state.blockstun is None else state.blockstun
-                hitstop = 0 if state.hitstop is None else state.hitstop
-                bonus_blockstop = 0 if state.bonus_blockstop is None else state.bonus_blockstop
-                chunk = ActiveFrames(state.duration, state.isNewHit, create_damage_info_from_state(state)) \
+                chunk = ActiveFrames(state.duration, state.isNewHit, copy.copy(state.attackInfo)) \
                     if state.is_attackbox() else WaitFrames(state.duration)
                 if state.isInv:
                     chunk.inv_type = 1 if state.invType == 0 else 2
@@ -506,11 +455,7 @@ def parse_move_file(source, move_list, effect_list):
             pass    # skip anything not under UPON_IMMEDIATE
         elif not state.exitState and SPRITE_START in line:
             if state.duration > 0:
-                blockstun = 0 if state.blockstun is None else state.blockstun
-                hitstop = 0 if state.hitstop is None else state.hitstop
-                bonus_blockstop = 0 if state.bonus_blockstop is None else state.bonus_blockstop
-
-                chunk = ActiveFrames(state.duration, state.isNewHit, create_damage_info_from_state(state)) \
+                chunk = ActiveFrames(state.duration, state.isNewHit, copy.copy(state.attackInfo)) \
                     if state.is_attackbox() else WaitFrames(state.duration)
                 if state.isInv:
                     chunk.inv_type = 1 if state.invType == 0 else 2
@@ -535,24 +480,24 @@ def parse_move_file(source, move_list, effect_list):
             elif "AttackLevel_(" in line:  # get hitstun/blockstun values according to it's level
                 level = int(line[line.index("(") + 1:line.index(")")])
                 # print "LEVEL: " + level
-                state.attackLevel = level
+                state.attackInfo.attackLevel = level
             elif "AttackP1(" in line:
-                state.p1 = int(line[line.index("(") + 1:line.index(")")])
+                state.attackInfo.p1 = int(line[line.index("(") + 1:line.index(")")])
             elif "AttackP2(" in line:
-                state.p2 = int(line[line.index("(") + 1:line.index(")")])
+                state.attackInfo.p2 = int(line[line.index("(") + 1:line.index(")")])
             elif "Unknown9154(" in line or "hitstun(" in line:
-                state.hitstun = int(line[line.index("(") + 1:line.index(")")])
+                state.attackInfo.hitstun = int(line[line.index("(") + 1:line.index(")")])
             elif "AirUntechableTime(" in line:
-                state.untech = int(line[line.index("(") + 1:line.index(")")])
+                state.attackInfo.untech = int(line[line.index("(") + 1:line.index(")")])
             elif " Damage(" in line or "\tDamage(" in line:
-                state.damage = int(line[line.index("(") + 1:line.index(")")])
+                state.attackInfo.damage = int(line[line.index("(") + 1:line.index(")")])
             elif "Unknown11092(" in line:
-                state.p2Once = line[line.index("(") + 1:line.index(")")] == "1"
+                state.attackInfo.p2Once = line[line.index("(") + 1:line.index(")")] == "1"
             elif "Unknown11028(" in line or "blockstun(" in line:
-                state.blockstun = int(line[line.index("(") + 1:line.index(")")])
+                state.attackInfo.blockstun = int(line[line.index("(") + 1:line.index(")")])
                 # print "Hardcoded blockstun: " + state.blockstun
             elif "Hitstop(" in line:
-                state.hitstop = int(line[line.index("(") + 1:line.index(")")])
+                state.attackInfo.hitstop = int(line[line.index("(") + 1:line.index(")")])
                 # print "Hardcoded hitstop: " + state.hitstop
             elif "def " in line and len(state.moveName) < 1:
                 name_start = line.index("def ") + len(SPRITE_MID) + 1
@@ -562,8 +507,8 @@ def parse_move_file(source, move_list, effect_list):
                 numbers_start = line.index("(") + 1
                 numbers_end = line.index(")")
                 numbers = [x.strip() for x in line[numbers_start:numbers_end].split(',')]
-                state.bonus_blockstop = int(numbers[0])
-                state.bonus_hitstop = int(numbers[1])
+                state.attackInfo.bonus_blockstop = int(numbers[0])
+                state.attackInfo.bonus_hitstop = int(numbers[1])
             elif "Unknown22004(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(",")
@@ -583,32 +528,8 @@ def parse_move_file(source, move_list, effect_list):
                 if state.inUponImmediate:
                     if line[name_start:name_end] in effect_list:
                         subroutine = effect_list[line[name_start:name_end]]
-                        if subroutine.damage is not None:
-                            state.damage = subroutine.damage
-                        if subroutine.p1 is not None:
-                            state.p1 = subroutine.p1
-                        if subroutine.p2 is not None:
-                            state.p2 = subroutine.p2
-                        if subroutine.p2Once is not None:
-                            state.p2Once = subroutine.p2Once
-                        if subroutine.minDamage is not None:
-                            state.minDamage = subroutine.minDamage
-                        if subroutine.hitstun is not None:
-                            state.hitstun = subroutine.hitstun
-                        if subroutine.untech is not None:
-                            state.untech = subroutine.untech
-                        if subroutine.blockstun is not None:
-                            state.blockstun = subroutine.blockstun
-                        if subroutine.attackLevel is not None:
-                            state.attackLevel = subroutine.attackLevel
-                        if subroutine.hitstop is not None:
-                            state.hitstop = subroutine.hitstop
-                        if subroutine.bonus_blockstop is not None:
-                            state.bonus_blockstop = subroutine.bonus_blockstop
-                        if subroutine.bonus_hitstop is not None:
-                            state.bonus_hitstop = subroutine.bonus_hitstop
-                        if subroutine.attribute is not None:
-                            state.attribute = subroutine.attribute
+                        state.attackInfo.copy_non_none_values(subroutine.attackInfo)
+                        state.landingRecovery = subroutine.landingRecovery
                 else:
                     frame_chunks.append(SubroutineCall(line[name_start:name_end]))
             elif "Unknown2036(" in line:
@@ -626,7 +547,7 @@ def parse_move_file(source, move_list, effect_list):
                 state.invAttr = parse_attributes(params)
             elif "Unknown11058(" in line:
                 params = line[line.index("('") + 2: line.index("')")]
-                state.attr = parse_attributes(params)
+                state.attackInfo.attribute = parse_attributes(params)
             elif "setInvincible(" in line:
                 # active/deactivate invul
                 idx = line.index("(") + 1
@@ -641,51 +562,44 @@ def parse_move_file(source, move_list, effect_list):
                 state.invType = 0
                 state.isInv = True
             elif "Unknown30072(" in line:  # i think this is attackDefaults5C()? Basically Attack Level 3
-                state.attackLevel = 3
-                state.bonus_hitstop = 0
-                state.bonus_blockstop = 0
+                state.attackInfo.attackLevel = 3
+                state.attackInfo.bonus_hitstop = 0
+                state.attackInfo.bonus_blockstop = 0
             elif "AttackDefaults_StandingNormal(" in line:
-                state.attr = [False, True, False, False, False]
+                state.attackInfo.attribute = [False, True, False, False, False]
             elif "AttackDefaults_StandingSpecial(" in line:
-                state.p1 = 80
-                state.attr = [False, True, False, False, False]
+                state.attackInfo.p1 = 80
+                state.attackInfo.attribute = [False, True, False, False, False]
             elif "AttackDefaults_CrouchingNormal(" in line:
-                state.attr = [False, False, True, False, False]
+                state.attackInfo.attribute = [False, False, True, False, False]
             elif "AttackDefaults_AirNormal(" in line:
-                state.p1 = 80
-                state.attr = [True, False, False, False, False]
+                state.attackInfo.p1 = 80
+                state.attackInfo.attribute = [True, False, False, False, False]
             elif "Unknown17003(" in line: # attack defaults air special?
-                state.p1 = 80
-                state.attr = [True, False, False, False, False]
+                state.attackInfo.p1 = 80
+                state.attackInfo.attribute = [True, False, False, False, False]
             elif "Unknown17024(" in line: # attack defaults reversal action
-                state.p1 = 80
-                state.p2 = 60
-                state.attr = [True, False, False, False, False]
+                state.attackInfo.p1 = 80
+                state.attackInfo.p2 = 60
+                state.attackInfo.attribute = [True, False, False, False, False]
             elif "def upon_IMMEDIATE():" in line:
                 state.inUponImmediate = True
                 state.uponImmediateIndent = line[0:line.index("def")] + "    "
     if state.isSubroutine:
         subroutine = Subroutine()
-        subroutine.blockstun = state.blockstun
-        subroutine.hitstop = state.hitstop
-        subroutine.bonus_blockstop = state.bonus_blockstop
-        subroutine.bonus_hitstop = state.bonus_hitstop
-        subroutine.damage = state.damage
-        subroutine.p1 = state.p1
-        subroutine.p2 = state.p2
-        subroutine.p2Once = state.p2Once
-        subroutine.attackLevel = state.attackLevel
-        subroutine.attribute = state.attr
+        subroutine.attackInfo.copy_non_none_values(state.attackInfo)
+        subroutine.landingRecovery = state.landingRecovery
         effect_list[state.moveName] = subroutine
 
     elif state.duration > 0:
-        blockstun = 0 if state.blockstun is None else state.blockstun
-        hitstop = 0 if state.hitstop is None else state.hitstop
-        bonus_hitstop = 0 if state.bonus_blockstop is None else state.bonus_blockstop
-        bonus_blockstop = 0 if state.bonus_hitstop is None else state.bonus_hitstop
+        attack_info = copy.copy(state.attackInfo)
+        attack_info.blockstun = 0 if attack_info.blockstun is None else attack_info.blockstun
+        attack_info.hitstop = 0 if attack_info.hitstop is None else attack_info.hitstop
+        attack_info.bonus_blockstop = 0 if attack_info.bonus_blockstop is None else attack_info.bonus_blockstop
+        attack_info.bonus_hitstop = 0 if attack_info.bonus_hitstop is None else attack_info.bonus_hitstop
         chunk = ActiveFrames(state.duration,
                              state.isNewHit,
-                             create_damage_info_from_state(state)) \
+                             attack_info) \
             if state.is_attackbox() else WaitFrames(state.duration)
         if state.isInv:
             chunk.inv_type = 1 if state.invType == 0 else 2
@@ -731,26 +645,14 @@ def parse_subroutine(name, move_list, effect_list, start_frame=0):
             if chunk.name in effect_list and isinstance(effect_list[chunk.name], Subroutine):
                 subroutine = effect_list[chunk.name]
                 # print "SUBROUTINE " + effect_list[chunk.name]
-                override_info.damage = subroutine.damage
-                override_info.p1 = subroutine.p1
-                override_info.p2 = subroutine.p2
-                override_info.minDamage = subroutine.minDamage
-                override_info.p2Once = subroutine.p2Once
-                override_info.hitstun = subroutine.hitstun
-                override_info.untech = subroutine.untech
-                override_info.blockstun = subroutine.blockstun
-                override_info.hitstop = subroutine.hitstop
-                override_info.bonus_blockstop = subroutine.bonus_blockstop
-                override_info.bonus_hitstop = subroutine.bonus_hitstop
-                override_info.attackLevel = subroutine.attackLevel
-                override_info.attribute = subroutine.attribute
+                override_info = subroutine.attackInfo
             else:
                 from_children = parse_subroutine(chunk.name, effect_list, effect_list, duration)
             for one_subroutine in from_children:
                 subroutine_calls.append(one_subroutine)
         else:
             if isinstance(chunk, ActiveFrames):
-                chunk.info.override_values(override_info)
+                chunk.info.override_non_none_values(override_info)
 
             first_subroutine.append(chunk)
             duration += chunk.duration
@@ -777,30 +679,19 @@ def simulate_effect_on_block(name, effect_list, start_frame=0):
             if chunk.name in effect_list and isinstance(effect_list[chunk.name], Subroutine):
                 subroutine = effect_list[chunk.name]
                 # print "SUBROUTINE " + effect_list[chunk.name]
-                override_info.damage = subroutine.damage
-                override_info.p1 = subroutine.p1
-                override_info.p2 = subroutine.p2
-                override_info.minDamage = subroutine.minDamage
-                override_info.p2Once = subroutine.p2Once
-                override_info.hitstun = subroutine.hitstun
-                override_info.untech = subroutine.untech
-                override_info.blockstun = subroutine.blockstun
-                override_info.hitstop = subroutine.hitstop
-                override_info.bonus_blockstop = subroutine.bonus_blockstop
-                override_info.bonus_hitstop = subroutine.bonus_hitstop
-                override_info.attackLevel = subroutine.attackLevel
+                override_info.copy_non_none_values(subroutine.attackInfo)
             else:
                 from_children = simulate_effect_on_block(chunk.name, effect_list, duration)
             for one_subroutine in from_children:
                 subroutine_calls.append(one_subroutine)
         else:
             if isinstance(chunk, ActiveFrames) and override_info is not None:
-                chunk.info.override_values(override_info)
+                chunk.info.override_non_none_values(override_info)
 
             first_subroutine.append(chunk)
             duration += chunk.duration
             if isinstance(chunk, ActiveFrames):
-                duration += chunk.info.getHitstop() if chunk.info.getHitstop() is not None else 0
+                duration += chunk.info.get_hitstop() if chunk.info.get_hitstop() is not None else 0
 
     subroutine_calls[0] = consolidate_frame_chunks(first_subroutine)
     # delete any subroutines that don't add anything
@@ -831,8 +722,8 @@ def calc_frames_for_subroutine(frame_chunks, superflash_start=None, superflash_d
             if len(middle) > 0 and middle[len(middle) - 1] != ")":
                 middle += ","
             middle += str(chunk.duration)
-            blockstun = 0 if chunk.info.getBlockstun() is None else chunk.info.getBlockstun()
-            hitstop = 0 if chunk.info.getHitstop() is None else chunk.info.getHitstop()
+            blockstun = 0 if chunk.info.get_blockstun() is None else chunk.info.get_blockstun()
+            hitstop = 0 if chunk.info.get_hitstop() is None else chunk.info.get_hitstop()
             bonus_blockstop = 0 if chunk.info.bonus_blockstop is None else chunk.info.bonus_blockstop
             last_frame_of_blockstun = duration_on_block + blockstun + hitstop + \
                                       bonus_blockstop + 1
@@ -890,7 +781,7 @@ def calc_damage_for_move(move_on_block):
         for chunk in frame_chunks:
             if isinstance(chunk, ActiveFrames) and chunk.is_new_hit:
                 heapq.heappush(damage_at_frame, (current_frame, chunk.info))
-                current_frame += chunk.info.getHitstop()
+                current_frame += 0 if chunk.info.get_hitstop() is None else chunk.info.get_hitstop()
             current_frame += chunk.duration
 
     damage_list = []
@@ -915,30 +806,19 @@ def combine_with_effects_on_block(move, effect_list):
             if chunk.name in effect_list and isinstance(effect_list[chunk.name], Subroutine):
                 subroutine = effect_list[chunk.name]
                 # print "SUBROUTINE " + effect_list[chunk.name]
-                override_info.damage = subroutine.damage
-                override_info.p1 = subroutine.p1
-                override_info.p2 = subroutine.p2
-                override_info.minDamage = subroutine.minDamage
-                override_info.p2Once = subroutine.p2Once
-                override_info.hitstun = subroutine.hitstun
-                override_info.untech = subroutine.untech
-                override_info.blockstun = subroutine.blockstun
-                override_info.hitstop = subroutine.hitstop
-                override_info.bonus_blockstop = subroutine.bonus_blockstop
-                override_info.bonus_hitstop = subroutine.bonus_hitstop
-                override_info.attackLevel = subroutine.attackLevel
-                override_info.attribute = subroutine.attribute
+                override_info.copy_non_none_values(subroutine.attackInfo)
+                override_landing_recovery = subroutine.landingRecovery
 
             else:
                 subroutine_calls.extend(simulate_effect_on_block(chunk.name, effect_list, start_frame=current_frame))
         else:
             if isinstance(chunk, ActiveFrames):
-                chunk.info.override_values(override_info)
+                chunk.info.override_non_none_values(override_info)
 
             main_subroutine.append(chunk)
             current_frame += chunk.duration
             if isinstance(chunk, ActiveFrames):
-                current_frame += chunk.info.getHitstop()
+                current_frame += 0 if chunk.info.get_hitstop() is None else chunk.info.get_hitstop()
     subroutine_calls[0] = consolidate_frame_chunks(main_subroutine)
     new_move = Move()
     new_move.frame_chunks = subroutine_calls[0]
@@ -1053,14 +933,14 @@ def create_damage_text(damage_list):
         return value_str
 
     for item in damage_list:
-        fill_str(item.getDamage(), 0, value, value_str, value_multiplier)
-        fill_str(item.getP1(), 1, value, value_str, value_multiplier)
-        fill_str(item.getP2(), 2, value, value_str, value_multiplier)
-        fill_str(item.getHitstun(), 3, value, value_str, value_multiplier)
-        fill_str(item.getUntech(), 4, value, value_str, value_multiplier)
+        fill_str(item.get_damage(), 0, value, value_str, value_multiplier)
+        fill_str(item.get_p1(), 1, value, value_str, value_multiplier)
+        fill_str(item.get_p2(), 2, value, value_str, value_multiplier)
+        fill_str(item.get_hitstun(), 3, value, value_str, value_multiplier)
+        fill_str(item.get_untech(), 4, value, value_str, value_multiplier)
         fill_str(item.attackLevel, 5, value, value_str, value_multiplier)
         fill_str(get_inv_attr_text(item.attribute), 6, value, value_str, value_multiplier)
-        fill_str(item.getBlockstun(), 7, value, value_str, value_multiplier)
+        fill_str(item.get_blockstun(), 7, value, value_str, value_multiplier)
         p2Once = item.p2Once
 
     for i in range(len(value_str)):
@@ -1091,7 +971,7 @@ def fill_str(new_value, index, current_value, value_str, multiplier):
 
 
 def fill_hitstop(info_list):
-    toReturn = ""
+    to_return = ""
     current_hitstop = None
     current_bonus_blockstop = None
     current_bonus_hitstop = None
@@ -1106,39 +986,39 @@ def fill_hitstop(info_list):
                 current_bonus_hitstop == info.bonus_hitstop:
             multiplier = multiplier + 1
         else:
-            if len(toReturn) > 0:
-                toReturn = toReturn + ", "
-            toReturn = toReturn + str(current_hitstop)
+            if len(to_return) > 0:
+                to_return = to_return + ", "
+            to_return = to_return + str(current_hitstop)
             if current_bonus_blockstop is not None and (current_bonus_hitstop != 0 or current_bonus_blockstop != 0):
-                toReturn = toReturn + "/"
+                to_return = to_return + "/"
                 if current_bonus_blockstop > -1:
-                    toReturn = toReturn + "+"
-                toReturn = toReturn + str(current_bonus_blockstop)
+                    to_return = to_return + "+"
+                to_return = to_return + str(current_bonus_blockstop)
             if current_bonus_hitstop is not None and current_bonus_hitstop != 0:
-                toReturn = toReturn + "/"
+                to_return = to_return + "/"
                 if current_bonus_hitstop > -1:
-                    toReturn = toReturn + "+"
-                toReturn = toReturn + str(current_bonus_hitstop)
+                    to_return = to_return + "+"
+                to_return = to_return + str(current_bonus_hitstop)
             current_hitstop = info.hitstop
             current_bonus_blockstop = info.bonus_blockstop
             current_bonus_hitstop = info.bonus_hitstop
             multiplier = 1
 
-    if len(toReturn) > 0:
-        toReturn = toReturn + ", "
-    toReturn = toReturn + str(current_hitstop)
+    if len(to_return) > 0:
+        to_return = to_return + ", "
+    to_return = to_return + str(current_hitstop)
     if current_bonus_blockstop is not None and (current_bonus_hitstop != 0 or current_bonus_blockstop != 0):
-        toReturn = toReturn + "/"
+        to_return = to_return + "/"
         if current_bonus_blockstop > -1:
-            toReturn = toReturn + "+"
-        toReturn = toReturn + str(current_bonus_blockstop)
+            to_return = to_return + "+"
+        to_return = to_return + str(current_bonus_blockstop)
     if current_bonus_hitstop is not None and current_bonus_hitstop != 0:
-        toReturn = toReturn + "/"
+        to_return = to_return + "/"
         if current_bonus_hitstop > -1:
-            toReturn = toReturn + "+"
-        toReturn = toReturn + str(current_bonus_hitstop)
+            to_return = to_return + "+"
+        to_return = to_return + str(current_bonus_hitstop)
 
-    return toReturn
+    return to_return
 
 
 def main():
@@ -1160,9 +1040,9 @@ def main():
         "scr_uwa", "scr_uyu"
     ]
 
-    # source_dir = "."
-    # target_dir = "."
-    # file_list = ["testfile"]
+    source_dir = "."
+    target_dir = "."
+    file_list = ["testfile"]
     for file_name in file_list:
         # Parse effects
         if not os.path.isfile(source_dir + "/" + file_name + "ea.py") or \
