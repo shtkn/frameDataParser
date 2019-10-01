@@ -31,10 +31,10 @@ class State:
         self.isInv = False
         self.invType = 0  # Inv or Guard
         self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
-        self.superflash_start = None
-        self.superflash_duration = 0
+        self.superflash_list = []    # list of tuples. Each tuple contains when superlflash starts and superflash duration
         self.attackLevel = None
         self.attr = None
+        self.hardcodedInvList = []  # list of tuples. Each tuple contains when hardcoded inv starts, duration, inv type, and inv attr
 
     def clear_values(self, is_new_move):
         self.spriteLine = ""
@@ -52,12 +52,14 @@ class State:
             self.landingRecovery = None
             self.isSubroutine = False
             self.attackInfo = AttackInfo()
+            self.attackInfo.groundHitAni = 0
+            self.attackInfo.airHitAni = 0
             self.isInv = False
             self.invType = 0  # Inv or Guard
             self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
             self.attr = None
-            self.superflash_start = None
-            self.superflash_duration = 0
+            self.superflash_list = []    # list of tuples. Each tuple contains when superlflash starts and superflash duration
+            self.hardcodedInvList = []
 
     def is_attackbox(self):
         return self.isAttackBox and (self.isNewHit or not self.disableAttackboxes) and not self.disableAttackboxesThisFrame
@@ -71,8 +73,9 @@ class State:
 
 class AttackInfo:
     def __init__(self, damage=None, p1=None, p2=None, min_damage=0, p2once=None, hitstun=None, untech=None, blockstun=None,
-                 hitstop=None, bonus_blockstop=None, bonus_hitstop=None, attackLevel=None, attribute=None, groundHitAni=None,
-                 airHitAni=None):
+                 hitstop=None, bonus_blockstop=None, bonus_hitstop=None, attack_level=None, attribute=None, ground_hit_ani=None,
+                 air_hit_ani=None, knockdown_time=None, slide_time=None, hitstun_after_wall_bounce=None, wallstick_time=None,
+                 crumple_time=None, spin_fall_time=None):
         self.damage = damage
         self.p1 = p1
         self.p2 = p2
@@ -81,13 +84,19 @@ class AttackInfo:
         self.hitstun = hitstun
         self.untech = untech
         self.blockstun = blockstun
-        self.attackLevel = attackLevel
+        self.attackLevel = attack_level
         self.hitstop = hitstop
         self.bonus_blockstop = bonus_blockstop    # for additional hitstop the opponent experiences on block
         self.bonus_hitstop = bonus_hitstop       # for additonoal hitstop the opponent experiences on hit
         self.attribute = copy.copy(attribute)
-        self.groundHitAni = groundHitAni
-        self.airHitAni = airHitAni
+        self.groundHitAni = ground_hit_ani
+        self.airHitAni = air_hit_ani
+        self.knockdownTime = knockdown_time
+        self.slideTime = slide_time
+        self.hitstunAfterWallBounce = hitstun_after_wall_bounce
+        self.wallStickTime = wallstick_time
+        self.crumpleTime = crumple_time
+        self.spinFallTime = spin_fall_time
 
     def copy_non_none_values(self, other):
         self.damage = other.damage if other.damage is not None else self.damage
@@ -312,8 +321,8 @@ class Move:
         self.frame_chunks = []
         self.additional_chunks = []
         self.landing_recovery = 0
-        self.superflash_start = None
-        self.superflash_duration = 0
+        self.superflash_list = []
+        self.hardcoded_inv_list = []
 
     def __eq__(self, other):
         if not isinstance(other, Move):
@@ -333,8 +342,8 @@ class Move:
             for j in range(len(self.additional_chunks[i])):
                 if self.additional_chunks[i][j] != other.additional_chunks[i][j]:
                     return False
-        return self.landing_recovery == other.landing_recovery and self.superflash_start == other.superflash_start and \
-            self.superflash_duration == self.superflash_duration
+        return self.landing_recovery == other.landing_recovery and self.superflash_list == other.superflash_list and \
+               self.hardcoded_inv_list == other.hardcoded_inv_list
 
     def __ne__(self, other):
         if not isinstance(other, Move):
@@ -437,14 +446,7 @@ def parse_move_file(source, move_list, effect_list):
                     chunk.inv_type = 1 if state.invType == 0 else 2
                     chunk.inv_attr = state.invAttr
                 frame_chunks.append(chunk)
-
-                move_list[state.moveName] = Move()
-                move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
-                if state.landingRecovery > 0:
-                    move_list[state.moveName].landing_recovery = state.landingRecovery
-                if state.superflash_start is not None:
-                    move_list[state.moveName].superflash_start = state.superflash_start
-                    move_list[state.moveName].superflash_duration = state.superflash_duration
+                move_list[state.moveName] = handle_end_of_move(state, frame_chunks)
             frame_chunks = []
             # print "*** NEW MOVE ***"
             # restart counters
@@ -532,14 +534,23 @@ def parse_move_file(source, move_list, effect_list):
                         state.landingRecovery = subroutine.landingRecovery
                 else:
                     frame_chunks.append(SubroutineCall(line[name_start:name_end]))
+            elif "AirHitstunAnimation(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.airHitAni = int(line[number_start:number_end])
+            elif "GroundedHitstunAnimation(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.groundHitAni = int(line[number_start:number_end])
             elif "Unknown2036(" in line:
                 flash_start = line.index("(") + 1
                 flash_end = line.index(",")
-                state.superflash_start = 1
+                superflash_start = 1
                 for chunk in frame_chunks:
                     if isinstance(chunk, AbstractFrames):
-                        state.superflash_start += chunk.duration
-                state.superflash_duration = int(line[flash_start:flash_end])
+                        superflash_start += chunk.duration
+                superflash_duration = int(line[flash_start:flash_end])
+                state.superflash_list.append((superflash_start, superflash_duration))
                 # superfreeze
             elif "Unknown22019(" in line:
                 # set invul to which attributes
@@ -552,6 +563,15 @@ def parse_move_file(source, move_list, effect_list):
                 # active/deactivate invul
                 idx = line.index("(") + 1
                 state.isInv = line[idx: idx + 1] == "1"
+            elif "Unknown22008(" in line:
+                inv_start = line.index("(") + 1
+                inv_end = line.index(")")
+                hardcoded_inv_start = 1
+                for chunk in frame_chunks:
+                    if isinstance(chunk, AbstractFrames):
+                        hardcoded_inv_start += chunk.duration
+                hardcoded_inv_duration = int(line[inv_start:inv_end])
+                state.hardcodedInvList.append((hardcoded_inv_start, hardcoded_inv_duration, state.invType, state.invAttr))
             elif "GuardPoint_(" in line:
                 idx = line.index("(") + 1
                 state.invType = int(line[idx: idx + 1])
@@ -607,15 +627,20 @@ def parse_move_file(source, move_list, effect_list):
 
         frame_chunks.append(chunk)
 
-        move_list[state.moveName] = Move()
-        move_list[state.moveName].frame_chunks = consolidate_frame_chunks(frame_chunks)
-        if state.landingRecovery > 0:
-            move_list[state.moveName].landing_recovery = state.landingRecovery
-        if state.superflash_start is not None:
-            move_list[state.moveName].superflash_start = state.superflash_start
-            move_list[state.moveName].superflash_duration = state.superflash_duration
+        move_list[state.moveName] = handle_end_of_move(state, frame_chunks)
 
     return move_list
+
+
+def handle_end_of_move(state, frame_chunks):
+    new_move = Move()
+    new_move.frame_chunks = consolidate_frame_chunks(frame_chunks)
+    if state.landingRecovery > 0:
+        new_move.landing_recovery = state.landingRecovery
+    if len(state.superflash_list) > 0:
+        new_move.superflash_list = copy.copy(state.superflash_list)
+    new_move.hardcoded_inv_list = copy.copy(state.hardcodedInvList)
+    return new_move
 
 
 def find_registered_moves(source):
@@ -708,7 +733,7 @@ def simulate_on_block(move_list, effect_list):
     return hit_simulations
 
 
-def calc_frames_for_subroutine(frame_chunks, superflash_start=None, superflash_duration=0):
+def calc_frames_for_subroutine(frame_chunks, superflash_list=[]):
     startup = 0
     middle = ""
     recovery = 0
@@ -749,26 +774,29 @@ def calc_frames_for_subroutine(frame_chunks, superflash_start=None, superflash_d
         else:
             inv_list.append([chunk.duration, chunk.inv_type, chunk.inv_attr])
     # clean up the inv array
-    cleaned_list = []
+    cleaned_inv_list = []
     frame_counter = 1
     for value in inv_list:
         if value[1] != 0:
-            cleaned_list.append([frame_counter, value[0], value[1], value[2]])
+            cleaned_inv_list.append([frame_counter, value[0], value[1], value[2]])
         frame_counter += value[0]
 
     # account for superflash
-    if superflash_start > 0:
-        startup -= superflash_duration
-        post_flash_startup = startup - superflash_start
-        post_flash_startup = 0 if post_flash_startup < 0 else post_flash_startup
-        startup = str(superflash_start) + "+" + str(superflash_duration) + "Flash+" + str(post_flash_startup)
-    else:
-        startup = str(startup)
+    # TODO: additional logic needed to account for multiple superflashes. For now just use the first one
+    for (superflash_start, superflash_duration) in superflash_list:
+        total_superfreeze_time = 0
+        if superflash_start > 0:
+            startup -= superflash_duration
+            total_superfreeze_time += superflash_duration
+            post_flash_startup = startup - superflash_start
+            post_flash_startup = 0 if post_flash_startup < 0 else post_flash_startup
+            startup = str(superflash_start) + "+" + str(superflash_duration) + "Flash+" + str(post_flash_startup)
+            break
 
     if middle == "" and recovery == 0:
         recovery = startup
         startup = ""
-    return startup, middle, str(recovery), duration_on_whiff, duration_on_block, last_frame_of_blockstun, cleaned_list
+    return str(startup), middle, str(recovery), duration_on_whiff, duration_on_block, last_frame_of_blockstun, cleaned_inv_list
 
 
 def calc_damage_for_move(move_on_block):
@@ -824,10 +852,10 @@ def combine_with_effects_on_block(move, effect_list):
     new_move.frame_chunks = subroutine_calls[0]
     new_move.landing_recovery = override_landing_recovery \
         if override_landing_recovery is not None else move.landing_recovery
-    new_move.superflash_start = move.superflash_start
-    new_move.superflash_duration = move.superflash_duration
+    new_move.superflash_list = copy.copy(move.superflash_list)
     if len(subroutine_calls) > 1:
         new_move.additional_chunks = subroutine_calls[1:]
+    new_move.hardcoded_inv_list = copy.copy(move.hardcoded_inv_list)
     return new_move
 
 
@@ -838,13 +866,11 @@ def write_file(moves_on_block, target):
         target.write("\n" + moveName + "\n")
         startup, middle, recovery, total_duration, duration_on_block, last_blockstun_frame, inv_list  = \
             calc_frames_for_subroutine(move_on_block.frame_chunks,
-                                       move_on_block.superflash_start,
-                                       move_on_block.superflash_duration)
+                                       move_on_block.superflash_list)
         subroutine_block_timelines = []
         for subroutine in move_on_block.additional_chunks:
             result = calc_frames_for_subroutine(subroutine,
-                                                move_on_block.superflash_start,
-                                                move_on_block.superflash_duration)
+                                                move_on_block.superflash_list)
             subroutine_block_timelines.append(result)
         if startup is "":
             recovery = "Total: " + str(recovery)
@@ -862,10 +888,11 @@ def write_file(moves_on_block, target):
                 target.write("last blockstun frame: " + str(last_blockstun_frame))
 
         inv_text = ""
+        for inv in move_on_block.hardcoded_inv_list:
+            inv_list.append(inv)
         for idx, inv in enumerate(inv_list):
             inv_text = get_inv_text(inv[0], inv[1], inv[2], inv[3],
-                                    move_on_block.superflash_start,
-                                    move_on_block.superflash_duration
+                                    move_on_block.superflash_list
                                     )
             if idx != len(inv_list) - 1:
                 inv_text += "<br/>"
@@ -885,19 +912,21 @@ def write_file(moves_on_block, target):
         target.write("\n}}\n")
 
 
-def get_inv_text(inv_start, inv_duration, inv_type, inv_attr, superflash_start, superflash_duration):
+def get_inv_text(inv_start, inv_duration, inv_type, inv_attr, superflash_list):
     inv_type = " Guard" if inv_type == 2 else ""
     inv_attr = get_inv_attr_text(inv_attr)
 
     inv_end = inv_start + inv_duration - 1
-    if superflash_start is not None:
-        if inv_start > superflash_start:
-            inv_start -= superflash_duration
+    # TODO: any additional logic needed to account for multiple superflashes in one move?
+    for (superflash_start, superflash_duration) in superflash_list:
+        if superflash_start is not None:
+            if inv_start > superflash_start:
+                inv_start -= superflash_duration
 
-        if inv_end > superflash_start:
-            inv_end -= superflash_duration
-        if inv_end < inv_start:
-            inv_end = superflash_start
+            if inv_end > superflash_start:
+                inv_end -= superflash_duration
+            if inv_end < inv_start:
+                inv_end = superflash_start
     return str(inv_start) + "-" + str(inv_end) + " " + inv_attr + inv_type
 
 
@@ -1040,9 +1069,9 @@ def main():
         "scr_uwa", "scr_uyu"
     ]
 
-    source_dir = "."
-    target_dir = "."
-    file_list = ["testfile"]
+    # source_dir = "."
+    # target_dir = "."
+    # file_list = ["testfile"]
     for file_name in file_list:
         # Parse effects
         if not os.path.isfile(source_dir + "/" + file_name + "ea.py") or \
@@ -1072,7 +1101,7 @@ def main():
         hit_simulations = simulate_on_block(move_list, effect_list)
 
         write_file(hit_simulations, char_target)
-        print "DONE"
+        print "DONE with " + file_name
 
 
 if __name__ == "__main__":
