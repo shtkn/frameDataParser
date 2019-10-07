@@ -114,6 +114,12 @@ class AttackInfo:
         self.attribute = copy.copy(other.attribute) if other.attribute is not None else self.attribute
         self.groundHitAni = other.groundHitAni if other.groundHitAni is not None else self.groundHitAni
         self.airHitAni = other.airHitAni if other.airHitAni is not None else self.airHitAni
+        self.knockdownTime = other.knockdownTime if other.knockdownTime is not None else self.knockdownTime
+        self.slideTime = other.slideTime if other.slideTime is not None else self.slideTime
+        self.hitstunAfterWallBounce = other.hitstunAfterWallBounce if other.hitstunAfterWallBounce is not None else self.hitstunAfterWallBounce
+        self.wallStickTime = other.wallStickTime if other.wallStickTime is not None else self.wallStickTime
+        self.crumpleTime = other.crumpleTime if other.crumpleTime is not None else self.crumpleTime
+        self.spinFallTime = other.spinFallTime if other.spinFallTime is not None else self.spinFallTime
 
     def __str__(self):
         toReturn = "damage=" + str(self.damage) + "p1=" + str(self.p1) + "p2=" + str(self.p2)
@@ -448,9 +454,10 @@ def parse_move_file(source, move_list, effect_list):
                 frame_chunks.append(chunk)
                 move_list[state.moveName] = handle_end_of_move(state, frame_chunks)
             frame_chunks = []
-            # print "*** NEW MOVE ***"
             # restart counters
-            state.clear_values(True)
+
+            # state.clear_values(True)
+            state = State()
             if "@Subroutine" in line:
                 state.isSubroutine = True
         elif state.inUponImmediate and line.startswith(state.uponImmediateIndent + "    "):

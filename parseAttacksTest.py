@@ -1148,3 +1148,64 @@ def NmlAtk5A():
         self.assertEqual(5, inv_values[1])
         self.assertEqual(1, inv_values[2])
         self.assertEqual([True, True, True, True, False], inv_values[3])
+
+    def test_compare_frame_chunk_util(self):
+
+        frame_chunks1 = [WaitFrames(5),
+                        ActiveFrames(2, info=AttackInfo(600, p1=50, p2=75, blockstun=10, hitstop=20,
+                                                      p2once=True)),
+                        WaitFrames(5)
+                        ]
+
+        frame_chunks2 = [WaitFrames(5),
+                        ActiveFrames(2, info=AttackInfo(600, p1=50, p2=75, blockstun=10, hitstop=20,
+                                                      p2once=True)),
+                        WaitFrames(5)
+                        ]
+        frame_chunks1[0].inv_type = 1
+        self.compare_frame_chunks_util(frame_chunks1, frame_chunks2)
+
+    # util method to help make debugging what's different between objects easier to detect.
+    # Tests should still use normal assertEquals, only use these when debugging or else we may
+    # have problems with outdated compare methods.
+
+    def compare_move_util(self, first, second):
+        self.assertEqual(first.landing_recovery, second.landing_recovery)
+        self.assertEquals(first.superflash_list, second.superflash_list)
+        self.assertEquals(first.hardcoded_inv_list, second.hardcoded_inv_list)
+        self.compare_frame_chunks_util(first.frame_chunks, second.frame_chunks, "move.frame_chunks")
+        self.assertEqual(len(first.frame_chunks), len(second.frame_chunks))
+        for i in range(len(first.additional_chunks)):
+            self.compare_frame_chunks_util(first.additional_chunks[i], second.additional_chunks[i], "move.additonal_chunks[" + str(i) + "]")
+
+    def compare_frame_chunks_util(self, first, second, name=""):
+        self.assertEqual(len(first), len(second))
+        for i in range(len(first)):
+            if first[i] != second[i] and isinstance(first[i], ActiveFrames) and isinstance(second[i], ActiveFrames):
+                print "Unequal Active Frame Chunk detected at " + name + "[" + str(i) + "]"
+                self.assertEqual(first[i].is_new_hit, second[i].is_new_hit, "is_new_hit not equal")
+                self.compare_attack_info(first[i].info, second[i].info)
+            if first[i] != second[i] and isinstance(first[i], AbstractFrames) and isinstance(second[i], AbstractFrames):
+                print "Unequal Abstract Frame Chunk detected at " + name + "[" + str(i) + "]"
+                self.assertEqual(first[i].inv_type, second[i].inv_type, "inv_type not equal")
+                self.assertEqual(first[i].inv_attr, second[i].inv_attr, "inv_attr not equal")
+                self.assertEqual(first[i].duration, second[i].duration, "duration not equal")
+            else:
+                self.assertEqual(first[i], second[i], "Unequal Object detected at [" + str(i) + "]")
+
+    def compare_attack_info(self, first, second):
+        self.assertEqual(first.damage, second.damage, "Damage not equal")
+        self.assertEqual(first.p1, second.p1, "p1 not equal")
+        self.assertEqual(first.p2, second.p2, "p2 not equal")
+        self.assertEqual(first.minDamage, second.minDamage, "minDamage not equal")
+        self.assertEqual(first.p2Once, second.p2Once, "p2Once not equal")
+        self.assertEqual(first.blockstun, second.blockstun, "blockstun not equal")
+        self.assertEqual(first.hitstun, second.hitstun, "hitstun not equal")
+        self.assertEqual(first.untech, second.untech, "hitstun not equal")
+        self.assertEqual(first.attackLevel, second.attackLevel, "attackLevel not equal")
+        self.assertEqual(first.hitstop, second.hitstop, "hitstop not equal")
+        self.assertEqual(first.bonus_hitstop, second.bonus_hitstop, "bonus_hitstop not equal")
+        self.assertEqual(first.bonus_blockstop, second.bonus_blockstop, "bonus_blockstop not equal")
+        self.assertEqual(first.attribute, second.attribute, "attribute not equal")
+        self.assertEqual(first.groundHitAni, second.groundHitAni, "groundHitAni not equal")
+        self.assertEqual(first.airHitAni, second.airHitAni, "groundHitAni not equal")
