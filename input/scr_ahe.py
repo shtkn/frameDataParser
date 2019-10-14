@@ -4420,15 +4420,15 @@ def HomingAction9():
 def CheckStartAnimAngle():
     Unknown1116('')
     ExitState()
-    Unknown22(')      5          (   	   ')
+    Unknown22('asdfasdf7')
     Unknown53(0)
 
     @State
-    def                    (   	():
-        sprite('5                    (   ', 2)
+    def asdfasdf9():
+        sprite('asdfasdf10', 2)
         Unknown23('00000000a08601000400000002000000000000000b0000000e00000005000000380000000b0000000f0000003900000005000000280000000900000002000000')
         Unknown53(0)
-        if sprite('          (         ', 100000):
+        if sprite('asdfasdf12', 100000):
             sendToLabel(14)
         else:
             sendToLabel(16)
@@ -4458,15 +4458,15 @@ def CheckStartAnimAngle():
 def CheckAnimAngle():
     Unknown1116('')
     ExitState()
-    Unknown22(')      5          (   	   ')
+    Unknown22('asdfasdf12')
     Unknown53(0)
 
     @State
-    def                    (   	():
-        sprite('5                    (   ', 2)
+    def asdfasdf14():
+        sprite('asdfasdf16', 2)
         Unknown23('00000000a08601000400000002000000000000000b0000000300000005000000380000000b000000050000003900000005000000280000000900000002000000')
         Unknown53(0)
-        if sprite('          (         ', 100000):
+        if sprite('asdfasdf623', 100000):
             sendToLabel(3)
         else:
             sendToLabel(6)
@@ -5057,25 +5057,25 @@ def HomingDash():
             if (SLOT_55 == 3):
                 Unknown1114('')
                 Unknown30000()
-                Unknown22('(                     ')
+                Unknown22('(asdfasdf1')
 
                 @State
-                def )                     ():
+                def asdfasdf2():
                     gotoLabel(40)
                     Unknown13(2)
                     Unknown13(2)
                     gotoLabel(4)
-                    sprite(')                  ', 1072)
+                    sprite('asdfasdf2', 1072)
 
                     @State
-                    def (                '  6   ():
+                    def asdfasdf3():
 
                         @State
-                        def Ö  7   +   “             )():
-                            sprite('<           )      ?', 40)
+                        def asdfasdf4():
+                            sprite('asdfasdf6', 40)
                             sendToLabel(2)
                             Unknown19(0, 300000, 4)
-                            sprite('+   _   6          ÷  ˆ', 55)
+                            sprite('asdfasdf5', 55)
                     if CheckInput(0x45):
                         SLOT_60 = 1
                         SLOT_63 = 0

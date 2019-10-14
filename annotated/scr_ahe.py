@@ -4420,15 +4420,15 @@ def HomingAction9():
 def CheckStartAnimAngle():
     Unknown1116('')
     ExitState()
-    Unknown22(')      5          (   	   ')
+    Unknown22('asdfasdf7')
     Unknown53(0)
 
     @State
-    def                    (   	():
-        sprite('5                    (   ', 2)	# 1-2
+    def asdfasdf9():
+        sprite('asdfasdf10', 2)	# 1-2
         Unknown23('00000000a08601000400000002000000000000000b0000000e00000005000000380000000b0000000f0000003900000005000000280000000900000002000000')
         Unknown53(0)
-        if sprite('          (         ', 100000):	# 3-100002
+        if sprite('asdfasdf12', 100000):	# 3-100002
             sendToLabel(14)
         else:
             sendToLabel(16)
@@ -4458,15 +4458,15 @@ def CheckStartAnimAngle():
 def CheckAnimAngle():
     Unknown1116('')
     ExitState()
-    Unknown22(')      5          (   	   ')
+    Unknown22('asdfasdf12')
     Unknown53(0)
 
     @State
-    def                    (   	():
-        sprite('5                    (   ', 2)	# 1-2
+    def asdfasdf14():
+        sprite('asdfasdf16', 2)	# 1-2
         Unknown23('00000000a08601000400000002000000000000000b0000000300000005000000380000000b000000050000003900000005000000280000000900000002000000')
         Unknown53(0)
-        if sprite('          (         ', 100000):	# 3-100002
+        if sprite('asdfasdf623', 100000):	# 3-100002
             sendToLabel(3)
         else:
             sendToLabel(6)
@@ -5057,11 +5057,2491 @@ def HomingDash():
             if (SLOT_55 == 3):
                 Unknown1114('')
                 Unknown30000()
-                Unknown22('(                     ')
+                Unknown22('(asdfasdf1')
 
                 @State
-                def )                     ():
+                def asdfasdf2():
                     gotoLabel(40)
                     Unknown13(2)
                     Unknown13(2)
                     gotoLabel(4)
+                    sprite('asdfasdf2', 1072)	# 1-1072
+
+                    @State
+                    def asdfasdf3():
+
+                        @State
+                        def asdfasdf4():
+                            sprite('asdfasdf6', 40)	# 1-40
+                            sendToLabel(2)
+                            Unknown19(0, 300000, 4)
+                            sprite('asdfasdf5', 55)	# 41-95
+                    if CheckInput(0x45):
+                        SLOT_60 = 1
+                        SLOT_63 = 0
+                        Unknown1021(-15000)
+                        Unknown28(2, 'CmnActJumpLanding')
+                    if CheckInput(0x79):
+                        Unknown1015(18000)
+                        SLOT_62 = 1
+                        SLOT_61 = 0
+                    if CheckInput(0x5f):
+                        if (not CheckInput(0x45)):
+                            clearUponHandler(2)
+                        Unknown59('19000000640000001600000064000000')
+                        if (SLOT_0 < 300000):
+                            Unknown1015(-6750)
+                        elif (not CheckInput(0x93)):
+                            if (not SLOT_125):
+                                if (not (SLOT_23 < 10000)):
+                                    Unknown1021(-20000)
+                        SLOT_62 = 0
+                        SLOT_61 = 0
+                    callSubroutine('HomingSpeed')
+                    Unknown1019(80)
+                    YAccel(80)
+                if (SLOT_19 < 300000):
+                    Unknown1019(80)
+                if (not CheckInput(0x79)):
+                    if (not CheckInput(0x5f)):
+                        if (SLOT_19 < 10000):
+                            physicsXImpulse(0)
+                if (not SLOT_128):
+                    Unknown59('19000000640000001600000064000000')
+                    if (SLOT_0 < 150000):
+                        sendToLabel(100)
+                if (not SLOT_158):
+                    sendToLabel(100)
+                if (not SLOT_21):
+                    sendToLabel(100)
+
+            def upon_STATE_END():
+                Unknown1043()
+                SLOT_6 = 0
+                SLOT_7 = 0
+                SLOT_64 = 0
+                SLOT_65 = 0
+                SLOT_9 = 0
+                SLOT_10 = 0
+                SLOT_11 = 0
+                Unknown28(2, 'CmnActJumpLanding')
+            callSubroutine('ExFlashColor')
+        sprite('keep', 1)	# 96-96
+        GFX_0('ahe_homing_add_eff', 103)
+        if (SLOT_163 > 0):
+            Unknown1051(50)
+        Unknown48('190000000200000036000000160000000200000017000000')
+        if (SLOT_23 < SLOT_54):
+            Unknown1039(5)
+        sprite('keep', 100)	# 97-196
+        callSubroutine('CheckStartAnimAngle')
+        ExitState()
+        label(10)
+        sprite('ahe252_05', 2)	# 197-198
+        Unknown23183('6168653235325f30356578000000000000000000000000000000000000000000020000000200000038000000')
+        GFX_0('ahe_homing_wind_eff', 103)
+        Unknown36(1)
+        Unknown1073(270000)
+        Unknown35()
+        sprite('ahe252_06', 2)	# 199-200
+        Unknown23183('6168653235325f30366578000000000000000000000000000000000000000000020000000200000038000000')
+        sprite('ahe252_07', 1)	# 201-201
+        Unknown23183('6168653235325f30376578000000000000000000000000000000000000000000010000000200000038000000')
+        sprite('keep', 100)	# 202-301
+        callSubroutine('CheckLooAnimAngle')
+        ExitState()
+        label(11)
+        sprite('ahe252_05', 2)	# 302-303
+        Unknown23183('6168653235325f30356578000000000000000000000000000000000000000000020000000200000038000000')
+        GFX_0('ahe_homing_wind_eff', 103)
+        Unknown36(1)
+        Unknown1073(300000)
+        Unknown35()
+        sprite('ahe252_08', 2)	# 304-305
+        Unknown23183('6168653235325f30386578000000000000000000000000000000000000000000020000000200000038000000')
+        sprite('ahe252_09', 1)	# 306-306
+        Unknown23183('6168653235325f30396578000000000000000000000000000000000000000000010000000200000038000000')
+        sprite('keep', 100)	# 307-406
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(12)
+        sprite('ahe035_01', 2)	# 407-408
+        Unknown23183('6168653033355f30316578000000000000000000000000000000000000000000020000000200000038000000')
+        Unknown23183('6168653235325f31320000000000000000000000000000000000000000000000020000000200000041000000')
+        GFX_0('ahe_homing_wind_eff', 103)
+        Unknown36(1)
+        Unknown1073(330000)
+        Unknown35()
+        sprite('ahe252_10', 2)	# 409-410
+        Unknown23183('6168653235325f31306578000000000000000000000000000000000000000000020000000200000038000000')
+        sprite('ahe252_11', 1)	# 411-411
+        Unknown23183('6168653235325f31316578000000000000000000000000000000000000000000010000000200000038000000')
+        sprite('keep', 100)	# 412-511
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(13)
+        sprite('ahe035_01', 2)	# 512-513
+        Unknown23183('6168653033355f30316578000000000000000000000000000000000000000000020000000200000038000000')
+        Unknown23183('6168653235325f31320000000000000000000000000000000000000000000000020000000200000041000000')
+        GFX_0('ahe_homing_wind_eff', 103)
+        Unknown36(1)
+        Unknown1073(0)
+        Unknown35()
+        sprite('ahe032_02ex01', 2)	# 514-515
+        Unknown23183('6168653033325f30326578303200000000000000000000000000000000000000020000000200000038000000')
+        sprite('ahe032_03ex01', 1)	# 516-516
+        Unknown23183('6168653033325f30336578303200000000000000000000000000000000000000010000000200000038000000')
+        sprite('keep', 100)	# 517-616
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(14)
+        sprite('ahe035_01', 2)	# 617-618
+        Unknown23183('6168653033355f30316578000000000000000000000000000000000000000000020000000200000038000000')
+        Unknown23183('6168653235325f31320000000000000000000000000000000000000000000000020000000200000041000000')
+        GFX_0('ahe_homing_wind_eff', 103)
+        Unknown36(1)
+        Unknown1073(30000)
+        Unknown35()
+        sprite('ahe252_12', 2)	# 619-620
+        Unknown23183('6168653235325f31326578000000000000000000000000000000000000000000020000000200000038000000')
+        sprite('ahe252_13', 1)	# 621-621
+        Unknown23183('6168653235325f31336578000000000000000000000000000000000000000000010000000200000038000000')
+        sprite('keep', 100)	# 622-721
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(15)
+        sprite('ahe252_14', 2)	# 722-723
+        Unknown23183('6168653235325f31346578000000000000000000000000000000000000000000020000000200000038000000')
+        GFX_0('ahe_homing_wind_eff', 103)
+        Unknown36(1)
+        Unknown1073(60000)
+        Unknown35()
+        sprite('ahe252_15', 2)	# 724-725
+        Unknown23183('6168653235325f31356578000000000000000000000000000000000000000000020000000200000038000000')
+        sprite('ahe252_16', 1)	# 726-726
+        Unknown23183('6168653235325f31366578000000000000000000000000000000000000000000010000000200000038000000')
+        sprite('keep', 100)	# 727-826
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(16)
+        sprite('ahe252_14', 2)	# 827-828
+        Unknown23183('6168653235325f31346578000000000000000000000000000000000000000000020000000200000038000000')
+        GFX_0('ahe_homing_wind_eff', 103)
+        Unknown36(1)
+        Unknown1073(90000)
+        Unknown35()
+        sprite('ahe252_17', 2)	# 829-830
+        Unknown23183('6168653235325f31376578000000000000000000000000000000000000000000020000000200000038000000')
+        Unknown23183('6168653235325f3135000000000000000000000000000000000000000000000002000000020000003f000000')
+        sprite('ahe252_18', 1)	# 831-831
+        Unknown23183('6168653235325f31386578000000000000000000000000000000000000000000010000000200000038000000')
+        Unknown23183('6168653235325f3136000000000000000000000000000000000000000000000001000000020000003f000000')
+        sprite('keep', 100)	# 832-931
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(0)
+        sprite('ahe252_06', 2)	# 932-933
+        Unknown23183('6168653235325f30366578000000000000000000000000000000000000000000020000000200000038000000')
+        sprite('ahe252_07', 1)	# 934-934
+        Unknown23183('6168653235325f30376578000000000000000000000000000000000000000000010000000200000038000000')
+        sprite('keep', 100)	# 935-1034
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(1)
+        sprite('ahe252_08', 2)	# 1035-1036
+        Unknown23183('6168653235325f30386578000000000000000000000000000000000000000000020000000200000038000000')
+        sprite('ahe252_09', 1)	# 1037-1037
+        Unknown23183('6168653235325f30396578000000000000000000000000000000000000000000010000000200000038000000')
+        sprite('keep', 100)	# 1038-1137
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(2)
+        sprite('ahe252_10', 2)	# 1138-1139
+        Unknown23183('6168653235325f31306578000000000000000000000000000000000000000000020000000200000038000000')
+        sprite('ahe252_11', 1)	# 1140-1140
+        Unknown23183('6168653235325f31306578000000000000000000000000000000000000000000010000000200000038000000')
+        sprite('keep', 100)	# 1141-1240
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(3)
+        sprite('ahe032_02ex01', 2)	# 1241-1242
+        Unknown23183('6168653033325f30326578303200000000000000000000000000000000000000020000000200000038000000')
+        sprite('ahe032_03ex01', 1)	# 1243-1243
+        Unknown23183('6168653033325f30336578303200000000000000000000000000000000000000010000000200000038000000')
+        sprite('keep', 100)	# 1244-1343
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(4)
+        sprite('ahe252_12', 2)	# 1344-1345
+        Unknown23183('6168653235325f31326578000000000000000000000000000000000000000000020000000200000038000000')
+        sprite('ahe252_13', 1)	# 1346-1346
+        Unknown23183('6168653235325f31336578000000000000000000000000000000000000000000010000000200000038000000')
+        sprite('keep', 100)	# 1347-1446
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(5)
+        sprite('ahe252_15', 2)	# 1447-1448
+        Unknown23183('6168653235325f31356578000000000000000000000000000000000000000000020000000200000038000000')
+        sprite('ahe252_16', 1)	# 1449-1449
+        Unknown23183('6168653235325f31366578000000000000000000000000000000000000000000010000000200000038000000')
+        sprite('keep', 100)	# 1450-1549
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(6)
+        sprite('ahe252_17', 2)	# 1550-1551
+        Unknown23183('6168653235325f31376578000000000000000000000000000000000000000000020000000200000038000000')
+        Unknown23183('6168653235325f3135000000000000000000000000000000000000000000000002000000020000003e000000')
+        Unknown23183('6168653235325f3135657830310000000000000000000000000000000000000002000000020000003d000000')
+        Unknown23183('6168653235325f3135000000000000000000000000000000000000000000000002000000020000003f000000')
+        sprite('ahe252_18', 1)	# 1552-1552
+        Unknown23183('6168653235325f31386578000000000000000000000000000000000000000000010000000200000038000000')
+        Unknown23183('6168653235325f3136000000000000000000000000000000000000000000000001000000020000003e000000')
+        Unknown23183('6168653235325f3136657830310000000000000000000000000000000000000001000000020000003d000000')
+        Unknown23183('6168653235325f3136000000000000000000000000000000000000000000000001000000020000003f000000')
+        sprite('keep', 100)	# 1553-1652
+        callSubroutine('CheckAnimAngle')
+        ExitState()
+        label(100)
+        sprite('keep', 100)	# 1653-1752
+        clearUponHandler(3)
+        Unknown1019(50)
+        YAccel(25)
+        Unknown1051(0)
+        if SLOT_125:
+            physicsYImpulse(1000)
+        if (SLOT_13 >= 1):
+            physicsYImpulse(10000)
+        enterState('CmnActJumpDown')
+
+    @State
+    def LandAssaultA():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingSpecial()
+            AttackLevel_(3)
+            Damage(2000)
+            AttackP1(80)
+            Unknown9154(28)
+            AirUntechableTime(30)
+            AirPushbackX(15000)
+            AirPushbackY(16000)
+            Unknown11056(0)
+            loopRelated(17, 6)
+
+            def upon_17():
+                sendToLabel(1)
+            callSubroutine('HomingCancelLand')
+            Unknown2004(1, 0)
+            callSubroutine('HoseiPlus')
+
+            def upon_3():
+                Unknown23073()
+        sprite('ahe400_00', 3)	# 1-3
+        sprite('ahe400_01', 3)	# 4-6
+        sprite('ahe400_02', 3)	# 7-9
+        sprite('ahe400_03', 3)	# 10-12
+        label(0)
+        sprite('ahe400_01', 3)	# 13-15
+        sprite('ahe400_02', 3)	# 16-18
+        sprite('ahe400_03', 3)	# 19-21
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe400_04', 2)	# 22-23
+        physicsXImpulse(15000)
+        Unknown8009(0)
+        SFX_3('ahese_03')
+        Unknown2015(175)
+        Unknown7006('ahe201_0', 100, 845506657, 828322096, 0, 0, 100, 845506657, 845099312, 0, 0, 100, 0, 0, 0, 0, 0)
+        sprite('ahe400_04', 1)	# 24-24
+        Unknown1019(150)
+        Unknown8006(100, 1, 0)
+        sprite('ahe400_05', 1)	# 25-25
+        sprite('ahe400_05', 2)	# 26-27
+        Unknown1019(200)
+        sprite('ahe400_06', 2)	# 28-29	 **attackbox here**
+        RefreshMultihit()
+        GFX_0('ahe400_attack_eff', 100)
+        Unknown38(8, 1)
+        GFX_0('ahe400_dust_eff', 100)
+        Unknown8006(100, 1, 0)
+
+        def upon_ON_HIT_OR_BLOCK():
+            Unknown2037(1)
+            clearUponHandler(10)
+            sendToLabel(2)
+
+        def upon_12():
+            SLOT_51 = 1
+            clearUponHandler(12)
+        sprite('ahe400_07', 2)	# 30-31	 **attackbox here**
+        label(2)
+        sprite('ahe200_06', 3)	# 32-34	 **attackbox here**
+        if SLOT_2:
+            Unknown23029(8, 5031, 0)
+        clearUponHandler(10)
+        clearUponHandler(12)
+        StartMultihit()
+        Recovery()
+        Unknown1019(50)
+        sprite('ahe200_07', 3)	# 35-37
+        Unknown23183('6168653230305f30370000000000000000000000000000000000000000000000040000000200000033000000')
+        Unknown1019(50)
+        sprite('ahe200_08', 3)	# 38-40
+        Unknown23183('6168653230305f30380000000000000000000000000000000000000000000000040000000200000033000000')
+        Unknown1019(50)
+        sprite('ahe200_09', 3)	# 41-43
+        Unknown23183('6168653230305f30390000000000000000000000000000000000000000000000040000000200000033000000')
+        Unknown1019(50)
+        Unknown14077(0)
+        sprite('ahe200_10', 4)	# 44-47
+        Unknown1019(50)
+        sprite('ahe200_11', 4)	# 48-51
+        Unknown1084(1)
+
+    @State
+    def LandAssaultB():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingSpecial()
+            AttackLevel_(4)
+            Damage(2300)
+            AttackP1(80)
+            AirHitstunAnimation(13)
+            GroundedHitstunAnimation(13)
+            AirUntechableTime(30)
+            AirPushbackX(7000)
+            AirPushbackY(24000)
+            Hitstop(18)
+            Unknown11056(0)
+            Unknown11068(1)
+            loopRelated(17, 18)
+
+            def upon_17():
+                sendToLabel(1)
+            callSubroutine('AHE_SousaiArmor')
+            callSubroutine('HomingCancelLand')
+            Unknown2004(1, 0)
+            callSubroutine('HoseiPlus')
+
+            def upon_3():
+                Unknown23073()
+        sprite('ahe400_00', 3)	# 1-3
+        sprite('ahe400_01', 3)	# 4-6
+        sprite('ahe400_02', 3)	# 7-9
+        setInvincible(1)
+        sprite('ahe400_03', 3)	# 10-12
+        label(0)
+        sprite('ahe400_01', 3)	# 13-15
+        sprite('ahe400_02', 3)	# 16-18
+        sprite('ahe400_03', 3)	# 19-21
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe400_04', 2)	# 22-23
+        setInvincible(0)
+        physicsXImpulse(25000)
+        Unknown8009(0)
+        SFX_3('ahese_03')
+        Unknown2015(175)
+        Unknown7006('ahe201_0', 100, 845506657, 828322096, 0, 0, 100, 845506657, 845099312, 0, 0, 100, 0, 0, 0, 0, 0)
+        sprite('ahe400_04', 1)	# 24-24
+        Unknown1019(150)
+        Unknown8006(100, 1, 0)
+        sprite('ahe400_05', 1)	# 25-25
+        sprite('ahe400_05', 2)	# 26-27
+        Unknown1019(200)
+        sprite('ahe400_06', 2)	# 28-29	 **attackbox here**
+        RefreshMultihit()
+        GFX_0('ahe400_attack_eff', 100)
+        Unknown38(8, 1)
+        GFX_0('ahe401_dust_eff', 100)
+        Unknown8006(100, 1, 0)
+
+        def upon_ON_HIT_OR_BLOCK():
+            Unknown2037(1)
+            clearUponHandler(10)
+            sendToLabel(2)
+
+        def upon_12():
+            SLOT_51 = 1
+            clearUponHandler(12)
+        sprite('ahe400_07', 2)	# 30-31	 **attackbox here**
+        sprite('ahe400_08', 2)	# 32-33	 **attackbox here**
+        Unknown8006(100, 1, 0)
+        label(2)
+        sprite('ahe200_06', 3)	# 34-36	 **attackbox here**
+        if SLOT_2:
+            Unknown23029(8, 5031, 0)
+        clearUponHandler(10)
+        clearUponHandler(12)
+        StartMultihit()
+        Recovery()
+        Unknown1019(55)
+        sprite('ahe200_07', 3)	# 37-39
+        Unknown23183('6168653230305f30370000000000000000000000000000000000000000000000040000000200000033000000')
+        Unknown1019(55)
+        sprite('ahe200_08', 3)	# 40-42
+        Unknown23183('6168653230305f30380000000000000000000000000000000000000000000000040000000200000033000000')
+        Unknown1019(55)
+        sprite('ahe200_09', 3)	# 43-45
+        Unknown23183('6168653230305f30390000000000000000000000000000000000000000000000040000000200000033000000')
+        Unknown1019(55)
+        Unknown14077(0)
+        sprite('ahe200_10', 4)	# 46-49
+        Unknown1019(55)
+        sprite('ahe200_11', 4)	# 50-53
+        Unknown1084(1)
+
+    @State
+    def LandAssaultEx():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingSpecial()
+            AttackLevel_(4)
+            Damage(2600)
+            AttackP1(80)
+            callSubroutine('InitArcanaBound')
+            AirUntechableTime(29)
+            AirHitstunAfterWallbounce(40)
+            Hitstop(20)
+            Unknown11001(0, 5, 10)
+            Unknown11056(0)
+            loopRelated(17, 6)
+
+            def upon_17():
+                sendToLabel(1)
+            callSubroutine('ExSkillInit')
+            callSubroutine('HomingCancelLand')
+            Unknown2004(1, 0)
+            callSubroutine('HoseiPlus')
+
+            def upon_3():
+                Unknown23073()
+        sprite('ahe400_00', 3)	# 1-3
+        sprite('ahe400_01', 3)	# 4-6
+        Unknown23125('')
+        Unknown2058(-5000)
+        sprite('ahe400_02', 3)	# 7-9
+        sprite('ahe400_03', 3)	# 10-12
+        label(0)
+        sprite('ahe400_01', 3)	# 13-15
+        sprite('ahe400_02', 3)	# 16-18
+        sprite('ahe400_03', 3)	# 19-21
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe400_04', 2)	# 22-23
+        physicsXImpulse(20000)
+        Unknown8009(0)
+        SFX_3('ahese_03')
+        Unknown2015(175)
+        Unknown7006('ahe201_0', 100, 845506657, 828322096, 0, 0, 100, 845506657, 845099312, 0, 0, 100, 0, 0, 0, 0, 0)
+        sprite('ahe400_04', 2)	# 24-25
+        Unknown1019(150)
+        Unknown8006(100, 1, 0)
+        sprite('ahe400_05', 2)	# 26-27
+        Unknown1019(200)
+        sprite('ahe400_06', 2)	# 28-29	 **attackbox here**
+        RefreshMultihit()
+        GFX_0('ahe400_attack_eff', 100)
+        Unknown38(8, 1)
+        GFX_0('ahe401_dust_eff', 100)
+        GFX_0('ahe402_dust_eff', 100)
+        Unknown38(9, 1)
+        Unknown8006(100, 1, 0)
+
+        def upon_ON_HIT_OR_BLOCK():
+            Unknown2037(1)
+            clearUponHandler(10)
+            sendToLabel(2)
+
+        def upon_12():
+            SLOT_51 = 1
+            clearUponHandler(12)
+        sprite('ahe400_07', 2)	# 30-31	 **attackbox here**
+        sprite('ahe400_08', 2)	# 32-33	 **attackbox here**
+        Unknown8006(100, 1, 0)
+        sprite('ahe400_09', 2)	# 34-35	 **attackbox here**
+        label(2)
+        sprite('ahe200_06', 3)	# 36-38	 **attackbox here**
+        if SLOT_2:
+            Unknown23029(8, 5031, 0)
+            Unknown23029(9, 5032, 0)
+        clearUponHandler(10)
+        StartMultihit()
+        Recovery()
+        Unknown1019(50)
+        sprite('ahe200_07', 3)	# 39-41
+        Unknown23183('6168653230305f30370000000000000000000000000000000000000000000000050000000200000033000000')
+        Unknown1019(50)
+        sprite('ahe200_08', 3)	# 42-44
+        Unknown23183('6168653230305f30380000000000000000000000000000000000000000000000050000000200000033000000')
+        Unknown1019(50)
+        sprite('ahe200_09', 3)	# 45-47
+        Unknown23183('6168653230305f30390000000000000000000000000000000000000000000000050000000200000033000000')
+        Unknown1019(50)
+        Unknown14077(0)
+        sprite('ahe200_10', 4)	# 48-51
+        Unknown1019(50)
+        sprite('ahe200_11', 4)	# 52-55
+        Unknown1084(1)
+
+    @State
+    def LandShotA():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingSpecial()
+            loopRelated(17, 14)
+
+            def upon_17():
+                sendToLabel(1)
+
+            def upon_3():
+                Unknown23073()
+        sprite('ahe403_00', 3)	# 1-3
+        sprite('ahe403_01', 3)	# 4-6
+        GFX_0('ahe403_footcircle_eff', 100)
+        Unknown7006('ahe202_0', 100, 845506657, 828322352, 0, 0, 100, 845506657, 845099568, 0, 0, 100, 0, 0, 0, 0, 0)
+        sprite('ahe403_02', 3)	# 7-9
+        sprite('ahe403_03', 3)	# 10-12
+        label(0)
+        sprite('ahe403_01', 3)	# 13-15
+        sprite('ahe403_02', 3)	# 16-18
+        sprite('ahe403_03', 3)	# 19-21
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe403_04', 2)	# 22-23
+        sprite('ahe403_05', 2)	# 24-25
+        sprite('ahe403_06', 3)	# 26-28
+        callSubroutine('DeriveHomingCancelInputLand')
+        GFX_0('Shot_Obj', 0)
+        Unknown23029(1, 4031, 0)
+        GFX_0('ahe403_circle_eff', 0)
+        sprite('ahe403_07', 3)	# 29-31
+        callSubroutine('DeriveHomingCancelTimingLand')
+        sprite('ahe403_08', 3)	# 32-34
+        sprite('ahe403_09', 3)	# 35-37
+        sprite('ahe403_06', 3)	# 38-40
+        callSubroutine('DeriveHomingCancelClear')
+        Recovery()
+        Unknown21012('6168653430335f636972636c655f65666600000000000000000000000000000020000000')
+        Unknown21012('6168653430335f666f6f74636972636c655f656666000000000000000000000020000000')
+        sprite('ahe403_07', 3)	# 41-43
+        sprite('ahe403_08', 3)	# 44-46
+        sprite('ahe403_09', 3)	# 47-49
+        sprite('ahe403_06', 3)	# 50-52
+        sprite('ahe403_10', 3)	# 53-55
+        sprite('ahe403_11', 3)	# 56-58
+
+    @State
+    def LandShotB():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingSpecial()
+            loopRelated(17, 24)
+
+            def upon_17():
+                sendToLabel(1)
+
+            def upon_3():
+                Unknown23073()
+        sprite('ahe403_00', 3)	# 1-3
+        sprite('ahe403_01', 3)	# 4-6
+        GFX_0('ahe403_footcircle_eff', 100)
+        Unknown7006('ahe202_0', 100, 845506657, 828322352, 0, 0, 100, 845506657, 845099568, 0, 0, 100, 0, 0, 0, 0, 0)
+        sprite('ahe403_02', 3)	# 7-9
+        sprite('ahe403_03', 3)	# 10-12
+        label(0)
+        sprite('ahe403_01', 3)	# 13-15
+        sprite('ahe403_02', 3)	# 16-18
+        sprite('ahe403_03', 3)	# 19-21
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe403_04', 2)	# 22-23
+        sprite('ahe403_05', 2)	# 24-25
+        sprite('ahe403_06', 3)	# 26-28
+        callSubroutine('DeriveHomingCancelInputLand')
+        GFX_0('Shot_Obj', 0)
+        Unknown23029(1, 4032, 0)
+        GFX_0('ahe403_circle_eff', 0)
+        sprite('ahe403_07', 3)	# 29-31
+        sprite('ahe403_08', 3)	# 32-34
+        GFX_0('Shot_Obj', 0)
+        Unknown23029(1, 4033, 0)
+        sprite('ahe403_09', 3)	# 35-37
+        sprite('ahe403_06', 3)	# 38-40
+        GFX_0('Shot_Obj', 0)
+        Unknown23029(1, 4034, 0)
+        sprite('ahe403_07', 3)	# 41-43
+        callSubroutine('DeriveHomingCancelTimingLand')
+        sprite('ahe403_08', 3)	# 44-46
+        sprite('ahe403_09', 3)	# 47-49
+        sprite('ahe403_06', 3)	# 50-52
+        callSubroutine('DeriveHomingCancelClear')
+        Recovery()
+        Unknown21012('6168653430335f636972636c655f65666600000000000000000000000000000020000000')
+        Unknown21012('6168653430335f666f6f74636972636c655f656666000000000000000000000020000000')
+        sprite('ahe403_07', 3)	# 53-55
+        sprite('ahe403_08', 3)	# 56-58
+        sprite('ahe403_09', 3)	# 59-61
+        sprite('ahe403_10', 3)	# 62-64
+        sprite('ahe403_11', 3)	# 65-67
+
+    @State
+    def LandShotEx():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingSpecial()
+
+            def upon_3():
+                Unknown23073()
+
+            def upon_STATE_END():
+                Unknown21012('6168653430335f636972636c655f65666600000000000000000000000000000020000000')
+                Unknown21012('6168653430355f636972636c655f65666600000000000000000000000000000020000000')
+                Unknown21012('6168653430335f666f6f74636972636c655f656666000000000000000000000020000000')
+        sprite('ahe403_00', 3)	# 1-3
+        sprite('ahe403_01', 3)	# 4-6
+        Unknown23125('')
+        Unknown2058(-5000)
+        GFX_0('ahe403_footcircle_eff', 100)
+        Unknown7006('ahe203_0', 100, 845506657, 828322608, 0, 0, 100, 845506657, 845099824, 0, 0, 100, 0, 0, 0, 0, 0)
+        sprite('ahe403_02', 3)	# 7-9
+        sprite('ahe403_03', 3)	# 10-12
+        sprite('ahe403_04', 2)	# 13-14
+        sprite('ahe403_05', 2)	# 15-16
+        sprite('ahe403_06', 3)	# 17-19
+        callSubroutine('DeriveHomingCancelInputLand')
+        GFX_0('ShotEx_Obj', 0)
+        GFX_0('ahe405_circle_eff', 0)
+        GFX_0('ahe405_shot_eff', 0)
+        sprite('ahe403_07', 3)	# 20-22
+        callSubroutine('DeriveHomingCancelTimingLand')
+        sprite('ahe403_08', 3)	# 23-25
+        sprite('ahe403_09', 3)	# 26-28
+        sprite('ahe403_06', 3)	# 29-31
+        callSubroutine('DeriveHomingCancelClear')
+        Recovery()
+        Unknown21012('6168653430335f636972636c655f65666600000000000000000000000000000020000000')
+        Unknown21012('6168653430335f666f6f74636972636c655f656666000000000000000000000020000000')
+        sprite('ahe403_07', 3)	# 32-34
+        sprite('ahe403_08', 3)	# 35-37
+        sprite('ahe403_09', 3)	# 38-40
+        sprite('ahe403_10', 3)	# 41-43
+        sprite('ahe403_11', 3)	# 44-46
+
+    @Subroutine
+    def AirShotPosYLimit():
+
+        def upon_3():
+            if (SLOT_23 < 15000):
+                teleportRelativeY(15000)
+                Unknown1084(1)
+            Unknown23073()
+
+    @State
+    def AirShotA():
+
+        def upon_IMMEDIATE():
+            Unknown17003()
+            clearUponHandler(2)
+            callSubroutine('AirShotPosYLimit')
+            loopRelated(17, 14)
+
+            def upon_17():
+                sendToLabel(1)
+        sprite('ahe403_12', 3)	# 1-3
+        sprite('ahe403_13', 3)	# 4-6
+        Unknown1017()
+        Unknown1022()
+        Unknown1019(10)
+        YAccel(10)
+        setGravity(50)
+        Unknown1051(0)
+        GFX_0('ahe403_footcircle_eff', 100)
+        Unknown7006('ahe202_0', 100, 845506657, 828322352, 0, 0, 100, 845506657, 845099568, 0, 0, 100, 0, 0, 0, 0, 0)
+        sprite('ahe403_14', 3)	# 7-9
+        sprite('ahe403_15', 3)	# 10-12
+        label(0)
+        sprite('ahe403_13', 3)	# 13-15
+        sprite('ahe403_14', 3)	# 16-18
+        sprite('ahe403_15', 3)	# 19-21
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe403_16', 2)	# 22-23
+        sprite('ahe403_17', 2)	# 24-25
+        sprite('ahe403_18', 3)	# 26-28
+        callSubroutine('DeriveHomingCancelInput')
+        Unknown1084(1)
+        GFX_0('Shot_Obj', 0)
+        Unknown23029(1, 4031, 0)
+        GFX_0('ahe403_circle_eff', 0)
+        sprite('ahe403_19', 3)	# 29-31
+        callSubroutine('DeriveHomingCancelTiming')
+        sprite('ahe403_20', 3)	# 32-34
+        sprite('ahe403_21', 3)	# 35-37
+        sprite('ahe403_18', 3)	# 38-40
+        callSubroutine('DeriveHomingCancelClear')
+        Recovery()
+        Unknown21012('6168653430335f636972636c655f65666600000000000000000000000000000020000000')
+        Unknown21012('6168653430335f666f6f74636972636c655f656666000000000000000000000020000000')
+        sprite('ahe403_19', 3)	# 41-43
+        sprite('ahe403_20', 3)	# 44-46
+        sprite('ahe403_21', 3)	# 47-49
+        sprite('ahe403_18', 3)	# 50-52
+        sprite('ahe403_22', 3)	# 53-55
+        Unknown1043()
+        clearUponHandler(3)
+        Unknown28(2, 'CmnActJumpLanding')
+        sprite('ahe403_23', 3)	# 56-58
+        label(100)
+        sprite('ahe020_07', 3)	# 59-61
+        sprite('ahe020_08', 3)	# 62-64
+        loopRest()
+        gotoLabel(100)
+
+    @State
+    def AirShotB():
+
+        def upon_IMMEDIATE():
+            Unknown17003()
+            clearUponHandler(2)
+            callSubroutine('AirShotPosYLimit')
+            loopRelated(17, 24)
+
+            def upon_17():
+                sendToLabel(1)
+        sprite('ahe403_12', 3)	# 1-3
+        sprite('ahe403_13', 3)	# 4-6
+        Unknown1017()
+        Unknown1022()
+        Unknown1019(10)
+        YAccel(10)
+        setGravity(50)
+        Unknown1051(0)
+        GFX_0('ahe403_footcircle_eff', 100)
+        Unknown7006('ahe202_0', 100, 845506657, 828322352, 0, 0, 100, 845506657, 845099568, 0, 0, 100, 0, 0, 0, 0, 0)
+        sprite('ahe403_14', 3)	# 7-9
+        sprite('ahe403_15', 3)	# 10-12
+        label(0)
+        sprite('ahe403_13', 3)	# 13-15
+        sprite('ahe403_14', 3)	# 16-18
+        sprite('ahe403_15', 3)	# 19-21
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe403_16', 2)	# 22-23
+        sprite('ahe403_17', 2)	# 24-25
+        sprite('ahe403_18', 3)	# 26-28
+        callSubroutine('DeriveHomingCancelInput')
+        Unknown1084(1)
+        GFX_0('Shot_Obj', 0)
+        Unknown23029(1, 4032, 0)
+        GFX_0('ahe403_circle_eff', 0)
+        sprite('ahe403_19', 3)	# 29-31
+        sprite('ahe403_20', 3)	# 32-34
+        GFX_0('Shot_Obj', 0)
+        Unknown23029(1, 4033, 0)
+        sprite('ahe403_21', 3)	# 35-37
+        sprite('ahe403_18', 3)	# 38-40
+        GFX_0('Shot_Obj', 0)
+        Unknown23029(1, 4034, 0)
+        sprite('ahe403_19', 3)	# 41-43
+        callSubroutine('DeriveHomingCancelTiming')
+        sprite('ahe403_20', 3)	# 44-46
+        sprite('ahe403_21', 3)	# 47-49
+        sprite('ahe403_18', 3)	# 50-52
+        callSubroutine('DeriveHomingCancelClear')
+        Recovery()
+        Unknown21012('6168653430335f636972636c655f65666600000000000000000000000000000020000000')
+        Unknown21012('6168653430335f666f6f74636972636c655f656666000000000000000000000020000000')
+        sprite('ahe403_19', 3)	# 53-55
+        sprite('ahe403_20', 3)	# 56-58
+        sprite('ahe403_21', 3)	# 59-61
+        sprite('ahe403_22', 3)	# 62-64
+        Unknown1043()
+        clearUponHandler(3)
+        Unknown28(2, 'CmnActJumpLanding')
+        sprite('ahe403_23', 3)	# 65-67
+        label(100)
+        sprite('ahe020_07', 3)	# 68-70
+        sprite('ahe020_08', 3)	# 71-73
+        loopRest()
+        gotoLabel(100)
+
+    @State
+    def AirShotEx():
+
+        def upon_IMMEDIATE():
+            Unknown17003()
+            clearUponHandler(2)
+            callSubroutine('AirShotPosYLimit')
+
+            def upon_STATE_END():
+                Unknown21012('6168653430335f636972636c655f65666600000000000000000000000000000020000000')
+                Unknown21012('6168653430355f636972636c655f65666600000000000000000000000000000020000000')
+                Unknown21012('6168653430335f666f6f74636972636c655f656666000000000000000000000020000000')
+        sprite('ahe403_12', 3)	# 1-3
+        sprite('ahe403_13', 3)	# 4-6
+        Unknown1017()
+        Unknown1022()
+        Unknown1019(25)
+        YAccel(25)
+        setGravity(250)
+        Unknown23125('')
+        Unknown2058(-5000)
+        GFX_0('ahe403_footcircle_eff', 100)
+        GFX_0('ahe403_footparticle_eff', 100)
+        Unknown7006('ahe203_0', 100, 845506657, 828322608, 0, 0, 100, 845506657, 845099824, 0, 0, 100, 0, 0, 0, 0, 0)
+        sprite('ahe403_14', 3)	# 7-9
+        sprite('ahe403_15', 3)	# 10-12
+        sprite('ahe403_16', 2)	# 13-14
+        sprite('ahe403_17', 2)	# 15-16
+        sprite('ahe403_18', 3)	# 17-19
+        callSubroutine('DeriveHomingCancelInput')
+        Unknown1084(1)
+        GFX_0('ShotEx_Obj', 0)
+        GFX_0('ahe405_circle_eff', 0)
+        GFX_0('ahe405_shot_eff', 0)
+        sprite('ahe403_19', 3)	# 20-22
+        callSubroutine('DeriveHomingCancelTiming')
+        sprite('ahe403_20', 3)	# 23-25
+        sprite('ahe403_21', 3)	# 26-28
+        sprite('ahe403_18', 3)	# 29-31
+        callSubroutine('DeriveHomingCancelClear')
+        Recovery()
+        Unknown21012('6168653430335f636972636c655f65666600000000000000000000000000000020000000')
+        Unknown21012('6168653430335f666f6f74636972636c655f656666000000000000000000000020000000')
+        sprite('ahe403_19', 3)	# 32-34
+        sprite('ahe403_20', 3)	# 35-37
+        sprite('ahe403_21', 3)	# 38-40
+        sprite('ahe403_22', 3)	# 41-43
+        Unknown1043()
+        clearUponHandler(3)
+        Unknown28(2, 'CmnActJumpLanding')
+        sprite('ahe403_23', 3)	# 44-46
+        label(100)
+        sprite('ahe020_07', 3)	# 47-49
+        sprite('ahe020_08', 3)	# 50-52
+        loopRest()
+        gotoLabel(100)
+
+    @State
+    def AirAssaultA():
+
+        def upon_IMMEDIATE():
+            Unknown17003()
+            AttackLevel_(3)
+            Damage(2200)
+            AttackP1(80)
+            AirUntechableTime(30)
+            AirPushbackX(5000)
+            AirPushbackY(-35000)
+            HitOverhead(2)
+            GroundedHitstunAnimation(1)
+            Unknown11068(1)
+            loopRelated(17, 9)
+
+            def upon_17():
+                sendToLabel(1)
+
+            def upon_STATE_END():
+                Unknown2006()
+            callSubroutine('HomingCancel')
+            clearUponHandler(2)
+            callSubroutine('HoseiPlus')
+
+            def upon_3():
+                Unknown23073()
+        sprite('ahe406_00', 3)	# 1-3
+        sprite('ahe406_00ex01', 3)	# 4-6
+        Unknown1084(1)
+        physicsXImpulse(15000)
+        physicsYImpulse(10000)
+        setGravity(1000)
+        sprite('ahe406_00ex02', 3)	# 7-9
+        Unknown7006('ahe204_0', 100, 845506657, 828322864, 0, 0, 100, 845506657, 845100080, 0, 0, 100, 0, 0, 0, 0, 0)
+        sprite('ahe406_00ex03', 3)	# 10-12
+        label(0)
+        sprite('ahe406_00', 3)	# 13-15
+        sprite('ahe406_00ex01', 3)	# 16-18
+        sprite('ahe406_00ex02', 3)	# 19-21
+        sprite('ahe406_00ex03', 3)	# 22-24
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe406_01', 2)	# 25-26
+        Unknown1019(50)
+        SFX_3('ahese_01')
+        sprite('ahe406_02', 2)	# 27-28
+        GFX_0('ahe406_attack_eff', 0)
+        GFX_0('ahe406_dust_eff', 100)
+        sprite('ahe406_03', 3)	# 29-31	 **attackbox here**
+        physicsYImpulse(-40000)
+        Unknown1043()
+
+        def upon_LANDING():
+            clearUponHandler(2)
+            Unknown2003(1)
+            Recovery()
+            Unknown1084(1)
+            sendToLabel(3)
+        sprite('ahe406_04', 3)	# 32-34	 **attackbox here**
+        label(2)
+        sprite('ahe406_03', 3)	# 35-37	 **attackbox here**
+        sprite('ahe406_04', 3)	# 38-40	 **attackbox here**
+        loopRest()
+        gotoLabel(2)
+        label(3)
+        sprite('ahe406_05', 3)	# 41-43
+        callSubroutine('HomingCancelLand')
+        Unknown21012('6168653430365f61747461636b5f65666600000000000000000000000000000020000000')
+        Unknown21012('6168653430365f647573745f656666000000000000000000000000000000000020000000')
+        sprite('ahe406_06', 3)	# 44-46	 **attackbox here**
+        sprite('ahe406_07', 3)	# 47-49
+        sprite('ahe010_02', 3)	# 50-52
+        sprite('ahe010_01', 3)	# 53-55
+        sprite('ahe010_00', 3)	# 56-58
+
+    @State
+    def AirAssaultB():
+
+        def upon_IMMEDIATE():
+            Unknown17003()
+            AttackLevel_(4)
+            Damage(2500)
+            AttackP1(80)
+            AirUntechableTime(30)
+            AirPushbackX(5000)
+            AirPushbackY(-35000)
+            Unknown9310(13)
+            HitOverhead(2)
+            GroundedHitstunAnimation(1)
+            Unknown11068(1)
+            loopRelated(17, 18)
+
+            def upon_17():
+                sendToLabel(1)
+
+            def upon_STATE_END():
+                Unknown2006()
+
+            def upon_78():
+                Unknown2037(1)
+
+            def upon_3():
+                Unknown23073()
+            callSubroutine('HomingCancel')
+            clearUponHandler(2)
+            callSubroutine('HoseiPlus')
+        sprite('ahe406_00', 3)	# 1-3
+        sprite('ahe406_00ex01', 3)	# 4-6
+        Unknown1084(1)
+        physicsXImpulse(15000)
+        physicsYImpulse(10000)
+        setGravity(1000)
+        sprite('ahe406_00ex02', 3)	# 7-9
+        Unknown7006('ahe204_0', 100, 845506657, 828322864, 0, 0, 100, 845506657, 845100080, 0, 0, 100, 0, 0, 0, 0, 0)
+        sprite('ahe406_00ex03', 3)	# 10-12
+        label(0)
+        sprite('ahe406_00', 3)	# 13-15
+        sprite('ahe406_00ex01', 3)	# 16-18
+        sprite('ahe406_00ex02', 3)	# 19-21
+        sprite('ahe406_00ex03', 3)	# 22-24
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe406_01', 2)	# 25-26
+        Unknown1019(50)
+        SFX_3('ahese_01')
+        sprite('ahe406_02', 2)	# 27-28
+        GFX_0('ahe406_attack_eff', 0)
+        GFX_0('ahe407_dust_eff', 100)
+        sprite('ahe406_03', 3)	# 29-31	 **attackbox here**
+        physicsYImpulse(-40000)
+        Unknown1043()
+
+        def upon_LANDING():
+            clearUponHandler(2)
+            Unknown2003(1)
+            Recovery()
+            Unknown1084(1)
+            sendToLabel(3)
+        sprite('ahe406_04', 3)	# 32-34	 **attackbox here**
+        label(2)
+        sprite('ahe406_03', 3)	# 35-37	 **attackbox here**
+        sprite('ahe406_04', 3)	# 38-40	 **attackbox here**
+        loopRest()
+        gotoLabel(2)
+        label(3)
+        sprite('ahe406_05', 3)	# 41-43
+        callSubroutine('HomingCancelLand')
+        Unknown21012('6168653430365f61747461636b5f65666600000000000000000000000000000020000000')
+        Unknown21012('6168653430375f647573745f656666000000000000000000000000000000000020000000')
+        sprite('ahe406_06', 3)	# 44-46	 **attackbox here**
+        Unknown23183('6168653430365f30360000000000000000000000000000000000000000000000040000000200000002000000')
+        sprite('ahe406_07', 3)	# 47-49
+        Unknown23183('6168653430365f30370000000000000000000000000000000000000000000000040000000200000002000000')
+        sprite('ahe010_02', 4)	# 50-53
+        Unknown23183('6168653031305f30320000000000000000000000000000000000000000000000050000000200000002000000')
+        sprite('ahe010_01', 4)	# 54-57
+        Unknown23183('6168653031305f30310000000000000000000000000000000000000000000000050000000200000002000000')
+        sprite('ahe010_00', 4)	# 58-61
+        Unknown23183('6168653031305f30300000000000000000000000000000000000000000000000050000000200000002000000')
+
+    @State
+    def AirAssaultEx():
+
+        def upon_IMMEDIATE():
+            Unknown17003()
+            AttackLevel_(4)
+            Damage(2800)
+            AttackP1(80)
+            AirUntechableTime(45)
+            AirPushbackX(5000)
+            AirPushbackY(-50000)
+            Unknown9310(13)
+            HitOverhead(2)
+            GroundedHitstunAnimation(1)
+            Unknown11068(1)
+            callSubroutine('ExSkillInit')
+            loopRelated(17, 9)
+
+            def upon_17():
+                sendToLabel(1)
+
+            def upon_78():
+                Unknown2037(1)
+
+            def upon_STATE_END():
+                Unknown2006()
+            callSubroutine('HomingCancel')
+            clearUponHandler(2)
+            callSubroutine('HoseiPlus')
+
+            def upon_3():
+                Unknown23073()
+        sprite('ahe406_00', 3)	# 1-3
+        sprite('ahe406_00ex01', 3)	# 4-6
+        Unknown1084(1)
+        physicsXImpulse(15000)
+        physicsYImpulse(10000)
+        setGravity(1000)
+        Unknown23125('')
+        Unknown2058(-5000)
+        sprite('ahe406_00ex02', 3)	# 7-9
+        Unknown7006('ahe204_0', 100, 845506657, 828322864, 0, 0, 100, 845506657, 845100080, 0, 0, 100, 0, 0, 0, 0, 0)
+        sprite('ahe406_00ex03', 3)	# 10-12
+        label(0)
+        sprite('ahe406_00', 3)	# 13-15
+        sprite('ahe406_00ex01', 3)	# 16-18
+        sprite('ahe406_00ex02', 3)	# 19-21
+        sprite('ahe406_00ex03', 3)	# 22-24
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe406_01', 2)	# 25-26
+        Unknown1019(50)
+        SFX_3('ahese_01')
+        sprite('ahe406_02', 2)	# 27-28
+        GFX_0('ahe406_attack_eff', 0)
+        GFX_0('ahe407_dust_eff', 100)
+        GFX_0('ahe408_dust_eff', 100)
+        sprite('ahe406_03', 3)	# 29-31	 **attackbox here**
+        physicsYImpulse(-40000)
+        Unknown1043()
+
+        def upon_LANDING():
+            clearUponHandler(2)
+            Unknown2003(1)
+            Recovery()
+            Unknown1084(1)
+            sendToLabel(3)
+        sprite('ahe406_04', 3)	# 32-34	 **attackbox here**
+        label(2)
+        sprite('ahe406_03', 3)	# 35-37	 **attackbox here**
+        sprite('ahe406_04', 3)	# 38-40	 **attackbox here**
+        loopRest()
+        gotoLabel(2)
+        label(3)
+        sprite('ahe406_05', 3)	# 41-43
+        callSubroutine('HomingCancelLand')
+        Unknown21012('6168653430365f61747461636b5f65666600000000000000000000000000000020000000')
+        Unknown21012('6168653430375f647573745f656666000000000000000000000000000000000020000000')
+        Unknown21012('6168653430385f647573745f656666000000000000000000000000000000000020000000')
+        sprite('ahe406_06', 3)	# 44-46	 **attackbox here**
+        sprite('ahe406_07', 3)	# 47-49
+        sprite('ahe010_02', 3)	# 50-52
+        sprite('ahe010_01', 3)	# 53-55
+        sprite('ahe010_00', 3)	# 56-58
+
+    @Subroutine
+    def Delete_Eff():
+        Unknown26('ahe403_circle_eff')
+        Unknown26('ahe403_circle1_eff')
+        Unknown26('ahe403_circle2_eff')
+        Unknown26('ahe403_footcircle_eff')
+        Unknown26('ahe403_footcircle1_eff')
+        Unknown26('ahe403_footcircle2_eff')
+        Unknown26('ahe403_footparticle_eff')
+        Unknown26('ahe403_footparticle1_eff')
+        Unknown26('ahe403_footparticle2_eff')
+        Unknown26('ahe403_footparticle3_eff')
+        Unknown26('ahe403_footparticle4_eff')
+        Unknown26('ahe405_circle_eff')
+        Unknown26('ahe405_circle1a_eff')
+        Unknown26('ahe405_circle1b_eff')
+        Unknown26('ahe405_circle2a_eff')
+        Unknown26('ahe405_circle2b_eff')
+
+    @State
+    def UltimateLandAssault():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingDD()
+            Unknown23055('')
+            AttackLevel_(5)
+            Damage(5200)
+            Unknown11091(31)
+            GroundedHitstunAnimation(1)
+            AirPushbackX(80000)
+            AirPushbackY(38000)
+            AirUntechableTime(120)
+            Hitstop(20)
+            Unknown11001(0, -2, 3)
+            Unknown11056(0)
+            Unknown2016(250)
+            loopRelated(17, 80)
+
+            def upon_17():
+                sendToLabel(1)
+            Unknown2004(1, 0)
+            callSubroutine('Delete_Eff')
+        sprite('ahe400_00', 3)	# 1-3
+        setInvincible(1)
+        sprite('ahe400_01', 3)	# 4-6
+        GFX_0('ahe430_hold_eff', 100)
+        sprite('ahe430_00', 3)	# 7-9
+        Unknown2036(72, -1, 0)
+        Unknown30080('')
+        Unknown2058(-10000)
+        Unknown7006('ahe250_0', 100, 845506657, 828321845, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        sprite('ahe430_01', 3)	# 10-12
+        sprite('ahe430_02', 3)	# 13-15
+        sprite('ahe430_03', 3)	# 16-18
+        sprite('ahe430_04', 3)	# 19-21
+        sprite('ahe400_01', 3)	# 22-24
+        sprite('ahe430_00', 3)	# 25-27
+        sprite('ahe430_01', 3)	# 28-30
+        sprite('ahe430_02', 3)	# 31-33
+        sprite('ahe430_03', 3)	# 34-36
+        sprite('ahe430_04', 3)	# 37-39
+        label(0)
+        sprite('ahe400_01', 2)	# 40-41
+        sprite('ahe430_00', 2)	# 42-43
+        sprite('ahe430_01', 2)	# 44-45
+        sprite('ahe430_02', 2)	# 46-47
+        sprite('ahe430_03', 2)	# 48-49
+        sprite('ahe430_04', 2)	# 50-51
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe400_04', 2)	# 52-53
+        physicsXImpulse(20000)
+        Unknown8009(0)
+        SFX_1('ahe251')
+        sprite('ahe400_04', 1)	# 54-54
+        Unknown1019(200)
+        Unknown8006(100, 1, 0)
+        sprite('ahe400_05', 1)	# 55-55
+        sprite('ahe400_05', 2)	# 56-57
+        Unknown1019(200)
+        SFX_3('ahese_03')
+        sprite('ahe430_05', 3)	# 58-60	 **attackbox here**
+        RefreshMultihit()
+        GFX_0('ahe430_attack_eff', 100)
+        GFX_0('ahe430_magical_eff', 100)
+        Unknown8006(100, 1, 0)
+
+        def upon_ON_HIT_OR_BLOCK():
+            Unknown2037(1)
+            clearUponHandler(10)
+            sendToLabel(2)
+
+        def upon_12():
+            clearUponHandler(12)
+            SFX_0('025_cleanhit_grap')
+        sprite('ahe430_06', 3)	# 61-63	 **attackbox here**
+        setInvincible(0)
+        Unknown8006(100, 1, 0)
+        sprite('ahe430_07', 3)	# 64-66	 **attackbox here**
+        Unknown8006(100, 1, 0)
+        sprite('ahe430_08', 3)	# 67-69	 **attackbox here**
+        Unknown8006(100, 1, 0)
+        label(2)
+        sprite('keep', 3)	# 70-72
+        StartMultihit()
+        setInvincible(0)
+        sprite('ahe200_06', 6)	# 73-78	 **attackbox here**
+        StartMultihit()
+        Unknown1019(40)
+        sprite('ahe200_07', 6)	# 79-84
+        Unknown1019(40)
+        sprite('ahe200_08', 6)	# 85-90
+        Unknown1019(40)
+        sprite('ahe200_09', 6)	# 91-96
+        Unknown1019(40)
+        sprite('ahe200_10', 6)	# 97-102
+        Unknown1019(40)
+        sprite('ahe200_11', 6)	# 103-108
+        Unknown1084(1)
+
+    @State
+    def UltimateLandAssaultSP():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingDD()
+            Unknown23055('')
+            AttackLevel_(5)
+            Damage(6200)
+            Unknown11091(29)
+            GroundedHitstunAnimation(1)
+            AirPushbackX(80000)
+            AirPushbackY(45000)
+            AirUntechableTime(120)
+            Unknown9310(26)
+            Hitstop(30)
+            Unknown11001(0, -2, 3)
+            Unknown11056(0)
+            Unknown2016(250)
+            loopRelated(17, 80)
+
+            def upon_17():
+                sendToLabel(1)
+            Unknown2004(1, 0)
+            callSubroutine('Delete_Eff')
+        sprite('ahe400_00', 3)	# 1-3
+        setInvincible(1)
+        sprite('ahe400_01', 3)	# 4-6
+        GFX_0('ahe430_hold_eff', 100)
+        sprite('ahe430_00', 3)	# 7-9
+        Unknown2036(72, -1, 0)
+        Unknown30080('')
+        Unknown2058(-10000)
+        Unknown7006('ahe250_0', 100, 845506657, 828321845, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        sprite('ahe430_01', 3)	# 10-12
+        sprite('ahe430_02', 3)	# 13-15
+        sprite('ahe430_03', 3)	# 16-18
+        sprite('ahe430_04', 3)	# 19-21
+        sprite('ahe400_01', 3)	# 22-24
+        sprite('ahe430_00', 3)	# 25-27
+        sprite('ahe430_01', 3)	# 28-30
+        sprite('ahe430_02', 3)	# 31-33
+        sprite('ahe430_03', 3)	# 34-36
+        sprite('ahe430_04', 3)	# 37-39
+        sprite('ahe400_01', 2)	# 40-41
+        sprite('ahe430_00', 2)	# 42-43
+        sprite('ahe430_01', 2)	# 44-45
+        sprite('ahe430_02', 2)	# 46-47
+        sprite('ahe430_03', 2)	# 48-49
+        sprite('ahe430_04', 2)	# 50-51
+        sprite('ahe400_01', 2)	# 52-53
+        sprite('ahe430_00', 2)	# 54-55
+        sprite('ahe430_01', 2)	# 56-57
+        sprite('ahe430_02', 2)	# 58-59
+        sprite('ahe430_03', 2)	# 60-61
+        sprite('ahe430_04', 2)	# 62-63
+        label(0)
+        sprite('ahe400_01', 1)	# 64-64
+        sprite('ahe430_00', 1)	# 65-65
+        sprite('ahe430_01', 1)	# 66-66
+        sprite('ahe430_02', 1)	# 67-67
+        sprite('ahe430_03', 1)	# 68-68
+        sprite('ahe430_04', 1)	# 69-69
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe400_04', 2)	# 70-71
+        physicsXImpulse(20000)
+        Unknown8009(0)
+        SFX_1('ahe251')
+        sprite('ahe400_04', 1)	# 72-72
+        Unknown1019(200)
+        Unknown8006(100, 1, 0)
+        sprite('ahe400_05', 1)	# 73-73
+        sprite('ahe400_05', 2)	# 74-75
+        Unknown1019(200)
+        SFX_3('ahese_03')
+        sprite('ahe430_05', 3)	# 76-78	 **attackbox here**
+        RefreshMultihit()
+        GFX_0('ahe430_attack_eff', 100)
+        GFX_0('ahe430_magical_eff', 100)
+        Unknown8006(100, 1, 0)
+
+        def upon_12():
+            clearUponHandler(12)
+            Unknown2037(1)
+            SFX_0('025_cleanhit_grap')
+            sendToLabel(100)
+
+        def upon_ON_HIT_OR_BLOCK():
+            clearUponHandler(10)
+            sendToLabel(2)
+        sprite('ahe430_06', 3)	# 79-81	 **attackbox here**
+        if (not SLOT_2):
+            setInvincible(0)
+        Unknown8006(100, 1, 0)
+        sprite('ahe430_07', 3)	# 82-84	 **attackbox here**
+        Unknown8006(100, 1, 0)
+        sprite('ahe430_08', 3)	# 85-87	 **attackbox here**
+        Unknown8006(100, 1, 0)
+        label(2)
+        sprite('keep', 3)	# 88-90
+        StartMultihit()
+        setInvincible(0)
+        if SLOT_2:
+            sendToLabel(100)
+        sprite('ahe200_06', 6)	# 91-96	 **attackbox here**
+        StartMultihit()
+        Unknown1019(40)
+        sprite('ahe200_07', 6)	# 97-102
+        Unknown1019(40)
+        sprite('ahe200_08', 6)	# 103-108
+        Unknown1019(40)
+        sprite('ahe200_09', 6)	# 109-114
+        Unknown1019(40)
+        sprite('ahe200_10', 6)	# 115-120
+        Unknown1019(40)
+        sprite('ahe200_11', 6)	# 121-126
+        Unknown1084(1)
+        ExitState()
+        label(100)
+        sprite('ahe200_06', 5)	# 127-131	 **attackbox here**
+        StartMultihit()
+        setInvincible(1)
+        sprite('ahe600_00', 5)	# 132-136
+        Unknown8006(100, 1, 0)
+        Unknown1019(50)
+        sprite('ahe600_01', 5)	# 137-141
+        sprite('ahe600_00', 5)	# 142-146
+        Unknown1019(50)
+        sprite('ahe600_01', 5)	# 147-151
+        sprite('ahe600_00', 5)	# 152-156
+        Unknown1019(50)
+        sprite('ahe600_01', 5)	# 157-161
+        sprite('ahe600_00', 5)	# 162-166
+        Unknown1019(50)
+        sprite('ahe600_01', 5)	# 167-171
+        sprite('ahe032_06', 3)	# 172-174
+        teleportRelativeX(20000)
+        Unknown1084(1)
+        Unknown1047(3000)
+        sprite('ahe032_07', 3)	# 175-177
+        sprite('ahe032_08', 3)	# 178-180
+        sprite('ahe274_07', 4)	# 181-184
+        sprite('ahe274_08', 4)	# 185-188
+        sprite('ahe271_06', 4)	# 189-192
+        sprite('ahe271_07', 6)	# 193-198
+        sprite('ahe271_08', 6)	# 199-204
+        sprite('ahe271_09', 6)	# 205-210
+        ExitState()
+
+    @State
+    def UltimateUpper():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingDD()
+            Unknown23055('')
+            AttackLevel_(5)
+            Damage(1500)
+            Unknown11091(30)
+            AirHitstunAnimation(10)
+            GroundedHitstunAnimation(10)
+            Unknown11092(1)
+            AirUntechableTime(90)
+            PushbackX(12000)
+            AirPushbackX(2500)
+            AirPushbackY(30000)
+            Unknown11072(1, 10000, 25000)
+
+            def upon_78():
+                clearUponHandler(78)
+                Hitstop(30)
+                Unknown13024(0)
+                sendToLabel(100)
+                Unknown11069('UltimateUpper')
+                Unknown11064(1)
+                clearUponHandler(2)
+
+                def upon_LANDING():
+                    clearUponHandler(2)
+                    Unknown1084(1)
+                    Unknown8000(100, 1, 1)
+                    Unknown13024(1)
+                    sendToLabel(110)
+                SFX_0('025_cleanhit_grap')
+            callSubroutine('Delete_Eff')
+
+            def upon_14():
+                Unknown21015('6168653433315f77696e675f6566660000000000000000000000000000000000c60f000000000000')
+        sprite('ahe320_00', 3)	# 1-3
+        setInvincible(1)
+        sprite('ahe320_01', 45)	# 4-48
+        Unknown2036(44, -1, 0)
+        Unknown30080('')
+        Unknown2058(-10000)
+        tag_voice(1, 'ahe252_0', 'ahe252_1', '', '')
+        sprite('ahe320_02', 3)	# 49-51
+        GFX_0('ahe320_attack_eff', 0)
+        sprite('ahe320_03ex', 3)	# 52-54	 **attackbox here**
+        GFX_0('ahe431_attack_eff', 0)
+        sprite('ahe320_04', 2)	# 55-56
+        sprite('ahe320_05', 2)	# 57-58
+        sprite('ahe320_06', 3)	# 59-61	 **attackbox here**
+        StartMultihit()
+        clearUponHandler(78)
+        clearUponHandler(2)
+
+        def upon_LANDING():
+            clearUponHandler(2)
+            Unknown1084(1)
+            Unknown8000(100, 1, 1)
+            sendToLabel(10)
+        physicsXImpulse(10000)
+        physicsYImpulse(35000)
+        setGravity(1300)
+        AirPushbackY(40000)
+        GFX_0('ahe320_attack3_eff', 0)
+        GFX_0('ahe431_wing_eff', 0)
+        sprite('ahe320_07', 3)	# 62-64	 **attackbox here**
+        RefreshMultihit()
+        Damage(3500)
+        Unknown11091(30)
+        Unknown9215()
+        Unknown11072(0, 0, 0)
+        setInvincible(0)
+        sprite('ahe320_08', 3)	# 65-67	 **attackbox here**
+        sprite('ahe320_09', 3)	# 68-70	 **attackbox here**
+        GFX_0('UltimateUpper_Obj', 0)
+        Unknown1019(25)
+        sprite('ahe320_10', 6)	# 71-76
+        GFX_0('ahe320_heart_eff', 0)
+        SFX_3('ahese_00')
+        sprite('ahe320_11', 6)	# 77-82
+        sprite('ahe320_12', 6)	# 83-88
+        sprite('ahe320_13', 6)	# 89-94
+        sprite('ahe320_14', 6)	# 95-100
+        label(0)
+        sprite('ahe020_07', 3)	# 101-103
+        sprite('ahe020_08', 3)	# 104-106
+        loopRest()
+        gotoLabel(0)
+        label(10)
+        sprite('ahe010_02', 2)	# 107-108
+        sprite('ahe010_01', 2)	# 109-110
+        sprite('ahe010_00', 2)	# 111-112
+        sprite('ahe000_00', 2)	# 113-114	 **attackbox here**
+        ExitState()
+        label(100)
+        sprite('ahe320_04', 3)	# 115-117
+        StartMultihit()
+        Unknown21012('6168653433315f61747461636b5f65666600000000000000000000000000000020000000')
+        tag_voice(0, '', 'ahe253', '', '')
+        sprite('ahe320_05', 3)	# 118-120
+        sprite('ahe320_06', 3)	# 121-123	 **attackbox here**
+        RefreshMultihit()
+        Damage(800)
+        Unknown11091(15)
+        AirPushbackX(500)
+        AirPushbackY(45000)
+        Hitstop(1)
+        Unknown11072(1, 125000, 150000)
+        Unknown30048(1)
+        Unknown11084(1)
+        Unknown9310(1)
+        physicsXImpulse(2500)
+        physicsYImpulse(50000)
+        setGravity(1300)
+        GFX_0('ahe431_attack_upper_eff', 0)
+        GFX_0('ahe431_hit_wing_eff', 0)
+        tag_voice(0, 'ahe253', '', '', '')
+        sprite('ahe320_07', 3)	# 124-126	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_08', 3)	# 127-129	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_09', 3)	# 130-132	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_06', 3)	# 133-135	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_07', 3)	# 136-138	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_08', 3)	# 139-141	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_09', 3)	# 142-144	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_06', 3)	# 145-147	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_07', 3)	# 148-150	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_08', 3)	# 151-153	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_09', 3)	# 154-156	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_06', 3)	# 157-159	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_07', 3)	# 160-162	 **attackbox here**
+        RefreshMultihit()
+        GFX_0('UltimateUpper_Obj', 0)
+        Unknown11069('')
+        Unknown11064(0)
+        Unknown1019(25)
+        sprite('ahe320_10', 6)	# 163-168
+        GFX_0('ahe431_heart_eff', 0)
+        SFX_3('ahese_00')
+        sprite('ahe320_11', 6)	# 169-174
+        sprite('ahe320_12', 6)	# 175-180
+        sprite('ahe320_13', 6)	# 181-186
+        sprite('ahe320_14', 6)	# 187-192
+        loopRest()
+        gotoLabel(0)
+        label(110)
+        sprite('ahe010_02', 2)	# 193-194
+        sprite('ahe010_01', 2)	# 195-196
+        sprite('ahe010_00', 2)	# 197-198
+        sprite('ahe000_00', 2)	# 199-200	 **attackbox here**
+        sprite('ahe300_00', 3)	# 201-203
+        sprite('ahe300_01', 3)	# 204-206	 **attackbox here**
+        sprite('ahe300_02', 3)	# 207-209
+        sprite('ahe300_03', 3)	# 210-212
+        sprite('ahe300_04', 3)	# 213-215
+        sprite('ahe300_04ex2', 20)	# 216-235	 **attackbox here**
+        sprite('ahe300_05', 4)	# 236-239
+        sprite('ahe300_06', 4)	# 240-243
+
+    @State
+    def UltimateUpperSP():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_StandingDD()
+            Unknown23055('')
+            AttackLevel_(5)
+            Damage(1700)
+            Unknown11091(20)
+            AirHitstunAnimation(10)
+            GroundedHitstunAnimation(10)
+            Unknown11092(1)
+            AirUntechableTime(90)
+            PushbackX(12000)
+            AirPushbackX(2500)
+            AirPushbackY(30000)
+            Unknown11072(1, 10000, 25000)
+
+            def upon_78():
+                clearUponHandler(78)
+                Hitstop(30)
+                Unknown13024(0)
+                sendToLabel(100)
+                Unknown11069('UltimateUpperSP')
+                Unknown11064(1)
+                clearUponHandler(2)
+
+                def upon_LANDING():
+                    clearUponHandler(2)
+                    Unknown1084(1)
+                    Unknown8000(100, 1, 1)
+                    Unknown13024(1)
+                    sendToLabel(110)
+                SFX_0('025_cleanhit_grap')
+            callSubroutine('Delete_Eff')
+
+            def upon_14():
+                Unknown21015('6168653433315f77696e675f6566660000000000000000000000000000000000c60f000000000000')
+        sprite('ahe320_00', 3)	# 1-3
+        setInvincible(1)
+        sprite('ahe320_01', 60)	# 4-63
+        Unknown2036(59, -1, 0)
+        Unknown30080('')
+        Unknown2058(-10000)
+        tag_voice(1, 'ahe252_0', 'ahe252_1', '', '')
+        sprite('ahe320_02', 3)	# 64-66
+        GFX_0('ahe320_attack_eff', 0)
+        sprite('ahe320_03ex', 3)	# 67-69	 **attackbox here**
+        GFX_0('ahe431_attack_eff', 0)
+        sprite('ahe320_04', 2)	# 70-71
+        sprite('ahe320_05', 2)	# 72-73
+        sprite('ahe320_06', 3)	# 74-76	 **attackbox here**
+        StartMultihit()
+        clearUponHandler(78)
+        clearUponHandler(2)
+
+        def upon_LANDING():
+            clearUponHandler(2)
+            Unknown1084(1)
+            Unknown8000(100, 1, 1)
+            sendToLabel(10)
+        physicsXImpulse(10000)
+        physicsYImpulse(35000)
+        setGravity(1300)
+        AirPushbackY(40000)
+        GFX_0('ahe320_attack3_eff', 0)
+        GFX_0('ahe431_wing_eff', 0)
+        sprite('ahe320_07', 3)	# 77-79	 **attackbox here**
+        RefreshMultihit()
+        Damage(3500)
+        Unknown11091(30)
+        Unknown9215()
+        Unknown11072(0, 0, 0)
+        setInvincible(0)
+        sprite('ahe320_08', 3)	# 80-82	 **attackbox here**
+        GFX_0('ahe320_heart_eff', 0)
+        SFX_3('ahese_00')
+        sprite('ahe320_09', 3)	# 83-85	 **attackbox here**
+        GFX_0('UltimateUpper_Obj', 0)
+        Unknown1019(25)
+        sprite('ahe320_10', 6)	# 86-91
+        sprite('ahe320_11', 6)	# 92-97
+        sprite('ahe320_12', 6)	# 98-103
+        sprite('ahe320_13', 6)	# 104-109
+        sprite('ahe320_14', 6)	# 110-115
+        label(0)
+        sprite('ahe020_07', 3)	# 116-118
+        sprite('ahe020_08', 3)	# 119-121
+        loopRest()
+        gotoLabel(0)
+        label(10)
+        sprite('ahe010_02', 2)	# 122-123
+        sprite('ahe010_01', 2)	# 124-125
+        sprite('ahe010_00', 2)	# 126-127
+        sprite('ahe000_00', 2)	# 128-129	 **attackbox here**
+        ExitState()
+        label(100)
+        sprite('ahe320_04', 3)	# 130-132
+        StartMultihit()
+        Unknown21012('6168653433315f61747461636b5f65666600000000000000000000000000000020000000')
+        tag_voice(0, '', 'ahe253', '', '')
+        sprite('ahe320_05', 3)	# 133-135
+        sprite('ahe320_06', 3)	# 136-138	 **attackbox here**
+        RefreshMultihit()
+        Damage(600)
+        Unknown11091(15)
+        AirPushbackX(500)
+        AirPushbackY(42000)
+        Hitstop(1)
+        Unknown11072(1, 125000, 150000)
+        Unknown30048(1)
+        Unknown11084(1)
+        Unknown9310(1)
+        physicsXImpulse(2500)
+        physicsYImpulse(60000)
+        setGravity(1300)
+        GFX_0('ahe431_attack_upper_eff', 0)
+        GFX_0('ahe431_hit_wing_eff', 0)
+        tag_voice(0, 'ahe253', '', '', '')
+        sprite('ahe320_07', 3)	# 139-141	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_08', 3)	# 142-144	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_09', 3)	# 145-147	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_06', 3)	# 148-150	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_07', 3)	# 151-153	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_08', 3)	# 154-156	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_09', 3)	# 157-159	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_06', 3)	# 160-162	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_07', 3)	# 163-165	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_08', 3)	# 166-168	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_09', 3)	# 169-171	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_06', 3)	# 172-174	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_07', 3)	# 175-177	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_06', 2)	# 178-179	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_07', 2)	# 180-181	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_08', 2)	# 182-183	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_09', 2)	# 184-185	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_06', 1)	# 186-186	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_07', 1)	# 187-187	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_08', 1)	# 188-188	 **attackbox here**
+        RefreshMultihit()
+        sprite('ahe320_09', 1)	# 189-189	 **attackbox here**
+        RefreshMultihit()
+        GFX_0('UltimateUpper_Obj', 0)
+        Unknown11069('')
+        Unknown11064(0)
+        Unknown1019(25)
+        sprite('ahe320_10', 6)	# 190-195
+        GFX_0('ahe431_heart_eff', 0)
+        SFX_3('ahese_00')
+        sprite('ahe320_11', 6)	# 196-201
+        sprite('ahe320_12', 6)	# 202-207
+        sprite('ahe320_13', 6)	# 208-213
+        sprite('ahe320_14', 6)	# 214-219
+        loopRest()
+        gotoLabel(0)
+        label(110)
+        sprite('ahe010_02', 2)	# 220-221
+        sprite('ahe010_01', 2)	# 222-223
+        sprite('ahe010_00', 2)	# 224-225
+        sprite('ahe000_00', 2)	# 226-227	 **attackbox here**
+        sprite('ahe300_00', 3)	# 228-230
+        sprite('ahe300_01', 3)	# 231-233	 **attackbox here**
+        sprite('ahe300_02', 3)	# 234-236
+        sprite('ahe300_03', 3)	# 237-239
+        sprite('ahe300_04', 3)	# 240-242
+        sprite('ahe300_04ex2', 20)	# 243-262	 **attackbox here**
+        sprite('ahe300_05', 4)	# 263-266
+        sprite('ahe300_06', 4)	# 267-270
+
+    @State
+    def UltimateAirAssault():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_AirDD()
+            Unknown23055('')
+            AttackLevel_(5)
+            Damage(5800)
+            Unknown11091(33)
+            GroundedHitstunAnimation(1)
+            AirUntechableTime(60)
+            AirPushbackX(2500)
+            AirPushbackY(-70000)
+            YImpluseBeforeWallbounce(1)
+            Unknown9190(1)
+            Unknown9118(20)
+            HitOverhead(2)
+
+            def upon_12():
+                clearUponHandler(12)
+                Hitstop(20)
+                SFX_0('025_cleanhit_grap')
+            loopRelated(17, 44)
+
+            def upon_17():
+                sendToLabel(1)
+            clearUponHandler(2)
+            callSubroutine('Delete_Eff')
+        sprite('ahe406_00', 3)	# 1-3
+        setInvincible(1)
+        sprite('ahe406_00ex01', 3)	# 4-6
+        Unknown2036(43, -1, 0)
+        Unknown30080('')
+        Unknown2058(-10000)
+        Unknown1084(1)
+        physicsXImpulse(5000)
+        physicsYImpulse(7500)
+        setGravity(250)
+        SFX_1('ahe254')
+        sprite('ahe406_00ex02', 3)	# 7-9
+        sprite('ahe406_00ex03', 3)	# 10-12
+        sprite('ahe406_00', 2)	# 13-14
+        sprite('ahe406_00ex01', 2)	# 15-16
+        sprite('ahe406_00ex02', 2)	# 17-18
+        sprite('ahe406_00ex03', 2)	# 19-20
+        sprite('ahe406_00', 2)	# 21-22
+        sprite('ahe406_00ex01', 2)	# 23-24
+        sprite('ahe406_00ex02', 2)	# 25-26
+        sprite('ahe406_00ex03', 2)	# 27-28
+        label(0)
+        sprite('ahe406_00', 1)	# 29-29
+        sprite('ahe406_00ex01', 1)	# 30-30
+        sprite('ahe406_00ex02', 1)	# 31-31
+        sprite('ahe406_00ex03', 1)	# 32-32
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe406_01', 2)	# 33-34
+        Unknown1019(50)
+        SFX_3('ahese_01')
+        SFX_1('ahe255')
+        sprite('ahe406_02', 2)	# 35-36
+        GFX_0('ahe432_attack_eff', 0)
+        GFX_0('ahe432_particle_eff', 100)
+        GFX_0('ahe432_dust_eff', 100)
+        sprite('ahe406_03', 3)	# 37-39	 **attackbox here**
+        physicsYImpulse(-60000)
+        Unknown1043()
+
+        def upon_LANDING():
+            clearUponHandler(2)
+            clearUponHandler(12)
+            Unknown1084(1)
+            setInvincible(0)
+            sendToLabel(3)
+        sprite('ahe406_04', 3)	# 40-42	 **attackbox here**
+        setInvincible(0)
+        label(2)
+        sprite('ahe406_03', 3)	# 43-45	 **attackbox here**
+        sprite('ahe406_04', 3)	# 46-48	 **attackbox here**
+        loopRest()
+        gotoLabel(2)
+        label(3)
+        sprite('ahe406_05', 3)	# 49-51
+        AttackLevel_(4)
+        Damage(3000)
+        Hitstop(0)
+        AirUntechableTime(60)
+        Unknown9191()
+        PushbackX(19800)
+        AirPushbackX(10000)
+        AirPushbackY(30000)
+        YImpluseBeforeWallbounce(2000)
+        Unknown11034(0)
+        Unknown11033(2)
+        AttackP1(80)
+        AttackP2(80)
+        Unknown11058('0000000000000000000000000100000000000000')
+        HitOverhead(0)
+        Unknown21012('6168653433325f61747461636b5f65666600000000000000000000000000000020000000')
+        ScreenShake(0, 40000)
+        sprite('ahe406_06', 3)	# 52-54	 **attackbox here**
+        sprite('ahe406_07', 3)	# 55-57
+        sprite('ahe010_02', 4)	# 58-61
+        sprite('ahe010_01', 4)	# 62-65
+        sprite('ahe010_00', 4)	# 66-69
+
+    @State
+    def UltimateAirAssaultSP():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_AirDD()
+            Unknown23055('')
+            AttackLevel_(5)
+            Damage(6800)
+            Unknown11091(31)
+            GroundedHitstunAnimation(1)
+            AirUntechableTime(60)
+            AirPushbackX(2500)
+            AirPushbackY(-70000)
+            YImpluseBeforeWallbounce(1)
+            Unknown9190(1)
+            Unknown9118(20)
+            HitOverhead(2)
+
+            def upon_12():
+                clearUponHandler(12)
+                Hitstop(20)
+                SFX_0('025_cleanhit_grap')
+            loopRelated(17, 44)
+
+            def upon_17():
+                sendToLabel(1)
+            clearUponHandler(2)
+            callSubroutine('Delete_Eff')
+        sprite('ahe406_00', 3)	# 1-3
+        setInvincible(1)
+        sprite('ahe406_00ex01', 3)	# 4-6
+        Unknown2036(43, -1, 0)
+        Unknown30080('')
+        Unknown2058(-10000)
+        Unknown1084(1)
+        physicsXImpulse(5000)
+        physicsYImpulse(7500)
+        setGravity(250)
+        SFX_1('ahe254')
+        sprite('ahe406_00ex02', 3)	# 7-9
+        sprite('ahe406_00ex03', 3)	# 10-12
+        sprite('ahe406_00', 2)	# 13-14
+        sprite('ahe406_00ex01', 2)	# 15-16
+        sprite('ahe406_00ex02', 2)	# 17-18
+        sprite('ahe406_00ex03', 2)	# 19-20
+        sprite('ahe406_00', 2)	# 21-22
+        sprite('ahe406_00ex01', 2)	# 23-24
+        sprite('ahe406_00ex02', 2)	# 25-26
+        sprite('ahe406_00ex03', 2)	# 27-28
+        label(0)
+        sprite('ahe406_00', 1)	# 29-29
+        sprite('ahe406_00ex01', 1)	# 30-30
+        sprite('ahe406_00ex02', 1)	# 31-31
+        sprite('ahe406_00ex03', 1)	# 32-32
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe406_01', 2)	# 33-34
+        Unknown1019(50)
+        SFX_3('ahese_01')
+        SFX_1('ahe255')
+        sprite('ahe406_02', 2)	# 35-36
+        GFX_0('ahe432_attack_eff', 0)
+        GFX_0('ahe432_particle_eff', 100)
+        GFX_0('ahe432_dust_eff', 100)
+        sprite('ahe406_03', 3)	# 37-39	 **attackbox here**
+        physicsYImpulse(-60000)
+        Unknown1043()
+
+        def upon_LANDING():
+            clearUponHandler(2)
+            clearUponHandler(12)
+            Unknown1084(1)
+            setInvincible(0)
+            sendToLabel(3)
+        sprite('ahe406_04', 3)	# 40-42	 **attackbox here**
+        setInvincible(0)
+        label(2)
+        sprite('ahe406_03', 3)	# 43-45	 **attackbox here**
+        sprite('ahe406_04', 3)	# 46-48	 **attackbox here**
+        loopRest()
+        gotoLabel(2)
+        label(3)
+        sprite('ahe406_05', 3)	# 49-51
+        AttackLevel_(4)
+        Damage(3000)
+        Hitstop(0)
+        AirUntechableTime(60)
+        Unknown9191()
+        PushbackX(19800)
+        AirPushbackX(10000)
+        AirPushbackY(30000)
+        YImpluseBeforeWallbounce(2000)
+        Unknown11034(0)
+        Unknown11033(2)
+        AttackP1(80)
+        AttackP2(80)
+        Unknown11058('0000000000000000000000000100000000000000')
+        HitOverhead(0)
+        Unknown21012('6168653433325f61747461636b5f65666600000000000000000000000000000020000000')
+        ScreenShake(0, 40000)
+        sprite('ahe406_06', 3)	# 52-54	 **attackbox here**
+        sprite('ahe406_07', 3)	# 55-57
+        sprite('ahe010_02', 4)	# 58-61
+        sprite('ahe010_01', 4)	# 62-65
+        sprite('ahe010_00', 4)	# 66-69
+
+    @State
+    def AstralHeat():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_Astral()
+            AttackLevel_(5)
+            Damage(0)
+            Hitstop(30)
+            Unknown11066(1)
+            Unknown11064(1)
+            GroundedHitstunAnimation(1)
+            AirPushbackX(5000)
+            AirPushbackY(40000)
+            AirUntechableTime(120)
+            Unknown11072(1, 150000, 50000)
+            Unknown11067(1)
+            loopRelated(17, 80)
+
+            def upon_17():
+                sendToLabel(1)
+            Unknown2004(1, 0)
+
+            def upon_78():
+                Unknown20007(1)
+                Unknown20003(1)
+                Unknown23088(1, 1)
+                Unknown11069('AstralHeatExe')
+                enterState('AstralHeatExe')
+            callSubroutine('Delete_Eff')
+        sprite('ahe450_00', 3)	# 1-3
+        setInvincible(1)
+        Unknown4004('6175726100000000000000000000000000000000000000000000000000000000ffff0000')
+        GFX_0('AstralHeatCutInObject', -1)
+        Unknown2036(80, -1, 1)
+        Unknown23147()
+        GFX_0('ahe450_hold_eff', 100)
+        SFX_1('ahe290')
+        sprite('ahe450_01', 3)	# 4-6
+        sprite('ahe450_02', 3)	# 7-9
+        sprite('ahe450_03', 3)	# 10-12
+        sprite('ahe450_04', 3)	# 13-15
+        sprite('ahe450_05', 3)	# 16-18
+        sprite('ahe450_06', 3)	# 19-21
+        sprite('ahe450_01', 2)	# 22-23
+        sprite('ahe450_02', 2)	# 24-25
+        sprite('ahe450_03', 2)	# 26-27
+        sprite('ahe450_04', 2)	# 28-29
+        sprite('ahe450_05', 2)	# 30-31
+        sprite('ahe450_06', 2)	# 32-33
+        sprite('ahe450_01', 2)	# 34-35
+        sprite('ahe450_02', 2)	# 36-37
+        sprite('ahe450_03', 2)	# 38-39
+        sprite('ahe450_04', 2)	# 40-41
+        sprite('ahe450_05', 2)	# 42-43
+        sprite('ahe450_06', 2)	# 44-45
+        label(0)
+        sprite('ahe450_01', 1)	# 46-46
+        sprite('ahe450_02', 1)	# 47-47
+        sprite('ahe450_03', 1)	# 48-48
+        sprite('ahe450_04', 1)	# 49-49
+        sprite('ahe450_05', 1)	# 50-50
+        sprite('ahe450_06', 1)	# 51-51
+        loopRest()
+        gotoLabel(0)
+        label(1)
+        sprite('ahe450_07', 3)	# 52-54
+        SFX_3('ahese_03')
+        SFX_1('ahe291')
+        sprite('ahe450_08', 3)	# 55-57	 **attackbox here**
+        RefreshMultihit()
+        physicsXImpulse(35000)
+        physicsYImpulse(35000)
+        Unknown1043()
+
+        def upon_LANDING():
+            clearUponHandler(2)
+            Unknown1084(1)
+            Unknown8000(100, 1, 1)
+            sendToLabel(10)
+        GFX_0('ahe450_punch_eff', 100)
+        GFX_0('ahe450_impact_eff', 0)
+        sprite('ahe450_09', 3)	# 58-60	 **attackbox here**
+        sprite('ahe450_10', 3)	# 61-63	 **attackbox here**
+        sprite('ahe450_11', 3)	# 64-66	 **attackbox here**
+        sprite('ahe320_10', 6)	# 67-72
+        setInvincible(0)
+        Unknown1019(50)
+        Unknown23024(0)
+        GFX_0('ahe450_heart_eff', 0)
+        sprite('ahe320_11', 6)	# 73-78
+        sprite('ahe320_12', 6)	# 79-84
+        sprite('ahe320_13', 6)	# 85-90
+        sprite('ahe320_14', 6)	# 91-96
+        label(2)
+        sprite('ahe020_07', 3)	# 97-99
+        sprite('ahe020_08', 3)	# 100-102
+        loopRest()
+        gotoLabel(2)
+        label(10)
+        sprite('ahe010_02', 2)	# 103-104
+        sprite('ahe010_01', 2)	# 105-106
+        sprite('ahe010_00', 2)	# 107-108
+        sprite('ahe000_00', 2)	# 109-110	 **attackbox here**
+        ExitState()
+
+    @State
+    def AstralHeatExe():
+
+        def upon_IMMEDIATE():
+            AttackDefaults_Astral()
+            AttackLevel_(5)
+            Damage(5000)
+            Unknown11091(100)
+            Hitstop(30)
+            Unknown11064(1)
+            Unknown11084(1)
+            Unknown11066(1)
+            Unknown11067(1)
+            GroundedHitstunAnimation(1)
+            AirPushbackX(0)
+            AirPushbackY(1250)
+            YImpluseBeforeWallbounce(5)
+            AirUntechableTime(360)
+            Unknown2004(1, 0)
+
+            def upon_12():
+                clearUponHandler(12)
+                Unknown23029(1, 4501, 0)
+                sendToLabel(100)
+
+            def upon_LANDING():
+                clearUponHandler(2)
+                Unknown1084(1)
+                Unknown8000(100, 1, 1)
+                sendToLabel(10)
+            Unknown2037(0)
+
+            def upon_43():
+                if (SLOT_48 == 4506):
+                    Unknown2037(1)
+            Unknown23027()
+            setInvincible(1)
+            Unknown2017(0)
+            Unknown2034(0)
+            Unknown2053(0)
+
+            def upon_STATE_END():
+                Unknown2017(1)
+                Unknown2034(1)
+                Unknown2053(1)
+            GFX_0('AstralCameraObject', -1)
+            Unknown38(6, 1)
+            Unknown23084(1)
+            Unknown23157(0)
+        sprite('ahe450_09', 3)	# 1-3	 **attackbox here**
+        physicsXImpulse(85000)
+        physicsYImpulse(25000)
+        Unknown21012('6168653435305f70756e63685f6566660000000000000000000000000000000020000000')
+        sprite('ahe450_10', 3)	# 4-6	 **attackbox here**
+        sprite('ahe450_11', 3)	# 7-9	 **attackbox here**
+        sprite('ahe113_02', 2)	# 10-11
+        Unknown2006()
+        Unknown1084(1)
+        sprite('ahe450_08ex', 3)	# 12-14	 **attackbox here**
+        physicsXImpulse(85000)
+        physicsYImpulse(25000)
+        sprite('ahe450_09ex', 3)	# 15-17	 **attackbox here**
+        RefreshMultihit()
+        Unknown11023(1)
+        Unknown23024(2)
+        sprite('ahe450_09ex', 3)	# 18-20	 **attackbox here**
+        sprite('ahe450_10ex', 3)	# 21-23	 **attackbox here**
+        sprite('ahe450_11ex', 3)	# 24-26	 **attackbox here**
+        sprite('ahe320_10', 6)	# 27-32
+        Unknown23084(0)
+        Unknown20003(0)
+        setInvincible(0)
+        Unknown1019(25)
+        YAccel(25)
+        Unknown1043()
+        Unknown23024(0)
+        Unknown23029(6, 4504, 0)
+        sprite('ahe320_11', 6)	# 33-38
+        sprite('ahe320_12', 6)	# 39-44
+        sprite('ahe320_13', 6)	# 45-50
+        sprite('ahe320_14', 6)	# 51-56
+        label(1)
+        sprite('ahe020_07', 3)	# 57-59
+        sprite('ahe020_08', 3)	# 60-62
+        loopRest()
+        gotoLabel(1)
+        label(10)
+        sprite('ahe010_02', 2)	# 63-64
+        sprite('ahe010_01', 2)	# 65-66
+        sprite('ahe010_00', 2)	# 67-68
+        sprite('ahe000_00', 2)	# 69-70	 **attackbox here**
+        ExitState()
+        label(100)
+        sprite('ahe450_09', 3)	# 71-73	 **attackbox here**
+        Unknown1019(80)
+        YAccel(80)
+        sprite('ahe450_10', 3)	# 74-76	 **attackbox here**
+        Unknown1019(80)
+        YAccel(80)
+        sprite('ahe450_11', 3)	# 77-79	 **attackbox here**
+        Unknown1019(80)
+        YAccel(80)
+        sprite('ahe450_12', 3)	# 80-82
+        Unknown1019(80)
+        YAccel(80)
+        sprite('ahe450_13', 3)	# 83-85
+        Unknown1019(80)
+        YAccel(80)
+        sprite('ahe450_14', 6)	# 86-91
+        Unknown2036(60, -1, 2)
+        Unknown23029(6, 4502, 0)
+        sprite('ahe450_15', 6)	# 92-97
+        Unknown1084(1)
+        Unknown23024(3)
+        Unknown20010(-70000, 0, 0)
+        GFX_0('AstralHeatCutInLoveArcana', -1)
+        Unknown38(7, 1)
+        GFX_0('ahe450_circle_eff', 100)
+        GFX_0('ahe450_tinkle_eff', 100)
+        Unknown23118(6225920)
+        sprite('ahe450_16', 6)	# 98-103
+        sprite('ahe450_17', 6)	# 104-109
+        sprite('ahe450_18', 40)	# 110-149
+        sprite('ahe450_19', 6)	# 150-155
+        sprite('ahe450_20', 6)	# 156-161
+        Unknown23029(7, 4513, 0)
+        sprite('ahe450_21', 6)	# 162-167
+        sprite('ahe450_22', 6)	# 168-173
+        Unknown23029(6, 4503, 0)
+        sprite('ahe450_23', 3)	# 174-176
+        GFX_0('AstralFinishAttackObject', -1)
+        GFX_0('AstralHeatPal', -1)
+        Unknown23015(7)
+        loopRelated(17, 200)
+
+        def upon_17():
+            sendToLabel(102)
+
+        def upon_LANDING():
+            clearUponHandler(2)
+            Unknown1084(1)
+            Unknown8000(100, 1, 1)
+            sendToLabel(106)
+        sprite('ahe450_24', 3)	# 177-179
+        sprite('ahe450_25', 3)	# 180-182
+        SFX_1('ahe292')
+        sprite('ahe450_26', 3)	# 183-185
+        label(101)
+        sprite('ahe450_24', 3)	# 186-188
+        sprite('ahe450_25', 3)	# 189-191
+        sprite('ahe450_26', 3)	# 192-194
+        loopRest()
+        gotoLabel(101)
+        label(102)
+        sprite('ahe450_27', 4)	# 195-198
+        loopRelated(17, 490)
+
+        def upon_17():
+            sendToLabel(104)
+        sprite('ahe450_28', 4)	# 199-202
+        sprite('ahe450_29', 4)	# 203-206
+        label(103)
+        sprite('ahe450_30', 3)	# 207-209
+        sprite('ahe450_31', 3)	# 210-212
+        sprite('ahe450_32', 3)	# 213-215
+        sprite('ahe450_33', 3)	# 216-218
+        loopRest()
+        gotoLabel(103)
+        label(104)
+        sprite('ahe450_34', 3)	# 219-221
+        Unknown1000(260000)
+        teleportRelativeY(1500000)
+        Unknown1084(1)
+        Unknown23029(6, 4505, 0)
+        Unknown1043()
+        Unknown23024(0)
+        Unknown23015(0)
+        Unknown26('ahe450_tinkle_eff')
+        Unknown23118(-16777216)
+        sprite('ahe450_35', 3)	# 222-224
+        sprite('ahe020_07', 3)	# 225-227
+        Unknown2006()
+        sprite('ahe020_08', 3)	# 228-230
+        label(105)
+        sprite('ahe020_07', 3)	# 231-233
+        sprite('ahe020_08', 3)	# 234-236
+        loopRest()
+        gotoLabel(105)
+        label(106)
+        sprite('ahe010_02', 3)	# 237-239
+        Unknown23029(6, 4504, 0)
+        Unknown23024(0)
+        Unknown20010(0, 0, 0)
+        if SLOT_2:
+            Unknown20000(1)
+            Unknown20004(1)
+            Unknown20006(1)
+            Unknown20003(1)
+        else:
+            Unknown23084(0)
+            Unknown20003(0)
+        sprite('ahe010_01', 3)	# 240-242
+        sprite('ahe010_00', 3)	# 243-245
+        sprite('ahe000_00', 3)	# 246-248	 **attackbox here**
+
+    @Subroutine
+    def MouthTableInit():
+        Unknown18011('ahe520', 13921, 13923, 13921, 13155, 24881, 25399, 24887, 25401, 24887, 25401, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('ahe521', 13921, 14179, 13921, 13667, 24888, 25401, 24889, 25401, 24889, 25399, 14385, 13921, 13923, 13921, 13923, 12641, 25394, 13617, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('ahe522', 13921, 14179, 13921, 13155, 24880, 25401, 24889, 25401, 24889, 14385, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 13921, 12643, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('ahe541', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 12899, 24880, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('ahe542', 13921, 13923, 13921, 13155, 24881, 25399, 24887, 25401, 24887, 25401, 12851, 12641, 25398, 24885, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('ahe543', 13921, 13923, 13921, 13155, 24881, 25399, 24887, 25401, 24887, 25401, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('ahe544', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 13665, 14179, 12641, 25394, 24887, 12849, 12899, 24888, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('ahe545', 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 13665, 14179, 12643, 24885, 25401, 24885, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 25399, 24887, 12849, 14179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('ahe402_0', 14177, 14179, 13921, 13923, 13921, 13923, 13921, 13923, 13665, 13923, 13665, 13155, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('ahe402_1', 13411, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 14179, 14177, 13155, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('ahe403_0', 12643, 13153, 25392, 12339, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Unknown18011('ahe403_1', 12643, 13153, 25392, 12339, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+    @State
+    def CmnActEntry():
+        label(0)
+        sprite('null', 1)	# 1-1
+        loopRest()
+        if SLOT_17:
+            _gotolabel(0)
+        Unknown19(991, 2, 158)
+        random_(2, 0, 50)
+        if SLOT_0:
+            _gotolabel(10)
+        sprite('null', 60)	# 2-61
+        SFX_1('ahe520')
+        sprite('ahe032_02', 3)	# 62-64
+        Unknown2034(0)
+        Unknown2053(0)
+        Unknown1000(-2000000)
+        physicsXImpulse(20500)
+        sprite('ahe032_03', 3)	# 65-67
+        sprite('ahe032_04', 3)	# 68-70
+        sprite('ahe032_02', 3)	# 71-73
+        sprite('ahe032_03', 3)	# 74-76
+        sprite('ahe032_04', 3)	# 77-79
+        sprite('ahe032_02', 3)	# 80-82
+        sprite('ahe032_03', 3)	# 83-85
+        sprite('ahe032_04', 3)	# 86-88
+        sprite('ahe600_00', 4)	# 89-92
+        Unknown8006(100, 1, 0)
+        Unknown1019(50)
+        sprite('ahe600_01', 4)	# 93-96
+        sprite('ahe600_00', 4)	# 97-100
+        Unknown1019(50)
+        sprite('ahe600_01', 4)	# 101-104
+        sprite('ahe272_00', 4)	# 105-108
+        Unknown1019(50)
+        sprite('ahe272_01', 4)	# 109-112
+        sprite('ahe272_00', 4)	# 113-116
+        Unknown1019(50)
+        sprite('ahe272_01', 4)	# 117-120
+        sprite('ahe032_05', 3)	# 121-123
+        teleportRelativeX(20000)
+        Unknown1084(1)
+        Unknown1047(3000)
+        sprite('ahe032_06', 3)	# 124-126
+        sprite('ahe032_07', 3)	# 127-129
+        sprite('ahe032_08', 3)	# 130-132
+        sprite('ahe000_00', 3)	# 133-135	 **attackbox here**
+        Unknown1084(1)
+        Unknown1000(-1230000)
+        sprite('ahe300_00', 6)	# 136-141
+        sprite('ahe300_01', 6)	# 142-147	 **attackbox here**
+        sprite('ahe300_02', 6)	# 148-153
+        sprite('ahe300_03', 6)	# 154-159
+        sprite('ahe300_04', 6)	# 160-165
+        sprite('ahe300_04ex2', 30)	# 166-195	 **attackbox here**
+        sprite('ahe300_05', 6)	# 196-201
+        sprite('ahe300_06', 6)	# 202-207
+        Unknown21011(40)
+        ExitState()
+        label(10)
+        sprite('ahe601_00', 5)	# 208-212	 **attackbox here**
+        sprite('ahe601_01', 5)	# 213-217
+        Unknown7006('ahe521', 100, 895838305, 12850, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        sprite('ahe601_02', 5)	# 218-222
+        sprite('ahe601_03', 5)	# 223-227
+        sprite('ahe601_04', 5)	# 228-232	 **attackbox here**
+        sprite('ahe601_05', 5)	# 233-237	 **attackbox here**
+        sprite('ahe601_06', 5)	# 238-242	 **attackbox here**
+        sprite('ahe601_07', 5)	# 243-247	 **attackbox here**
+        GFX_0('aheef601_eff', 100)
+        sprite('ahe601_08', 5)	# 248-252	 **attackbox here**
+        sprite('ahe601_09', 5)	# 253-257	 **attackbox here**
+        sprite('ahe601_10', 5)	# 258-262
+        sprite('ahe601_11', 5)	# 263-267
+        sprite('ahe601_12', 5)	# 268-272
+        sprite('ahe601_13', 5)	# 273-277
+        label(11)
+        sprite('ahe601_14', 6)	# 278-283	 **attackbox here**
+        sprite('ahe601_14ex1', 6)	# 284-289	 **attackbox here**
+        sprite('ahe601_14ex2', 6)	# 290-295	 **attackbox here**
+        sprite('ahe601_14ex3', 6)	# 296-301	 **attackbox here**
+        sprite('ahe601_14ex4', 6)	# 302-307	 **attackbox here**
+        if SLOT_97:
+            _gotolabel(11)
+        sprite('ahe601_15', 3)	# 308-310
+        Unknown21011(40)
+        sprite('ahe601_15ex1', 3)	# 311-313
+        ExitState()
+        label(991)
+        sprite('ahe000_00', 1)	# 314-314	 **attackbox here**
+        Unknown2019(1000)
+        Unknown21011(120)
+        label(992)
+        sprite('ahe000_00', 4)	# 315-318	 **attackbox here**
+        sprite('ahe000_01', 4)	# 319-322	 **attackbox here**
+        sprite('ahe000_02', 4)	# 323-326	 **attackbox here**
+        sprite('ahe000_03', 4)	# 327-330	 **attackbox here**
+        sprite('ahe000_04', 4)	# 331-334	 **attackbox here**
+        sprite('ahe000_05', 4)	# 335-338	 **attackbox here**
+        sprite('ahe000_06', 4)	# 339-342	 **attackbox here**
+        sprite('ahe000_07', 4)	# 343-346	 **attackbox here**
+        sprite('ahe000_08', 4)	# 347-350	 **attackbox here**
+        sprite('ahe000_09', 4)	# 351-354	 **attackbox here**
+        sprite('ahe000_10', 4)	# 355-358	 **attackbox here**
+        sprite('ahe000_11', 4)	# 359-362	 **attackbox here**
+        sprite('ahe000_12', 4)	# 363-366	 **attackbox here**
+        sprite('ahe000_13', 4)	# 367-370	 **attackbox here**
+        sprite('ahe000_14', 4)	# 371-374	 **attackbox here**
+        sprite('ahe000_15', 4)	# 375-378	 **attackbox here**
+        sprite('ahe000_16', 4)	# 379-382	 **attackbox here**
+        sprite('ahe000_17', 4)	# 383-386	 **attackbox here**
+        sprite('ahe000_18', 4)	# 387-390	 **attackbox here**
+        sprite('ahe000_19', 4)	# 391-394	 **attackbox here**
+        loopRest()
+        gotoLabel(992)
+
+    @State
+    def CmnActMatchWin():
+        if SLOT_169:
+            _gotolabel(482)
+        if SLOT_122:
+            _gotolabel(482)
+        if SLOT_123:
+            _gotolabel(482)
+        sprite('keep', 2)	# 1-2
+
+        def upon_3():
+            SLOT_58 = 1
+            Unknown48('19000000020000003400000018000000020000003a000000')
+        label(482)
+        sprite('keep', 1)	# 3-3
+        clearUponHandler(3)
+        SLOT_58 = 0
+        if (not SLOT_108):
+            random_(2, 0, 50)
+            if SLOT_0:
+                _gotolabel(10)
+        sprite('ahe610_00', 6)	# 4-9
+        if SLOT_158:
+            if SLOT_52:
+                SFX_1('ahe544')
+            elif SLOT_108:
+                SFX_1('ahe402_1')
+            else:
+                Unknown7006('ahe402_0', 100, 895838305, 12596, 0, 0, 100, 895838305, 12596, 0, 0, 0, 0, 0, 0, 0, 0)
+        sprite('ahe610_01', 6)	# 10-15
+        sprite('ahe610_02', 6)	# 16-21	 **attackbox here**
+        sprite('ahe610_03', 32767)	# 22-32788	 **attackbox here**
+        Unknown23018(1)
+        ExitState()
+        label(10)
+        sprite('ahe611_00', 6)	# 32789-32794
+        sprite('ahe611_01', 6)	# 32795-32800
+        if SLOT_158:
+            if SLOT_52:
+                SFX_1('ahe545')
+            else:
+                Unknown7006('ahe542', 100, 895838305, 13108, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        sprite('ahe611_02', 6)	# 32801-32806
+        sprite('ahe611_03', 6)	# 32807-32812
+        sprite('ahe611_04', 6)	# 32813-32818
+        GFX_0('aheef611_eff', 100)
+        SFX_3('ahese_55')
+        sprite('ahe611_05', 6)	# 32819-32824
+        sprite('ahe611_06', 6)	# 32825-32830
+        sprite('ahe611_07', 6)	# 32831-32836
+        sprite('ahe611_08', 6)	# 32837-32842	 **attackbox here**
+        sprite('ahe611_09', 6)	# 32843-32848	 **attackbox here**
+        sprite('ahe611_10', 6)	# 32849-32854	 **attackbox here**
+        sprite('ahe611_11', 6)	# 32855-32860	 **attackbox here**
+        sprite('ahe611_12', 32767)	# 32861-65627	 **attackbox here**
+        Unknown23018(1)
+        ExitState()
+
+    @State
+    def CmnActLose():
+        label(0)
+        sprite('ahe620_00', 6)	# 1-6
+        sprite('ahe620_01', 6)	# 7-12
+        Unknown7006('ahe403_0', 100, 879061089, 828322608, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        sprite('ahe620_00', 6)	# 13-18
+        sprite('ahe620_01', 6)	# 19-24
+        sprite('ahe620_00', 6)	# 25-30
+        sprite('ahe620_01', 6)	# 31-36
+        sprite('ahe620_00', 6)	# 37-42
+        sprite('ahe620_01', 6)	# 43-48
+        sprite('ahe620_00', 6)	# 49-54
+        sprite('ahe620_01', 6)	# 55-60
+        sprite('ahe620_02', 6)	# 61-66
+        sprite('ahe620_03', 6)	# 67-72
+        sprite('ahe620_04', 6)	# 73-78
+        sprite('ahe620_05', 6)	# 79-84
+        sprite('ahe620_06', 6)	# 85-90
+        sprite('ahe620_07', 32767)	# 91-32857
+        Unknown21011(60)
+        ExitState()
