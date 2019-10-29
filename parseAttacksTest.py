@@ -284,6 +284,7 @@ def Monsho_AtkData():
         subroutine.attackInfo.attackLevel = 1
         subroutine.attackInfo.groundHitAni = 0
         subroutine.attackInfo.airHitAni = 0
+        subroutine.landingRecovery = 0
         self.assertEquals(effect_list["Monsho_AtkData"], subroutine)
 
     def test_parse_attack_with_custom_blockstun_hitstop(self):
@@ -1162,7 +1163,6 @@ def NmlAtk5A():
                                                       p2once=True)),
                         WaitFrames(5)
                         ]
-        frame_chunks1[0].inv_type = 1
         self.compare_frame_chunks_util(frame_chunks1, frame_chunks2)
 
     # util method to help make debugging what's different between objects easier to detect.
@@ -1209,3 +1209,11 @@ def NmlAtk5A():
         self.assertEqual(first.attribute, second.attribute, "attribute not equal")
         self.assertEqual(first.groundHitAni, second.groundHitAni, "groundHitAni not equal")
         self.assertEqual(first.airHitAni, second.airHitAni, "groundHitAni not equal")
+        self.assertEqual(first.knockdownTime, second.knockdownTime, "knockdownTime not equal")
+        self.assertEqual(first.slideTime, second.slideTime, "slideTime not equal")
+        self.assertEqual(first.hitstunAfterWallBounce, second.hitstunAfterWallBounce, "hitstunAfterWallBounce not equal")
+        self.assertEqual(first.wallStickTime, second.wallStickTime, "wallStickTime not equal")
+        self.assertEqual(first.crumpleTime, second.crumpleTime, "crumpleTime not equal")
+        self.assertEqual(first.spinFallTime, second.spinFallTime, "spinFallTime not equal")
+        self.assertEqual(first.groundBounce, second.groundBounce, "groundBounce not equal")
+        self.assertEqual(first.wallBounce, second.wallBounce, "wallBounce not equal")

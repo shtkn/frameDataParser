@@ -25,6 +25,8 @@ class State:
         self.disableAttackboxesThisFrame = False
         self.isNewHit = True
         self.attackInfo = AttackInfo()
+        self.attackInfo.groundHitAni = 0
+        self.attackInfo.airHitAni = 0
         self.exitState = False
         self.landingRecovery = 0
         self.isSubroutine = False
@@ -75,7 +77,7 @@ class AttackInfo:
     def __init__(self, damage=None, p1=None, p2=None, min_damage=0, p2once=None, hitstun=None, untech=None, blockstun=None,
                  hitstop=None, bonus_blockstop=None, bonus_hitstop=None, attack_level=None, attribute=None, ground_hit_ani=None,
                  air_hit_ani=None, knockdown_time=None, slide_time=None, hitstun_after_wall_bounce=None, wallstick_time=None,
-                 crumple_time=None, spin_fall_time=None):
+                 crumple_time=None, spin_fall_time=None, ground_bounce=None, wall_bounce=None):
         self.damage = damage
         self.p1 = p1
         self.p2 = p2
@@ -97,6 +99,8 @@ class AttackInfo:
         self.wallStickTime = wallstick_time
         self.crumpleTime = crumple_time
         self.spinFallTime = spin_fall_time
+        self.groundBounce = ground_bounce
+        self.wallBounce = wall_bounce
 
     def copy_non_none_values(self, other):
         self.damage = other.damage if other.damage is not None else self.damage
@@ -120,6 +124,8 @@ class AttackInfo:
         self.wallStickTime = other.wallStickTime if other.wallStickTime is not None else self.wallStickTime
         self.crumpleTime = other.crumpleTime if other.crumpleTime is not None else self.crumpleTime
         self.spinFallTime = other.spinFallTime if other.spinFallTime is not None else self.spinFallTime
+        self.groundBounce = other.groundBounce if other.groundBounce is not None else self.groundBounce
+        self.wallBounce = other.wallBounce if other.wallBounce is not None else self.wallBounce
 
     def __str__(self):
         toReturn = "damage=" + str(self.damage) + "p1=" + str(self.p1) + "p2=" + str(self.p2)
@@ -139,7 +145,8 @@ class AttackInfo:
                self.hitstun == other.hitstun and self.untech == other.untech and self.attackLevel == other.attackLevel and \
                self.hitstop == other.hitstop and self.bonus_blockstop == other.bonus_blockstop and \
                self.bonus_hitstop == other.bonus_hitstop and self.attribute == other.attribute and \
-               self.groundHitAni == other.groundHitAni and self.airHitAni == self.airHitAni
+               self.groundHitAni == other.groundHitAni and self.airHitAni == other.airHitAni and \
+               self.groundBounce == other.groundBounce and self.wallBounce == other.wallBounce
 
     def __ne__(self, other):
         if not isinstance(other, AttackInfo):
@@ -233,6 +240,8 @@ class AttackInfo:
             self.groundHitAni = other.groundHitAni
         if other.airHitAni is not None:
             self.airHitAni = other.airHitAni
+        if other.groundBounce is not None:
+            self.groundBounce = other.groundBounce
 
 
 class Abstract:
@@ -478,10 +487,10 @@ def parse_move_file(source, move_list, effect_list):
             if HAS_HITBOX in line:
                 state.isAttackBox = HAS_HITBOX in line
         elif not state.exitState:
-            if "Recovery()" in line or "Unknown23027()" in line or  "DisableAttackRestOfMove()" in line:  # disables active frames until a refreshMultihit
+            if "Recovery()" in line or "Unknown23027()" in line or "DisableAttackRestOfMove()" in line:  # disables active frames until a refreshMultihit
                 state.disableAttackboxes = True
                 state.isNewHit = False
-            elif "StartMultihit()" in line:  # turns off these active frames
+            elif "StartMultihit()" in line or "DisableAttackThisSprite()" in line:  # turns off these active frames
                 state.disableAttackboxesThisFrame = True
             elif "RefreshMultihit()" in line:  # counts as a new hit, end previous frames; start a  new one
                 state.isNewHit = True
@@ -582,13 +591,17 @@ def parse_move_file(source, move_list, effect_list):
             elif "GuardPoint_(" in line:
                 idx = line.index("(") + 1
                 state.invType = int(line[idx: idx + 1])
+            elif "Unknown9118(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.groun = int(line[number_start:number_end])
             elif "ExitState()" in line:
                 # we assume all the lines above this are for the move on block/whiff. Anything after is on hit
                 state.exitState = True
             elif "Unknown17025(" in line or "Unknown17024(" in line:  # i think this is attackDefaultsReversalAction()
                 state.invType = 0
                 state.isInv = True
-            elif "Unknown30072(" in line:  # i think this is attackDefaults5C()? Basically Attack Level 3
+            elif "Unknown30072(" in line:  # i think this is attackDefaultsCrushAttack()? Basically Attack Level 3
                 state.attackInfo.attackLevel = 3
                 state.attackInfo.bonus_hitstop = 0
                 state.attackInfo.bonus_blockstop = 0
