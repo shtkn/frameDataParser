@@ -1106,8 +1106,11 @@ def NmlAtk5A():
                 AttackInfo(600, 60, 70, 5, None, hitstop=10, bonus_blockstop=5),
                 AttackInfo(600, 60, 70, 5, None, hitstop=10, bonus_hitstop=5)
                 ]
-        damage, p1, p2, hitstun, untech, level, attribute, hitstop, blockstun = create_damage_text(test)
+        damage, p1, p2, level, attribute, hitstop, blockstun = create_damage_text(test)
         print hitstop
+
+    def test_hitstun_and_untech_text(self):
+        pass
 
     def test_parse_function_with_one_sprite_line(self):
         state = """def vr_lp206atk_04():

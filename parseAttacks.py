@@ -922,7 +922,8 @@ def write_file(moves_on_block, target):
             # target.write("\n\tlast blockstun: " + str(last_blockstun_frame))
             # target.write("|frameAdv=" + str(last_blockstun_frame - duration_on_block))
         damage_list = calc_damage_for_move(move_on_block)
-        damage, p1, p2, hitstun, untech, level, attribute, hitstop, blockstun = create_damage_text(damage_list)
+        damage, p1, p2, level, attribute, hitstop, blockstun = create_damage_text(damage_list)
+        hitstun, untech = create_hitstun_and_untech_text(damage_list)
 
         target.write("\n |damage=" + damage + "|cancel=" + "|p1=" + p1 + "|p2=" + p2)
         target.write("\n |level=" + level + "|attribute=" + attribute + "|guard=")
@@ -971,26 +972,23 @@ def get_inv_attr_text(attr):
 
 
 def create_damage_text(damage_list):
-    # damage, p1, p2, hitstun, untech, level, attribute, blockstun. Hitstop is calculated separately
-    value_str = ["" for i in range(8)]
-    value_multiplier = [1 for i in range(8)]
-    value = [None for i in range(8)]
+    # damage, p1, p2, level, attribute, blockstun. Hitstop is calculated separately
+    value_str = ["", "", "", "", "", "", ""]
+    value_multiplier = [1, 1, 1, 1, 1, 1, 1]
+    value = [None, None, None, None, None, None, None]
     p2Once = None
 
     if len(damage_list) == 0:
-        value_str.append("")
         return value_str
 
-    for item in damage_list:
-        fill_str(item.get_damage(), 0, value, value_str, value_multiplier)
-        fill_str(item.get_p1(), 1, value, value_str, value_multiplier)
-        fill_str(item.get_p2(), 2, value, value_str, value_multiplier)
-        fill_str(item.get_hitstun(), 3, value, value_str, value_multiplier)
-        fill_str(item.get_untech(), 4, value, value_str, value_multiplier)
-        fill_str(item.attackLevel, 5, value, value_str, value_multiplier)
-        fill_str(get_inv_attr_text(item.attribute), 6, value, value_str, value_multiplier)
-        fill_str(item.get_blockstun(), 7, value, value_str, value_multiplier)
-        p2Once = item.p2Once
+    for attack_info in damage_list:
+        fill_str(attack_info.get_damage(), 0, value, value_str, value_multiplier)
+        fill_str(attack_info.get_p1(), 1, value, value_str, value_multiplier)
+        fill_str(attack_info.get_p2(), 2, value, value_str, value_multiplier)
+        fill_str(attack_info.attackLevel, 3, value, value_str, value_multiplier)
+        fill_str(get_inv_attr_text(attack_info.attribute), 4, value, value_str, value_multiplier)
+        fill_str(attack_info.get_blockstun(), 6, value, value_str, value_multiplier)
+        p2Once = attack_info.p2Once
 
     for i in range(len(value_str)):
         if value[i] is not None:
@@ -1003,8 +1001,7 @@ def create_damage_text(damage_list):
 
     hitstop_str = fill_hitstop(damage_list)
 
-    return value_str[0], value_str[1], value_str[2], value_str[3], value_str[4], value_str[5], value_str[6], \
-           hitstop_str, value_str[7]
+    return value_str[0], value_str[1], value_str[2], value_str[3], value_str[4], hitstop_str, value_str[6]
 
 
 def fill_str(new_value, index, current_value, value_str, multiplier):
@@ -1017,6 +1014,38 @@ def fill_str(new_value, index, current_value, value_str, multiplier):
             multiplier[index] = 1  # reset multiplier
         value_str[index] = value_str[index] + ", "
     current_value[index] = new_value
+
+
+def create_hitstun_and_untech_text(damage_list):
+    value_str = ["", ""]
+    value_multiplier = [1, 1]
+    value = [None, None]
+    for attack_info in damage_list:
+        fill_str(create_hitstun_text(attack_info), 0, value, value_str, value_multiplier)
+        fill_str(attack_info.get_untech(), 1, value, value_str, value_multiplier)
+    return value_str[0], value_str[1]
+
+
+def create_hitstun_text(attack_info):
+    text = ""
+    if attack_info.groundHitAni == 0:
+        if attack_info.crumpleTime > 0:
+            text = "Crumple " + attack_info.crumpleTime
+        if attack_info.spinFallTime > 0:
+            if len(text) > 0:
+                text = text + " + "
+            text = "Spin Fall " + attack_info.spinFallTime
+        text = attack_info.hitstun
+    else:
+        text = "Launch"
+    return text
+
+
+def create_untech_text(attack_info):
+    text = ""
+    if attack_info.airHitAni == 0:
+        pass
+    pass
 
 
 def fill_hitstop(info_list):
