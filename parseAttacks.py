@@ -98,7 +98,7 @@ class AttackInfo:
         self.hitstunAfterWallBounce = hitstun_after_wall_bounce
         self.wallStick = wallstick_time
         self.stagger = stagger
-        self.spinFallTime = spin_fall_time
+        self.spinFall = spin_fall_time
         self.groundBounce = ground_bounce
         self.wallBounce = wall_bounce
 
@@ -123,7 +123,7 @@ class AttackInfo:
         self.hitstunAfterWallBounce = other.hitstunAfterWallBounce if other.hitstunAfterWallBounce is not None else self.hitstunAfterWallBounce
         self.wallStick = other.wallStick if other.wallStick is not None else self.wallStick
         self.stagger = other.stagger if other.stagger is not None else self.stagger
-        self.spinFallTime = other.spinFallTime if other.spinFallTime is not None else self.spinFallTime
+        self.spinFall = other.spinFall if other.spinFall is not None else self.spinFall
         self.groundBounce = other.groundBounce if other.groundBounce is not None else self.groundBounce
         self.wallBounce = other.wallBounce if other.wallBounce is not None else self.wallBounce
 
@@ -1035,7 +1035,7 @@ def create_hitstun_text(attack_info):
     elif attack_info.groundHitAni == 3: # forces crouch. so far we don't do antying with this info
         text = str(attack_info.hitstun)
     elif attack_info.groundHitAni == 6:
-        text = "Spin Fall " + str(attack_info.spinFallTime + 15)
+        text = "Spin Fall " + str(attack_info.spinFall + 15)
     else:
         text = "Launch"
     return text
@@ -1044,7 +1044,7 @@ def create_hitstun_text(attack_info):
 def create_untech_text(attack_info):
     text = ""
     if attack_info.airHitAni == 0 or attack_info.airHitAni is None:
-        text = str(attack_info.hitstun)
+        text = str(attack_info.untech)
 
     if attack_info.groundBounce is not None and attack_info.groundBounce > 0:
         text = text + " + GBounce"

@@ -1160,7 +1160,7 @@ def NmlAtk5A():
 
     def test_write_spinFall_hitstun_text(self):
         info = AttackInfo()
-        info.spinFallTime = 22
+        info.spinFall = 22
         info.groundHitAni = 6
         self.assertEqual("Spin Fall 37", create_hitstun_text(info))
 
@@ -1174,6 +1174,33 @@ def NmlAtk5A():
         info = AttackInfo()
         info.groundHitAni = 10
         self.assertEqual("Launch", create_hitstun_text(info))
+
+    def test_write_basic_untech_text(self):
+        info = AttackInfo()
+        info.untech = 10
+        self.assertEqual("10", create_untech_text(info))
+
+    def test_write_untech_with_wallbounce_text(self):
+        info = AttackInfo()
+        info.untech = 10
+        info.wallBounce = 0
+        self.assertEqual("10 + WBounce", create_untech_text(info))
+
+        info = AttackInfo()
+        info.untech = 10
+        info.wallBounce = 10
+        self.assertEqual("10 + WBounce 10", create_untech_text(info))
+
+    def test_write_untech_with_knockdown_text(self):
+        info = AttackInfo()
+        info.untech = 10
+        info.knockdownTime = 50
+        self.assertEqual("10 + Down 64", create_untech_text(info))
+
+        info = AttackInfo()
+        info.untech = 10
+        info.knockdownTime = 1
+        self.assertEqual("10 + Down 24", create_untech_text(info))
 
     def test_compare_frame_chunk_util(self):
 
@@ -1237,8 +1264,8 @@ def NmlAtk5A():
         self.assertEqual(first.knockdownTime, second.knockdownTime, "knockdownTime not equal")
         self.assertEqual(first.slideTime, second.slideTime, "slideTime not equal")
         self.assertEqual(first.hitstunAfterWallBounce, second.hitstunAfterWallBounce, "hitstunAfterWallBounce not equal")
-        self.assertEqual(first.wallStickTime, second.wallStickTime, "wallStickTime not equal")
+        self.assertEqual(first.wallStick, second.wallStick, "wallStickTime not equal")
         self.assertEqual(first.stagger, second.stagger, "stagger not equal")
-        self.assertEqual(first.spinFallTime, second.spinFallTime, "spinFallTime not equal")
+        self.assertEqual(first.spinFall, second.spinFall, "spinFall not equal")
         self.assertEqual(first.groundBounce, second.groundBounce, "groundBounce not equal")
         self.assertEqual(first.wallBounce, second.wallBounce, "wallBounce not equal")
