@@ -77,7 +77,7 @@ class AttackInfo:
     def __init__(self, damage=None, p1=None, p2=None, min_damage=0, p2once=None, hitstun=None, untech=None, blockstun=None,
                  hitstop=None, bonus_blockstop=None, bonus_hitstop=None, attack_level=None, attribute=None, ground_hit_ani=None,
                  air_hit_ani=None, knockdown_time=None, slide_time=None, hitstun_after_wall_bounce=None, wallstick_time=None,
-                 crumple_time=None, spin_fall_time=None, ground_bounce=None, wall_bounce=None):
+                 stagger=None, spin_fall_time=None, ground_bounce=None, wall_bounce=None):
         self.damage = damage
         self.p1 = p1
         self.p2 = p2
@@ -96,8 +96,8 @@ class AttackInfo:
         self.knockdownTime = knockdown_time
         self.slideTime = slide_time
         self.hitstunAfterWallBounce = hitstun_after_wall_bounce
-        self.wallStickTime = wallstick_time
-        self.crumpleTime = crumple_time
+        self.wallStick = wallstick_time
+        self.stagger = stagger
         self.spinFallTime = spin_fall_time
         self.groundBounce = ground_bounce
         self.wallBounce = wall_bounce
@@ -121,8 +121,8 @@ class AttackInfo:
         self.knockdownTime = other.knockdownTime if other.knockdownTime is not None else self.knockdownTime
         self.slideTime = other.slideTime if other.slideTime is not None else self.slideTime
         self.hitstunAfterWallBounce = other.hitstunAfterWallBounce if other.hitstunAfterWallBounce is not None else self.hitstunAfterWallBounce
-        self.wallStickTime = other.wallStickTime if other.wallStickTime is not None else self.wallStickTime
-        self.crumpleTime = other.crumpleTime if other.crumpleTime is not None else self.crumpleTime
+        self.wallStick = other.wallStick if other.wallStick is not None else self.wallStick
+        self.stagger = other.stagger if other.stagger is not None else self.stagger
         self.spinFallTime = other.spinFallTime if other.spinFallTime is not None else self.spinFallTime
         self.groundBounce = other.groundBounce if other.groundBounce is not None else self.groundBounce
         self.wallBounce = other.wallBounce if other.wallBounce is not None else self.wallBounce
@@ -1028,14 +1028,14 @@ def create_hitstun_and_untech_text(damage_list):
 
 def create_hitstun_text(attack_info):
     text = ""
-    if attack_info.groundHitAni == 0:
-        if attack_info.crumpleTime > 0:
-            text = "Crumple " + attack_info.crumpleTime
-        if attack_info.spinFallTime > 0:
-            if len(text) > 0:
-                text = text + " + "
-            text = "Spin Fall " + attack_info.spinFallTime
-        text = attack_info.hitstun
+    if attack_info.groundHitAni == 0 or attack_info.groundHitAni is None:
+        text = str(attack_info.hitstun)
+    elif attack_info.groundHitAni == 2:
+        text = "Stagger " + str(attack_info.stagger + 10)
+    elif attack_info.groundHitAni == 3: # forces crouch. so far we don't do antying with this info
+        text = str(attack_info.hitstun)
+    elif attack_info.groundHitAni == 6:
+        text = "Spin Fall " + str(attack_info.spinFallTime + 15)
     else:
         text = "Launch"
     return text
@@ -1043,9 +1043,26 @@ def create_hitstun_text(attack_info):
 
 def create_untech_text(attack_info):
     text = ""
-    if attack_info.airHitAni == 0:
-        pass
-    pass
+    if attack_info.airHitAni == 0 or attack_info.airHitAni is None:
+        text = str(attack_info.hitstun)
+
+    if attack_info.groundBounce is not None and attack_info.groundBounce > 0:
+        text = text + " + GBounce"
+    if attack_info.wallBounce is not None:
+        text = text + " + WBounce"
+        if attack_info.wallBounce > 0:
+            text = text + " " + str(attack_info.wallBounce)
+    if attack_info.wallStick is not None:
+        text = text + " + WStick"
+        if attack_info.wallStick > 0:
+            text = text + " " + str(attack_info.wallStick)
+    if attack_info.slideTime is not None and attack_info.slideTime > 0:
+        text = text + " + Slide " + str(attack_info.slideTime + 9 + 10)
+    if attack_info.knockdownTime is not None and attack_info.knockdownTime > 0:
+        kd_time = 24 if attack_info.knockdownTime == 1 else attack_info.knockdownTime + 14
+        text = text + " + Down " + str(kd_time)
+
+    return text
 
 
 def fill_hitstop(info_list):

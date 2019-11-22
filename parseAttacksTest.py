@@ -1153,6 +1153,28 @@ def NmlAtk5A():
         self.assertEqual(1, inv_values[2])
         self.assertEqual([True, True, True, True, False], inv_values[3])
 
+    def test_write_basic_hitstun_text(self):
+        info = AttackInfo()
+        info.hitstun = 10
+        self.assertEqual("10", create_hitstun_text(info))
+
+    def test_write_spinFall_hitstun_text(self):
+        info = AttackInfo()
+        info.spinFallTime = 22
+        info.groundHitAni = 6
+        self.assertEqual("Spin Fall 37", create_hitstun_text(info))
+
+    def test_write_stagger_hitstun_text(self):
+        info = AttackInfo()
+        info.stagger = 15
+        info.groundHitAni = 2
+        self.assertEqual("Stagger 25", create_hitstun_text(info))
+
+    def test_write_launch_hitstun_text(self):
+        info = AttackInfo()
+        info.groundHitAni = 10
+        self.assertEqual("Launch", create_hitstun_text(info))
+
     def test_compare_frame_chunk_util(self):
 
         frame_chunks1 = [WaitFrames(5),
@@ -1216,7 +1238,7 @@ def NmlAtk5A():
         self.assertEqual(first.slideTime, second.slideTime, "slideTime not equal")
         self.assertEqual(first.hitstunAfterWallBounce, second.hitstunAfterWallBounce, "hitstunAfterWallBounce not equal")
         self.assertEqual(first.wallStickTime, second.wallStickTime, "wallStickTime not equal")
-        self.assertEqual(first.crumpleTime, second.crumpleTime, "crumpleTime not equal")
+        self.assertEqual(first.stagger, second.stagger, "stagger not equal")
         self.assertEqual(first.spinFallTime, second.spinFallTime, "spinFallTime not equal")
         self.assertEqual(first.groundBounce, second.groundBounce, "groundBounce not equal")
         self.assertEqual(first.wallBounce, second.wallBounce, "wallBounce not equal")
