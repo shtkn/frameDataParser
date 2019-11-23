@@ -1162,13 +1162,12 @@ def NmlAtk5A():
         info = AttackInfo()
         info.spinFall = 22
         info.groundHitAni = 6
-        self.assertEqual("Spin Fall 37", create_hitstun_text(info))
+        self.assertEqual("Spin Fall 22", create_hitstun_text(info))
 
     def test_write_stagger_hitstun_text(self):
         info = AttackInfo()
         info.stagger = 15
-        info.groundHitAni = 2
-        self.assertEqual("Stagger 25", create_hitstun_text(info))
+        self.assertEqual("Stagger 15", create_hitstun_text(info))
 
     def test_write_launch_hitstun_text(self):
         info = AttackInfo()
@@ -1191,16 +1190,42 @@ def NmlAtk5A():
         info.wallBounce = 10
         self.assertEqual("10 + WBounce 10", create_untech_text(info))
 
-    def test_write_untech_with_knockdown_text(self):
+    def test_write_untech_with_wallstick_text(self):
         info = AttackInfo()
         info.untech = 10
-        info.knockdownTime = 50
-        self.assertEqual("10 + Down 64", create_untech_text(info))
+        info.wallStick = 0
+        self.assertEqual("10 + WStick", create_untech_text(info))
 
         info = AttackInfo()
         info.untech = 10
-        info.knockdownTime = 1
+        info.wallBounce = 10
+        self.assertEqual("10 + WBounce 10", create_untech_text(info))
+
+    def test_write_untech_with_knockdown_text(self):
+        info = AttackInfo()
+        info.untech = 10
+        info.knockdown = 50
+        self.assertEqual("10 + Down 50", create_untech_text(info))
+
+        info = AttackInfo()
+        info.untech = 10
+        info.knockdown = 24
         self.assertEqual("10 + Down 24", create_untech_text(info))
+
+    def test_write_untech_with_slide_text(self):
+        info = AttackInfo()
+        info.untech = 10
+        info.slide = 7
+        self.assertEqual("10 + Slide 7", create_untech_text(info))
+
+    def test_write_untech_with_many_extras(self):
+        info = AttackInfo()
+        info.untech = 10
+        info.knockdown = 50
+        info.slide = 7
+        info.wallStick = 0
+        self.assertEqual("10 + WStick + Slide 7 + Down 50", create_untech_text(info))
+
 
     def test_compare_frame_chunk_util(self):
 
@@ -1261,8 +1286,8 @@ def NmlAtk5A():
         self.assertEqual(first.attribute, second.attribute, "attribute not equal")
         self.assertEqual(first.groundHitAni, second.groundHitAni, "groundHitAni not equal")
         self.assertEqual(first.airHitAni, second.airHitAni, "groundHitAni not equal")
-        self.assertEqual(first.knockdownTime, second.knockdownTime, "knockdownTime not equal")
-        self.assertEqual(first.slideTime, second.slideTime, "slideTime not equal")
+        self.assertEqual(first.knockdown, second.knockdown, "knockdown not equal")
+        self.assertEqual(first.slide, second.slide, "slide not equal")
         self.assertEqual(first.hitstunAfterWallBounce, second.hitstunAfterWallBounce, "hitstunAfterWallBounce not equal")
         self.assertEqual(first.wallStick, second.wallStick, "wallStickTime not equal")
         self.assertEqual(first.stagger, second.stagger, "stagger not equal")

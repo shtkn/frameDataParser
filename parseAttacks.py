@@ -76,8 +76,8 @@ class State:
 class AttackInfo:
     def __init__(self, damage=None, p1=None, p2=None, min_damage=0, p2once=None, hitstun=None, untech=None, blockstun=None,
                  hitstop=None, bonus_blockstop=None, bonus_hitstop=None, attack_level=None, attribute=None, ground_hit_ani=None,
-                 air_hit_ani=None, knockdown_time=None, slide_time=None, hitstun_after_wall_bounce=None, wallstick_time=None,
-                 stagger=None, spin_fall_time=None, ground_bounce=None, wall_bounce=None):
+                 air_hit_ani=None, knockdown=None, slide_time=None, hitstun_after_wall_bounce=None, wallstick=None,
+                 stagger=None, spin_fall=None, ground_bounce=None, wall_bounce=None):
         self.damage = damage
         self.p1 = p1
         self.p2 = p2
@@ -93,12 +93,12 @@ class AttackInfo:
         self.attribute = copy.copy(attribute)
         self.groundHitAni = ground_hit_ani
         self.airHitAni = air_hit_ani
-        self.knockdownTime = knockdown_time
-        self.slideTime = slide_time
+        self.knockdown = knockdown
+        self.slide = slide_time
         self.hitstunAfterWallBounce = hitstun_after_wall_bounce
-        self.wallStick = wallstick_time
+        self.wallStick = wallstick
         self.stagger = stagger
-        self.spinFall = spin_fall_time
+        self.spinFall = spin_fall
         self.groundBounce = ground_bounce
         self.wallBounce = wall_bounce
 
@@ -118,8 +118,8 @@ class AttackInfo:
         self.attribute = copy.copy(other.attribute) if other.attribute is not None else self.attribute
         self.groundHitAni = other.groundHitAni if other.groundHitAni is not None else self.groundHitAni
         self.airHitAni = other.airHitAni if other.airHitAni is not None else self.airHitAni
-        self.knockdownTime = other.knockdownTime if other.knockdownTime is not None else self.knockdownTime
-        self.slideTime = other.slideTime if other.slideTime is not None else self.slideTime
+        self.knockdown = other.knockdown if other.knockdown is not None else self.knockdown
+        self.slide = other.slide if other.slide is not None else self.slide
         self.hitstunAfterWallBounce = other.hitstunAfterWallBounce if other.hitstunAfterWallBounce is not None else self.hitstunAfterWallBounce
         self.wallStick = other.wallStick if other.wallStick is not None else self.wallStick
         self.stagger = other.stagger if other.stagger is not None else self.stagger
@@ -313,9 +313,10 @@ class WaitFrames(AbstractFrames):
 
 
 class SubroutineCall(Abstract):
-    def __init__(self, name):
+    def __init__(self, name, same_thread = False):
         Abstract.__init__(self)
         self.name = name
+        self.sameThread = same_thread
 
     def __str__(self):
         return self.name
@@ -391,9 +392,9 @@ SPRITE_START = "    sprite('"
 SPRITE_MID = "', "
 SPRITE_END = ")"
 HAS_HITBOX = "**attackbox here**"
-GFX_START = "GFX_0('"
-CALL_SUBROUTINE_STARTC = "callSubroutine('"
-CALL_SUBROUTINE_STARTc = "CallSubroutine('"
+GFX_START = "GFX_('"
+CALL_SUBROUTINE_STARTC = "CallSubroutine('"
+CALL_SUBROUTINE_STARTc = "callSubroutine('"
 
 
 def get_duration(sprite_str):
@@ -509,6 +510,8 @@ def parse_move_file(source, move_list, effect_list):
                 state.attackInfo.untech = int(line[line.index("(") + 1:line.index(")")])
             elif " Damage(" in line or "\tDamage(" in line:
                 state.attackInfo.damage = int(line[line.index("(") + 1:line.index(")")])
+            elif "Unknown11012(" in line or "MinimumDamagePct(" in line:
+                state.attackInfo.minDamage = int(line[line.index("(") + 1:line.index(")")])
             elif "Unknown11092(" in line:
                 state.attackInfo.p2Once = line[line.index("(") + 1:line.index(")")] == "1"
             elif "Unknown11028(" in line or "blockstun(" in line:
@@ -535,8 +538,11 @@ def parse_move_file(source, move_list, effect_list):
             elif GFX_START in line:
                 name_start = line.index("('") + 2
                 name_end = line.index("',")
+                number_start = line.index(", ") + 2
+                number_end = line.index(")")
+                id = int(line[number_start:number_end]) # if id = -1, then this gfx is on the same "thread" as this one
                 # print "GFX " + line[name_start:name_end]
-                frame_chunks.append(SubroutineCall(line[name_start:name_end]))
+                frame_chunks.append(SubroutineCall(line[name_start:name_end], id == -1))
                 # run the command on line[name_start:name_end] starting at current_frame-1
             elif CALL_SUBROUTINE_STARTC in line or CALL_SUBROUTINE_STARTc in line:
                 name_start = line.index("('") + 2
@@ -594,13 +600,33 @@ def parse_move_file(source, move_list, effect_list):
             elif "Unknown9118(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.groun = int(line[number_start:number_end])
+                state.attackInfo.groundBounce = int(line[number_start:number_end])
             elif "ExitState()" in line:
                 # we assume all the lines above this are for the move on block/whiff. Anything after is on hit
                 state.exitState = True
             elif "Unknown17025(" in line or "Unknown17024(" in line:  # i think this is attackDefaultsReversalAction()
                 state.invType = 0
                 state.isInv = True
+            elif "Unknown9190(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.groundBounce = int(line[number_start:number_end])
+            elif "Unknown9130(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                amt = int(line[number_start:number_end])
+                amt = 24 if amt == 1 else amt + 14
+                state.attackInfo.stagger = amt
+            elif "Unknown9202(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.slide = int(line[number_start:number_end]) + 19
+            elif "Unknown9310(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                amt = int(line[number_start:number_end])
+                amt = 24 if amt == 1 else amt + 14
+                state.attackInfo.knockdown = amt
             elif "Unknown30072(" in line:  # i think this is attackDefaultsCrushAttack()? Basically Attack Level 3
                 state.attackInfo.attackLevel = 3
                 state.attackInfo.bonus_hitstop = 0
@@ -1023,19 +1049,29 @@ def create_hitstun_and_untech_text(damage_list):
     for attack_info in damage_list:
         fill_str(create_hitstun_text(attack_info), 0, value, value_str, value_multiplier)
         fill_str(attack_info.get_untech(), 1, value, value_str, value_multiplier)
+
+    for i in range(len(value_str)):
+        if value[i] is not None:
+            value_str[i] = value_str[i] + str(value[i])
+            if value_multiplier[i] > 1:
+                value_str[i] = value_str[i] + "*" + str(value_multiplier[i])
+
     return value_str[0], value_str[1]
 
 
 def create_hitstun_text(attack_info):
     text = ""
     if attack_info.groundHitAni == 0 or attack_info.groundHitAni is None:
-        text = str(attack_info.hitstun)
+        if attack_info.stagger is not None and attack_info.stagger > 0:
+            text = "Stagger " + str(attack_info.stagger)
+        else:
+            text = str(attack_info.get_hitstun())
     elif attack_info.groundHitAni == 2:
-        text = "Stagger " + str(attack_info.stagger + 10)
+        text = "Stagger " + str(attack_info.get_untech())
     elif attack_info.groundHitAni == 3: # forces crouch. so far we don't do antying with this info
         text = str(attack_info.hitstun)
     elif attack_info.groundHitAni == 6:
-        text = "Spin Fall " + str(attack_info.spinFall + 15)
+        text = "Spin Fall " + str(attack_info.spinFall)
     else:
         text = "Launch"
     return text
@@ -1044,7 +1080,7 @@ def create_hitstun_text(attack_info):
 def create_untech_text(attack_info):
     text = ""
     if attack_info.airHitAni == 0 or attack_info.airHitAni is None:
-        text = str(attack_info.untech)
+        text = str(attack_info.get_untech())
 
     if attack_info.groundBounce is not None and attack_info.groundBounce > 0:
         text = text + " + GBounce"
@@ -1056,11 +1092,10 @@ def create_untech_text(attack_info):
         text = text + " + WStick"
         if attack_info.wallStick > 0:
             text = text + " " + str(attack_info.wallStick)
-    if attack_info.slideTime is not None and attack_info.slideTime > 0:
-        text = text + " + Slide " + str(attack_info.slideTime + 9 + 10)
-    if attack_info.knockdownTime is not None and attack_info.knockdownTime > 0:
-        kd_time = 24 if attack_info.knockdownTime == 1 else attack_info.knockdownTime + 14
-        text = text + " + Down " + str(kd_time)
+    if attack_info.slide is not None and attack_info.slide > 0:
+        text = text + " + Slide " + str(attack_info.slide)
+    if attack_info.knockdown is not None and attack_info.knockdown > 0:
+        text = text + " + Down " + str(attack_info.knockdown)
 
     return text
 
@@ -1073,11 +1108,11 @@ def fill_hitstop(info_list):
     multiplier = 0
     for i, info in enumerate(info_list):
         if i == 0:
-            current_hitstop = info.hitstop
+            current_hitstop = info.get_hitstop()
             current_bonus_blockstop = info.bonus_blockstop
             current_bonus_hitstop = info.bonus_hitstop
             multiplier = 1
-        elif current_hitstop == info.hitstop and current_bonus_blockstop == info.bonus_blockstop and \
+        elif current_hitstop == info.get_hitstop() and current_bonus_blockstop == info.bonus_blockstop and \
                 current_bonus_hitstop == info.bonus_hitstop:
             multiplier = multiplier + 1
         else:
@@ -1094,7 +1129,7 @@ def fill_hitstop(info_list):
                 if current_bonus_hitstop > -1:
                     to_return = to_return + "+"
                 to_return = to_return + str(current_bonus_hitstop)
-            current_hitstop = info.hitstop
+            current_hitstop = info.get_hitstop()
             current_bonus_blockstop = info.bonus_blockstop
             current_bonus_hitstop = info.bonus_hitstop
             multiplier = 1
