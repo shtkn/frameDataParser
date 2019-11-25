@@ -1106,8 +1106,11 @@ def NmlAtk5A():
                 AttackInfo(600, 60, 70, 5, None, hitstop=10, bonus_blockstop=5),
                 AttackInfo(600, 60, 70, 5, None, hitstop=10, bonus_hitstop=5)
                 ]
-        damage, p1, p2, hitstun, untech, level, attribute, hitstop, blockstun = create_damage_text(test)
+        damage, p1, p2, level, attribute, hitstop, blockstun = create_damage_text(test)
         print hitstop
+
+    def test_hitstun_and_untech_text(self):
+        pass
 
     def test_parse_function_with_one_sprite_line(self):
         state = """def vr_lp206atk_04():
@@ -1149,6 +1152,80 @@ def NmlAtk5A():
         self.assertEqual(5, inv_values[1])
         self.assertEqual(1, inv_values[2])
         self.assertEqual([True, True, True, True, False], inv_values[3])
+
+    def test_write_basic_hitstun_text(self):
+        info = AttackInfo()
+        info.hitstun = 10
+        self.assertEqual("10", create_hitstun_text(info))
+
+    def test_write_spinFall_hitstun_text(self):
+        info = AttackInfo()
+        info.spinFall = 22
+        info.groundHitAni = 6
+        self.assertEqual("Spin Fall 22", create_hitstun_text(info))
+
+    def test_write_stagger_hitstun_text(self):
+        info = AttackInfo()
+        info.stagger = 15
+        self.assertEqual("Stagger 15", create_hitstun_text(info))
+
+    def test_write_launch_hitstun_text(self):
+        info = AttackInfo()
+        info.groundHitAni = 10
+        self.assertEqual("Launch", create_hitstun_text(info))
+
+    def test_write_basic_untech_text(self):
+        info = AttackInfo()
+        info.untech = 10
+        self.assertEqual("10", create_untech_text(info))
+
+    def test_write_untech_with_wallbounce_text(self):
+        info = AttackInfo()
+        info.untech = 10
+        info.wallBounce = 0
+        self.assertEqual("10 + WBounce", create_untech_text(info))
+
+        info = AttackInfo()
+        info.untech = 10
+        info.wallBounce = 10
+        self.assertEqual("10 + WBounce 10", create_untech_text(info))
+
+    def test_write_untech_with_wallstick_text(self):
+        info = AttackInfo()
+        info.untech = 10
+        info.wallStick = 0
+        self.assertEqual("10 + WStick", create_untech_text(info))
+
+        info = AttackInfo()
+        info.untech = 10
+        info.wallBounce = 10
+        self.assertEqual("10 + WBounce 10", create_untech_text(info))
+
+    def test_write_untech_with_knockdown_text(self):
+        info = AttackInfo()
+        info.untech = 10
+        info.knockdown = 50
+        self.assertEqual("10 + Down 50", create_untech_text(info))
+
+        info = AttackInfo()
+        info.untech = 10
+        info.knockdown = 24
+        self.assertEqual("10 + Down 24", create_untech_text(info))
+
+    def test_write_untech_with_slide_text(self):
+        info = AttackInfo()
+        info.untech = 10
+        info.slide = 7
+        self.assertEqual("10 + Slide 7", create_untech_text(info))
+
+    def test_write_untech_with_many_extras(self):
+        info = AttackInfo()
+        info.untech = 10
+        info.knockdown = 50
+        info.slide = 7
+        info.wallStick = 0
+        self.assertEqual("10 + WStick + Slide 7 + Down 50", create_untech_text(info))
+
 
     def test_compare_frame_chunk_util(self):
 
@@ -1209,11 +1286,11 @@ def NmlAtk5A():
         self.assertEqual(first.attribute, second.attribute, "attribute not equal")
         self.assertEqual(first.groundHitAni, second.groundHitAni, "groundHitAni not equal")
         self.assertEqual(first.airHitAni, second.airHitAni, "groundHitAni not equal")
-        self.assertEqual(first.knockdownTime, second.knockdownTime, "knockdownTime not equal")
-        self.assertEqual(first.slideTime, second.slideTime, "slideTime not equal")
+        self.assertEqual(first.knockdown, second.knockdown, "knockdown not equal")
+        self.assertEqual(first.slide, second.slide, "slide not equal")
         self.assertEqual(first.hitstunAfterWallBounce, second.hitstunAfterWallBounce, "hitstunAfterWallBounce not equal")
-        self.assertEqual(first.wallStickTime, second.wallStickTime, "wallStickTime not equal")
-        self.assertEqual(first.crumpleTime, second.crumpleTime, "crumpleTime not equal")
-        self.assertEqual(first.spinFallTime, second.spinFallTime, "spinFallTime not equal")
+        self.assertEqual(first.wallStick, second.wallStick, "wallStickTime not equal")
+        self.assertEqual(first.stagger, second.stagger, "stagger not equal")
+        self.assertEqual(first.spinFall, second.spinFall, "spinFall not equal")
         self.assertEqual(first.groundBounce, second.groundBounce, "groundBounce not equal")
         self.assertEqual(first.wallBounce, second.wallBounce, "wallBounce not equal")
