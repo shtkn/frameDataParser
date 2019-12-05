@@ -3840,18 +3840,18 @@ def CmnActCrushAttack():
     sprite('ny409_00', 3)	# 1-3
     sprite('ny409_01', 3)	# 4-6
     tag_voice(1, 'bny156_0', 'bny156_1', '', '')
-    sprite('ny409_02', 3)	# 7-9	 **attackbox here**
-    sprite('ny409_03', 3)	# 10-12	 **attackbox here**
-    sprite('ny409_04', 3)	# 13-15	 **attackbox here**
-    sprite('ny409_02', 2)	# 16-17	 **attackbox here**
-    sprite('ny409_05', 4)	# 18-21	 **attackbox here**
+    sprite('ny409_02', 3)	# 7-9
+    sprite('ny409_03', 3)	# 10-12
+    sprite('ny409_04', 3)	# 13-15
+    sprite('ny409_02', 2)	# 16-17
+    sprite('ny409_05', 4)	# 18-21
     SFX_0('006_swing_blade_2')
     sprite('ny409_06', 3)	# 22-24	 **attackbox here**
     sprite('ny409_06', 4)	# 25-28	 **attackbox here**
     StartMultihit()
-    sprite('ny409_07', 2)	# 29-30	 **attackbox here**
-    sprite('ny409_08', 2)	# 31-32	 **attackbox here**
-    sprite('ny409_09', 3)	# 33-35	 **attackbox here**
+    sprite('ny409_07', 2)	# 29-30
+    sprite('ny409_08', 2)	# 31-32
+    sprite('ny409_09', 3)	# 33-35
     sprite('ny409_10', 3)	# 36-38
     sprite('ny409_11', 3)	# 39-41
     sprite('ny409_12', 3)	# 42-44
@@ -3866,8 +3866,8 @@ def CmnActCrushAttackChase1st():
         Unknown9016(1)
     sprite('keep', 1)	# 1-1
     StartMultihit()
-    sprite('ny409_08', 2)	# 2-3	 **attackbox here**
-    sprite('ny409_09', 3)	# 4-6	 **attackbox here**
+    sprite('ny409_08', 2)	# 2-3
+    sprite('ny409_09', 3)	# 4-6
     sprite('ny409_10', 3)	# 7-9
     sprite('ny409_11', 3)	# 10-12
     sprite('ny409_12', 3)	# 13-15
@@ -4716,12 +4716,12 @@ def LowShotA():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-    sprite('ny401_00', 2)	# 1-2	 **attackbox here**
-    sprite('ny401_01', 1)	# 3-3	 **attackbox here**
-    sprite('ny401_01', 1)	# 4-4	 **attackbox here**
+    sprite('ny401_00', 2)	# 1-2
+    sprite('ny401_01', 1)	# 3-3
+    sprite('ny401_01', 1)	# 4-4
     GFX_0('SummonDmc', -1)
     SFX_3('nyse_30')
-    sprite('ny401_02', 2)	# 5-6	 **attackbox here**
+    sprite('ny401_02', 2)	# 5-6
     sprite('ny401_03', 2)	# 7-8
     Unknown7006('bny200_0', 100, 846818914, 828321840, 0, 0, 100, 846818914, 845099056, 0, 0, 100, 0, 0, 0, 0, 0)
     sprite('ny401_04', 2)	# 9-10
@@ -4745,12 +4745,12 @@ def LowShotB():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-    sprite('ny401_00', 2)	# 1-2	 **attackbox here**
-    sprite('ny401_01', 1)	# 3-3	 **attackbox here**
-    sprite('ny401_01', 1)	# 4-4	 **attackbox here**
+    sprite('ny401_00', 2)	# 1-2
+    sprite('ny401_01', 1)	# 3-3
+    sprite('ny401_01', 1)	# 4-4
     GFX_0('SummonDmc', -1)
     SFX_3('nyse_30')
-    sprite('ny401_02', 2)	# 5-6	 **attackbox here**
+    sprite('ny401_02', 2)	# 5-6
     sprite('ny401_03', 2)	# 7-8
     Unknown7006('bny200_0', 100, 846818914, 828321840, 0, 0, 100, 846818914, 845099056, 0, 0, 100, 0, 0, 0, 0, 0)
     sprite('ny401_04', 2)	# 9-10
@@ -4774,14 +4774,14 @@ def LowShotC():
 
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
-    sprite('ny401_00', 2)	# 1-2	 **attackbox here**
-    sprite('ny401_01', 1)	# 3-3	 **attackbox here**
-    sprite('ny401_01', 1)	# 4-4	 **attackbox here**
+    sprite('ny401_00', 2)	# 1-2
+    sprite('ny401_01', 1)	# 3-3
+    sprite('ny401_01', 1)	# 4-4
     GFX_0('SummonDmc', -1)
     SFX_3('nyse_30')
     Unknown23125('')
     Unknown2058(-5000)
-    sprite('ny401_02', 2)	# 5-6	 **attackbox here**
+    sprite('ny401_02', 2)	# 5-6
     sprite('ny401_03', 2)	# 7-8
     Unknown7006('bny200_0', 100, 846818914, 828321840, 0, 0, 100, 846818914, 845099056, 0, 0, 100, 0, 0, 0, 0, 0)
     sprite('ny401_04', 2)	# 9-10
@@ -9363,17 +9363,17 @@ def Act3Event_nyvsmu_00():
     sprite('ny409_01', 1)	# 4-4
     Unknown4004('4775617264437275736857696e64000000000000000000000000000000000000ffff0000')
     sprite('ny409_01', 2)	# 5-6
-    sprite('ny409_02', 3)	# 7-9	 **attackbox here**
-    sprite('ny409_03', 3)	# 10-12	 **attackbox here**
-    sprite('ny409_04', 3)	# 13-15	 **attackbox here**
-    sprite('ny409_05', 5)	# 16-20	 **attackbox here**
+    sprite('ny409_02', 3)	# 7-9
+    sprite('ny409_03', 3)	# 10-12
+    sprite('ny409_04', 3)	# 13-15
+    sprite('ny409_05', 5)	# 16-20
     SFX_0('006_swing_blade_2')
     sprite('ny409_06', 2)	# 21-22	 **attackbox here**
     sprite('ny409_06', 1)	# 23-23	 **attackbox here**
     Unknown21007(22, 32)
-    sprite('ny409_07', 3)	# 24-26	 **attackbox here**
-    sprite('ny409_08', 4)	# 27-30	 **attackbox here**
-    sprite('ny409_09', 3)	# 31-33	 **attackbox here**
+    sprite('ny409_07', 3)	# 24-26
+    sprite('ny409_08', 4)	# 27-30
+    sprite('ny409_09', 3)	# 31-33
     sprite('ny409_10', 3)	# 34-36
     sprite('ny409_11', 3)	# 37-39
     sprite('ny409_12', 3)	# 40-42

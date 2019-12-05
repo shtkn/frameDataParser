@@ -1679,7 +1679,7 @@ def AN_NmlAtk5A_3rd():
     RefreshMultihit()
     sprite('Action_403_07', 2)	# 21-22	 **attackbox here**
     RefreshMultihit()
-    sprite('Action_403_08', 2)	# 23-24	 **attackbox here**
+    sprite('Action_403_08', 2)	# 23-24
     RefreshMultihit()
     Unknown8006(0, 1, 1)
     GFX_0('Eff66CBlade3', 100)

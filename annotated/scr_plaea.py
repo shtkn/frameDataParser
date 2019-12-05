@@ -2388,13 +2388,13 @@ def __407Shot_atk_SB():
             GFX_0('407Shot_SB_Test', -1)
             sendToLabel(100)
         Unknown11063(1)
-    sprite('vr_la407_atkcol', 30)	# 1-30
+    sprite('vr_la407_atkcol', 30)	# 1-30	 **attackbox here**
     StartMultihit()
     Unknown1099(-3)
-    sprite('vr_la407_atkcol', 1)	# 31-31
+    sprite('vr_la407_atkcol', 1)	# 31-31	 **attackbox here**
     RefreshMultihit()
     Unknown11063(0)
-    sprite('vr_la407_atkcol', 100)	# 32-131
+    sprite('vr_la407_atkcol', 100)	# 32-131	 **attackbox here**
     ExitState()
     label(100)
     sprite('null', 1)	# 132-132
@@ -2956,14 +2956,14 @@ def vr_lp232atk():
         Unknown4007(3)
         Unknown4010(3)
         teleportRelativeX(-50000)
-    sprite('vr_lp232atkcol04', 3)	# 1-3
+    sprite('vr_lp232atkcol04', 3)	# 1-3	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_lp232atkcol00', 3)	# 4-6
+    sprite('vr_lp232atkcol00', 3)	# 4-6	 **attackbox here**
     RefreshMultihit()
     SFX_3('slash_pole_slow')
-    sprite('vr_lp232atkcol01', 3)	# 7-9
+    sprite('vr_lp232atkcol01', 3)	# 7-9	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_lp232atkcol02', 7)	# 10-16
+    sprite('vr_lp232atkcol02', 7)	# 10-16	 **attackbox here**
     Unknown23029(3, 6001, 0)
     Unknown23027()
 
@@ -2992,13 +2992,13 @@ def vr_lp205atk():
         def upon_ON_HIT_OR_BLOCK():
             Unknown23029(3, 204, 0)
     sprite('null', 5)	# 1-5
-    sprite('vr_lp205atkcol', 7)	# 6-12
+    sprite('vr_lp205atkcol', 7)	# 6-12	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_lp205atkcol', 7)	# 13-19
+    sprite('vr_lp205atkcol', 7)	# 13-19	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_lp205atkcol', 5)	# 20-24
+    sprite('vr_lp205atkcol', 5)	# 20-24	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_lp205atkcol', 2)	# 25-26
+    sprite('vr_lp205atkcol', 2)	# 25-26	 **attackbox here**
     Unknown1084(1)
 
 @State
@@ -3078,7 +3078,7 @@ def vr_lp206atk_00():
         Unknown1007(400000)
         physicsXImpulse(40000)
         setGravity(2000)
-    sprite('vr_lp206atkcol_ex', 11)	# 1-11
+    sprite('vr_lp206atkcol_ex', 11)	# 1-11	 **attackbox here**
 
 @State
 def vr_lp206atk_01():
@@ -3090,7 +3090,7 @@ def vr_lp206atk_01():
         teleportRelativeX(200000)
         Unknown1007(250000)
         physicsXImpulse(40000)
-    sprite('vr_lp206atkcol', 11)	# 1-11
+    sprite('vr_lp206atkcol', 11)	# 1-11	 **attackbox here**
 
 @State
 def vr_lp206atk_02():
@@ -3103,7 +3103,7 @@ def vr_lp206atk_02():
         Unknown1007(350000)
         physicsXImpulse(60000)
         setGravity(2000)
-    sprite('vr_lp206atkcol_ex', 11)	# 1-11
+    sprite('vr_lp206atkcol_ex', 11)	# 1-11	 **attackbox here**
 
 @State
 def vr_lp206atk_03():
@@ -3114,7 +3114,7 @@ def vr_lp206atk_03():
         teleportRelativeX(100000)
         Unknown1007(150000)
         physicsXImpulse(50000)
-    sprite('vr_lp206atkcol_ex2', 11)	# 1-11
+    sprite('vr_lp206atkcol_ex2', 11)	# 1-11	 **attackbox here**
 
 @State
 def vr_lp206atk_04():
@@ -3126,7 +3126,7 @@ def vr_lp206atk_04():
         Unknown1007(50000)
         physicsXImpulse(50000)
         setGravity(-2000)
-    sprite('vr_lp206atkcol_ex', 11)	# 1-11
+    sprite('vr_lp206atkcol_ex', 11)	# 1-11	 **attackbox here**
 
 @State
 def vr_lp254atk():
@@ -3145,11 +3145,11 @@ def vr_lp254atk():
         AirUntechableTime(21)
         Unknown4007(2)
         Unknown4010(2)
-    sprite('vr_lp254atkcol', 6)	# 1-6
+    sprite('vr_lp254atkcol', 6)	# 1-6	 **attackbox here**
     RefreshMultihit()
     Unknown1098(120)
     SFX_3('slash_rapier_fast')
-    sprite('vr_lp254atkcol', 6)	# 7-12
+    sprite('vr_lp254atkcol', 6)	# 7-12	 **attackbox here**
     RefreshMultihit()
     Unknown1098(90)
     SFX_3('slash_rapier_fast')
@@ -3157,7 +3157,7 @@ def vr_lp254atk():
     def upon_ON_HIT_OR_BLOCK():
         clearUponHandler(10)
         Unknown23029(3, 221, 0)
-    sprite('vr_lp254atkcol', 6)	# 13-18
+    sprite('vr_lp254atkcol', 6)	# 13-18	 **attackbox here**
     RefreshMultihit()
     Unknown1098(90)
     SFX_3('slash_rapier_fast')
@@ -3426,7 +3426,7 @@ def LandingImpactA():
         Unknown11056(3)
         Unknown23182(3)
         Unknown1056(1200)
-    sprite('vr_la405atkcol', 6)	# 1-6
+    sprite('vr_la405atkcol', 6)	# 1-6	 **attackbox here**
     ScreenShake(0, 15000)
 
 @State
@@ -3447,7 +3447,7 @@ def LandingImpactB():
         Unknown11056(3)
         Unknown23182(3)
         Unknown1056(1300)
-    sprite('vr_la405atkcol', 6)	# 1-6
+    sprite('vr_la405atkcol', 6)	# 1-6	 **attackbox here**
     ScreenShake(0, 15000)
 
 @State
@@ -3470,7 +3470,7 @@ def LandingImpactAB():
         Unknown30065(0)
         Unknown11091(10)
         Unknown1056(1400)
-    sprite('vr_la405atkcol', 6)	# 1-6
+    sprite('vr_la405atkcol', 6)	# 1-6	 **attackbox here**
     ScreenShake(0, 15000)
 
 @State

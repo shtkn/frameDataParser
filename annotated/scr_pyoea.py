@@ -2439,85 +2439,85 @@ def Tatsumaki():
         Unknown3001(0)
         GFX_0('Tatsumaki_start', 100)
         GFX_0('Tatsumaki_jizoku', 100)
-    sprite('vr_dmy_tatsumaki', 24)	# 1-24
+    sprite('vr_dmy_tatsumaki', 24)	# 1-24	 **attackbox here**
     Unknown23027()
-    sprite('vr_dmy_tatsumaki', 5)	# 25-29
+    sprite('vr_dmy_tatsumaki', 5)	# 25-29	 **attackbox here**
     SLOT_51 = 1
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 30-34
+    sprite('vr_dmy_tatsumaki', 5)	# 30-34	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 35-39
+    sprite('vr_dmy_tatsumaki', 5)	# 35-39	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 40-44
+    sprite('vr_dmy_tatsumaki', 5)	# 40-44	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 45-49
+    sprite('vr_dmy_tatsumaki', 5)	# 45-49	 **attackbox here**
     Unknown3004(26)
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 50-54
+    sprite('vr_dmy_tatsumaki', 5)	# 50-54	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 55-59
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 60-64
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 65-69
+    sprite('vr_dmy_tatsumaki', 5)	# 55-59	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 70-74
+    sprite('vr_dmy_tatsumaki', 5)	# 60-64	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 75-79
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 80-84
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 85-89
+    sprite('vr_dmy_tatsumaki', 5)	# 65-69	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 90-94
+    sprite('vr_dmy_tatsumaki', 5)	# 70-74	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 95-99
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 100-104
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 105-109
+    sprite('vr_dmy_tatsumaki', 5)	# 75-79	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 110-114
+    sprite('vr_dmy_tatsumaki', 5)	# 80-84	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 115-119
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 120-124
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 125-129
+    sprite('vr_dmy_tatsumaki', 5)	# 85-89	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 130-134
+    sprite('vr_dmy_tatsumaki', 5)	# 90-94	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 135-139
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 140-144
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 145-149
+    sprite('vr_dmy_tatsumaki', 5)	# 95-99	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 150-154
+    sprite('vr_dmy_tatsumaki', 5)	# 100-104	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 155-159
+    sprite('vr_dmy_tatsumaki', 5)	# 105-109	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 160-164
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 110-114	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 165-169
+    sprite('vr_dmy_tatsumaki', 5)	# 115-119	 **attackbox here**
+    RefreshMultihit()
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 120-124	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 125-129	 **attackbox here**
+    RefreshMultihit()
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 130-134	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 135-139	 **attackbox here**
+    RefreshMultihit()
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 140-144	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 145-149	 **attackbox here**
+    RefreshMultihit()
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 150-154	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 155-159	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 160-164	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 165-169	 **attackbox here**
     RefreshMultihit()
     AirPushbackY(24000)
-    sprite('vr_dmy_tatsumaki', 5)	# 170-174
+    sprite('vr_dmy_tatsumaki', 5)	# 170-174	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 175-179
+    sprite('vr_dmy_tatsumaki', 5)	# 175-179	 **attackbox here**
     RefreshMultihit()
 
 @State
@@ -2561,88 +2561,88 @@ def TatsumakiOD():
         Unknown3001(0)
         GFX_0('Tatsumaki_start', 100)
         GFX_0('Tatsumaki_jizoku', 100)
-    sprite('vr_dmy_tatsumaki', 24)	# 1-24
+    sprite('vr_dmy_tatsumaki', 24)	# 1-24	 **attackbox here**
     Unknown23027()
-    sprite('vr_dmy_tatsumaki', 5)	# 25-29
+    sprite('vr_dmy_tatsumaki', 5)	# 25-29	 **attackbox here**
     SLOT_51 = 1
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 30-34
+    sprite('vr_dmy_tatsumaki', 5)	# 30-34	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 35-39
+    sprite('vr_dmy_tatsumaki', 5)	# 35-39	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 40-44
+    sprite('vr_dmy_tatsumaki', 5)	# 40-44	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 45-49
+    sprite('vr_dmy_tatsumaki', 5)	# 45-49	 **attackbox here**
     Unknown3004(26)
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 50-54
+    sprite('vr_dmy_tatsumaki', 5)	# 50-54	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 55-59
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 60-64
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 65-69
+    sprite('vr_dmy_tatsumaki', 5)	# 55-59	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 70-74
+    sprite('vr_dmy_tatsumaki', 5)	# 60-64	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 75-79
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 80-84
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 85-89
+    sprite('vr_dmy_tatsumaki', 5)	# 65-69	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 90-94
+    sprite('vr_dmy_tatsumaki', 5)	# 70-74	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 95-99
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 100-104
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 105-109
+    sprite('vr_dmy_tatsumaki', 5)	# 75-79	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 110-114
+    sprite('vr_dmy_tatsumaki', 5)	# 80-84	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 115-119
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 120-124
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 125-129
+    sprite('vr_dmy_tatsumaki', 5)	# 85-89	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 130-134
+    sprite('vr_dmy_tatsumaki', 5)	# 90-94	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 135-139
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 140-144
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 145-149
+    sprite('vr_dmy_tatsumaki', 5)	# 95-99	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 150-154
+    sprite('vr_dmy_tatsumaki', 5)	# 100-104	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 105-109	 **attackbox here**
+    RefreshMultihit()
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 110-114	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 115-119	 **attackbox here**
+    RefreshMultihit()
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 120-124	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 125-129	 **attackbox here**
+    RefreshMultihit()
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 130-134	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 135-139	 **attackbox here**
+    RefreshMultihit()
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 140-144	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 145-149	 **attackbox here**
+    RefreshMultihit()
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 150-154	 **attackbox here**
     RefreshMultihit()
     GroundedHitstunAnimation(10)
     AirHitstunAnimation(10)
     AirPushbackY(18000)
     AirPushbackX(1000)
-    sprite('vr_dmy_tatsumaki', 5)	# 155-159
+    sprite('vr_dmy_tatsumaki', 5)	# 155-159	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 160-164
+    sprite('vr_dmy_tatsumaki', 5)	# 160-164	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 165-169
+    sprite('vr_dmy_tatsumaki', 5)	# 165-169	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 170-174
+    sprite('vr_dmy_tatsumaki', 5)	# 170-174	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 175-179
+    sprite('vr_dmy_tatsumaki', 5)	# 175-179	 **attackbox here**
     RefreshMultihit()
 
 @State
@@ -2753,7 +2753,7 @@ def TatsumakiDelete():
         Unknown4007(2)
         Unknown4013(2)
         Unknown3001(255)
-    sprite('vr_dmy_tatsumaki', 10)	# 1-10
+    sprite('vr_dmy_tatsumaki', 10)	# 1-10	 **attackbox here**
     GFX_0('TatsumakiDelete2', 100)
     Unknown3004(-26)
     Unknown1059(-100)
@@ -3366,22 +3366,22 @@ def IchigekiTatsumakiAtk():
 
         def upon_44():
             Unknown2003(1)
-    sprite('dmy_atk01', 15)	# 1-15
+    sprite('dmy_atk01', 15)	# 1-15	 **attackbox here**
     Unknown2003(1)
     GFX_0('Ichigekistart00', 0)
-    sprite('dmy_atk01', 29)	# 16-44
+    sprite('dmy_atk01', 29)	# 16-44	 **attackbox here**
     GFX_1('jief_groundtouch_04', 1)
-    sprite('dmy_atk01', 7)	# 45-51
+    sprite('dmy_atk01', 7)	# 45-51	 **attackbox here**
     GFX_0('Ichigekistart03', 0)
-    sprite('dmy_atk01', 7)	# 52-58
+    sprite('dmy_atk01', 7)	# 52-58	 **attackbox here**
     GFX_0('IchigekiTornado01', 100)
-    sprite('dmy_atk01', 15)	# 59-73
+    sprite('dmy_atk01', 15)	# 59-73	 **attackbox here**
     GFX_0('IchigekiTornado00', 0)
     Unknown2003(0)
     RefreshMultihit()
     Unknown4007(0)
-    sprite('dmy_atk01', 10)	# 74-83
-    sprite('dmy_atk01', 220)	# 84-303
+    sprite('dmy_atk01', 10)	# 74-83	 **attackbox here**
+    sprite('dmy_atk01', 220)	# 84-303	 **attackbox here**
     Unknown23027()
 
 @State
@@ -4214,73 +4214,73 @@ def TatsumakiTAG():
         Unknown3001(0)
         GFX_0('Tatsumaki_start', 100)
         GFX_0('Tatsumaki_jizoku', 100)
-    sprite('vr_dmy_tatsumaki', 24)	# 1-24
+    sprite('vr_dmy_tatsumaki', 24)	# 1-24	 **attackbox here**
     Unknown23027()
-    sprite('vr_dmy_tatsumaki', 5)	# 25-29
+    sprite('vr_dmy_tatsumaki', 5)	# 25-29	 **attackbox here**
     SLOT_51 = 1
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 30-34
-    sprite('vr_dmy_tatsumaki', 5)	# 35-39
+    sprite('vr_dmy_tatsumaki', 5)	# 30-34	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 35-39	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 40-44
-    sprite('vr_dmy_tatsumaki', 5)	# 45-49
+    sprite('vr_dmy_tatsumaki', 5)	# 40-44	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 45-49	 **attackbox here**
     Unknown3004(26)
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 50-54
-    sprite('vr_dmy_tatsumaki', 5)	# 55-59
+    sprite('vr_dmy_tatsumaki', 5)	# 50-54	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 55-59	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 60-64
-    sprite('vr_dmy_tatsumaki', 5)	# 65-69
+    sprite('vr_dmy_tatsumaki', 5)	# 60-64	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 65-69	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 70-74
-    sprite('vr_dmy_tatsumaki', 5)	# 75-79
+    sprite('vr_dmy_tatsumaki', 5)	# 70-74	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 75-79	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 80-84
-    sprite('vr_dmy_tatsumaki', 5)	# 85-89
+    sprite('vr_dmy_tatsumaki', 5)	# 80-84	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 85-89	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 90-94
-    sprite('vr_dmy_tatsumaki', 5)	# 95-99
+    sprite('vr_dmy_tatsumaki', 5)	# 90-94	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 95-99	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 100-104
-    sprite('vr_dmy_tatsumaki', 5)	# 105-109
+    sprite('vr_dmy_tatsumaki', 5)	# 100-104	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 105-109	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 110-114
-    sprite('vr_dmy_tatsumaki', 5)	# 115-119
+    sprite('vr_dmy_tatsumaki', 5)	# 110-114	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 115-119	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 120-124
-    sprite('vr_dmy_tatsumaki', 5)	# 125-129
+    sprite('vr_dmy_tatsumaki', 5)	# 120-124	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 125-129	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 130-134
-    sprite('vr_dmy_tatsumaki', 5)	# 135-139
+    sprite('vr_dmy_tatsumaki', 5)	# 130-134	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 135-139	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 140-144
+    sprite('vr_dmy_tatsumaki', 5)	# 140-144	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 145-149
+    sprite('vr_dmy_tatsumaki', 5)	# 145-149	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 150-154
+    sprite('vr_dmy_tatsumaki', 5)	# 150-154	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 155-159
+    sprite('vr_dmy_tatsumaki', 5)	# 155-159	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 160-164
+    sprite('vr_dmy_tatsumaki', 5)	# 160-164	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 165-169
+    sprite('vr_dmy_tatsumaki', 5)	# 165-169	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 170-174
+    sprite('vr_dmy_tatsumaki', 5)	# 170-174	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 175-179
+    sprite('vr_dmy_tatsumaki', 5)	# 175-179	 **attackbox here**
     RefreshMultihit()
 
 @State
@@ -4365,78 +4365,78 @@ def TatsumakiODTAG():
         Unknown3001(0)
         GFX_0('Tatsumaki_start', 100)
         GFX_0('Tatsumaki_jizoku', 100)
-    sprite('vr_dmy_tatsumaki', 24)	# 1-24
+    sprite('vr_dmy_tatsumaki', 24)	# 1-24	 **attackbox here**
     Unknown23027()
-    sprite('vr_dmy_tatsumaki', 5)	# 25-29
+    sprite('vr_dmy_tatsumaki', 5)	# 25-29	 **attackbox here**
     SLOT_51 = 1
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 30-34
-    sprite('vr_dmy_tatsumaki', 5)	# 35-39
+    sprite('vr_dmy_tatsumaki', 5)	# 30-34	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 35-39	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 40-44
-    sprite('vr_dmy_tatsumaki', 5)	# 45-49
+    sprite('vr_dmy_tatsumaki', 5)	# 40-44	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 45-49	 **attackbox here**
     Unknown3004(26)
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 50-54
-    sprite('vr_dmy_tatsumaki', 5)	# 55-59
+    sprite('vr_dmy_tatsumaki', 5)	# 50-54	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 55-59	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 60-64
-    sprite('vr_dmy_tatsumaki', 5)	# 65-69
+    sprite('vr_dmy_tatsumaki', 5)	# 60-64	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 65-69	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 70-74
-    sprite('vr_dmy_tatsumaki', 5)	# 75-79
+    sprite('vr_dmy_tatsumaki', 5)	# 70-74	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 75-79	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 80-84
-    sprite('vr_dmy_tatsumaki', 5)	# 85-89
+    sprite('vr_dmy_tatsumaki', 5)	# 80-84	 **attackbox here**
+    sprite('vr_dmy_tatsumaki', 5)	# 85-89	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 90-94
+    sprite('vr_dmy_tatsumaki', 5)	# 90-94	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 95-99
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 100-104
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 105-109
+    sprite('vr_dmy_tatsumaki', 5)	# 95-99	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 110-114
+    sprite('vr_dmy_tatsumaki', 5)	# 100-104	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 115-119
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 120-124
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 125-129
+    sprite('vr_dmy_tatsumaki', 5)	# 105-109	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 130-134
+    sprite('vr_dmy_tatsumaki', 5)	# 110-114	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 135-139
-    RefreshMultihit()
-    SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 140-144
-    RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 145-149
+    sprite('vr_dmy_tatsumaki', 5)	# 115-119	 **attackbox here**
     RefreshMultihit()
     SFX_3('yo008')
-    sprite('vr_dmy_tatsumaki', 5)	# 150-154
+    sprite('vr_dmy_tatsumaki', 5)	# 120-124	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 155-159
+    sprite('vr_dmy_tatsumaki', 5)	# 125-129	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 160-164
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 130-134	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 165-169
+    sprite('vr_dmy_tatsumaki', 5)	# 135-139	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 170-174
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 140-144	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_tatsumaki', 5)	# 175-179
+    sprite('vr_dmy_tatsumaki', 5)	# 145-149	 **attackbox here**
+    RefreshMultihit()
+    SFX_3('yo008')
+    sprite('vr_dmy_tatsumaki', 5)	# 150-154	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 155-159	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 160-164	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 165-169	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 170-174	 **attackbox here**
+    RefreshMultihit()
+    sprite('vr_dmy_tatsumaki', 5)	# 175-179	 **attackbox here**
     RefreshMultihit()
 
 @State

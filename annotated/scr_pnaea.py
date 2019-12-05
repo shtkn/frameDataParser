@@ -2717,45 +2717,45 @@ def Hamaon():
 
         def upon_82():
             SLOT_56 = 1
-    sprite('vr_dmy_hamaon', 5)	# 1-5
+    sprite('vr_dmy_hamaon', 5)	# 1-5	 **attackbox here**
     RefreshMultihit()
     SFX_3('na010')
-    sprite('vr_dmy_hamaon', 5)	# 6-10
+    sprite('vr_dmy_hamaon', 5)	# 6-10	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 5)	# 11-15
+    sprite('vr_dmy_hamaon', 5)	# 11-15	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 5)	# 16-20
+    sprite('vr_dmy_hamaon', 5)	# 16-20	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 5)	# 21-25
+    sprite('vr_dmy_hamaon', 5)	# 21-25	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 5)	# 26-30
+    sprite('vr_dmy_hamaon', 5)	# 26-30	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 5)	# 31-35
+    sprite('vr_dmy_hamaon', 5)	# 31-35	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 5)	# 36-40
+    sprite('vr_dmy_hamaon', 5)	# 36-40	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 5)	# 41-45
+    sprite('vr_dmy_hamaon', 5)	# 41-45	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 5)	# 46-50
+    sprite('vr_dmy_hamaon', 5)	# 46-50	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 5)	# 51-55
+    sprite('vr_dmy_hamaon', 5)	# 51-55	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 5)	# 56-60
+    sprite('vr_dmy_hamaon', 5)	# 56-60	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 5)	# 61-65
+    sprite('vr_dmy_hamaon', 5)	# 61-65	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 5)	# 66-70
+    sprite('vr_dmy_hamaon', 5)	# 66-70	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 4)	# 71-74
+    sprite('vr_dmy_hamaon', 4)	# 71-74	 **attackbox here**
     RefreshMultihit()
-    sprite('vr_dmy_hamaon', 1)	# 75-75
+    sprite('vr_dmy_hamaon', 1)	# 75-75	 **attackbox here**
     if SLOT_56:
         GFX_0('MissMarkHsub', 100)
     loopRest()
     clearUponHandler(78)
     if SLOT_55:
         _gotolabel(1)
-    sprite('vr_dmy_hamaon', 24)	# 76-99
+    sprite('vr_dmy_hamaon', 24)	# 76-99	 **attackbox here**
     Unknown3004(-10)
     Unknown2001()
     loopRest()
@@ -2813,7 +2813,7 @@ def Hamaon():
             GroundedHitstunAnimation(9)
             GFX_0('MissMarkH', 100)
             Unknown11001(0, 19, 19)
-    sprite('vr_dmy_hamaon', 10)	# 105-114
+    sprite('vr_dmy_hamaon', 10)	# 105-114	 **attackbox here**
     Unknown2001()
 
 @State
@@ -2858,31 +2858,31 @@ def HamaonKill():
                 Unknown30070('48616d616f6e4b696c6c33500000000000000000000000000000000000000000')
             if (SLOT_48 == 9014):
                 Unknown30070('48616d616f6e4b696c6c34500000000000000000000000000000000000000000')
-    sprite('vr_dmy_hamaon', 1)	# 1-1
+    sprite('vr_dmy_hamaon', 1)	# 1-1	 **attackbox here**
     StartMultihit()
-    sprite('vr_dmy_hamaon', 3)	# 2-4
+    sprite('vr_dmy_hamaon', 3)	# 2-4	 **attackbox here**
     StartMultihit()
     Unknown36(22)
     Unknown3032()
     Unknown3004(-4)
     Unknown35()
-    sprite('vr_dmy_hamaon', 10)	# 5-14
+    sprite('vr_dmy_hamaon', 10)	# 5-14	 **attackbox here**
     StartMultihit()
-    sprite('vr_dmy_hamaon', 10)	# 15-24
+    sprite('vr_dmy_hamaon', 10)	# 15-24	 **attackbox here**
     StartMultihit()
     SFX_3('cut_l')
-    sprite('vr_dmy_hamaon', 10)	# 25-34
+    sprite('vr_dmy_hamaon', 10)	# 25-34	 **attackbox here**
     StartMultihit()
     GFX_0('HamaonKillIcon', 100)
-    sprite('vr_dmy_hamaon', 10)	# 35-44
+    sprite('vr_dmy_hamaon', 10)	# 35-44	 **attackbox here**
     StartMultihit()
-    sprite('vr_dmy_hamaon', 10)	# 45-54
+    sprite('vr_dmy_hamaon', 10)	# 45-54	 **attackbox here**
     StartMultihit()
-    sprite('vr_dmy_hamaon', 10)	# 55-64
+    sprite('vr_dmy_hamaon', 10)	# 55-64	 **attackbox here**
     StartMultihit()
-    sprite('vr_dmy_hamaon', 10)	# 65-74
+    sprite('vr_dmy_hamaon', 10)	# 65-74	 **attackbox here**
     StartMultihit()
-    sprite('vr_dmy_hamaon', 1)	# 75-75
+    sprite('vr_dmy_hamaon', 1)	# 75-75	 **attackbox here**
     ScreenShake(300000, 100000)
     RefreshMultihit()
     Unknown11023(1)
@@ -3144,29 +3144,29 @@ def MudoonKill():
             Unknown35()
         Unknown23083(1)
         SLOT_5 = 0
-    sprite('vr_dmy_hamaon', 4)	# 1-4
+    sprite('vr_dmy_hamaon', 4)	# 1-4	 **attackbox here**
     StartMultihit()
     Unknown36(22)
     Unknown3032()
     Unknown3004(-4)
     Unknown35()
-    sprite('vr_dmy_hamaon', 10)	# 5-14
+    sprite('vr_dmy_hamaon', 10)	# 5-14	 **attackbox here**
     StartMultihit()
-    sprite('vr_dmy_hamaon', 10)	# 15-24
+    sprite('vr_dmy_hamaon', 10)	# 15-24	 **attackbox here**
     StartMultihit()
     SFX_3('cut_l')
-    sprite('vr_dmy_hamaon', 10)	# 25-34
+    sprite('vr_dmy_hamaon', 10)	# 25-34	 **attackbox here**
     StartMultihit()
     GFX_0('MudoonKillIcon', 100)
-    sprite('vr_dmy_hamaon', 10)	# 35-44
+    sprite('vr_dmy_hamaon', 10)	# 35-44	 **attackbox here**
     StartMultihit()
-    sprite('vr_dmy_hamaon', 10)	# 45-54
+    sprite('vr_dmy_hamaon', 10)	# 45-54	 **attackbox here**
     StartMultihit()
-    sprite('vr_dmy_hamaon', 10)	# 55-64
+    sprite('vr_dmy_hamaon', 10)	# 55-64	 **attackbox here**
     StartMultihit()
-    sprite('vr_dmy_hamaon', 10)	# 65-74
+    sprite('vr_dmy_hamaon', 10)	# 65-74	 **attackbox here**
     StartMultihit()
-    sprite('vr_dmy_hamaon', 10)	# 75-84
+    sprite('vr_dmy_hamaon', 10)	# 75-84	 **attackbox here**
     ScreenShake(300000, 100000)
     RefreshMultihit()
     Unknown11023(1)

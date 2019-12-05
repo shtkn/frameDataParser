@@ -585,7 +585,7 @@ def parse_move_file(source, move_list, effect_list):
                 # active/deactivate invul
                 idx = line.index("(") + 1
                 state.isInv = line[idx: idx + 1] == "1"
-            elif "Unknown22008(" in line:
+            elif "Unknown22008(" in line or "setInvincibleFor(" in line:
                 inv_start = line.index("(") + 1
                 inv_end = line.index(")")
                 hardcoded_inv_start = 1
@@ -1152,7 +1152,7 @@ def fill_hitstop(info_list):
 
 
 def main():
-    source_dir = "./annotated"
+    source_dir = "./annotated2_0"
     target_dir = "./parsedAttacks"
     file_list = [
         # Arcana Heart

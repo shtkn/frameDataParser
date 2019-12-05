@@ -2319,16 +2319,16 @@ def NmlAtk5BB():
     Unknown14072('ShortDash')
     sprite('nt213_03', 1)	# 12-12
     loopRest()
-    sprite('nt213_01ex01', 3)	# 13-15	 **attackbox here**
-    sprite('nt213_02ex01', 3)	# 16-18	 **attackbox here**
+    sprite('nt213_01ex01', 3)	# 13-15
+    sprite('nt213_02ex01', 3)	# 16-18
     ScreenShake(3000, 9000)
     Unknown8000(-1, 1, 0)
-    sprite('nt213_03ex01', 3)	# 19-21	 **attackbox here**
-    sprite('nt213_01ex01', 3)	# 22-24	 **attackbox here**
-    sprite('nt213_02ex01', 3)	# 25-27	 **attackbox here**
-    sprite('nt213_03ex01', 3)	# 28-30	 **attackbox here**
-    sprite('nt213_01ex01', 3)	# 31-33	 **attackbox here**
-    sprite('nt213_02ex01', 3)	# 34-36	 **attackbox here**
+    sprite('nt213_03ex01', 3)	# 19-21
+    sprite('nt213_01ex01', 3)	# 22-24
+    sprite('nt213_02ex01', 3)	# 25-27
+    sprite('nt213_03ex01', 3)	# 28-30
+    sprite('nt213_01ex01', 3)	# 31-33
+    sprite('nt213_02ex01', 3)	# 34-36
     loopRest()
     label(0)
     sprite('nt213_04ex01', 1)	# 37-37
@@ -2336,8 +2336,8 @@ def NmlAtk5BB():
     Unknown21015('6e7465665f445f68616e64617572615f33440000000000000000000000000000e903000000000000')
     Unknown21015('6e7465665f445f68616e64617572610000000000000000000000000000000000ea03000000000000')
     Unknown21015('6e7465665f445f626f6479617572610000000000000000000000000000000000eb03000000000000')
-    sprite('nt213_05ex01', 1)	# 38-38	 **attackbox here**
-    sprite('nt213_06ex01', 2)	# 39-40	 **attackbox here**
+    sprite('nt213_05ex01', 1)	# 38-38
+    sprite('nt213_06ex01', 2)	# 39-40
     SFX_3('ntse_04')
     SFX_1('bnt300')
     sprite('nt213_07ex01', 3)	# 41-43	 **attackbox here**
@@ -2368,19 +2368,19 @@ def NmlAtk5BB():
     GFX_1('ntef_D_aura', 3)
     GFX_1('ntef_D_aura', 4)
     GFX_1('ntef_D_aura', 5)
-    sprite('nt213_09ex01', 3)	# 47-49	 **attackbox here**
+    sprite('nt213_09ex01', 3)	# 47-49
     Recovery()
     Unknown2063()
-    sprite('nt213_10ex01', 3)	# 50-52	 **attackbox here**
+    sprite('nt213_10ex01', 3)	# 50-52
     loopRest()
     gotoLabel(9)
     label(1)
-    sprite('nt213_04', 1)	# 53-53	 **attackbox here**
+    sprite('nt213_04', 1)	# 53-53
     Unknown21015('6e7465665f445f68616e64617572615f33440000000000000000000000000000e903000000000000')
     Unknown21015('6e7465665f445f68616e64617572610000000000000000000000000000000000ea03000000000000')
     Unknown21015('6e7465665f445f626f6479617572610000000000000000000000000000000000eb03000000000000')
-    sprite('nt213_05', 1)	# 54-54	 **attackbox here**
-    sprite('nt213_06', 1)	# 55-55	 **attackbox here**
+    sprite('nt213_05', 1)	# 54-54
+    sprite('nt213_06', 1)	# 55-55
     Unknown7007('626e743131305f30000000000000000064000000626e743131305f31000000000000000064000000626e743131305f320000000000000000640000000000000000000000000000000000000000000000')
     SFX_3('ntse_05')
     sprite('nt213_07', 3)	# 56-58	 **attackbox here**
@@ -7029,8 +7029,8 @@ def CmnActChangePartnerAssistAtk_B():
     Unknown21015('6e7465665f445f68616e64617572615f33440000000000000000000000000000e903000000000000')
     Unknown21015('6e7465665f445f68616e64617572610000000000000000000000000000000000ea03000000000000')
     Unknown21015('6e7465665f445f626f6479617572610000000000000000000000000000000000eb03000000000000')
-    sprite('nt213_05ex01', 1)	# 8-8	 **attackbox here**
-    sprite('nt213_06ex01', 1)	# 9-9	 **attackbox here**
+    sprite('nt213_05ex01', 1)	# 8-8
+    sprite('nt213_06ex01', 1)	# 9-9
     Unknown7006('bnt110_0', 100, 829714018, 828321841, 0, 0, 100, 829714018, 845099057, 0, 0, 100, 0, 0, 0, 0, 0)
     SFX_3('ntse_04')
     sprite('nt213_07ex01', 3)	# 10-12	 **attackbox here**
@@ -7053,9 +7053,9 @@ def CmnActChangePartnerAssistAtk_B():
     GFX_1('ntef_D_aura', 3)
     GFX_1('ntef_D_aura', 4)
     GFX_1('ntef_D_aura', 5)
-    sprite('nt213_09ex01', 5)	# 16-20	 **attackbox here**
+    sprite('nt213_09ex01', 5)	# 16-20
     Recovery()
-    sprite('nt213_10ex01', 5)	# 21-25	 **attackbox here**
+    sprite('nt213_10ex01', 5)	# 21-25
     sprite('nt213_11', 5)	# 26-30
     sprite('nt213_12', 6)	# 31-36
     sprite('nt213_13', 6)	# 37-42

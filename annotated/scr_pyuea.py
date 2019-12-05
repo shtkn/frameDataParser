@@ -4473,37 +4473,37 @@ def agidine_fireuzuL_TAG():
         Unknown3001(50)
         Unknown1096(1200)
         physicsXImpulse(65000)
-    sprite('vr_ko430_DUO_col', 2)	# 1-2
+    sprite('vr_ko430_DUO_col', 2)	# 1-2	 **attackbox here**
     GFX_0('FireYugamiB1l', 100)
     GFX_0('430firecoresub_l', 100)
     SFX_3('bomb_l')
     Unknown3004(25)
     RefreshMultihit()
-    sprite('vr_ko430_DUO_col', 1)	# 3-3
+    sprite('vr_ko430_DUO_col', 1)	# 3-3	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 1)	# 4-4
+    sprite('vr_ko430_DUO_col', 1)	# 4-4	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 1)	# 5-5
+    sprite('vr_ko430_DUO_col', 1)	# 5-5	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 1)	# 6-6
+    sprite('vr_ko430_DUO_col', 1)	# 6-6	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 1)	# 7-7
+    sprite('vr_ko430_DUO_col', 1)	# 7-7	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 2)	# 8-9
+    sprite('vr_ko430_DUO_col', 2)	# 8-9	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 2)	# 10-11
+    sprite('vr_ko430_DUO_col', 2)	# 10-11	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 2)	# 12-13
+    sprite('vr_ko430_DUO_col', 2)	# 12-13	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 3)	# 14-16
+    sprite('vr_ko430_DUO_col', 3)	# 14-16	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 3)	# 17-19
+    sprite('vr_ko430_DUO_col', 3)	# 17-19	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 3)	# 20-22
+    sprite('vr_ko430_DUO_col', 3)	# 20-22	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 3)	# 23-25
+    sprite('vr_ko430_DUO_col', 3)	# 23-25	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 10)	# 26-35
+    sprite('vr_ko430_DUO_col', 10)	# 26-35	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
     sprite('null', 10)	# 36-45
     Unknown3004(-26)
@@ -4527,37 +4527,37 @@ def agidine_fireuzuL_OD_TAG():
         Unknown3001(50)
         Unknown1096(1500)
         physicsXImpulse(60000)
-    sprite('vr_ko430_DUO_col', 2)	# 1-2
+    sprite('vr_ko430_DUO_col', 2)	# 1-2	 **attackbox here**
     GFX_0('FireYugamiB1l', 100)
     GFX_0('430firecoresub_l', 100)
     SFX_3('bomb_l')
     Unknown3004(25)
     RefreshMultihit()
-    sprite('vr_ko430_DUO_col', 1)	# 3-3
+    sprite('vr_ko430_DUO_col', 1)	# 3-3	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 1)	# 4-4
+    sprite('vr_ko430_DUO_col', 1)	# 4-4	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 1)	# 5-5
+    sprite('vr_ko430_DUO_col', 1)	# 5-5	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 1)	# 6-6
+    sprite('vr_ko430_DUO_col', 1)	# 6-6	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 1)	# 7-7
+    sprite('vr_ko430_DUO_col', 1)	# 7-7	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 2)	# 8-9
+    sprite('vr_ko430_DUO_col', 2)	# 8-9	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 2)	# 10-11
+    sprite('vr_ko430_DUO_col', 2)	# 10-11	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 2)	# 12-13
+    sprite('vr_ko430_DUO_col', 2)	# 12-13	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 3)	# 14-16
+    sprite('vr_ko430_DUO_col', 3)	# 14-16	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 3)	# 17-19
+    sprite('vr_ko430_DUO_col', 3)	# 17-19	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 3)	# 20-22
+    sprite('vr_ko430_DUO_col', 3)	# 20-22	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 3)	# 23-25
+    sprite('vr_ko430_DUO_col', 3)	# 23-25	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
-    sprite('vr_ko430_DUO_col', 10)	# 26-35
+    sprite('vr_ko430_DUO_col', 10)	# 26-35	 **attackbox here**
     GFX_1('koef_430firecoresub', 100)
     sprite('null', 10)	# 36-45
     Unknown3004(-26)

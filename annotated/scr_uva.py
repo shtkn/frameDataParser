@@ -742,8 +742,8 @@ def CmnActBWalk():
 
 @State
 def CmnActFDash():
-    sprite('Action_045_00', 3)	# 1-3	 **attackbox here**
-    sprite('Action_045_01', 3)	# 4-6	 **attackbox here**
+    sprite('Action_045_00', 3)	# 1-3
+    sprite('Action_045_01', 3)	# 4-6
     sprite('Action_045_02', 3)	# 7-9	 **attackbox here**
     SFX_3('SE050_SlideDash')
     sprite('Action_045_03', 3)	# 10-12	 **attackbox here**
@@ -753,7 +753,7 @@ def CmnActFDash():
     sprite('Action_045_07', 3)	# 22-24	 **attackbox here**
     sprite('Action_045_08', 3)	# 25-27	 **attackbox here**
     label(0)
-    sprite('Action_045_01', 3)	# 28-30	 **attackbox here**
+    sprite('Action_045_01', 3)	# 28-30
     sprite('Action_045_02', 3)	# 31-33	 **attackbox here**
     sprite('Action_045_03', 3)	# 34-36	 **attackbox here**
     sprite('Action_045_04', 3)	# 37-39	 **attackbox here**
@@ -1815,7 +1815,7 @@ def NmlAtk5B():
         HitOrBlockCancel('CmnActCrushAttack')
         HitOrBlockCancel('NmlAtk2C')
         HitJumpCancel(1)
-    sprite('Action_045_01', 3)	# 1-3	 **attackbox here**
+    sprite('Action_045_01', 3)	# 1-3
     physicsXImpulse(20000)
     Unknown1028(-1000)
     sprite('Action_402_00', 4)	# 4-7	 **attackbox here**
@@ -1850,7 +1850,7 @@ def AN_NmlAtk5B_2nd():
 
         def upon_ON_HIT_OR_BLOCK():
             SLOT_51 = 1
-    sprite('Action_045_01', 2)	# 1-2	 **attackbox here**
+    sprite('Action_045_01', 2)	# 1-2
     physicsXImpulse(15000)
     Unknown1019(110)
     sprite('Action_403_00', 4)	# 3-6	 **attackbox here**
@@ -1895,18 +1895,18 @@ def AN_NmlAtk5B_2nd():
         Unknown14072('CmnActCrushAttack')
     sprite('Action_403_09', 3)	# 32-34
     Unknown2063()
-    sprite('Action_404_00', 4)	# 35-38	 **attackbox here**
+    sprite('Action_404_00', 4)	# 35-38
     Unknown13(4)
-    sprite('Action_404_01', 4)	# 39-42	 **attackbox here**
-    sprite('Action_404_02', 4)	# 43-46	 **attackbox here**
+    sprite('Action_404_01', 4)	# 39-42
+    sprite('Action_404_02', 4)	# 43-46
     Unknown14074('NmlAtk5A')
     Unknown14074('NmlAtk2A')
     Unknown14074('NmlAtk5B')
     Unknown14074('NmlAtk2B')
     Unknown14074('NmlAtk2C')
     Unknown14074('CmnActCrushAttack')
-    sprite('Action_404_03', 4)	# 47-50	 **attackbox here**
-    sprite('Action_404_04', 4)	# 51-54	 **attackbox here**
+    sprite('Action_404_03', 4)	# 47-50
+    sprite('Action_404_04', 4)	# 51-54
     Unknown1084(1)
 
 @State
@@ -2401,7 +2401,7 @@ def CmnActCrushAttackChase2nd():
         def upon_17():
             clearUponHandler(17)
             sendToLabel(1)
-    sprite('Action_045_01', 5)	# 1-5	 **attackbox here**
+    sprite('Action_045_01', 5)	# 1-5
     sprite('Action_402_00', 4)	# 6-9	 **attackbox here**
     GFX_0('Vat_073', -1)
     SFX_3('SE043')
@@ -2617,8 +2617,8 @@ def NmlAtkThrow():
             if (SLOT_18 >= 3):
                 if (SLOT_19 <= 180000):
                     sendToLabel(1)
-    sprite('Action_045_00', 6)	# 1-6	 **attackbox here**
-    sprite('Action_045_01', 3)	# 7-9	 **attackbox here**
+    sprite('Action_045_00', 6)	# 1-6
+    sprite('Action_045_01', 3)	# 7-9
     sprite('Action_045_02', 3)	# 10-12	 **attackbox here**
     label(0)
     sprite('Action_045_03', 3)	# 13-15	 **attackbox here**
@@ -2707,8 +2707,8 @@ def NmlAtkBackThrow():
             if (SLOT_18 >= 3):
                 if (SLOT_19 < 180000):
                     sendToLabel(1)
-    sprite('Action_045_00', 6)	# 1-6	 **attackbox here**
-    sprite('Action_045_01', 3)	# 7-9	 **attackbox here**
+    sprite('Action_045_00', 6)	# 1-6
+    sprite('Action_045_01', 3)	# 7-9
     sprite('Action_045_02', 3)	# 10-12	 **attackbox here**
     label(0)
     sprite('Action_045_03', 3)	# 13-15	 **attackbox here**
@@ -4475,7 +4475,7 @@ def CmnActChangePartnerAssistAtk_D():
 
         def upon_78():
             Unknown2037(1)
-    sprite('Action_045_01', 2)	# 1-2	 **attackbox here**
+    sprite('Action_045_01', 2)	# 1-2
     physicsXImpulse(30000)
     Unknown1019(110)
     sprite('Action_403_00', 4)	# 3-6	 **attackbox here**
@@ -4505,15 +4505,15 @@ def CmnActChangePartnerAssistAtk_D():
     AirPushbackY(30000)
     sprite('Action_403_08', 1)	# 25-25	 **attackbox here**
     sprite('Action_403_09', 3)	# 26-28
-    sprite('Action_404_00', 4)	# 29-32	 **attackbox here**
+    sprite('Action_404_00', 4)	# 29-32
     Unknown13(4)
-    sprite('Action_404_01', 4)	# 33-36	 **attackbox here**
-    sprite('Action_404_02', 6)	# 37-42	 **attackbox here**
+    sprite('Action_404_01', 4)	# 33-36
+    sprite('Action_404_02', 6)	# 37-42
     if SLOT_2:
         sendToLabel(99)
-    sprite('Action_404_03', 6)	# 43-48	 **attackbox here**
+    sprite('Action_404_03', 6)	# 43-48
     Unknown1084(1)
-    sprite('Action_404_04', 6)	# 49-54	 **attackbox here**
+    sprite('Action_404_04', 6)	# 49-54
     ExitState()
     label(99)
     sprite('Action_184_00', 3)	# 55-57	 **attackbox here**

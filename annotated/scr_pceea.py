@@ -3650,15 +3650,15 @@ def IchigekiDragonAtk():
     SFX_3('blaze_normal')
     sprite('null', 5)	# 26-30
     SFX_3('blaze_normal')
-    sprite('dmy_atk00', 3)	# 31-33
+    sprite('dmy_atk00', 3)	# 31-33	 **attackbox here**
     GFX_0('IchigekiMizubasira05', 100)
     GFX_0('IchigekiDoragon3D', 100)
     StartMultihit()
-    sprite('dmy_atk00', 15)	# 34-48
+    sprite('dmy_atk00', 15)	# 34-48	 **attackbox here**
     RefreshMultihit()
-    sprite('dmy_atk00', 30)	# 49-78
+    sprite('dmy_atk00', 30)	# 49-78	 **attackbox here**
     Unknown2001()
-    sprite('dmy_atk00', 20)	# 79-98
+    sprite('dmy_atk00', 20)	# 79-98	 **attackbox here**
 
 @State
 def IchigekiDoragon3D():

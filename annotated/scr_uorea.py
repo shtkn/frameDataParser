@@ -255,19 +255,19 @@ def Assault_AddAtk():
         Unknown11023(1)
         Unknown30048(1)
         Unknown11108('03000000')
-    sprite('Action_100_atkcol', 4)	# 1-4
+    sprite('Action_100_atkcol', 4)	# 1-4	 **attackbox here**
     Unknown23151(22, 105)
     RefreshMultihit()
-    sprite('Action_100_atkcol', 4)	# 5-8
+    sprite('Action_100_atkcol', 4)	# 5-8	 **attackbox here**
     Unknown23151(22, 105)
     RefreshMultihit()
-    sprite('Action_100_atkcol', 4)	# 9-12
+    sprite('Action_100_atkcol', 4)	# 9-12	 **attackbox here**
     Unknown23151(22, 105)
     RefreshMultihit()
-    sprite('Action_100_atkcol', 4)	# 13-16
+    sprite('Action_100_atkcol', 4)	# 13-16	 **attackbox here**
     Unknown23151(22, 105)
     RefreshMultihit()
-    sprite('Action_100_atkcol', 4)	# 17-20
+    sprite('Action_100_atkcol', 4)	# 17-20	 **attackbox here**
     Unknown23151(22, 105)
     RefreshMultihit()
     Unknown9215()
@@ -1603,11 +1603,11 @@ def IW_Wave_AtkCol():
     GFX_0('IW_Wave', 100)
     GFX_0('IW_Wave_eff1', 100)
     label(0)
-    sprite('Action_122_atkcol', 2)	# 2-3
+    sprite('Action_122_atkcol', 2)	# 2-3	 **attackbox here**
     GFX_0('IW_Wave_Zanzo1', 100)
     RefreshMultihit()
     Unknown2038(1)
-    sprite('Action_122_atkcol', 2)	# 4-5
+    sprite('Action_122_atkcol', 2)	# 4-5	 **attackbox here**
     GFX_0('IW_Wave_Zanzo2', 100)
     if (not SLOT_51):
         Unknown4004('6566666563745f3431390000000000000000000000000000000000000000000064000000')
@@ -1677,11 +1677,11 @@ def IW_Wave_AtkColOD():
     GFX_0('IW_Wave', 100)
     GFX_0('IW_Wave_eff1', 100)
     label(0)
-    sprite('Action_122_atkcol', 2)	# 2-3
+    sprite('Action_122_atkcol', 2)	# 2-3	 **attackbox here**
     GFX_0('IW_Wave_Zanzo1', 100)
     RefreshMultihit()
     Unknown2038(1)
-    sprite('Action_122_atkcol', 2)	# 4-5
+    sprite('Action_122_atkcol', 2)	# 4-5	 **attackbox here**
     GFX_0('IW_Wave_Zanzo2', 100)
     if (SLOT_2 < 6):
         RefreshMultihit()
@@ -1740,11 +1740,11 @@ def IW_Wave_AtkColDUO():
     GFX_0('IW_Wave', 100)
     GFX_0('IW_Wave_eff1', 100)
     label(0)
-    sprite('Action_122_atkcol', 2)	# 2-3
+    sprite('Action_122_atkcol', 2)	# 2-3	 **attackbox here**
     GFX_0('IW_Wave_Zanzo1', 100)
     RefreshMultihit()
     Unknown2038(1)
-    sprite('Action_122_atkcol', 2)	# 4-5
+    sprite('Action_122_atkcol', 2)	# 4-5	 **attackbox here**
     GFX_0('IW_Wave_Zanzo2', 100)
     if (not SLOT_51):
         Unknown4004('6566666563745f3431390000000000000000000000000000000000000000000064000000')
@@ -1815,11 +1815,11 @@ def IW_Wave_AtkColODDUO():
     GFX_0('IW_Wave', 100)
     GFX_0('IW_Wave_eff1', 100)
     label(0)
-    sprite('Action_122_atkcol', 2)	# 2-3
+    sprite('Action_122_atkcol', 2)	# 2-3	 **attackbox here**
     GFX_0('IW_Wave_Zanzo1', 100)
     RefreshMultihit()
     Unknown2038(1)
-    sprite('Action_122_atkcol', 2)	# 4-5
+    sprite('Action_122_atkcol', 2)	# 4-5	 **attackbox here**
     GFX_0('IW_Wave_Zanzo2', 100)
     if (SLOT_2 < 6):
         RefreshMultihit()

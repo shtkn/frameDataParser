@@ -1298,12 +1298,12 @@ def LightningPlasma_col():
             else:
                 Unknown11050('050000000000000000000000000000000000000000000000000000000000000000000000')
     label(0)
-    sprite('dmy_atk00', 1)	# 1-1
+    sprite('dmy_atk00', 1)	# 1-1	 **attackbox here**
     Unknown23151(22, 105)
     RefreshMultihit()
     if (SLOT_51 == 1):
         Unknown9083()
-    sprite('dmy_atk00', 1)	# 2-2
+    sprite('dmy_atk00', 1)	# 2-2	 **attackbox here**
     Unknown23027()
     SLOT_51 = (SLOT_51 + (-1))
     Unknown19(9, 2, 51)
@@ -1365,12 +1365,12 @@ def LightningPlasmaCD_col():
             else:
                 Unknown11050('050000000000000000000000000000000000000000000000000000000000000000000000')
     label(0)
-    sprite('dmy_atk00', 1)	# 1-1
+    sprite('dmy_atk00', 1)	# 1-1	 **attackbox here**
     Unknown23151(22, 105)
     RefreshMultihit()
     if (SLOT_51 == 1):
         Unknown9083()
-    sprite('dmy_atk00', 1)	# 2-2
+    sprite('dmy_atk00', 1)	# 2-2	 **attackbox here**
     Unknown23027()
     SLOT_51 = (SLOT_51 + (-1))
     Unknown19(9, 2, 51)
@@ -1411,12 +1411,12 @@ def LightningPlasmaDSD_col():
             else:
                 Unknown11050('050000000000000000000000000000000000000000000000000000000000000000000000')
     label(0)
-    sprite('dmy_atk00', 1)	# 1-1
+    sprite('dmy_atk00', 1)	# 1-1	 **attackbox here**
     Unknown23151(22, 105)
     RefreshMultihit()
     if (SLOT_51 == 1):
         Unknown9083()
-    sprite('dmy_atk00', 1)	# 2-2
+    sprite('dmy_atk00', 1)	# 2-2	 **attackbox here**
     Unknown23027()
     SLOT_51 = (SLOT_51 + (-1))
     Unknown19(9, 2, 51)
@@ -1457,13 +1457,13 @@ def LightningPlasmaCDDSD_col():
             else:
                 Unknown11050('050000000000000000000000000000000000000000000000000000000000000000000000')
     label(0)
-    sprite('dmy_atk00', 1)	# 1-1
+    sprite('dmy_atk00', 1)	# 1-1	 **attackbox here**
     Unknown23151(22, 105)
     RefreshMultihit()
     if (SLOT_51 == 1):
         Damage(200)
         Unknown9083()
-    sprite('dmy_atk00', 1)	# 2-2
+    sprite('dmy_atk00', 1)	# 2-2	 **attackbox here**
     Unknown23027()
     SLOT_51 = (SLOT_51 + (-1))
     Unknown19(9, 2, 51)
@@ -2011,28 +2011,28 @@ def caef_Ichigeki_globe_col():
 
         def upon_12():
             Unknown21015('41737472616c48656174000000000000000000000000000000000000000000009511000000000000')
-    sprite('dmy_atk00', 15)	# 1-15
+    sprite('dmy_atk00', 15)	# 1-15	 **attackbox here**
     Unknown21003(1000, 250)
-    sprite('dmy_atk00', 15)	# 16-30
+    sprite('dmy_atk00', 15)	# 16-30	 **attackbox here**
     Unknown21003(4000, 1000)
-    sprite('dmy_atk00', 15)	# 31-45
+    sprite('dmy_atk00', 15)	# 31-45	 **attackbox here**
     Unknown21003(7000, 1750)
     SFX_3('ak003')
-    sprite('dmy_atk00', 15)	# 46-60
+    sprite('dmy_atk00', 15)	# 46-60	 **attackbox here**
     Unknown21003(10000, 2500)
     RefreshMultihit()
     SFX_3('ak003')
-    sprite('dmy_atk00', 15)	# 61-75
+    sprite('dmy_atk00', 15)	# 61-75	 **attackbox here**
     Unknown21003(11000, 2750)
     SFX_3('ak003')
-    sprite('dmy_atk00', 15)	# 76-90
+    sprite('dmy_atk00', 15)	# 76-90	 **attackbox here**
     Unknown21003(12000, 3000)
     SFX_3('ak003')
-    sprite('dmy_atk00', 15)	# 91-105
+    sprite('dmy_atk00', 15)	# 91-105	 **attackbox here**
     SFX_3('ak003')
-    sprite('dmy_atk00', 15)	# 106-120
+    sprite('dmy_atk00', 15)	# 106-120	 **attackbox here**
     SFX_3('ak003')
-    sprite('dmy_atk00', 32767)	# 121-32887
+    sprite('dmy_atk00', 32767)	# 121-32887	 **attackbox here**
 
 @State
 def __450Vacuum():

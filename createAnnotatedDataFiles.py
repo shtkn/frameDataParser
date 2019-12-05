@@ -5,13 +5,13 @@ SPRITE_MID = "', "
 SPRITE_END = ")"
 
 def main():
-    attackHitboxFile = open("all_active_1_5.txt", "r")
+    attackHitboxFile = open("all_active_2_0.txt", "r")
     contents = attackHitboxFile.readlines()
     charDictionarySet = {}
     currentChar = ''
     currentSet = None
     for line in contents:
-        if line.strip().endswith(" starts here!"):
+        if line.strip().endswith(" starts here"):
             char = line.split(" ")[0]
             # print char
             currentSet = set()
@@ -23,8 +23,8 @@ def main():
             # print line.strip()
     # print charDictionarySet.keys()
 
-    outputDir = "./annotated/"
-    inputDir = "./input/"
+    outputDir = "./annotated2_0/"
+    inputDir = "./input2_0/"
 
     fileList = os.listdir(inputDir)
     pattern = "*.py"

@@ -2134,15 +2134,15 @@ def CmnActChangePartnerAssistAtk_A():
         Unknown2003(1)
         Unknown23012(0, 0, 0)
         Unknown2006()
-    sprite('rc401_00', 3)	# 1-3	 **attackbox here**
-    sprite('rc401_01', 3)	# 4-6	 **attackbox here**
-    sprite('rc401_02', 3)	# 7-9	 **attackbox here**
-    sprite('rc401_03', 2)	# 10-11	 **attackbox here**
-    sprite('rc401_04', 2)	# 12-13	 **attackbox here**
-    sprite('rc401_05', 2)	# 14-15	 **attackbox here**
-    sprite('rc401_06', 2)	# 16-17	 **attackbox here**
-    sprite('rc401_07', 2)	# 18-19	 **attackbox here**
-    sprite('rc401_08', 5)	# 20-24	 **attackbox here**
+    sprite('rc401_00', 3)	# 1-3
+    sprite('rc401_01', 3)	# 4-6
+    sprite('rc401_02', 3)	# 7-9
+    sprite('rc401_03', 2)	# 10-11
+    sprite('rc401_04', 2)	# 12-13
+    sprite('rc401_05', 2)	# 14-15
+    sprite('rc401_06', 2)	# 16-17
+    sprite('rc401_07', 2)	# 18-19
+    sprite('rc401_08', 5)	# 20-24
     Unknown7007('6272633230315f300000000000000000640000006272633230315f310000000000000000640000006272633230315f320000000000000000640000000000000000000000000000000000000000000000')
     SFX_3('rcse_25')
     GFX_1('rcef401_bom', 0)
@@ -2150,21 +2150,21 @@ def CmnActChangePartnerAssistAtk_A():
     GFX_0('LightningRod_TAG', 0)
     Unknown38(4, 1)
     Unknown23029(4, 3108, 0)
-    sprite('rc401_08', 5)	# 25-29	 **attackbox here**
+    sprite('rc401_08', 5)	# 25-29
     SFX_3('rcse_25')
     GFX_1('rcef401_bom', 0)
     callSubroutine('Shot_Stack')
     GFX_0('LightningRod_TAG', 0)
     Unknown38(4, 1)
     Unknown23029(4, 3109, 0)
-    sprite('rc401_09', 5)	# 30-34	 **attackbox here**
-    sprite('rc401_10', 3)	# 35-37	 **attackbox here**
-    sprite('rc401_11', 3)	# 38-40	 **attackbox here**
-    sprite('rc401_12', 3)	# 41-43	 **attackbox here**
-    sprite('rc401_13', 3)	# 44-46	 **attackbox here**
-    sprite('rc401_14', 3)	# 47-49	 **attackbox here**
+    sprite('rc401_09', 5)	# 30-34
+    sprite('rc401_10', 3)	# 35-37
+    sprite('rc401_11', 3)	# 38-40
+    sprite('rc401_12', 3)	# 41-43
+    sprite('rc401_13', 3)	# 44-46
+    sprite('rc401_14', 3)	# 47-49
     Recovery()
-    sprite('rc401_15', 3)	# 50-52	 **attackbox here**
+    sprite('rc401_15', 3)	# 50-52
     sprite('rc401_16', 3)	# 53-55
     sprite('rc401_17', 2)	# 56-57
 
@@ -3315,18 +3315,18 @@ def NmlAtk5BB():
         HitOrBlockCancel('NmlAtk2B')
         HitOrBlockCancel('NmlAtk2C')
         HitOrBlockCancel('CmnActCrushAttack')
-    sprite('rc202_02', 2)	# 1-2	 **attackbox here**
-    sprite('rc202_04', 2)	# 3-4	 **attackbox here**
+    sprite('rc202_02', 2)	# 1-2
+    sprite('rc202_04', 2)	# 3-4
     GFX_1('rcef_kirakiraA', 0)
     Unknown1045(80000)
     physicsXImpulse(18000)
-    sprite('rc202_07', 3)	# 5-7	 **attackbox here**
+    sprite('rc202_07', 3)	# 5-7
     GFX_1('rcef_kirakiraA', 0)
-    sprite('rc202_08', 3)	# 8-10	 **attackbox here**
+    sprite('rc202_08', 3)	# 8-10
     GFX_1('rcef_kirakiraA', 0)
-    sprite('rc202_09', 1)	# 11-11	 **attackbox here**
+    sprite('rc202_09', 1)	# 11-11
     GFX_1('rcef_kirakiraA', 0)
-    sprite('rc202_10', 1)	# 12-12	 **attackbox here**
+    sprite('rc202_10', 1)	# 12-12
     SFX_0('006_swing_blade_2')
     Unknown7009(2)
     Unknown9010('020000006267793130345f300000000000000000320000006267793130345f310000000000000000320000006267793130355f300000000000000000320000006267793130355f31000000000000000032000000')
@@ -3344,15 +3344,15 @@ def NmlAtk5BB():
     Unknown1051(20)
     Unknown1019(80)
     GFX_1('rcef_kirakiraB', 2)
-    sprite('rc202_12', 4)	# 21-24	 **attackbox here**
+    sprite('rc202_12', 4)	# 21-24
     Unknown1051(20)
     Unknown1019(60)
     GFX_1('rcef_kirakiraB', 0)
     Recovery()
     Unknown2063()
-    sprite('rc202_14', 3)	# 25-27	 **attackbox here**
+    sprite('rc202_14', 3)	# 25-27
     Unknown1019(20)
-    sprite('rc202_15', 3)	# 28-30	 **attackbox here**
+    sprite('rc202_15', 3)	# 28-30
     sprite('rc202_16', 3)	# 31-33
     sprite('rc202_17', 3)	# 34-36
     sprite('rc202_18', 3)	# 37-39
@@ -3378,9 +3378,9 @@ def NmlAtk5BBB():
         HitOrBlockCancel('NmlAtk2B')
         HitOrBlockCancel('NmlAtk2C')
         callSubroutine('AddChainWind')
-    sprite('rc202_12', 2)	# 1-2	 **attackbox here**
-    sprite('rc202_21', 2)	# 3-4	 **attackbox here**
-    sprite('rc202_21ex01', 6)	# 5-10	 **attackbox here**
+    sprite('rc202_12', 2)	# 1-2
+    sprite('rc202_21', 2)	# 3-4
+    sprite('rc202_21ex01', 6)	# 5-10
     sprite('rc202_22', 4)	# 11-14	 **attackbox here**
     Unknown9010('01000000626e673130365f30000000000000000032000000626e67313038000000000000000000003200000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
     Unknown23012(40, 100, 100)
@@ -3391,10 +3391,10 @@ def NmlAtk5BBB():
     ScreenShake(10000, 0)
     WhiffCancelEnable(0)
     sprite('rc202_23', 4)	# 15-18	 **attackbox here**
-    sprite('rc202_14', 3)	# 19-21	 **attackbox here**
+    sprite('rc202_14', 3)	# 19-21
     Recovery()
     Unknown2063()
-    sprite('rc202_15', 3)	# 22-24	 **attackbox here**
+    sprite('rc202_15', 3)	# 22-24
     sprite('rc202_16', 3)	# 25-27
     sprite('rc202_17', 3)	# 28-30
     sprite('rc202_18', 3)	# 31-33
@@ -4073,27 +4073,27 @@ def ShotLandA():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         Unknown23012(0, 0, 0)
-    sprite('rc400_00', 4)	# 1-4	 **attackbox here**
-    sprite('rc400_01', 2)	# 5-6	 **attackbox here**
-    sprite('rc400_02', 2)	# 7-8	 **attackbox here**
-    sprite('rc400_03', 1)	# 9-9	 **attackbox here**
+    sprite('rc400_00', 4)	# 1-4
+    sprite('rc400_01', 2)	# 5-6
+    sprite('rc400_02', 2)	# 7-8
+    sprite('rc400_03', 1)	# 9-9
     Unknown7007('6272633230305f300000000000000000640000006272633230305f310000000000000000640000006272633230305f320000000000000000640000000000000000000000000000000000000000000000')
     GFX_1('rcef_binta', 0)
     SFX_3('rcse_28')
-    sprite('rc400_03ex01', 1)	# 10-10	 **attackbox here**
-    sprite('rc400_04', 2)	# 11-12	 **attackbox here**
+    sprite('rc400_03ex01', 1)	# 10-10
+    sprite('rc400_04', 2)	# 11-12
     callSubroutine('Shot_Stack')
     GFX_0('LightningRodA', 0)
     Unknown38(4, 1)
     Unknown23029(4, 3102, 0)
     callSubroutine('AddChainWind_Shot')
-    sprite('rc400_05', 5)	# 13-17	 **attackbox here**
-    sprite('rc400_06', 3)	# 18-20	 **attackbox here**
-    sprite('rc400_06', 2)	# 21-22	 **attackbox here**
+    sprite('rc400_05', 5)	# 13-17
+    sprite('rc400_06', 3)	# 18-20
+    sprite('rc400_06', 2)	# 21-22
     WhiffCancelEnable(0)
-    sprite('rc400_07', 4)	# 23-26	 **attackbox here**
-    sprite('rc400_08', 4)	# 27-30	 **attackbox here**
-    sprite('rc400_09', 4)	# 31-34	 **attackbox here**
+    sprite('rc400_07', 4)	# 23-26
+    sprite('rc400_08', 4)	# 27-30
+    sprite('rc400_09', 4)	# 31-34
     Recovery()
     sprite('rc400_10', 4)	# 35-38
     sprite('rc400_11', 4)	# 39-42
@@ -4104,15 +4104,15 @@ def ShotLandB():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         Unknown23012(0, 0, 0)
-    sprite('rc401_00', 2)	# 1-2	 **attackbox here**
-    sprite('rc401_01', 2)	# 3-4	 **attackbox here**
-    sprite('rc401_02', 2)	# 5-6	 **attackbox here**
-    sprite('rc401_03', 2)	# 7-8	 **attackbox here**
-    sprite('rc401_04', 2)	# 9-10	 **attackbox here**
-    sprite('rc401_05', 2)	# 11-12	 **attackbox here**
-    sprite('rc401_06', 2)	# 13-14	 **attackbox here**
-    sprite('rc401_07', 2)	# 15-16	 **attackbox here**
-    sprite('rc401_08', 5)	# 17-21	 **attackbox here**
+    sprite('rc401_00', 2)	# 1-2
+    sprite('rc401_01', 2)	# 3-4
+    sprite('rc401_02', 2)	# 5-6
+    sprite('rc401_03', 2)	# 7-8
+    sprite('rc401_04', 2)	# 9-10
+    sprite('rc401_05', 2)	# 11-12
+    sprite('rc401_06', 2)	# 13-14
+    sprite('rc401_07', 2)	# 15-16
+    sprite('rc401_08', 5)	# 17-21
     Unknown7007('6272633230315f300000000000000000640000006272633230315f310000000000000000640000006272633230315f320000000000000000640000000000000000000000000000000000000000000000')
     SFX_3('rcse_25')
     GFX_1('rcef401_bom', 0)
@@ -4121,15 +4121,15 @@ def ShotLandB():
     Unknown38(4, 1)
     Unknown23029(4, 3103, 0)
     callSubroutine('AddChainWind_Shot')
-    sprite('rc401_09', 5)	# 22-26	 **attackbox here**
-    sprite('rc401_10', 3)	# 27-29	 **attackbox here**
+    sprite('rc401_09', 5)	# 22-26
+    sprite('rc401_10', 3)	# 27-29
     WhiffCancelEnable(0)
-    sprite('rc401_11', 3)	# 30-32	 **attackbox here**
-    sprite('rc401_12', 2)	# 33-34	 **attackbox here**
-    sprite('rc401_13', 2)	# 35-36	 **attackbox here**
-    sprite('rc401_14', 2)	# 37-38	 **attackbox here**
+    sprite('rc401_11', 3)	# 30-32
+    sprite('rc401_12', 2)	# 33-34
+    sprite('rc401_13', 2)	# 35-36
+    sprite('rc401_14', 2)	# 37-38
     Recovery()
-    sprite('rc401_15', 2)	# 39-40	 **attackbox here**
+    sprite('rc401_15', 2)	# 39-40
     sprite('rc401_16', 2)	# 41-42
     sprite('rc401_17', 2)	# 43-44
 
@@ -4139,17 +4139,17 @@ def ShotLandC():
     def upon_IMMEDIATE():
         AttackDefaults_StandingSpecial()
         Unknown23012(0, 0, 0)
-    sprite('rc401_00', 3)	# 1-3	 **attackbox here**
-    sprite('rc401_01', 3)	# 4-6	 **attackbox here**
+    sprite('rc401_00', 3)	# 1-3
+    sprite('rc401_01', 3)	# 4-6
     Unknown23125('')
     Unknown2058(-5000)
-    sprite('rc401_02', 3)	# 7-9	 **attackbox here**
-    sprite('rc401_03', 2)	# 10-11	 **attackbox here**
-    sprite('rc401_04', 2)	# 12-13	 **attackbox here**
-    sprite('rc401_05', 2)	# 14-15	 **attackbox here**
-    sprite('rc401_06', 2)	# 16-17	 **attackbox here**
-    sprite('rc401_07', 2)	# 18-19	 **attackbox here**
-    sprite('rc401_08', 5)	# 20-24	 **attackbox here**
+    sprite('rc401_02', 3)	# 7-9
+    sprite('rc401_03', 2)	# 10-11
+    sprite('rc401_04', 2)	# 12-13
+    sprite('rc401_05', 2)	# 14-15
+    sprite('rc401_06', 2)	# 16-17
+    sprite('rc401_07', 2)	# 18-19
+    sprite('rc401_08', 5)	# 20-24
     Unknown7007('6272633230315f300000000000000000640000006272633230315f310000000000000000640000006272633230315f320000000000000000640000000000000000000000000000000000000000000000')
     SFX_3('rcse_25')
     GFX_1('rcef401_bom', 0)
@@ -4158,29 +4158,29 @@ def ShotLandC():
     Unknown38(4, 1)
     Unknown23029(4, 3104, 0)
     callSubroutine('AddChainWind_Shot')
-    sprite('rc401_08', 5)	# 25-29	 **attackbox here**
+    sprite('rc401_08', 5)	# 25-29
     SFX_3('rcse_25')
     GFX_1('rcef401_bom', 0)
     callSubroutine('Shot_Stack')
     GFX_0('LightningRodC', 0)
     Unknown38(4, 1)
     Unknown23029(4, 3103, 0)
-    sprite('rc401_08', 5)	# 30-34	 **attackbox here**
+    sprite('rc401_08', 5)	# 30-34
     SFX_3('rcse_25')
     GFX_1('rcef401_bom', 0)
     callSubroutine('Shot_Stack')
     GFX_0('LightningRodC', 0)
     Unknown38(4, 1)
     Unknown23029(4, 3102, 0)
-    sprite('rc401_09', 5)	# 35-39	 **attackbox here**
-    sprite('rc401_10', 3)	# 40-42	 **attackbox here**
+    sprite('rc401_09', 5)	# 35-39
+    sprite('rc401_10', 3)	# 40-42
     WhiffCancelEnable(0)
-    sprite('rc401_11', 3)	# 43-45	 **attackbox here**
-    sprite('rc401_12', 2)	# 46-47	 **attackbox here**
-    sprite('rc401_13', 2)	# 48-49	 **attackbox here**
-    sprite('rc401_14', 2)	# 50-51	 **attackbox here**
+    sprite('rc401_11', 3)	# 43-45
+    sprite('rc401_12', 2)	# 46-47
+    sprite('rc401_13', 2)	# 48-49
+    sprite('rc401_14', 2)	# 50-51
     Recovery()
-    sprite('rc401_15', 2)	# 52-53	 **attackbox here**
+    sprite('rc401_15', 2)	# 52-53
     sprite('rc401_16', 2)	# 54-55
     sprite('rc401_17', 2)	# 56-57
 
@@ -4227,30 +4227,30 @@ def ShotAirB():
         Unknown1084(1)
         Unknown22004(10, 1)
         Unknown23012(0, 0, 0)
-    sprite('rc403_00', 3)	# 1-3	 **attackbox here**
-    sprite('rc403_01', 3)	# 4-6	 **attackbox here**
-    sprite('rc403_02', 3)	# 7-9	 **attackbox here**
-    sprite('rc403_03', 3)	# 10-12	 **attackbox here**
-    sprite('rc403_04', 3)	# 13-15	 **attackbox here**
-    sprite('rc403_05', 2)	# 16-17	 **attackbox here**
-    sprite('rc403_06', 2)	# 18-19	 **attackbox here**
-    sprite('rc403_07', 2)	# 20-21	 **attackbox here**
+    sprite('rc403_00', 3)	# 1-3
+    sprite('rc403_01', 3)	# 4-6
+    sprite('rc403_02', 3)	# 7-9
+    sprite('rc403_03', 3)	# 10-12
+    sprite('rc403_04', 3)	# 13-15
+    sprite('rc403_05', 2)	# 16-17
+    sprite('rc403_06', 2)	# 18-19
+    sprite('rc403_07', 2)	# 20-21
     GFX_1('rcef_binta', 0)
     Unknown7007('6272633230335f300000000000000000640000006272633230335f310000000000000000640000006272633230335f320000000000000000640000000000000000000000000000000000000000000000')
     SFX_3('rcse_28')
-    sprite('rc403_08', 7)	# 22-28	 **attackbox here**
+    sprite('rc403_08', 7)	# 22-28
     callSubroutine('Shot_Stack')
     GFX_0('LightningRodB_Air', 0)
     Unknown38(4, 1)
     Unknown23029(4, 3107, 0)
     callSubroutine('AddChainWind_Shot')
-    sprite('rc403_09', 3)	# 29-31	 **attackbox here**
+    sprite('rc403_09', 3)	# 29-31
     setGravity(1850)
     Unknown23001(100, 100)
     Unknown23012(100, 100, 100)
-    sprite('rc403_10', 3)	# 32-34	 **attackbox here**
+    sprite('rc403_10', 3)	# 32-34
     WhiffCancelEnable(0)
-    sprite('rc403_11', 3)	# 35-37	 **attackbox here**
+    sprite('rc403_11', 3)	# 35-37
     Recovery()
     sprite('rc403_12', 3)	# 38-40	 **attackbox here**
     sprite('rc403_13', 3)	# 41-43
@@ -4266,42 +4266,42 @@ def ShotAirC():
         Unknown1084(1)
         Unknown22004(10, 1)
         Unknown23012(0, 0, 0)
-    sprite('rc403_00', 3)	# 1-3	 **attackbox here**
-    sprite('rc403_01', 3)	# 4-6	 **attackbox here**
+    sprite('rc403_00', 3)	# 1-3
+    sprite('rc403_01', 3)	# 4-6
     Unknown23125('')
     Unknown2058(-5000)
-    sprite('rc403_02', 3)	# 7-9	 **attackbox here**
-    sprite('rc403_03', 3)	# 10-12	 **attackbox here**
-    sprite('rc403_04', 3)	# 13-15	 **attackbox here**
-    sprite('rc403_05', 2)	# 16-17	 **attackbox here**
-    sprite('rc403_06', 2)	# 18-19	 **attackbox here**
-    sprite('rc403_07', 2)	# 20-21	 **attackbox here**
+    sprite('rc403_02', 3)	# 7-9
+    sprite('rc403_03', 3)	# 10-12
+    sprite('rc403_04', 3)	# 13-15
+    sprite('rc403_05', 2)	# 16-17
+    sprite('rc403_06', 2)	# 18-19
+    sprite('rc403_07', 2)	# 20-21
     GFX_1('rcef_binta', 0)
     Unknown7007('6272633230335f300000000000000000640000006272633230335f310000000000000000640000006272633230335f320000000000000000640000000000000000000000000000000000000000000000')
     SFX_3('rcse_28')
-    sprite('rc403_08', 2)	# 22-23	 **attackbox here**
+    sprite('rc403_08', 2)	# 22-23
     callSubroutine('Shot_Stack')
     GFX_0('LightningRodC_Air', 0)
     Unknown38(4, 1)
     Unknown23029(4, 3107, 0)
     callSubroutine('AddChainWind_Shot')
-    sprite('rc403_08', 2)	# 24-25	 **attackbox here**
+    sprite('rc403_08', 2)	# 24-25
     callSubroutine('Shot_Stack')
     GFX_0('LightningRodC_Air', 0)
     Unknown38(4, 1)
     Unknown23029(4, 3106, 0)
-    sprite('rc403_08', 3)	# 26-28	 **attackbox here**
+    sprite('rc403_08', 3)	# 26-28
     callSubroutine('Shot_Stack')
     GFX_0('LightningRodC_Air', 0)
     Unknown38(4, 1)
     Unknown23029(4, 3105, 0)
-    sprite('rc403_09', 3)	# 29-31	 **attackbox here**
+    sprite('rc403_09', 3)	# 29-31
     setGravity(1850)
     Unknown23001(100, 100)
     Unknown23012(100, 100, 100)
-    sprite('rc403_10', 3)	# 32-34	 **attackbox here**
+    sprite('rc403_10', 3)	# 32-34
     WhiffCancelEnable(0)
-    sprite('rc403_11', 3)	# 35-37	 **attackbox here**
+    sprite('rc403_11', 3)	# 35-37
     Recovery()
     sprite('rc403_12', 3)	# 38-40	 **attackbox here**
     sprite('rc403_13', 3)	# 41-43
@@ -5957,27 +5957,27 @@ def CmnActCrushAttack():
 
     def upon_IMMEDIATE():
         Unknown30072('')
-    sprite('rc413_00', 2)	# 1-2	 **attackbox here**
-    sprite('rc413_01', 1)	# 3-3	 **attackbox here**
-    sprite('rc413_01', 1)	# 4-4	 **attackbox here**
+    sprite('rc413_00', 2)	# 1-2
+    sprite('rc413_01', 1)	# 3-3
+    sprite('rc413_01', 1)	# 4-4
     tag_voice(1, 'brc156_0', 'brc156_1', '', '')
-    sprite('rc413_02', 2)	# 5-6	 **attackbox here**
-    sprite('rc413_03', 2)	# 7-8	 **attackbox here**
-    sprite('rc413_04', 2)	# 9-10	 **attackbox here**
+    sprite('rc413_02', 2)	# 5-6
+    sprite('rc413_03', 2)	# 7-8
+    sprite('rc413_04', 2)	# 9-10
     WhiffCancelEnable(0)
-    sprite('rc413_05', 3)	# 11-13	 **attackbox here**
-    sprite('rc413_06', 6)	# 14-19	 **attackbox here**
-    sprite('rc413_07', 2)	# 20-21	 **attackbox here**
+    sprite('rc413_05', 3)	# 11-13
+    sprite('rc413_06', 6)	# 14-19
+    sprite('rc413_07', 2)	# 20-21
     SFX_0('005_swing_grap_2_2')
     sprite('rc413_08', 3)	# 22-24	 **attackbox here**
-    sprite('rc413_09', 3)	# 25-27	 **attackbox here**
-    sprite('rc413_10', 3)	# 28-30	 **attackbox here**
-    sprite('rc413_11', 3)	# 31-33	 **attackbox here**
-    sprite('rc413_12', 3)	# 34-36	 **attackbox here**
-    sprite('rc413_13', 3)	# 37-39	 **attackbox here**
-    sprite('rc413_14', 3)	# 40-42	 **attackbox here**
-    sprite('rc413_15', 2)	# 43-44	 **attackbox here**
-    sprite('rc413_16', 2)	# 45-46	 **attackbox here**
+    sprite('rc413_09', 3)	# 25-27
+    sprite('rc413_10', 3)	# 28-30
+    sprite('rc413_11', 3)	# 31-33
+    sprite('rc413_12', 3)	# 34-36
+    sprite('rc413_13', 3)	# 37-39
+    sprite('rc413_14', 3)	# 40-42
+    sprite('rc413_15', 2)	# 43-44
+    sprite('rc413_16', 2)	# 45-46
     sprite('rc413_17', 2)	# 47-48
 
 @State
@@ -5992,16 +5992,16 @@ def CmnActCrushAttackChase1st():
             clearUponHandler(17)
             sendToLabel(11)
         Unknown23012(0, 0, 0)
-    sprite('rc413_09', 3)	# 1-3	 **attackbox here**
+    sprite('rc413_09', 3)	# 1-3
     StartMultihit()
     Unknown3029(0)
-    sprite('rc413_10', 2)	# 4-5	 **attackbox here**
-    sprite('rc413_11', 2)	# 6-7	 **attackbox here**
-    sprite('rc413_12', 2)	# 8-9	 **attackbox here**
-    sprite('rc413_13', 2)	# 10-11	 **attackbox here**
-    sprite('rc413_14', 2)	# 12-13	 **attackbox here**
-    sprite('rc413_15', 2)	# 14-15	 **attackbox here**
-    sprite('rc413_16', 2)	# 16-17	 **attackbox here**
+    sprite('rc413_10', 2)	# 4-5
+    sprite('rc413_11', 2)	# 6-7
+    sprite('rc413_12', 2)	# 8-9
+    sprite('rc413_13', 2)	# 10-11
+    sprite('rc413_14', 2)	# 12-13
+    sprite('rc413_15', 2)	# 14-15
+    sprite('rc413_16', 2)	# 16-17
     sprite('rc413_17', 2)	# 18-19
     sprite('rc211_00', 1)	# 20-20
     sprite('rc211_01', 2)	# 21-22

@@ -1945,7 +1945,7 @@ def ta_5DThunder():
     sprite('null', 3)	# 4-6
     gotoLabel(0)
     label(1)
-    sprite('vr_ta205_col', 5)	# 7-11
+    sprite('vr_ta205_col', 5)	# 7-11	 **attackbox here**
     SFX_3('thunder_s')
     RefreshMultihit()
     GFX_0('ta_ThunderFall', 100)
@@ -1975,7 +1975,7 @@ def ta_5DThunderTuika():
         Unknown4061(3)
         Unknown1056(2000)
         Unknown1064(4000)
-    sprite('vr_ta205_col', 5)	# 1-5
+    sprite('vr_ta205_col', 5)	# 1-5	 **attackbox here**
     SFX_3('thunder_s')
     teleportRelativeX(300000)
     RefreshMultihit()

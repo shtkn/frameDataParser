@@ -2170,7 +2170,7 @@ def AN_NmlAtk5B_3rd():
     sprite('Action_363_00', 2)	# 1-2
     sprite('Action_363_01', 4)	# 3-6
     GFX_0('EffNmlAtk5B_3rd_Zanzo2', 100)
-    sprite('Action_363_02', 2)	# 7-8	 **attackbox here**
+    sprite('Action_363_02', 2)	# 7-8
     Unknown8001(0, 100)
     SFX_3('SE028_RunDash')
     physicsXImpulse(24000)
@@ -2179,7 +2179,7 @@ def AN_NmlAtk5B_3rd():
     Unknown2006()
     Unknown2035(1)
     Unknown28(2, 'CmnActJumpLanding')
-    sprite('Action_363_03', 2)	# 9-10	 **attackbox here**
+    sprite('Action_363_03', 2)	# 9-10
     Unknown7007('7573653230375f310000000000000000640000007573653230385f310000000000000000640000007573653230395f320000000000000000640000000000000000000000000000000000000000000000')
     SLOT_59 = 1
     sprite('Action_366_00ex01', 3)	# 11-13	 **attackbox here**
@@ -3284,7 +3284,7 @@ def CmnActInvincibleAttack():
             Unknown2035(0)
     sprite('Action_363_00', 2)	# 1-2
     sprite('Action_363_01', 4)	# 3-6
-    sprite('Action_363_02', 2)	# 7-8	 **attackbox here**
+    sprite('Action_363_02', 2)	# 7-8
     SFX_3('SE028_RunDash')
     GFX_0('EffReversal_Zanzo', 100)
     physicsXImpulse(8000)
@@ -3292,7 +3292,7 @@ def CmnActInvincibleAttack():
     Unknown3004(-40)
     Unknown2035(1)
     Unknown7006('use302_1', 100, 828732277, 845101104, 0, 0, 100, 828732277, 828321841, 0, 0, 100, 0, 0, 0, 0, 0)
-    sprite('Action_363_03', 2)	# 9-10	 **attackbox here**
+    sprite('Action_363_03', 2)	# 9-10
     sprite('Action_366_01', 1)	# 11-11
     Unknown1084(1)
     physicsXImpulse(12000)
@@ -3920,7 +3920,7 @@ def AirAssaultA_AddAttack():
         Unknown11056(2)
     sprite('Action_363_00', 2)	# 1-2
     sprite('Action_363_01', 4)	# 3-6
-    sprite('Action_363_02', 2)	# 7-8	 **attackbox here**
+    sprite('Action_363_02', 2)	# 7-8
     SFX_3('SE028_RunDash')
     GFX_0('EffNmlAtk5B_3rd_Zanzo', 100)
     physicsXImpulse(24000)
@@ -3928,7 +3928,7 @@ def AirAssaultA_AddAttack():
     Unknown3004(-40)
     Unknown2035(1)
     Unknown28(2, 'CmnActJumpLanding')
-    sprite('Action_363_03', 2)	# 9-10	 **attackbox here**
+    sprite('Action_363_03', 2)	# 9-10
     Unknown2017(0)
     Unknown7006('use110_2', 100, 828732277, 828323888, 0, 0, 100, 828732277, 828323632, 0, 0, 100, 0, 0, 0, 0, 0)
     sprite('Action_366_00ex01', 3)	# 11-13	 **attackbox here**

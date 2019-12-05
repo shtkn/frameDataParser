@@ -1,16 +1,16 @@
 
 CmnActChangePartnerIn
 
- |damage=0|p1=100|p2=100
- |level=0|attribute=|guard=
- |startup=35|active=3|recovery=22|frameAdv=-24
- |blockstun=0|groundHit=0|airHit=0|hitstop=0
+ |damage=|cancel=|p1=|p2=
+ |level=|attribute=|guard=
+ |startup=640|active=3|recovery=22|frameAdv=-24
+ |blockstun=|groundHit=None|airHit=|hitstop=None
  |invul=|hitbox=
 }}
 
 CmnActChangePartnerQuickIn
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 29|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -19,7 +19,7 @@ CmnActChangePartnerQuickIn
 
 CmnActChangePartnerOut
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 60|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -28,7 +28,7 @@ CmnActChangePartnerOut
 
 CmnActChangePartnerQuickOut
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 18|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -37,7 +37,7 @@ CmnActChangePartnerQuickOut
 
 CmnActChangePartnerAssistAdmiss
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 112|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -46,18 +46,16 @@ CmnActChangePartnerAssistAdmiss
 
 CmnActChangePartnerAssistAtk_A
 
-Additional Hit (projectile?)
-|startup=42|active=300|recovery=0last blockstun frame: 63
- |damage=1500|p1=70|p2=90
- |level=3|attribute=|guard=
- |startup=|active=|recovery=Total: 32822|frameAdv=-32759
- |blockstun=16|groundHit=17|airHit=17|hitstop=5
+ |damage=|cancel=|p1=|p2=
+ |level=|attribute=|guard=
+ |startup=|active=|recovery=Total: 32822|frameAdv=
+ |blockstun=|groundHit=|airHit=|hitstop=
  |invul=|hitbox=
 }}
 
 CmnActChangePartnerAssistAtk_B
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 88|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -66,7 +64,7 @@ CmnActChangePartnerAssistAtk_B
 
 CmnActChangePartnerAssistAtk_D
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 77|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -75,25 +73,25 @@ CmnActChangePartnerAssistAtk_D
 
 CmnActChangePartnerDD
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 1+103Flash+0|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |invul=1--83 All|hitbox=
+ |invul=1-1 All|hitbox=
 }}
 
 CmnActChangePartnerBurst
 
- |damage=0|p1=100|p2=100
- |level=0|attribute=|guard=
+ |damage=|cancel=|p1=|p2=
+ |level=|attribute=|guard=
  |startup=121|active=9|recovery=31|frameAdv=-39
- |blockstun=0|groundHit=0|airHit=0|hitstop=0
+ |blockstun=|groundHit=None|airHit=|hitstop=None
  |invul=|hitbox=
 }}
 
 NmlAtk5A
 
- |damage=1500|p1=100|p2=80
+ |damage=1500|cancel=|p1=100|p2=80
  |level=3|attribute=B|guard=
  |startup=9|active=4|recovery=16|frameAdv=-3
  |blockstun=16|groundHit=17|airHit=17|hitstop=11
@@ -102,36 +100,34 @@ NmlAtk5A
 
 NmlAtk5A2nd
 
- |damage=1300*2|p1=90*2|p2=75*2
- |level=2*2|attribute=F*2|guard=
- |startup=7|active=2,2|recovery=16|frameAdv=-4
- |blockstun=13*2|groundHit=14*2|airHit=14*2|hitstop=10
+ |damage=1500|cancel=|p1=100|p2=80
+ |level=3|attribute=B|guard=
+ |startup=9|active=4|recovery=16|frameAdv=-3
+ |blockstun=16|groundHit=17|airHit=17|hitstop=11
  |invul=|hitbox=
 }}
 
 NmlAtk5A3rd
 
- |damage=|p1=|p2=
- |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 46|frameAdv=
- |blockstun=|groundHit=|airHit=|hitstop=
+ |damage=1500|cancel=|p1=90|p2=80
+ |level=3|attribute=F|guard=
+ |startup=9|active=2|recovery=16|frameAdv=-1
+ |blockstun=16|groundHit=17|airHit=17|hitstop=11
  |invul=|hitbox=
 }}
 
 NmlAtk5A4th
 
-Additional Hit (projectile?)
-|startup=7|active=22|recovery=0last blockstun frame: 34
- |damage=1800|p1=100|p2=80
- |level=3|attribute=|guard=
- |startup=|active=|recovery=Total: 45|frameAdv=-11
- |blockstun=16|groundHit=17|airHit=40|hitstop=11
+ |damage=|cancel=|p1=|p2=
+ |level=|attribute=|guard=
+ |startup=|active=|recovery=Total: 45|frameAdv=
+ |blockstun=|groundHit=|airHit=|hitstop=
  |invul=|hitbox=
 }}
 
 NmlAtk5B
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 45|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -140,7 +136,16 @@ NmlAtk5B
 
 NmlAtk5B2nd
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
+ |level=|attribute=|guard=
+ |startup=|active=|recovery=Total: 46|frameAdv=
+ |blockstun=|groundHit=|airHit=|hitstop=
+ |invul=|hitbox=
+}}
+
+NmlAtk5B3rd
+
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 48|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -149,7 +154,7 @@ NmlAtk5B2nd
 
 NmlAtk4A
 
- |damage=1000|p1=100|p2=75
+ |damage=1000|cancel=|p1=100|p2=75
  |level=2|attribute=B|guard=
  |startup=6|active=3|recovery=15|frameAdv=-4
  |blockstun=13|groundHit=14|airHit=14|hitstop=10
@@ -158,7 +163,7 @@ NmlAtk4A
 
 NmlAtk4A2nd
 
- |damage=1500|p1=100|p2=80
+ |damage=1500|cancel=|p1=100|p2=80
  |level=3|attribute=B|guard=
  |startup=8|active=3|recovery=20|frameAdv=-6
  |blockstun=16|groundHit=17|airHit=17|hitstop=11
@@ -167,16 +172,16 @@ NmlAtk4A2nd
 
 NmlAtk4A3rd
 
- |damage=1500|p1=100|p2=70
+ |damage=1500|cancel=|p1=100|p2=70
  |level=3|attribute=B|guard=
  |startup=14|active=4|recovery=32783|frameAdv=-32770
- |blockstun=16|groundHit=17|airHit=30|hitstop=11
+ |blockstun=16|groundHit=Launch|airHit=30|hitstop=11
  |invul=|hitbox=
 }}
 
 NmlAtk2A
 
- |damage=1000|p1=90|p2=70
+ |damage=1000|cancel=|p1=90|p2=70
  |level=1|attribute=F|guard=
  |startup=7|active=3|recovery=11|frameAdv=-2
  |blockstun=11|groundHit=12|airHit=12|hitstop=9
@@ -185,7 +190,7 @@ NmlAtk2A
 
 NmlAtk2B
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 39|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -194,16 +199,16 @@ NmlAtk2B
 
 NmlAtk2C
 
- |damage=1500|p1=90|p2=80
+ |damage=1500|cancel=|p1=90|p2=80
  |level=3|attribute=F|guard=
  |startup=10|active=3|recovery=18|frameAdv=-4
- |blockstun=16|groundHit=17|airHit=22|hitstop=11
+ |blockstun=16|groundHit=Launch|airHit=22|hitstop=11
  |invul=|hitbox=
 }}
 
 NmlAtkAIR5A2nd
 
- |damage=1500|p1=100|p2=80
+ |damage=1500|cancel=|p1=80|p2=80
  |level=3|attribute=H|guard=
  |startup=6|active=4|recovery=12|frameAdv=1
  |blockstun=16|groundHit=17|airHit=20|hitstop=11
@@ -212,7 +217,7 @@ NmlAtkAIR5A2nd
 
 NmlAtkAIR5C
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 40+8L|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -221,52 +226,52 @@ NmlAtkAIR5C
 
 CmnActCrushAttack
 
- |damage=0|p1=100|p2=100
+ |damage=1500|cancel=|p1=100|p2=80
  |level=3|attribute=|guard=
  |startup=22|active=3|recovery=24|frameAdv=-10
- |blockstun=16|groundHit=0|airHit=0|hitstop=11
+ |blockstun=16|groundHit=17|airHit=17|hitstop=11
  |invul=|hitbox=
 }}
 
 NmlAtkThrow
 
- |damage=0|p1=100|p2=100
- |level=0|attribute=|guard=
+ |damage=|cancel=|p1=|p2=
+ |level=|attribute=|guard=
  |startup=33|active=3|recovery=23|frameAdv=-25
- |blockstun=0|groundHit=0|airHit=0|hitstop=0
+ |blockstun=|groundHit=None|airHit=|hitstop=None
  |invul=|hitbox=
 }}
 
 NmlAtkThrowExe
 
- |damage=0*2|p1=100*2|p2=100*2
- |level=1*2|attribute=*2|guard=
- |startup=1|active=4(3)7|recovery=41|frameAdv=-36
- |blockstun=11*2|groundHit=70*2|airHit=70*2|hitstop=0
+ |damage=0|cancel=|p1=100|p2=100
+ |level=1|attribute=|guard=
+ |startup=8|active=7|recovery=41|frameAdv=-36
+ |blockstun=11|groundHit=Stagger 70|airHit=70|hitstop=0
  |invul=|hitbox=
 }}
 
 NmlAtkBackThrow
 
- |damage=0|p1=100|p2=100
- |level=0|attribute=|guard=
+ |damage=|cancel=|p1=|p2=
+ |level=|attribute=|guard=
  |startup=33|active=3|recovery=23|frameAdv=-25
- |blockstun=0|groundHit=0|airHit=0|hitstop=0
+ |blockstun=|groundHit=None|airHit=|hitstop=None
  |invul=|hitbox=
 }}
 
 NmlAtkBackThrowExe
 
- |damage=0*2|p1=100*2|p2=100*2
- |level=1*2|attribute=*2|guard=
- |startup=1|active=4(3)10(6)1|recovery=41|frameAdv=-30
- |blockstun=11*2|groundHit=70*2|airHit=70*2|hitstop=0
+ |damage=0|cancel=|p1=100|p2=100
+ |level=1|attribute=|guard=
+ |startup=8|active=10(6)1|recovery=41|frameAdv=-30
+ |blockstun=11|groundHit=Stagger 70|airHit=70|hitstop=0
  |invul=|hitbox=
 }}
 
 KamaeA
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 32781|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -275,40 +280,34 @@ KamaeA
 
 ShagekiA
 
-Additional Hit (projectile?)
-|startup=22|active=300|recovery=0last blockstun frame: 43
- |damage=1500|p1=80|p2=90
- |level=3|attribute=|guard=
- |startup=|active=|recovery=Total: 32802|frameAdv=-32759
- |blockstun=16|groundHit=17|airHit=17|hitstop=5
+ |damage=|cancel=|p1=|p2=
+ |level=|attribute=|guard=
+ |startup=|active=|recovery=Total: 32802|frameAdv=
+ |blockstun=|groundHit=|airHit=|hitstop=
  |invul=|hitbox=
 }}
 
 ShagekiB
 
-Additional Hit (projectile?)
-|startup=22|active=300|recovery=0last blockstun frame: 43
- |damage=0, 1500|p1=100, 80|p2=100, 90
- |level=0, 3|attribute=B, |guard=
- |startup=3|active=2(2)4(4)4(7)32777|recovery=0|frameAdv=-32759
- |blockstun=0, 16|groundHit=0, 17|airHit=0, 17|hitstop=0, 5
+ |damage=|cancel=|p1=80|p2=
+ |level=|attribute=B|guard=
+ |startup=3|active=2(2)4(4)4(7)32777|recovery=0|frameAdv=-32776
+ |blockstun=|groundHit=None|airHit=|hitstop=None
  |invul=|hitbox=
 }}
 
 ShagekiC
 
-Additional Hit (projectile?)
-|startup=22|active=300|recovery=0last blockstun frame: 43
- |damage=1500|p1=80|p2=90
- |level=3|attribute=|guard=
- |startup=|active=|recovery=Total: 32802|frameAdv=-32759
- |blockstun=16|groundHit=17|airHit=17|hitstop=5
+ |damage=|cancel=|p1=|p2=
+ |level=|attribute=|guard=
+ |startup=|active=|recovery=Total: 32802|frameAdv=
+ |blockstun=|groundHit=|airHit=|hitstop=
  |invul=|hitbox=
 }}
 
 KamaeCancel
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 13|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -317,7 +316,7 @@ KamaeCancel
 
 KamaeEX
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 32793|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -326,43 +325,43 @@ KamaeEX
 
 BanditRevolverB
 
- |damage=1000*2|p1=80*2|p2=85*2
+ |damage=1000*2|cancel=|p1=80*2|p2=85*2 (Once)
  |level=4*2|attribute=B, H|guard=
  |startup=14|active=6(12)3|recovery=65541|frameAdv=-65525
- |blockstun=18*2|groundHit=19*2|airHit=30*2|hitstop=12, 12/+0/+-4
+ |blockstun=18*2|groundHit=Launch, 19|airHit=30*2|hitstop=12, 12/+0/-4
  |invul=|hitbox=
 }}
 
 AirBanditRevolverA
 
- |damage=1000*3|p1=80*3|p2=85*3 (Once)
- |level=4*3|attribute=H*3|guard=
- |startup=5|active=4,3(12)6|recovery=32783|frameAdv=-32770
- |blockstun=18*3|groundHit=19*3|airHit=30*3|hitstop=12
+ |damage=1000*2|cancel=|p1=80*2|p2=85*2 (Once)
+ |level=4*2|attribute=H*2|guard=
+ |startup=9|active=3(12)6|recovery=32783|frameAdv=-32770
+ |blockstun=18*2|groundHit=Launch*2|airHit=30*2|hitstop=12
  |invul=|hitbox=
 }}
 
 AirBanditRevolverB
 
- |damage=1000*3|p1=80*3|p2=85*3
- |level=4*3|attribute=H*3|guard=
- |startup=9|active=4,6(12)6|recovery=65541|frameAdv=-65528
- |blockstun=18*3|groundHit=19*3|airHit=30*3|hitstop=12, 12/+0/+-4
+ |damage=1000*2|cancel=|p1=80*2|p2=85*2 (Once)
+ |level=4*2|attribute=H*2|guard=
+ |startup=13|active=6(12)6|recovery=65541|frameAdv=-65528
+ |blockstun=18*2|groundHit=Launch, 19|airHit=30*2|hitstop=12, 12/+0/-4
  |invul=|hitbox=
 }}
 
 AirBanditRevolverEX
 
- |damage=1300*3|p1=80*3|p2=85*3
- |level=4*3|attribute=H*3|guard=
- |startup=5|active=4,6(12)6|recovery=32780|frameAdv=-32767
- |blockstun=18*3|groundHit=19*3|airHit=30*3|hitstop=12
+ |damage=1300*2|cancel=|p1=80*2|p2=85*2 (Once)
+ |level=4*2|attribute=H*2|guard=
+ |startup=9|active=6(12)6|recovery=32780|frameAdv=-32767
+ |blockstun=18*2|groundHit=Launch, 19|airHit=30*2|hitstop=12, 12
  |invul=|hitbox=
 }}
 
 WalkingShotEX
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 74|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -371,16 +370,16 @@ WalkingShotEX
 
 WalkingShotKickEX
 
- |damage=2500|p1=80|p2=80
+ |damage=2500|cancel=|p1=80|p2=80
  |level=5|attribute=B|guard=
  |startup=11|active=2|recovery=35|frameAdv=-16
- |blockstun=20|groundHit=21|airHit=70|hitstop=30
+ |blockstun=20|groundHit=Launch|airHit=70|hitstop=30
  |invul=1-12 All|hitbox=
 }}
 
 TrapA
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 36|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -389,7 +388,7 @@ TrapA
 
 TrapB
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 36|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -398,7 +397,7 @@ TrapB
 
 TrapEX
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 34|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -407,49 +406,43 @@ TrapEX
 
 AirTrapA
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 28+4L|frameAdv=
+ |startup=|active=|recovery=Total: 28|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
  |invul=|hitbox=
 }}
 
 AirTrapB
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 28+4L|frameAdv=
+ |startup=|active=|recovery=Total: 28|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
  |invul=|hitbox=
 }}
 
 AirTrapEX
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 17+4L|frameAdv=
+ |startup=|active=|recovery=Total: 17|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
  |invul=|hitbox=
 }}
 
 CmnActInvincibleAttack
 
-Additional Hit (projectile?)
-|startup=|active=|recovery=32797last blockstun frame: 0
-Additional Hit (projectile?)
-|startup=|active=|recovery=30last blockstun frame: 0
-Additional Hit (projectile?)
-|startup=|active=|recovery=21last blockstun frame: 0
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 45|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |invul=1-15 Guard All Guard|hitbox=
+ |invul=1-25 All|hitbox=
 }}
 
 SecretGunA
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 11+42Flash+123|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -458,7 +451,7 @@ SecretGunA
 
 SecretGunB
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 11+40Flash+61|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -467,34 +460,34 @@ SecretGunB
 
 SecretGunOD
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 210+50Flash+58|frameAdv=
+ |startup=|active=|recovery=Total: 11+42Flash+265|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |invul=1-223 All|hitbox=
+ |invul=1-191 All|hitbox=
 }}
 
 UltimateKill
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 5+72Flash+23|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |invul=1-0 All|hitbox=
+ |invul=1-5 All|hitbox=
 }}
 
 UltimateKillOD
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 5+72Flash+23|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
- |invul=1-0 All|hitbox=
+ |invul=1-5 All|hitbox=
 }}
 
 UltimateKillAir
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 10+30Flash+36|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -503,7 +496,7 @@ UltimateKillAir
 
 UltimateKillAirOD
 
- |damage=|p1=|p2=
+ |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 10+30Flash+36|frameAdv=
  |blockstun=|groundHit=|airHit=|hitstop=
@@ -512,11 +505,9 @@ UltimateKillAirOD
 
 AstralHeat
 
-Additional Hit (projectile?)
-|startup=13+96Flash+270|active=76|recovery=0last blockstun frame: 379
- |damage=0|p1=100|p2=100
- |level=0|attribute=|guard=
- |startup=|active=|recovery=Total: 13+96Flash+695|frameAdv=-425
- |blockstun=0|groundHit=0|airHit=0|hitstop=0
- |invul=|hitbox=
+ |damage=|cancel=|p1=|p2=
+ |level=|attribute=|guard=
+ |startup=|active=|recovery=Total: 13+96Flash+695|frameAdv=
+ |blockstun=|groundHit=|airHit=|hitstop=
+ |invul=1-64 All|hitbox=
 }}

@@ -2469,7 +2469,7 @@ def CmnActChangePartnerAssistAtk_B():
     sprite('pt204_02', 1)	# 142-142
     if SLOT_58:
         sendToLabel(12)
-    sprite('pt206_00', 3)	# 143-145	 **attackbox here**
+    sprite('pt206_00', 3)	# 143-145
     AttackLevel_(4)
     Damage(1700)
     AttackP2(75)
@@ -2495,7 +2495,7 @@ def CmnActChangePartnerAssistAtk_B():
     GFX_1('ptef_hammerDwave02', 0)
     SFX_0('005_swing_grap_2_2')
     SFX_3('ptse_24')
-    sprite('pt206_04', 5)	# 158-162	 **attackbox here**
+    sprite('pt206_04', 5)	# 158-162
     GFX_1('ptef_lightrod00', 0)
     GFX_1('ptef_206dellight00', 1)
     GFX_1('ptef_206dellight00', 2)
@@ -2503,12 +2503,12 @@ def CmnActChangePartnerAssistAtk_B():
     GFX_1('ptef_lightrod00', 3)
     GFX_1('ptef_206dellight00', 4)
     Recovery()
-    sprite('pt206_05', 3)	# 163-165	 **attackbox here**
+    sprite('pt206_05', 3)	# 163-165
     GFX_1('ptef_206dellight', 0)
     GFX_1('ptef_206dellight', 1)
     GFX_1('ptef_206dellight', 2)
     callSubroutine('StuffColorReset')
-    sprite('pt206_05ex00', 2)	# 166-167	 **attackbox here**
+    sprite('pt206_05ex00', 2)	# 166-167
     sprite('pt204_09', 2)	# 168-169
     sprite('pt204_10', 2)	# 170-171
     sprite('pt204_11', 2)	# 172-173
@@ -2516,7 +2516,7 @@ def CmnActChangePartnerAssistAtk_B():
     sprite('pt204_13', 2)	# 176-177
     ExitState()
     label(12)
-    sprite('pt206_06', 3)	# 178-180	 **attackbox here**
+    sprite('pt206_06', 3)	# 178-180
     AttackLevel_(4)
     Damage(2040)
     AttackP2(85)
@@ -2540,7 +2540,7 @@ def CmnActChangePartnerAssistAtk_B():
     Unknown1084(1)
     SFX_0('005_swing_grap_2_2')
     SFX_3('ptse_07')
-    sprite('pt206_10', 5)	# 193-197	 **attackbox here**
+    sprite('pt206_10', 5)	# 193-197
     GFX_1('ptef_206dellight00', 0)
     GFX_1('ptef_206dellight00', 1)
     GFX_1('ptef_206dellight00', 3)
@@ -2550,7 +2550,7 @@ def CmnActChangePartnerAssistAtk_B():
     GFX_1('ptef_lightrod00', 4)
     GFX_1('ptef_lightrod00', 5)
     Recovery()
-    sprite('pt206_11', 3)	# 198-200	 **attackbox here**
+    sprite('pt206_11', 3)	# 198-200
     GFX_1('ptef_206dellight', 0)
     GFX_1('ptef_206dellight', 1)
     GFX_1('ptef_206dellight', 2)
@@ -2558,7 +2558,7 @@ def CmnActChangePartnerAssistAtk_B():
     GFX_1('ptef_206dellight', 4)
     GFX_1('ptef_206dellight', 5)
     callSubroutine('StuffColorReset')
-    sprite('pt206_11', 3)	# 201-203	 **attackbox here**
+    sprite('pt206_11', 3)	# 201-203
     sprite('pt204_09', 2)	# 204-205
     sprite('pt204_10', 2)	# 206-207
     sprite('pt204_11', 2)	# 208-209
@@ -3652,7 +3652,7 @@ def NmlAtk5AA():
     sprite('pt204_02', 1)	# 3-3
     if SLOT_5:
         sendToLabel(100)
-    sprite('pt206_00', 3)	# 4-6	 **attackbox here**
+    sprite('pt206_00', 3)	# 4-6
     AttackP2(75)
     Unknown9310(1)
     sprite('pt206_01', 3)	# 7-9
@@ -3665,7 +3665,7 @@ def NmlAtk5AA():
     GFX_1('ptef_hammerDwave02', 0)
     SFX_0('005_swing_grap_2_2')
     SFX_3('ptse_24')
-    sprite('pt206_04', 3)	# 19-21	 **attackbox here**
+    sprite('pt206_04', 3)	# 19-21
     GFX_1('ptef_lightrod00', 0)
     GFX_1('ptef_206dellight00', 1)
     GFX_1('ptef_206dellight00', 2)
@@ -3674,15 +3674,15 @@ def NmlAtk5AA():
     GFX_1('ptef_206dellight00', 4)
     Recovery()
     Unknown2063()
-    sprite('pt206_05', 3)	# 22-24	 **attackbox here**
+    sprite('pt206_05', 3)	# 22-24
     GFX_1('ptef_206dellight', 0)
     GFX_1('ptef_206dellight', 1)
     GFX_1('ptef_206dellight', 2)
-    sprite('pt206_05ex00', 2)	# 25-26	 **attackbox here**
+    sprite('pt206_05ex00', 2)	# 25-26
     loopRest()
     gotoLabel(9)
     label(100)
-    sprite('pt206_06', 3)	# 27-29	 **attackbox here**
+    sprite('pt206_06', 3)	# 27-29
     Damage(2040)
     AttackP2(85)
     Unknown9190(1)
@@ -3697,7 +3697,7 @@ def NmlAtk5AA():
     sprite('pt206_09ex01', 8)	# 34-41	 **attackbox here**
     SFX_0('005_swing_grap_2_2')
     SFX_3('ptse_07')
-    sprite('pt206_10', 3)	# 42-44	 **attackbox here**
+    sprite('pt206_10', 3)	# 42-44
     GFX_1('ptef_206dellight00', 0)
     GFX_1('ptef_206dellight00', 1)
     GFX_1('ptef_206dellight00', 3)
@@ -3708,14 +3708,14 @@ def NmlAtk5AA():
     GFX_1('ptef_lightrod00', 5)
     Recovery()
     Unknown2063()
-    sprite('pt206_11', 3)	# 45-47	 **attackbox here**
+    sprite('pt206_11', 3)	# 45-47
     GFX_1('ptef_206dellight', 0)
     GFX_1('ptef_206dellight', 1)
     GFX_1('ptef_206dellight', 2)
     GFX_1('ptef_206dellight', 3)
     GFX_1('ptef_206dellight', 4)
     GFX_1('ptef_206dellight', 5)
-    sprite('pt206_11', 2)	# 48-49	 **attackbox here**
+    sprite('pt206_11', 2)	# 48-49
     label(9)
     sprite('pt204_09', 2)	# 50-51
     callSubroutine('StuffColorReset')
@@ -3798,14 +3798,14 @@ def NmlAtk5AAAA():
         Unknown2004(1, 0)
     sprite('pt407_00', 2)	# 1-2
     sprite('pt407_01', 3)	# 3-5
-    sprite('pt407_02', 3)	# 6-8	 **attackbox here**
+    sprite('pt407_02', 3)	# 6-8
     if (not SLOT_7):
         Unknown7006('bpt106_0', 100, 829714530, 811546672, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     else:
         Unknown7006('bpt106_1', 100, 829714530, 828323888, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    sprite('pt407_03', 3)	# 9-11	 **attackbox here**
-    sprite('pt407_04', 3)	# 12-14	 **attackbox here**
-    sprite('pt407_05', 3)	# 15-17	 **attackbox here**
+    sprite('pt407_03', 3)	# 9-11
+    sprite('pt407_04', 3)	# 12-14
+    sprite('pt407_05', 3)	# 15-17
     sprite('pt407_06', 4)	# 18-21	 **attackbox here**
     SFX_3('ptse_08')
     SFX_3('ptse_02')
@@ -4300,7 +4300,7 @@ def CmnActCrushAttack():
         sendToLabel(100)
     sprite('pt204_02', 4)	# 6-9
     Unknown11050('06000000707465665f6869745f6d6964646c650000000000000000000000000000000000')
-    sprite('pt204_03', 4)	# 10-13	 **attackbox here**
+    sprite('pt204_03', 4)	# 10-13
     sprite('pt204_04', 4)	# 14-17
     sprite('pt204_05', 2)	# 18-19
     if (not SLOT_7):
@@ -4315,7 +4315,7 @@ def CmnActCrushAttack():
     SFX_0('003_swing_grap_0_2')
     sprite('pt204_06', 3)	# 22-24	 **attackbox here**
     RefreshMultihit()
-    sprite('pt204_07', 3)	# 25-27	 **attackbox here**
+    sprite('pt204_07', 3)	# 25-27
     GFX_1('ptef_204dellight00', 0)
     GFX_1('ptef_204dellight00', 1)
     GFX_1('ptef_204dellight00', 2)
@@ -4323,7 +4323,7 @@ def CmnActCrushAttack():
     GFX_1('ptef_lightrod00', 1)
     GFX_1('ptef_lightrod00', 2)
     GFX_1('ptef_lightrod00', 3)
-    sprite('pt204_08', 3)	# 28-30	 **attackbox here**
+    sprite('pt204_08', 3)	# 28-30
     GFX_1('ptef_204dellight', 0)
     GFX_1('ptef_204dellight', 1)
     GFX_1('ptef_204dellight', 2)
@@ -4341,7 +4341,7 @@ def CmnActCrushAttack():
     def upon_11():
         SLOT_53 = 1
     Unknown23159('SpHammer')
-    sprite('pt204_14', 4)	# 52-55	 **attackbox here**
+    sprite('pt204_14', 4)	# 52-55
     sprite('pt204_15', 5)	# 56-60
     sprite('pt204_16', 2)	# 61-62
     if (not SLOT_7):
@@ -4355,7 +4355,7 @@ def CmnActCrushAttack():
     StartMultihit()
     sprite('pt204_17', 3)	# 65-67	 **attackbox here**
     RefreshMultihit()
-    sprite('pt204_18', 3)	# 68-70	 **attackbox here**
+    sprite('pt204_18', 3)	# 68-70
     if (not SLOT_53):
         GFX_0('Atk5DHiquake', 100)
     GFX_1('ptef_204dellight00', 0)
@@ -4368,14 +4368,14 @@ def CmnActCrushAttack():
     GFX_1('ptef_lightrod00', 3)
     GFX_1('ptef_lightrod00', 4)
     GFX_1('ptef_lightrod00', 6)
-    sprite('pt204_19', 3)	# 71-73	 **attackbox here**
+    sprite('pt204_19', 3)	# 71-73
     GFX_1('ptef_204dellight', 0)
     GFX_1('ptef_204dellight', 1)
     GFX_1('ptef_204dellight', 2)
     GFX_1('ptef_204dellight', 3)
     GFX_1('ptef_204dellight', 4)
     GFX_1('ptef_204dellight', 5)
-    sprite('pt204_19ex00', 3)	# 74-76	 **attackbox here**
+    sprite('pt204_19ex00', 3)	# 74-76
     sprite('pt204_09', 3)	# 77-79
     callSubroutine('StuffColorReset')
     sprite('pt204_10', 3)	# 80-82
@@ -4398,7 +4398,7 @@ def CmnActCrushAttackChase1st():
     SLOT_4 = 1
     SLOT_59 = 1
     Unknown23030('50545f4c696e6b436f6c6f7200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000')
-    sprite('pt204_07', 2)	# 2-3	 **attackbox here**
+    sprite('pt204_07', 2)	# 2-3
     GFX_1('ptef_204dellight00', 0)
     GFX_1('ptef_204dellight00', 1)
     GFX_1('ptef_204dellight00', 2)
@@ -4406,7 +4406,7 @@ def CmnActCrushAttackChase1st():
     GFX_1('ptef_lightrod00', 1)
     GFX_1('ptef_lightrod00', 2)
     GFX_1('ptef_lightrod00', 3)
-    sprite('pt204_08', 2)	# 4-5	 **attackbox here**
+    sprite('pt204_08', 2)	# 4-5
     GFX_1('ptef_204dellight', 0)
     GFX_1('ptef_204dellight', 1)
     GFX_1('ptef_204dellight', 2)
@@ -4421,15 +4421,15 @@ def CmnActCrushAttackChase1st():
     sprite('pt407_01', 1)	# 18-18
     SFX_1('pt159')
     sprite('pt407_01', 1)	# 19-19
-    sprite('pt407_02', 2)	# 20-21	 **attackbox here**
-    sprite('pt407_03', 2)	# 22-23	 **attackbox here**
-    sprite('pt407_04', 2)	# 24-25	 **attackbox here**
-    sprite('pt407_05', 2)	# 26-27	 **attackbox here**
+    sprite('pt407_02', 2)	# 20-21
+    sprite('pt407_03', 2)	# 22-23
+    sprite('pt407_04', 2)	# 24-25
+    sprite('pt407_05', 2)	# 26-27
     if (not SLOT_7):
         SFX_1('bpt157_0')
     else:
         SFX_1('bpt157_1')
-    sprite('pt407_03', 2)	# 28-29	 **attackbox here**
+    sprite('pt407_03', 2)	# 28-29
     sprite('pt407_06', 1)	# 30-30	 **attackbox here**
     RefreshMultihit()
     SFX_3('ptse_08')

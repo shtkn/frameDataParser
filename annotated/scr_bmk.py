@@ -2480,7 +2480,7 @@ def CmnActChangePartnerAssistAtk_A():
     sprite('mk413_05', 6)	# 26-31	 **attackbox here**
     Unknown1019(60)
     ScreenShake(0, 35000)
-    GFX_0('mkef413_lv3', -1)
+    GFX_0('mkef413_lv3'
     GFX_1('mkef_Lv3Puncheairwall', 0)
     sprite('mk413_05', 2)	# 32-33	 **attackbox here**
     Unknown1019(30)

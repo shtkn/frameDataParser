@@ -3269,7 +3269,7 @@ def NmlAtkAIR5B():
     sprite('tg253_00', 4)	# 1-4
     sprite('tg253_02', 5)	# 5-9
     SFX_3('tgse_03')
-    sprite('tg253_03', 4)	# 10-13	 **attackbox here**
+    sprite('tg253_03', 4)	# 10-13
     Unknown21003(2500, 2500)
     Unknown7007('6274673130345f300000000000000000640000006274673130345f310000000000000000640000006274673130345f320000000000000000640000000000000000000000000000000000000000000000')
     GFX_0('StayMagneticB', 0)
@@ -3281,10 +3281,10 @@ def NmlAtkAIR5B():
     SFX_0('014_electric_m')
     Unknown23118(0)
     Unknown23119(16744448, 12, 2)
-    sprite('tg253_03', 4)	# 14-17	 **attackbox here**
+    sprite('tg253_03', 4)	# 14-17
     Unknown21003(5000, 5000)
     SFX_0('014_electric_m')
-    sprite('tg253_04', 4)	# 18-21	 **attackbox here**
+    sprite('tg253_04', 4)	# 18-21
     Unknown21003(2500, 2500)
     SFX_0('005_swing_grap_2_2')
     GFX_0('StayMagneticB', 0)
@@ -3299,11 +3299,11 @@ def NmlAtkAIR5B():
     GFX_0('StayMagneticB253', 4)
     sprite('tg253_05', 3)	# 23-25	 **attackbox here**
     Unknown21003(0, 0)
-    sprite('tg253_06', 5)	# 26-30	 **attackbox here**
+    sprite('tg253_06', 5)	# 26-30
     SFX_0('014_electric_l')
     Recovery()
     Unknown2063()
-    sprite('tg253_07', 4)	# 31-34	 **attackbox here**
+    sprite('tg253_07', 4)	# 31-34
     sprite('tg253_08', 3)	# 35-37
     sprite('tg253_09', 3)	# 38-40
     Unknown3029(0)
