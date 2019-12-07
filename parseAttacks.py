@@ -1048,7 +1048,7 @@ def create_hitstun_and_untech_text(damage_list):
     value = [None, None]
     for attack_info in damage_list:
         fill_str(create_hitstun_text(attack_info), 0, value, value_str, value_multiplier)
-        fill_str(attack_info.get_untech(), 1, value, value_str, value_multiplier)
+        fill_str(create_untech_text(attack_info), 1, value, value_str, value_multiplier)
 
     for i in range(len(value_str)):
         if value[i] is not None:
@@ -1159,15 +1159,20 @@ def main():
         "scr_ahe",
         # BlazBlue
         "scr_baz", "scr_bes", "scr_bha", "scr_bhz", "scr_biz", "scr_bjb", "scr_bjn", "scr_bma", "scr_bmk",
-        "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg",
+        "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg", "scr_bce",
+        "scr_bsu",
         # Persona
         "scr_pag", "scr_pak", "scr_pbc", "scr_pce", "scr_pka", "scr_pku", "scr_pla", "scr_pmi", "scr_pna",
-        "scr_pyo", "scr_pyu",
+        "scr_pyo", "scr_pyu", "scr_pad", "scr_pel",
         # RWBY
         "scr_rbl", "scr_rrb", "scr_rwi", "scr_ryn",
         # Under Night
         "scr_uca", "scr_ugo", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
-        "scr_uwa", "scr_uyu"
+        "scr_uwa", "scr_uyu", "scr_uhi",
+        # Akatsuki Blitz (yes, it uses "U" like under night
+        "scr_uak", "scr_ubl"
+        # Senran Kagura
+
     ]
 
     # source_dir = "."
