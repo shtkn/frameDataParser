@@ -392,7 +392,7 @@ SPRITE_START = "    sprite('"
 SPRITE_MID = "', "
 SPRITE_END = ")"
 HAS_HITBOX = "**attackbox here**"
-GFX_START = "GFX_('"
+GFX_START = "GFX_"
 CALL_SUBROUTINE_STARTC = "CallSubroutine('"
 CALL_SUBROUTINE_STARTc = "callSubroutine('"
 
