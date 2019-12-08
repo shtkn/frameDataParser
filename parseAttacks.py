@@ -1079,7 +1079,7 @@ def create_hitstun_text(attack_info):
 
 def create_untech_text(attack_info):
     text = ""
-    if attack_info.airHitAni == 0 or attack_info.airHitAni is None:
+    if attack_info.airHitAni != 5 or attack_info.airHitAni is None:
         text = str(attack_info.get_untech())
 
     if attack_info.groundBounce is not None and attack_info.groundBounce > 0:
@@ -1175,9 +1175,9 @@ def main():
 
     ]
 
-    # source_dir = "."
-    # target_dir = "."
-    # file_list = ["testfile"]
+    source_dir = "."
+    target_dir = "."
+    file_list = ["testfile"]
     for file_name in file_list:
         # Parse effects
         if not os.path.isfile(source_dir + "/" + file_name + "ea.py") or \
