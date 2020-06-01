@@ -40,7 +40,7 @@ CmnActChangePartnerBurst
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=121|active=9|recovery=31|frameAdv=-39
- |blockstun=|groundHit=None|airHit=|hitstop=None
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -73,10 +73,12 @@ CmnActChangePartnerQuickOut
 
 CmnActChangePartnerAssistAtk_A
 
+Additional Hit (projectile?)
+|startup=11|active=102|recovery=0last blockstun frame: 11
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 55|frameAdv=
- |blockstun=|groundHit=|airHit=|hitstop=
+ |startup=|active=|recovery=Total: 55|frameAdv=-44
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -85,7 +87,7 @@ CmnActChangePartnerAssistAtk_B
  |damage=1700*2|cancel=|p1=70*2|p2=85*2 (Once)
  |level=4*2|attribute=B*2|guard=
  |startup=10|active=2(18)8|recovery=29|frameAdv=-18
- |blockstun=18*2|groundHit=Launch*2|airHit=60, 58|hitstop=6/+9/+9, 12
+ |blockstun=18*2|groundHit=Launch*2|airHit=58*2|hitstop=6/+9/+9, 12
  |invul=|hitbox=
 }}
 
@@ -139,7 +141,7 @@ NmlAtk5AAA
  |damage=1500|cancel=|p1=100|p2=80
  |level=3|attribute=B|guard=
  |startup=15|active=2|recovery=21|frameAdv=-3
- |blockstun=16|groundHit=17|airHit=35|hitstop=9/+3/+3
+ |blockstun=16|groundHit=17|airHit=35 + Slide 44|hitstop=9/+3/+3
  |invul=|hitbox=
 }}
 
@@ -235,37 +237,45 @@ NmlAtkAIR5C
 
 NmlAtk5B
 
+Additional Hit (projectile?)
+|startup=17|active=32793|recovery=0last blockstun frame: 17
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 64|frameAdv=
- |blockstun=|groundHit=|airHit=|hitstop=
+ |startup=|active=|recovery=Total: 64|frameAdv=-47
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
 AN_NmlAtk2B_2nd
 
+Additional Hit (projectile?)
+|startup=13|active=32793|recovery=0last blockstun frame: 13
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 58|frameAdv=
- |blockstun=|groundHit=|airHit=|hitstop=
+ |startup=|active=|recovery=Total: 58|frameAdv=-45
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
 NmlAtkAIR5B
 
+Additional Hit (projectile?)
+|startup=13|active=32793|recovery=0last blockstun frame: 13
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 73|frameAdv=
- |blockstun=|groundHit=|airHit=|hitstop=
+ |startup=|active=|recovery=Total: 73|frameAdv=-60
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
 NmlAtkAIR2B
 
+Additional Hit (projectile?)
+|startup=13|active=32793|recovery=0last blockstun frame: 13
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 73|frameAdv=
- |blockstun=|groundHit=|airHit=|hitstop=
+ |startup=|active=|recovery=Total: 73|frameAdv=-60
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -301,7 +311,7 @@ NmlAtkThrow
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=37|active=3|recovery=23|frameAdv=-25
- |blockstun=|groundHit=None|airHit=|hitstop=None
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -319,7 +329,7 @@ NmlAtkBackThrow
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=37|active=3|recovery=23|frameAdv=-25
- |blockstun=|groundHit=None|airHit=|hitstop=None
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -334,6 +344,8 @@ BackThrowExe
 
 CmnActInvincibleAttack
 
+Additional Hit (projectile?)
+|startup=|active=|recovery=24last blockstun frame: 40
  |damage=2300|cancel=|p1=100|p2=85
  |level=4|attribute=|guard=
  |startup=10|active=8|recovery=38|frameAdv=-27
@@ -346,7 +358,7 @@ MidAssaultA
  |damage=1500, 2200|cancel=|p1=80*2|p2=80*2
  |level=3*2|attribute=B, H|guard=
  |startup=15|active=2(69)4|recovery=32780|frameAdv=-32767
- |blockstun=16*2|groundHit=Launch, 17|airHit=40*2|hitstop=6/+12/+5, 11/+0/+5
+ |blockstun=16*2|groundHit=17*2|airHit=40*2|hitstop=6/+12/+5, 11/+0/+5
  |invul=|hitbox=
 }}
 
@@ -364,7 +376,7 @@ LowAssaultA
  |damage=1500, 2200|cancel=|p1=80, 90|p2=80*2
  |level=3*2|attribute=B, F|guard=
  |startup=15|active=2(69)4|recovery=17|frameAdv=-4
- |blockstun=16*2|groundHit=Launch, 27|airHit=40*2|hitstop=6/+12/+5, 8/+0/+5
+ |blockstun=16*2|groundHit=27*2|airHit=40*2|hitstop=6/+12/+5, 8/+0/+5
  |invul=|hitbox=
 }}
 
@@ -379,10 +391,12 @@ LowAssaultB
 
 AntiAir
 
+Additional Hit (projectile?)
+|startup=11|active=102|recovery=0last blockstun frame: 11
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 53|frameAdv=
- |blockstun=|groundHit=|airHit=|hitstop=
+ |startup=|active=|recovery=Total: 53|frameAdv=-42
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -391,7 +405,7 @@ SPThrow
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=45|active=3|recovery=31|frameAdv=-33
- |blockstun=|groundHit=None|airHit=|hitstop=None
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=1-47 T|hitbox=
 }}
 
@@ -409,7 +423,7 @@ AirAssaultA
  |damage=1800|cancel=|p1=80|p2=80
  |level=3|attribute=H|guard=
  |startup=13|active=11|recovery=16|frameAdv=-10
- |blockstun=16|groundHit=Launch|airHit=50|hitstop=11
+ |blockstun=16|groundHit=Launch|airHit=50 + Down 14|hitstop=11
  |invul=|hitbox=
 }}
 
@@ -418,16 +432,18 @@ AirAssaultB
  |damage=2300|cancel=|p1=80|p2=85
  |level=4|attribute=H|guard=
  |startup=13|active=6|recovery=23+9L|frameAdv=-10
- |blockstun=18|groundHit=Launch|airHit=50|hitstop=12
+ |blockstun=18|groundHit=Launch|airHit=50 + Down 24|hitstop=12
  |invul=|hitbox=
 }}
 
 AirAssaultC
 
+Additional Hit (projectile?)
+|startup=|active=|recovery=11last blockstun frame: 34
  |damage=2500|cancel=|p1=80|p2=85 (Once)
  |level=4|attribute=H|guard=
  |startup=10|active=6|recovery=14+2L|frameAdv=-1
- |blockstun=18|groundHit=Launch|airHit=50|hitstop=6
+ |blockstun=18|groundHit=Launch|airHit=50 + Down 29|hitstop=6
  |invul=|hitbox=
 }}
 
@@ -451,6 +467,18 @@ UltimateAssault_OD
 
 UltimateShot
 
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+30Flash+65529last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+30Flash+29last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+30Flash+32758last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+30Flash+32773last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+30Flash+32773last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+30Flash+65533last blockstun frame: 0
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 1+30Flash+69|frameAdv=
@@ -460,6 +488,18 @@ UltimateShot
 
 UltimateShot_OD
 
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+30Flash+65529last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+30Flash+29last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+30Flash+32758last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+30Flash+32773last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+30Flash+32773last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+30Flash+65533last blockstun frame: 0
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 1+30Flash+69|frameAdv=
@@ -469,9 +509,27 @@ UltimateShot_OD
 
 AstralHeat
 
- |damage=|cancel=|p1=|p2=
- |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 1+46Flash+114|frameAdv=
- |blockstun=|groundHit=|airHit=|hitstop=
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+46Flash+13last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=1+46Flash+16|active=32857|recovery=0last blockstun frame: 96
+Additional Hit (projectile?)
+|startup=1+46Flash+19|active=32857|recovery=0last blockstun frame: 99
+Additional Hit (projectile?)
+|startup=1+46Flash+22|active=32857|recovery=0last blockstun frame: 102
+Additional Hit (projectile?)
+|startup=1+46Flash+25|active=32857|recovery=0last blockstun frame: 105
+Additional Hit (projectile?)
+|startup=1+46Flash+28|active=32857|recovery=0last blockstun frame: 108
+Additional Hit (projectile?)
+|startup=1+46Flash+31|active=32857|recovery=0last blockstun frame: 111
+Additional Hit (projectile?)
+|startup=1+46Flash+34|active=32857|recovery=0last blockstun frame: 114
+Additional Hit (projectile?)
+|startup=1+46Flash+37|active=32857|recovery=0last blockstun frame: 117
+ |damage=0*8|cancel=|p1=100*8|p2=90*8
+ |level=5*8|attribute=*8|guard=
+ |startup=|active=|recovery=Total: 1+46Flash+114|frameAdv=-44
+ |blockstun=20*8|groundHit=Launch*8|airHit=1200*8|hitstop=13
  |invul=1-91 All|hitbox=
 }}

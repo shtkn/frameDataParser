@@ -49,7 +49,7 @@ CmnActChangePartnerAssistAtk_A
  |damage=2500|cancel=|p1=70|p2=90
  |level=5|attribute=H|guard=
  |startup=23|active=12|recovery=43|frameAdv=-34
- |blockstun=20|groundHit=21|airHit=60|hitstop=13
+ |blockstun=20|groundHit=21|airHit=21|hitstop=13
  |invul=|hitbox=
 }}
 
@@ -67,7 +67,7 @@ CmnActChangePartnerAssistAtk_D
  |damage=1500|cancel=|p1=70|p2=80
  |level=3|attribute=B|guard=
  |startup=13|active=8|recovery=26|frameAdv=-14
- |blockstun=19|groundHit=17|airHit=31|hitstop=11
+ |blockstun=19|groundHit=17|airHit=17|hitstop=11
  |invul=|hitbox=
 }}
 
@@ -103,7 +103,7 @@ CmnActChangePartnerBurst
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=129|active=30|recovery=31|frameAdv=-60
- |blockstun=|groundHit=None|airHit=|hitstop=None
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -121,7 +121,7 @@ NmlAtk5A2nd
  |damage=950*2|cancel=|p1=100*2|p2=75*2 (Once)
  |level=2*2|attribute=B*2|guard=
  |startup=7|active=3(3)6|recovery=11|frameAdv=-3
- |blockstun=13*2|groundHit=20*2|airHit=20*2|hitstop=12, 3
+ |blockstun=13*2|groundHit=14*2|airHit=14*2|hitstop=12, 3
  |invul=|hitbox=
 }}
 
@@ -211,7 +211,7 @@ NmlAtk2C
  |damage=1700|cancel=|p1=90|p2=85
  |level=4|attribute=F|guard=
  |startup=9|active=3|recovery=20|frameAdv=-4
- |blockstun=18|groundHit=19|airHit=24|hitstop=12
+ |blockstun=18|groundHit=19|airHit=19|hitstop=12
  |invul=|hitbox=
 }}
 
@@ -229,7 +229,7 @@ NmlAtkAIR5A2nd
  |damage=1500|cancel=|p1=80|p2=80
  |level=3|attribute=H|guard=
  |startup=7|active=5|recovery=14|frameAdv=-2
- |blockstun=16|groundHit=17|airHit=19|hitstop=11
+ |blockstun=16|groundHit=17|airHit=17|hitstop=11
  |invul=|hitbox=
 }}
 
@@ -265,7 +265,7 @@ NmlAtkThrow
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=42|active=3|recovery=23|frameAdv=-25
- |blockstun=|groundHit=None|airHit=|hitstop=None
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -274,7 +274,7 @@ ThrowExe
  |damage=0, 2000|cancel=|p1=100*2|p2=100, 50
  |level=1, 4|attribute=*2|guard=
  |startup=14|active=3(32785)4|recovery=32789|frameAdv=-32774
- |blockstun=11, 18|groundHit=Launch, 19|airHit=20*2|hitstop=0, 6
+ |blockstun=11, 18|groundHit=12, 19|airHit=20 + Down 59*2|hitstop=0, 6
  |invul=|hitbox=
 }}
 
@@ -283,7 +283,7 @@ NmlAtkBackThrow
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=42|active=3|recovery=23|frameAdv=-25
- |blockstun=|groundHit=None|airHit=|hitstop=None
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -292,12 +292,16 @@ BackThrowExe
  |damage=0, 2000|cancel=|p1=100*2|p2=100, 50
  |level=1, 4|attribute=*2|guard=
  |startup=14|active=3(32785)4|recovery=32789|frameAdv=-32774
- |blockstun=11, 18|groundHit=Launch, 19|airHit=20*2|hitstop=0, 6
+ |blockstun=11, 18|groundHit=12, 19|airHit=20 + Down 59*2|hitstop=0, 6
  |invul=|hitbox=
 }}
 
 CmnActInvincibleAttack
 
+Additional Hit (projectile?)
+|startup=|active=|recovery=38last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=38last blockstun frame: 0
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 45|frameAdv=
@@ -310,7 +314,7 @@ CmnActInvincibleAttackAir
  |damage=1100*4|cancel=|p1=100*4|p2=85*4 (Once)
  |level=4*4|attribute=H*4|guard=
  |startup=6|active=2(6)2(6)2(6)2|recovery=30|frameAdv=-13
- |blockstun=18*4|groundHit=19*4|airHit=25*4|hitstop=8
+ |blockstun=18*4|groundHit=19*4|airHit=19*4|hitstop=8
  |invul=1-7 All|hitbox=
 }}
 
@@ -328,7 +332,7 @@ DragonKickLandB
  |damage=3000|cancel=|p1=80|p2=90
  |level=5|attribute=H|guard=
  |startup=18|active=12|recovery=44|frameAdv=-35
- |blockstun=20|groundHit=21|airHit=60|hitstop=9
+ |blockstun=20|groundHit=21|airHit=21|hitstop=9
  |invul=|hitbox=
 }}
 
@@ -337,7 +341,7 @@ DragonKickLandEX
  |damage=4500|cancel=|p1=80|p2=90
  |level=5|attribute=H|guard=
  |startup=30|active=12|recovery=12|frameAdv=-3
- |blockstun=20|groundHit=21|airHit=80|hitstop=13
+ |blockstun=20|groundHit=21|airHit=21|hitstop=13
  |invul=|hitbox=
 }}
 
@@ -355,7 +359,7 @@ DragonKickAirB
  |damage=3000|cancel=|p1=80|p2=90
  |level=5|attribute=H|guard=
  |startup=14|active=12|recovery=44|frameAdv=-35
- |blockstun=20|groundHit=21|airHit=60|hitstop=9
+ |blockstun=20|groundHit=21|airHit=21|hitstop=9
  |invul=|hitbox=
 }}
 
@@ -364,16 +368,18 @@ DragonKickAirEX
  |damage=4500|cancel=|p1=80|p2=90
  |level=5|attribute=H|guard=
  |startup=13|active=12|recovery=12|frameAdv=-3
- |blockstun=20|groundHit=21|airHit=80|hitstop=13
+ |blockstun=20|groundHit=21|airHit=21|hitstop=13
  |invul=|hitbox=
 }}
 
 NoutenotoshiA
 
+Additional Hit (projectile?)
+|startup=|active=|recovery=14last blockstun frame: 59
  |damage=1200*2|cancel=|p1=80*2|p2=85*2 (Once)
  |level=4*2|attribute=B, F|guard=
  |startup=6|active=2(9)3|recovery=20|frameAdv=-4
- |blockstun=18*2|groundHit=19, Launch|airHit=19, 36|hitstop=12/+0/-4, 12
+ |blockstun=18*2|groundHit=Launch*2|airHit=36 + Down 14*2|hitstop=12/+0/-4, 12
  |invul=|hitbox=
 }}
 
@@ -382,7 +388,7 @@ DragonKickLand_NoutenHasei
  |damage=3000|cancel=|p1=80|p2=90
  |level=5|attribute=H|guard=
  |startup=18|active=12|recovery=44|frameAdv=-35
- |blockstun=20|groundHit=21|airHit=60|hitstop=9
+ |blockstun=20|groundHit=21|airHit=21|hitstop=9
  |invul=|hitbox=
 }}
 

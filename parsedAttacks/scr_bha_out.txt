@@ -4,7 +4,7 @@ CmnActChangePartnerIn
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=636|active=3|recovery=42|frameAdv=-44
- |blockstun=|groundHit=None|airHit=|hitstop=None
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -46,10 +46,12 @@ CmnActChangePartnerAssistAdmiss
 
 CmnActChangePartnerAssistAtk_A
 
- |damage=3900|cancel=|p1=70|p2=80
- |level=5|attribute=B|guard=
+Additional Hit (projectile?)
+|startup=94|active=90|recovery=0last blockstun frame: 135
+ |damage=3900, 1950|cancel=|p1=70*2|p2=80*2
+ |level=5, 4|attribute=B, |guard=
  |startup=90|active=4|recovery=41|frameAdv=-24
- |blockstun=20|groundHit=Launch|airHit=50|hitstop=25
+ |blockstun=20, 18|groundHit=Launch*2|airHit=50 + Down 24, 80|hitstop=25, 12
  |invul=|hitbox=
 }}
 
@@ -103,7 +105,7 @@ CmnActChangePartnerBurst
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=148|active=3|recovery=54|frameAdv=-56
- |blockstun=|groundHit=None|airHit=|hitstop=None
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -121,7 +123,7 @@ NmlAtk5A
  |damage=2000|cancel=|p1=100|p2=85
  |level=4|attribute=B|guard=
  |startup=14|active=2|recovery=20|frameAdv=-3
- |blockstun=18|groundHit=19|airHit=19|hitstop=12
+ |blockstun=18|groundHit=19|airHit=19 + Down 24|hitstop=12
  |invul=|hitbox=
 }}
 
@@ -202,7 +204,7 @@ NmlAtk2C
  |damage=1700|cancel=|p1=90|p2=85
  |level=4|attribute=F|guard=
  |startup=9|active=3|recovery=33|frameAdv=-17
- |blockstun=18|groundHit=Launch|airHit=36|hitstop=12
+ |blockstun=18|groundHit=Launch|airHit=36 + Down 24|hitstop=12
  |invul=|hitbox=
 }}
 
@@ -244,6 +246,10 @@ NmlAtkAIR5C
 
 CmnActInvincibleAttack
 
+Additional Hit (projectile?)
+|startup=|active=|recovery=32777last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=61last blockstun frame: 0
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 45|frameAdv=
@@ -256,12 +262,16 @@ Atk5DExe
  |damage=3300|cancel=|p1=100|p2=60
  |level=4|attribute=|guard=
  |startup=17|active=4|recovery=31|frameAdv=-16
- |blockstun=18|groundHit=Launch|airHit=42|hitstop=0
+ |blockstun=18|groundHit=Launch|airHit=42 + Down 24|hitstop=0
  |invul=|hitbox=
 }}
 
 CmnActInvincibleAttackAir
 
+Additional Hit (projectile?)
+|startup=|active=|recovery=32777last blockstun frame: 0
+Additional Hit (projectile?)
+|startup=|active=|recovery=61last blockstun frame: 0
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 53|frameAdv=
@@ -292,7 +302,7 @@ NmlAtkThrow
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=67|active=3|recovery=23|frameAdv=-25
- |blockstun=|groundHit=None|airHit=|hitstop=None
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -310,7 +320,7 @@ NmlAtkBackThrow
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=67|active=3|recovery=23|frameAdv=-25
- |blockstun=|groundHit=None|airHit=|hitstop=None
+ |blockstun=|groundHit=None|airHit=None|hitstop=None
  |invul=|hitbox=
 }}
 
@@ -328,7 +338,7 @@ Guren
  |damage=1500|cancel=|p1=80|p2=100
  |level=4|attribute=B|guard=
  |startup=14|active=3|recovery=20|frameAdv=-4
- |blockstun=18|groundHit=26|airHit=60|hitstop=12
+ |blockstun=18|groundHit=19|airHit=19|hitstop=12
  |invul=|hitbox=
 }}
 
@@ -337,7 +347,7 @@ GurenB
  |damage=1700|cancel=|p1=80|p2=100
  |level=4|attribute=B|guard=
  |startup=19|active=3|recovery=25|frameAdv=-9
- |blockstun=18|groundHit=26|airHit=60|hitstop=12
+ |blockstun=18|groundHit=19|airHit=19|hitstop=12
  |invul=|hitbox=
 }}
 
@@ -346,7 +356,7 @@ Renka
  |damage=1300*2|cancel=|p1=90*2|p2=100*2
  |level=4*2|attribute=F, B|guard=
  |startup=9|active=3(10)3|recovery=20|frameAdv=-4
- |blockstun=18*2|groundHit=Stagger 63, Launch|airHit=30*2|hitstop=15, 12
+ |blockstun=18*2|groundHit=Launch*2|airHit=19 + Down 14*2|hitstop=15, 12
  |invul=|hitbox=
 }}
 
@@ -355,7 +365,7 @@ RenkaEx
  |damage=1400*2|cancel=|p1=90*2|p2=100*2
  |level=4*2|attribute=F, B|guard=
  |startup=9|active=3(12)3|recovery=21|frameAdv=-5
- |blockstun=18*2|groundHit=Stagger 63, Launch|airHit=30*2|hitstop=15, 12
+ |blockstun=18*2|groundHit=Launch*2|airHit=19 + Down 14*2|hitstop=15, 12
  |invul=|hitbox=
 }}
 
@@ -364,16 +374,18 @@ Zantetu
  |damage=2500, 1500|cancel=|p1=80*2|p2=100*2
  |level=5, 3|attribute=B, F|guard=
  |startup=22|active=3(14)3|recovery=26|frameAdv=-12
- |blockstun=20, 16|groundHit=21, 17|airHit=30*2|hitstop=15, 13
+ |blockstun=20, 16|groundHit=21, 17|airHit=21, 17|hitstop=15, 13
  |invul=|hitbox=
 }}
 
 Agito
 
- |damage=|cancel=|p1=|p2=
- |level=|attribute=|guard=
- |startup=|active=|recovery=Total: 36|frameAdv=
- |blockstun=|groundHit=|airHit=|hitstop=
+Additional Hit (projectile?)
+|startup=12|active=4|recovery=12last blockstun frame: 40
+ |damage=1500|cancel=|p1=80|p2=80
+ |level=3|attribute=|guard=
+ |startup=|active=|recovery=Total: 36|frameAdv=4
+ |blockstun=16|groundHit=Launch|airHit=50 + Down 24|hitstop=9/+3/+3
  |invul=|hitbox=
 }}
 
@@ -382,7 +394,7 @@ Tubaki
  |damage=2000|cancel=|p1=80|p2=85
  |level=4|attribute=H|guard=
  |startup=19|active=3|recovery=42|frameAdv=-26
- |blockstun=18|groundHit=Launch|airHit=60|hitstop=8
+ |blockstun=18|groundHit=Launch|airHit=60 + Down 24|hitstop=8
  |invul=|hitbox=
 }}
 
@@ -391,7 +403,7 @@ TubakiEx
  |damage=2500|cancel=|p1=80|p2=85
  |level=4|attribute=H|guard=
  |startup=15|active=3|recovery=22+4L|frameAdv=-6
- |blockstun=18|groundHit=Launch|airHit=60|hitstop=8
+ |blockstun=18|groundHit=Launch|airHit=60 + Down 31|hitstop=8
  |invul=|hitbox=
 }}
 
@@ -409,30 +421,36 @@ Assault5Exe
  |damage=3500|cancel=|p1=100|p2=100
  |level=4|attribute=|guard=
  |startup=25|active=20|recovery=15|frameAdv=-16
- |blockstun=18|groundHit=Launch|airHit=60|hitstop=0
+ |blockstun=18|groundHit=Launch|airHit=60 + GBounce + Down 24|hitstop=0
  |invul=|hitbox=
 }}
 
 UltimateAssault
 
- |damage=5800|cancel=|p1=100|p2=90
- |level=5|attribute=B|guard=
+Additional Hit (projectile?)
+|startup=13+47Flash+18|active=90|recovery=0last blockstun frame: 119
+ |damage=5800, 2500|cancel=|p1=100*2|p2=90, 60
+ |level=5, 4|attribute=B, |guard=
  |startup=13+47Flash+14|active=4|recovery=41|frameAdv=-24
- |blockstun=20|groundHit=Launch|airHit=50|hitstop=25
+ |blockstun=20, 18|groundHit=Launch*2|airHit=50*2|hitstop=25, 12
  |invul=1-13 All|hitbox=
 }}
 
 UltimateAssault_OD
 
- |damage=5000|cancel=|p1=100|p2=90
- |level=5|attribute=B|guard=
+Additional Hit (projectile?)
+|startup=13+47Flash+18|active=4|recovery=0last blockstun frame: 119
+ |damage=5000, 3000|cancel=|p1=100*2|p2=90, 60
+ |level=5*2|attribute=B, |guard=
  |startup=13+47Flash+14|active=4|recovery=41|frameAdv=-24
- |blockstun=20|groundHit=Launch|airHit=50|hitstop=25
+ |blockstun=20*2|groundHit=Launch*2|airHit=50 + Down 24, 50|hitstop=25, 0/+13/+13
  |invul=27-30 All|hitbox=
 }}
 
 UltimateGrip
 
+Additional Hit (projectile?)
+|startup=|active=|recovery=77last blockstun frame: 0
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 44|frameAdv=
@@ -442,6 +460,8 @@ UltimateGrip
 
 UltimateGrip_OD
 
+Additional Hit (projectile?)
+|startup=|active=|recovery=77last blockstun frame: 0
  |damage=|cancel=|p1=|p2=
  |level=|attribute=|guard=
  |startup=|active=|recovery=Total: 44|frameAdv=
@@ -454,7 +474,7 @@ UltimateAirAssault
  |damage=5600|cancel=|p1=100|p2=90
  |level=5|attribute=|guard=
  |startup=5+35Flash+79|active=3|recovery=117|frameAdv=-79
- |blockstun=20|groundHit=Launch|airHit=90|hitstop=24/+20
+ |blockstun=20|groundHit=Launch|airHit=90 + GBounce + Down 24|hitstop=24/+20
  |invul=1-86 All|hitbox=
 }}
 
@@ -463,15 +483,17 @@ UltimateAirAssaultOD
  |damage=6600|cancel=|p1=100|p2=90
  |level=5|attribute=|guard=
  |startup=5+35Flash+79|active=3|recovery=114|frameAdv=-76
- |blockstun=20|groundHit=Launch|airHit=90|hitstop=54/+20
+ |blockstun=20|groundHit=Launch|airHit=90 + GBounce + Down 26|hitstop=54/+20
  |invul=1-86 All|hitbox=
 }}
 
 AstralHeatGrip
 
+Additional Hit (projectile?)
+|startup=|active=|recovery=1+60Flash+59last blockstun frame: 1813
  |damage=0|cancel=|p1=|p2=
  |level=|attribute=HBFT|guard=
  |startup=1+60Flash+0|active=299|recovery=12|frameAdv=1490
- |blockstun=|groundHit=600|airHit=|hitstop=0/+1800/+1800
+ |blockstun=|groundHit=600|airHit=None|hitstop=0/+1800/+1800
  |invul=1-247 HBFT Guard|hitbox=
 }}
