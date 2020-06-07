@@ -4,93 +4,6 @@ from parseAttacks import *
 
 
 class TestParseAttackMethods(unittest.TestCase):
-    def test_combine_2_wait_frames(self):
-        chunks = [WaitFrames(2), WaitFrames(4)]
-        result = consolidate_frame_chunks(chunks)
-        expected = [WaitFrames(6)]
-        self.assertItemsEqual(expected, result)
-
-    def test_combine_2_active_frames(self):
-        chunks = [ActiveFrames(2), ActiveFrames(2, is_new_hit=False)]
-        result = consolidate_frame_chunks(chunks)
-        expected = [ActiveFrames(4)]
-        self.assertItemsEqual(expected, result)
-
-    def test_dont_combine_2_active_frames(self):
-        chunks = [ActiveFrames(2, is_new_hit=True), ActiveFrames(2, is_new_hit=True)]
-        result = consolidate_frame_chunks(chunks)
-        expected = [ActiveFrames(2), ActiveFrames(2)]
-        self.assertItemsEqual(expected, result)
-
-    def test_combine_2_wait_frames_with_active_after(self):
-        chunks = [WaitFrames(2), WaitFrames(4), ActiveFrames(1), WaitFrames(2)]
-        result = consolidate_frame_chunks(chunks)
-        expected = [WaitFrames(6), ActiveFrames(1), WaitFrames(2)]
-        self.assertItemsEqual(expected, result)
-
-    def test_do_not_combine_wait_frames_with_inv(self):
-        chunks = [WaitFrames(2), WaitFrames(4)]
-        chunks[0].inv_type = 0
-        chunks[1].inv_type = 1
-        result = consolidate_frame_chunks(chunks)
-        expected = chunks
-        self.assertItemsEqual(expected, result)
-
-    def test_do_not_combine_wait_frames_with_diff_inv(self):
-        chunks = [WaitFrames(2), WaitFrames(2)]
-        chunks[0].inv_type = 1
-        chunks[0].inv_attr = [False, True, True, True, False]
-        chunks[1].inv_type = 1
-        chunks[1].inv_attr = [True, False, False, False, False]
-        result = consolidate_frame_chunks(chunks)
-        expected = chunks
-        self.assertItemsEqual(result, expected)
-
-    def test_do_combine_wait_frames_with_diff_inv(self):
-        chunks = [WaitFrames(2), WaitFrames(2)]
-        chunks[0].inv_type = 1
-        chunks[0].inv_attr = [False, True, True, True, False]
-        chunks[1].inv_type = 1
-        chunks[1].inv_attr = [True, False, False, False, False]
-        result = consolidate_frame_chunks(chunks, True)
-        expected = [WaitFrames(4)]
-        self.assertEqual(len(expected), len(result))
-        self.assertEqual(expected[0].duration, result[0].duration)  # inv for this combined chunk is undefined behavior
-
-    def test_do_not_combine_active_frame_types_with_same_inv(self):
-        chunks = [ActiveFrames(2, is_new_hit=True), ActiveFrames(2, is_new_hit=True)]
-        chunks[0].inv_type = 1
-        chunks[0].inv_attr = [True, False, False, False, False]
-        chunks[1].inv_type = 1
-        chunks[1].inv_attr = [True, False, False, False, False]
-        result = consolidate_frame_chunks(chunks)
-        expected = chunks
-        self.assertItemsEqual(result, expected)
-
-    def test_combine_active_frame_types_with_same_inv(self):
-        chunks = [ActiveFrames(2, is_new_hit=True), ActiveFrames(2, is_new_hit=False)]
-        chunks[0].inv_type = 1
-        chunks[0].inv_attr = [False, False, False, False, True]
-        chunks[1].inv_type = 1
-        chunks[1].inv_attr = [False, False, False, False, True]
-        result = consolidate_frame_chunks(chunks)
-        expected = [ActiveFrames(4)]
-        expected[0].inv_type = 1
-        expected[0].inv_attr = [False, False, False, False, True]
-        self.assertItemsEqual(result, expected)
-
-    def test_combine_same_frame_types_with_same_inv(self):
-        chunks = [WaitFrames(2), WaitFrames(4)]
-        chunks[0].inv_type = 1
-        chunks[0].inv_attr = [False, True, True, True, False]
-        chunks[1].inv_type = 1
-        chunks[1].inv_attr = [False, True, True, True, False]
-        result = consolidate_frame_chunks(chunks)
-        expected = [WaitFrames(6)]
-        expected[0].inv_type = 1
-        expected[0].inv_attr = [False, True, True, True, False]
-        self.assertItemsEqual(result, expected)
-
     def test_get_duration(self):
         self.assertEqual(15, get_duration("    sprite('null', 15)"))
 
@@ -272,7 +185,7 @@ def Monsho_AtkData():
     Unknown9016(1)"""
         buf = StringIO.StringIO(subroutine)
         effect_list = {}
-        effect_list = parse_move_file(buf, effect_list, effect_list)
+        effect_list = parse_scr_file(buf, effect_list, effect_list)
         subroutine = Subroutine()
         subroutine.attackInfo.hitstop = 6
         subroutine.attackInfo.blockstun = 11
@@ -309,7 +222,7 @@ def NmlAtk5X():
     sprite('es201_06', 3)	# 16-18
     sprite('es201_07', 3)	# 19-21"""
         buf = StringIO.StringIO(state)
-        move_list = parse_move_file(buf, {}, {})
+        move_list = parse_scr_file(buf, {}, {})
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
@@ -345,7 +258,7 @@ def NmlAtk5X():
     sprite('es201_06', 3)	# 16-18
     sprite('es201_07', 3)	# 19-21"""
         buf = StringIO.StringIO(state)
-        move_list = parse_move_file(buf, {}, {})
+        move_list = parse_scr_file(buf, {}, {})
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
@@ -384,7 +297,7 @@ def NmlAtk5X():
     sprite('es201_06', 3)	# 16-18
     sprite('es201_07', 3)	# 19-21"""
         buf = StringIO.StringIO(state)
-        move_list = parse_move_file(buf, {}, {})
+        move_list = parse_scr_file(buf, {}, {})
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
@@ -423,7 +336,7 @@ def NmlAtk5X():
         ExitState()
         sprite('es201_07', 3)	# 19-21"""
         buf = StringIO.StringIO(state)
-        move_list = parse_move_file(buf, {}, {})
+        move_list = parse_scr_file(buf, {}, {})
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5X" in move_list)
 
@@ -487,7 +400,7 @@ def NmlAtk5X():
         sprite('es201_07', 3)	# 19-21
         """
         buf = StringIO.StringIO(state)
-        move_list = parse_move_file(buf, {}, {})
+        move_list = parse_scr_file(buf, {}, {})
         self.assertEqual(len(move_list), 2)
         self.assertTrue("NmlAtk5X" in move_list)
         self.assertEqual(7, move_list["NmlAtk5X"].frame_chunks[0].duration)
@@ -536,7 +449,7 @@ def NmlAtk5X():
      sprite('es201_07', 3)	# 19-21
      """
         buf = StringIO.StringIO(state)
-        move_list = parse_move_file(buf, {}, {})
+        move_list = parse_scr_file(buf, {}, {})
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
@@ -587,7 +500,7 @@ def NmlAtk5X():
         sprite('es201_06', 3)	# 16-18
         sprite('es201_07', 3)	# 19-21"""
         buf = StringIO.StringIO(state)
-        move_list = parse_move_file(buf, {}, {})
+        move_list = parse_scr_file(buf, {}, {})
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
@@ -634,7 +547,7 @@ def NmlAtk5X():
     sprite('es201_06', 3)	# 16-18
     sprite('es201_07', 3)	# 19-21"""
         buf = StringIO.StringIO(state)
-        move_list = parse_move_file(buf, {}, {})
+        move_list = parse_scr_file(buf, {}, {})
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5X" in move_list)
         self.assertEqual(1, len(move_list["NmlAtk5X"].superflash_list))
@@ -672,7 +585,7 @@ def NmlAtk5X():
     sprite('es201_06', 3)	# 23-25
     sprite('es201_07', 3)	# 25-27"""
         buf = StringIO.StringIO(state)
-        move_list = parse_move_file(buf, {}, {})
+        move_list = parse_scr_file(buf, {}, {})
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
@@ -730,7 +643,7 @@ def NmlAtk5X():
     sprite('es201_06', 3)	# 23-25
     sprite('es201_07', 3)	# 25-27"""
         buf = StringIO.StringIO(state)
-        move_list = parse_move_file(buf, {}, {})
+        move_list = parse_scr_file(buf, {}, {})
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5X" in move_list)
         expected = Move()
@@ -794,7 +707,7 @@ def UltimateShot_DDD():
         buf = StringIO.StringIO(state)
         effect_list = OrderedDict()
         move_list = OrderedDict()
-        move_list = parse_move_file(buf, move_list, effect_list)
+        move_list = parse_scr_file(buf, move_list, effect_list)
         self.assertEqual(3, move_list["UltimateShot_DDD"].frame_chunks[0].duration)
         self.assertTrue(isinstance(move_list["UltimateShot_DDD"].frame_chunks[0], WaitFrames))
         self.assertEqual(2, move_list["UltimateShot_DDD"].frame_chunks[1].duration)
@@ -843,7 +756,7 @@ def NmlAtk5X():
         buf = StringIO.StringIO(state)
         effect_list = OrderedDict()
         move_list = OrderedDict()
-        move_list = parse_move_file(buf, move_list, effect_list)
+        move_list = parse_scr_file(buf, move_list, effect_list)
 
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5X" in move_list)
@@ -879,7 +792,7 @@ def NmlAtk5A():
         buf = StringIO.StringIO(state)
         effect_list = OrderedDict()
         move_list = OrderedDict()
-        move_list = parse_move_file(buf, move_list, effect_list)
+        move_list = parse_scr_file(buf, move_list, effect_list)
 
         self.assertEqual(len(move_list), 1)
         self.assertTrue("NmlAtk5A" in move_list)
@@ -917,7 +830,7 @@ def NmlAtk5A():
         buf = StringIO.StringIO(state)
         effect_list = OrderedDict()
         move_list = OrderedDict()
-        move_list = parse_move_file(buf, move_list, effect_list)
+        move_list = parse_scr_file(buf, move_list, effect_list)
 
         self.assertEqual(6, move_list["NmlAtk5A"].frame_chunks[0].duration)
         self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[0], WaitFrames))
@@ -950,7 +863,7 @@ def NmlAtk5A():
         buf = StringIO.StringIO(state)
         effect_list = OrderedDict()
         move_list = OrderedDict()
-        move_list = parse_move_file(buf, move_list, effect_list)
+        move_list = parse_scr_file(buf, move_list, effect_list)
         self.assertEqual(8, move_list["NmlAtk5A"].frame_chunks[0].duration)
         self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[0], WaitFrames))
         self.assertEqual(2, move_list["NmlAtk5A"].frame_chunks[1].duration)
@@ -978,7 +891,7 @@ def NmlAtk5A():
         buf = StringIO.StringIO(state)
         effect_list = OrderedDict()
         move_list = OrderedDict()
-        move_list = parse_move_file(buf, move_list, effect_list)
+        move_list = parse_scr_file(buf, move_list, effect_list)
         self.assertEqual(10, move_list["NmlAtk5A"].frame_chunks[0].duration)
         self.assertTrue(isinstance(move_list["NmlAtk5A"].frame_chunks[0], WaitFrames))
         self.assertEqual(2, move_list["NmlAtk5A"].frame_chunks[1].duration)
@@ -994,7 +907,7 @@ def Init_AtkData():
     """
         buf = StringIO.StringIO(subroutine)
         effect_list = OrderedDict()
-        effect_list = parse_move_file(buf, effect_list, effect_list)
+        effect_list = parse_scr_file(buf, effect_list, effect_list)
         state = """@State
 def NmlAtk5A():
     def upon_IMMEDIATE():
@@ -1011,7 +924,7 @@ def NmlAtk5A():
             """
         buf = StringIO.StringIO(state)
         move_list = OrderedDict()
-        move_list = parse_move_file(buf, move_list, effect_list)
+        move_list = parse_scr_file(buf, move_list, effect_list)
         hit_simulations = simulate_on_block(move_list, effect_list)
         expected = AttackInfo(900, p1=70, attack_level=1,
                               attribute=[False, True, False, False, False],
@@ -1125,7 +1038,7 @@ def NmlAtk5A():
         buf = StringIO.StringIO(state)
         effect_list = OrderedDict()
         move_list = OrderedDict()
-        move_list = parse_move_file(buf, move_list, effect_list)
+        move_list = parse_scr_file(buf, move_list, effect_list)
         self.assertEqual(11, move_list["vr_lp206atk_04"].frame_chunks[0].duration)
         self.assertTrue(isinstance(move_list["vr_lp206atk_04"].frame_chunks[0], ActiveFrames))
 
@@ -1143,7 +1056,7 @@ def NmlAtk5A():
         buf = StringIO.StringIO(state)
         effect_list = OrderedDict()
         move_list = OrderedDict()
-        move_list = parse_move_file(buf, move_list, effect_list)
+        move_list = parse_scr_file(buf, move_list, effect_list)
         atk = move_list["atk"]
         self.assertIsNotNone(atk)
         self.assertEquals(1, len(atk.hardcoded_inv_list))
