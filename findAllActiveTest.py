@@ -30,3 +30,4 @@ class TestFindAllActiveMethods(unittest.TestCase):
         """
         buf = StringIO.StringIO(jonbin)
         isContainsAttackBox(buf)
+
