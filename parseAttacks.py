@@ -7,7 +7,7 @@ SPRITE_START = "    sprite('"
 SPRITE_MID = "', "
 SPRITE_END = ")"
 HAS_HITBOX = "**attackbox here**"
-GFX_START = "GFX_"
+GFX_START = "GFX_0('"
 CALL_SUBROUTINE_STARTC = "CallSubroutine('"
 CALL_SUBROUTINE_STARTc = "callSubroutine('"
 
@@ -27,34 +27,7 @@ def parse_attributes(inv_str):
             ]
 
 
-def has_same_inv(chunk1, chunk2):
-    return chunk1.inv_type == chunk2.inv_type and chunk1.inv_attr == chunk2.inv_attr
-
-
-def consolidate_frame_chunks(chunk_list, ignore_inv=False):
-    new_chunk_list = []
-    prev_chunk = copy.copy(chunk_list[0])
-    for i in range(1, len(chunk_list)):
-        chunk = chunk_list[i]
-        if isinstance(prev_chunk, ActiveFrames) and isinstance(chunk, ActiveFrames) \
-                and (has_same_inv(prev_chunk, chunk) or ignore_inv):
-            if chunk.is_new_hit:
-                new_chunk_list.append(prev_chunk)
-                prev_chunk = copy.copy(chunk)
-            else:
-                prev_chunk.duration += chunk.duration
-        elif isinstance(prev_chunk, WaitFrames) and isinstance(chunk, WaitFrames) \
-                and (has_same_inv(prev_chunk, chunk) or ignore_inv):
-            prev_chunk.duration += chunk.duration
-        else:
-            new_chunk_list.append(prev_chunk)
-            prev_chunk = copy.copy(chunk)
-    new_chunk_list.append(prev_chunk)
-
-    return new_chunk_list
-
-
-def parse_move_file(source, move_list, effect_list):
+def parse_scr_file(source, move_list, effect_list):
     state = State()
     frame_chunks = []
     for line in source.readlines():
@@ -316,40 +289,6 @@ def find_registered_moves(source):
     return registered_moves
 
 
-def parse_subroutine(name, move_list, effect_list, start_frame=0):
-    if name not in move_list:
-        return []
-    subroutine_calls = [[]]
-    first_subroutine = subroutine_calls[0]
-    duration = start_frame
-    override_info = AttackInfo()
-    if duration > 0:
-        first_subroutine.append(WaitFrames(duration))
-    for chunk in move_list[name].frame_chunks:
-        if isinstance(chunk, SubroutineCall):
-            from_children = []
-            if chunk.name in effect_list and isinstance(effect_list[chunk.name], Subroutine):
-                subroutine = effect_list[chunk.name]
-                # print "SUBROUTINE " + effect_list[chunk.name]
-                override_info = subroutine.attackInfo
-            else:
-                from_children = parse_subroutine(chunk.name, effect_list, effect_list, duration)
-            for one_subroutine in from_children:
-                subroutine_calls.append(one_subroutine)
-        else:
-            if isinstance(chunk, ActiveFrames):
-                chunk.info.override_non_none_values(override_info)
-
-            first_subroutine.append(chunk)
-            duration += chunk.duration
-
-    subroutine_calls[0] = consolidate_frame_chunks(first_subroutine)
-    # delete any subroutines that don't add anything
-    if len(subroutine_calls[0]) == 1 and isinstance(subroutine_calls[0][0], WaitFrames):
-        subroutine_calls.pop(0)
-    return subroutine_calls
-
-
 def simulate_effect_on_block(name, effect_list, start_frame=0):
     if name not in effect_list:
         return []
@@ -394,7 +333,9 @@ def simulate_on_block(move_list, effect_list):
     return hit_simulations
 
 
-def calc_frames_for_subroutine(frame_chunks, superflash_list=[]):
+def calc_frames_for_subroutine(frame_chunks, superflash_list=None):
+    if superflash_list is None:
+        superflash_list = []
     startup = 0
     middle = ""
     recovery = 0
@@ -766,28 +707,8 @@ def fill_hitstop(info_list):
     return to_return
 
 
-def main():
-    source_dir = "./annotated"
-    target_dir = "./parsedAttacks"
-    file_list = [
-        # Arcana Heart
-        "scr_ahe",
-        # BlazBlue
-        "scr_baz", "scr_bes", "scr_bha", "scr_bhz", "scr_biz", "scr_bjb", "scr_bjn", "scr_bma", "scr_bmk",
-        "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg",
-        # Persona
-        "scr_pag", "scr_pak", "scr_pbc", "scr_pce", "scr_pka", "scr_pku", "scr_pla", "scr_pmi", "scr_pna",
-        "scr_pyo", "scr_pyu",
-        # RWBY
-        "scr_rbl", "scr_rrb", "scr_rwi", "scr_ryn",
-        # Under Night
-        "scr_uca", "scr_ugo", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
-        "scr_uwa", "scr_uyu"
-    ]
+def parse_files(source_dir, target_dir, file_list):
 
-    # source_dir = "."
-    # target_dir = "."
-    # file_list = ["testfile"]
     for file_name in file_list:
         # Parse effects
         if not os.path.isfile(source_dir + "/" + file_name + "ea.py") or \
@@ -797,12 +718,12 @@ def main():
             continue
         effect_source = open(source_dir + "/" + file_name + "ea.py", "r")
         effect_list = OrderedDict()
-        effect_list = parse_move_file(effect_source, effect_list, effect_list)
+        effect_list = parse_scr_file(effect_source, effect_list, effect_list)
         # Parse moves
         char_source = open(source_dir + "/" + file_name + ".py", "r")
         char_target = open(target_dir + "/" + file_name + "_out.txt", "w")
         move_list = OrderedDict()
-        move_list = parse_move_file(char_source, move_list, effect_list)
+        move_list = parse_scr_file(char_source, move_list, effect_list)
 
         # get list of registered moves
         char_source.seek(0, 0)
@@ -821,4 +742,24 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    source_dir = "./annotated"
+    target_dir = "./parsedAttacks"
+    file_list = [
+        # Arcana Heart
+        "scr_ahe",
+        # BlazBlue
+        "scr_baz", "scr_bes", "scr_bha", "scr_bhz", "scr_biz", "scr_bjb", "scr_bjn", "scr_bma", "scr_bmk",
+        "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg",
+        # Persona
+        "scr_pag", "scr_pak", "scr_pbc", "scr_pce", "scr_pka", "scr_pku", "scr_pla", "scr_pmi", "scr_pna",
+        "scr_pyo", "scr_pyu",
+        # RWBY
+        "scr_rbl", "scr_rrb", "scr_rwi", "scr_ryn",
+        # Under Night
+        "scr_uca", "scr_ugo", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
+        "scr_uwa", "scr_uyu"
+    ]
+    source_dir = "."
+    target_dir = "."
+    file_list = ["testfile"]
+    parse_files(source_dir, target_dir, file_list)

@@ -384,3 +384,30 @@ class Subroutine:
         if not isinstance(other, Subroutine):
             return False
         return not self.__eq__(other)
+
+
+def consolidate_frame_chunks(chunk_list, ignore_inv=False):
+    new_chunk_list = []
+    prev_chunk = copy.copy(chunk_list[0])
+    for i in range(1, len(chunk_list)):
+        chunk = chunk_list[i]
+        if isinstance(prev_chunk, ActiveFrames) and isinstance(chunk, ActiveFrames) \
+                and (has_same_inv(prev_chunk, chunk) or ignore_inv):
+            if chunk.is_new_hit:
+                new_chunk_list.append(prev_chunk)
+                prev_chunk = copy.copy(chunk)
+            else:
+                prev_chunk.duration += chunk.duration
+        elif isinstance(prev_chunk, WaitFrames) and isinstance(chunk, WaitFrames) \
+                and (has_same_inv(prev_chunk, chunk) or ignore_inv):
+            prev_chunk.duration += chunk.duration
+        else:
+            new_chunk_list.append(prev_chunk)
+            prev_chunk = copy.copy(chunk)
+    new_chunk_list.append(prev_chunk)
+
+    return new_chunk_list
+
+
+def has_same_inv(chunk1, chunk2):
+    return chunk1.inv_type == chunk2.inv_type and chunk1.inv_attr == chunk2.inv_attr
