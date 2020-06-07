@@ -9,10 +9,10 @@ def isContainsAttackBox(source_file):
     test = source_file.read(1)
     result = struct.unpack(">B", test)
     source_file.read(1)    # skip padding
-    source_file.read(32*result[0]) # skip sprite names
+    source_file.read(32*result[0])  # skip sprite names
     source_file.read(6)    # skip padding \x14 \x01 \x00 \x?? \x00 \x00
     source_file.read(2)    # skip number of hurtboxes
-    attackbox_count = source_file.read(2)
+    attackbox_count = source_file.read(2)   # this is number of hitboxes
     result = struct.unpack(">H", attackbox_count)
     # print file_name + " attackbox count\n\t" + str(result[0])
     source_file.close()
@@ -26,7 +26,7 @@ def findActiveForFolder(source_dir):
         if file_name.lower().endswith(".jonbin") and isContainsAttackBox(open(source_dir + "/" + file_name, "r")):
             contains_attackboxes.append(file_name[:-len(".jonbin")] + "\n")
 
-    print contains_attackboxes
+    # print contains_attackboxes
     return contains_attackboxes
 
 
