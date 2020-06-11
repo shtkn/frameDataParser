@@ -1,117 +1,12 @@
 import unittest
 import StringIO
 from parseAttacks import *
+from model import *
 
 
 class TestParseAttackMethods(unittest.TestCase):
     def test_get_duration(self):
         self.assertEqual(15, get_duration("    sprite('null', 15)"))
-
-    def test_simulate_hit_basic_normal(self):
-        chunks = [WaitFrames(4), ActiveFrames(1, info=AttackInfo(0, blockstun=4, hitstop=4, attack_level=2)),
-                  WaitFrames(12),
-                  ActiveFrames(1, info=AttackInfo(0, blockstun=4, hitstop=4)), WaitFrames(12)]
-        toTestChunks = [WaitFrames(4), ActiveFrames(1, info=AttackInfo(0, blockstun=4, hitstop=4, attack_level=2)),
-                        WaitFrames(12),
-                        ActiveFrames(1, info=AttackInfo(0, blockstun=4, hitstop=4)), WaitFrames(12)]
-        expected = Move()
-        expected.frame_chunks = chunks
-        toTest = Move()
-        toTest.frame_chunks = toTestChunks
-        # no effects to combine, just expect teh same chunks back
-        result = combine_with_effects_on_block(toTest, {})
-        self.assertEqual(0, len(result.additional_chunks))
-        self.assertItemsEqual(expected.frame_chunks, result.frame_chunks)
-
-    def test_simulate_hit_projectile(self):
-        chunks = [WaitFrames(4), SubroutineCall("Shot"), WaitFrames(12)]
-        shot = Move()
-        shot.frame_chunks = [WaitFrames(4), ActiveFrames(2, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0,
-                                                                            0, 3, [False, True, False, False, False]))]
-        effect_list = {"Shot": shot}
-        move = Move()
-        move.frame_chunks = chunks
-        # combine with ShotAnimation
-        result = combine_with_effects_on_block(move, effect_list)
-        self.assertEqual(1, len(result.additional_chunks))
-        self.assertItemsEqual([WaitFrames(16)], result.frame_chunks)
-        # basically increasing the startup of hte shot by 4
-        expected = [WaitFrames(8),
-                    ActiveFrames(2, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0,
-                                                    0, 3, [False, True, False, False, False])),
-                    ]
-        self.assertItemsEqual(expected, result.additional_chunks[0])
-
-    def test_simulate_hit_projectile_spawned_by_other_subroutine(self):
-        chunks = [WaitFrames(4), SubroutineCall("ShotGenerator1"), WaitFrames(12)]
-        shotGenerator1 = Move()
-        shotGenerator1.frame_chunks = [SubroutineCall("ShotGenerator2")]
-        shotGenerator2 = Move()
-        shotGenerator2.frame_chunks = [SubroutineCall("Shot")]
-
-        shot = Move()
-        shot.frame_chunks = [WaitFrames(4), ActiveFrames(2, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0,
-                                                                            0, 3, [False, True, False, False, False]))]
-        effect_list = {"Shot": shot, "ShotGenerator1": shotGenerator1, "ShotGenerator1": shotGenerator2}
-        move = Move()
-        move.frame_chunks = chunks
-        # combine with ShotAnimation
-        result = combine_with_effects_on_block(move, effect_list)
-        self.assertEqual(1, len(result.additional_chunks))
-        self.assertItemsEqual([WaitFrames(16)], result.frame_chunks)
-        # basically increasing the startup of hte shot by 4
-        expected = [WaitFrames(8),
-                    ActiveFrames(2, info=AttackInfo(0, 100, 100, 0, False, 0, 0, 0,
-                                                    0, 3, [False, True, False, False, False])),
-                    ]
-        self.assertItemsEqual(expected, result.additional_chunks[0])
-
-    def test_simulate_hit_use_subroutine(self):
-        chunks = [WaitFrames(4), SubroutineCall("InitValues"), ActiveFrames(1, info=AttackInfo(0)), WaitFrames(4)]
-        init = Subroutine()
-        init.attackInfo = AttackInfo(500, 50, 60, 99, False, 2, 1, 10, 11, 0, normal_hit=HitEffects(90, 91))
-        init.landingRecovery = 4
-        effect_list = {"InitValues": init}
-        move = Move()
-        move.frame_chunks = chunks
-        move.landing_recovery = 4
-        result = combine_with_effects_on_block(move, effect_list)
-        # expect hitstop, blockstun, landing recovery etc to be replaced by values from InitValues
-        self.assertEqual(0, len(result.additional_chunks))
-        expected_frame_chunks = [WaitFrames(4),
-                                 ActiveFrames(1, info=AttackInfo(500, 50, 60, 99, False, 2, 1, 10, 11, 0, normal_hit=HitEffects(90, 91))),
-                                 WaitFrames(4)]
-        self.assertItemsEqual(expected_frame_chunks, result.frame_chunks)
-        self.assertEqual(init.landingRecovery, result.landing_recovery)
-
-    def test_simulate_projectile_using_subroutine(self):
-        chunks = [WaitFrames(4), SubroutineCall("Shot"), WaitFrames(12)]
-        shot = Move()
-        shot.frame_chunks = [SubroutineCall("ShotInit"), WaitFrames(4),
-                             ActiveFrames(2, info=AttackInfo(500, 50, 60, 0, False))]
-        shot_init = Subroutine()
-        shot_init.attackInfo.normalHit.hitstun = 0
-        shot_init.attackInfo.normalHit.untech = 0
-        shot_init.attackInfo.hitstop = 1
-        shot_init.attackInfo.blockstun = 2
-        shot_init.attackInfo.bonus_blockstop = 3
-        shot_init.attackInfo.bonus_hitstop = 4
-        shot_init.attackInfo.minDamage = 15
-        effect_list = {"Shot": shot,
-                       "ShotInit": shot_init}
-        move = Move()
-        move.frame_chunks = chunks
-        # combine with ShotAnimation
-        result = combine_with_effects_on_block(move, effect_list)
-        self.assertEqual(1, len(result.additional_chunks))
-        self.assertItemsEqual(result.frame_chunks, [WaitFrames(16)])
-        # basically increasing the startup of hte shot by 4
-        expected_frame_chunks = [WaitFrames(8),
-                                 ActiveFrames(2, info=AttackInfo(500, 50, 60, 15, False, 2, 1, 3, 4,
-                                                                 normal_hit=HitEffects(hitstun=0, untech=0)))
-                                 ]
-        self.compare_frame_chunks_util(result.additional_chunks[0], expected_frame_chunks);
-        self.assertItemsEqual(result.additional_chunks[0], expected_frame_chunks)
 
     def test_parse_inv_attr_str1(self):
         values = parse_attributes("0000000000000000010000000000000001000000")
@@ -120,58 +15,6 @@ class TestParseAttackMethods(unittest.TestCase):
     def test_parse_inv_attr_str2(self):
         values = parse_attributes("0100000001000000000000000100000000000000")
         self.assertEqual([True, True, False, True, False], values)
-
-    def test_calculate_frame_adv_1_hit(self):
-        chunks = [WaitFrames(4), ActiveFrames(1, info=AttackInfo(0, blockstun=3, hitstop=3)), WaitFrames(12)]
-        result = calc_frames_for_subroutine(chunks)
-        self.assertItemsEqual(('5', '1', '12', 17, 20, 11, []), result)
-
-    def test_calculate_frame_adv_2_hit(self):
-        chunks = [WaitFrames(4),
-                  ActiveFrames(3, info=AttackInfo(0, blockstun=3, hitstop=3)),
-                  ActiveFrames(3, info=AttackInfo(0, blockstun=3, hitstop=3)),
-                  WaitFrames(12)]
-        result = calc_frames_for_subroutine(chunks)
-        self.assertItemsEqual(('5', '3,3', '12', 22, 28, 17, []), result)
-
-    def test_calculate_frame_adv_2_hit_with_gap(self):
-        chunks = [WaitFrames(4),
-                  ActiveFrames(1, info=AttackInfo(0, blockstun=3, hitstop=3)),
-                  WaitFrames(3),
-                  ActiveFrames(1, info=AttackInfo(0, blockstun=3, hitstop=3)),
-                  WaitFrames(12)
-                  ]
-        result = calc_frames_for_subroutine(chunks)
-        self.assertItemsEqual(('5', '1(3)1', '12', 21, 27, 18, []), result)
-
-    def test_calculate_frame_adv_with_5_active_frames(self):
-        chunks = [WaitFrames(4), ActiveFrames(5, info=AttackInfo(0, blockstun=3, hitstop=3)), WaitFrames(12)]
-        result = calc_frames_for_subroutine(chunks)
-        self.assertItemsEqual(('5', '5', '12', 21, 24, 11, []), result)
-
-    def test_calculate_frame_adv_1_hit_bonus_hitstop(self):
-        chunks = [WaitFrames(4),
-                  ActiveFrames(1, info=AttackInfo(0, blockstun=3, hitstop=3, bonus_blockstop=10)),
-                  WaitFrames(12)]
-        result = calc_frames_for_subroutine(chunks)
-        self.assertItemsEqual(('5', '1', '12', 17, 20, 21, []), result)
-
-    def test_calculate_frame_adv_attr_inv(self):
-        chunks = [WaitFrames(4), ActiveFrames(3, info=AttackInfo(0, blockstun=3, hitstop=3)), WaitFrames(12)]
-        chunks[1].inv_type = 1
-        chunks[1].inv_attr = [True, True, False, False, False]
-        result = calc_frames_for_subroutine(chunks)
-        self.assertItemsEqual(('5', '3', '12', 19, 22, 11, [[5, 3, 1, [True, True, False, False, False]]]), result)
-
-    def test_calculate_startup_with_superflash(self):
-        chunks = [WaitFrames(4),
-                  ActiveFrames(1, info=AttackInfo(0, blockstun=3, hitstop=3)),
-                  WaitFrames(3),
-                  ActiveFrames(1, info=AttackInfo(0, blockstun=3, hitstop=3)),
-                  WaitFrames(12)
-                  ]
-        result = calc_frames_for_subroutine(chunks, [(2, 3)])
-        self.assertItemsEqual(('2+3Flash+0', '1(3)1', '12', 21, 27, 18, []), result)
 
     def test_parse_subroutine(self):
         subroutine = """@Subroutine
@@ -191,14 +34,14 @@ def Monsho_AtkData():
         subroutine = Subroutine()
         subroutine.attackInfo.hitstop = 6
         subroutine.attackInfo.blockstun = 11
-        subroutine.attackInfo.normalHit.hitstun = 17
-        subroutine.attackInfo.normalHit.untech = 21
+        subroutine.attackInfo.normalHitEffects.hitstun = 17
+        subroutine.attackInfo.normalHitEffects.untech = 21
         subroutine.attackInfo.damage = 900
         subroutine.attackInfo.p1 = 70
         subroutine.attackInfo.p2 = 90
         subroutine.attackInfo.attackLevel = 1
-        subroutine.attackInfo.normalHit.groundHitAni = 0
-        subroutine.attackInfo.normalHit.airHitAni = 0
+        subroutine.attackInfo.normalHitEffects.groundHitAni = 0
+        subroutine.attackInfo.normalHitEffects.airHitAni = 0
         subroutine.landingRecovery = 0
         self.assertEquals(effect_list["Monsho_AtkData"], subroutine)
 
@@ -947,100 +790,6 @@ def NmlAtk5A():
                               normal_hit=HitEffects(ground_hit_ani=0, air_hit_ani=0))
         self.assertEqual(expected, hit_simulations["NmlAtk5A"].frame_chunks[1].info)
 
-    def test_calc_damage_strike(self):
-        move = Move()
-        move.frame_chunks = [WaitFrames(7),
-                             ActiveFrames(5, info=AttackInfo(500, blockstun=16, hitstop=11)),
-                             WaitFrames(3),
-                             ActiveFrames(5, info=AttackInfo(1000, blockstun=16, hitstop=11)),
-                             WaitFrames(9)
-                             ]
-        to_test = calc_damage_for_move(move)
-        expected = [move.frame_chunks[1].info, move.frame_chunks[3].info]
-        self.assertEqual(expected, to_test)
-
-    def test_calc_damage_1_projectile(self):
-        shot = Move()
-        shot.frame_chunks = [WaitFrames(24)]
-        shot.additional_chunks = [[WaitFrames(4), ActiveFrames(2)]]
-        shot.additional_chunks[0][1].info = AttackInfo(1000, 60, 80, 0, None, 10, 11, 12, 13)
-        to_test = calc_damage_for_move(shot)
-        expected = [AttackInfo(1000, 60, 80, 0, None, 10, 11, 12, 13)]
-        self.assertEqual(expected, to_test)
-
-    def test_calc_damage_2_projectile(self):
-        shot = Move()
-        shot.frame_chunks = [WaitFrames(24)]
-        shot.additional_chunks = [[WaitFrames(10), ActiveFrames(2)], [WaitFrames(5), ActiveFrames(2)]]
-        shot.additional_chunks[0][1].info = AttackInfo(1000, 60, 80, 0, None, 10, 11, 12, 13)
-        shot.additional_chunks[1][1].info = AttackInfo(500, 60, 80, 0, None, 10, 11, 12, 13)
-        # combine with ShotAnimation
-        to_test = calc_damage_for_move(shot)
-        expected = [AttackInfo(500, 60, 80, 0, None, 10, 11, 12, 13),
-                    AttackInfo(1000, 60, 80, 0, None, 10, 11, 12, 13)]
-        self.assertEqual(expected, to_test)
-
-    def test_calc_damage_strike_then_projectile(self):
-        shot = Move()
-        shot.frame_chunks = [WaitFrames(24), ActiveFrames(1)]
-        shot.frame_chunks[1].info = AttackInfo(500, 60, 80, 0, None, 10, 11, 12, 13)
-        shot.additional_chunks = [[WaitFrames(30), ActiveFrames(2)]]
-        shot.additional_chunks[0][1].info = AttackInfo(1000, 60, 80, 0, None, 10, 11, 12, 13)
-        # combine with ShotAnimation
-        to_test = calc_damage_for_move(shot)
-        expected = [AttackInfo(500, 60, 80, 0, None, 10, 11, 12, 13),
-                    AttackInfo(1000, 60, 80, 0, None, 10, 11, 12, 13)]
-        self.assertEqual(expected, to_test)
-
-    def test_calc_damage_strike_delays_2ndhit_projectile_hits_first(self):
-        shot = Move()
-        shot.frame_chunks = [WaitFrames(24), ActiveFrames(1), WaitFrames(2), ActiveFrames(1)]
-        shot.frame_chunks[1].info = AttackInfo(500, 60, 80, 0, None, 10, 11, 12, 10)
-        shot.frame_chunks[3].info = AttackInfo(600, 60, 70, 5, None, 10, 11, 12, 13)
-        shot.additional_chunks = [[WaitFrames(30), ActiveFrames(2)]]
-        shot.additional_chunks[0][1].info = AttackInfo(1000, 100, 100, 0, None, 10, 11, 12, 13)
-        # combine with ShotAnimation
-        to_test = calc_damage_for_move(shot)
-        expected = [AttackInfo(500, 60, 80, 0, None, 10, 11, 12, 10),
-                    AttackInfo(1000, 100, 100, 0, None, 10, 11, 12, 13),
-                    AttackInfo(600, 60, 70, 5, None, 10, 11, 12, 13)
-                    ]
-        self.assertEqual(expected, to_test)
-
-    def test_use_subroutine_in_attack_on_block(self):
-        subroutine = Subroutine()
-        subroutine.attackInfo.damage = 900
-        subroutine.attackInfo.p1 = 50
-        subroutine.attackInfo.p2 = 75
-        effect_list = {"init": subroutine}
-        move = Move()
-        move.frame_chunks = [SubroutineCall("init"),
-                             WaitFrames(5),
-                             ActiveFrames(2,
-                                          info=AttackInfo(0, blockstun=10, hitstop=20, p2once=True)),
-                             WaitFrames(5)]
-        result = combine_with_effects_on_block(move, effect_list)
-        expected = Move()
-        expected.frame_chunks = [WaitFrames(5),
-                                 ActiveFrames(2,
-                                              info=AttackInfo(subroutine.attackInfo.damage, p1=50, p2=75, blockstun=10, hitstop=20,
-                                                              p2once=True)),
-                                 WaitFrames(5)
-                                 ]
-        self.assertEqual(expected, result)
-
-    def test_hitstop_text(self):
-        test = [AttackInfo(500, 60, 80, 0, None, hitstop=10),
-                AttackInfo(1000, 100, 100, 0, None, hitstop=10, bonus_blockstop=5, bonus_hitstop=1),
-                AttackInfo(600, 60, 70, 5, None, hitstop=10, bonus_blockstop=5),
-                AttackInfo(600, 60, 70, 5, None, hitstop=10, bonus_hitstop=5)
-                ]
-        damage, p1, p2, level, attribute, hitstop, blockstun = create_damage_text(test)
-        print hitstop
-
-    def test_hitstun_and_untech_text(self):
-        pass
-
     def test_parse_function_with_one_sprite_line(self):
         state = """def vr_lp206atk_04():
     def upon_IMMEDIATE():
@@ -1081,148 +830,3 @@ def NmlAtk5A():
         self.assertEqual(5, inv_values[1])
         self.assertEqual(1, inv_values[2])
         self.assertEqual([True, True, True, True, False], inv_values[3])
-
-    def test_write_basic_hitstun_text(self):
-        info = AttackInfo()
-        info.normalHitEffects.hitstun = 10
-        self.assertEqual("10", create_hitstun_text(info))
-
-    def test_write_spinFall_hitstun_text(self):
-        info = AttackInfo()
-        info.normalHitEffects.spinFall = 22
-        info.normalHitEffects.groundHitAni = 6
-        self.assertEqual("Spin Fall 22", create_hitstun_text(info))
-
-    def test_write_stagger_hitstun_text(self):
-        info = AttackInfo()
-        info.normalHitEffects.stagger = 15
-        self.assertEqual("Stagger 15", create_hitstun_text(info))
-
-    def test_write_launch_hitstun_text(self):
-        info = AttackInfo()
-        info.normalHitEffects.groundHitAni = 10
-        self.assertEqual("Launch", create_hitstun_text(info))
-
-    def test_write_basic_untech_text(self):
-        info = AttackInfo()
-        info.normalHitEffects.untech = 10
-        self.assertEqual("10", create_untech_text(info))
-
-    def test_write_untech_with_wallbounce_text(self):
-        info = AttackInfo()
-        info.normalHitEffects.untech = 10
-        info.normalHitEffects.wallBounce = 0
-        self.assertEqual("10 + WBounce", create_untech_text(info))
-
-        info = AttackInfo()
-        info.normalHitEffects.untech = 10
-        info.normalHitEffects.wallBounce = 10
-        self.assertEqual("10 + WBounce 10", create_untech_text(info))
-
-    def test_write_untech_with_wallstick_text(self):
-        info = AttackInfo()
-        info.normalHitEffects.untech = 10
-        info.normalHitEffects.wallStick = 0
-        self.assertEqual("10 + WStick", create_untech_text(info))
-
-        info = AttackInfo()
-        info.normalHitEffects.untech = 10
-        info.normalHitEffects.wallBounce = 10
-        self.assertEqual("10 + WBounce 10", create_untech_text(info))
-
-    def test_write_untech_with_knockdown_text(self):
-        info = AttackInfo()
-        info.normalHitEffects.untech = 10
-        info.normalHitEffects.knockdown = 50
-        self.assertEqual("10 + Down 50", create_untech_text(info))
-
-        info = AttackInfo()
-        info.normalHitEffects.untech = 10
-        info.normalHitEffects.knockdown = 24
-        self.assertEqual("10 + Down 24", create_untech_text(info))
-
-    def test_write_untech_with_slide_text(self):
-        info = AttackInfo()
-        info.normalHitEffects.untech = 10
-        info.normalHitEffects.slide = 7
-        self.assertEqual("10 + Slide 7", create_untech_text(info))
-
-    def test_write_untech_with_many_extras(self):
-        info = AttackInfo()
-        info.normalHitEffects.untech = 10
-        info.normalHitEffects.knockdown = 50
-        info.normalHitEffects.slide = 7
-        info.normalHitEffects.wallStick = 0
-        self.assertEqual("10 + WStick + Slide 7 + Down 50", create_untech_text(info))
-
-
-    def test_compare_frame_chunk_util(self):
-
-        frame_chunks1 = [WaitFrames(5),
-                        ActiveFrames(2, info=AttackInfo(600, p1=50, p2=75, blockstun=10, hitstop=20,
-                                                      p2once=True)),
-                        WaitFrames(5)
-                        ]
-
-        frame_chunks2 = [WaitFrames(5),
-                        ActiveFrames(2, info=AttackInfo(600, p1=50, p2=75, blockstun=10, hitstop=20,
-                                                      p2once=True)),
-                        WaitFrames(5)
-                        ]
-        self.compare_frame_chunks_util(frame_chunks1, frame_chunks2)
-
-    # util method to help make debugging what's different between objects easier to detect.
-    # Tests should still use normal assertEquals, only use these when debugging or else we may
-    # have problems with outdated compare methods.
-
-    def compare_move_util(self, first, second):
-        self.assertEqual(first.landing_recovery, second.landing_recovery)
-        self.assertEquals(first.superflash_list, second.superflash_list)
-        self.assertEquals(first.hardcoded_inv_list, second.hardcoded_inv_list)
-        self.compare_frame_chunks_util(first.frame_chunks, second.frame_chunks, "move.frame_chunks")
-        self.assertEqual(len(first.frame_chunks), len(second.frame_chunks))
-        for i in range(len(first.additional_chunks)):
-            self.compare_frame_chunks_util(first.additional_chunks[i], second.additional_chunks[i], "move.additonal_chunks[" + str(i) + "]")
-
-    def compare_frame_chunks_util(self, first, second, name=""):
-        self.assertEqual(len(first), len(second))
-        for i in range(len(first)):
-            if first[i] != second[i] and isinstance(first[i], ActiveFrames) and isinstance(second[i], ActiveFrames):
-                print "Unequal Active Frame Chunk detected at " + name + "[" + str(i) + "]"
-                self.assertEqual(first[i].is_new_hit, second[i].is_new_hit, "is_new_hit not equal")
-                self.compare_attack_info(first[i].info, second[i].info)
-            if first[i] != second[i] and isinstance(first[i], AbstractFrames) and isinstance(second[i], AbstractFrames):
-                print "Unequal Abstract Frame Chunk detected at " + name + "[" + str(i) + "]"
-                self.assertEqual(first[i].inv_type, second[i].inv_type, "inv_type not equal")
-                self.assertEqual(first[i].inv_attr, second[i].inv_attr, "inv_attr not equal")
-                self.assertEqual(first[i].duration, second[i].duration, "duration not equal")
-            else:
-                self.assertEqual(first[i], second[i], "Unequal Object detected at [" + str(i) + "]")
-
-    def compare_attack_info(self, first, second):
-        self.assertEqual(first.damage, second.damage, "Damage not equal")
-        self.assertEqual(first.p1, second.p1, "p1 not equal")
-        self.assertEqual(first.p2, second.p2, "p2 not equal")
-        self.assertEqual(first.minDamage, second.minDamage, "minDamage not equal")
-        self.assertEqual(first.p2Once, second.p2Once, "p2Once not equal")
-        self.assertEqual(first.blockstun, second.blockstun, "blockstun not equal")
-        self.assertEqual(first.attackLevel, second.attackLevel, "attackLevel not equal")
-        self.assertEqual(first.hitstop, second.hitstop, "hitstop not equal")
-        self.assertEqual(first.bonus_hitstop, second.bonus_hitstop, "bonus_hitstop not equal")
-        self.assertEqual(first.bonus_blockstop, second.bonus_blockstop, "bonus_blockstop not equal")
-        self.assertEqual(first.attribute, second.attribute, "attribute not equal")
-        self.compare_hit_effect(first.normalHit, second.normalHit)
-
-    def compare_hit_effect(self, first, second):
-        self.assertEqual(first.hitstun, second.hitstun, "hitstun not equal")
-        self.assertEqual(first.untech, second.untech, "untech not equal")
-        self.assertEqual(first.groundHitAni, second.groundHitAni, "groundHitAni not equal")
-        self.assertEqual(first.airHitAni, second.airHitAni, "groundHitAni not equal")
-        self.assertEqual(first.knockdown, second.knockdown, "knockdown not equal")
-        self.assertEqual(first.slide, second.slide, "slide not equal")
-        self.assertEqual(first.hitstunAfterWallBounce, second.hitstunAfterWallBounce, "hitstunAfterWallBounce not equal")
-        self.assertEqual(first.wallStick, second.wallStick, "wallStickTime not equal")
-        self.assertEqual(first.stagger, second.stagger, "stagger not equal")
-        self.assertEqual(first.spinFall, second.spinFall, "spinFall not equal")
-        self.assertEqual(first.groundBounce, second.groundBounce, "groundBounce not equal")
-        self.assertEqual(first.wallBounce, second.wallBounce, "wallBounce not equal")

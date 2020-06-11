@@ -1,0 +1,10 @@
+
+# Default ignored files
+/workspace.xml
+/frameDataParser.iml
+/misc.xml
+/modules.xml
+/inspectionProfiles/profiles_settings.xml
+/dictionaries/shtkn.xml
+/../testfile_out.txt
+/vcs.xml

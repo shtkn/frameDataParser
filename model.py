@@ -1,4 +1,6 @@
 import copy
+import heapq
+from collections import OrderedDict
 
 ATTACK_LEVEL = {"blockstun": [9, 11, 13, 16, 18, 20],
                 "hitstun": [10, 12, 14, 17, 19, 21],
@@ -23,15 +25,14 @@ class State:
         self.disableAttackboxesThisFrame = False
         self.isNewHit = True
         self.attackInfo = AttackInfo()
-        self.attackInfo.groundHitAni = 0
-        self.attackInfo.airHitAni = 0
+        self.attackInfo.normalHitEffects = HitEffects(ground_hit_ani=0, air_hit_ani=0)
         self.exitState = False
         self.landingRecovery = 0
         self.isSubroutine = False
         self.isInv = False
         self.invType = 0  # Inv or Guard
         self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
-        self.superflash_list = []    # list of tuples. Each tuple contains when superlflash starts and superflash duration
+        self.superflash_list = []  # list of tuples. Each tuple contains when superlflash starts and superflash duration
         self.attackLevel = None
         self.attr = None
         self.hardcodedInvList = []  # list of tuples. Each tuple contains when hardcoded inv starts, duration, inv type, and inv attr
@@ -58,11 +59,12 @@ class State:
             self.invType = 0  # Inv or Guard
             self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
             self.attr = None
-            self.superflash_list = []    # list of tuples. Each tuple contains when superlflash starts and superflash duration
+            self.superflash_list = []  # list of tuples. Each tuple contains when superlflash starts and duration
             self.hardcodedInvList = []
 
     def is_attackbox(self):
-        return self.isAttackBox and (self.isNewHit or not self.disableAttackboxes) and not self.disableAttackboxesThisFrame
+        return self.isAttackBox and (
+                self.isNewHit or not self.disableAttackboxes) and not self.disableAttackboxesThisFrame
 
     def set_values_from_subroutine(self, subroutine):
         if subroutine is None:
@@ -72,33 +74,23 @@ class State:
 
 
 class AttackInfo:
-    def __init__(self, damage=None, p1=None, p2=None, min_damage=0, p2once=None, hitstun=None, untech=None, blockstun=None,
-                 hitstop=None, bonus_blockstop=None, bonus_hitstop=None, attack_level=None, attribute=None, ground_hit_ani=None,
-                 air_hit_ani=None, knockdown=None, slide_time=None, hitstun_after_wall_bounce=None, wallstick=None,
-                 stagger=None, spin_fall=None, ground_bounce=None, wall_bounce=None):
+    def __init__(self, damage=None, p1=None, p2=None, min_damage=0, p2once=None, blockstun=None,
+                 hitstop=None, bonus_blockstop=None, bonus_hitstop=None, attack_level=None, attribute=None,
+                 normal_hit=None, counter_hit=None, bonus_counterhitstop=None):
         self.damage = damage
         self.p1 = p1
         self.p2 = p2
         self.minDamage = min_damage
         self.p2Once = p2once
-        self.hitstun = hitstun
-        self.untech = untech
         self.blockstun = blockstun
         self.attackLevel = attack_level
         self.hitstop = hitstop
-        self.bonus_blockstop = bonus_blockstop    # for additional hitstop the opponent experiences on block
-        self.bonus_hitstop = bonus_hitstop       # for additonoal hitstop the opponent experiences on hit
+        self.bonusBlockstop = bonus_blockstop  # for additional hitstop the opponent experiences on block
+        self.bonusHitstop = bonus_hitstop  # for additonoal hitstop the opponent experiences on hit
+        self.bonusHitstopCH = bonus_counterhitstop  # for additonoal hitstop the opponent experiences on counter hit
         self.attribute = copy.copy(attribute)
-        self.groundHitAni = ground_hit_ani
-        self.airHitAni = air_hit_ani
-        self.knockdown = knockdown
-        self.slide = slide_time
-        self.hitstunAfterWallBounce = hitstun_after_wall_bounce
-        self.wallStick = wallstick
-        self.stagger = stagger
-        self.spinFall = spin_fall
-        self.groundBounce = ground_bounce
-        self.wallBounce = wall_bounce
+        self.normalHitEffects = copy.copy(normal_hit) if normal_hit is not None else HitEffects()
+        self.counterHitEffects = copy.copy(counter_hit) if counter_hit is not None else HitEffects()
 
     def copy_non_none_values(self, other):
         self.damage = other.damage if other.damage is not None else self.damage
@@ -106,45 +98,38 @@ class AttackInfo:
         self.p2 = other.p2 if other.p2 is not None else self.p2
         self.minDamage = other.minDamage if other.minDamage is not None else self.minDamage
         self.p2Once = other.p2Once if other.p2Once is not None else self.p2Once
-        self.hitstun = other.hitstun if other.hitstun is not None else self.hitstun
-        self.untech = other.untech if other.untech is not None else self.untech
         self.blockstun = other.blockstun if other.blockstun is not None else self.blockstun
         self.attackLevel = other.attackLevel if other.attackLevel is not None else self.attackLevel
         self.hitstop = other.hitstop if other.hitstop is not None else self.hitstop
-        self.bonus_blockstop = other.bonus_blockstop if other.bonus_blockstop is not None else self.bonus_blockstop
-        self.bonus_hitstop = other.bonus_hitstop if other.bonus_hitstop is not None else self.bonus_hitstop
+        self.bonusBlockstop = other.bonusBlockstop if other.bonusBlockstop is not None else self.bonusBlockstop
+        self.bonusHitstop = other.bonusHitstop if other.bonusHitstop is not None else self.bonusHitstop
+        self.bonusHitstopCH = other.bonusHitstopCH if other.bonusHitstopCH is not None else self.bonusHitstopCH
         self.attribute = copy.copy(other.attribute) if other.attribute is not None else self.attribute
-        self.groundHitAni = other.groundHitAni if other.groundHitAni is not None else self.groundHitAni
-        self.airHitAni = other.airHitAni if other.airHitAni is not None else self.airHitAni
-        self.knockdown = other.knockdown if other.knockdown is not None else self.knockdown
-        self.slide = other.slide if other.slide is not None else self.slide
-        self.hitstunAfterWallBounce = other.hitstunAfterWallBounce if other.hitstunAfterWallBounce is not None else self.hitstunAfterWallBounce
-        self.wallStick = other.wallStick if other.wallStick is not None else self.wallStick
-        self.stagger = other.stagger if other.stagger is not None else self.stagger
-        self.spinFall = other.spinFall if other.spinFall is not None else self.spinFall
-        self.groundBounce = other.groundBounce if other.groundBounce is not None else self.groundBounce
-        self.wallBounce = other.wallBounce if other.wallBounce is not None else self.wallBounce
+        self.normalHitEffects = copy.copy(
+            other.normalHitEffects) if other.normalHitEffects is not None else self.normalHitEffects
+        self.counterHitEffects = copy.copy(
+            other.counterHitEffects) if other.counterHitEffects is not None else self.counterHitEffects
 
     def __str__(self):
-        toReturn = "damage=" + str(self.damage) + "p1=" + str(self.p1) + "p2=" + str(self.p2)
+        to_return = "damage=" + str(self.damage) + "p1=" + str(self.p1) + "p2=" + str(self.p2)
         if self.p2Once:
-            toReturn = toReturn + "(once)"
-        toReturn = toReturn + "minDamage=" + str(self.minDamage) + "attackLv=" + str(self.attackLevel) + \
-                   "attr=" + str(self.attribute) + "blockstun=" + str(self.get_blockstun()) + "hitstun=" + str(self.get_hitstun()) + \
-                   "untech=" + str(self.get_untech()) + "hitstop=" + str(self.get_hitstop()) + "bonusBlockstop=" + str(self.bonus_blockstop) + \
-                   "bonusHitstop=" + str(self.bonus_hitstop)
-        return toReturn
+            to_return = to_return + "(once)"
+        to_return = to_return + "minDamage=" + str(self.minDamage) + "attackLv=" + str(self.attackLevel) + \
+                "attr=" + str(self.attribute) + "blockstun=" + str(self.get_blockstun()) + "hitstun=" + \
+                str(self.get_hitstun()) + "untech=" + str(self.get_untech()) + "hitstop=" + str(self.get_hitstop()) + \
+                "bonusBlockstop=" + str(self.bonusBlockstop) + "bonusHitstop=" + \
+                str(self.bonusHitstop) + "bonusCounterHitstop=" + str(self.bonusHitstopCH)
+        return to_return
 
     def __eq__(self, other):
         if not isinstance(other, AttackInfo):
             return False
         return self.damage == other.damage and self.p1 == other.p1 and self.p2 == other.p2 and \
                self.minDamage == other.minDamage and self.p2Once == other.p2Once and self.blockstun == other.blockstun and \
-               self.hitstun == other.hitstun and self.untech == other.untech and self.attackLevel == other.attackLevel and \
-               self.hitstop == other.hitstop and self.bonus_blockstop == other.bonus_blockstop and \
-               self.bonus_hitstop == other.bonus_hitstop and self.attribute == other.attribute and \
-               self.groundHitAni == other.groundHitAni and self.airHitAni == other.airHitAni and \
-               self.groundBounce == other.groundBounce and self.wallBounce == other.wallBounce
+               self.attackLevel == other.attackLevel and self.hitstop == other.hitstop and \
+               self.bonusBlockstop == other.bonusBlockstop and self.bonusHitstop == other.bonusHitstop and \
+               self.bonusHitstopCH == other.bonusHitstopCH and self.attribute == other.attribute and \
+               self.normalHitEffects == other.normalHitEffects and self.counterHitEffects == other.counterHitEffects
 
     def __ne__(self, other):
         if not isinstance(other, AttackInfo):
@@ -160,12 +145,13 @@ class AttackInfo:
         return self.blockstun
 
     def get_hitstun(self):
-        if self.hitstun is None:
-            if self.attackLevel is None:
-                return None
-            else:
-                return ATTACK_LEVEL["hitstun"][self.attackLevel]
-        return self.hitstun
+        if self.normalHitEffects.hitstun is not None:
+            return self.normalHitEffects.hitstun
+
+        if self.attackLevel is not None:
+            return ATTACK_LEVEL["hitstun"][self.attackLevel]
+
+        return None
 
     def get_hitstop(self):
         if self.hitstop is None:
@@ -176,12 +162,13 @@ class AttackInfo:
         return self.hitstop
 
     def get_untech(self):
-        if self.untech is None:
-            if self.attackLevel is None:
-                return None
-            else:
-                return ATTACK_LEVEL["untech"][self.attackLevel]
-        return self.untech
+        if self.normalHitEffects.untech is not None:
+            return self.normalHitEffects.untech
+
+        if self.attackLevel is not None:
+            return ATTACK_LEVEL["untech"][self.attackLevel]
+
+        return None
 
     def get_p1(self):
         if self.p1 is None:
@@ -218,28 +205,85 @@ class AttackInfo:
             self.p2Once = other.p2Once
         if other.minDamage is not None:
             self.minDamage = other.minDamage
-        if other.hitstun is not None:
-            self.hitstun = other.hitstun
-        if other.untech is not None:
-            self.untech = other.untech
         if other.blockstun is not None:
             self.blockstun = other.blockstun
         if other.attackLevel is not None:
             self.attackLevel = other.attackLevel
         if other.hitstop is not None:
             self.hitstop = other.hitstop
-        if other.bonus_blockstop is not None:
-            self.bonus_blockstop = other.bonus_blockstop
-        if other.bonus_hitstop is not None:
-            self.bonus_hitstop = other.bonus_hitstop
+        if other.bonusBlockstop is not None:
+            self.bonusBlockstop = other.bonusBlockstop
+        if other.bonusHitstop is not None:
+            self.bonusHitstop = other.bonusHitstop
+        if other.bonusHitstopCH is not None:
+            self.bonusHitstopCH = other.bonusHitstopCH
         if other.attribute is not None:
             self.attribute = other.attribute
+        if other.normalHitEffects is not None:
+            self.normalHitEffects.override_non_none_values(other.normalHitEffects)
+        if other.counterHitEffects is not None:
+            self.counterHitEffects.override_non_none_values(other.counterHitEffects)
+
+
+class HitEffects:
+    def __init__(self, hitstun=None, untech=None, ground_hit_ani=None, air_hit_ani=None, knockdown=None,
+                 slide_time=None, hitstun_after_wall_bounce=None, stagger=None, spin_fall=None,
+                 ground_bounce=None, ground_bounce_type=None, wall_bounce=None, corner_bounce_type=None,
+                 corner_stick=None):
+        self.hitstun = hitstun
+        self.untech = untech
+        self.groundHitAni = ground_hit_ani
+        self.airHitAni = air_hit_ani
+        self.knockdown = knockdown
+        self.slide = slide_time
+        self.hitstunAfterWallBounce = hitstun_after_wall_bounce
+        self.stagger = stagger
+        self.spinFall = spin_fall
+        self.groundBounce = ground_bounce
+        self.groundBounceType = ground_bounce_type
+        self.wallBounce = wall_bounce
+        self.cornerBounceType = corner_bounce_type
+        self.cornerStick = corner_stick
+
+    def override_non_none_values(self, other):
+        if other.hitstun is not None:
+            self.hitstun = other.hitstun
+        if other.untech is not None:
+            self.untech = other.untech
         if other.groundHitAni is not None:
             self.groundHitAni = other.groundHitAni
         if other.airHitAni is not None:
             self.airHitAni = other.airHitAni
+        if other.knockdown is not None:
+            self.knockdown = other.knockdown
+        if other.slide is not None:
+            self.slide = other.slide
+        if other.hitstunAfterWallBounce is not None:
+            self.hitstunAfterWallBounce = other.hitstunAfterWallBounce
+        if other.stagger is not None:
+            self.stagger = other.stagger
+        if other.spinFall is not None:
+            self.spinFall = other.spinFall
+        if other.groundBounceType is not None:
+            self.groundBounceType = other.groundBounceType
         if other.groundBounce is not None:
             self.groundBounce = other.groundBounce
+        if other.wallBounce is not None:
+            self.wallBounce = other.wallBounce
+        if other.cornerBounceType is not None:
+            self.cornerBounceType = other.cornerBounceType
+        if other.cornerStick is not None:
+            self.cornerStick = other.cornerStick
+
+    def __eq__(self, other):
+        if not isinstance(other, HitEffects):
+            return False
+        return self.hitstun == other.hitstun and self.untech == other.untech and self.groundHitAni == other.groundHitAni and \
+               self.airHitAni == other.airHitAni and self.knockdown == other.knockdown and self.slide == other.slide and \
+               self.hitstunAfterWallBounce == other.hitstunAfterWallBounce and self.stagger == other.stagger and \
+               self.spinFall == other.spinFall and self.groundBounce == other.groundBounce and \
+               self.groundBounceType == other.groundBounceType and self.wallBounce == other.wallBounce and \
+               self.cornerBounceType == other.cornerBounceType and self.cornerStick == other.cornerStick
 
 
 class Abstract:
@@ -279,15 +323,15 @@ class ActiveFrames(AbstractFrames):
         to_return += " Active"
         to_return += " New Hit " + str(self.is_new_hit)
         to_return += " Blockstun " + str(self.info.get_blockstun())
-        to_return += " Hitstop " + str(self.info.get_hitstop()) + "/+" + str(self.info.bonus_blockstop) + "/+" + str(self.info.bonus_hitstop)
+        to_return += " Hitstop " + str(self.info.get_hitstop()) + "/+" + str(self.info.bonusBlockstop) + "/+" + str(
+            self.info.bonusHitstop)
         return to_return
 
     def __eq__(self, other):
         if not isinstance(other, ActiveFrames):
             return False
-        return self.duration == other.duration and self.is_new_hit == other.is_new_hit and \
-            self.info == other.info and self.duration == other.duration and \
-            self.inv_type == other.inv_type and self.inv_attr == other.inv_attr
+        return self.duration == other.duration and self.is_new_hit == other.is_new_hit and self.info == other.info and \
+               self.duration == other.duration and self.inv_type == other.inv_type and self.inv_attr == other.inv_attr
 
     def __ne__(self, other):
         if not isinstance(other, ActiveFrames):
@@ -311,7 +355,7 @@ class WaitFrames(AbstractFrames):
 
 
 class SubroutineCall(Abstract):
-    def __init__(self, name, same_thread = False):
+    def __init__(self, name, same_thread=False):
         Abstract.__init__(self)
         self.name = name
         self.sameThread = same_thread
@@ -369,11 +413,11 @@ class Subroutine:
     def __init__(self, state=None):
         if state is not None:
             self.landingRecovery = state.landingRecovery
-            self.attackInfo = AttackInfo()
+            self.attackInfo = AttackInfo(normal_hit=HitEffects(), counter_hit=HitEffects())
             self.attackInfo.copy_non_none_values(state.attackInfo)
         else:
             self.landingRecovery = None
-            self.attackInfo = AttackInfo()
+            self.attackInfo = AttackInfo(normal_hit=HitEffects(), counter_hit=HitEffects())
 
     def __eq__(self, other):
         if not isinstance(other, Subroutine):
@@ -411,3 +455,175 @@ def consolidate_frame_chunks(chunk_list, ignore_inv=False):
 
 def has_same_inv(chunk1, chunk2):
     return chunk1.inv_type == chunk2.inv_type and chunk1.inv_attr == chunk2.inv_attr
+
+
+def simulate_effect_on_block(name, effect_list, start_frame=0):
+    if name not in effect_list:
+        return []
+    subroutine_calls = [[]]
+    first_subroutine = subroutine_calls[0]
+    duration = start_frame
+    override_info = AttackInfo(None)
+    if duration > 0:
+        first_subroutine.append(WaitFrames(duration))
+    for chunk in effect_list[name].frame_chunks:
+        if isinstance(chunk, SubroutineCall):
+            from_children = []
+            if chunk.name in effect_list and isinstance(effect_list[chunk.name], Subroutine):
+                subroutine = effect_list[chunk.name]
+                # print "SUBROUTINE " + effect_list[chunk.name]
+                override_info.copy_non_none_values(subroutine.attackInfo)
+            else:
+                from_children = simulate_effect_on_block(chunk.name, effect_list, duration)
+            for one_subroutine in from_children:
+                subroutine_calls.append(one_subroutine)
+        else:
+            if isinstance(chunk, ActiveFrames) and override_info is not None:
+                chunk.info.override_non_none_values(override_info)
+
+            first_subroutine.append(chunk)
+            duration += chunk.duration
+            if isinstance(chunk, ActiveFrames):
+                duration += chunk.info.get_hitstop() if chunk.info.get_hitstop() is not None else 0
+
+    subroutine_calls[0] = consolidate_frame_chunks(first_subroutine)
+    # delete any subroutines that don't add anything
+    if start_frame > 0 and len(subroutine_calls[0]) == 1 and isinstance(subroutine_calls[0][0], WaitFrames):
+        subroutine_calls.pop(0)
+    return subroutine_calls
+
+
+def simulate_on_block(move_list, effect_list):
+    hit_simulations = OrderedDict()
+    for moveName in move_list:
+        move = move_list[moveName]
+        hit_simulations[moveName] = combine_with_effects_on_block(move, effect_list)
+    return hit_simulations
+
+
+def combine_with_effects_on_block(move, effect_list):
+    override_info = AttackInfo(None)
+    override_landing_recovery = None
+    current_frame = 0
+    subroutine_calls = []
+    main_subroutine = []
+    subroutine_calls.append(main_subroutine)
+    for idx, chunk in enumerate(move.frame_chunks):
+        if isinstance(chunk, SubroutineCall):
+            if chunk.name in effect_list and isinstance(effect_list[chunk.name], Subroutine):
+                subroutine = effect_list[chunk.name]
+                # print "SUBROUTINE " + effect_list[chunk.name]
+                override_info.copy_non_none_values(subroutine.attackInfo)
+                override_landing_recovery = subroutine.landingRecovery
+
+            else:
+                subroutine_calls.extend(simulate_effect_on_block(chunk.name, effect_list, start_frame=current_frame))
+        else:
+            if isinstance(chunk, ActiveFrames):
+                chunk.info.override_non_none_values(override_info)
+
+            main_subroutine.append(chunk)
+            current_frame += chunk.duration
+            if isinstance(chunk, ActiveFrames):
+                current_frame += 0 if chunk.info.get_hitstop() is None else chunk.info.get_hitstop()
+    subroutine_calls[0] = consolidate_frame_chunks(main_subroutine)
+    new_move = Move()
+    new_move.frame_chunks = subroutine_calls[0]
+    new_move.landing_recovery = override_landing_recovery \
+        if override_landing_recovery is not None else move.landing_recovery
+    new_move.superflash_list = copy.copy(move.superflash_list)
+    if len(subroutine_calls) > 1:
+        new_move.additional_chunks = subroutine_calls[1:]
+    new_move.hardcoded_inv_list = copy.copy(move.hardcoded_inv_list)
+    return new_move
+
+
+def calc_frames_for_subroutine(frame_chunks, superflash_list=None):
+    if superflash_list is None:
+        superflash_list = []
+    startup = 0
+    middle = ""
+    recovery = 0
+    duration_on_whiff = 0
+    duration_on_block = 0
+    last_frame_of_blockstun = 0
+
+    frame_chunks_ignoring_inv = consolidate_frame_chunks(frame_chunks, True)
+    for idx, chunk in enumerate(frame_chunks_ignoring_inv):
+        if isinstance(chunk, ActiveFrames):
+            if len(middle) > 0 and middle[len(middle) - 1] != ")":
+                middle += ","
+            middle += str(chunk.duration)
+            blockstun = 0 if chunk.info.get_blockstun() is None else chunk.info.get_blockstun()
+            hitstop = 0 if chunk.info.get_hitstop() is None else chunk.info.get_hitstop()
+            bonus_blockstop = 0 if chunk.info.bonusBlockstop is None else chunk.info.bonusBlockstop
+            last_frame_of_blockstun = duration_on_block + blockstun + hitstop + bonus_blockstop + 1
+            duration_on_block += hitstop
+        elif middle == "":
+            startup += chunk.duration
+        else:
+            if idx < len(frame_chunks_ignoring_inv) - 1:
+                middle += "(" + str(chunk.duration) + ")"
+            else:
+                recovery += chunk.duration
+
+        duration_on_whiff += chunk.duration
+        duration_on_block += chunk.duration
+
+    if len(middle) > 0:
+        startup += 1
+    # determine inv
+    inv_list = [[0, 0, [False, False, False, False, False]]]  # duration, type, attributes
+    for chunk in frame_chunks:
+        if chunk.inv_type == inv_list[-1][1] and chunk.inv_attr == inv_list[-1][2]:
+            inv_list[-1][0] += chunk.duration
+        else:
+            inv_list.append([chunk.duration, chunk.inv_type, chunk.inv_attr])
+    # clean up the inv array
+    cleaned_inv_list = []
+    frame_counter = 1
+    for value in inv_list:
+        if value[1] != 0:
+            cleaned_inv_list.append([frame_counter, value[0], value[1], value[2]])
+        frame_counter += value[0]
+
+    # account for superflash
+    # TODO: additional logic needed to account for multiple superflashes. For now just use the first one
+    for (superflash_start, superflash_duration) in superflash_list:
+        total_superfreeze_time = 0
+        if superflash_start > 0:
+            startup -= superflash_duration
+            total_superfreeze_time += superflash_duration
+            post_flash_startup = startup - superflash_start
+            post_flash_startup = 0 if post_flash_startup < 0 else post_flash_startup
+            startup = str(superflash_start) + "+" + str(superflash_duration) + "Flash+" + str(post_flash_startup)
+            break
+
+    if middle == "" and recovery == 0:
+        recovery = startup
+        startup = ""
+    return str(startup), middle, str(
+        recovery), duration_on_whiff, duration_on_block, last_frame_of_blockstun, cleaned_inv_list
+
+
+def calc_damage_for_move(move_on_block):
+    damage_at_frame = []
+
+    all_frame_chunks = [move_on_block.frame_chunks]
+    all_frame_chunks.extend(move_on_block.additional_chunks)
+    for frame_chunks in all_frame_chunks:
+        current_frame = 0
+        for chunk in frame_chunks:
+            if isinstance(chunk, ActiveFrames) and chunk.is_new_hit:
+                heapq.heappush(damage_at_frame, (current_frame, chunk.info))
+                current_frame += 0 if chunk.info.get_hitstop() is None else chunk.info.get_hitstop()
+            current_frame += chunk.duration
+
+    damage_list = []
+    while len(damage_at_frame) > 0:
+        value = heapq.heappop(damage_at_frame)
+        damage_list.append(value[1])
+        if isinstance(value[1], (int, long)):
+            print value
+
+    return damage_list
