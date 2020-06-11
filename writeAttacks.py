@@ -165,6 +165,47 @@ def get_hitstun_text(attack_info):
     return text
 
 
+def create_hitstun_ch_text(damage_list):
+    if len(damage_list) == 0:
+        return ""
+    hitstun_ch_str = ""
+    multiplier = 1
+    current_hitstun_ch = get_hitstun_ch_text(damage_list[0])
+
+    for attack_info in damage_list[1:]:
+        if current_hitstun_ch == get_hitstun_ch_text(attack_info):
+            multiplier += 1
+        else:
+            hitstun_ch_str = append_new_value(hitstun_ch_str, current_hitstun_ch, multiplier)
+            current_hitstun_ch = get_hitstun_ch_text(attack_info)
+            multiplier = 1
+
+    if len(hitstun_ch_str) == 0:
+        hitstun_ch_str = current_hitstun_ch
+    else:
+        hitstun_ch_str = append_new_value(hitstun_ch_str, current_hitstun_ch, multiplier)
+    return hitstun_ch_str
+
+
+def get_hitstun_ch_text(attack_info):
+    text = ""
+    hit_effects = attack_info.counterHitEffects
+    if hit_effects.groundHitAni == 0 or hit_effects.groundHitAni is None:
+        if hit_effects.stagger is not None and hit_effects.stagger > 0:
+            text = "Stagger " + str(hit_effects.stagger)
+        else:
+            text = str(attack_info.get_hitstun())
+    elif hit_effects.groundHitAni == 2:
+        text = "Stagger " + str(attack_info.get_untech())
+    elif hit_effects.groundHitAni == 3:  # forces crouch. so far we don't do anything with this info
+        text = str(attack_info.get_hitstun())
+    elif hit_effects.groundHitAni == 6:
+        text = "Spin Fall " + str(hit_effects.spinFall)
+    else:
+        text = "Launch"
+    return text
+
+
 def create_untech_text(damage_list):
     if len(damage_list) == 0:
         return ""

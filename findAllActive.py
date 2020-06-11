@@ -26,14 +26,13 @@ def findActiveForFolder(source_dir):
         if file_name.lower().endswith(".jonbin") and isContainsAttackBox(open(source_dir + "/" + file_name, "r")):
             contains_attackboxes.append(file_name[:-len(".jonbin")] + "\n")
 
-    # print contains_attackboxes
-    return contains_attackboxes
+    return sorted(contains_attackboxes)
 
 
 def main():
-    target_name = "output.txt"
+    target_name = "bbcf_all_active.txt"
     target = open(target_name, "w")
-    base_folder = "E:\\BBCF_CharData"
+    base_folder = "/Users/shtkn/Documents/BBCF_CharData"
     folders = ["char_am", "char_ar", "char_az", "char_bl", "char_bn",
                "char_ca", "char_ce", "char_es", "char_ha", "char_hb",
                "char_hz", "char_iz", "char_jb", "char_jn", "char_kg",

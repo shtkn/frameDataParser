@@ -333,6 +333,91 @@ class TestModel(unittest.TestCase):
                                  ]
         self.assertItemsEqual(result.additional_chunks[0], expected_frame_chunks)
 
+    def test_get_blockstun_attack_level_defaults(self):
+        test = AttackInfo(attack_level=2)
+        self.assertEqual(test.get_blockstun(), 13)
+
+    def test_get_blockstun_custom_value(self):
+        test = AttackInfo(attack_level=2, blockstun=10)
+        self.assertEqual(test.get_blockstun(), 10)
+
+    def test_get_hitstun_attack_level_defaults(self):
+        test = AttackInfo(attack_level=2)
+        self.assertEqual(test.get_hitstun(), 14)
+
+    def test_get_hitstun_custom_value(self):
+        test = AttackInfo(attack_level=2, normal_hit=HitEffects(hitstun=10))
+        self.assertEqual(test.get_hitstun(), 10)
+
+    def test_get_hitstop_attack_level_defaults(self):
+        test = AttackInfo(attack_level=2)
+        self.assertEqual(test.get_hitstop(), 10)
+
+    def test_get_hitstop_custom_value(self):
+        test = AttackInfo(attack_level=2, hitstop=15)
+        self.assertEqual(test.get_hitstop(), 15)
+
+    def test_get_untech_attack_level_defaults(self):
+        test = AttackInfo(attack_level=2)
+        self.assertEqual(test.get_untech(), 14)
+
+    def test_get_untech_custom_value(self):
+        test = AttackInfo(attack_level=2, normal_hit=HitEffects(untech=10))
+        self.assertEqual(test.get_untech(), 10)
+
+    def test_get_p1_attack_level_defaults(self):
+        test = AttackInfo(attack_level=2)
+        self.assertEqual(test.get_p1(), 100)
+
+    def test_get_p1_custom_value(self):
+        test = AttackInfo(attack_level=2, p1=70)
+        self.assertEqual(test.get_p1(), 70)
+
+    def test_get_p2_attack_level_defaults(self):
+        test = AttackInfo(attack_level=2)
+        self.assertEqual(test.get_p2(), 75)
+
+    def test_get_p2_custom_value(self):
+        test = AttackInfo(attack_level=2, p2=70)
+        self.assertEqual(test.get_p2(), 70)
+
+    def test_get_damage_attack_level_defaults(self):
+        test = AttackInfo(attack_level=2)
+        self.assertEqual(test.get_damage(), 1000)
+
+    def test_get_damage_custom_value(self):
+        test = AttackInfo(attack_level=2, damage=700)
+        self.assertEqual(test.get_damage(), 700)
+
+    def test_attack_info_override_non_none_values_all_values_are_non_none(self):
+        first = AttackInfo()
+        second = AttackInfo(100, 90, 80, 10, True, 5, 1, 1, 1, 2, [True, False, False, False, False],
+                            HitEffects(), HitEffects(), 1)
+        first.override_non_none_values(second)
+        self.assertEqual(first, second)
+
+    def test_attack_info_override_non_none_values_all_values_are_none(self):
+        first = AttackInfo(100, 90, 80, 10, True, 5, 1, 1, 1, 2, [True, False, False, False, False],
+                           HitEffects(), HitEffects(), 1)
+        second = AttackInfo(min_damage=None)
+        first.override_non_none_values(second)
+        expected = AttackInfo(100, 90, 80, 10, True, 5, 1, 1, 1, 2, [True, False, False, False, False],
+                              HitEffects(), HitEffects(), 1)
+        self.assertEqual(first, expected)
+
+    def test_hit_effect_override_non_none_values_all_values_are_non_none(self):
+        first = HitEffects()
+        second = HitEffects(10, 10, 1, 1, 10, 10, 10, 10, 10, 10, 1, 10, 10, 10)
+        first.override_non_none_values(second)
+        self.assertEqual(first, second)
+
+    def test_hit_effect_override_non_none_values_all_values_are_none(self):
+        first = HitEffects(10, 10, 1, 1, 10, 10, 10, 10, 10, 10, 1, 10, 10, 10)
+        second = HitEffects()
+        first.override_non_none_values(second)
+        expected = HitEffects(10, 10, 1, 1, 10, 10, 10, 10, 10, 10, 1, 10, 10, 10)
+        self.assertEqual(first, expected)
+
     def test_compare_frame_chunk_util(self):
 
         frame_chunks1 = [WaitFrames(5),
