@@ -56,8 +56,8 @@ def write_file(moves_on_block, target):
         blockstun = create_blockstun_text(damage_list)
         hitstun = create_hitstun_text(damage_list)
         untech = create_untech_text(damage_list)
-        hitstunCH = ""  #create_hitstun_ch_text(damage_list)
-        untechCH = ""   #create_untech_ch_text(damage_list)
+        hitstunCH = create_hitstun_ch_text(damage_list)
+        untechCH = create_untech_ch_text(damage_list)
 
         target.write("\n |damage=" + damage + "|p1=" + p1 + "|p2=" + p2)
         target.write("\n |level=" + level + "|attribute=" + attribute + "|guard=|invul=" + inv_text)
@@ -107,7 +107,7 @@ def create_inv_attr_text(attr):
     return return_value
 
 
-def create_attr_text(attr):
+def create_attr_value(attr):
     return_value = ""
     if attr is None:
         return return_value
@@ -124,29 +124,7 @@ def create_attr_text(attr):
     return return_value
 
 
-def create_hitstun_text(damage_list):
-    if len(damage_list) == 0:
-        return ""
-    hitstun_str = ""
-    multiplier = 1
-    current_hitstun = get_hitstun_text(damage_list[0])
-
-    for attack_info in damage_list[1:]:
-        if current_hitstun == get_hitstun_text(attack_info):
-            multiplier += 1
-        else:
-            hitstun_str = append_new_value(hitstun_str, current_hitstun, multiplier)
-            current_hitstun = get_hitstun_text(attack_info)
-            multiplier = 1
-
-    if len(hitstun_str) == 0:
-        hitstun_str = current_hitstun
-    else:
-        hitstun_str = append_new_value(hitstun_str, current_hitstun, multiplier)
-    return hitstun_str
-
-
-def get_hitstun_text(attack_info):
+def create_hitstun_value(attack_info):
     text = ""
     hit_effects = attack_info.normalHitEffects
     if hit_effects.groundHitAni == 0 or hit_effects.groundHitAni is None:
@@ -165,29 +143,7 @@ def get_hitstun_text(attack_info):
     return text
 
 
-def create_hitstun_ch_text(damage_list):
-    if len(damage_list) == 0:
-        return ""
-    hitstun_ch_str = ""
-    multiplier = 1
-    current_hitstun_ch = get_hitstun_ch_text(damage_list[0])
-
-    for attack_info in damage_list[1:]:
-        if current_hitstun_ch == get_hitstun_ch_text(attack_info):
-            multiplier += 1
-        else:
-            hitstun_ch_str = append_new_value(hitstun_ch_str, current_hitstun_ch, multiplier)
-            current_hitstun_ch = get_hitstun_ch_text(attack_info)
-            multiplier = 1
-
-    if len(hitstun_ch_str) == 0:
-        hitstun_ch_str = current_hitstun_ch
-    else:
-        hitstun_ch_str = append_new_value(hitstun_ch_str, current_hitstun_ch, multiplier)
-    return hitstun_ch_str
-
-
-def get_hitstun_ch_text(attack_info):
+def create_hitstun_ch_value(attack_info):
     text = ""
     hit_effects = attack_info.counterHitEffects
     if hit_effects.groundHitAni == 0 or hit_effects.groundHitAni is None:
@@ -198,7 +154,7 @@ def get_hitstun_ch_text(attack_info):
     elif hit_effects.groundHitAni == 2:
         text = "Stagger " + str(attack_info.get_untech())
     elif hit_effects.groundHitAni == 3:  # forces crouch. so far we don't do anything with this info
-        text = str(attack_info.get_hitstun())
+        text = str(attack_info.get_hitstun() + ATTACK_LEVEL["hitstunCH"][attack_info.attackLevel])
     elif hit_effects.groundHitAni == 6:
         text = "Spin Fall " + str(hit_effects.spinFall)
     else:
@@ -206,29 +162,7 @@ def get_hitstun_ch_text(attack_info):
     return text
 
 
-def create_untech_text(damage_list):
-    if len(damage_list) == 0:
-        return ""
-    untech_str = ""
-    multiplier = 1
-    current_untech = get_untech_text(damage_list[0])
-
-    for attack_info in damage_list[1:]:
-        if current_untech == get_untech_text(attack_info):
-            multiplier += 1
-        else:
-            untech_str = append_new_value(untech_str, current_untech, multiplier)
-            current_untech = get_untech_text(attack_info)
-            multiplier = 1
-
-    if len(untech_str) == 0:
-        untech_str = current_untech
-    else:
-        untech_str = append_new_value(untech_str, current_untech, multiplier)
-    return untech_str
-
-
-def get_untech_text(attack_info):
+def create_untech_value(attack_info):
     text = ""
     hit_effects = attack_info.normalHitEffects
     if hit_effects.airHitAni == 0 or hit_effects.airHitAni is None:
@@ -252,55 +186,28 @@ def get_untech_text(attack_info):
     return text
 
 
-def fill_hitstop(info_list):
-    to_return = ""
-    current_hitstop = None
-    current_bonus_blockstop = None
-    current_bonus_hitstop = None
-    multiplier = 0
-    for i, info in enumerate(info_list):
-        if i == 0:
-            current_hitstop = info.get_hitstop()
-            current_bonus_blockstop = info.bonusBlockstop
-            current_bonus_hitstop = info.bonusHitstop
-            multiplier = 1
-        elif current_hitstop == info.get_hitstop() and current_bonus_blockstop == info.bonusBlockstop and \
-                current_bonus_hitstop == info.bonusHitstop:
-            multiplier = multiplier + 1
-        else:
-            if len(to_return) > 0:
-                to_return = to_return + ", "
-            to_return = to_return + str(current_hitstop)
-            if current_bonus_blockstop is not None and (current_bonus_hitstop != 0 or current_bonus_blockstop != 0):
-                to_return = to_return + "/"
-                if current_bonus_blockstop > -1:
-                    to_return = to_return + "+"
-                to_return = to_return + str(current_bonus_blockstop)
-            if current_bonus_hitstop is not None and current_bonus_hitstop != 0:
-                to_return = to_return + "/"
-                if current_bonus_hitstop > -1:
-                    to_return = to_return + "+"
-                to_return = to_return + str(current_bonus_hitstop)
-            current_hitstop = info.get_hitstop()
-            current_bonus_blockstop = info.bonusBlockstop
-            current_bonus_hitstop = info.bonusHitstop
-            multiplier = 1
+def create_untech_ch_value(attack_info):
+    text = ""
+    hit_effects = attack_info.counterHitEffects
+    if hit_effects.airHitAni == 0 or hit_effects.airHitAni is None:
+        text = str(attack_info.get_untech() + ATTACK_LEVEL["untechCH"][attack_info.attackLevel])
 
-    if len(to_return) > 0:
-        to_return = to_return + ", "
-    to_return = to_return + str(current_hitstop)
-    if current_bonus_blockstop is not None and (current_bonus_hitstop != 0 or current_bonus_blockstop != 0):
-        to_return = to_return + "/"
-        if current_bonus_blockstop > -1:
-            to_return = to_return + "+"
-        to_return = to_return + str(current_bonus_blockstop)
-    if current_bonus_hitstop is not None and current_bonus_hitstop != 0:
-        to_return = to_return + "/"
-        if current_bonus_hitstop > -1:
-            to_return = to_return + "+"
-        to_return = to_return + str(current_bonus_hitstop)
+    if hit_effects.groundBounce is not None and hit_effects.groundBounce > 0:
+        text = text + " + GBounce"
+    if hit_effects.airHitAni == 12 or hit_effects.groundHitAni == 12 or hit_effects.wallBounce is not None:
+        text = text + " + WBounce"
+        if hit_effects.wallBounce > 0:
+            text = text + " " + str(hit_effects.wallBounce)
+    if hit_effects.cornerStick is not None:
+        text = text + " + WStick"
+        if hit_effects.cornerStick > 0:
+            text = text + " " + str(hit_effects.cornerStick)
+    if hit_effects.slide is not None and hit_effects.slide > 0:
+        text = text + " + Slide " + str(hit_effects.slide)
+    if hit_effects.knockdown is not None and hit_effects.knockdown > 0:
+        text = text + " + Down " + str(hit_effects.knockdown)
 
-    return to_return
+    return text
 
 
 def create_damage_text(damage_list):
@@ -322,185 +229,37 @@ def create_damage_text(damage_list):
     return damage_str
 
 
-def create_p1_text(damage_list):
-    if len(damage_list) == 0:
-        return ""
-
-    p1_str = ""
-    current_p1 = str(damage_list[0].get_p1())
-    multiplier = 1
-    for attack_info in damage_list[1:]:
-        if current_p1 == str(attack_info.get_p1()):
-            multiplier += 1
-        else:
-            p1_str = append_new_value(p1_str, current_p1, multiplier)
-            current_p1 = str(attack_info.get_p1())
-            multiplier = 1
-
-    if len(p1_str) == 0:
-        p1_str = current_p1
-    else:
-        p1_str = append_new_value(p1_str, current_p1, multiplier)
-    return p1_str
+def create_p2_value(attack_info):
+    text = str(attack_info.get_p2())
+    if attack_info.p2Once:
+        text = text + " (Once)"
+    return text
 
 
-def append_new_value(base_str, new_value, new_multiplier):
-    if len(base_str) != 0:
-        base_str = base_str + ", "
-    base_str = base_str + str(new_value)
-    if new_multiplier > 1:
-        base_str = base_str + "*" + str(new_multiplier)
-    return base_str
+def create_blockstop_value(attack_info):
+    text = ""
+    if attack_info.get_hitstop() is not None:
+        text = str(attack_info.get_hitstop())
+    if attack_info.bonusBlockstop is not None and attack_info.bonusBlockstop > 0:
+        sign = "+" if attack_info.bonusBlockstop > 0 else ""
+        text = text + "/" + sign + str(attack_info.bonusBlockstop)
+    return text
 
 
-def create_p2_text(damage_list):
-    if len(damage_list) == 0:
-        return ""
-
-    p2_str = ""
-    p2_once = damage_list[0].p2Once
-    current_p2 = str(damage_list[0].get_p2())
-    multiplier = 1
-    for attack_info in damage_list[1:]:
-        if current_p2 == str(attack_info.get_p2()) and p2_once == attack_info.p2Once:
-            multiplier += 1
-        else:
-            p2_str = append_new_p2(p2_str, current_p2, p2_once, multiplier)
-            if attack_info.p2Once:
-                p2_str = p2_str + " (Once)"
-            current_p2 = str(attack_info.get_p2())
-            p2_once = attack_info.p2Once
-            multiplier = 1
-
-    if len(p2_str) == 0:
-        p2_str = current_p2
-        if p2_once:
-            p2_str = p2_str + " (Once)"
-    else:
-        p2_str = append_new_p2(p2_str, current_p2, p2_once, multiplier)
-
-    return p2_str
+def create_bonus_hitstop_value(attack_info):
+    text = ""
+    if attack_info.bonusHitstop is not None:
+        sign = "+" if attack_info.bonusHitstop >= 0 else ""
+        text = sign + str(attack_info.bonusHitstop)
+    return text
 
 
-def append_new_p2(base_p2, new_p2, new_p2_once, new_multiplier):
-    if len(base_p2) != 0:
-        base_p2 = base_p2 + ", "
-    base_p2 = base_p2 + new_p2
-    if new_p2_once:
-        base_p2 = base_p2 + " (Once)"
-    if new_multiplier > 1:
-        base_p2 = base_p2 + "*" + str(new_multiplier)
-    return base_p2
-
-
-def create_blockstop_text(damage_list):
-    if len(damage_list) == 0:
-        return ""
-
-    blockstop_str = ""
-    current_blockstop = str(damage_list[0].get_hitstop())
-    current_bonus_blockstop = damage_list[0].bonusBlockstop
-    multiplier = 1
-    for attack_info in damage_list[1:]:
-        if current_blockstop == str(attack_info.get_hitstop()) and \
-                current_bonus_blockstop == attack_info.bonusBlockstop:
-            multiplier += 1
-        else:
-            blockstop_str = append_new_blockstop(blockstop_str, current_blockstop, current_bonus_blockstop, multiplier)
-            current_blockstop = str(attack_info.get_hitstop())
-            current_bonus_blockstop = attack_info.bonusBlockstop
-            multiplier = 1
-
-    if len(blockstop_str) == 0:
-        blockstop_str = current_blockstop
-        if current_bonus_blockstop is not None and current_bonus_blockstop > 0:
-            sign = "+" if current_bonus_blockstop > 0 else ""
-            blockstop_str = blockstop_str + "/" + sign + str(current_bonus_blockstop)
-    else:
-        blockstop_str = append_new_blockstop(blockstop_str, current_blockstop, current_bonus_blockstop, multiplier)
-    return blockstop_str
-
-
-def append_new_blockstop(base_blockstop, new_blockstop, new_bonus_blockstop, new_multiplier):
-    if len(base_blockstop) != 0:
-        base_blockstop = base_blockstop + ", "
-    base_blockstop = base_blockstop + new_blockstop
-    if new_bonus_blockstop is not None and new_bonus_blockstop > 0:
-        sign = "+" if new_bonus_blockstop > 0 else ""
-        base_blockstop = base_blockstop + "/" + sign + str(new_bonus_blockstop)
-    if new_multiplier > 1:
-        base_blockstop = base_blockstop + "*" + str(new_multiplier)
-    return base_blockstop
-
-
-def create_hitstop_text(damage_list):
-    if len(damage_list) == 0:
-        return ""
-
-    hitstop_str = ""
-    current_hitstop = damage_list[0].bonusHitstop
-    multiplier = 1
-    for attack_info in damage_list[1:]:
-        if current_hitstop == attack_info.bonusHitstop:
-            multiplier += 1
-        else:
-            hitstop_str = append_new_hitstop(hitstop_str, current_hitstop, multiplier)
-            current_hitstop = attack_info.bonusHitstop
-            multiplier = 1
-
-    if len(hitstop_str) == 0:
-        if current_hitstop is not None:
-            sign = "+" if current_hitstop >= 0 else ""
-            hitstop_str = sign + str(current_hitstop)
-    else:
-        hitstop_str = append_new_hitstop(hitstop_str, current_hitstop, multiplier)
-    return hitstop_str
-
-
-def create_hitstop_ch_text(damage_list):
-    if len(damage_list) == 0:
-        return ""
-
-    hitstop_str = ""
-    current_hitstop = damage_list[0].bonusHitstopCH
-    multiplier = 1
-    for attack_info in damage_list[1:]:
-        if current_hitstop == attack_info.bonusHitstopCH:
-            multiplier += 1
-        else:
-            hitstop_str = append_new_hitstop(hitstop_str, current_hitstop, multiplier)
-            current_hitstop = attack_info.bonusHitstopCH
-            multiplier = 1
-
-    if len(hitstop_str) == 0:
-        if current_hitstop is not None:
-            sign = "+" if current_hitstop >= 0 else ""
-            hitstop_str = sign + str(current_hitstop)
-    else:
-        hitstop_str = append_new_hitstop(hitstop_str, current_hitstop, multiplier)
-    return hitstop_str
-
-
-def create_attack_level_text(damage_list):
-    if len(damage_list) == 0:
-        return ""
-
-    attack_level_str = ""
-    current_attack_level = str(damage_list[0].attackLevel)
-    multiplier = 1
-    for attack_info in damage_list[1:]:
-        if current_attack_level == str(attack_info.attackLevel):
-            multiplier += 1
-        else:
-            attack_level_str = append_new_value(attack_level_str, current_attack_level, multiplier)
-            current_attack_level = str(attack_info.attackLevel)
-            multiplier = 1
-
-    if len(attack_level_str) == 0:
-        attack_level_str = current_attack_level
-    else:
-        attack_level_str = append_new_value(attack_level_str, current_attack_level, multiplier)
-    return attack_level_str
+def create_bonus_hitstop_ch_value(attack_info):
+    text = ""
+    if attack_info.bonusHitstopCH is not None:
+        sign = "+" if attack_info.bonusHitstopCH > 0 else ""
+        text = sign + str(attack_info.bonusHitstopCH)
+    return text
 
 
 def append_new_hitstop(base_hitstop, new_hitstop, new_multiplier):
@@ -514,45 +273,116 @@ def append_new_hitstop(base_hitstop, new_hitstop, new_multiplier):
     return base_hitstop
 
 
+def create_p1_text(damage_list):
+    p1_list = []
+    for attack_info in damage_list:
+        p1_list.append(attack_info.get_p1())
+    return create_basic_text(p1_list)
+
+
+def create_p2_text(damage_list):
+    p2_list = []
+    for attack_info in damage_list:
+        p2_list.append(create_p2_value(attack_info))
+    return create_basic_text(p2_list)
+
+
+def create_attack_level_text(damage_list):
+    attack_level_list = []
+    for attack_info in damage_list:
+        attack_level_list.append(attack_info.attackLevel)
+    return create_basic_text(attack_level_list)
+
+
 def create_attribute_text(damage_list):
-    if len(damage_list) == 0:
-        return ""
-
-    attribute_str = ""
-    current_attribute = damage_list[0].attribute
-    multiplier = 1
-    for attack_info in damage_list[1:]:
-        if current_attribute == attack_info.attribute:
-            multiplier += 1
-        else:
-            attribute_str = append_new_value(attribute_str, create_attr_text(current_attribute), multiplier)
-            current_attribute = attack_info.attribute
-            multiplier = 1
-
-    if len(attribute_str) == 0:
-        attribute_str = create_attr_text(current_attribute)
-    else:
-        attribute_str = append_new_value(attribute_str, create_attr_text(current_attribute), multiplier)
-    return attribute_str
+    attribute_list = []
+    for attack_info in damage_list:
+        attribute_list.append(create_attr_value(attack_info.attribute))
+    return create_basic_text(attribute_list)
 
 
 def create_blockstun_text(damage_list):
-    if len(damage_list) == 0:
+    blockstun_list = []
+    for attack_info in damage_list:
+        blockstun_list.append(attack_info.get_blockstun())
+    return create_basic_text(blockstun_list)
+
+
+def create_blockstop_text(damage_list):
+    blockstop_list = []
+    for attack_info in damage_list:
+        blockstop_list.append(create_blockstop_value(attack_info))
+    return create_basic_text(blockstop_list)
+
+
+def create_hitstop_text(damage_list):
+    hitstop_list = []
+    for attack_info in damage_list:
+        hitstop_list.append(create_bonus_hitstop_value(attack_info))
+    return create_basic_text(hitstop_list)
+
+
+def create_hitstop_ch_text(damage_list):
+    hitstop_ch_list = []
+    for attack_info in damage_list:
+        hitstop_ch_list.append(create_bonus_hitstop_ch_value(attack_info))
+    return create_basic_text(hitstop_ch_list)
+
+
+def create_hitstun_text(damage_list):
+    hitstun_list = []
+    for attack_info in damage_list:
+        hitstun_list.append(create_hitstun_value(attack_info))
+    return create_basic_text(hitstun_list)
+
+
+def create_untech_text(damage_list):
+    untech_list = []
+    for attack_info in damage_list:
+        untech_list.append(create_untech_value(attack_info))
+    return create_basic_text(untech_list)
+
+
+def create_hitstun_ch_text(damage_list):
+    hitstun_ch_list = []
+    for attack_info in damage_list:
+        hitstun_ch_list.append(create_hitstun_ch_value(attack_info))
+    return create_basic_text(hitstun_ch_list)
+
+
+def create_untech_ch_text(damage_list):
+    untech_ch_list = []
+    for attack_info in damage_list:
+        untech_ch_list.append(create_untech_ch_value(attack_info))
+    return create_basic_text(untech_ch_list)
+
+
+def create_basic_text(value_list):
+    if len(value_list) == 0:
         return ""
 
-    blockstun_str = ""
-    current_blockstun = str(damage_list[0].get_blockstun())
+    value_str = ""
+    current_value = str(value_list[0])
     multiplier = 1
-    for attack_info in damage_list[1:]:
-        if current_blockstun == str(attack_info.get_blockstun()):
+    for value in value_list[1:]:
+        if current_value == str(value):
             multiplier += 1
         else:
-            blockstun_str = append_new_value(blockstun_str, current_blockstun, multiplier)
-            current_blockstun = str(attack_info.get_blockstun())
+            value_str = append_new_value(value_str, current_value, multiplier)
+            current_value = str(value)
             multiplier = 1
 
-    if len(blockstun_str) == 0:
-        blockstun_str = current_blockstun
+    if len(value_str) == 0:
+        value_str = current_value
     else:
-        blockstun_str = append_new_value(blockstun_str, current_blockstun, multiplier)
-    return blockstun_str
+        value_str = append_new_value(value_str, current_value, multiplier)
+    return value_str
+
+
+def append_new_value(base_str, new_value, new_multiplier):
+    if len(base_str) != 0:
+        base_str = base_str + ", "
+    base_str = base_str + str(new_value)
+    if new_multiplier > 1:
+        base_str = base_str + "*" + str(new_multiplier)
+    return base_str

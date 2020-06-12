@@ -237,67 +237,67 @@ class TestWrite(unittest.TestCase):
     def test_get_hitstun_basic_text(self):
         info = AttackInfo()
         info.normalHitEffects.hitstun = 10
-        self.assertEqual("10", get_hitstun_text(info))
+        self.assertEqual("10", create_hitstun_value(info))
 
     def test_get_hitstun_spinFall_text(self):
         info = AttackInfo()
         info.normalHitEffects.spinFall = 22
         info.normalHitEffects.groundHitAni = 6
-        self.assertEqual("Spin Fall 22", get_hitstun_text(info))
+        self.assertEqual("Spin Fall 22", create_hitstun_value(info))
 
     def test_get_hitstun_stagger_text(self):
         info = AttackInfo()
         info.normalHitEffects.stagger = 15
-        self.assertEqual("Stagger 15", get_hitstun_text(info))
+        self.assertEqual("Stagger 15", create_hitstun_value(info))
 
     def test_get_hitstun_launch_text(self):
         info = AttackInfo()
         info.normalHitEffects.groundHitAni = 10
-        self.assertEqual("Launch", get_hitstun_text(info))
+        self.assertEqual("Launch", create_hitstun_value(info))
 
     def test_get_untech_basic_text(self):
         info = AttackInfo()
         info.normalHitEffects.untech = 10
-        self.assertEqual("10", get_untech_text(info))
+        self.assertEqual("10", create_untech_value(info))
 
     def test_get_untech_with_wallbounce_text(self):
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.wallBounce = 0
-        self.assertEqual("10 + WBounce", get_untech_text(info))
+        self.assertEqual("10 + WBounce", create_untech_value(info))
 
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.wallBounce = 10
-        self.assertEqual("10 + WBounce 10", get_untech_text(info))
+        self.assertEqual("10 + WBounce 10", create_untech_value(info))
 
     def test_get_untech_with_cornerstick_text(self):
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.cornerStick = 0
-        self.assertEqual("10 + WStick", get_untech_text(info))
+        self.assertEqual("10 + WStick", create_untech_value(info))
 
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.wallBounce = 10
-        self.assertEqual("10 + WBounce 10", get_untech_text(info))
+        self.assertEqual("10 + WBounce 10", create_untech_value(info))
 
     def test_get_untech_with_knockdown_text(self):
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.knockdown = 50
-        self.assertEqual("10 + Down 50", get_untech_text(info))
+        self.assertEqual("10 + Down 50", create_untech_value(info))
 
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.knockdown = 24
-        self.assertEqual("10 + Down 24", get_untech_text(info))
+        self.assertEqual("10 + Down 24", create_untech_value(info))
 
     def test_get_untech_with_slide_text(self):
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.slide = 7
-        self.assertEqual("10 + Slide 7", get_untech_text(info))
+        self.assertEqual("10 + Slide 7", create_untech_value(info))
 
     def test_get_untech_with_many_extras(self):
         info = AttackInfo()
@@ -305,7 +305,7 @@ class TestWrite(unittest.TestCase):
         info.normalHitEffects.knockdown = 50
         info.normalHitEffects.slide = 7
         info.normalHitEffects.cornerStick = 0
-        self.assertEqual("10 + WStick + Slide 7 + Down 50", get_untech_text(info))
+        self.assertEqual("10 + WStick + Slide 7 + Down 50", create_untech_value(info))
 
     def test_inv_text_basic(self):
         inv_text = create_inv_text(1, 10, 1, [True, False, False, False, False], [])
@@ -329,31 +329,31 @@ class TestWrite(unittest.TestCase):
 
     def test_get_attr_text_H(self):
         attr = [True, False, False, False, False]
-        self.assertEqual("H", create_attr_text(attr))
+        self.assertEqual("H", create_attr_value(attr))
 
     def test_get_attr_text_B(self):
         attr = [False, True, False, False, False]
-        self.assertEqual("B", create_attr_text(attr))
+        self.assertEqual("B", create_attr_value(attr))
 
     def test_get_attr_text_F(self):
         attr = [False, False, True, False, False]
-        self.assertEqual("F", create_attr_text(attr))
+        self.assertEqual("F", create_attr_value(attr))
 
     def test_get_attr_text_P(self):
         attr = [False, False, False, True, False]
-        self.assertEqual("P", create_attr_text(attr))
+        self.assertEqual("P", create_attr_value(attr))
 
     def test_get_attr_text_T(self):
         attr = [False, False, False, False, True]
-        self.assertEqual("T", create_attr_text(attr))
+        self.assertEqual("T", create_attr_value(attr))
 
     def test_get_attr_text_HP(self):
         attr = [True, False, False, True, False]
-        self.assertEqual("HP", create_attr_text(attr))
+        self.assertEqual("HP", create_attr_value(attr))
 
     def test_get_attr_text_HBFPT(self):
         attr = [True, True, True, True, True]
-        self.assertEqual("HBFPT", create_attr_text(attr))
+        self.assertEqual("HBFPT", create_attr_value(attr))
 
     def test_get_inv_attr_text_H(self):
         attr = [True, False, False, False, False]
