@@ -240,37 +240,24 @@ def create_blockstop_value(attack_info):
     text = ""
     if attack_info.get_hitstop() is not None:
         text = str(attack_info.get_hitstop())
-    if attack_info.bonusBlockstop is not None and attack_info.bonusBlockstop > 0:
+    if attack_info.bonusBlockstop is not None and attack_info.bonusBlockstop != 0:
         sign = "+" if attack_info.bonusBlockstop > 0 else ""
         text = text + "/" + sign + str(attack_info.bonusBlockstop)
     return text
 
 
 def create_bonus_hitstop_value(attack_info):
-    text = ""
-    if attack_info.bonusHitstop is not None:
-        sign = "+" if attack_info.bonusHitstop >= 0 else ""
-        text = sign + str(attack_info.bonusHitstop)
-    return text
+    value = attack_info.bonusHitstop if attack_info.bonusHitstop is not None else 0
+    sign = "+" if value >= 0 else ""
+    return sign + str(value)
 
 
 def create_bonus_hitstop_ch_value(attack_info):
-    text = ""
-    if attack_info.bonusHitstopCH is not None:
-        sign = "+" if attack_info.bonusHitstopCH > 0 else ""
-        text = sign + str(attack_info.bonusHitstopCH)
-    return text
-
-
-def append_new_hitstop(base_hitstop, new_hitstop, new_multiplier):
-    if len(base_hitstop) > 0:
-        base_hitstop = base_hitstop + ", "
-    if new_hitstop is not None:
-        sign = "+" if new_hitstop >= 0 else ""
-        base_hitstop = base_hitstop + sign + str(new_hitstop)
-    if new_multiplier > 1:
-        base_hitstop = base_hitstop + "*" + str(new_multiplier)
-    return base_hitstop
+    value = attack_info.bonusHitstopCH \
+        if attack_info.bonusHitstopCH is not None \
+        else ATTACK_LEVEL["hitstopCH"][attack_info.attackLevel]
+    sign = "+" if value > 0 else ""
+    return sign + str(value)
 
 
 def create_p1_text(damage_list):

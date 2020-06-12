@@ -23,216 +23,73 @@ class TestWrite(unittest.TestCase):
                 AttackInfo(600)]
         self.assertEqual("500*2, 600", create_damage_text(test))
 
-    def test_p1_text_one_value(self):
-        test = [AttackInfo(p1=60)]
-        self.assertEqual("60", create_p1_text(test))
+    def test_create_basic_text_one_value(self):
+        test = ["a"]
+        self.assertEqual("a", create_basic_text(test))
 
-    def test_p1_text_two_same_value(self):
-        test = [AttackInfo(p1=60),
-                AttackInfo(p1=60)]
-        self.assertEqual("60", create_p1_text(test))
+    def test_create_basic_two_same_value(self):
+        test = ["a", "a"]
+        self.assertEqual("a", create_basic_text(test))
 
-    def test_p1_text_two_different_value(self):
-        test = [AttackInfo(p1=60),
-                AttackInfo(p1=80)]
-        self.assertEqual("60, 80", create_p1_text(test))
+    def test_create_basic_two_different_value(self):
+        test = ["a", "b"]
+        self.assertEqual("a, b", create_basic_text(test))
 
-    def test_p1_text_two_same_then_different_values(self):
-        test = [AttackInfo(p1=60),
-                AttackInfo(p1=60),
-                AttackInfo(p1=80)]
-        self.assertEqual("60*2, 80", create_p1_text(test))
+    def test_create_basic_two_same_two_different_values(self):
+        test = ["a", "a", "b", "b"]
+        self.assertEqual("a*2, b*2", create_basic_text(test))
 
-    def test_p2_text_one_value(self):
-        test = [AttackInfo(p2=80)]
-        self.assertEqual("80", create_p2_text(test))
+    def test_create_p2_value_attack_level_default(self):
+        test = AttackInfo(attack_level=3)
+        self.assertEqual("80", create_p2_value(test))
 
-    def test_p2_text_two_same_value(self):
-        test = [AttackInfo(p2=80),
-                AttackInfo(p2=80)]
-        self.assertEqual("80", create_p2_text(test))
+    def test_create_p2_value_attack_level_default_p2_once(self):
+        test = AttackInfo(attack_level=3, p2once=True)
+        self.assertEqual("80 (Once)", create_p2_value(test))
 
-    def test_p2_text_two_same_value_once(self):
-        test = [AttackInfo(p2=80, p2once=True),
-                AttackInfo(p2=80, p2once=True)]
-        self.assertEqual("80 (Once)", create_p2_text(test))
+    def test_create_p2_value_custom_p2(self):
+        test = AttackInfo(p2=33)
+        self.assertEqual("33", create_p2_value(test))
 
-    def test_p2_text_two_different_value(self):
-        test = [AttackInfo(p2=80),
-                AttackInfo(p2=92)]
-        self.assertEqual("80, 92", create_p2_text(test))
+    def test_create_p2_value_custom_p2_and_p2_once(self):
+        test = AttackInfo(p2=33, p2once=True)
+        self.assertEqual("33 (Once)", create_p2_value(test))
 
-    def test_p2_text_two_same_then_different_values(self):
-        test = [AttackInfo(p2=80, p2once=True),
-                AttackInfo(p2=80, p2once=True),
-                AttackInfo(p2=92),
-                AttackInfo(p2=92)]
-        self.assertEqual("80 (Once)*2, 92*2", create_p2_text(test))
+    def test_create_blockstop_value_attack_level_default(self):
+        test = AttackInfo(attack_level=5)
+        self.assertEqual("13", create_blockstop_value(test))
 
-    def test_blockstop_text_one_value(self):
-        test = [AttackInfo(hitstop=10)]
-        self.assertEqual("10", create_blockstop_text(test))
+    def test_create_blockstop_value_attack_level_default_with_positive_bonus_blockstop(self):
+        test = AttackInfo(attack_level=5, bonus_blockstop=5)
+        self.assertEqual("13/+5", create_blockstop_value(test))
 
-    def test_blockstop_text_two_different_value(self):
-        test = [AttackInfo(hitstop=10),
-                AttackInfo(hitstop=5)]
-        self.assertEqual("10, 5", create_blockstop_text(test))
+    def test_create_blockstop_value_attack_level_default_with_negative_bonus_blockstop(self):
+        test = AttackInfo(attack_level=5, bonus_blockstop=-4)
+        self.assertEqual("13/-4", create_blockstop_value(test))
 
-    def test_blockstop_text_two_same_value(self):
-        test = [AttackInfo(hitstop=5),
-                AttackInfo(hitstop=5)]
-        self.assertEqual("5", create_blockstop_text(test))
+    def test_create_bonus_hitstop_value_attack_level_default(self):
+        test = AttackInfo()
+        self.assertEqual("+0", create_bonus_hitstop_value(test))
 
-    def test_blockstop_text_two_same_one_different_value(self):
-        test = [AttackInfo(hitstop=5),
-                AttackInfo(hitstop=5),
-                AttackInfo(hitstop=10),
-                AttackInfo(hitstop=10)]
-        self.assertEqual("5*2, 10*2", create_blockstop_text(test))
+    def test_create_bonus_hitstop_value_attack_level_default_with_positive_bonus_blockstop(self):
+        test = AttackInfo(bonus_hitstop=5)
+        self.assertEqual("+5", create_bonus_hitstop_value(test))
 
-    def test_blockstop_text_one_value_with_bonus_blockstop(self):
-        test = [AttackInfo(hitstop=10, bonus_blockstop=2)]
-        self.assertEqual("10/+2", create_blockstop_text(test))
+    def test_create_bonus_hitstop_value_attack_level_default_with_negative_bonus_blockstop(self):
+        test = AttackInfo(bonus_hitstop=-4)
+        self.assertEqual("-4", create_bonus_hitstop_value(test))
 
-    def test_blockstop_text_two_same_value_with_bonus_blockstop_one_different_value(self):
-        test = [AttackInfo(hitstop=10, bonus_blockstop=2),
-                AttackInfo(hitstop=10, bonus_blockstop=2),
-                AttackInfo(hitstop=10, bonus_blockstop=0)]
-        self.assertEqual("10/+2*2, 10", create_blockstop_text(test))
+    def test_create_bonus_hitstop_ch_value_attack_level_default(self):
+        test = AttackInfo(attack_level=2)
+        self.assertEqual("+1", create_bonus_hitstop_ch_value(test))
 
-    def test_hitstop_text_one_value(self):
-        test = [AttackInfo(bonus_hitstop=2)]
-        self.assertEqual("+2", create_hitstop_text(test))
+    def test_create_bonus_hitstop__chvalue_attack_level_default_with_positive_bonus_blockstop(self):
+        test = AttackInfo(bonus_counterhitstop=5)
+        self.assertEqual("+5", create_bonus_hitstop_ch_value(test))
 
-    def test_hitstop_text_one_negative_value(self):
-        test = [AttackInfo(bonus_hitstop=-1)]
-        self.assertEqual("-1", create_hitstop_text(test))
-
-    def test_hitstop_text_two_different_value(self):
-        test = [AttackInfo(bonus_hitstop=2),
-                AttackInfo(bonus_hitstop=1)]
-        self.assertEqual("+2, +1", create_hitstop_text(test))
-
-    def test_hitstop_text_two_same_value(self):
-        test = [AttackInfo(bonus_hitstop=-1),
-                AttackInfo(bonus_hitstop=-1)]
-        self.assertEqual("-1", create_hitstop_text(test))
-
-    def test_hitstop_text_two_same_two_different_value(self):
-        test = [AttackInfo(bonus_hitstop=-1),
-                AttackInfo(bonus_hitstop=-1),
-                AttackInfo(bonus_hitstop=5),
-                AttackInfo(bonus_hitstop=5)]
-        self.assertEqual("-1*2, +5*2", create_hitstop_text(test))
-
-    def test_hitstop_ch_text_one_value(self):
-        test = [AttackInfo(bonus_counterhitstop=2)]
-        self.assertEqual("+2", create_hitstop_ch_text(test))
-
-    def test_hitstop_ch_text_one_negative_value(self):
-        test = [AttackInfo(bonus_counterhitstop=-1)]
-        self.assertEqual("-1", create_hitstop_ch_text(test))
-
-    def test_hitstop_ch_text_two_different_value(self):
-        test = [AttackInfo(bonus_counterhitstop=2),
-                AttackInfo(bonus_counterhitstop=1)]
-        self.assertEqual("+2, +1", create_hitstop_ch_text(test))
-
-    def test_hitstop_ch_text_two_same_value(self):
-        test = [AttackInfo(bonus_counterhitstop=-1),
-                AttackInfo(bonus_counterhitstop=-1)]
-        self.assertEqual("-1", create_hitstop_ch_text(test))
-
-    def test_hitstop_ch_text_two_same_two_different_value(self):
-        test = [AttackInfo(bonus_counterhitstop=-1),
-                AttackInfo(bonus_counterhitstop=-1),
-                AttackInfo(bonus_counterhitstop=5),
-                AttackInfo(bonus_counterhitstop=5)]
-        self.assertEqual("-1*2, +5*2", create_hitstop_ch_text(test))
-
-    def test_attack_level_text_one_value(self):
-        test = [AttackInfo(attack_level=1)]
-        self.assertEqual("1", create_attack_level_text(test))
-
-    def test_attack_level_text_two_same_value(self):
-        test = [AttackInfo(attack_level=1),
-                AttackInfo(attack_level=1)]
-        self.assertEqual("1", create_attack_level_text(test))
-
-    def test_attack_level_text_two_different_value(self):
-        test = [AttackInfo(attack_level=1),
-                AttackInfo(500, 80, 92, 0, None, attack_level=2)]
-        self.assertEqual("1, 2", create_attack_level_text(test))
-
-    def test_attack_level_text_two_same_then_different_values(self):
-        test = [AttackInfo(attack_level=1),
-                AttackInfo(attack_level=1),
-                AttackInfo(attack_level=2),
-                AttackInfo(attack_level=2)]
-        self.assertEqual("1*2, 2*2", create_attack_level_text(test))
-
-    def test_attribute_text_one_value(self):
-        test = [AttackInfo(attribute=[True, False, False, False, False])]
-        self.assertEqual("H", create_attribute_text(test))
-
-    def test_attribute_text_two_same_value(self):
-        test = [AttackInfo(attribute=[True, False, False, False, False]),
-                AttackInfo(attribute=[True, False, False, False, False])]
-        self.assertEqual("H", create_attribute_text(test))
-
-    def test_attribute_text_two_different_value(self):
-        test = [AttackInfo(attribute=[True, False, False, False, False]),
-                AttackInfo(attribute=[False, False, False, False, True])]
-        self.assertEqual("H, T", create_attribute_text(test))
-
-    def test_attribute_text_two_same_then_different_values(self):
-        test = [AttackInfo(attribute=[True, False, False, False, False]),
-                AttackInfo(attribute=[True, False, False, False, False]),
-                AttackInfo(attribute=[False, False, False, False, True]),
-                AttackInfo(attribute=[False, False, False, False, True])]
-        self.assertEqual("H*2, T*2", create_attribute_text(test))
-
-    def test_hitstun_text_one_value(self):
-        test = [AttackInfo(normal_hit=HitEffects(10, ground_hit_ani=0))]
-        self.assertEqual("10", create_hitstun_text(test))
-
-    def test_hitstun_text_two_same_value(self):
-        test = [AttackInfo(normal_hit=HitEffects(10, ground_hit_ani=0)),
-                AttackInfo(normal_hit=HitEffects(10, ground_hit_ani=0))]
-        self.assertEqual("10", create_hitstun_text(test))
-
-    def test_hitstun_text_two_different_value(self):
-        test = [AttackInfo(normal_hit=HitEffects(10, ground_hit_ani=0)),
-                AttackInfo(normal_hit=HitEffects(20, ground_hit_ani=0))]
-        self.assertEqual("10, 20", create_hitstun_text(test))
-
-    def test_hitstun_text_two_same_two_different_value(self):
-        test = [AttackInfo(normal_hit=HitEffects(10, ground_hit_ani=0)),
-                AttackInfo(normal_hit=HitEffects(10, ground_hit_ani=0)),
-                AttackInfo(normal_hit=HitEffects(20, ground_hit_ani=0)),
-                AttackInfo(normal_hit=HitEffects(20, ground_hit_ani=0))]
-        self.assertEqual("10*2, 20*2", create_hitstun_text(test))
-
-    def test_untech_text_one_value(self):
-        test = [AttackInfo(normal_hit=HitEffects(untech=10, air_hit_ani=0))]
-        self.assertEqual("10", create_untech_text(test))
-
-    def test_untech_text_two_same_value(self):
-        test = [AttackInfo(normal_hit=HitEffects(untech=10, air_hit_ani=0)),
-                AttackInfo(normal_hit=HitEffects(untech=10, air_hit_ani=0))]
-        self.assertEqual("10", create_untech_text(test))
-
-    def test_untech_text_two_different_value(self):
-        test = [AttackInfo(normal_hit=HitEffects(untech=10, air_hit_ani=0)),
-                AttackInfo(normal_hit=HitEffects(untech=20, air_hit_ani=0))]
-        self.assertEqual("10, 20", create_untech_text(test))
-
-    def test_untech_text_two_same_two_different_value(self):
-        test = [AttackInfo(normal_hit=HitEffects(untech=10, air_hit_ani=0)),
-                AttackInfo(normal_hit=HitEffects(untech=10, air_hit_ani=0)),
-                AttackInfo(normal_hit=HitEffects(untech=20, air_hit_ani=0)),
-                AttackInfo(normal_hit=HitEffects(untech=20, air_hit_ani=0))]
-        self.assertEqual("10*2, 20*2", create_untech_text(test))
+    def test_create_bonus_hitstop__chvalue_attack_level_default_with_negative_bonus_blockstop(self):
+        test = AttackInfo(bonus_counterhitstop=-4)
+        self.assertEqual("-4", create_bonus_hitstop_ch_value(test))
 
     def test_get_hitstun_basic_text(self):
         info = AttackInfo()
