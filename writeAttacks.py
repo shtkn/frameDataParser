@@ -63,7 +63,8 @@ def write_file(moves_on_block, target):
         target.write("\n |level=" + level + "|attribute=" + attribute + "|guard=|invul=" + inv_text)
         target.write(
             "\n |startup=" + str(startup) + "|active=" + middle + "|recovery=" + recovery + "|frameAdv=" + frame_adv)
-        target.write("\n |blockstun=" + blockstun + "|blockstop=" + blockstop + "|hitstop=" + hitstop + "|hitstopCH=" + hitstopCH)
+        target.write(
+            "\n |blockstun=" + blockstun + "|blockstop=" + blockstop + "|hitstop=" + hitstop + "|hitstopCH=" + hitstopCH)
         target.write("\n |groundHit=" + hitstun + "|airHit=" + untech + "|groundCH=" + hitstunCH + "|airCH=" + untechCH)
         target.write("\n |hitbox=")
         target.write("\n}}\n")
@@ -125,36 +126,30 @@ def create_attr_value(attr):
 
 
 def create_hitstun_value(attack_info):
-    text = ""
-    hit_effects = attack_info.normalHitEffects
-    if hit_effects.groundHitAni == 0 or hit_effects.groundHitAni is None:
-        if hit_effects.stagger is not None and hit_effects.stagger > 0:
-            text = "Stagger " + str(hit_effects.stagger)
-        else:
-            text = str(attack_info.get_hitstun())
-    elif hit_effects.groundHitAni == 2:
-        text = "Stagger " + str(attack_info.get_untech())
-    elif hit_effects.groundHitAni == 3:  # forces crouch. so far we don't do anything with this info
-        text = str(attack_info.get_hitstun())
-    elif hit_effects.groundHitAni == 6:
-        text = "Spin Fall " + str(hit_effects.spinFall)
-    else:
-        text = "Launch"
-    return text
+    return create_hitstun_helper(attack_info.normalHitEffects,
+                                 attack_info.get_hitstun(),
+                                 attack_info.get_untech()
+                                 )
 
 
 def create_hitstun_ch_value(attack_info):
+    return create_hitstun_helper(attack_info.counterHitEffects,
+                                 attack_info.get_hitstun() + ATTACK_LEVEL["hitstunCH"][attack_info.attackLevel],
+                                 attack_info.get_untech() + ATTACK_LEVEL["untechCH"][attack_info.attackLevel]
+                                 )
+
+
+def create_hitstun_helper(hit_effects, base_hitstun, base_untech):
     text = ""
-    hit_effects = attack_info.counterHitEffects
     if hit_effects.groundHitAni == 0 or hit_effects.groundHitAni is None:
         if hit_effects.stagger is not None and hit_effects.stagger > 0:
             text = "Stagger " + str(hit_effects.stagger)
         else:
-            text = str(attack_info.get_hitstun())
+            text = str(base_hitstun)
     elif hit_effects.groundHitAni == 2:
-        text = "Stagger " + str(attack_info.get_untech())
+        text = "Stagger " + str(base_untech)
     elif hit_effects.groundHitAni == 3:  # forces crouch. so far we don't do anything with this info
-        text = str(attack_info.get_hitstun() + ATTACK_LEVEL["hitstunCH"][attack_info.attackLevel])
+        text = str(base_hitstun)
     elif hit_effects.groundHitAni == 6:
         text = "Spin Fall " + str(hit_effects.spinFall)
     else:
@@ -163,34 +158,21 @@ def create_hitstun_ch_value(attack_info):
 
 
 def create_untech_value(attack_info):
-    text = ""
-    hit_effects = attack_info.normalHitEffects
-    if hit_effects.airHitAni == 0 or hit_effects.airHitAni is None:
-        text = str(attack_info.get_untech())
-
-    if hit_effects.groundBounce is not None and hit_effects.groundBounce > 0:
-        text = text + " + GBounce"
-    if hit_effects.airHitAni == 12 or hit_effects.groundHitAni == 12 or hit_effects.wallBounce is not None:
-        text = text + " + WBounce"
-        if hit_effects.wallBounce > 0:
-            text = text + " " + str(hit_effects.wallBounce)
-    if hit_effects.cornerStick is not None:
-        text = text + " + WStick"
-        if hit_effects.cornerStick > 0:
-            text = text + " " + str(hit_effects.cornerStick)
-    if hit_effects.slide is not None and hit_effects.slide > 0:
-        text = text + " + Slide " + str(hit_effects.slide)
-    if hit_effects.knockdown is not None and hit_effects.knockdown > 0:
-        text = text + " + Down " + str(hit_effects.knockdown)
-
-    return text
+    return create_untech_helper(attack_info.normalHitEffects,
+                                attack_info.get_untech()
+                                )
 
 
 def create_untech_ch_value(attack_info):
+    return create_untech_helper(attack_info.normalHitEffects,
+                                attack_info.get_untech() + ATTACK_LEVEL["untechCH"][attack_info.attackLevel]
+                                )
+
+
+def create_untech_helper(hit_effects, base_untech):
     text = ""
-    hit_effects = attack_info.counterHitEffects
     if hit_effects.airHitAni == 0 or hit_effects.airHitAni is None:
-        text = str(attack_info.get_untech() + ATTACK_LEVEL["untechCH"][attack_info.attackLevel])
+        text = str(base_untech)
 
     if hit_effects.groundBounce is not None and hit_effects.groundBounce > 0:
         text = text + " + GBounce"
