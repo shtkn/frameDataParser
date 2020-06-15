@@ -92,13 +92,17 @@ def parse_scr_file(source, move_list, effect_list):
                 state.attackInfo.p2 = int(line[line.index("(") + 1:line.index(")")])
             elif "Unknown9154(" in line or "hitstun(" in line:
                 state.attackInfo.normalHitEffects.hitstun = int(line[line.index("(") + 1:line.index(")")])
-            elif "AirUntechableTime(" in line:
+            elif "Unknown9156(" in line:
+                state.attackInfo.counterHitEffects.hitstun = int(line[line.index("(") + 1:line.index(")")])
+            elif "AirUntechableTime(" in line:  # 9166
                 state.attackInfo.normalHitEffects.untech = int(line[line.index("(") + 1:line.index(")")])
+            elif "Unknown9168(" in line:
+                state.attackInfo.counterHitEffects.untech = int(line[line.index("(") + 1:line.index(")")])
             elif " Damage(" in line or "\tDamage(" in line:
                 state.attackInfo.damage = int(line[line.index("(") + 1:line.index(")")])
             elif "Unknown11012(" in line or "MinimumDamagePct(" in line:
                 state.attackInfo.minDamage = int(line[line.index("(") + 1:line.index(")")])
-            elif "Unknown11092(" in line:
+            elif "Unknown11092(" in line or "P2OnceOnly(" in line:
                 state.attackInfo.p2Once = line[line.index("(") + 1:line.index(")")] == "1"
             elif "Unknown11028(" in line or "blockstun(" in line:
                 state.attackInfo.blockstun = int(line[line.index("(") + 1:line.index(")")])
@@ -110,12 +114,13 @@ def parse_scr_file(source, move_list, effect_list):
                 name_start = line.index("def ") + len(SPRITE_MID) + 1
                 name_end = line.index("()")
                 state.moveName = line[name_start:name_end]
-            elif "Unknown11001(" in line:
+            elif "Unknown11001(" in line or "AdditionalHitstopOpponent(" in line:
                 numbers_start = line.index("(") + 1
                 numbers_end = line.index(")")
                 numbers = [x.strip() for x in line[numbers_start:numbers_end].split(',')]
                 state.attackInfo.bonusBlockstop = int(numbers[0])
                 state.attackInfo.bonusHitstop = int(numbers[1])
+                state.attackInfo.bonusHitstopCH = int(numbers[2])
             elif "Unknown22004(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(",")
@@ -142,14 +147,22 @@ def parse_scr_file(source, move_list, effect_list):
                         state.landingRecovery = subroutine.landingRecovery
                 else:
                     frame_chunks.append(SubroutineCall(line[name_start:name_end]))
-            elif "AirHitstunAnimation(" in line:
+            elif "AirHitstunAnimation(" in line:    # 9334
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.airHitAni = int(line[number_start:number_end])
-            elif "GroundedHitstunAnimation(" in line:
+                state.attackInfo.normalHitEffects.airHitAni = int(line[number_start:number_end])
+            elif "Unknown9336(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.groundHitAni = int(line[number_start:number_end])
+                state.attackInfo.counterHitEffects.airHitAni = int(line[number_start:number_end])
+            elif "GroundedHitstunAnimation(" in line:   # 9322
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.normalHitEffects.groundHitAni = int(line[number_start:number_end])
+            elif "Unknown9324(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.counterHitEffects.groundHitAni = int(line[number_start:number_end])
             elif "Unknown2036(" in line:
                 flash_start = line.index("(") + 1
                 flash_end = line.index(",")
@@ -186,7 +199,11 @@ def parse_scr_file(source, move_list, effect_list):
             elif "Unknown9118(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.groundBounce = int(line[number_start:number_end])
+                state.attackInfo.normalHitEffects.groundBounce = int(line[number_start:number_end])
+            elif "Unknown9120(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.counterHitEffects.groundBounce = int(line[number_start:number_end])
             elif "ExitState()" in line:
                 # we assume all the lines above this are for the move on block/whiff. Anything after is on hit
                 state.exitState = True
@@ -196,23 +213,71 @@ def parse_scr_file(source, move_list, effect_list):
             elif "Unknown9190(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.groundBounce = int(line[number_start:number_end])
+                state.attackInfo.normalHitEffects.groundBounce = int(line[number_start:number_end])
+            elif "Unknown9192(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.counterHitEffects.groundBounce = int(line[number_start:number_end])
             elif "Unknown9130(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
                 amt = int(line[number_start:number_end])
                 amt = 24 if amt == 1 else amt + 14
-                state.attackInfo.stagger = amt
+                state.attackInfo.normalHitEffects.staggerFallStart = amt
+            elif "Unknown9132(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                amt = int(line[number_start:number_end])
+                amt = 24 if amt == 1 else amt + 14
+                state.attackInfo.counterHitEffects.staggerFallStart = amt
+            elif "Unknown9142(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.normalHitEffects.stagger = int(line[number_start:number_end])
+            elif "Unknown9144(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.counterHitEffects.stagger = int(line[number_start:number_end])
             elif "Unknown9202(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.slide = int(line[number_start:number_end]) + 19
+                state.attackInfo.normalHitEffects.slide = int(line[number_start:number_end]) + 19
+            elif "Unknown9204(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.counterHitEffects.slide = int(line[number_start:number_end]) + 19
             elif "Unknown9310(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
                 amt = int(line[number_start:number_end])
                 amt = 24 if amt == 1 else amt + 14
-                state.attackInfo.knockdown = amt
+                state.attackInfo.normalHitEffects.knockdown = amt
+            elif "Unknown9312(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                amt = int(line[number_start:number_end])
+                amt = 24 if amt == 1 else amt + 14
+                state.attackInfo.counterHitEffects.knockdown = amt
+            elif "Unknown9346(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.normalHitEffects.cornerBounceType = int(line[number_start:number_end])
+            elif "Unknown9348(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.counterHitEffects.cornerBounceType = int(line[number_start:number_end])
+            elif "Unknown9362(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.normalHitEffects.cornerBounceType = int(line[number_start:number_end])
+            elif "Unknown9363(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.counterHitEffects.cornerBounceType = int(line[number_start:number_end])
+            elif "FatalCounter(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.counterHitEffects.fatal = line[number_start:number_end] == "1"
             elif "Unknown30072(" in line:  # i think this is attackDefaultsCrushAttack()? Basically Attack Level 3
                 state.attackInfo.attackLevel = 3
                 state.attackInfo.bonusHitstop = 0
@@ -322,9 +387,9 @@ def parse_files(source_dir, target_dir, file_list):
 
 
 if __name__ == "__main__":
-    source_dir = "./annotated"
-    target_dir = "./parsedAttacks"
-    file_list = [
+    bbtag_source_dir = "./annotated2_0"
+    bbtag_target_dir = "./parsedAttacks"
+    bbtag_file_list = [
         # Arcana Heart
         "scr_ahe",
         # BlazBlue
@@ -339,7 +404,19 @@ if __name__ == "__main__":
         "scr_uca", "scr_ugo", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
         "scr_uwa", "scr_uyu"
     ]
-    source_dir = "."
-    target_dir = "."
-    file_list = ["testfile"]
+    bbcf_source_dir = "./annotated_bbcf_2_0"
+    bbcf_target_dir = "./parsedAttacks_bbcf_2_0"
+    bbcf_file_list = [
+        "scr_am", "scr_ar", "scr_az", "scr_bl", "scr_bn", "scr_ca", "scr_ce", "scr_es", "scr_ha", "scr_hb",
+        "scr_hz", "scr_iz", "scr_jb", "scr_jn", "scr_kg", "scr_kk", "scr_lc", "scr_ma", "scr_mi", "scr_mk",
+        "scr_mu", "scr_no", "scr_nt", "scr_ny", "scr_ph", "scr_pt", "scr_rc", "scr_rg", "scr_rl", "scr_rm",
+        "scr_su", "scr_tb", "scr_tg", "scr_tk", "scr_tm", "scr_vh"
+    ]
+    test_source_dir = "."
+    test_target_dir = "."
+    test_file_list = ["testfile"]
+
+    source_dir = bbcf_source_dir
+    target_dir = bbcf_target_dir
+    file_list = bbcf_file_list
     parse_files(source_dir, target_dir, file_list)

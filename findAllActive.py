@@ -33,18 +33,18 @@ def main():
     target_name = "bbcf_all_active.txt"
     target = open(target_name, "w")
     base_folder = "/Users/shtkn/Documents/BBCF_CharData"
-    folders = ["char_am", "char_ar", "char_az", "char_bl", "char_bn",
-               "char_ca", "char_ce", "char_es", "char_ha", "char_hb",
-               "char_hz", "char_iz", "char_jb", "char_jn", "char_kg",
-               "char_kk", "char_lc", "char_ma", "char_mi", "char_mk",
-               "char_mu", "char_no", "char_nt", "char_ny", "char_ph",
-               "char_pt", "char_rc", "char_rg", "char_rl", "char_rm",
-               "char_su", "char_tb", "char_tg", "char_tk", "char_tm",
-               "char_vh"
+    folders = ["am", "ar", "az", "bl", "bn",
+               "ca", "ce", "es", "ha", "hb",
+               "hz", "iz", "jb", "jn", "kg",
+               "kk", "lc", "ma", "mi", "mk",
+               "mu", "no", "nt", "ny", "ph",
+               "pt", "rc", "rg", "rl", "rm",
+               "su", "tb", "tg", "tk", "tm",
+               "vh"
                ]
     for folder in folders:
-        active = findActiveForFolder(base_folder + os.path.sep + folder + "_scr" + os.path.sep + folder + "_col")
-        target.write(folder + " starts here!\n")
+        active = findActiveForFolder(base_folder + os.path.sep + folder + "_scr" + os.path.sep + "char_" + folder + "_col")
+        target.write(folder + " starts here\n")
         target.writelines(active)
 
 

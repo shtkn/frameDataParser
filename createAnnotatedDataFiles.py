@@ -5,7 +5,7 @@ SPRITE_MID = "', "
 SPRITE_END = ")"
 
 def main():
-    attackHitboxFile = open("all_active_2_0.txt", "r")
+    attackHitboxFile = open("bbcf_all_active.txt", "r")
     contents = attackHitboxFile.readlines()
     charDictionarySet = {}
     currentChar = ''
@@ -23,8 +23,8 @@ def main():
             # print line.strip()
     # print charDictionarySet.keys()
 
-    outputDir = "./annotated2_0/"
-    inputDir = "./input2_0/"
+    outputDir = "./annotated_bbcf_2_0/"
+    inputDir = "./source_bbcf_2_0/"
 
     fileList = os.listdir(inputDir)
     pattern = "*.py"
@@ -40,8 +40,8 @@ def main():
         target = open(outputDir + entry, "w")
         contents = source.readlines()
         fileAbbr = entry[entry.index("_") + 1:entry.__len__() - 3]
-        if fileAbbr.__len__() > 3:
-            fileAbbr = fileAbbr[0:3]
+        if fileAbbr.__len__() > 2:
+            fileAbbr = fileAbbr[0:2]
         if not charDictionarySet.__contains__(fileAbbr):
             print "Couldn't find: " + fileAbbr
             continue

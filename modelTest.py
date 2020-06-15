@@ -349,6 +349,22 @@ class TestModel(unittest.TestCase):
         test = AttackInfo(attack_level=2, normal_hit=HitEffects(hitstun=10))
         self.assertEqual(test.get_hitstun(), 10)
 
+    def test_get_hitstun_ch_attack_level_defaults(self):
+        test = AttackInfo(attack_level=2)
+        self.assertEqual(test.get_hitstun_ch(), 18)
+
+    def test_get_hitstun_ch_attack_level_defaults_with_fatal(self):
+        test = AttackInfo(attack_level=2, counter_hit=HitEffects(fatal=True))
+        self.assertEqual(test.get_hitstun_ch(), 21)
+
+    def test_get_hitstun_ch_custom_value(self):
+        test = AttackInfo(attack_level=2, counter_hit=HitEffects(hitstun=10))
+        self.assertEqual(test.get_hitstun_ch(), 10)
+
+    def test_get_hitstun_ch_custom_value_with_fatal(self):
+        test = AttackInfo(attack_level=2, counter_hit=HitEffects(hitstun=10, fatal=True))
+        self.assertEqual(test.get_hitstun_ch(), 13)
+
     def test_get_hitstop_attack_level_defaults(self):
         test = AttackInfo(attack_level=2)
         self.assertEqual(test.get_hitstop(), 10)
@@ -364,6 +380,58 @@ class TestModel(unittest.TestCase):
     def test_get_untech_custom_value(self):
         test = AttackInfo(attack_level=2, normal_hit=HitEffects(untech=10))
         self.assertEqual(test.get_untech(), 10)
+
+    def test_get_untech_ch_attack_level_defaults(self):
+        test = AttackInfo(attack_level=2)
+        self.assertEqual(test.get_untech_ch(), 26)
+
+    def test_get_untech_ch_attack_level_defaults_with_fatal(self):
+        test = AttackInfo(attack_level=2, counter_hit=HitEffects(fatal=True))
+        self.assertEqual(test.get_untech_ch(), 29)
+
+    def test_get_untech_ch_custom_value(self):
+        test = AttackInfo(attack_level=2, counter_hit=HitEffects(untech=10))
+        self.assertEqual(test.get_untech_ch(), 10)
+
+    def test_get_untech_ch_custom_value_with_fatal(self):
+        test = AttackInfo(attack_level=2, counter_hit=HitEffects(untech=10, fatal=True))
+        self.assertEqual(test.get_untech_ch(), 13)
+
+    def test_get_stagger_attack_level_defaults(self):
+        test = AttackInfo(attack_level=2)
+        self.assertEqual(test.get_stagger(), 24)
+
+    def test_get_stagger_custom_value(self):
+        test = AttackInfo(attack_level=2, normal_hit=HitEffects(stagger=50))
+        self.assertEqual(test.get_stagger(), 50)
+
+    def test_get_stagger_ch_attack_level_defaults(self):
+        test = AttackInfo(attack_level=2)
+        self.assertEqual(test.get_stagger_ch(), 48)
+
+    def test_get_stagger_ch_custom_value(self):
+        test = AttackInfo(attack_level=2, counter_hit=HitEffects(stagger=30))
+        self.assertEqual(test.get_stagger_ch(), 30)
+
+    def test_get_crumple_start_attack_level_defaults(self):
+        test = AttackInfo(attack_level=4)
+        self.assertEqual(test.get_stagger_fall_start(), 39)
+
+    def test_get_crumple_start_custom_value(self):
+        test = AttackInfo(attack_level=2, normal_hit=HitEffects(stagger_fall_start=50))
+        self.assertEqual(test.get_stagger_fall_start(), 50)
+
+    def test_get_crumple_start_ch_attack_level_defaults(self):
+        test = AttackInfo(attack_level=4)
+        self.assertEqual(test.get_stagger_fall_start_ch(), 58)
+
+    def test_get_crumple_start_ch_normal_stagger_custom_value(self):
+        test = AttackInfo(normal_hit=HitEffects(stagger_fall_start=30))
+        self.assertEqual(test.get_stagger_fall_start_ch(), 45)
+
+    def test_get_crumple_start_ch_custom_value(self):
+        test = AttackInfo(attack_level=2, counter_hit=HitEffects(stagger_fall_start=30))
+        self.assertEqual(test.get_stagger_fall_start_ch(), 30)
 
     def test_get_p1_attack_level_defaults(self):
         test = AttackInfo(attack_level=2)
@@ -487,6 +555,8 @@ class TestModel(unittest.TestCase):
                          "hitstunAfterWallBounce not equal")
         self.assertEqual(first.wallStick, second.wallStick, "wallStickTime not equal")
         self.assertEqual(first.stagger, second.stagger, "stagger not equal")
+        self.assertEqual(first.staggerFallStart, second.staggerFallStart, "crumpleStart not equal")
         self.assertEqual(first.spinFall, second.spinFall, "spinFall not equal")
         self.assertEqual(first.groundBounce, second.groundBounce, "groundBounce not equal")
         self.assertEqual(first.wallBounce, second.wallBounce, "wallBounce not equal")
+        self.assertEqual(first.fatal, second.fatal, "fatal not equal")

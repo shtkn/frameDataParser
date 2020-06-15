@@ -7,6 +7,8 @@ ATTACK_LEVEL = {"blockstun": [9, 11, 13, 16, 18, 20],
                 "hitstunCH": [4, 4, 4, 5, 5, 6],
                 "untech": [12, 12, 14, 17, 19, 21],
                 "untechCH": [11, 11, 12, 14, 15, 16],
+                "stagger": [20, 22, 24, 27, 29, 31],
+                "staggerFallStart": [30, 32, 34, 37, 39, 41],
                 "hitstop": [8, 9, 10, 11, 12, 13],
                 "hitstopCH": [0, 0, 1, 2, 5, 8],
                 "p1": [100, 100, 100, 100, 100, 100],
@@ -152,6 +154,15 @@ class AttackInfo:
 
         if self.attackLevel is not None:
             return ATTACK_LEVEL["hitstun"][self.attackLevel]
+        return None
+
+    def get_hitstun_ch(self):
+        fatal_bonus = 3 if self.counterHitEffects.fatal else 0
+        if self.counterHitEffects.hitstun is not None:
+            return self.counterHitEffects.hitstun + fatal_bonus
+
+        if self.attackLevel is not None:
+            return self.get_hitstun() + ATTACK_LEVEL["hitstunCH"][self.attackLevel] + fatal_bonus
 
         return None
 
@@ -169,6 +180,68 @@ class AttackInfo:
 
         if self.attackLevel is not None:
             return ATTACK_LEVEL["untech"][self.attackLevel]
+        return None
+
+    def get_untech_ch(self):
+        fatal_bonus = 3 if self.counterHitEffects.fatal else 0
+        if self.counterHitEffects.untech is not None:
+            return self.counterHitEffects.untech + fatal_bonus
+
+        if self.attackLevel is not None:
+            return self.get_untech() + ATTACK_LEVEL["untechCH"][self.attackLevel] + fatal_bonus
+
+        return None
+
+    def get_stagger(self):
+        if self.normalHitEffects.stagger is not None:
+            return self.normalHitEffects.stagger
+
+        if self.attackLevel is not None:
+            return ATTACK_LEVEL["stagger"][self.attackLevel]
+        return None
+
+    def get_stagger_ch(self):
+        if self.counterHitEffects.stagger is not None:
+            return self.counterHitEffects.stagger
+
+        if self.attackLevel is not None:
+            return self.get_stagger() * 2
+
+        return None
+
+    def get_stagger_fall_start(self):
+        if self.normalHitEffects.staggerFallStart is not None:
+            return self.normalHitEffects.staggerFallStart
+
+        if self.attackLevel is not None:
+            return ATTACK_LEVEL["staggerFallStart"][self.attackLevel]
+        return None
+
+    def get_stagger_fall_start_ch(self):
+        if self.counterHitEffects.staggerFallStart is not None:
+            return self.counterHitEffects.staggerFallStart
+
+        if self.get_stagger_fall_start() is not None:
+            return int(self.get_stagger_fall_start() * 1.5)
+
+        return None
+
+    def get_corner_stick(self):
+        return self.normalHitEffects.cornerStick
+
+    def get_corner_stick_ch(self):
+        fatal = 3 if self.counterHitEffects.fatal else 0
+        return self.counterHitEffects.cornerStick + fatal
+
+    def get_slide(self):
+        if self.normalHitEffects.slide is not None:
+            return self.normalHitEffects.slide
+        return None
+
+    def get_slide_ch(self):
+        fatal_bonus = 3 if self.counterHitEffects.fatal else 0
+        if self.counterHitEffects.slide is not None:
+            return self.counterHitEffects.slide + fatal_bonus
 
         return None
 
@@ -229,9 +302,9 @@ class AttackInfo:
 
 class HitEffects:
     def __init__(self, hitstun=None, untech=None, ground_hit_ani=None, air_hit_ani=None, knockdown=None,
-                 slide_time=None, hitstun_after_wall_bounce=None, stagger=None, spin_fall=None,
-                 ground_bounce=None, ground_bounce_type=None, wall_bounce=None, corner_bounce_type=None,
-                 corner_stick=None):
+                 slide_time=None, hitstun_after_wall_bounce=None, stagger=None, ground_bounce=None,
+                 ground_bounce_type=None, wall_bounce=None, corner_bounce_type=None,
+                 corner_stick=None, stagger_fall_start=None, fatal=None):
         self.hitstun = hitstun
         self.untech = untech
         self.groundHitAni = ground_hit_ani
@@ -240,12 +313,13 @@ class HitEffects:
         self.slide = slide_time
         self.hitstunAfterWallBounce = hitstun_after_wall_bounce
         self.stagger = stagger
-        self.spinFall = spin_fall
+        self.staggerFallStart = stagger_fall_start
         self.groundBounce = ground_bounce
         self.groundBounceType = ground_bounce_type
         self.wallBounce = wall_bounce
         self.cornerBounceType = corner_bounce_type
         self.cornerStick = corner_stick
+        self.fatal = fatal
 
     def override_non_none_values(self, other):
         if other.hitstun is not None:
@@ -264,8 +338,8 @@ class HitEffects:
             self.hitstunAfterWallBounce = other.hitstunAfterWallBounce
         if other.stagger is not None:
             self.stagger = other.stagger
-        if other.spinFall is not None:
-            self.spinFall = other.spinFall
+        if other.staggerFallStart is not None:
+            self.staggerFallStart = other.staggerFallStart
         if other.groundBounceType is not None:
             self.groundBounceType = other.groundBounceType
         if other.groundBounce is not None:
@@ -276,6 +350,8 @@ class HitEffects:
             self.cornerBounceType = other.cornerBounceType
         if other.cornerStick is not None:
             self.cornerStick = other.cornerStick
+        if other.fatal is not None:
+            self.fatal = other.fatal
 
     def __eq__(self, other):
         if not isinstance(other, HitEffects):
@@ -283,9 +359,10 @@ class HitEffects:
         return self.hitstun == other.hitstun and self.untech == other.untech and self.groundHitAni == other.groundHitAni and \
                self.airHitAni == other.airHitAni and self.knockdown == other.knockdown and self.slide == other.slide and \
                self.hitstunAfterWallBounce == other.hitstunAfterWallBounce and self.stagger == other.stagger and \
-               self.spinFall == other.spinFall and self.groundBounce == other.groundBounce and \
+               self.staggerFallStart == other.staggerFallStart and self.groundBounce == other.groundBounce and \
                self.groundBounceType == other.groundBounceType and self.wallBounce == other.wallBounce and \
-               self.cornerBounceType == other.cornerBounceType and self.cornerStick == other.cornerStick
+               self.cornerBounceType == other.cornerBounceType and self.cornerStick == other.cornerStick and \
+               self.fatal == other.fatal
 
 
 class Abstract:
