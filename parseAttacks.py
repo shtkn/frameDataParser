@@ -10,6 +10,92 @@ CALL_SUBROUTINE_STARTC = "CallSubroutine('"
 CALL_SUBROUTINE_STARTc = "callSubroutine('"
 
 
+class State:
+    def __init__(self):
+        self.inUponImmediate = False
+        self.uponImmediateIndent = ""
+        self.moveName = ""
+        self.spriteLine = ""
+        self.extraLines = ""
+        self.duration = 0
+        self.isAttackBox = False
+        self.disableAttackboxes = False
+        self.disableAttackboxesThisFrame = False
+        self.isNewHit = True
+        self.attackInfo = AttackInfo()
+        self.attackInfo.normalHitEffects = HitEffects(ground_hit_ani=0, air_hit_ani=0)
+        self.exitState = False
+        self.landingRecovery = 0
+        self.isSubroutine = False
+        self.isInv = False
+        self.invType = 0  # Inv or Guard
+        self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
+        self.superflash_list = []  # list of tuples. Each tuple contains when superlflash starts and superflash duration
+        self.attackLevel = None
+        self.attr = None
+        self.isWallBounce = False
+        self.isCornerBounce = False
+        self.isWallBounceCH = False
+        self.isCornerBounceCH = False
+        self.hardcodedInvList = []  # list of tuples. Each tuple contains when hardcoded inv starts, duration, inv type, and inv attr
+
+    def clear_values(self, is_new_move):
+        self.spriteLine = ""
+        self.extraLines = ""
+        self.duration = 0
+        self.isAttackBox = False
+        self.disableAttackboxesThisFrame = False
+        self.inUponImmediate = False
+        self.uponImmediateIndent = ""
+        if is_new_move:
+            self.moveName = ""
+            self.disableAttackboxes = False
+            self.isNewHit = True
+            self.exitState = False
+            self.landingRecovery = None
+            self.isSubroutine = False
+            self.attackInfo = AttackInfo()
+            self.attackInfo.groundHitAni = 0
+            self.attackInfo.airHitAni = 0
+            self.isInv = False
+            self.invType = 0  # Inv or Guard
+            self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
+            self.attr = None
+            self.superflash_list = []  # list of tuples. Each tuple contains when superlflash starts and duration
+            self.hardcodedInvList = []
+            self.isWallBounce = False
+            self.isCornerBounce = False
+            self.isWallBounceCH = False
+            self.isCornerBounceCH = False
+
+    def is_attackbox(self):
+        return self.isAttackBox and (
+                self.isNewHit or not self.disableAttackboxes) and not self.disableAttackboxesThisFrame
+
+    def set_values_from_subroutine(self, subroutine):
+        if subroutine is None:
+            return
+        self.landingRecovery = subroutine.landingRecovery
+        self.attackInfo = subroutine.attackInfo
+
+    def create_frame_chunk(self):
+        if self.is_attackbox():
+            chunk = ActiveFrames(self.duration, self.isNewHit, copy.copy(self.attackInfo))
+            if not self.isWallBounce:
+                chunk.info.normalHitEffects.wallBounce = None
+            if not self.isWallBounceCH:
+                chunk.info.counterHitEffects.wallBounce = None
+            if not self.isCornerBounce:
+                chunk.info.normalHitEffects.cornerBounceType = None
+            if not self.isCornerBounceCH:
+                chunk.info.counterHitEffects.cornerBounceType = None
+        else:
+            chunk = WaitFrames(self.duration)
+        if self.isInv:
+            chunk.inv_type = 1 if self.invType == 0 else 2
+            chunk.inv_attr = self.invAttr
+        return chunk
+
 def get_duration(sprite_str):
     number_start = sprite_str.index(SPRITE_MID) + SPRITE_MID.__len__()
     number_end = sprite_str.index(SPRITE_END)
@@ -60,11 +146,7 @@ def parse_scr_file(source, move_list, effect_list):
             pass    # skip anything not under UPON_IMMEDIATE
         elif not state.exitState and SPRITE_START in line:
             if state.duration > 0:
-                chunk = ActiveFrames(state.duration, state.isNewHit, copy.copy(state.attackInfo)) \
-                    if state.is_attackbox() else WaitFrames(state.duration)
-                if state.isInv:
-                    chunk.inv_type = 1 if state.invType == 0 else 2
-                    chunk.inv_attr = state.invAttr
+                chunk = state.create_frame_chunk()
                 frame_chunks.append(chunk)
                 if isinstance(chunk, ActiveFrames):
                     state.isNewHit = False
@@ -92,6 +174,12 @@ def parse_scr_file(source, move_list, effect_list):
                 state.attackInfo.p2 = int(line[line.index("(") + 1:line.index(")")])
             elif "Unknown9154(" in line or "hitstun(" in line:
                 state.attackInfo.normalHitEffects.hitstun = int(line[line.index("(") + 1:line.index(")")])
+            elif "Unknown9178(" in line:
+                is_wall_bounce = int(line[line.index("(") + 1:line.index(")")])
+                state.isWallBounce = is_wall_bounce == 1
+            elif "Unknown9180(" in line:
+                is_wall_bounce_ch = int(line[line.index("(") + 1:line.index(")")])
+                state.isWallBounceCH = is_wall_bounce_ch == 1
             elif "Unknown9156(" in line:
                 state.attackInfo.counterHitEffects.hitstun = int(line[line.index("(") + 1:line.index(")")])
             elif "AirUntechableTime(" in line:  # 9166
@@ -131,9 +219,10 @@ def parse_scr_file(source, move_list, effect_list):
                 name_end = line.index("',")
                 number_start = line.index(", ") + 2
                 number_end = line.index(")")
-                id = int(line[number_start:number_end]) # if id = -1, then this gfx is on the same "thread" as this one
+                # if gfx_subroutine = -1, then this gfx is on the same "thread" as this one
+                gfx_thread = int(line[number_start:number_end])
                 # print "GFX " + line[name_start:name_end]
-                frame_chunks.append(SubroutineCall(line[name_start:name_end], id == -1))
+                frame_chunks.append(SubroutineCall(line[name_start:name_end], gfx_thread == -1))
                 # run the command on line[name_start:name_end] starting at current_frame-1
             elif CALL_SUBROUTINE_STARTC in line or CALL_SUBROUTINE_STARTc in line:
                 name_start = line.index("('") + 2
@@ -150,19 +239,31 @@ def parse_scr_file(source, move_list, effect_list):
             elif "AirHitstunAnimation(" in line:    # 9334
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.normalHitEffects.airHitAni = int(line[number_start:number_end])
+                animation_type = int(line[number_start:number_end])
+                state.attackInfo.normalHitEffects.airHitAni = animation_type
+                if animation_type == 12:
+                    state.isWallBounce = True
             elif "Unknown9336(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.counterHitEffects.airHitAni = int(line[number_start:number_end])
+                animation_type = int(line[number_start:number_end])
+                state.attackInfo.counterHitEffects.airHitAni = animation_type
+                if animation_type == 12:
+                    state.isWallBounceCH = True
             elif "GroundedHitstunAnimation(" in line:   # 9322
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.normalHitEffects.groundHitAni = int(line[number_start:number_end])
+                animation_type = int(line[number_start:number_end])
+                state.attackInfo.normalHitEffects.groundHitAni = animation_type
+                if animation_type == 12:
+                    state.isWallBounce = True
             elif "Unknown9324(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.counterHitEffects.groundHitAni = int(line[number_start:number_end])
+                animation_type = int(line[number_start:number_end])
+                state.attackInfo.counterHitEffects.groundHitAni = animation_type
+                if animation_type == 12:
+                    state.isWallBounceCH = True
             elif "Unknown2036(" in line:
                 flash_start = line.index("(") + 1
                 flash_end = line.index(",")
@@ -207,9 +308,6 @@ def parse_scr_file(source, move_list, effect_list):
             elif "ExitState()" in line:
                 # we assume all the lines above this are for the move on block/whiff. Anything after is on hit
                 state.exitState = True
-            elif "Unknown17025(" in line or "Unknown17024(" in line:  # i think this is attackDefaultsReversalAction()
-                state.invType = 0
-                state.isInv = True
             elif "Unknown9190(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
@@ -261,11 +359,11 @@ def parse_scr_file(source, move_list, effect_list):
             elif "Unknown9346(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.normalHitEffects.cornerBounceType = int(line[number_start:number_end])
+                state.isCornerBounce = int(line[number_start:number_end]) == 1
             elif "Unknown9348(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.counterHitEffects.cornerBounceType = int(line[number_start:number_end])
+                state.isCornerBounceCH = int(line[number_start:number_end]) == 1
             elif "Unknown9362(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
@@ -274,6 +372,14 @@ def parse_scr_file(source, move_list, effect_list):
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
                 state.attackInfo.counterHitEffects.cornerBounceType = int(line[number_start:number_end])
+            elif "Unknown9364(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.normalHitEffects.cornerStick = int(line[number_start:number_end])
+            elif "Unknown9365(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                state.attackInfo.counterHitEffects.cornerStick = int(line[number_start:number_end])
             elif "FatalCounter(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
@@ -295,7 +401,20 @@ def parse_scr_file(source, move_list, effect_list):
             elif "Unknown17003(" in line:   # attack defaults air special?
                 state.attackInfo.p1 = 80
                 state.attackInfo.attribute = [True, False, False, False, False]
+            elif "Unknown17010(" in line:   # attack defaults Counter Assault
+                state.attackInfo.attackLevel = 4
+                state.invType = 0
+                state.isInv = True
+                state.attackInfo.p1 = 50
+                state.attackInfo.damage = 0
+                state.attackInfo.normalHitEffects.groundHitAni = 9
+                state.attackInfo.normalHitEffects.airHitAni = 9
+                state.attackInfo.attribute = [False, True, False, False, False]
+            elif "Unknown17021(" in line:  # attack defaults Exceel Accel?
+                state.attackInfo.attackLevel = 5    # i have no idea, just put something so it doensn't crash
             elif "Unknown17024(" in line:   # attack defaults reversal action
+                state.invType = 0
+                state.isInv = True
                 state.attackInfo.p1 = 80
                 state.attackInfo.p2 = 60
                 state.attackInfo.attribute = [True, False, False, False, False]
@@ -314,14 +433,7 @@ def parse_scr_file(source, move_list, effect_list):
         attack_info.hitstop = 0 if attack_info.hitstop is None else attack_info.hitstop
         attack_info.bonusBlockstop = 0 if attack_info.bonusBlockstop is None else attack_info.bonusBlockstop
         attack_info.bonusHitstop = 0 if attack_info.bonusHitstop is None else attack_info.bonusHitstop
-        chunk = ActiveFrames(state.duration,
-                             state.isNewHit,
-                             attack_info) \
-            if state.is_attackbox() else WaitFrames(state.duration)
-        if state.isInv:
-            chunk.inv_type = 1 if state.invType == 0 else 2
-            chunk.inv_attr = state.invAttr
-
+        chunk = state.create_frame_chunk()
         frame_chunks.append(chunk)
 
         move_list[state.moveName] = handle_end_of_move(state, frame_chunks)
@@ -416,7 +528,7 @@ if __name__ == "__main__":
     test_target_dir = "."
     test_file_list = ["testfile"]
 
-    source_dir = bbcf_source_dir
-    target_dir = bbcf_target_dir
-    file_list = bbcf_file_list
+    source_dir = test_source_dir
+    target_dir = test_target_dir
+    file_list = test_file_list
     parse_files(source_dir, target_dir, file_list)

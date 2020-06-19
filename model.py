@@ -16,67 +16,6 @@ ATTACK_LEVEL = {"blockstun": [9, 11, 13, 16, 18, 20],
                 "damage": [1000, 1000, 1000, 1500, 1700, 2000]}
 
 
-class State:
-    def __init__(self):
-        self.inUponImmediate = False
-        self.uponImmediateIndent = ""
-        self.moveName = ""
-        self.spriteLine = ""
-        self.extraLines = ""
-        self.duration = 0
-        self.isAttackBox = False
-        self.disableAttackboxes = False
-        self.disableAttackboxesThisFrame = False
-        self.isNewHit = True
-        self.attackInfo = AttackInfo()
-        self.attackInfo.normalHitEffects = HitEffects(ground_hit_ani=0, air_hit_ani=0)
-        self.exitState = False
-        self.landingRecovery = 0
-        self.isSubroutine = False
-        self.isInv = False
-        self.invType = 0  # Inv or Guard
-        self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
-        self.superflash_list = []  # list of tuples. Each tuple contains when superlflash starts and superflash duration
-        self.attackLevel = None
-        self.attr = None
-        self.hardcodedInvList = []  # list of tuples. Each tuple contains when hardcoded inv starts, duration, inv type, and inv attr
-
-    def clear_values(self, is_new_move):
-        self.spriteLine = ""
-        self.extraLines = ""
-        self.duration = 0
-        self.isAttackBox = False
-        self.disableAttackboxesThisFrame = False
-        self.inUponImmediate = False
-        self.uponImmediateIndent = ""
-        if is_new_move:
-            self.moveName = ""
-            self.disableAttackboxes = False
-            self.isNewHit = True
-            self.exitState = False
-            self.landingRecovery = None
-            self.isSubroutine = False
-            self.attackInfo = AttackInfo()
-            self.attackInfo.groundHitAni = 0
-            self.attackInfo.airHitAni = 0
-            self.isInv = False
-            self.invType = 0  # Inv or Guard
-            self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw
-            self.attr = None
-            self.superflash_list = []  # list of tuples. Each tuple contains when superlflash starts and duration
-            self.hardcodedInvList = []
-
-    def is_attackbox(self):
-        return self.isAttackBox and (
-                self.isNewHit or not self.disableAttackboxes) and not self.disableAttackboxesThisFrame
-
-    def set_values_from_subroutine(self, subroutine):
-        if subroutine is None:
-            return
-        self.landingRecovery = subroutine.landingRecovery
-        self.attackInfo = subroutine.attackInfo
-
-
 class AttackInfo:
     def __init__(self, damage=None, p1=None, p2=None, min_damage=0, p2once=None, blockstun=None,
                  hitstop=None, bonus_blockstop=None, bonus_hitstop=None, attack_level=None, attribute=None,
@@ -147,6 +86,22 @@ class AttackInfo:
             else:
                 return ATTACK_LEVEL["blockstun"][self.attackLevel]
         return self.blockstun
+
+    def get_ground_hit_ani(self):
+        return self.normalHitEffects.groundHitAni
+
+    def get_ground_hit_ani_ch(self):
+        if self.counterHitEffects.groundHitAni is None:
+            return self.get_ground_hit_ani()
+        return self.counterHitEffects.groundHitAni
+
+    def get_air_hit_ani(self):
+        return self.normalHitEffects.airHitAni
+
+    def get_air_hit_ani_ch(self):
+        if self.counterHitEffects.airHitAni is None:
+            return self.get_air_hit_ani()
+        return self.counterHitEffects.airHitAni
 
     def get_hitstun(self):
         if self.normalHitEffects.hitstun is not None:
@@ -231,19 +186,62 @@ class AttackInfo:
 
     def get_corner_stick_ch(self):
         fatal = 3 if self.counterHitEffects.fatal else 0
-        return self.counterHitEffects.cornerStick + fatal
+        if self.counterHitEffects.cornerStick is not None:
+            return self.counterHitEffects.cornerStick + fatal
+
+        if self.get_corner_stick() is not None:
+            return self.get_corner_stick() + fatal
+
+        return None
 
     def get_slide(self):
-        if self.normalHitEffects.slide is not None:
-            return self.normalHitEffects.slide
-        return None
+        return self.normalHitEffects.slide
 
     def get_slide_ch(self):
         fatal_bonus = 3 if self.counterHitEffects.fatal else 0
         if self.counterHitEffects.slide is not None:
             return self.counterHitEffects.slide + fatal_bonus
 
+        if self.get_slide() is not None:
+            return self.get_slide() + fatal_bonus
+
         return None
+
+    def get_knockdown(self):
+        return self.normalHitEffects.knockdown
+
+    def get_knockdown_ch(self):
+        if self.counterHitEffects.knockdown is not None:
+            return self.counterHitEffects.knockdown
+
+        return self.get_knockdown()
+
+    def get_ground_bounce(self):
+        return self.normalHitEffects.groundBounce
+
+    def get_ground_bounce_ch(self):
+        if self.counterHitEffects.groundBounce is not None:
+            return self.counterHitEffects.groundBounce
+
+        return self.get_ground_bounce()
+
+    def get_wall_bounce_type(self):
+        return self.normalHitEffects.wallBounceType
+
+    def get_wall_bounce_type_ch(self):
+        if self.counterHitEffects.wallBounceType is not None:
+            return self.counterHitEffects.wallBounceType
+
+        return self.get_wall_bounce_type()
+
+    def get_wall_bounce(self):
+        return self.normalHitEffects.wallBounce
+
+    def get_wall_bounce_ch(self):
+        if self.counterHitEffects.wallBounce is not None:
+            return self.counterHitEffects.wallBounce
+
+        return self.get_wall_bounce()
 
     def get_p1(self):
         if self.p1 is None:
@@ -303,7 +301,7 @@ class AttackInfo:
 class HitEffects:
     def __init__(self, hitstun=None, untech=None, ground_hit_ani=None, air_hit_ani=None, knockdown=None,
                  slide_time=None, hitstun_after_wall_bounce=None, stagger=None, ground_bounce=None,
-                 ground_bounce_type=None, wall_bounce=None, corner_bounce_type=None,
+                 wall_bounce=None, corner_bounce_type=None,
                  corner_stick=None, stagger_fall_start=None, fatal=None):
         self.hitstun = hitstun
         self.untech = untech
@@ -315,7 +313,6 @@ class HitEffects:
         self.stagger = stagger
         self.staggerFallStart = stagger_fall_start
         self.groundBounce = ground_bounce
-        self.groundBounceType = ground_bounce_type
         self.wallBounce = wall_bounce
         self.cornerBounceType = corner_bounce_type
         self.cornerStick = corner_stick
@@ -340,8 +337,6 @@ class HitEffects:
             self.stagger = other.stagger
         if other.staggerFallStart is not None:
             self.staggerFallStart = other.staggerFallStart
-        if other.groundBounceType is not None:
-            self.groundBounceType = other.groundBounceType
         if other.groundBounce is not None:
             self.groundBounce = other.groundBounce
         if other.wallBounce is not None:
@@ -360,9 +355,8 @@ class HitEffects:
                self.airHitAni == other.airHitAni and self.knockdown == other.knockdown and self.slide == other.slide and \
                self.hitstunAfterWallBounce == other.hitstunAfterWallBounce and self.stagger == other.stagger and \
                self.staggerFallStart == other.staggerFallStart and self.groundBounce == other.groundBounce and \
-               self.groundBounceType == other.groundBounceType and self.wallBounce == other.wallBounce and \
-               self.cornerBounceType == other.cornerBounceType and self.cornerStick == other.cornerStick and \
-               self.fatal == other.fatal
+               self.wallBounce == other.wallBounce and self.cornerBounceType == other.cornerBounceType and \
+               self.cornerStick == other.cornerStick and self.fatal == other.fatal
 
 
 class Abstract:

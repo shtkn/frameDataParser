@@ -144,14 +144,15 @@ def create_hitstun_value(attack_info):
 
 def create_hitstun_ch_value(attack_info):
     ch_hit_effects = attack_info.counterHitEffects
+    ch_hit_ani = attack_info.get_ground_hit_ani_ch()
     text = ""
-    if ch_hit_effects.groundHitAni == 0 or ch_hit_effects.groundHitAni is None:
+    if ch_hit_ani == 0 or ch_hit_ani is None:
         text = str(attack_info.get_hitstun_ch())
-    elif ch_hit_effects.groundHitAni == 2:
+    elif ch_hit_ani == 2:
         text = "Stagger " + str(attack_info.get_stagger_ch())
-    elif ch_hit_effects.groundHitAni == 3:  # forces crouch. so far we don't do anything with this info
+    elif ch_hit_ani == 3:  # forces crouch. so far we don't do anything with this info
         text = str(attack_info.get_hitstun_ch())
-    elif ch_hit_effects.groundHitAni == 6:
+    elif ch_hit_ani == 6:
         # spin duration = hitstun, falling duration = 16
         text = "Spin Fall " + str(attack_info.get_hitstun_ch() + 16)
     else:
@@ -162,10 +163,9 @@ def create_hitstun_ch_value(attack_info):
 def create_untech_value(attack_info):
     hit_effects = attack_info.normalHitEffects
     text = ""
-    if hit_effects.airHitAni == 0 or hit_effects.airHitAni is None:
-        text = str(attack_info.get_untech())
+    text = str(attack_info.get_untech())
 
-    if hit_effects.groundBounce is not None and hit_effects.groundBounce > 0:
+    if attack_info.get_ground_bounce() is not None and attack_info.get_ground_bounce() > 0:
         text = text + " + GBounce"
     if hit_effects.airHitAni == 12 or hit_effects.groundHitAni == 12 or hit_effects.wallBounce is not None:
         text = text + " + WBounce"
@@ -175,57 +175,42 @@ def create_untech_value(attack_info):
         text = text + " + WStick"
         if hit_effects.cornerStick > 0:
             text = text + " " + str(attack_info.get_corner_stick())
-    if hit_effects.slide is not None and hit_effects.slide > 0:
+    if attack_info.get_slide() is not None and attack_info.get_slide() > 0:
         text = text + " + Slide " + str(attack_info.get_slide())
-    if hit_effects.knockdown is not None and hit_effects.knockdown > 0:
-        text = text + " + Down " + str(hit_effects.knockdown)
+    if attack_info.get_knockdown() is not None and attack_info.get_knockdown() > 0:
+        text = text + " + Down " + str(attack_info.get_knockdown())
 
     return text
 
 
 def create_untech_ch_value(attack_info):
-    hit_effects = attack_info.counterHitEffects
-    text = ""
-    if hit_effects.airHitAni == 0 or hit_effects.airHitAni is None:
-        text = str(attack_info.get_untech_ch())
+    text = str(attack_info.get_untech_ch())
 
-    if hit_effects.groundBounce is not None and hit_effects.groundBounce > 0:
+    ch_hit_ani = attack_info.get_air_hit_ani_ch()
+
+    ground_bounce_ch = attack_info.get_ground_bounce_ch()
+    if ground_bounce_ch is not None and ground_bounce_ch > 0:
         text = text + " + GBounce"
-    if hit_effects.airHitAni == 12 or hit_effects.groundHitAni == 12 or hit_effects.wallBounce is not None:
+
+    wall_bounce_ch = attack_info.get_wall_bounce_ch()
+    if ch_hit_ani == 12 or wall_bounce_ch is not None:
         text = text + " + WBounce"
-        if hit_effects.wallBounce > 0:
-            text = text + " " + str(hit_effects.wallBounce)
-    if hit_effects.cornerStick is not None:
+        if wall_bounce_ch > 0:
+            text = text + " " + str(wall_bounce_ch)
+
+    corner_stick = attack_info.get_corner_stick_ch()
+    if corner_stick is not None:
         text = text + " + WStick"
-        if hit_effects.cornerStick > 0:
-            text = text + " " + str(attack_info.get_corner_stick_ch())
-    if hit_effects.slide is not None and hit_effects.slide > 0:
-        text = text + " + Slide " + str(attack_info.get_slide_ch())
-    if hit_effects.knockdown is not None and hit_effects.knockdown > 0:
-        text = text + " + Down " + str(hit_effects.knockdown)
+        if corner_stick > 0:
+            text = text + " " + str(corner_stick)
 
-    return text
+    slide_ch = attack_info.get_slide_ch()
+    if slide_ch is not None and slide_ch > 0:
+        text = text + " + Slide " + str(slide_ch)
 
-
-def create_untech_helper(hit_effects, base_untech):
-    text = ""
-    if hit_effects.airHitAni == 0 or hit_effects.airHitAni is None:
-        text = str(base_untech)
-
-    if hit_effects.groundBounce is not None and hit_effects.groundBounce > 0:
-        text = text + " + GBounce"
-    if hit_effects.airHitAni == 12 or hit_effects.groundHitAni == 12 or hit_effects.wallBounce is not None:
-        text = text + " + WBounce"
-        if hit_effects.wallBounce > 0:
-            text = text + " " + str(hit_effects.wallBounce)
-    if hit_effects.cornerStick is not None:
-        text = text + " + WStick"
-        if hit_effects.cornerStick > 0:
-            text = text + " " + str(hit_effects.cornerStick)
-    if hit_effects.slide is not None and hit_effects.slide > 0:
-        text = text + " + Slide " + str(hit_effects.slide)
-    if hit_effects.knockdown is not None and hit_effects.knockdown > 0:
-        text = text + " + Down " + str(hit_effects.knockdown)
+    knockdown_ch = attack_info.get_knockdown_ch()
+    if knockdown_ch is not None and knockdown_ch > 0:
+        text = text + " + Down " + str(knockdown_ch)
 
     return text
 
