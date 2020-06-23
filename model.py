@@ -170,7 +170,7 @@ class AttackInfo:
 
         if self.attackLevel is not None:
             return ATTACK_LEVEL["staggerFallStart"][self.attackLevel]
-        return None
+        return 999999
 
     def get_stagger_fall_start_ch(self):
         if self.counterHitEffects.staggerFallStart is not None:
@@ -179,7 +179,7 @@ class AttackInfo:
         if self.get_stagger_fall_start() is not None:
             return int(self.get_stagger_fall_start() * 1.5)
 
-        return None
+        return 999999
 
     def get_corner_stick(self):
         return self.normalHitEffects.cornerStick
@@ -226,11 +226,11 @@ class AttackInfo:
         return self.get_ground_bounce()
 
     def get_wall_bounce_type(self):
-        return self.normalHitEffects.wallBounceType
+        return self.normalHitEffects.isWallBounce
 
     def get_wall_bounce_type_ch(self):
-        if self.counterHitEffects.wallBounceType is not None:
-            return self.counterHitEffects.wallBounceType
+        if self.counterHitEffects.isWallBounce is not None:
+            return self.counterHitEffects.isWallBounce
 
         return self.get_wall_bounce_type()
 
@@ -301,7 +301,7 @@ class AttackInfo:
 class HitEffects:
     def __init__(self, hitstun=None, untech=None, ground_hit_ani=None, air_hit_ani=None, knockdown=None,
                  slide_time=None, hitstun_after_wall_bounce=None, stagger=None, ground_bounce=None,
-                 wall_bounce=None, corner_bounce_type=None,
+                 wall_bounce=None, is_wall_bounce=None, corner_bounce_type=None,
                  corner_stick=None, stagger_fall_start=None, fatal=None):
         self.hitstun = hitstun
         self.untech = untech
@@ -314,6 +314,7 @@ class HitEffects:
         self.staggerFallStart = stagger_fall_start
         self.groundBounce = ground_bounce
         self.wallBounce = wall_bounce
+        self.isWallBounce = is_wall_bounce
         self.cornerBounceType = corner_bounce_type
         self.cornerStick = corner_stick
         self.fatal = fatal
@@ -355,7 +356,8 @@ class HitEffects:
                self.airHitAni == other.airHitAni and self.knockdown == other.knockdown and self.slide == other.slide and \
                self.hitstunAfterWallBounce == other.hitstunAfterWallBounce and self.stagger == other.stagger and \
                self.staggerFallStart == other.staggerFallStart and self.groundBounce == other.groundBounce and \
-               self.wallBounce == other.wallBounce and self.cornerBounceType == other.cornerBounceType and \
+               self.wallBounce == other.wallBounce and self.wallBounce == other.wallBounce and \
+               self.isWallBounce == other.isWallBounce and self.cornerBounceType == other.cornerBounceType and \
                self.cornerStick == other.cornerStick and self.fatal == other.fatal
 
 

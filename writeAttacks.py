@@ -131,30 +131,46 @@ def create_hitstun_value(attack_info):
     if hit_effects.groundHitAni == 0 or hit_effects.groundHitAni is None:
         text = str(attack_info.get_hitstun())
     elif hit_effects.groundHitAni == 2:
-        text = "Stagger " + str(attack_info.get_stagger())
+        # TODO if stagger is longer than stagger fall start + 23, then they will hit the ground.
+        # Call this "Stagger Fall + {crumple duration + 24}"
+        if attack_info.get_stagger() > attack_info.get_stagger_fall_start():
+            text = "Stagger Fall " + str(attack_info.get_stagger_fall_start() + 23)
+        else:
+            text = "Stagger " + str(attack_info.get_stagger())
+        if attack_info.get_knockdown() is not None and attack_info.get_knockdown() > 0: # append knockdown too
+            text = text + " + Down " + str(attack_info.get_knockdown())
     elif hit_effects.groundHitAni == 3:  # forces crouch. so far we don't do anything with this info
         text = str(attack_info.get_hitstun())
     elif hit_effects.groundHitAni == 6:
-        # spin duration = hitstun, falling duration = 16
+        # spin duration = hitstun, falling animation duration = 16
         text = "Spin Fall " + str(attack_info.get_hitstun() + 16)
+        if attack_info.get_knockdown() is not None and attack_info.get_knockdown() > 0: # append knockdown too
+            text = text + " + Down " + str(attack_info.get_knockdown())
     else:
         text = "Launch"
     return text
 
 
 def create_hitstun_ch_value(attack_info):
-    ch_hit_effects = attack_info.counterHitEffects
     ch_hit_ani = attack_info.get_ground_hit_ani_ch()
     text = ""
     if ch_hit_ani == 0 or ch_hit_ani is None:
         text = str(attack_info.get_hitstun_ch())
     elif ch_hit_ani == 2:
-        text = "Stagger " + str(attack_info.get_stagger_ch())
+        if attack_info.get_stagger_fall_start_ch() is not None and \
+                attack_info.get_stagger_ch() > attack_info.get_stagger_fall_start_ch():
+            text = "Stagger Fall " + str(attack_info.get_stagger_fall_start_ch() + 23)
+        else:
+            text = "Stagger " + str(attack_info.get_stagger_ch())
+        if attack_info.get_knockdown_ch() is not None and attack_info.get_knockdown_ch() > 0:  # append knockdown too
+            text = text + " + Down " + str(attack_info.get_knockdown_ch())
     elif ch_hit_ani == 3:  # forces crouch. so far we don't do anything with this info
         text = str(attack_info.get_hitstun_ch())
     elif ch_hit_ani == 6:
         # spin duration = hitstun, falling duration = 16
         text = "Spin Fall " + str(attack_info.get_hitstun_ch() + 16)
+        if attack_info.get_knockdown_ch() is not None and attack_info.get_knockdown_ch() > 0:  # append knockdown too
+            text = text + " + Down " + str(attack_info.get_knockdown_ch())
     else:
         text = "Launch"
     return text
@@ -167,12 +183,16 @@ def create_untech_value(attack_info):
 
     if attack_info.get_ground_bounce() is not None and attack_info.get_ground_bounce() > 0:
         text = text + " + GBounce"
-    if hit_effects.airHitAni == 12 or hit_effects.groundHitAni == 12 or hit_effects.wallBounce is not None:
+    if hit_effects.isWallBounce:
         text = text + " + WBounce"
         if hit_effects.wallBounce > 0:
             text = text + " " + str(hit_effects.wallBounce)
-    if hit_effects.cornerStick is not None:
-        text = text + " + WStick"
+    if hit_effects.cornerBounceType == 0:
+        text = text + " + WBounce"  # should be corner bounce. "CBounce"?
+        if hit_effects.wallBounce > 0:
+            text = text + " " + str(hit_effects.wallBounce)
+    elif hit_effects.cornerBounceType == 1 and hit_effects.cornerStick is not None:
+        text = text + " + WStick"  # should be corner stick. "CStick"?
         if hit_effects.cornerStick > 0:
             text = text + " " + str(attack_info.get_corner_stick())
     if attack_info.get_slide() is not None and attack_info.get_slide() > 0:

@@ -177,9 +177,11 @@ def parse_scr_file(source, move_list, effect_list):
             elif "Unknown9178(" in line:
                 is_wall_bounce = int(line[line.index("(") + 1:line.index(")")])
                 state.isWallBounce = is_wall_bounce == 1
+                state.attackInfo.normalHitEffects.isWallBounce = state.isWallBounce
             elif "Unknown9180(" in line:
                 is_wall_bounce_ch = int(line[line.index("(") + 1:line.index(")")])
                 state.isWallBounceCH = is_wall_bounce_ch == 1
+                state.attackInfo.counterHitEffects.isWallBounce = state.isWallBounce
             elif "Unknown9156(" in line:
                 state.attackInfo.counterHitEffects.hitstun = int(line[line.index("(") + 1:line.index(")")])
             elif "AirUntechableTime(" in line:  # 9166
@@ -256,6 +258,7 @@ def parse_scr_file(source, move_list, effect_list):
                 animation_type = int(line[number_start:number_end])
                 state.attackInfo.normalHitEffects.groundHitAni = animation_type
                 if animation_type == 12:
+                    state.attackInfo.normalHitEffects.isWallBounce = True
                     state.isWallBounce = True
             elif "Unknown9324(" in line:
                 number_start = line.index("(") + 1
@@ -263,6 +266,7 @@ def parse_scr_file(source, move_list, effect_list):
                 animation_type = int(line[number_start:number_end])
                 state.attackInfo.counterHitEffects.groundHitAni = animation_type
                 if animation_type == 12:
+                    state.attackInfo.counterHitEffects.isWallBounce = True
                     state.isWallBounceCH = True
             elif "Unknown2036(" in line:
                 flash_start = line.index("(") + 1
@@ -528,7 +532,7 @@ if __name__ == "__main__":
     test_target_dir = "."
     test_file_list = ["testfile"]
 
-    source_dir = test_source_dir
-    target_dir = test_target_dir
-    file_list = test_file_list
+    source_dir = bbcf_source_dir
+    target_dir = bbcf_target_dir
+    file_list = bbcf_file_list
     parse_files(source_dir, target_dir, file_list)

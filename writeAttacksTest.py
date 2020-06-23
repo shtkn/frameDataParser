@@ -151,23 +151,39 @@ class TestWrite(unittest.TestCase):
     def test_get_untech_with_wallbounce_text(self):
         info = AttackInfo()
         info.normalHitEffects.untech = 10
+        info.normalHitEffects.isWallBounce = True
         info.normalHitEffects.wallBounce = 0
         self.assertEqual("10 + WBounce", create_untech_value(info))
 
         info = AttackInfo()
         info.normalHitEffects.untech = 10
+        info.normalHitEffects.isWallBounce = True
         info.normalHitEffects.wallBounce = 10
+        self.assertEqual("10 + WBounce 10", create_untech_value(info))
+
+    def test_get_untech_with_cornerbounce_text(self):
+        info = AttackInfo()
+        info.normalHitEffects.untech = 10
+        info.normalHitEffects.cornerBounceType = 0
+        self.assertEqual("10 + WBounce", create_untech_value(info))
+
+        info = AttackInfo()
+        info.normalHitEffects.untech = 10
+        info.normalHitEffects.wallBounce = 10
+        info.normalHitEffects.cornerBounceType = 0
         self.assertEqual("10 + WBounce 10", create_untech_value(info))
 
     def test_get_untech_with_cornerstick_text(self):
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.cornerStick = 0
+        info.normalHitEffects.cornerBounceType = 1
         self.assertEqual("10 + WStick", create_untech_value(info))
 
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.cornerStick = 10
+        info.normalHitEffects.cornerBounceType = 1
         self.assertEqual("10 + WStick 10", create_untech_value(info))
 
     def test_get_untech_with_knockdown_text(self):
@@ -236,6 +252,7 @@ class TestWrite(unittest.TestCase):
         info.normalHitEffects.untech = 10
         info.normalHitEffects.knockdown = 50
         info.normalHitEffects.slide = 7
+        info.normalHitEffects.cornerBounceType = 1
         info.normalHitEffects.cornerStick = 0
         self.assertEqual("10 + WStick + Slide 7 + Down 50", create_untech_value(info))
 
