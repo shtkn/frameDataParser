@@ -23,7 +23,7 @@ class State:
         self.disableAttackboxesThisFrame = False
         self.isNewHit = True
         self.attackInfo = AttackInfo()
-        self.attackInfo.normalHitEffects = HitEffects(ground_hit_ani=0, air_hit_ani=0)
+        self.attackInfo.normalHitEffects = HitEffects()
         self.exitState = False
         self.landingRecovery = 0
         self.isSubroutine = False
@@ -55,8 +55,8 @@ class State:
             self.landingRecovery = None
             self.isSubroutine = False
             self.attackInfo = AttackInfo()
-            self.attackInfo.groundHitAni = 0
-            self.attackInfo.airHitAni = 0
+            self.attackInfo.groundHitAni = None
+            self.attackInfo.airHitAni = None
             self.isInv = False
             self.invType = 0  # Inv or Guard
             self.invAttr = [True, True, True, True, True]  # Head, Body, Foot, Proj, Throw

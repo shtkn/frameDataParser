@@ -51,10 +51,14 @@ class AttackInfo:
         self.bonusHitstop = other.bonusHitstop if other.bonusHitstop is not None else self.bonusHitstop
         self.bonusHitstopCH = other.bonusHitstopCH if other.bonusHitstopCH is not None else self.bonusHitstopCH
         self.attribute = copy.copy(other.attribute) if other.attribute is not None else self.attribute
-        self.normalHitEffects = copy.copy(
-            other.normalHitEffects) if other.normalHitEffects is not None else self.normalHitEffects
-        self.counterHitEffects = copy.copy(
-            other.counterHitEffects) if other.counterHitEffects is not None else self.counterHitEffects
+        if self.normalHitEffects is None:
+            self.normalHitEffects = copy.copy(other.normalHitEffects)
+        elif other.normalHitEffects is not None:
+            self.normalHitEffects.override_non_none_values(other.normalHitEffects)
+        if self.counterHitEffects is None:
+            self.counterHitEffects = copy.copy(other.counterHitEffects)
+        elif other.counterHitEffects is not None:
+            self.counterHitEffects.override_non_none_values(other.counterHitEffects)
 
     def __str__(self):
         to_return = "damage=" + str(self.damage) + "p1=" + str(self.p1) + "p2=" + str(self.p2)

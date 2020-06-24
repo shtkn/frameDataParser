@@ -40,8 +40,6 @@ def Monsho_AtkData():
         subroutine.attackInfo.p1 = 70
         subroutine.attackInfo.p2 = 90
         subroutine.attackInfo.attackLevel = 1
-        subroutine.attackInfo.normalHitEffects.groundHitAni = 0
-        subroutine.attackInfo.normalHitEffects.airHitAni = 0
         subroutine.landingRecovery = 0
         self.assertEquals(effect_list["Monsho_AtkData"], subroutine)
 
@@ -74,8 +72,7 @@ def NmlAtk5X():
         expected.frame_chunks = [WaitFrames(7),
                                  ActiveFrames(5, info=AttackInfo(None, attack_level=3, blockstun=10, hitstop=10, p2once=None,
                                                                  attribute=[False, True, False, False, False],
-                                                                 normal_hit=HitEffects(ground_hit_ani=0,
-                                                                                       air_hit_ani=0)
+                                                                 normal_hit=HitEffects()
                                                                  )),
                                  WaitFrames(9)
                                  ]
@@ -113,12 +110,12 @@ def NmlAtk5X():
                                  ActiveFrames(2,
                                               info=AttackInfo(None, attack_level=3,
                                                               attribute=[False, True, False, False, False],
-                                                              normal_hit=HitEffects(ground_hit_ani=0, air_hit_ani=0))
+                                                              normal_hit=HitEffects())
                                               ),
                                  ActiveFrames(3,
                                               info=AttackInfo(None, attack_level=3,
                                                               attribute=[False, True, False, False, False],
-                                                              normal_hit=HitEffects(ground_hit_ani=0, air_hit_ani=0))
+                                                              normal_hit=HitEffects())
                                               ),
                                  WaitFrames(9)
                                  ]
@@ -152,7 +149,7 @@ def NmlAtk5X():
         expected.frame_chunks = [WaitFrames(7),
                                  ActiveFrames(5, info=AttackInfo(None, attack_level=3,
                                                                  attribute=[False, True, False, False, False],
-                                                                 normal_hit=HitEffects(ground_hit_ani=0, air_hit_ani=0))
+                                                                 normal_hit=HitEffects())
                                               ),
                                  WaitFrames(9)
                                  ]
@@ -441,13 +438,13 @@ def NmlAtk5X():
         expected.frame_chunks = [WaitFrames(7),
                                  ActiveFrames(5, info=AttackInfo(500, attack_level=3,
                                                                  attribute=[False, True, False, False, False],
-                                                                 normal_hit=HitEffects(ground_hit_ani=0, air_hit_ani=0))
+                                                                 normal_hit=HitEffects())
                                               ),
                                  WaitFrames(3),
                                  ActiveFrames(5,
                                               info=AttackInfo(1000, attack_level=3,
                                                               attribute=[False, True, False, False, False],
-                                                              normal_hit=HitEffects(ground_hit_ani=0, air_hit_ani=0))
+                                                              normal_hit=HitEffects())
                                               ),
                                  WaitFrames(9)
                                  ]
@@ -501,18 +498,18 @@ def NmlAtk5X():
         expected.frame_chunks = [WaitFrames(7),
                                  ActiveFrames(5, info=AttackInfo(500, attack_level=3, p1=50, p2=75, p2once=True,
                                                                  attribute=[False, True, False, False, False],
-                                                                 normal_hit=HitEffects(ground_hit_ani=0, air_hit_ani=0))
+                                                                 normal_hit=HitEffects())
                                               ),
                                  WaitFrames(3),
                                  ActiveFrames(5,
                                               info=AttackInfo(1000, attack_level=3, p1=80, p2=75, p2once=True,
                                                               attribute=[False, True, False, False, False],
-                                                                 normal_hit=HitEffects(ground_hit_ani=0, air_hit_ani=0))
+                                                                 normal_hit=HitEffects())
                                               ),
                                  ActiveFrames(1,
                                               info=AttackInfo(1000, attack_level=3, p1=55, p2=15, p2once=True,
                                                               attribute=[False, True, False, False, False],
-                                                                 normal_hit=HitEffects(ground_hit_ani=0, air_hit_ani=0))
+                                                                 normal_hit=HitEffects())
                                               ),
                                  WaitFrames(9)
                                  ]
@@ -619,10 +616,66 @@ def NmlAtk5X():
                                  ActiveFrames(5, info=AttackInfo(900, 70, 90, 0, None, 11, 6,
                                                                  attack_level=1,
                                                                  attribute=[False, True, False, False, False],
-                                                                 normal_hit=HitEffects(ground_hit_ani=0,
-                                                                                       air_hit_ani=0,
-                                                                                       hitstun=17,
+                                                                 normal_hit=HitEffects(hitstun=17,
                                                                                        untech=21)
+                                                                 )),
+                                 WaitFrames(9)
+                                 ]
+        self.assertEqual(expected, move_list["NmlAtk5X"])
+
+    def test_parse_attack_with_subroutine_in_immediate_that_does_nothing(self):
+        state = """@Subroutine
+        def Init_AtkData():
+            Unknown7009(1)
+            Unknown7009(1)
+            Unknown7009(1)
+            Unknown7009(1)
+            
+        @State
+        def NmlAtk5X():
+
+            def upon_IMMEDIATE():
+                AttackDefaults_StandingNormal()
+                AttackLevel_(1)
+                AttackP1(70)
+                AttackP2(90)
+                Damage(500)
+                Hitstop(6)
+                Unknown9154(17)
+                AirUntechableTime(21)
+                GroundedHitstunAnimation(5)
+                Unknown11028(11)
+                Unknown9016(1)
+                CallSubroutine('Init_AtkData')
+                Damage(900)
+            sprite('es201_00', 1)	# 1-1
+            sprite('es201_01', 2)	# 2-3
+            sprite('es201_02', 2)	# 4-5
+            SFX_0('006_swing_blade_0')
+            sprite('es201_03', 2)	# 6-7
+            Unknown7009(1)
+            sprite('es201_04', 5)	# 8-12	 **attackbox here**
+            sprite('es201_05', 3)	# 13-15
+            Recovery()
+            Unknown2063()
+            sprite('es201_06', 3)	# 16-18
+            sprite('es201_07', 3)	# 19-21"""
+        buf = StringIO.StringIO(state)
+        effect_list = OrderedDict()
+        move_list = OrderedDict()
+        move_list = parse_scr_file(buf, move_list, effect_list)
+
+        self.assertEqual(len(move_list), 1)
+        self.assertTrue("NmlAtk5X" in move_list)
+        expected = Move()
+        expected.frame_chunks = [WaitFrames(7),
+                                 ActiveFrames(5, info=AttackInfo(900, 70, 90, 0, None, 11, 6,
+                                                                 attack_level=1,
+                                                                 attribute=[False, True, False, False, False],
+                                                                 normal_hit=HitEffects(ground_hit_ani=5,
+                                                                                       hitstun=17,
+                                                                                       untech=21),
+                                                                 counter_hit=HitEffects()
                                                                  )),
                                  WaitFrames(9)
                                  ]
@@ -659,7 +712,7 @@ def NmlAtk5A():
                                  ActiveFrames(2,
                                               info=AttackInfo(None, attack_level=2,
                                                               attribute=[False, True, False, False, False],
-                                                                 normal_hit=HitEffects(ground_hit_ani=0, air_hit_ani=0))
+                                                                 normal_hit=HitEffects())
                                               ),
                                  WaitFrames(19)
                                  ]
@@ -787,7 +840,7 @@ def NmlAtk5A():
         hit_simulations = simulate_on_block(move_list, effect_list)
         expected = AttackInfo(900, p1=70, attack_level=1,
                               attribute=[False, True, False, False, False],
-                              normal_hit=HitEffects(ground_hit_ani=0, air_hit_ani=0))
+                              normal_hit=HitEffects())
         self.assertEqual(expected, hit_simulations["NmlAtk5A"].frame_chunks[1].info)
 
     def test_parse_function_with_one_sprite_line(self):
@@ -830,3 +883,64 @@ def NmlAtk5A():
         self.assertEqual(5, inv_values[1])
         self.assertEqual(1, inv_values[2])
         self.assertEqual([True, True, True, True, False], inv_values[3])
+
+    # util method to help make debugging what's different between objects easier to detect.
+    # Tests should still use normal assertEquals, only use these when debugging or else we may
+    # have problems with outdated compare methods.
+
+    def compare_move_util(self, first, second):
+        self.assertEqual(first.landing_recovery, second.landing_recovery)
+        self.assertEquals(first.superflash_list, second.superflash_list)
+        self.assertEquals(first.hardcoded_inv_list, second.hardcoded_inv_list)
+        self.compare_frame_chunks_util(first.frame_chunks, second.frame_chunks, "move.frame_chunks")
+        self.assertEqual(len(first.frame_chunks), len(second.frame_chunks))
+        for i in range(len(first.additional_chunks)):
+            self.compare_frame_chunks_util(first.additional_chunks[i], second.additional_chunks[i],
+                                           "move.additonal_chunks[" + str(i) + "]")
+
+    def compare_frame_chunks_util(self, first, second, name=""):
+        self.assertEqual(len(first), len(second))
+        for i in range(len(first)):
+            if first[i] != second[i] and isinstance(first[i], ActiveFrames) and isinstance(second[i], ActiveFrames):
+                print "Unequal Active Frame Chunk detected at " + name + "[" + str(i) + "]"
+                self.assertEqual(first[i].is_new_hit, second[i].is_new_hit, "is_new_hit not equal")
+                self.compare_attack_info(first[i].info, second[i].info)
+            if first[i] != second[i] and isinstance(first[i], AbstractFrames) and isinstance(second[i], AbstractFrames):
+                print "Unequal Abstract Frame Chunk detected at " + name + "[" + str(i) + "]"
+                self.assertEqual(first[i].inv_type, second[i].inv_type, "inv_type not equal")
+                self.assertEqual(first[i].inv_attr, second[i].inv_attr, "inv_attr not equal")
+                self.assertEqual(first[i].duration, second[i].duration, "duration not equal")
+            else:
+                self.assertEqual(first[i], second[i], "Unequal Object detected at [" + str(i) + "]")
+
+    def compare_attack_info(self, first, second):
+        self.assertEqual(first.damage, second.damage, "Damage not equal")
+        self.assertEqual(first.p1, second.p1, "p1 not equal")
+        self.assertEqual(first.p2, second.p2, "p2 not equal")
+        self.assertEqual(first.minDamage, second.minDamage, "minDamage not equal")
+        self.assertEqual(first.p2Once, second.p2Once, "p2Once not equal")
+        self.assertEqual(first.blockstun, second.blockstun, "blockstun not equal")
+        self.assertEqual(first.attackLevel, second.attackLevel, "attackLevel not equal")
+        self.assertEqual(first.hitstop, second.hitstop, "hitstop not equal")
+        self.assertEqual(first.bonusHitstop, second.bonusHitstop, "bonusHitstop not equal")
+        self.assertEqual(first.bonusHitstopCH, second.bonusHitstopCH, "bonusHitstopCH not equal")
+        self.assertEqual(first.attribute, second.attribute, "attribute not equal")
+        self.compare_hit_effect(first.normalHitEffects, second.normalHitEffects)
+        self.compare_hit_effect(first.counterHitEffects, second.counterHitEffects)
+
+    def compare_hit_effect(self, first, second):
+        self.assertEqual(first.hitstun, second.hitstun, "hitstun not equal")
+        self.assertEqual(first.untech, second.untech, "untech not equal")
+        self.assertEqual(first.groundHitAni, second.groundHitAni, "groundHitAni not equal")
+        self.assertEqual(first.airHitAni, second.airHitAni, "airHitAni not equal")
+        self.assertEqual(first.knockdown, second.knockdown, "knockdown not equal")
+        self.assertEqual(first.slide, second.slide, "slide not equal")
+        self.assertEqual(first.hitstunAfterWallBounce, second.hitstunAfterWallBounce,
+                         "hitstunAfterWallBounce not equal")
+        self.assertEqual(first.wallStick, second.wallStick, "wallStickTime not equal")
+        self.assertEqual(first.stagger, second.stagger, "stagger not equal")
+        self.assertEqual(first.staggerFallStart, second.staggerFallStart, "crumpleStart not equal")
+        self.assertEqual(first.spinFall, second.spinFall, "spinFall not equal")
+        self.assertEqual(first.groundBounce, second.groundBounce, "groundBounce not equal")
+        self.assertEqual(first.wallBounce, second.wallBounce, "wallBounce not equal")
+        self.assertEqual(first.fatal, second.fatal, "fatal not equal")
