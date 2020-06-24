@@ -60,7 +60,7 @@ def write_file(moves_on_block, target):
         untechCH = create_untech_ch_text(damage_list)
 
         target.write("\n |damage=" + damage + "|p1=" + p1 + "|p2=" + p2)
-        target.write("\n |level=" + level + "|attribute=" + attribute + "|guard=|invul=" + inv_text)
+        target.write("\n |level=" + level + "|attribute=" + attribute + "|guard=|inv=" + inv_text)
         target.write(
             "\n |startup=" + str(startup) + "|active=" + middle + "|recovery=" + recovery + "|frameAdv=" + frame_adv)
         target.write(
