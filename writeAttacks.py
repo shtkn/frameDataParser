@@ -59,14 +59,14 @@ def write_file(moves_on_block, target):
         hitstunCH = create_hitstun_ch_text(damage_list)
         untechCH = create_untech_ch_text(damage_list)
 
-        target.write("\n |damage=" + damage + "|p1=" + p1 + "|p2=" + p2)
-        target.write("\n |level=" + level + "|attribute=" + attribute + "|guard=|inv=" + inv_text)
+        target.write("\n|damage=" + damage + "|p1=" + p1 + "|p2=" + p2)
+        target.write("\n|level=" + level + "|attribute=" + attribute + "|guard=|inv=" + inv_text)
         target.write(
-            "\n |startup=" + str(startup) + "|active=" + middle + "|recovery=" + recovery + "|frameAdv=" + frame_adv)
+            "\n|startup=" + str(startup) + "|active=" + middle + "|recovery=" + recovery + "|frameAdv=" + frame_adv)
         target.write(
-            "\n |blockstun=" + blockstun + "|blockstop=" + blockstop + "|hitstop=" + hitstop + "|hitstopCH=" + hitstopCH)
-        target.write("\n |groundHit=" + hitstun + "|airHit=" + untech + "|groundCH=" + hitstunCH + "|airCH=" + untechCH)
-        target.write("\n |hitbox=")
+            "\n|blockstun=" + blockstun + "|blockstop=" + blockstop + "|hitstop=" + hitstop + "|hitstopCH=" + hitstopCH)
+        target.write("\n|groundHit=" + hitstun + "|airHit=" + untech + "|groundCH=" + hitstunCH + "|airCH=" + untechCH)
+        target.write("\n|hitbox=")
         target.write("\n}}\n")
 
 
@@ -134,12 +134,14 @@ def create_hitstun_value(attack_info):
         # TODO if stagger is longer than stagger fall start + 23, then they will hit the ground.
         # Call this "Stagger Fall + {crumple duration + 24}"
         if attack_info.get_stagger() > attack_info.get_stagger_fall_start():
-            text = "Stagger Fall " + str(attack_info.get_stagger_fall_start() + 23)
+            text = "Crumple " + str(attack_info.get_stagger_fall_start() + 23)
+            if attack_info.get_knockdown() is not None and attack_info.get_knockdown() > 0: # append knockdown too
+                text = text + " + Down " + str(attack_info.get_knockdown())
         else:
-            text = "Stagger " + str(attack_info.get_stagger())
-        if attack_info.get_knockdown() is not None and attack_info.get_knockdown() > 0: # append knockdown too
-            text = text + " + Down " + str(attack_info.get_knockdown())
+            text = "Crumple " + str(attack_info.get_stagger())
     elif hit_effects.groundHitAni == 3:  # forces crouch. so far we don't do anything with this info
+        text = str(attack_info.get_hitstun())
+    elif hit_effects.groundHitAni == 4:  # forces stand. so far we don't do anything with this info
         text = str(attack_info.get_hitstun())
     elif hit_effects.groundHitAni == 6:
         # spin duration = hitstun, falling animation duration = 16
@@ -157,13 +159,14 @@ def create_hitstun_ch_value(attack_info):
     if ch_hit_ani == 0 or ch_hit_ani is None:
         text = str(attack_info.get_hitstun_ch())
     elif ch_hit_ani == 2:
+        stagger_duration = attack_info.get_stagger_ch()
         if attack_info.get_stagger_fall_start_ch() is not None and \
-                attack_info.get_stagger_ch() > attack_info.get_stagger_fall_start_ch():
-            text = "Stagger Fall " + str(attack_info.get_stagger_fall_start_ch() + 23)
+                stagger_duration > attack_info.get_stagger_fall_start_ch():
+            text = "Crumple " + str(attack_info.get_stagger_fall_start_ch() + 23)
+            if attack_info.get_knockdown_ch() is not None and attack_info.get_knockdown_ch() > 0:  # append knockdown too
+                text = text + " + Down " + str(attack_info.get_knockdown_ch())
         else:
-            text = "Stagger " + str(attack_info.get_stagger_ch())
-        if attack_info.get_knockdown_ch() is not None and attack_info.get_knockdown_ch() > 0:  # append knockdown too
-            text = text + " + Down " + str(attack_info.get_knockdown_ch())
+            text = "Crumple " + str(attack_info.get_stagger_ch())
     elif ch_hit_ani == 3:  # forces crouch. so far we don't do anything with this info
         text = str(attack_info.get_hitstun_ch())
     elif ch_hit_ani == 6:
@@ -185,12 +188,12 @@ def create_untech_value(attack_info):
         text = text + " + GBounce"
     if hit_effects.isWallBounce:
         text = text + " + WBounce"
-        if hit_effects.wallBounce > 0:
-            text = text + " " + str(hit_effects.wallBounce)
+        if attack_info.get_hitstun_after_wallbounce() > 0:
+            text = text + " " + str(attack_info.get_hitstun_after_wallbounce())
     if hit_effects.cornerBounceType == 0:
         text = text + " + WBounce"  # should be corner bounce. "CBounce"?
-        if hit_effects.wallBounce > 0:
-            text = text + " " + str(hit_effects.wallBounce)
+        if attack_info.get_hitstun_after_wallbounce() > 0:
+            text = text + " " + str(attack_info.get_hitstun_after_wallbounce())
     elif hit_effects.cornerBounceType == 1 and hit_effects.cornerStick is not None:
         text = text + " + WStick"  # should be corner stick. "CStick"?
         if hit_effects.cornerStick > 0:
@@ -198,7 +201,7 @@ def create_untech_value(attack_info):
     if attack_info.get_slide() is not None and attack_info.get_slide() > 0:
         text = text + " + Slide " + str(attack_info.get_slide())
     if attack_info.get_knockdown() is not None and attack_info.get_knockdown() > 0:
-        text = text + " + Down " + str(attack_info.get_knockdown())
+        text = text + " + Down " + str(attack_info.get_knockdown() + 13)    # 13f small bounce animation
 
     return text
 
@@ -212,7 +215,7 @@ def create_untech_ch_value(attack_info):
     if ground_bounce_ch is not None and ground_bounce_ch > 0:
         text = text + " + GBounce"
 
-    wall_bounce_ch = attack_info.get_wall_bounce_ch()
+    wall_bounce_ch = attack_info.get_hitstun_after_wallbounce_ch()
     if ch_hit_ani == 12 or wall_bounce_ch is not None:
         text = text + " + WBounce"
         if wall_bounce_ch > 0:
@@ -230,7 +233,7 @@ def create_untech_ch_value(attack_info):
 
     knockdown_ch = attack_info.get_knockdown_ch()
     if knockdown_ch is not None and knockdown_ch > 0:
-        text = text + " + Down " + str(knockdown_ch)
+        text = text + " + Down " + str(knockdown_ch + 13)    # 13f small bounce animation
 
     return text
 

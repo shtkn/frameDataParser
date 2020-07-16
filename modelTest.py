@@ -225,7 +225,7 @@ class TestModel(unittest.TestCase):
                   WaitFrames(12)
                   ]
         result = calc_frames_for_subroutine(chunks, [(2, 3)])
-        self.assertItemsEqual(('2+3Flash+0', '1(3)1', '12', 21, 27, 18, []), result)
+        self.assertItemsEqual(('2+3 Flash+0', '1(3)1', '12', 21, 27, 18, []), result)
 
     def test_simulate_hit_basic_normal(self):
         chunks = [WaitFrames(4), ActiveFrames(1, info=AttackInfo(0, blockstun=4, hitstop=4, attack_level=2)),
@@ -475,15 +475,15 @@ class TestModel(unittest.TestCase):
 
     def test_hit_effect_override_non_none_values_all_values_are_non_none(self):
         first = HitEffects()
-        second = HitEffects(10, 10, 1, 1, 10, 10, 10, 10, 10, 10, 1, 10, 10, 10)
+        second = HitEffects(10, 10, 1, 1, 10, 10, 10, 10, 10, 10, 1, 10, 10, 10, True)
         first.override_non_none_values(second)
         self.assertEqual(first, second)
 
     def test_hit_effect_override_non_none_values_all_values_are_none(self):
-        first = HitEffects(10, 10, 1, 1, 10, 10, 10, 10, 10, 10, 1, 10, 10, 10)
+        first = HitEffects(10, 10, 1, 1, 10, 10, 10, 10, 10, 10, 1, 10, 10, 10, True)
         second = HitEffects()
         first.override_non_none_values(second)
-        expected = HitEffects(10, 10, 1, 1, 10, 10, 10, 10, 10, 10, 1, 10, 10, 10)
+        expected = HitEffects(10, 10, 1, 1, 10, 10, 10, 10, 10, 10, 1, 10, 10, 10, True)
         self.assertEqual(first, expected)
 
     def test_hit_effect_override_non_none_values_all_values_are_none(self):

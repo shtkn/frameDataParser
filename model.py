@@ -13,9 +13,9 @@ ATTACK_LEVEL = {"blockstun": [9, 11, 13, 16, 18, 20],
                 "hitstopCH": [0, 0, 1, 2, 5, 8],
                 "p1": [100, 100, 100, 100, 100, 100],
                 # BBTag
-                #"p2": [65, 70, 75, 80, 85, 90],
+                "p2": [65, 70, 75, 80, 85, 90],
                 # BBCF
-                "p2": [75, 80, 85, 89, 92, 94],
+                #"p2": [75, 80, 85, 89, 92, 94],
                 "damage": [1000, 1000, 1000, 1500, 1700, 2000]}
 
 
@@ -34,9 +34,9 @@ class AttackInfo:
         self.bonusBlockstop = bonus_blockstop  # for additional hitstop the opponent experiences on block
         self.bonusHitstop = bonus_hitstop  # for additonoal hitstop the opponent experiences on hit
         self.bonusHitstopCH = bonus_counterhitstop  # for additonoal hitstop the opponent experiences on counter hit
-        self.attribute = copy.copy(attribute)
-        self.normalHitEffects = copy.copy(normal_hit) if normal_hit is not None else HitEffects()
-        self.counterHitEffects = copy.copy(counter_hit) if counter_hit is not None else HitEffects()
+        self.attribute = copy.deepcopy(attribute)
+        self.normalHitEffects = copy.deepcopy(normal_hit) if normal_hit is not None else HitEffects()
+        self.counterHitEffects = copy.deepcopy(counter_hit) if counter_hit is not None else HitEffects()
 
     def copy_non_none_values(self, other):
         self.damage = other.damage if other.damage is not None else self.damage
@@ -50,13 +50,13 @@ class AttackInfo:
         self.bonusBlockstop = other.bonusBlockstop if other.bonusBlockstop is not None else self.bonusBlockstop
         self.bonusHitstop = other.bonusHitstop if other.bonusHitstop is not None else self.bonusHitstop
         self.bonusHitstopCH = other.bonusHitstopCH if other.bonusHitstopCH is not None else self.bonusHitstopCH
-        self.attribute = copy.copy(other.attribute) if other.attribute is not None else self.attribute
+        self.attribute = copy.deepcopy(other.attribute) if other.attribute is not None else self.attribute
         if self.normalHitEffects is None:
-            self.normalHitEffects = copy.copy(other.normalHitEffects)
+            self.normalHitEffects = copy.deepcopy(other.normalHitEffects)
         elif other.normalHitEffects is not None:
             self.normalHitEffects.override_non_none_values(other.normalHitEffects)
         if self.counterHitEffects is None:
-            self.counterHitEffects = copy.copy(other.counterHitEffects)
+            self.counterHitEffects = copy.deepcopy(other.counterHitEffects)
         elif other.counterHitEffects is not None:
             self.counterHitEffects.override_non_none_values(other.counterHitEffects)
 
@@ -163,11 +163,12 @@ class AttackInfo:
         return None
 
     def get_stagger_ch(self):
+        fatal_bonus = 3 if self.counterHitEffects.fatal else 0
         if self.counterHitEffects.stagger is not None:
-            return self.counterHitEffects.stagger
+            return self.counterHitEffects.stagger + fatal_bonus
 
         if self.attackLevel is not None:
-            return self.get_stagger() * 2
+            return self.get_stagger() * 2 + fatal_bonus
 
         return None
 
@@ -201,16 +202,27 @@ class AttackInfo:
 
         return None
 
+    def get_hitstun_after_wallbounce(self):
+        return self.normalHitEffects.hitstunAfterWallBounce
+
+    def get_hitstun_after_wallbounce_ch(self):
+        if self.counterHitEffects.hitstunAfterWallBounce is not None:
+            return self.counterHitEffects.hitstunAfterWallBounce
+
+        if self.get_hitstun_after_wallbounce() is not None:
+            return self.get_hitstun_after_wallbounce()
+        return None
+
+
     def get_slide(self):
         return self.normalHitEffects.slide
 
     def get_slide_ch(self):
-        fatal_bonus = 3 if self.counterHitEffects.fatal else 0
         if self.counterHitEffects.slide is not None:
-            return self.counterHitEffects.slide + fatal_bonus
+            return self.counterHitEffects.slide
 
         if self.get_slide() is not None:
-            return self.get_slide() + fatal_bonus
+            return self.get_slide()
 
         return None
 
@@ -398,7 +410,7 @@ class ActiveFrames(AbstractFrames):
     def __init__(self, duration=0, is_new_hit=True, info=AttackInfo(0)):
         AbstractFrames.__init__(self, duration)
         self.is_new_hit = is_new_hit
-        self.info = copy.copy(info)
+        self.info = copy.deepcopy(info)
 
     def __str__(self):
         to_return = str(self.duration)
@@ -514,14 +526,14 @@ class Subroutine:
 
 def consolidate_frame_chunks(chunk_list, ignore_inv=False):
     new_chunk_list = []
-    prev_chunk = copy.copy(chunk_list[0])
+    prev_chunk = copy.deepcopy(chunk_list[0])
     for i in range(1, len(chunk_list)):
         chunk = chunk_list[i]
         if isinstance(prev_chunk, ActiveFrames) and isinstance(chunk, ActiveFrames) \
                 and (has_same_inv(prev_chunk, chunk) or ignore_inv):
             if chunk.is_new_hit:
                 new_chunk_list.append(prev_chunk)
-                prev_chunk = copy.copy(chunk)
+                prev_chunk = copy.deepcopy(chunk)
             else:
                 prev_chunk.duration += chunk.duration
         elif isinstance(prev_chunk, WaitFrames) and isinstance(chunk, WaitFrames) \
@@ -529,7 +541,7 @@ def consolidate_frame_chunks(chunk_list, ignore_inv=False):
             prev_chunk.duration += chunk.duration
         else:
             new_chunk_list.append(prev_chunk)
-            prev_chunk = copy.copy(chunk)
+            prev_chunk = copy.deepcopy(chunk)
     new_chunk_list.append(prev_chunk)
 
     return new_chunk_list
@@ -613,10 +625,10 @@ def combine_with_effects_on_block(move, effect_list):
     new_move.frame_chunks = subroutine_calls[0]
     new_move.landing_recovery = override_landing_recovery \
         if override_landing_recovery is not None else move.landing_recovery
-    new_move.superflash_list = copy.copy(move.superflash_list)
+    new_move.superflash_list = copy.deepcopy(move.superflash_list)
     if len(subroutine_calls) > 1:
         new_move.additional_chunks = subroutine_calls[1:]
-    new_move.hardcoded_inv_list = copy.copy(move.hardcoded_inv_list)
+    new_move.hardcoded_inv_list = copy.deepcopy(move.hardcoded_inv_list)
     return new_move
 
 
@@ -678,7 +690,7 @@ def calc_frames_for_subroutine(frame_chunks, superflash_list=None):
             total_superfreeze_time += superflash_duration
             post_flash_startup = startup - superflash_start
             post_flash_startup = 0 if post_flash_startup < 0 else post_flash_startup
-            startup = str(superflash_start) + "+" + str(superflash_duration) + "Flash+" + str(post_flash_startup)
+            startup = str(superflash_start) + "+" + str(superflash_duration) + " Flash+" + str(post_flash_startup)
             break
 
     if middle == "" and recovery == 0:

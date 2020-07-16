@@ -110,11 +110,26 @@ class TestWrite(unittest.TestCase):
         info.normalHitEffects.groundHitAni = 6
         self.assertEqual("Spin Fall 26", create_hitstun_value(info))
 
+    def test_get_hitstun_spinFall_with_down_text(self):
+        info = AttackInfo()
+        info.normalHitEffects.hitstun = 10
+        info.normalHitEffects.groundHitAni = 6
+        info.normalHitEffects.knockdown = 15
+        self.assertEqual("Spin Fall 26 + Down 15", create_hitstun_value(info))
+
     def test_get_hitstun_stagger_text(self):
         info = AttackInfo()
         info.normalHitEffects.stagger = 15
         info.normalHitEffects.groundHitAni = 2
-        self.assertEqual("Stagger 15", create_hitstun_value(info))
+        self.assertEqual("Crumple 15", create_hitstun_value(info))
+
+    def test_get_hitstun_stagger_down_text(self):
+        info = AttackInfo()
+        info.normalHitEffects.stagger = 99
+        info.normalHitEffects.staggerFallStart = 10
+        info.normalHitEffects.groundHitAni = 2
+        info.normalHitEffects.knockdown = 15
+        self.assertEqual("Crumple 33 + Down 15", create_hitstun_value(info))
 
     def test_get_hitstun_launch_text(self):
         info = AttackInfo()
@@ -136,7 +151,7 @@ class TestWrite(unittest.TestCase):
         info = AttackInfo()
         info.counterHitEffects.stagger = 15
         info.counterHitEffects.groundHitAni = 2
-        self.assertEqual("Stagger 15", create_hitstun_ch_value(info))
+        self.assertEqual("Crumple 15", create_hitstun_ch_value(info))
 
     def test_get_hitstun_ch_launch_text(self):
         info = AttackInfo()
@@ -152,13 +167,13 @@ class TestWrite(unittest.TestCase):
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.isWallBounce = True
-        info.normalHitEffects.wallBounce = 0
+        info.normalHitEffects.hitstunAfterWallBounce = 0
         self.assertEqual("10 + WBounce", create_untech_value(info))
 
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.isWallBounce = True
-        info.normalHitEffects.wallBounce = 10
+        info.normalHitEffects.hitstunAfterWallBounce = 10
         self.assertEqual("10 + WBounce 10", create_untech_value(info))
 
     def test_get_untech_with_cornerbounce_text(self):
@@ -169,7 +184,7 @@ class TestWrite(unittest.TestCase):
 
         info = AttackInfo()
         info.normalHitEffects.untech = 10
-        info.normalHitEffects.wallBounce = 10
+        info.normalHitEffects.hitstunAfterWallBounce = 10
         info.normalHitEffects.cornerBounceType = 0
         self.assertEqual("10 + WBounce 10", create_untech_value(info))
 
@@ -190,12 +205,12 @@ class TestWrite(unittest.TestCase):
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.knockdown = 50
-        self.assertEqual("10 + Down 50", create_untech_value(info))
+        self.assertEqual("10 + Down 63", create_untech_value(info))
 
         info = AttackInfo()
         info.normalHitEffects.untech = 10
         info.normalHitEffects.knockdown = 24
-        self.assertEqual("10 + Down 24", create_untech_value(info))
+        self.assertEqual("10 + Down 37", create_untech_value(info))
 
     def test_get_untech_with_slide_text(self):
         info = AttackInfo()
@@ -212,11 +227,13 @@ class TestWrite(unittest.TestCase):
         info = AttackInfo()
         info.counterHitEffects.untech = 10
         info.counterHitEffects.wallBounce = 0
+        info.counterHitEffects.hitstunAfterWallBounce = 0
         self.assertEqual("10 + WBounce", create_untech_ch_value(info))
 
         info = AttackInfo()
         info.counterHitEffects.untech = 10
         info.counterHitEffects.wallBounce = 10
+        info.counterHitEffects.hitstunAfterWallBounce = 10
         self.assertEqual("10 + WBounce 10", create_untech_ch_value(info))
 
     def test_get_untech_ch_with_cornerstick_text(self):
@@ -234,12 +251,12 @@ class TestWrite(unittest.TestCase):
         info = AttackInfo()
         info.counterHitEffects.untech = 10
         info.counterHitEffects.knockdown = 50
-        self.assertEqual("10 + Down 50", create_untech_ch_value(info))
+        self.assertEqual("10 + Down 63", create_untech_ch_value(info))
 
         info = AttackInfo()
         info.counterHitEffects.untech = 10
         info.counterHitEffects.knockdown = 24
-        self.assertEqual("10 + Down 24", create_untech_ch_value(info))
+        self.assertEqual("10 + Down 37", create_untech_ch_value(info))
 
     def test_get_untech_ch_with_slide_text(self):
         info = AttackInfo()
@@ -254,7 +271,7 @@ class TestWrite(unittest.TestCase):
         info.normalHitEffects.slide = 7
         info.normalHitEffects.cornerBounceType = 1
         info.normalHitEffects.cornerStick = 0
-        self.assertEqual("10 + WStick + Slide 7 + Down 50", create_untech_value(info))
+        self.assertEqual("10 + WStick + Slide 7 + Down 63", create_untech_value(info))
 
     def test_inv_text_basic(self):
         inv_text = create_inv_text(1, 10, 1, [True, False, False, False, False], [])
