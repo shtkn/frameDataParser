@@ -64,7 +64,7 @@ def write_file(moves_on_block, target):
         target.write(
             "\n|startup=" + str(startup) + "|active=" + middle + "|recovery=" + recovery + "|frameAdv=" + frame_adv)
         target.write(
-            "\n|blockstun=" + blockstun + "|blockstop=" + blockstop + "|hitstop=" + hitstop + "|hitstopCH=" + hitstopCH)
+            "\n|blockstun=" + blockstun + "|blockstop=" + blockstop + "|hitstop=" + hitstop + "|CHstop=" + hitstopCH)
         target.write("\n|groundHit=" + hitstun + "|airHit=" + untech + "|groundCH=" + hitstunCH + "|airCH=" + untechCH)
         target.write("\n|hitbox=")
         target.write("\n}}\n")

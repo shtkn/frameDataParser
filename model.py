@@ -361,6 +361,8 @@ class HitEffects:
             self.groundBounce = other.groundBounce
         if other.wallBounce is not None:
             self.wallBounce = other.wallBounce
+        if other.isWallBounce is not None:
+            self.isWallBounce = other.isWallBounce
         if other.cornerBounceType is not None:
             self.cornerBounceType = other.cornerBounceType
         if other.cornerStick is not None:
@@ -690,7 +692,7 @@ def calc_frames_for_subroutine(frame_chunks, superflash_list=None):
             total_superfreeze_time += superflash_duration
             post_flash_startup = startup - superflash_start
             post_flash_startup = 0 if post_flash_startup < 0 else post_flash_startup
-            startup = str(superflash_start) + "+" + str(superflash_duration) + " Flash+" + str(post_flash_startup)
+            startup = str(superflash_start) + "+(" + str(superflash_duration) + " Flash)+" + str(post_flash_startup)
             break
 
     if middle == "" and recovery == 0:

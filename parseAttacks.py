@@ -172,6 +172,8 @@ def parse_scr_file(source, move_list, effect_list):
                 state.attackInfo.p1 = int(line[line.index("(") + 1:line.index(")")])
             elif "AttackP2(" in line:
                 state.attackInfo.p2 = int(line[line.index("(") + 1:line.index(")")])
+            elif "Unknown9287(" in line:    # remove p2
+                state.attackInfo.p2 = None
             elif "Unknown9154(" in line or "hitstun(" in line:
                 state.attackInfo.normalHitEffects.hitstun = int(line[line.index("(") + 1:line.index(")")])
             elif "Unknown9178(" in line:
@@ -224,20 +226,26 @@ def parse_scr_file(source, move_list, effect_list):
                 # if gfx_subroutine = -1, then this gfx is on the same "thread" as this one
                 gfx_thread = int(line[number_start:number_end])
                 # print "GFX " + line[name_start:name_end]
-                frame_chunks.append(SubroutineCall(line[name_start:name_end], gfx_thread == -1))
+                gfx_name = line[name_start:name_end]
+                if gfx_name[0].isdigit():
+                    gfx_name = "__" + gfx_name
+                frame_chunks.append(SubroutineCall(gfx_name, gfx_thread == -1))
                 # run the command on line[name_start:name_end] starting at current_frame-1
             elif CALL_SUBROUTINE_STARTC in line or CALL_SUBROUTINE_STARTc in line:
                 name_start = line.index("('") + 2
                 name_end = line.index("')")
+                subroutine_name = line[name_start:name_end]
+                if subroutine_name[0].isdigit():
+                    subroutine_name = "__" + subroutine_name
                 # run the command on line[name_start:name_end] starting at current_frame-1
                 # print "SUBROUTINE" + line[name_start:name_end]
                 if state.inUponImmediate:
-                    if line[name_start:name_end] in effect_list:
-                        subroutine = effect_list[line[name_start:name_end]]
+                    if subroutine_name in effect_list:
+                        subroutine = effect_list[subroutine_name]
                         state.attackInfo.copy_non_none_values(subroutine.attackInfo)
                         state.landingRecovery = subroutine.landingRecovery
                 else:
-                    frame_chunks.append(SubroutineCall(line[name_start:name_end]))
+                    frame_chunks.append(SubroutineCall(subroutine_name))
             elif "AirHitstunAnimation(" in line:    # 9334
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
@@ -260,6 +268,16 @@ def parse_scr_file(source, move_list, effect_list):
                 if animation_type == 12:
                     state.attackInfo.normalHitEffects.isWallBounce = True
                     state.isWallBounce = True
+            elif "AirHitstunAfterWallbounce(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                number = int(line[number_start:number_end])
+                state.attackInfo.normalHitEffects.hitstunAfterWallBounce = number
+            elif "9360(" in line:
+                number_start = line.index("(") + 1
+                number_end = line.index(")")
+                number = int(line[number_start:number_end])
+                state.attackInfo.counterHitEffects.hitstunAfterWallBounce = number
             elif "Unknown9324(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
@@ -282,6 +300,15 @@ def parse_scr_file(source, move_list, effect_list):
                 # set invul to which attributes
                 params = line[line.index("('") + 2: line.index("')")]
                 state.invAttr = parse_attributes(params)
+            elif "defineInvincibility(" in line:
+                params = line[line.index("(") + 1: line.index(")")]
+                attributes = params.split(', ')
+                state.invAttr = [attributes[0] == '1',
+                                 attributes[1] == '1',
+                                 attributes[2] == '1',
+                                 attributes[3] == '1',
+                                 attributes[4] == '1'
+                                 ]
             elif "Unknown11058(" in line:
                 params = line[line.index("('") + 2: line.index("')")]
                 state.attackInfo.attribute = parse_attributes(params)
@@ -343,22 +370,22 @@ def parse_scr_file(source, move_list, effect_list):
             elif "Unknown9202(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.normalHitEffects.slide = int(line[number_start:number_end]) + 19
+                state.attackInfo.normalHitEffects.slide = int(line[number_start:number_end])
             elif "Unknown9204(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
-                state.attackInfo.counterHitEffects.slide = int(line[number_start:number_end]) + 19
+                state.attackInfo.counterHitEffects.slide = int(line[number_start:number_end])
             elif "Unknown9310(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
                 amt = int(line[number_start:number_end])
-                amt = 24 if amt == 1 else amt + 14
+                amt = 10 if amt == 1 else amt
                 state.attackInfo.normalHitEffects.knockdown = amt
             elif "Unknown9312(" in line:
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
                 amt = int(line[number_start:number_end])
-                amt = 24 if amt == 1 else amt + 14
+                amt = 10 if amt == 1 else amt
                 state.attackInfo.counterHitEffects.knockdown = amt
             elif "Unknown9346(" in line:
                 number_start = line.index("(") + 1
@@ -388,7 +415,7 @@ def parse_scr_file(source, move_list, effect_list):
                 number_start = line.index("(") + 1
                 number_end = line.index(")")
                 state.attackInfo.counterHitEffects.fatal = line[number_start:number_end] == "1"
-            elif "Unknown30072(" in line:  # i think this is attackDefaultsCrushAttack()? Basically Attack Level 3
+            elif "Unknown30072(" in line or "ScriptSameAttackComboNoSpecialCancel(" in line:  # i think this is attackDefaultsCrushAttack()? Basically Attack Level 3
                 state.attackInfo.attackLevel = 3
                 state.attackInfo.bonusHitstop = 0
                 state.attackInfo.bonusBlockstop = 0
