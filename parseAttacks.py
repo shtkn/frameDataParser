@@ -298,8 +298,16 @@ def parse_scr_file(source, move_list, effect_list):
                 # superfreeze
             elif "Unknown22019(" in line:
                 # set invul to which attributes
-                params = line[line.index("('") + 2: line.index("')")]
-                state.invAttr = parse_attributes(params)
+                if line.find("('") > 0:
+                    params = line[line.index("('") + 2: line.index("')")]
+                    state.invAttr = parse_attributes(params)
+                else:
+                    values = line[line.index("(") + 1: line.index(")")].split(", ")
+                    state.invAttr = [values[0] == "1",
+                                     values[1] == "1",
+                                     values[2] == "1",
+                                     values[3] == "1",
+                                     values[4] == "1"]
             elif "defineInvincibility(" in line:
                 params = line[line.index("(") + 1: line.index(")")]
                 attributes = params.split(', ')
@@ -312,11 +320,20 @@ def parse_scr_file(source, move_list, effect_list):
             elif "Unknown11058(" in line:
                 params = line[line.index("('") + 2: line.index("')")]
                 state.attackInfo.attribute = parse_attributes(params)
+            elif "AttackAttribures(" in line:
+                params = line[line.index("(") + 1: line.index(")")]
+                attributes = params.split(', ')
+                state.attr = [attributes[0] == '1',
+                                 attributes[1] == '1',
+                                 attributes[2] == '1',
+                                 attributes[3] == '1',
+                                 attributes[4] == '1'
+                                 ]
             elif "setInvincible(" in line:
                 # active/deactivate invul
                 idx = line.index("(") + 1
                 state.isInv = line[idx: idx + 1] == "1"
-            elif "Unknown22008(" in line:
+            elif "Unknown22008(" in line or "setInvincibleFor(" in line:
                 inv_start = line.index("(") + 1
                 inv_end = line.index(")")
                 hardcoded_inv_start = 1
@@ -536,16 +553,20 @@ if __name__ == "__main__":
         # Arcana Heart
         "scr_ahe",
         # BlazBlue
-        "scr_baz", "scr_bes", "scr_bha", "scr_bhz", "scr_biz", "scr_bjb", "scr_bjn", "scr_bma", "scr_bmk",
-        "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg",
+        "scr_baz", "scr_bce", "scr_bes", "scr_bha", "scr_bhz", "scr_biz", "scr_bjb", "scr_bjn", "scr_bma", "scr_bmk",
+        "scr_bno", "scr_bnt", "scr_bny", "scr_bph", "scr_bpt", "scr_brc", "scr_brg", "scr_btg", "scr_bsu",
         # Persona
-        "scr_pag", "scr_pak", "scr_pbc", "scr_pce", "scr_pka", "scr_pku", "scr_pla", "scr_pmi", "scr_pna",
-        "scr_pyo", "scr_pyu",
+        "scr_pad", "scr_pag", "scr_pak", "scr_pbc", "scr_pce", "scr_pel", "scr_pka", "scr_pku", "scr_pla", "scr_pmi",
+        "scr_pna", "scr_pyo", "scr_pyu",
         # RWBY
-        "scr_rbl", "scr_rrb", "scr_rwi", "scr_ryn",
+        "scr_rbl", "scr_rrb", "scr_rwi", "scr_ryn", "scr_rne",
         # Under Night
-        "scr_uca", "scr_ugo", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
-        "scr_uwa", "scr_uyu"
+        "scr_uca", "scr_ugo", "scr_uhi", "scr_uhy", "scr_uli", "scr_ume", "scr_umi", "scr_uor", "scr_use", "scr_uva",
+        "scr_uwa", "scr_uyu",
+        # Akatsuki Blitzkamp
+        "scr_uak", "scr_ubl",
+        # Senran Kagura
+        "scr_kym",
     ]
     bbcf_source_dir = "./annotated_bbcf_2_0"
     bbcf_target_dir = "./parsedAttacks_bbcf_2_0"
@@ -559,7 +580,7 @@ if __name__ == "__main__":
     test_target_dir = "."
     test_file_list = ["testfile"]
 
-    source_dir = bbcf_source_dir
-    target_dir = bbcf_target_dir
-    file_list = bbcf_file_list
+    source_dir = bbtag_source_dir
+    target_dir = bbtag_target_dir
+    file_list = bbtag_file_list
     parse_files(source_dir, target_dir, file_list)

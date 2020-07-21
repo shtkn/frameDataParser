@@ -131,7 +131,7 @@ def create_hitstun_value(attack_info):
     if hit_effects.groundHitAni == 0 or hit_effects.groundHitAni is None:
         text = str(attack_info.get_hitstun())
     elif hit_effects.groundHitAni == 2:
-        # TODO if stagger is longer than stagger fall start + 23, then they will hit the ground.
+        # if stagger is longer than stagger fall start + 23, then they will hit the ground.
         # Call this "Stagger Fall + {crumple duration + 24}"
         if attack_info.get_stagger() > attack_info.get_stagger_fall_start():
             text = "Crumple " + str(attack_info.get_stagger_fall_start() + 23)
