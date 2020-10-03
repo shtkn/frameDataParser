@@ -96,6 +96,7 @@ class State:
             chunk.inv_attr = self.invAttr
         return chunk
 
+
 def get_duration(sprite_str):
     number_start = sprite_str.index(SPRITE_MID) + SPRITE_MID.__len__()
     number_end = sprite_str.index(SPRITE_END)
@@ -507,6 +508,8 @@ def find_registered_moves(source):
             name_start = line.index("('") + 2
             name_end = line.index("',")
             name = line[name_start:name_end]
+            if name[0].isdigit():
+                name = "__" + name
             registered_moves.append(name)
 
     return registered_moves
